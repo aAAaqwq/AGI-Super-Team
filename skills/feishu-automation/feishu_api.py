@@ -11,59 +11,23 @@ import requests
 from typing import Optional, Dict, Any, List
 
 # ==================== 租户配置 ====================
-# 注意: 密钥应从环境变量或 pass 获取，切勿硬编码！
-# 使用方式: export FEISHU_APP_SECRET_<tenant>=<secret>
 
 TENANTS = {
     "personal": {
         "name": "个人应用",
-        "app_id": os.environ.get("FEISHU_APP_ID_PERSONAL", "cli_a83467f9ecba5013"),
-        "app_secret": os.environ.get("FEISHU_APP_SECRET_PERSONAL", ""),
+        "app_id": "cli_a83467f9ecba5013",
+        "app_secret": "bX21pNOyAXHwFXWf0SVGphWQrqrgC5Gd",
         "default_chat": "oc_356d77ff689d91280b4d33befb0eccb8",  # 知识云文档
     },
     "hanxing": {
         "name": "汉兴企业",
-        "app_id": os.environ.get("FEISHU_APP_ID_HANXING", "cli_a9f758c0efa2dcc4"),
-        "app_secret": os.environ.get("FEISHU_APP_SECRET_HANXING", ""),
+        "app_id": "cli_a9f758c0efa2dcc4",
+        "app_secret": "5djHWjk8t6QHRquDJXG9JiNEgPynmnIN",
         "default_chat": "oc_e92f9edcb7d078c9853d09ce844c15af",  # 技术开发群
     }
 }
 
 DEFAULT_TENANT = "hanxing"  # 默认使用汉兴企业
-
-def _load_secrets_from_pass():
-    """从 pass 加载密钥（如果可用）"""
-    try:
-        import subprocess
-        # 尝试从 pass 获取飞书密钥
-        result = subprocess.run(
-            ["pass", "show", "api/feishu-hanxing"],
-            capture_output=True, text=True, timeout=5
-        )
-        if result.returncode == 0:
-            lines = result.stdout.strip().split('\n')
-            for line in lines:
-                if 'app_secret' in line.lower():
-                    TENANTS["hanxing"]["app_secret"] = line.split('=')[-1].strip()
-                elif 'secret' in line.lower() and 'app' not in line.lower():
-                    TENANTS["hanxing"]["app_secret"] = line.strip()
-        
-        result = subprocess.run(
-            ["pass", "show", "api/feishu-personal"],
-            capture_output=True, text=True, timeout=5
-        )
-        if result.returncode == 0:
-            lines = result.stdout.strip().split('\n')
-            for line in lines:
-                if 'app_secret' in line.lower():
-                    TENANTS["personal"]["app_secret"] = line.split('=')[-1].strip()
-                elif 'secret' in line.lower() and 'app' not in line.lower():
-                    TENANTS["personal"]["app_secret"] = line.strip()
-    except Exception:
-        pass  # pass 不可用时静默失败
-
-# 自动从 pass 加载密钥
-_load_secrets_from_pass()
 
 class FeishuClient:
     """飞书 API 客户端"""
