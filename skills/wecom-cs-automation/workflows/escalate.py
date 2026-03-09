@@ -34,10 +34,10 @@ class NotificationChannel:
     """通知渠道"""
 
     def __init__(self):
-        self.channel_config = os.environ.get("NOTIFICATION_CHANNEL", "telegram:8518085684")
+        self.channel_config = os.environ.get("NOTIFICATION_CHANNEL", "telegram:YOUR_TELEGRAM_ID")
 
     def parse_channel(self) -> tuple:
-        """解析渠道配置: "telegram:8518085684" -> ("telegram", "8518085684")"""
+        """解析渠道配置: "telegram:YOUR_TELEGRAM_ID" -> ("telegram", "YOUR_TELEGRAM_ID")"""
         parts = self.channel_config.split(":")
         if len(parts) != 2:
             logger.error(f"无效的渠道配置: {self.channel_config}")

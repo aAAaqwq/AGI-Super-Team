@@ -11,12 +11,12 @@ import json
 # 租户配置
 TENANTS = {
     "hanxing": {
-        "app_id": "cli_a9f758c0efa2dcc4",
-        "app_secret": "5djHWjk8t6QHRquDJXG9JiNEgPynmnIN",
+        "app_id": "YOUR_APP_ID",
+        "app_secret": "YOUR_APP_SECRET",
     },
     "personal": {
-        "app_id": "cli_a83467f9ecba5013",
-        "app_secret": "bX21pNOyAXHwFXWf0SVGphWQrqrgC5Gd",
+        "app_id": "YOUR_APP_ID",
+        "app_secret": "YOUR_APP_SECRET",
     }
 }
 
