@@ -166,7 +166,7 @@ fields = {
   "telegram": {
     "enabled": true,
     "bot_token": "从 config 读取",
-    "chat_id": "8518085684",
+    "chat_id": "YOUR_TELEGRAM_ID",
     "alert_level": "high"
   }
 }
