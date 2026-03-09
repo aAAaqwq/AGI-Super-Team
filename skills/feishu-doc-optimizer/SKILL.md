@@ -47,7 +47,7 @@ python3 scripts/feishu_doc_editor.py <doc_token> <content_file>
 
 | 租户 | App ID | 用途 |
 |------|--------|------|
-| hanxing | cli_a9f758c0efa2dcc4 | 汉兴企业（默认） |
+| hanxing | YOUR_FEISHU_APP_ID | 汉兴企业（默认） |
 | personal | cli_a83467f9ecba5013 | 个人应用 |
 
 ### API 权限
