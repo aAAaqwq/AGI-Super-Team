@@ -28,10 +28,10 @@ sessions_send(
 **示例**：
 ```
 sessions_send(
-  sessionKey="agent:main:feishu:group:YOUR_FEISHU_CHAT_ID",
+  sessionKey="agent:main:feishu:group:oc_45acc85cad802bf6cf21ed24e25465e9",
   message="你好！我是小a，来自Daniel团队。",
   gatewayUrl="ws://100.118.109.75:18789",
-  gatewayToken="YOUR_GATEWAY_TOKEN"
+  gatewayToken="$(pass show team/peter-gateway-token)"
 )
 ```
 
