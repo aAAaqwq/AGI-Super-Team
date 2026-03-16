@@ -38,7 +38,7 @@ def color(text: str, c: str) -> str:
 ERROR_PATTERNS = {
     "chat not found": {
         "cause": "Bot 未加入群组，或群组 ID 错误",
-        "fix": "检查 bot 是否在群组中，或改用私聊 ID (YOUR_TELEGRAM_ID)",
+        "fix": "检查 bot 是否在群组中，或改用私聊 ID (8518085684)",
         "auto_fix": "change_to_private_chat"
     },
     "model not allowed": {
@@ -71,7 +71,7 @@ RECOMMENDED_MODELS = [
     "moonshot/kimi-k2.5",
 ]
 
-OWNER_CHAT_ID = "YOUR_TELEGRAM_ID"
+OWNER_CHAT_ID = "8518085684"
 
 
 def diagnose_job(job: dict) -> dict:
