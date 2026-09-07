@@ -2,19 +2,19 @@
   "schemaVersion": 1,
   "scope": "deterministic-structural-evidence-not-semantic-verification",
   "summary": {
-    "inventoryCount": 829,
-    "structureInvalid": 175,
-    "disclosureWarnings": 569,
+    "inventoryCount": 831,
+    "structureInvalid": 176,
+    "disclosureWarnings": 570,
     "executionReviewRequired": 176,
     "issueCounts": {
       "description-missing-trigger": 264,
       "description-over-180": 293,
       "invalid-frontmatter-yaml": 35,
       "link-outside-repository": 5,
-      "missing-frontmatter": 37,
+      "missing-frontmatter": 38,
       "name-folder-mismatch": 71,
       "over-500-lines": 55,
-      "personal-absolute-path": 51,
+      "personal-absolute-path": 52,
       "scripts-without-test-evidence": 175,
       "unmentioned-assets": 10,
       "unmentioned-references": 55,
@@ -1208,6 +1208,17 @@
       "execution_status": "not-applicable",
       "issues": [
         "missing-frontmatter"
+      ]
+    },
+    {
+      "skill_id": "coin-vp-scanner",
+      "path": "skills/coin-vp-scanner/SKILL.md",
+      "structure_status": "invalid",
+      "disclosure_status": "warn",
+      "execution_status": "not-applicable",
+      "issues": [
+        "missing-frontmatter",
+        "personal-absolute-path"
       ]
     },
     {
