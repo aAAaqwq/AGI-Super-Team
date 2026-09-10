@@ -299,8 +299,15 @@ hermes cron run --job-id <JID>
 
 ## 8. 涉及到的 Job 列表
 
-| Job ID | Name | 调度 | 当前 model | 状态 |
-|--------|------|------|------------|------|
-| `d8058223a1e0` | 5minbtc v5.7 半K线策略 | 每5分钟 | `zai/glm-5.2` | ✅ ok @ 2026-06-21 20:21 |
+| Job ID | Name | 调度 (cron 表达式) | 当前 model | 状态 |
+|--------|------|-------------------|------------|------|
+| `d8058223a1e0` | 5minbtc v5.7 半K线策略 | `2,7,12,17,22,27,32,37,42,47,52,57 20-22 * * *` | `zai/glm-5.2` | ✅ ok @ 2026-06-21 20:21 |
 | `3016e27ddefa` | Dreaming 夜间进化 | 每日 04:25 | `zai/glm-5.2` | 待首次验证 |
-| `9b07cd139f70` | 5minbtc 每日复盘 23:15 | 每日 23:15 | `zai/glm-5.2` | 待首次验证 |
+| `9b07cd139f70` | 5minbtc 每日复盘 23:15 | `15 23 * * *` | `zai/glm-5.2` | 待首次验证 |
+
+> 这些是 **hermes 机**（Linux）上的 cron job，不在 Mac 上（Mac 用 launchd，见 [setup-from-scratch.md](setup-from-scratch.md#4-launchd-常驻服务6-个)）。
+> ⚠️ job name 里的 `v5.7` 已是旧标签 —— 正是"引擎升级后必须同步更新 job name"这条规则的反面案例（见 [pitfalls.md](pitfalls.md) #7）。
+>
+> 📌 `3016e27ddefa`（Dreaming 夜间进化）曾于 2026-06 连续失败（最后成功 06-11、最后失败 06-13），
+> 当时的恢复流程记在 `references/dreaming-cron-recovery.md`，该文件已于 2026-09-10 按最小无用原则删除
+> （属 6 月单次事故记录，其数据源 fallback 建议从未落地）—— 需要时从 git 历史取回。

@@ -159,27 +159,12 @@ def push(msg, enabled=True):
         pass
 
 
-def record_limit(d, side, limit):
-    """重大信号但 ask 追高 → 挂 LIMIT 单(限价=甜区上限), 等回调成交."""
-    p = d["prediction"]
-    c = d["candle"]
-    price = d["price"]
-    state = load_paper()
-    bet = {
-        "candle": c["iso"], "side": side, "limit": round(limit, 4),
-        "amount": 1.0, "fee": 0.01, "status": "pending", "mode": "paper",
-        "p_est": (p["confidence"] / 100) if side == "UP" else (1 - p["confidence"] / 100), "auto": True,
-        "ts": datetime.now(CST).isoformat(),
-        "entry": {
-            **ofi_snapshot(d),
-            "progress": c.get("progress_pct"),
-            "open": price["open"], "current": price["current"],
-            "confidence": p["confidence"], "strength": p["strength"],
-            "regime": d.get("regime"), "mtf": d.get("mtf", {}),
-        },
-    }
-    state["bets"].append(bet)
-    save_paper(state)
+# 2026-09-10 按最小无用原则删除的死代码 (均无调用点, 可从 git 历史取回):
+#   record_limit / fmt_limit / fmt_skip_knife —— 「甜区限价挂单」功能, 已确认废弃
+#     (record_limit 是该功能唯一的 pending 单产生方; 台账 148 笔全 settled, 无 pending)
+#   fmt_no_edge / fmt_signal —— 已被 v5.10 起的 inline action 文案取代
+# ⚠️ 遗留: settle 逻辑仍会消费 status=="pending" 的单 (见下方 bet 结算段),
+#   那是给 5minbtc_keyless_paper.py 与历史台账用的, 不要误删。
 
 
 def fetch_close(candle_iso):
@@ -301,15 +286,6 @@ def check_pending(push_enabled=True):
     return changed
 
 
-def fmt_skip_knife(d, side, ask):
-    """接飞刀跳过的推送 (ask 低于甜区下限, 市场强烈反向)."""
-    p = d["prediction"]
-    c = d["candle"]
-    dir_cn = DIR_CN.get(p["bias"], p["bias"])
-    ask_s = f"{ask:.2f}" if ask is not None else "?"
-    return (f"⚠️ 接飞刀跳过 | {dir_cn}\n"
-            f"{c['candle_start']} | {side} ask {ask_s} < 甜区下限 0.40\n"
-            f"置信 {p['confidence']} | 市场强烈反向, 不接飞刀")
 
 
 def fmt_order(d, side, ask, probability=None):
@@ -336,48 +312,10 @@ def fmt_prediction(d, side, ask, probability, edge, action):
             f"→ {action}")
 
 
-def fmt_no_edge(d, side, ask, probability):
-    """无 edge 跳过推送."""
-    p = d["prediction"]
-    c = d["candle"]
-    dir_cn = DIR_CN.get(p["bias"], p["bias"])
-    return (f"⏭️ 无edge跳过 | {dir_cn}\n"
-            f"{c['candle_start']} | {side} 概率 {probability:.2f} ≤ 市场 {ask:.2f}\n"
-            f"无 edge, 不下单")
 
 
-def fmt_limit(d, side, limit, ask):
-    """挂 LIMIT 单的推送."""
-    p = d["prediction"]
-    c = d["candle"]
-    dir_cn = DIR_CN.get(p["bias"], p["bias"])
-    ask_s = f"{ask:.2f}" if ask is not None else "?"
-    return (f"🎯 重大信号·挂单 | {dir_cn}\n"
-            f"{c['candle_start']} | {side} 限价 {limit:.2f} (现ask {ask_s})\n"
-            f"置信 {p['confidence']} | 等回调成交")
 
 
-def fmt_signal(d, up=None, down=None):
-    p = d["prediction"]
-    c = d["candle"]
-    price = d["price"]
-    open_p = price["open"]
-    cur = price["current"]
-    chg = cur - open_p
-    chg_pct = chg / open_p * 100 if open_p else 0
-    dir_cn = DIR_CN.get(p["bias"], p["bias"])
-    side = "UP" if p["bias"] == "bull" else "DOWN"
-    up_s = f"{up:.2f}" if up is not None else "?"
-    down_s = f"{down:.2f}" if down is not None else "?"
-    return (f"🎯 [重大信号] {dir_cn}\n"
-            f"{c['candle_start']} progress {c['progress_pct']:.0f}% | "
-            f"置信 {p['confidence']}\n"
-            f"开 {open_p:.2f} → 现 {cur:.2f} ({chg:+.0f}$ {chg_pct:+.3f}%)\n"
-            f"预测收 {p['pred_close']:,} | 强度 {p['strength']}\n"
-            f"盘口: UP {up_s} | DOWN {down_s}\n"
-            f"── 下单指令 ──\n"
-            f"模拟: 回复「下单」买入 {side} 1U\n"
-            f"真实: 回复「真实下单」买入 {side} 1U (当前5min, 真钱需确认)")
 
 
 def main():

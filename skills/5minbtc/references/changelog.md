@@ -96,8 +96,7 @@ v6.0 不再假装能预测方向，改为**检测错价**：真 OFI 净流方向
 | 全链路提速 | 引擎+新闻+搜索并行→全链路~7s | 之前22-29s，提速~3x |
 
 **关键pitfall**: `ex.submit(fetch_klines, 200)` 把 `200` 传给第一个参数 `symbol`→HTTP 400。必须用 `ex.submit(fetch_klines, limit=200)`。
-
-详见 `references/engine-parallelization-v573.md`。
+（该 pitfall 现存于 [pitfalls.md](pitfalls.md) #5；原 `engine-parallelization-v573.md` 已于 2026-09-10 删除，因其"4 路并行"已被 v6.0 的 9 路取代。）
 
 
 

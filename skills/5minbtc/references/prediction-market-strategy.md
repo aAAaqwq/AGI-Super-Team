@@ -129,4 +129,7 @@ UP 限价 0.65 (p=0.74) | 现价 0.72
 
 ## 相关
 - [prediction-trading-cli.md](prediction-trading-cli.md) — CLI 全参数/安全契约/API端点
-- [polymarket-data-source.md](polymarket-data-source.md) — Polymarket 用 Chainlink 结算（与 Binance 价差风险）
+
+> 原 `polymarket-data-source.md`（Polymarket 用 Chainlink 结算 + 与 Binance 价差风险）已于 2026-09-10 删除：
+> 交易场所现已换成**币安 Web3 预测市场**（见 prediction-trading-cli.md），Polymarket 盘口框架过时；
+> Chainlink 价差风险本身仍在 [pitfalls.md](pitfalls.md) 的 `chainlink_offset` 条目保留。

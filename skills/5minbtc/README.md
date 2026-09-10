@@ -291,13 +291,16 @@ python3 run_backtest.py --progress=0.5
 
 ## 路线图
 
-详见 [`references/architecture.md`](references/architecture.md)。要点：
-
-- 🔴 **OFI 微结构因子**：接入 Binance WebSocket L2 数据，实现 OFI + microprice（学术 R² 15–25%，5 分钟尺度唯一有实证支持的信号）
+- ✅ **OFI 微结构因子**（v6.0 已落地）：引擎现由真 OFI 净流一票决定方向 + `P(close>open|ofi)` 概率，
+  见 [SKILL.md 架构](SKILL.md#架构-1-行组件) 与 [strategy-adversarial-review.md](references/strategy-adversarial-review.md)
 - 🟡 HMM Regime 检测 + 自适应仓位
 - 🟡 LightGBM 自动化因子筛选
 - 🟡 CVaR 动态止损
 - 🟢 TFT 多时间尺度模型替代贝叶斯引擎
+
+> 原 `references/architecture.md`（13 因子模型 + 升级路线图）已于 2026-09-10 删除：
+> 其"13 正交因子"描述被 v5.9 清零、OFI 也已从路线图变为已实现，内容已由
+> [changelog.md](references/changelog.md) 与 [SKILL.md](SKILL.md) 取代。
 - 🟢 Deribit 期权 IV 信号
 
 ## 免责声明 (NOT FINANCIAL ADVICE)

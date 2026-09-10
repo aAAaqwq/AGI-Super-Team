@@ -845,52 +845,8 @@ def sigmoid_compress(score, max_score=45, sensitivity=1.5):
 
 # v6.0: close_direction_confidence (body 延续概率) 已删除 —
 # 方向预测被证明是硬币 (52.6%), 置信度改由真 OFI 概率 ofi_probability 提供.
-
-def calibrate_confidence(raw_score, bias, regime):
-    """v5.5: Platt Scaling校准置信度
-
-    基于v5.4 120轮复盘发现的问题:
-    - 原始 40+abs(score) 导致高conf=低准确率(反比)
-    - bull_40: 58%, bull_50: 83% -- 低分bull是噪声
-    - bear: 所有conf档位稳定在 67-70%
-    - 需要: 低score>低conf, 高score>高conf (正相关)
-
-    校准逻辑:
-    1. sigmoid映射: score>概率基数
-    2. regime调整: HIGH_VOL/RANGE降低, TREND维持
-    3. neutral强制<=50
-    4. 置信度=映射后概率四舍五入
-
-    校准参数 (基于历史score分布 + conf准确率交叉验证):
-    - midpoint=15: 低于此认为不确定 (原 8太高,导致低score变高conf)
-    - steepness=0.10: 平缓过渡
-    """
-    abs_s = abs(raw_score)
-
-    # Platt Scaling: sigmoid(score) > [0, 1]
-    # midpoint=15: 当|score|<15时confidence<65%
-    # steepness=0.10: 平缓过渡,避免跳变
-    prob = 1.0 / (1.0 + math.exp(-0.10 * (abs_s - 15)))
-
-    # 映射到 [35, 85] 置信度区间
-    # low floor=35: 弱信号不装强
-    # high cap=85: 最确定时 85%
-    conf = int(35 + prob * 50)
-
-    # Regime调整
-    if regime == "HIGH_VOL":
-        conf = int(conf * 0.85)  # 高波动降低置信度
-    elif regime == "RANGE":
-        conf = int(conf * 0.92)  # 震荡市略降
-
-    # Neutral方向强制<=50
-    if bias == "neutral":
-        conf = min(conf, 50)
-
-    # 钳位
-    conf = max(35, min(85, conf))
-
-    return conf
+# 2026-09-10: calibrate_confidence (v5.5 Platt Scaling) 也已删除 —— 无任何调用点,
+# 且其"置信度与准确率正相关"的前提已被对抗审查推翻 (实测 conf 35-57 压扁且反校准).
 
 
 def direction_rule_v5(candles, closes, atr_val, vol_ratio,

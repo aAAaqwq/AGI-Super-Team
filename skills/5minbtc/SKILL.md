@@ -125,7 +125,6 @@ python3 $SKILL_DIR/5minbtc-log.py log \
 - [lessons.md](references/lessons.md) — **25 条核心教训** (必读, 含 2026-07-05 新增 23-25)
 - [pitfalls.md](references/pitfalls.md) — **17 条 pitfalls 集中索引** (必读, 含并行 max() 评估陷阱)
 - [changelog.md](references/changelog.md) — v5.0 ~ v6.0 详细变更
-- [architecture.md](references/architecture.md) — 引擎架构 + 因子模型 + v5.0 升级路线图
 - [skill-organization.md](references/skill-organization.md) — **Skill 文件结构模式 (可复用)** — SKILL.md INDEX + references/ 分专题
 
 ### 执行与输出
@@ -140,28 +139,18 @@ python3 $SKILL_DIR/5minbtc-log.py log \
 - [binance-api-geo.md](references/binance-api-geo.md) — Binance 端点区域问题
 - [binance-endpoint-flapping.md](references/binance-endpoint-flapping.md) — 端点双向故障切换
 - [high-latency-network-handling.md](references/high-latency-network-handling.md) — 高延迟网络处理 (SSL 超时)
-- [polymarket-data-source.md](references/polymarket-data-source.md) — Polymarket 结算源 (Chainlink)
+
+> Binance 三种故障模式各一份（431/451 区域、隧道抖动、高延迟 SSL 超时），**不是重复文档**，见 [setup-from-scratch.md §6](references/setup-from-scratch.md#6-网络地区修复geo)。
 
 ### 引擎专项
-- [engine-parallelization-v573.md](references/engine-parallelization-v573.md) — v5.7.3 HTTP 并行化 + positional arg 陷阱
-- [black-swan-defense-v571.md](references/black-swan-defense-v571.md) — v5.7.1 黑天鹅防护 (ATR+FNG+news)
-- [decel-collapse-pattern.md](references/decel-collapse-pattern.md) — decel 极值崩塌 = V反完成
-- [cron-llm-provider-failure.md](references/cron-llm-provider-failure.md) — Cron LLM Provider 失效诊断
-- [cron-setup.md](references/cron-setup.md) — Cron Job 配置 + 版本同步
-- [dreaming-cron-recovery.md](references/dreaming-cron-recovery.md) — Dreaming Cron 恢复
+- [cron-llm-provider-failure.md](references/cron-llm-provider-failure.md) — Cron LLM Provider 失效诊断 (含 job 列表 §8) + 版本同步规则
 
 ### 回测 & 复盘
 - [backtest-findings.md](references/backtest-findings.md) — 365 天回测深度复盘 + 因子无预测力
 - [backtest-v58-1min-findings.md](references/backtest-v58-1min-findings.md) — v5.8 真实 1min 半 K线回测
 - [review-procedure.md](references/review-procedure.md) — 每日复盘流程 + 数据质量检查
-- [performance-history.md](references/performance-history.md) — 273 笔全量战绩 + 引擎迭代对比
-
-### 单次 session 记录
-- [session-2026-06-17.md](references/session-2026-06-17.md) — 5 轮实时预测, v5.7.2 验证
-- [session-2026-06-18.md](references/session-2026-06-18.md) — 00:10 mispredict 复盘 → v5.7.4 规则
 
 ### 数据采集 & 仓库
-- [daily-stock-analysis-data-sources.md](references/daily-stock-analysis-data-sources.md) — daily_stock_analysis 17-fetcher 评估
 - [sync-procedure.md](references/sync-procedure.md) — AGI-Super-Team 同步流程 (路径映射 + `-c` 校验 + logs 归档策略)
 - [archive.md](references/archive.md) — **版本归档: v5.0→v6.0 沿革 + 哪些版本已不可取回 + 归档 SOP**
 - [setup-from-scratch.md](references/setup-from-scratch.md) — **从零搭建: 依赖/目录/密钥/6 个 launchd 服务/验证清单/日志轮转/故障表**
@@ -226,7 +215,7 @@ backtest/
 ├── logs/                         # 日志 (当月 live + 历史按月压缩)
 │   ├── 5minbtc-log.jsonl         # 当月 live (不入库)
 │   └── archive/*.jsonl.gz        # 月度压缩归档 (入库, 见 archive.md)
-├── references/                   # 33 份专项 ref (含 skill-organization 模式)
+├── references/                   # 23 份专项 ref (含 skill-organization 模式)
 ├── backtest/                     # 回测系统 (results/ 不入库)
 ├── data/                         # 运行时 (news-risk-level.json 等)
 ├── scripts/                      # 复盘/监控/交易脚本

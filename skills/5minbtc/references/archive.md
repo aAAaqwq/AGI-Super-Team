@@ -32,8 +32,11 @@
 2. **仓库 git 历史被截断** —— `~/AGI-Super-Team` 是从 GitHub 重新 clone 的（旧的 `/tmp/AGI-Super-Team` 曾被系统清理损坏）。`skills/5minbtc/` 在仓库里**只有 7 个提交**，最早是 `d149f56`（2026-08-17）。
 
 所以 git 里能查到的最早引擎快照 ≈ **v5.8 时期**，v5.0–v5.7 的代码**既不在本地也不在 git**，只在
-[changelog.md](changelog.md) / [performance-history.md](performance-history.md) / `reviews/`（若存在）
-的文字记录里留有行为描述。
+[changelog.md](changelog.md) 的文字记录里留有行为描述。
+
+> 原先还有一份 `performance-history.md` 记录 v4.x→v5.7.1 的逐日战绩，因其 83.0% 等数字已被
+> [对抗式审查报告](strategy-adversarial-review.md) 证伪（真实 non-neutral 57.7% / bear 50.0%），
+> 已于 2026-09-10 按最小无用原则删除；需要时从 git 历史取回。
 
 ## 取回历史版本
 
@@ -64,6 +67,31 @@ logs/
 - 压缩归档**会同步进仓库**（`.gitignore` 里对 `logs/archive/*.gz` 做了逐级反忽略）。
 - live 的 `*.jsonl` **不入库**（每 5 分钟追加，进 git 会产生巨大且无意义的 diff）。
 - 轮转方法见 [setup-from-scratch.md](setup-from-scratch.md#日志轮转)。
+
+## 2026-09-10 文档清理记录
+
+按「最小无用原则」删除 11 份文档（references/ 由 34 份 → 23 份）。全部可从 git 历史取回：
+`git show <sha>:skills/5minbtc/references/<文件名>`（删除前的提交见该文件的 git log）。
+
+| 删除的文件 | 理由 |
+|-----------|------|
+| `performance-history.md` | 声称 v5.7.1 达 83.0%，已被[对抗审查](strategy-adversarial-review.md)证伪（真实 57.7% / bear 50.0%）；且引用 9 个不存在的 `review-*.md` |
+| `architecture.md` | 仍把「13 正交因子」当方向模型（v5.9 已清零）、把 OFI 列为未来路线图（v6.0 已实现）；且代码围栏未闭合导致整篇被当代码渲染 |
+| `decel-collapse-pattern.md` | 主张「LLM 应覆盖引擎方向」，与 v6.0「OFI 一票决定」+ 铁律 #4 直接冲突；decel 因子已清零 |
+| `black-swan-defense-v571.md` | 补丁对象 `v_reversal`/`decel` 已清零；幸存内容（ATR spike + FNG<25）已在 SKILL.md 架构行 |
+| `engine-parallelization-v573.md` | 描述「4 路并行」，现为 9 路；唯一有效的 pitfall 已存于 [pitfalls.md](pitfalls.md) #5 |
+| `cron-setup.md` | 薄壳：版本同步规则与 pitfalls #7 重复，job 表已在 [cron-llm-provider-failure.md](cron-llm-provider-failure.md) §8（本次补入了原始 cron 表达式） |
+| `polymarket-data-source.md` | 交易场所已换成币安 Web3 预测市场，Polymarket 盘口框架过时；Chainlink 价差风险仍在 pitfalls 的 `chainlink_offset` 条目 |
+| `dreaming-cron-recovery.md` | 2026-06 单次事故记录，其数据源 fallback 建议从未落地；job 仍在，说明见 cron-llm-provider-failure.md §8 |
+| `session-2026-06-17.md`、`session-2026-06-18.md` | 结论已 100% 蒸馏进 `lessons.md` #12/#14/#18 与 `changelog.md` v5.7.4 |
+| `daily-stock-analysis-data-sources.md` | 无关内容：A 股/港股/美股股票项目的 fetcher 评估 |
+
+同时删除 **6 个死函数**（详见 [output-template.md](output-template.md#13-已删除--仍残留的死代码)）：
+引擎的 `calibrate_confidence`（v5.5 Platt 残骸）、realtime 的 `record_limit` / `fmt_limit` / `fmt_skip_knife`（已废弃的「甜区限价挂单」）与 `fmt_no_edge` / `fmt_signal`。
+
+**保留判断**（看似重复但经复核不删）：Binance 三份网络文档是**三种不同故障模式**；
+`reports/` R01–R14 被 [quant-knowledge-index.md](quant-knowledge-index.md) 索引；
+`lessons.md` / `pitfalls.md` / `strategy-adversarial-review.md` 是「历史叙事 / 行动索引 / 权威结论」三种角色，互补而非重复。
 
 ## 归档 SOP（每次引擎升版时做）
 
