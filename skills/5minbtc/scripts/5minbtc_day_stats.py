@@ -12,6 +12,7 @@
   python3 scripts/5minbtc_day_stats.py --push       # 推送到 Telegram
 """
 import argparse
+import gzip
 import json
 import os
 import subprocess
@@ -22,23 +23,40 @@ from pathlib import Path
 SCRIPT_DIR = Path(__file__).resolve().parent
 SKILL = SCRIPT_DIR.parent
 LOG = SKILL / "logs" / "5minbtc-log.jsonl"
+ARCHIVE = SKILL / "logs" / "archive"
 PUSH = SCRIPT_DIR / "telegram_push.py"
 CST = timezone(timedelta(hours=8))
 
 
+def iter_log_lines():
+    """按月归档(logs/archive/*.jsonl.gz, 老→新) + 当月 live。
+
+    日志 2026-09-10 起按月轮转: 历史月份只在 archive 里,
+    只读 live 会让 --all / --date <旧月份> 查不到数据。
+    """
+    for gz in sorted(ARCHIVE.glob("*.jsonl.gz")):
+        try:
+            with gzip.open(gz, "rt", encoding="utf-8") as f:
+                for line in f:
+                    yield line
+        except Exception:
+            continue
+    if LOG.exists():
+        with open(LOG, encoding="utf-8") as f:
+            for line in f:
+                yield line
+
+
 def load():
-    if not os.path.exists(LOG):
-        return []
     out = []
-    with open(LOG) as f:
-        for line in f:
-            line = line.strip()
-            if not line:
-                continue
-            try:
-                out.append(json.loads(line))
-            except Exception:
-                continue
+    for line in iter_log_lines():
+        line = line.strip()
+        if not line:
+            continue
+        try:
+            out.append(json.loads(line))
+        except Exception:
+            continue
     return out
 
 

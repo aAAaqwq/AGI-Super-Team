@@ -30,8 +30,10 @@ import sys
 import os
 from collections import defaultdict
 
-LOG = os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                   os.pardir, "5minbtc-log.jsonl")
+# 2026-09-10 修: 原路径少了一层 logs/ (指向 skill 根), 该脚本从未真正读到过日志
+_SKILL = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+LOG = os.path.join(_SKILL, "logs", "5minbtc-log.jsonl")
+ARCHIVE = os.path.join(_SKILL, "logs", "archive")
 
 VOL_GLITCH_THRESHOLD = 200.0  # lesson 15
 SYSTEMATIC_BIAS_MIN_RUNS = 5  # lesson 19
@@ -54,20 +56,35 @@ def _is_settled(r):
     return False
 
 
+def _iter_lines():
+    """已归档月份 (logs/archive/*.jsonl.gz) + live。"""
+    import glob, gzip
+    for gz in sorted(glob.glob(os.path.join(ARCHIVE, "*.jsonl.gz"))):
+        try:
+            with gzip.open(gz, "rt", encoding="utf-8") as f:
+                for line in f:
+                    yield line
+        except Exception:
+            continue
+    if os.path.exists(LOG):
+        with open(LOG) as f:
+            for line in f:
+                yield line
+
+
 def load_day(log_path, day):
     recs = []
-    with open(log_path) as f:
-        for line in f:
-            line = line.strip()
-            if not line:
-                continue
-            try:
-                r = json.loads(line)
-            except Exception:
-                continue
-            hay = " ".join(str(r.get(k, "")) for k in ("ts", "candle", "date"))
-            if day in hay and _is_settled(r):
-                recs.append(r)
+    for line in _iter_lines():
+        line = line.strip()
+        if not line:
+            continue
+        try:
+            r = json.loads(line)
+        except Exception:
+            continue
+        hay = " ".join(str(r.get(k, "")) for k in ("ts", "candle", "date"))
+        if day in hay and _is_settled(r):
+            recs.append(r)
     return recs
 
 

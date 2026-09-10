@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """5minbtc 预测日志 - 记录预测vs实际，用于回测准确率"""
-import json, os, sys
+import glob, gzip, json, os, sys
 from datetime import datetime, timezone, timedelta
 
 LOG_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -200,17 +200,38 @@ def settle_all_unsettled():
     else:
         print(f"\n📊 Batch settled {settled_count} predictions")
 
+def iter_log_lines():
+    """按月归档(logs/archive/*.jsonl.gz, 老→新) + 当月 live。
+
+    仅用于**只读统计**。settle 系列不要用 —— 它们要回写 live 文件,
+    归档是只读的月度快照。
+    """
+    for gz in sorted(glob.glob(os.path.join(LOGS_DIR, "archive", "*.jsonl.gz"))):
+        try:
+            with gzip.open(gz, "rt", encoding="utf-8") as f:
+                for line in f:
+                    yield line
+        except Exception:
+            continue
+    if os.path.exists(LOG_FILE):
+        with open(LOG_FILE, "r") as f:
+            for line in f:
+                yield line
+
+
 def stats():
-    """统计预测准确率"""
-    if not os.path.exists(LOG_FILE):
-        print("No data")
-        return
+    """统计预测准确率 (含已归档月份)"""
     entries = []
-    with open(LOG_FILE, "r") as f:
-        for line in f:
-            e = json.loads(line.strip())
-            if e["settled"]:
-                entries.append(e)
+    for line in iter_log_lines():
+        line = line.strip()
+        if not line:
+            continue
+        try:
+            e = json.loads(line)
+        except Exception:
+            continue
+        if e.get("settled"):
+            entries.append(e)
     if not entries:
         print("No settled predictions yet")
         return
