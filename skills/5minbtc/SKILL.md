@@ -124,7 +124,7 @@ python3 $SKILL_DIR/5minbtc-log.py log \
 ### 核心方法论
 - [strategy-adversarial-review.md](references/strategy-adversarial-review.md) — **对抗式审查报告: 第一性原理 + 13因子证伪 + 该留/删/缺失 + P0/P1/P2行动清单** (v5.9 依据)
 - [lessons.md](references/lessons.md) — **25 条核心教训** (必读, 含 2026-07-05 新增 23-25)
-- [pitfalls.md](references/pitfalls.md) — **18 条 pitfalls 集中索引** (必读, 含并行 max() 评估陷阱; #18 = K线开局概率不可信)
+- [pitfalls.md](references/pitfalls.md) — **19 条 pitfalls 集中索引** (必读, 含并行 max() 评估陷阱; #18 = K线开局概率不可信; #19 = "真OFI" 只覆盖单一市场)
 - [changelog.md](references/changelog.md) — v5.0 ~ v6.0 详细变更
 - [skill-organization.md](references/skill-organization.md) — **Skill 文件结构模式 (可复用)** — SKILL.md INDEX + references/ 分专题
 
