@@ -56,6 +56,13 @@ openclaw.json
 *.log
 logs/
 
+# 例外: 5minbtc 的「已轮转」压缩归档要入库 (按月切分、写后不变, git 友好)
+# 注意: 父目录 logs/ 被排除时, 仅 `!文件` 无效 —— 必须逐级反忽略目录本身
+!skills/5minbtc/logs/
+skills/5minbtc/logs/*
+!skills/5minbtc/logs/archive/
+!skills/5minbtc/logs/archive/*.gz
+
 # Mac
 .DS_Store
 

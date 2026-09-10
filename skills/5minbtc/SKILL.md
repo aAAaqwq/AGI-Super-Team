@@ -162,17 +162,17 @@ python3 $SKILL_DIR/5minbtc-log.py log \
 
 ### 数据采集 & 仓库
 - [daily-stock-analysis-data-sources.md](references/daily-stock-analysis-data-sources.md) — daily_stock_analysis 17-fetcher 评估
-- [sync-procedure.md](references/sync-procedure.md) — AGI-Super-Team 同步流程
+- [sync-procedure.md](references/sync-procedure.md) — AGI-Super-Team 同步流程 (路径映射 + `-c` 校验 + logs 归档策略)
+- [archive.md](references/archive.md) — **版本归档: v5.0→v6.0 沿革 + 哪些版本已不可取回 + 归档 SOP**
+- [setup-from-scratch.md](references/setup-from-scratch.md) — **从零搭建: 依赖/目录/密钥/6 个 launchd 服务/验证清单/日志轮转/故障表**
 - [quant-knowledge-index.md](references/quant-knowledge-index.md) — 50 轮蒸馏知识库索引
 
-## 复盘记录 (`reviews/`)
-按月归档:
-```
-reviews/
-├── 2026-05/  (6 份: review-2026-05-05.md, 24, 25, 27, 27-backtest, 29)
-├── 2026-06/  (15 份: 03, 06, 09, 12, 14, 15, 16, 17, 18, 19, 21, 23, 24, 27, 28)
-└── 2026-07/  (2 份: 01, 02)
-```
+## 复盘记录
+
+⚠️ **`reviews/` 目录本地不存在** —— 早期文件树声称有 23 份按月归档的复盘记录（2026-05/06/07），实际从未落盘。
+复盘结论目前散落在 [lessons.md](references/lessons.md)、[pitfalls.md](references/pitfalls.md)、
+[strategy-adversarial-review.md](references/strategy-adversarial-review.md) 与 `reports/` 里。
+若要恢复这个习惯，需先补 `review-procedure.md` 的落盘步骤，别只在文档里声明。
 
 ## 报告库
 14 份深度蒸馏报告在 `reports/` 目录 (也同步在 AGI-Super-Team): R01-R14。
@@ -223,19 +223,11 @@ backtest/
 ├── 5minbtc-engine-v6.0.py        # 主引擎 (v6.0 真OFI 一票定方向, launchd 调用)
 ├── 5minbtc-news.py               # 新闻扫描 (CoinDesk RSS, 唯一稳定源)
 ├── 5minbtc-log.py                # 日志记录 (写入 logs/)
-├── archive/                      # 归档
-│   └── engines/
-│       └── 5minbtc-engine-v5.py  # v5 旧版 (回测因子模块 import)
-├── logs/                         # 日志输出
-│   ├── 5minbtc-log.jsonl         # 当前活跃 (cron 写入)
-│   ├── 5minbtc-log.jsonl.1       # 最新备份
-│   └── 5minbtc-log.jsonl.{2..22}.gz  # 历史归档
-├── reviews/                      # 每日复盘 (按月归档)
-│   ├── 2026-05/  (6 份)
-│   ├── 2026-06/  (15 份)
-│   └── 2026-07/  (2 份)
-├── references/                   # 26 份专项 ref (含 skill-organization 模式)
-├── backtest/                     # 回测系统
+├── logs/                         # 日志 (当月 live + 历史按月压缩)
+│   ├── 5minbtc-log.jsonl         # 当月 live (不入库)
+│   └── archive/*.jsonl.gz        # 月度压缩归档 (入库, 见 archive.md)
+├── references/                   # 33 份专项 ref (含 skill-organization 模式)
+├── backtest/                     # 回测系统 (results/ 不入库)
 ├── data/                         # 运行时 (news-risk-level.json 等)
 ├── scripts/                      # 复盘/监控/交易脚本
 │   ├── 5minbtc-monitor.py        # ★ 监控脚本 (Claude Code Monitor 集成, v1.0)
@@ -243,15 +235,17 @@ backtest/
 │   ├── 5minbtc_day_stats.py      # 预测战绩查询 (今日/历史, --push 推送)
 │   ├── 5minbtc_trader.py         # ★ 币安预测交易桥接 (--once/--loop/--monitor/--paper/--paper-monitor)
 │   ├── prediction_ws_feed.py     # 币安 w3w-prediction WS 实时价源 (<200ms)
-│   ├── ofi_feed.py               # ★ 真订单流采集 (trade+bookTicker tick规则, launchd com.daniel.ofi-feed)
+│   ├── ofi_feed.py               # ★ 真订单流采集 (trade+bookTicker, launchd com.daniel.ofi-feed)
 │   ├── 5minbtc_keyless_paper.py  # 免密钥模拟盘 (公开BTC数据模拟UP/DOWN价)
 │   ├── telegram_push.py          # 通用 Telegram 推送助手
 │   ├── daily-review-stats.py
 │   └── fetch-github-repo.sh
-14. 🔴 高延迟网络 — 引擎timeout临时修补 (2026-06-24)
-15. 🔴 Web搜索不可用时的降级策略
-16. 🔴 并行工具调用延迟评估 = max() not sum() (2026-07-05)
-17. 🔴 SKILL.md 维护: 定期重构为 INDEX 风格 (2026-07-05)
+```
+
+> ⚠️ **`archive/` 目录与 `reviews/` 目录本地并不存在** —— 本文件早期版本的文件树里声称有它们（还列了 23 份复盘），属于文档/现实漂移，已更正为上面的实际结构：
+> - 旧版本引擎源码**不保留在本地**，只留文字归档 → [references/archive.md](references/archive.md)
+> - 每日复盘从未落盘到 `reviews/`，复盘结论散在 `references/lessons.md` / `pitfalls.md` 与 `reports/`
+
 
 ---
-最后更新: 2026-09-10 — 引擎 v5.7→**v6.0** 改名 (文件/SKILL/引用全线对齐, 修引擎内"无中性"过期注释) + SKILL.md 版本刷到 6.0.0 + 性能快照改为审查后的诚实口径 + 补 v5.9/v5.10/v6.0 changelog + 新增与 coin-vp-scanner 的分工说明
+最后更新: 2026-09-10 — 引擎 v5.7→**v6.0** 改名 (文件/SKILL/引用全线对齐, 修引擎内"无中性"过期注释) + SKILL.md 版本刷到 6.0.0 + 性能快照改为审查后的诚实口径 + 补 v5.9/v5.10/v6.0 changelog + 新增与 coin-vp-scanner 的分工说明 + **修文件树未闭合的代码块与 `archive/`/`reviews/` 假目录声明** + 新增 [archive.md](references/archive.md) 与 [setup-from-scratch.md](references/setup-from-scratch.md) + logs 月度压缩归档入库

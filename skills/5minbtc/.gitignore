@@ -9,6 +9,9 @@ __pycache__/
 *.jsonl.*
 *.gz
 5minbtc-log.jsonl*
+#   例外: 已轮转的月度归档入库（写后不变，可 diff/可追溯）；live 的 *.jsonl 仍不入库
+!logs/archive/
+!logs/archive/*.gz
 
 # 回测运行结果（运行产物，不入库）
 backtest/results/
