@@ -53,6 +53,10 @@ chmod 600 ~/bb-auto/prediction.env
 
 ## 4. launchd 常驻服务（6 个）
 
+> 📌 本节是**常驻型**（`KeepAlive`，7×24 跑）。
+> 要建**定时型**任务（如每日战绩推送）请看 [scheduled-tasks.md](scheduled-tasks.md) ——
+> **定时型绝不能配 `KeepAlive`**，两者语义冲突。
+
 | Label | 执行体 | 作用 |
 |-------|--------|------|
 | `com.daniel.ofi-feed` | `python3 .../scripts/ofi_feed.py` | 真订单流采集 → `~/bb-auto/ofi.json` |

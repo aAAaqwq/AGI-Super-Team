@@ -155,6 +155,7 @@ python3 $SKILL_DIR/5minbtc-log.py log \
 - [sync-procedure.md](references/sync-procedure.md) — AGI-Super-Team 同步流程 (路径映射 + `-c` 校验 + logs 归档策略)
 - [archive.md](references/archive.md) — **版本归档: v5.0→v6.0 沿革 + 哪些版本已不可取回 + 归档 SOP**
 - [setup-from-scratch.md](references/setup-from-scratch.md) — **从零搭建: 依赖/目录/密钥/6 个 launchd 服务/验证清单/日志轮转/故障表**
+- [scheduled-tasks.md](references/scheduled-tasks.md) — **系统级定时任务教程: 常驻型vs定时型 / 2 个任务 / launchd+cc-connect+hermes 三路线 / plist 模板 / 13 条坑**
 - [quant-knowledge-index.md](references/quant-knowledge-index.md) — 50 轮蒸馏知识库索引
 
 ## 复盘记录
@@ -216,7 +217,7 @@ backtest/
 ├── logs/                         # 日志 (当月 live + 历史按月压缩)
 │   ├── 5minbtc-log.jsonl         # 当月 live (不入库)
 │   └── archive/*.jsonl.gz        # 月度压缩归档 (入库, 见 archive.md)
-├── references/                   # 23 份专项 ref (含 skill-organization 模式)
+├── references/                   # 24 份专项 ref (含 skill-organization 模式)
 ├── backtest/                     # 回测系统 (results/ 不入库)
 ├── data/                         # 运行时 (news-risk-level.json 等)
 ├── scripts/                      # 复盘/监控/交易脚本
