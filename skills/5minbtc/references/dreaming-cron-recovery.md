@@ -7,12 +7,12 @@
 ### 模式1: 数据源不可用导致 Dreaming 失败
 
 **现象**: Dreaming cron 输出以 `RuntimeError: Connection error` 结尾
-**根因**: 引擎 `5minbtc-engine-v5.7.py` 无法获取 K线数据 (历史故障: Binance API 451 区域封禁)
+**根因**: 引擎 `5minbtc-engine-v6.0.py` 无法获取 K线数据 (历史故障: Binance API 451 区域封禁)
 **影响**: Dreaming 无法初始化因子计算和预测，整个分析报告为空
 
 **恢复步骤**:
 1. 修复数据源（将引擎从 Binance 迁移到 CoinGecko/Bybit 等可用源）
-2. 手动执行一次引擎验证: `python3 /home/aa/.hermes/profiles/cqo/skills/5minbtc/5minbtc-engine-v5.7.py`
+2. 手动执行一次引擎验证: `python3 /home/aa/.hermes/profiles/cqo/skills/5minbtc/5minbtc-engine-v6.0.py`
 3. 确认输出包含有效 K线数据后，强制运行一次 cron:
    ```
    cronjob(action='run', job_id='3016e27ddefa')
@@ -60,7 +60,7 @@
 | Job ID | `3016e27ddefa` |
 | 调度 | 每天 04:30 CST (UTC+8) |
 | 技能 | `5minbtc` |
-| 引擎路径 | `/home/aa/.hermes/profiles/cqo/skills/5minbtc/5minbtc-engine-v5.7.py` |
+| 引擎路径 | `/home/aa/.hermes/profiles/cqo/skills/5minbtc/5minbtc-engine-v6.0.py` |
 | 输出目录 | `~/cron/output/3016e27ddefa/` |
 | 最后成功 | 2026-06-11 (CPI分析报告) |
 | 最后失败 | 2026-06-13 — Binance 451 (engine 故障) + CoinGecko 超时 (hand-fallback 故障) |
@@ -73,7 +73,7 @@
 curl -s -o /dev/null -w "%{http_code}" "https://data-api.binance.vision/api/v3/klines?symbol=BTCUSDT&interval=5m&limit=5"
 
 # 手动运行引擎
-python3 /home/aa/.hermes/profiles/cqo/skills/5minbtc/5minbtc-engine-v5.7.py
+python3 /home/aa/.hermes/profiles/cqo/skills/5minbtc/5minbtc-engine-v6.0.py
 
 # 检查最新 cron 输出
 ls -lt ~/.hermes/profiles/cqo/cron/output/3016e27ddefa/ | head -5

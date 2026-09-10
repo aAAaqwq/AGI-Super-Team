@@ -1,10 +1,12 @@
 # 5minbtc — BTC 5 分钟实时方向预测引擎
 
-> 引擎 + LLM 混合架构：量化因子打分基准，LLM 综合裁决，预测 BTC 单根 5 分钟 K 线的方向与收盘价区间。
+> 引擎 + LLM 混合架构：**真 OFI 净流定方向 + 错价检测定 edge**，LLM 综合裁决，预测 BTC 单根 5 分钟 K 线的方向与收盘价区间。
+>
+> ⚠️ **v6.0 起方向不再来自因子打分** — 13 个价量因子中 11 个经公平回测为 47–49%（等同抛硬币），现仅保留输出供参考，方向由当前 K 线原生 OFI 净流一票决定。详见 [对抗式审查报告](references/strategy-adversarial-review.md)。
 >
 > ⚠️ **NOT FINANCIAL ADVICE / 非投资建议** — 本项目仅为量化研究与学习目的，不构成任何投资、交易或持仓建议。预测存在显著误差，实际交易将面临资金损失风险。详见文末 [免责声明](#免责声明-not-financial-advice)。
 
-[![Engine](https://img.shields.io/badge/engine-v5.7.4-blue)]() [![Python](https://img.shields.io/badge/python-3.8%2B-green)]() [![Deps](https://img.shields.io/badge/dependencies-stdlib%20only-success)]()
+[![Engine](https://img.shields.io/badge/engine-v6.0.0-blue)]() [![Python](https://img.shields.io/badge/python-3.8%2B-green)]() [![Deps](https://img.shields.io/badge/dependencies-stdlib%20only-success)]()
 
 ---
 
@@ -53,7 +55,7 @@
 
 | 组件 | 文件 | 职责 |
 |------|------|------|
-| **引擎** | `5minbtc-engine-v5.7.py` | 拉数据 → 计算指标 → 12 因子打分 → 输出预测 JSON（stdout） |
+| **引擎** | `5minbtc-engine-v6.0.py` | 拉数据 → 计算 OFI(`ofi_n=2*(tb/v)-1`) → **OFI 一票定方向** + 概率 `P(close>open\|ofi)` → 输出预测 JSON（stdout）。13 因子仍计算但只作参考 |
 | **新闻** | `5minbtc-news.py` | 抓取 CoinDesk RSS，输出风险等级到 `data/news-risk-level.json` |
 | **日志** | `5minbtc-log.py` | 预测记录追加（jsonl）+ 增量 settle（结算上一根 K 线实际结果） |
 | **回测** | `backtest/*.py` | 历史数据回测，多版本（v5.6 / v5.7 / v5.8）|
@@ -66,7 +68,7 @@ cron 触发 (每根 5min K线 第4分钟)
    │
    ├─ 5minbtc-log.py settle-all      ← 结算上一根 K 线（写入实际收盘）
    │
-   ├─ 5minbtc-engine-v5.7.py         ← 引擎核心
+   ├─ 5minbtc-engine-v6.0.py         ← 引擎核心
    │     │
    │     ├─ ThreadPoolExecutor(4) 并行:
    │     │    ├─ Binance  Klines   (200 根 5min K线)
@@ -143,7 +145,7 @@ v5.0 起用正交因子替代共线指标，所有阈值经 **ATR 归一化**，
 
 ```bash
 # 单次运行引擎（输出预测 JSON 到 stdout）
-python3 5minbtc-engine-v5.7.py
+python3 5minbtc-engine-v6.0.py
 
 # 单独跑新闻扫描
 python3 5minbtc-news.py
@@ -180,7 +182,7 @@ SKILL_DIR=/path/to/5minbtc
 
 # 1. 并行执行：结算 + 引擎 + 新闻
 python3 $SKILL_DIR/5minbtc-log.py settle-all
-python3 $SKILL_DIR/5minbtc-engine-v5.7.py
+python3 $SKILL_DIR/5minbtc-engine-v6.0.py
 python3 $SKILL_DIR/5minbtc-news.py
 
 # 2. LLM 侧：3 路并行新闻搜索
@@ -200,7 +202,7 @@ python3 $SKILL_DIR/5minbtc-log.py log "<candle.iso>" <pred_close> ...
 
 ```
 5minbtc/
-├── 5minbtc-engine-v5.7.py     # 主引擎（cron 调用，输出预测 JSON）
+├── 5minbtc-engine-v6.0.py     # 主引擎（cron 调用，输出预测 JSON）
 ├── 5minbtc-engine-v5.py       # v5 旧版（回测因子模块 import 用）
 ├── 5minbtc-news.py            # 新闻扫描（CoinDesk RSS）
 ├── 5minbtc-log.py             # 日志记录 + settle

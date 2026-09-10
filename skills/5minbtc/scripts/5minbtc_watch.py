@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """5minbtc 持续监控 → Telegram 推送 (可移植版, 放在本 skill scripts/ 内)
 
-每根 5min BTC K线的第 2/3/4 分钟运行 5minbtc-engine-v5.7.py 采样:
+每根 5min BTC K线的第 2/3/4 分钟运行 5minbtc-engine-v6.0.py 采样:
 
 - 记录: 每根K线记录第一次成功采样的预测到 SKILL/logs/5minbtc-log.jsonl
         (通过 5minbtc-log.py log, 供日后验证战绩)
@@ -27,7 +27,7 @@ from pathlib import Path
 
 SCRIPTS = Path(__file__).resolve().parent
 SKILL = SCRIPTS.parent
-ENGINE = SKILL / "5minbtc-engine-v5.7.py"
+ENGINE = SKILL / "5minbtc-engine-v6.0.py"
 SETTLE = SKILL / "5minbtc-log.py"
 PUSH = SCRIPTS / "telegram_push.py"
 DAY_STATS = SCRIPTS / "5minbtc_day_stats.py"

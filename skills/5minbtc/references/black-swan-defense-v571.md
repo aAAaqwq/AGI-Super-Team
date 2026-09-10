@@ -67,7 +67,7 @@ FNG API call moved BEFORE `direction_rule_v5()` invocation in `run()` to avoid r
 
 ## Status
 
-- Code: All patches applied to `5minbtc-engine-v5.7.py` (~820 lines)
+- Code: All patches applied to `5minbtc-engine-v6.0.py` (~820 lines)
 - Version identifier: "5.7.1" in result dict
 - New output fields: `atr_spike`, `fng_black_swan`
 - **BLOCKED**: Compilation fails due to Python 3.11 Unicode strictness — see SKILL.md pitfall section

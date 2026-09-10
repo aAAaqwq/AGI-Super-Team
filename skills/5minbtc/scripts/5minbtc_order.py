@@ -17,7 +17,7 @@ from pathlib import Path
 
 SCRIPTS = Path(__file__).resolve().parent
 SKILL = SCRIPTS.parent
-ENGINE = SKILL / "5minbtc-engine-v5.7.py"
+ENGINE = SKILL / "5minbtc-engine-v6.0.py"
 PAPER = Path.home() / "bb-auto" / "5minbtc-paper.json"
 PUSH = SCRIPTS / "telegram_push.py"
 PY = "/usr/bin/python3"

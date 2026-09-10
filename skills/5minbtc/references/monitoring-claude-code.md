@@ -76,7 +76,7 @@ TaskStop(task_id: <monitor-id>)
 
 ### 一次「单次判断」 (非持续)
 ```bash
-python3 <SKILL>/5minbtc-engine-v5.7.py     # 拉一次预测
+python3 <SKILL>/5minbtc-engine-v6.0.py     # 拉一次预测
 python3 <SKILL>/scripts/5minbtc-monitor.py --dry-run   # 等价, 带事件格式
 ```
 

@@ -44,7 +44,7 @@ import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent          # = skill 根 (5minbtc/)
-ENGINE = ROOT / "5minbtc-engine-v5.7.py"
+ENGINE = ROOT / "5minbtc-engine-v6.0.py"
 
 # ---- 币安预测 API ----
 API_BASE = "https://api.binance.com"

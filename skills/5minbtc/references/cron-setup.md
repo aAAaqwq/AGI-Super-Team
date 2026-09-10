@@ -8,7 +8,7 @@
 | 9b07cd139f70 | 5minbtc 每日复盘 (23:15) | `15 23 * * *` | glm-5.2 | zai |
 
 ## 版本同步规则
-升级引擎后必须同步更新 cron job 的 `name` 字段。cron 不自动感知引擎文件版本——它只执行 `5minbtc-engine-v5.7.py`，文件内容变了 cron 就跑新代码，但 job name 仍是旧标签，导致复盘时混淆实际运行的引擎版本。
+升级引擎后必须同步更新 cron job 的 `name` 字段。cron 不自动感知引擎文件版本——它只执行 `5minbtc-engine-v6.0.py`，文件内容变了 cron 就跑新代码，但 job name 仍是旧标签，导致复盘时混淆实际运行的引擎版本。
 
 操作: 每次 engine 升级后，执行 `cronjob(action='update', job_id=..., name='5minbtc vX.Y')`。
 
@@ -25,4 +25,4 @@
 ## 高延迟网络 (SSL 超时) 处理
 详见: [references/high-latency-network-handling.md](high-latency-network-handling.md)
 
-简述: ping 8.8.8.8 > 250ms 时, 两个 Binance 端点都 SSL 超时, 需临时把 `5minbtc-engine-v5.7.py` 内 `timeout=10` 改为 `timeout=25`, 跑完务必恢复。
+简述: ping 8.8.8.8 > 250ms 时, 两个 Binance 端点都 SSL 超时, 需临时把 `5minbtc-engine-v6.0.py` 内 `timeout=10` 改为 `timeout=25`, 跑完务必恢复。

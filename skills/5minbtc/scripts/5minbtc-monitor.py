@@ -3,7 +3,7 @@
 """
 5minbtc-monitor.py — BTC 5min 预测监控 (Claude Code 适配版 v1.0)
 
-在每根 5min BTC K线的第 2/3/4 分钟采样 5minbtc-engine-v5.7.py 的预测,
+在每根 5min BTC K线的第 2/3/4 分钟采样 5minbtc-engine-v6.0.py 的预测,
 把事件以「一行一条」流式输出到 stdout — Claude Code 的 Monitor 工具
 会把每行转发为实时通知;命中「明确信号」即自动退出。
 
@@ -37,7 +37,7 @@ import time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-ENGINE = ROOT / "5minbtc-engine-v5.7.py"
+ENGINE = ROOT / "5minbtc-engine-v6.0.py"
 SETTLE = ROOT / "5minbtc-log.py"
 
 # 每根 5min K线内的采样分钟 (progress ~40-80%: 第2/3分钟早捕捉, 第4分钟=原版半K线成熟期)

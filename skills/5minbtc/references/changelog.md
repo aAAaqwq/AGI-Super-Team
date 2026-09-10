@@ -1,6 +1,57 @@
 # 5minbtc 版本变更日志
 
 > 详细 changelog。SKILL.md 只保留当前版本亮点。
+>
+> 版本号分两条线：**引擎文件内的 docstring 版本**与**策略版本**曾长期脱节（文件名 `-v5.7.py` 里跑的是 v6.0 代码），v6.0.0 起已对齐。
+
+## v6.0.0 变更 (2026-08-18, commit e893d31) — 真 OFI 驱动: 方向一票交给订单流
+
+**背景**：v5.9 的对抗式审查已经证明"方向预测"没有 alpha（bear 50.0% = 纯硬币，non-neutral 57.7%）。
+v6.0 不再假装能预测方向，改为**检测错价**：真 OFI 净流方向 = 真实资金流方向，
+若净流已经发生、而 UP/DOWN token 价还没跟上，中间那段 gap 才是真正的钱。
+
+| 变更项 | 详情 |
+|--------|------|
+| **方向判定** | `ofi_direction()`: bias 由**真 OFI 净流一票决定**（`ofi_n>0`→bull / `<0`→bear），替代 v5.10 的 `body>0→bull` 纯延续统计。**二选一无中性**；`ofi_n` 缺失/为 0 时用 body 符号兜底并标 `meta.body_fallback`（弱信号/流量不足只让概率趋近 0.5 → EV 过滤不下单，不产生 neutral） |
+| **OFI 主源** | 当前 K 线**原生 in-candle** `ofi_n = 2*(tb/v) − 1` ∈ [−1,1] — 取 REST `klines[9]`（taker buy base volume）做原生 aggressor 聚合，**天然按 K 线对齐，零 WS 依赖** |
+| **OFI 辅源** | WS `~/bb-auto/ofi.json`（`ofi_candle` / `ofi_60`）用于**新鲜度反转保护**与交叉校准；`load_ofi()` 新增 **ts 保鲜校验**（age > 30s → `feed_fresh=False`，WS 分量自动降级，引擎只信 REST 主源） |
+| **概率** | `ofi_probability()`: `confidence = P(close>open \| ofi)`，替代 `close_direction_confidence()` 的延续概率。三层 = ① 经验校准表（按 `ofi_n` 分桶 + **Bayesian shrink**，`OFI_BAYES_N=30` 向 0.5 收缩）② flow-gap（净流已发生但价格未定价）③ 最近 60s 流（按剩余时间衰减） |
+| **edge** | 改为**错价检测** `EV = p − ask`（真 OFI 概率 vs token 市场价），由 `5minbtc_realtime.py` 执行 |
+| **风控** | realtime 新增 **D2 有效性闸**：滚动 200 笔已结算 OFI 方向胜率 < 0.55 → 自动暂停 + 告警（防第二次 52.6%） |
+| **保留** | ATR spike / FNG<25 / news 黑天鹅断路器；MTF 4h **只降权不翻方向**；EV 下单框架；**13 因子仍计算并输出，但不再参与 bias** |
+| **门限** | `T_OFI_GATE=0.20` / `T_OFI_60=0.35` / WS 质量闸 `OFI_CR_MIN=0.80` |
+
+**契约**：输出 `"version": "6.0.0"`，`factors` / `score` 字段保留（仅作 `strength` 标签与 LLM 参考）。
+
+**命名修正**：引擎文件自本版起为 `5minbtc-engine-v6.0.py`。此前文件名为 `5minbtc-engine-v5.7.py`，与其中运行的 v6.0 代码完全脱节——`scripts/*.py` 的 `ENGINE` 常量、`SKILL.md`、`README.md`、`references/` 中的引用已全量更新。
+⚠️ 注意：由此产生一个副作用——`references/` 里的**历史文档**（pitfalls / binance-api-geo / high-latency 等）中的旧文件名也被一并替换为 v6.0，阅读时请知悉那些命令当时对应的其实是旧名文件。
+
+## v5.10.0 变更 (2026-08-17, commit 50a4815) — 概率套利策略 + pnl 修复 + 时段过滤
+
+**从"猜方向"转向"比价格"的转折点** —— 第一次把引擎输出当成概率去和市场报价比较。
+
+| 变更项 | 详情 |
+|--------|------|
+| 方向去中性 | 删掉 `neutral` 阈值分支（原 v5.5 的 `[-1,1]` 中性区），改为 `bias = "bull" if body > 0 else "bear"` **二选一**，方向由半 K 线 body 决定 |
+| 概率字段 | `prediction` 新增 `probability = round(confidence/100, 3)`（此时仍为 v5.9.2 的**半 K 线延续概率**） |
+| 概率套利 | realtime: 引擎概率 > 市场 ask + `min-edge(0.03)` → 买（`EV = p − P > 0`）；否则无 edge 跳过 |
+| 时段过滤 | 新增 `--active-hours`（默认 `20,21,22,23`）——只在历史高胜率时段下单 |
+| pnl 修复 | 输单应亏**全额** `-amount`，此前错算为"亏入场价 `-amount*ask`"（系统性低估亏损） |
+| 稳定性 | 崩溃循环修复 + 台账去重 + 精简推送 |
+
+## v5.9.0 变更 (2026-08-13) — 对抗式审查重构: 13 因子收敛到 3 信号
+
+**依据**：[strategy-adversarial-review.md](strategy-adversarial-review.md)（5 位对抗审查专家的结论综合）。核心结论——**方向准确率不是 edge，`EV = p − P − 成本` 才是**。
+
+| 变更项 | 详情 |
+|--------|------|
+| 因子证伪 | 公平回测显示 13 个因子里 **11 个只有 47–49%**（等同抛硬币），其中 `momentum` 48.1%、`rsi` 47.3% **反向**；唯一有独立 alpha 的是 `volume` 58.1%，而它权重只有 0.3 —— **权重与证据完全倒挂** |
+| 权重收敛 | `BASE_W` 中 10 个因子清零，只留 `half_body 1.2`（延续主信号）+ `volume 0.8`（唯一独立 alpha）+ `meanrev 0.3`（唯一正向价格因子 51.7%）；未验证的 `taker_buy` 也清零 |
+| 新增三层过滤 | ① **多周期结构** 4h/1h/15m（linreg slope + ADX + %B）② **跨资产广度** ETH/SOL 5m 动量（趋势日逆势信号打折）③ **真订单流 OFI** |
+| 移除 | `bull×0.92` 惩罚、Platt 置信度门控（v5.5 引入，被证为反校准） |
+| v5.9.2 | 收盘方向置信度改用**半 K 线延续概率**（`close_direction_confidence`），替代 Platt Scaling |
+
+**认知转变**：从前视偏差回测的 71.2% 幻觉中退出——零前视 v5.8 只有前 2 根 1min 61.4%，且 61–70% 是"看着 K 线走完再确认"的延续性，做市商早已定价进 token 价。
 
 ## v5.8.0 变更 (2026-08-11) — 主动买量因子 + 订单簿多时刻去噪
 

@@ -35,16 +35,16 @@ done
 SKILL_DIR=/home/aa/.hermes/profiles/cqo/skills/5minbtc
 
 # Switch to api.binance.us
-sed -i 's|BINANCE_KLINES = .*|BINANCE_KLINES = "https://api.binance.us/api/v3/klines"|' $SKILL_DIR/5minbtc-engine-v5.7.py
-sed -i 's|BINANCE_DEPTH = .*|BINANCE_DEPTH = "https://api.binance.us/api/v3/depth"|' $SKILL_DIR/5minbtc-engine-v5.7.py
+sed -i 's|BINANCE_KLINES = .*|BINANCE_KLINES = "https://api.binance.us/api/v3/klines"|' $SKILL_DIR/5minbtc-engine-v6.0.py
+sed -i 's|BINANCE_DEPTH = .*|BINANCE_DEPTH = "https://api.binance.us/api/v3/depth"|' $SKILL_DIR/5minbtc-engine-v6.0.py
 
 # Switch to data-api.binance.vision
-sed -i 's|BINANCE_KLINES = .*|BINANCE_KLINES = "https://data-api.binance.vision/api/v3/klines"|' $SKILL_DIR/5minbtc-engine-v5.7.py
-sed -i 's|BINANCE_DEPTH = .*|BINANCE_DEPTH = "https://data-api.binance.vision/api/v3/depth"|' $SKILL_DIR/5minbtc-engine-v5.7.py
+sed -i 's|BINANCE_KLINES = .*|BINANCE_KLINES = "https://data-api.binance.vision/api/v3/klines"|' $SKILL_DIR/5minbtc-engine-v6.0.py
+sed -i 's|BINANCE_DEPTH = .*|BINANCE_DEPTH = "https://data-api.binance.vision/api/v3/depth"|' $SKILL_DIR/5minbtc-engine-v6.0.py
 ```
 
 ## Files Using Binance API
-- `5minbtc-engine-v5.7.py` — `BINANCE_KLINES` and `BINANCE_DEPTH` constants (klines + depth fetch)
+- `5minbtc-engine-v6.0.py` — `BINANCE_KLINES` and `BINANCE_DEPTH` constants (klines + depth fetch)
 - `5minbtc-log.py` — hardcoded URL in `settle_candle()` and `settle-all` (2 occurrences)
 
 ## Migration Context

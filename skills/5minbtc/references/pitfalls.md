@@ -48,13 +48,13 @@
 SKILL_DIR=/home/aa/.hermes/profiles/cqo/skills/5minbtc
 
 # 方向A: 切换到 api.binance.us (当 data-api 不可用时)
-sed -i 's|BINANCE_KLINES = .*|BINANCE_KLINES = "https://api.binance.us/api/v3/klines"|' $SKILL_DIR/5minbtc-engine-v5.7.py
-sed -i 's|BINANCE_DEPTH = .*|BINANCE_DEPTH = "https://api.binance.us/api/v3/depth"|' $SKILL_DIR/5minbtc-engine-v5.7.py
+sed -i 's|BINANCE_KLINES = .*|BINANCE_KLINES = "https://api.binance.us/api/v3/klines"|' $SKILL_DIR/5minbtc-engine-v6.0.py
+sed -i 's|BINANCE_DEPTH = .*|BINANCE_DEPTH = "https://api.binance.us/api/v3/depth"|' $SKILL_DIR/5minbtc-engine-v6.0.py
 sed -i 's|data-api.binance.vision|api.binance.us|g' $SKILL_DIR/5minbtc-log.py
 
 # 方向B: 切换到 data-api.binance.vision (当 api.binance.us 不可用时)
-sed -i 's|BINANCE_KLINES = .*|BINANCE_KLINES = "https://data-api.binance.vision/api/v3/klines"|' $SKILL_DIR/5minbtc-engine-v5.7.py
-sed -i 's|BINANCE_DEPTH = .*|BINANCE_DEPTH = "https://data-api.binance.vision/api/v3/depth"|' $SKILL_DIR/5minbtc-engine-v5.7.py
+sed -i 's|BINANCE_KLINES = .*|BINANCE_KLINES = "https://data-api.binance.vision/api/v3/klines"|' $SKILL_DIR/5minbtc-engine-v6.0.py
+sed -i 's|BINANCE_DEPTH = .*|BINANCE_DEPTH = "https://data-api.binance.vision/api/v3/depth"|' $SKILL_DIR/5minbtc-engine-v6.0.py
 sed -i 's|api.binance.us|data-api.binance.vision|g' $SKILL_DIR/5minbtc-log.py
 
 # 验证
@@ -162,7 +162,7 @@ Python 3.11.15 (uv cpython build) rejects **any** non-ASCII character in `.py` f
 
 ### Cron Job 版本同步
 
-升级引擎后必须同步更新 cron job 的 `name` 字段（如 `"5minbtc v5.6"`）。cron 不自动感知引擎文件版本——它只执行 `5minbtc-engine-v5.7.py`（旧版在 `archive/engines/5minbtc-engine-v5.py`），文件内容变了 cron 就跑新代码，但 job name 仍是旧标签，导致复盘时混淆实际运行的引擎版本。
+升级引擎后必须同步更新 cron job 的 `name` 字段（如 `"5minbtc v5.6"`）。cron 不自动感知引擎文件版本——它只执行 `5minbtc-engine-v6.0.py`（旧版在 `archive/engines/5minbtc-engine-v5.py`），文件内容变了 cron 就跑新代码，但 job name 仍是旧标签，导致复盘时混淆实际运行的引擎版本。
 **操作**: 每次 engine 升级后，执行 `cronjob(action='update', job_id=..., name='5minbtc vX.Y')`。
 
 
@@ -353,18 +353,18 @@ SKILL_DIR=/home/aa/.hermes/profiles/cqo/skills/5minbtc
 cd "$SKILL_DIR"
 
 # 备份
-cp 5minbtc-engine-v5.7.py 5minbtc-engine-v5.7.py.bak-net
+cp 5minbtc-engine-v6.0.py 5minbtc-engine-v6.0.py.bak-net
 
 # 扩大timeout: klines 10→25s, 其他 5→15s
-sed -i 's|timeout=10|timeout=25|g' 5minbtc-engine-v5.7.py
-sed -i 's|timeout=5|timeout=15|g' 5minbtc-engine-v5.7.py
+sed -i 's|timeout=10|timeout=25|g' 5minbtc-engine-v6.0.py
+sed -i 's|timeout=5|timeout=15|g' 5minbtc-engine-v6.0.py
 
 # 验证
-grep -n "timeout" 5minbtc-engine-v5.7.py
+grep -n "timeout" 5minbtc-engine-v6.0.py
 
 # 运行引擎后务必恢复
-cp 5minbtc-engine-v5.7.py.bak-net 5minbtc-engine-v5.7.py
-rm 5minbtc-engine-v5.7.py.bak-net
+cp 5minbtc-engine-v6.0.py.bak-net 5minbtc-engine-v6.0.py
+rm 5minbtc-engine-v6.0.py.bak-net
 ```
 
 **关键**: 这是临时workaround，不是永久修改。引擎执行完成后**必须恢复**原始timeout值。该修补仅在`curl --connect-timeout 20`可通但Python `timeout=10`超时时使用。两个端点都HTTP 000且curl加大timeout仍不通时，是真正的网络中断，此时应报告并跳过本轮预测。

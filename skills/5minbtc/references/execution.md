@@ -23,7 +23,7 @@
 SKILL_DIR=/home/aa/.hermes/profiles/cqo/skills/5minbtc && \
   python3 $SKILL_DIR/5minbtc-log.py settle-all 2>&1; \
   echo "---ENGINE---"; \
-  python3 $SKILL_DIR/5minbtc-engine-v5.7.py 2>&1; \
+  python3 $SKILL_DIR/5minbtc-engine-v6.0.py 2>&1; \
   echo "---NEWS---"; \
   python3 $SKILL_DIR/5minbtc-news.py 2>&1
 ```

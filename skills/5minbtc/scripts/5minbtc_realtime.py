@@ -22,7 +22,7 @@ from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 SKILL = Path(__file__).resolve().parent.parent
-ENGINE = SKILL / "5minbtc-engine-v5.7.py"
+ENGINE = SKILL / "5minbtc-engine-v6.0.py"
 PUSH = SKILL / "scripts" / "telegram_push.py"
 PY = "/usr/bin/python3"
 PAPER = Path.home() / "bb-auto" / "5minbtc-paper.json"

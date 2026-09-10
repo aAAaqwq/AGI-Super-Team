@@ -11,7 +11,7 @@ import pytest
 
 HERE = Path(__file__).resolve().parent
 SKILL = HERE.parent  # scripts/ 的上一级 = skill 根
-ENGINE = SKILL / "5minbtc-engine-v5.7.py"
+ENGINE = SKILL / "5minbtc-engine-v6.0.py"
 MONITOR = HERE / "5minbtc-monitor.py"
 
 spec = importlib.util.spec_from_file_location("eng", ENGINE)

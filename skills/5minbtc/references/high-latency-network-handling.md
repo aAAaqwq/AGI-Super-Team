@@ -41,18 +41,18 @@ SKILL_DIR=/home/aa/.hermes/profiles/cqo/skills/5minbtc
 cd "$SKILL_DIR"
 
 # Backup
-cp 5minbtc-engine-v5.7.py 5minbtc-engine-v5.7.py.bak-net
+cp 5minbtc-engine-v6.0.py 5minbtc-engine-v6.0.py.bak-net
 
 # Increase timeouts: klines 10→25s, others 5→15s
-sed -i 's|timeout=10|timeout=25|g' 5minbtc-engine-v5.7.py
-sed -i 's|timeout=5|timeout=15|g' 5minbtc-engine-v5.7.py
+sed -i 's|timeout=10|timeout=25|g' 5minbtc-engine-v6.0.py
+sed -i 's|timeout=5|timeout=15|g' 5minbtc-engine-v6.0.py
 
 # Run engine
-python3 5minbtc-engine-v5.7.py
+python3 5minbtc-engine-v6.0.py
 
 # ALWAYS restore
-cp 5minbtc-engine-v5.7.py.bak-net 5minbtc-engine-v5.7.py
-rm 5minbtc-engine-v5.7.py.bak-net
+cp 5minbtc-engine-v6.0.py.bak-net 5minbtc-engine-v6.0.py
+rm 5minbtc-engine-v6.0.py.bak-net
 ```
 
 ⚠️ **Never leave the patched timeouts in place** — the engine is designed for 3s parallel execution; 25s timeouts would make it unusable in normal conditions.

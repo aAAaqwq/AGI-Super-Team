@@ -4,6 +4,12 @@
 > 版本 v4 · 判定逻辑：确定性结构突破（非黑箱）· 目标：1-30min 吃到自适应小 TP
 > 本 SKILL.md 是操作索引；报告模板见下方「六」。
 
+> ⚠️ **别和 `5minbtc` 混用** —— 两个都是交易 skill 但赌的不是同一件事。
+> 本 skill = **抓"价格放量破位了"**（全市场永续、结构规则、直接做合约）；
+> [`5minbtc`](../5minbtc/SKILL.md) = **赌"市场定价错了"**（单标的 BTC、5min K线、真 OFI 净流 vs 预测市场 token 价 `EV = p − P`、仅 paper）。
+> 完整对照表见 [5minbtc SKILL.md 的「与 coin-vp-scanner 的分工」](../5minbtc/SKILL.md#与-coin-vp-scanner-的分工)。
+> 一句话选型：**要抓突破 → 用本 skill；要赌错价 → 用 5minbtc。**
+
 ## 触发
 `coin-vp` / `vp扫描` / `量价能` / `突破信号` / `扫币` / `R2突破` / `短线币`
 

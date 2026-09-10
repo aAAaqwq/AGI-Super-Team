@@ -7,7 +7,7 @@
 ## 定位
 
 - 脚本: `scripts/5minbtc_trader.py`(纯 Python 标准库, 直接签名调用币安 SAPI)
-- 引擎: `5minbtc-engine-v5.7.py`(预测方向/置信度/taker_buy)
+- 引擎: `5minbtc-engine-v6.0.py`(预测方向/置信度/taker_buy)
 - 监控: `scripts/5minbtc-monitor.py`(看信号事件, 不交易; 见 monitoring-claude-code.md)
 
 ## 环境变量

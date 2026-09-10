@@ -1,9 +1,18 @@
 # 5minbtc 仓库同步 (AGI-Super-Team)
 
+## 路径映射 (两台机器)
+| 角色 | hermes 机 (Linux) | Mac (daniel 本机) |
+|------|------------------|------------------|
+| 运行副本 (源) | `/home/aa/.hermes/profiles/cqo/skills/5minbtc/` | `~/.claude/skills/5minbtc/` |
+| 共享仓库 | `/home/aa/clawd/repos/AGI-Super-Team/` | `~/AGI-Super-Team/` |
+
+⚠️ 仓库分支是 **`main`** (不是 master)。下面命令按 hermes 机写, Mac 上把两个路径换成上表右侧即可。
+
 ## 同步命令
 ```bash
 # 1. rsync 本地最新版到共享仓库 (排除运行时数据和日志)
-rsync -av \
+#    -u 只允许"源更新"覆盖 — 防止本机旧副本反向覆盖仓库里更新的文件
+rsync -avu \
   --exclude='data/' --exclude='logs/' --exclude='reviews/' --exclude='archive/' --exclude='__pycache__/' \
   --exclude='*.jsonl' --exclude='*.jsonl.*' --exclude='*.gz' \
   /home/aa/.hermes/profiles/cqo/skills/5minbtc/ \
@@ -13,7 +22,13 @@ rsync -av \
 cd /home/aa/clawd/repos/AGI-Super-Team
 git add skills/5minbtc/
 git commit -m "sync(skills/5minbtc): <变更简述>"
-git push origin master
+git push origin main
+```
+
+## 重命名/删除文件时
+rsync **不带 `--delete`**, 所以删掉/改名的文件不会自动从仓库移除, 必须显式删:
+```bash
+git rm skills/5minbtc/<旧文件名>
 ```
 
 ## Commit message 惯例

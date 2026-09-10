@@ -2,7 +2,9 @@
 """5minbtc Engine v6.0 -- 真 OFI 驱动 (替代方向延续统计) + 正交因子体系 + Regime感知
 
 v6.0 核心改造 (对抗审查: 方向预测已证硬币 52.6%, 彻底转真订单流驱动):
-- 方向: bias 由真 OFI 净流方向一票决定 (净流入→bull / 净流出→bear / 无信号→neutral 宁缺毋滥),
+- 方向: bias 由真 OFI 净流方向一票决定 (净流入→bull / 净流出→bear, **二选一无中性**;
+  ofi_n 缺失或为 0 时用 body 符号兜底, 并标 meta.body_fallback).
+  弱信号/流量不足/反向冲突只记 meta 供概率层降权 (p 趋近 0.5 → EV 过滤不买), 不把方向变中性.
   替代 v5.10 的 body>0→bull/body<0→bear 纯延续统计.
   主源 = 当前K线原生 in-candle ofi_n = 2*(tb/v)-1 (REST kline[9] taker buy base volume,
   原生 aggressor 聚合, 天然按K线对齐, 零 WS 依赖); 辅源 = WS ofi.json (ofi_candle/ofi_60)
@@ -1009,7 +1011,8 @@ def direction_rule_v5(candles, closes, atr_val, vol_ratio,
     # ---- v6.0: 真 OFI 方向判定 (替代 v5.10 body 延续) ----
     # 主源 = 当前K线原生 in-candle ofi_n (REST tb 聚合, 天然K线对齐, 零 WS 依赖)
     # 辅源 = WS ofi.json (ofi_candle/ofi_60/feed_fresh) 做新鲜度反转保护与交叉校准
-    # 净流入 → bull, 净流出 → bear, 无显著信号/流量不足 → neutral (宁缺毋滥).
+    # 净流入 → bull, 净流出 → bear; **二选一无中性** (ofi_n 缺失/为0 用 body 符号兜底).
+    # 弱信号/流量不足只记 meta 供概率层降权 (p→0.5 → EV 过滤不买), 不产生 neutral.
     # 方向一票交给 OFI: body 不再决定 bias, 只作 display.
     body = candles[-1]["c"] - candles[-1]["o"]
     ofi_dir, ofi_meta = ("neutral", {})

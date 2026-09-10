@@ -1,6 +1,6 @@
 # 5minbtc 引擎架构
 
-## 引擎模块 (`5minbtc-engine-v5.7.py`)
+## 引擎模块 (`5minbtc-engine-v6.0.py`)
 
 - v5.7.3 HTTP 并行化: ThreadPoolExecutor 4 路 (klines+depth+FNG+chainlink) ~3s
 - v5.7.4 TREND decel 约束
