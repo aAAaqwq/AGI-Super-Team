@@ -76,7 +76,8 @@ python3 $SKILL_DIR/5minbtc-log.py log \
 ```
 
 ## 架构 (1 行/组件)
-- **引擎** `5minbtc-engine-v6.0.py` (v6.0, 输出 `"version": "6.0.0"`): **bias 由真 OFI 净流一票决定** (ofi_n>0→bull / <0→bear, **二选一无中性**; ofi_n 缺失/为0 用 body 符号兜底并标 `meta.body_fallback`。弱信号/流量不足只让概率趋近 0.5 → EV 过滤不下单, 不产生 neutral) + **概率 `P(close>open|ofi)`** 三层(经验校准表 Bayesian shrink + flow-gap + 最近60s流) + 三层独立过滤(多周期4h/1h/15m 结构 + 跨资产ETH/SOL 广度 + WS OFI 新鲜度反转保护) + 9路并行HTTP
+- **引擎** `5minbtc-engine-v6.0.py` (v6.0, 输出 `"version": "6.0.0"`): **bias 由真 OFI 净流一票决定** (ofi_n>0→bull / <0→bear, **二选一无中性**; ofi_n 缺失/为0 用 body 符号兜底并标 `meta.body_fallback`) + **概率 `P(close>open|ofi)`** 三层(经验校准表 Bayesian shrink + flow-gap + 最近60s流) + 三层独立过滤(多周期4h/1h/15m 结构 + 跨资产ETH/SOL 广度 + WS OFI 新鲜度反转保护) + 9路并行HTTP
+  - ⚠️ **K 线开局阶段概率不可信**（已知问题，见 [pitfalls](references/pitfalls.md)）：主源 `ofi_n = 2*(tb/v)−1` 取自**当前进行中**的 K 线，`_ofi_native()` 只挡 `v<=0`、**无最小样本量保护** → 开局几秒的少量成交就能把 ofi_n 推到 ±0.9。而 `vol_gate`（L692 按 `MIN_VOL_FRAC=0.25` 判断流量是否够）**算出来但从不参与任何决策**，只是输出里的装饰字段。**建议只在进度 ≥40% 后采信概率/下单**
   - 门限: `T_OFI_GATE=0.20` / `T_OFI_60=0.35` / WS 质量闸 `OFI_CR_MIN=0.80` / `OFI_BAYES_N=30`
   - **13 因子仍计算并输出**(JSON 契约保留), 但自 v6.0 起**不参与 bias 决策** — score 只用于 `strength` 标签与 LLM 参考
 - **订单流** `scripts/ofi_feed.py`: trade+bookTicker 组合流 tick规则推断主动买卖, 写 `~/bb-auto/ofi.json`, 带 ts 保鲜(>30s 引擎降级为只信 REST 主源) (launchd: com.daniel.ofi-feed)
@@ -123,7 +124,7 @@ python3 $SKILL_DIR/5minbtc-log.py log \
 ### 核心方法论
 - [strategy-adversarial-review.md](references/strategy-adversarial-review.md) — **对抗式审查报告: 第一性原理 + 13因子证伪 + 该留/删/缺失 + P0/P1/P2行动清单** (v5.9 依据)
 - [lessons.md](references/lessons.md) — **25 条核心教训** (必读, 含 2026-07-05 新增 23-25)
-- [pitfalls.md](references/pitfalls.md) — **17 条 pitfalls 集中索引** (必读, 含并行 max() 评估陷阱)
+- [pitfalls.md](references/pitfalls.md) — **18 条 pitfalls 集中索引** (必读, 含并行 max() 评估陷阱; #18 = K线开局概率不可信)
 - [changelog.md](references/changelog.md) — v5.0 ~ v6.0 详细变更
 - [skill-organization.md](references/skill-organization.md) — **Skill 文件结构模式 (可复用)** — SKILL.md INDEX + references/ 分专题
 
