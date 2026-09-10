@@ -89,6 +89,14 @@ logs/
 同时删除 **6 个死函数**（详见 [output-template.md](output-template.md#13-已删除--仍残留的死代码)）：
 引擎的 `calibrate_confidence`（v5.5 Platt 残骸）、realtime 的 `record_limit` / `fmt_limit` / `fmt_skip_knife`（已废弃的「甜区限价挂单」）与 `fmt_no_edge` / `fmt_signal`。
 
+**同时修正的（不删）**：
+
+| 项 | 处理 |
+|---|---|
+| `quant-knowledge-index.md` | 原始路径 `~/.hermes/profiles/cqo/quant-knowledge/` **实测已不存在** → 改为指向本 skill `reports/`（唯一存活副本）；修正 R07/R10 两个写错的文件名；标注 P0#1（OFI）已落地、R13 已过时 |
+| `telegram-push-monitor.md` | 内容仍准确（描述正在跑的 watch daemon）→ **补进 SKILL.md 索引**（此前未被索引），并修正其中「neutral 事件」「每日推送时机」两处过时描述 |
+| `scripts/test_engine_v58.py` | **改名为 `scripts/test_engine.py`**（不带版本号 → 不再漂移）+ 修 2 个必失败的断言（version 5.8.0→6.0.0、`BASE_W['taker_buy']` >0→==0）+ 补 `ofi` 块契约测试 + 加**免 pytest 的内置 runner**。现 13 项全绿 |
+
 **保留判断**（看似重复但经复核不删）：Binance 三份网络文档是**三种不同故障模式**；
 `reports/` R01–R14 被 [quant-knowledge-index.md](quant-knowledge-index.md) 索引；
 `lessons.md` / `pitfalls.md` / `strategy-adversarial-review.md` 是「历史叙事 / 行动索引 / 权威结论」三种角色，互补而非重复。

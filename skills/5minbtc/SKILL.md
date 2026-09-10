@@ -53,7 +53,9 @@ python3 <SKILL>/scripts/5minbtc-monitor.py --dry-run
 - 事件流: `START` / `DIR-CHANGE` / `CLEAR-SIGNAL` / `ENGINE-ERR` / `MAX-RUNS`
 - 停止: 用户说「停/结束」→ `TaskStop` 停 Monitor
 - `CLEAR-SIGNAL` 后必须拉一次完整引擎快照二次确认
-- 引擎验证: `python3 -m pytest scripts/test_engine_v58.py -v` (12 项)
+- 引擎验证: `python3 scripts/test_engine.py` (13 项, 自带 runner **无需 pytest**; 慢测加 `--slow`)
+  — 装了 pytest 也可 `python3 -m pytest scripts/test_engine.py -v`
+  （原文件名 `test_engine_v58.py` 带版本号, 引擎升到 v6.0 后即漂移, 2026-09-10 改为不带版本号）
 
 ## 快速开始
 
@@ -132,6 +134,7 @@ python3 $SKILL_DIR/5minbtc-log.py log \
 - [execution.md](references/execution.md) — 完整执行步骤 + 铁律 + 宽窗口处理
 - [output-template.md](references/output-template.md) — LLM 输出模板 + 裁决规则
 - [monitoring-claude-code.md](references/monitoring-claude-code.md) — **监控模式: Monitor 工具集成 + 事件协议**
+- [telegram-push-monitor.md](references/telegram-push-monitor.md) — **Telegram 推送 daemon: watch 采样节奏/事件类型/记录与结算/launchd 持久化**
 - [prediction-trading-cli.md](references/prediction-trading-cli.md) — **币安预测交易 CLI: 5minbtc_trader.py 用法/参数/安全契约/API端点 (含 --paper/--paper-monitor 模拟)**
 - [prediction-market-strategy.md](references/prediction-market-strategy.md) — **预测市场盈利策略: EV=p−P, 价格门控, 凯利仓位, paper 模拟**
 

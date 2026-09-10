@@ -42,10 +42,14 @@ python3 scripts/5minbtc_day_stats.py --all
 | 事件 | 含义 |
 |------|------|
 | START | 首次采样基线方向 |
-| DIR-CHANGE | 方向 bull/neutral/bear 翻转 |
-| CLEAR-SIGNAL | 达到明确信号门槛（bias!=neutral + strength∈medium+ + conf≥50） |
+| DIR-CHANGE | 方向翻转（⚠️ v6.0 起引擎**二选一无中性**，只会 bull↔bear） |
+| CLEAR-SIGNAL | 达到明确信号门槛（strength∈medium+ + conf≥50；`bias!=neutral` 条件在 v6.0 下恒为真） |
 | TB-FLIP | 主动买卖力 taker_buy 正负翻转 |
 | 心跳 | 每小时一次，确认 daemon 存活 |
+
+> ⚠️ 生产环境的 `com.daniel.5minbtc-watch` 用 **`--mute`** 启动 → **事件推送整体关闭**，
+> 只保留预测记录 + 结算 + 每日战绩；事件推送实际由 `5minbtc-realtime` 承担（见
+> [output-template.md](output-template.md) §1–2）。
 
 ## 依赖
 

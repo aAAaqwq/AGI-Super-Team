@@ -1,13 +1,31 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""v5.8 引擎测试 — 契约、因子数值、多时刻采样、稳定性"""
+"""引擎契约测试 — 契约、因子数值、多时刻采样、稳定性
+
+⚠️ 2026-09-10 前名为 `test_engine_v58.py`：版本号写进文件名 → 引擎升到 v6.0 后即漂移。
+现改名 `test_engine.py`（不带版本号），内容已对齐 v6.0。
+
+引擎零第三方依赖，**测试也不应强制装 pytest**：
+- 有 pytest：`python3 -m pytest scripts/test_engine.py -v`
+- 没有 pytest：`python3 scripts/test_engine.py`（自带极简 runner，慢测默认跳过）
+"""
 import importlib.util
 import json
 import subprocess
 import sys
 from pathlib import Path
 
-import pytest
+try:
+    import pytest
+except ImportError:                      # 无 pytest → 退化为直通装饰器
+    pytest = None
+    def mark_slow(fn):
+        fn._slow = True
+        return fn
+else:
+    def mark_slow(fn):
+        fn._slow = True
+        return pytest.mark.slow(fn)
 
 HERE = Path(__file__).resolve().parent
 SKILL = HERE.parent  # scripts/ 的上一级 = skill 根
@@ -22,32 +40,43 @@ spec.loader.exec_module(eng)
 # ---------------- 契约 ----------------
 
 def run_engine_subprocess(timeout=60):
+    """真实跑一次引擎（不缓存）—— 稳定性测试用。"""
     out = subprocess.run(["python3", str(ENGINE)], capture_output=True,
                          text=True, timeout=timeout)
     assert out.returncode == 0, f"engine exit={out.returncode} stderr={out.stderr}"
     return json.loads(out.stdout)
 
 
-def test_version_is_580():
+_SNAPSHOT = {}
+
+
+def engine_snapshot():
+    """契约测试共用的引擎输出（缓存一次，避免每个测试都跑一遍 9 路 HTTP）。"""
+    if "d" not in _SNAPSHOT:
+        _SNAPSHOT["d"] = run_engine_subprocess()
+    return _SNAPSHOT["d"]
+
+
+def test_engine_version_is_600():
     assert eng.__file__ or True  # module loads
-    # version 来自运行时 JSON
-    d = run_engine_subprocess()
-    assert d["version"] == "5.8.0"
+    d = engine_snapshot()
+    assert d["version"] == "6.0.0"
 
 
 def test_prediction_contract():
-    d = run_engine_subprocess()
+    d = engine_snapshot()
     pred = d["prediction"]
     for k in ("bias", "strength", "confidence", "score",
               "pred_close", "pred_high", "pred_low"):
         assert k in pred, f"prediction missing {k}"
-    assert pred["bias"] in ("bull", "neutral", "bear")
+    # v6.0: 方向二选一无中性 (neutral 分支不可达)
+    assert pred["bias"] in ("bull", "bear"), f"bias 必须二选一, 实际 {pred['bias']}"
     assert pred["strength"] in ("weak", "medium", "moderate", "strong")
     assert 0 <= pred["confidence"] <= 100
 
 
 def test_top_level_contract():
-    d = run_engine_subprocess()
+    d = engine_snapshot()
     for k in ("version", "candle", "price", "recent_candles", "indicators",
               "fng", "factors", "regime", "chainlink_offset", "atr_spike",
               "fng_black_swan", "news_risk", "prediction"):
@@ -56,15 +85,31 @@ def test_top_level_contract():
     assert p["low"] <= p["current"] <= p["high"]
 
 
+def test_ofi_block_contract():
+    """v6.0 新增: 顶层 ofi 块是方向与概率的来源, 必须存在且 direction 与 bias 一致。"""
+    d = engine_snapshot()
+    assert "ofi" in d, "顶层缺 ofi 块"
+    o = d["ofi"]
+    for k in ("direction", "ofi_n"):
+        assert k in o, f"ofi 块缺 {k}"
+    assert o["direction"] in ("bull", "bear")
+    assert d["prediction"]["bias"] == o["direction"], "bias 必须等于 ofi.direction"
+
+
 def test_taker_buy_in_factors():
-    d = run_engine_subprocess()
+    d = engine_snapshot()
     assert "taker_buy" in d["factors"]
     assert -1.0 <= d["factors"]["taker_buy"] <= 1.0
 
 
-def test_taker_buy_in_weights():
+def test_taker_buy_weight_is_zeroed():
+    """v5.9 起 BASE_W['taker_buy'] 被**有意清零**（该因子从未被公平回测验证）。
+
+    这里断言 == 0 是为了**防止它被误重新启用** —— 若要恢复，请先补公平回测，
+    并同时改这条断言（别只把 0 改成非 0 就上）。
+    """
     assert "taker_buy" in eng.BASE_W
-    assert eng.BASE_W["taker_buy"] > 0
+    assert eng.BASE_W["taker_buy"] == 0.0, "taker_buy 权重应保持清零 (v5.9 决定)"
     for regime, adj in eng.REGIME_ADJ.items():
         assert "taker_buy" in adj, f"REGIME_ADJ[{regime}] missing taker_buy"
 
@@ -149,7 +194,7 @@ class _FakeTime:
 
 # ---------------- 稳定性 (可跳过) ----------------
 
-@pytest.mark.slow
+@mark_slow
 def test_multiple_runs_stable():
     biases = []
     for _ in range(3):
@@ -167,5 +212,54 @@ def test_monitor_dry_run_compatible():
     assert "[20" in out.stdout or "progress" in out.stdout or "conf=" in out.stdout
 
 
+def _run_without_pytest(argv):
+    """极简 runner —— 引擎零依赖, 不该为了跑测试强装 pytest。
+
+    提供 monkeypatch 的最小替身（只实现 setattr/undo），慢测默认跳过（加 --slow 才跑）。
+    """
+    class _MonkeyPatch:
+        def __init__(self):
+            self._undo = []
+
+        def setattr(self, obj, name, value):
+            self._undo.append((obj, name, getattr(obj, name)))
+            setattr(obj, name, value)
+
+        def undo(self):
+            for obj, name, old in reversed(self._undo):
+                setattr(obj, name, old)
+            self._undo.clear()
+
+    want_slow = "--slow" in argv
+    fns = [v for k, v in sorted(globals().items())
+           if k.startswith("test_") and callable(v)]
+    passed, failed, skipped = [], [], []
+
+    for fn in fns:
+        if getattr(fn, "_slow", False) and not want_slow:
+            skipped.append(fn.__name__)
+            continue
+        mp = _MonkeyPatch()
+        try:
+            if "monkeypatch" in fn.__code__.co_varnames[:fn.__code__.co_argcount]:
+                fn(mp)
+            else:
+                fn()
+            passed.append(fn.__name__)
+            print(f"  ✅ {fn.__name__}")
+        except Exception as e:
+            failed.append((fn.__name__, e))
+            print(f"  ❌ {fn.__name__}: {type(e).__name__}: {e}")
+        finally:
+            mp.undo()
+
+    print(f"\n通过 {len(passed)} | 失败 {len(failed)} | 跳过 {len(skipped)}"
+          + (f"（慢测: {' '.join(skipped)}，加 --slow 可跑）" if skipped else ""))
+    return 1 if failed else 0
+
+
 if __name__ == "__main__":
-    sys.exit(pytest.main([__file__, "-v"]))
+    if pytest is not None:
+        sys.exit(pytest.main([__file__, "-v"]))
+    print("未装 pytest → 使用内置 runner\n")
+    sys.exit(_run_without_pytest(sys.argv[1:]))

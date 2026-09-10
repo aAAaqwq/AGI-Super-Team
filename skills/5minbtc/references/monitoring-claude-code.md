@@ -80,11 +80,12 @@ python3 <SKILL>/5minbtc-engine-v6.0.py     # 拉一次预测
 python3 <SKILL>/scripts/5minbtc-monitor.py --dry-run   # 等价, 带事件格式
 ```
 
-### 引擎测试 (v5.8)
+### 引擎测试
 ```bash
 cd <SKILL>
-python3 -m pytest scripts/test_engine_v58.py -v
-# 12 项: 契约 / taker_buy 数值 / fetch_depth_avg 合并截断 / 稳定性 / 监控兼容
+python3 scripts/test_engine.py          # 自带 runner, 无需 pytest (慢测加 --slow)
+# 装了 pytest 也可以: python3 -m pytest scripts/test_engine.py -v
+# 13 项: 版本/契约/ofi块/taker_buy 数值与权重/深度采样合并截断/稳定性/监控兼容
 ```
 
 ## 四、铁律 (从原 SKILL.md 继承)
