@@ -42,7 +42,7 @@ Choose a reviewed origin boundary before browsing by outcome. Provenance and cur
 | [Project original](#project-original-skills) | Digest-backed first-party work with reviewed authorship. | 34 |
 | [Adapted](#adapted-skills) | Modified from a named source with the adaptation recorded. | 0 |
 | [Collected](#collected-skills) | Preserved from a named source with provenance recorded. | 0 |
-| [Unknown origin](#unknown-origin-skills) | Source review is incomplete; inspect before use. | 795 |
+| [Unknown origin](#unknown-origin-skills) | Source review is incomplete; inspect before use. | 797 |
 
 <a id="project-original-skills"></a>
 ### Project original
@@ -105,11 +105,11 @@ No entries currently meet this provenance contract.
 
 Source review is incomplete; inspect before use.
 
-795 entries are awaiting source review. Use the [machine-readable index](./skill-index.json) or browse by outcome below; they are not promoted as curated recommendations.
+797 entries are awaiting source review. Use the [machine-readable index](./skill-index.json) or browse by outcome below; they are not promoted as curated recommendations.
 
 ## 🗂️ Browse by outcome
 
-This revision contains 829 canonical catalog entries. The number is generated here rather than used as a product claim.
+This revision contains 831 canonical catalog entries. The number is generated here rather than used as a product claim.
 
 | Category | Use it for | Entries |
 |---|---|---:|
@@ -120,13 +120,13 @@ This revision contains 829 canonical catalog entries. The number is generated he
 | [🛡️ Security, Privacy & Legal](#security-privacy-legal) | Review security, privacy, compliance, permissions, contracts, and legal risk. | 34 |
 | [🎨 Product, Design & UX](#product-design-ux) | Shape product requirements, interfaces, design systems, and user experience. | 22 |
 | [📈 Marketing, SEO & Growth](#marketing-seo-growth) | Acquire audiences through positioning, campaigns, search, ads, and social growth. | 49 |
-| [✍️ Content, Media & Publishing](#content-media-publishing) | Create, edit, repurpose, and publish writing, images, audio, and video. | 88 |
+| [✍️ Content, Media & Publishing](#content-media-publishing) | Create, edit, repurpose, and publish writing, images, audio, and video. | 89 |
 | [🤝 Sales, CRM & Customer Success](#sales-crm-customer-success) | Find, win, onboard, support, and retain customers with accountable workflows. | 40 |
 | [💹 Finance, Trading & Markets](#finance-trading-markets) | Analyze markets, backtest strategies, track portfolios, and review financial risk. | 70 |
 | [🧭 Business Operations & Strategy](#business-operations-strategy) | Plan work, make decisions, manage teams, and improve operating systems. | 74 |
 | [⚙️ Apps & Workflow Automation](#apps-workflow-automation) | Connect everyday apps, browsers, messaging systems, and repeatable workflows. | 89 |
 | [🇨🇳 Chinese Platform Workflows](#chinese-platform-workflows) | Create, analyze, and publish for major Chinese-language platforms and channels. | 40 |
-| [🧰 Specialized Domains & Utilities](#general-utilities) | Domain-specific helpers and cross-functional tools that need a dedicated review path. | 44 |
+| [🧰 Specialized Domains & Utilities](#general-utilities) | Domain-specific helpers and cross-functional tools that need a dedicated review path. | 45 |
 
 <a id="ai-agents-orchestration"></a>
 ## 🤖 AI Agents & Orchestration
@@ -621,6 +621,7 @@ Create, edit, repurpose, and publish writing, images, audio, and video.
 | [`jimeng-storyboard`](../skills/jimeng-storyboard/) | 将口播视频剧本拆解为即梦AI数字人平台的分镜头脚本。输出格式为每个镜头的角色说（台词）和动作描述（镜头语言/数字人动作），适配即梦 jimeng.jianying.com 数字人视频生成界面。触发场景：用户需要生成口播视频分镜、数字人视频剧本拆解、即梦分镜脚本、短视频口播脚本分镜、数字人台词加动作拆分。 | Project original · reviewed | 78/100 · Selected | Portable required assignment · structure checked · CCO |
 | [`longform-visual-notes`](../skills/longform-visual-notes/) | MediaClaw内容生产的核心配图skill。当有长篇文章需要转化为可传播的视觉笔记时调用。 | Unknown · unreviewed | Unscored | Catalog only |
 | [`lyrics-video-sync`](../skills/lyrics-video-sync/) | 歌词-视频精准匹配引擎。将MP3中的歌词片段按时间轴精准匹配到对应视频clip，支持歌词提取、时间轴对齐、情绪映射、字幕烧录、音频分段混合。触发词：歌词匹配、lyrics sync、歌词卡点、音频对齐、字幕视频、lyrics video、歌词视频、音乐视频字幕 | Unknown · unreviewed | Unscored | Catalog only |
+| [`muapi-video-gen`](../skills/muapi-video-gen/) | Generate one MuAPI FLUX 3 text-to-video clip when a local MP4 is needed, with explicit paid-request confirmation and bounded polling. | Unknown · unreviewed | Unscored | Catalog only |
 | [`mv-generator`](../skills/mv-generator/) | MediaClaw 内置的音乐视频端到端生成技能。 | Unknown · unreviewed | Unscored | Catalog only |
 | [`mv-production-standard`](../skills/mv-production-standard/) | MV production standard — end-to-end music video creation workflow | Unknown · unreviewed | Unscored | Catalog only |
 | [`nano-banana-pro`](../skills/nano-banana-pro/) | Generate/edit images with Nano Banana Pro (Gemini 3 Pro Image). Use for image create/modify requests incl. edits. Supports text-to-image + image-to-image; 1K/2K/4K; use… | Unknown · unreviewed | Unscored | Harness-specific assignment · generic installer skips · CCO |
@@ -1028,6 +1029,7 @@ Domain-specific helpers and cross-functional tools that need a dedicated review 
 | [`bazi-fortune`](../skills/bazi-fortune/) | 八字四柱命理分析工具，属于 fortune-telling-skills 运势测算套件。基于子平真诠体系， 通过出生年月日时推算四柱八字、十神关系、五行旺衰、大运流年，揭示命局格局和人生走向。 排盘为确定性计算 + LLM 综合解读，无外部 API 依赖。 触发词：八字、四柱、命理、生辰八字、bazi、八字排盘、五行、命局分析。… | Unknown · unreviewed | Unscored | Catalog only |
 | [`channel-truth-run`](../skills/channel-truth-run/) | Automatic channel and contact synchronization | Unknown · unreviewed | Unscored | Catalog only |
 | [`claw-metagenomics`](../skills/claw-metagenomics/) | Shotgun metagenomics profiling — taxonomy, resistome, and functional pathways | Unknown · unreviewed | Unscored | Catalog only |
+| [`coin-vp-scanner`](../skills/coin-vp-scanner/) | 量能分析要点：巨量长阳在顶部 = 常是出货/诱多；安静放量干净破位 = 更可能是真吸筹。别只看放量大小，看"破位是否干净 + 1h 是否过热"。 | Unknown · unreviewed | Unscored | Catalog only |
 | [`composio-sdk`](../skills/composio-sdk/) | Build AI agents and apps with Composio - access 200+ external tools with Tool Router or direct execution | Unknown · unreviewed | Unscored | Catalog only |
 | [`continuous-learning-v2`](../skills/continuous-learning-v2/) | Instinct-based learning system that observes sessions via hooks, creates atomic instincts with confidence scoring, and evolves them into skills/commands/agents. v2.1 adds… | Unknown · unreviewed | Unscored | Catalog only |
 | [`deepwork-tracker`](../skills/deepwork-tracker/) | Track deep work sessions locally (start/stop/status) and generate a GitHub-contribution-graph style minutes-per-day heatmap for sharing (e.g., via Telegram). Use when the user… | Unknown · unreviewed | Unscored | Catalog only |
