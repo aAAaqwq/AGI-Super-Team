@@ -1,7 +1,7 @@
 ---
 name: 5minbtc
 version: 6.0.0
-description: "BTC 5分钟K线实时方向预测 + 币安预测市场错价套利(paper)。v6.0 真OFI驱动: 方向由当前K线原生 in-candle OFI 净流一票决定(ofi_n=2*(tb/v)-1, REST klines[9] 聚合, 零WS依赖; WS ofi.json 做新鲜度反转保护与交叉校准), 概率=P(close>open|ofi) 经验校准表+Bayesian shrink, edge=EV=p−ask 错价检测, 方向二选一无中性。13因子自v5.9起收敛到3个有证据信号且不再决定bias。黑天鹅防护: ATR spike+FNG<25。launchd 常驻 realtime/watch/trader。Binance端点双向故障切换。"
+description: "BTC 5分钟K线实时方向预测 + 币安预测市场错价套利(paper)。v6.0 真OFI驱动: 方向由当前K线原生 in-candle OFI 净流一票决定(ofi_n=2*(tb/v)-1, REST klines[9] 聚合, 零WS依赖; WS ofi.json 做新鲜度反转保护与交叉校准), 概率=P(close>open|ofi) 经验校准表+Bayesian shrink, edge=EV=p−ask 错价检测, 方向二选一无中性。13因子自v5.9起收敛到3个有证据信号且不再决定bias。黑天鹅防护: ATR spike+FNG<25。launchd 常驻 realtime/watch/trader。⚠️ Binance 端点**人工**双向切换（引擎为单端点硬依赖，无自动故障切换；2026-09-11 曾因 data-api SSL 失败静默断档 6h）。"
 triggers:
   - 5minbtc
   - 5min btc
@@ -126,7 +126,7 @@ python3 $SKILL_DIR/5minbtc-log.py log \
 ### 核心方法论
 - [strategy-adversarial-review.md](references/strategy-adversarial-review.md) — **对抗式审查报告: 第一性原理 + 13因子证伪 + 该留/删/缺失 + P0/P1/P2行动清单** (v5.9 依据)
 - [lessons.md](references/lessons.md) — **25 条核心教训** (必读, 含 2026-07-05 新增 23-25)
-- [pitfalls.md](references/pitfalls.md) — **19 条 pitfalls 集中索引** (必读, 含并行 max() 评估陷阱; #18 = K线开局概率不可信; #19 = "真OFI" 只覆盖单一市场)
+- [pitfalls.md](references/pitfalls.md) — **20 条 pitfalls 集中索引** (必读, 含并行 max() 评估陷阱; #18 = K线开局概率不可信; #19 = "真OFI" 只覆盖单一市场; #20 = 端点故障致静默断档)
 - [changelog.md](references/changelog.md) — v5.0 ~ v6.0 详细变更
 - [skill-organization.md](references/skill-organization.md) — **Skill 文件结构模式 (可复用)** — SKILL.md INDEX + references/ 分专题
 
