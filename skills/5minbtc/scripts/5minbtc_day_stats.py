@@ -62,7 +62,7 @@ def load():
 
 def fmt_stats(entries, label):
     settled = [e for e in entries if e.get("settled")]
-    lines = [f"📈 5minbtc 预测战绩 | {label}"]
+    lines = [f"🌤 全天哨兵 · 战绩 | {label}"]
     lines.append("━" * 24)
     if not entries:
         lines.append("暂无预测记录")

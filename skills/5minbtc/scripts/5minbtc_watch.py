@@ -250,7 +250,7 @@ def fmt_event(tag, d):
     fng = d.get("fng", {})
     fng_s = f" | FNG {fng.get('value')} {fng.get('label', '')}" if fng.get("value") is not None else ""
     mtf_line = _mtf_line(d.get("mtf", {}))
-    head = f"{EMOJI.get(p['bias'], '⚪')} [5minbtc] {tag} {c.get('iso')} p{c.get('progress_pct', 0):.0f}%"
+    head = f"{EMOJI.get(p['bias'], '⚪')} [🌤 全天哨兵] {tag} {c.get('iso')} p{c.get('progress_pct', 0):.0f}%"
     line = (
         f"{head}\n"
         f"方向: {DIR_CN.get(p['bias'], p['bias'])} ({p['strength']}) | 置信 {p['confidence']}\n"

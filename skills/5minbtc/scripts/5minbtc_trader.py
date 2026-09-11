@@ -828,7 +828,7 @@ def paper_report(state):
     bankroll = state.get("bankroll", 100.0)
     realized = state.get("realized", 0.0)
     equity = bankroll + realized
-    lines = ["📊 5minbtc 预测市场 Paper 模拟"]
+    lines = ["🎯 夜盘狙击 · 实测记录"]
     lines.append(f"注单 {len(state['bets'])} (已结算 {total} / 成交持仓 {len(open_)} "
                  f"/ 挂单 {len(pending)} / 未成交 {len(unfilled)})")
     if total:

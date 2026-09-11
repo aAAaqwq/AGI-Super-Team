@@ -244,7 +244,7 @@ def settle_open(state, push_enabled=True):
             if b.get("status") == "settled" and b.get("auto") and not b.get("pushed_final"):
                 mark = "✅ 中" if b.get("direction_correct") else "❌ 未中"
                 acct = fmt_account(state, b["pnl"])
-                push(f"🏁 结算 {b['candle'][5:16]} {b['side']} {mark}\n"
+                push(f"🎯 夜盘狙击 · 结算 {b['candle'][5:16]} {b['side']} {mark}\n"
                      f"买入 {b.get('amount', 1):.0f}U @{b['ask']:.2f} | "
                      f"涨跌 {b.get('pnl_pct', 0):+.1f}% | PnL {b['pnl']:+.2f}$\n"
                      f"{acct}", push_enabled)
@@ -271,7 +271,7 @@ def check_pending(push_enabled=True):
             changed = True
             print(f"❌ 未成交: {b['side']} 限价{b.get('limit')}", flush=True)
             acct = fmt_account(state)
-            push(f"❌ 未成交 | {b['candle'][5:16]} {b['side']} 限价{b.get('limit')} 收盘未触及\n"
+            push(f"🎯 夜盘狙击 · 未成交 | {b['candle'][5:16]} {b['side']} 限价{b.get('limit')} 收盘未触及\n"
                  f"{acct}", push_enabled)
             continue
         # 回调到限价 → 成交 (静默, 结算时统一推送账户)
@@ -295,7 +295,7 @@ def fmt_order(d, side, ask, probability=None):
     dir_cn = DIR_CN.get(p["bias"], p["bias"])
     edge_s = f" | edge {probability - ask:+.2f}" if probability is not None and ask is not None else ""
     prob_s = f"概率 {probability:.2f}" if probability is not None else f"置信 {p['confidence']}"
-    return (f"🎯 真OFI·下单 | {dir_cn}\n"
+    return (f"🎯 夜盘狙击 · 下单 | {dir_cn}\n"
             f"{c['candle_start']} | {side} @ {ask:.2f} | 1U\n"
             f"{prob_s} vs 市场 {ask:.2f}{edge_s} | 已记录")
 
@@ -307,7 +307,7 @@ def fmt_prediction(d, side, ask, probability, edge, action):
     dir_cn = DIR_CN.get(p["bias"], p["bias"])
     ask_s = f"{ask:.2f}" if ask is not None else "?"
     edge_s = f"edge {edge:+.2f}" if edge is not None else "edge ?"
-    return (f"📊 预测 {dir_cn} | {c['candle_start']} p{c.get('progress_pct', 0):.0f}%\n"
+    return (f"🌤 全天哨兵 · 预测 {dir_cn} | {c['candle_start']} p{c.get('progress_pct', 0):.0f}%\n"
             f"概率 {probability:.2f} | 市场 {side} {ask_s} | {edge_s}\n"
             f"→ {action}")
 
@@ -418,7 +418,7 @@ def main():
                         and ofi_wr < args.ofi_min_win):
                     if time.time() - _ofi_gate_alert_ts > 3600:
                         _ofi_gate_alert_ts = time.time()
-                        push(f"⛔ OFI有效性闸触发: {ofi_n_samples}笔 OFI 方向胜率 "
+                        push(f"🎯 夜盘狙击 · ⛔有效性闸触发: {ofi_n_samples}笔 OFI 方向胜率 "
                              f"{ofi_wr:.1%} < {args.ofi_min_win:.0%} → 暂停下单", args.push)
                     print(f"⛔ OFI有效性闸: {ofi_n_samples}笔胜率 {ofi_wr:.1%} < "
                           f"{args.ofi_min_win:.0%}, 暂停", flush=True)
