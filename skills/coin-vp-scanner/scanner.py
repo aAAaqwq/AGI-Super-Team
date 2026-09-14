@@ -18,7 +18,7 @@
   python3 scanner.py --no-trend    # 关 15m 趋势过滤
   python3 scanner.py --telegram
 """
-import argparse, json, re, time, urllib.request
+import argparse, json, os, re, sys, time, urllib.request
 from concurrent.futures import ThreadPoolExecutor
 
 import config as C
@@ -232,15 +232,26 @@ def main():
     print("铁律: 止损距离×杠杆≤风险预算 · 命中率是回测值非保证 · paper先验证。")
 
     if args.telegram:
-        try:
-            import subprocess
-            lines = [f"🔥 量价能突破 {time.strftime('%m-%d %H:%M')}"]
-            for r in sigs[:6]:
-                lines.append(f"{r['symbol']} {r['dir']} {r['kind']} TP{r['tp_rec']}% 命中{r['hit_ref']:.0f}%")
-            subprocess.run(["python3", "/Users/daniel/bb-auto/scripts/telegram_push.py",
-                            "--msg", "\n".join(lines)], timeout=30)
-        except Exception:
-            pass
+        # 推送脚本位置可用环境变量覆盖; 默认走 5minbtc skill 里的通用推送助手。
+        # 不再硬编码某台机器的家目录绝对路径(原写法在别的机器上不存在),
+        # 且被 except 静默吞掉, 导致 --telegram 看似可用实则什么都没发。
+        push_script = os.environ.get("COIN_VP_TELEGRAM_PUSH") or os.path.expanduser(
+            "~/.claude/skills/5minbtc/scripts/telegram_push.py")
+        lines = [f"🔥 量价能突破 {time.strftime('%m-%d %H:%M')}"]
+        for r in sigs[:6]:
+            lines.append(f"{r['symbol']} {r['dir']} {r['kind']} TP{r['tp_rec']}% 命中{r['hit_ref']:.0f}%")
+        if not os.path.exists(push_script):
+            print(f"⚠️ --telegram: 推送脚本不存在 ({push_script}), 未推送。"
+                  f"用 COIN_VP_TELEGRAM_PUSH 指定路径。", file=sys.stderr)
+        else:
+            try:
+                proc = subprocess.run(["python3", push_script, "\n".join(lines)],
+                                      capture_output=True, text=True, timeout=30)
+                if proc.returncode != 0:
+                    print(f"⚠️ --telegram 推送失败: "
+                          f"{(proc.stderr or proc.stdout).strip()[:200]}", file=sys.stderr)
+            except Exception as exc:
+                print(f"⚠️ --telegram 推送异常: {exc}", file=sys.stderr)
 
 
 def kind_ts(r):

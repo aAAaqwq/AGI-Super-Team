@@ -44,7 +44,7 @@
       "title": "Product, Design & UX"
     },
     {
-      "count": 49,
+      "count": 50,
       "description": "Acquire audiences through positioning, campaigns, search, ads, and social growth.",
       "emoji": "📈",
       "id": "marketing-seo-growth",
@@ -100,7 +100,7 @@
       "title": "Specialized Domains & Utilities"
     }
   ],
-  "inventoryCount": 831,
+  "inventoryCount": 832,
   "inventorySemantics": "tracked physical top-level directories with SKILL.md",
   "schemaVersion": 2,
   "skills": [
@@ -130,7 +130,7 @@
         "runtime_evidence": "pending",
         "status": "unscored"
       },
-      "description": "BTC 5分钟K线实时方向预测。v5.9对抗式审查重构: 13因子收敛到3个有证据信号(half_body延续+volume放量+meanrev回归, 11个47-49%硬币因子清零) + 三层独立信息过滤(多周期4h/1h/15m趋势 + 跨资产ETH/SOL广度 + 真订单流OFI) +…",
+      "description": "BTC 5分钟K线实时方向预测 + 币安预测市场错价套利(paper)。v6.0 真OFI驱动: 方向由当前K线原生 in-candle OFI 净流一票决定(ofi_n=2*(tb/v)-1, REST klines[9] 聚合, 零WS依赖; WS ofi.json 做新鲜度反转保护与交叉校准), 概率=P(close>open|ofi)…",
       "description_status": "source-text",
       "path": "skills/5minbtc/SKILL.md",
       "portability_class": "catalog-only",
@@ -4327,6 +4327,55 @@
           "brand"
         ],
         "method": "slug",
+        "resolution_status": "priority-tie",
+        "review_state": "unreviewed",
+        "runner_ups": [
+          {
+            "category_id": "product-design-ux",
+            "match_count": 1,
+            "matched_signals": [
+              "design"
+            ],
+            "priority": 90,
+            "tied_for_first": true
+          }
+        ],
+        "winner": {
+          "category_id": "marketing-seo-growth",
+          "match_count": 1,
+          "matched_signals": [
+            "brand"
+          ],
+          "priority": 105,
+          "tie_detected": true
+        }
+      },
+      "curation": {
+        "runtime_evidence": "pending",
+        "status": "unscored"
+      },
+      "description": "Reverse-engineer the design language of any live website into structured, immediately-usable CSS design tokens, interaction/motion rules, and a feel- reproducing \"recipe\". Feed…",
+      "description_status": "source-text",
+      "path": "skills/brand-design-language-reverse/SKILL.md",
+      "portability_class": "catalog-only",
+      "provenance": {
+        "origin_kind": "unknown",
+        "review_state": "unreviewed"
+      },
+      "review_signals": [],
+      "skill_id": "brand-design-language-reverse",
+      "support_level": "catalog",
+      "used_by": []
+    },
+    {
+      "assignments": [],
+      "category_id": "marketing-seo-growth",
+      "classification": "slug:brand;metadata:frontmatter",
+      "classification_details": {
+        "matched_signals": [
+          "brand"
+        ],
+        "method": "slug",
         "resolution_status": "rule-match",
         "review_state": "unreviewed",
         "runner_ups": [],
@@ -6247,7 +6296,7 @@
     {
       "assignments": [],
       "category_id": "general-utilities",
-      "classification": "fallback;metadata:fallback",
+      "classification": "fallback;metadata:frontmatter",
       "classification_details": {
         "matched_signals": [],
         "method": "fallback",
@@ -6266,7 +6315,7 @@
         "runtime_evidence": "pending",
         "status": "unscored"
       },
-      "description": "量能分析要点：巨量长阳在顶部 = 常是出货/诱多；安静放量干净破位 = 更可能是真吸筹。别只看放量大小，看\"破位是否干净 + 1h 是否过热\"。",
+      "description": "量价能高杠杆短线突破扫描 — 扫币安全市场 USDT 永续，只报放量+强实体+收盘破 1h 结构位+趋势同向的结构突破信号。Use when 扫币/量价/突破信号/短线币。",
       "description_status": "source-text",
       "path": "skills/coin-vp-scanner/SKILL.md",
       "portability_class": "catalog-only",

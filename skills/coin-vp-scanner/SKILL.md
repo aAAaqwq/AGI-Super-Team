@@ -1,3 +1,8 @@
+---
+name: coin-vp-scanner
+description: 量价能高杠杆短线突破扫描 — 扫币安全市场 USDT 永续，只报放量+强实体+收盘破 1h 结构位+趋势同向的结构突破信号。Use when 扫币/量价/突破信号/短线币。
+---
+
 # ⚡ coin-vp-scanner — 量价能高杠杆短线突破扫描（skill）
 
 > 项目代码：`~/projects/coin-vp-scanner/`（scanner.py + 回测/规律/耗时 全套工具）

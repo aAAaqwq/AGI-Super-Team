@@ -42,7 +42,7 @@ Choose a reviewed origin boundary before browsing by outcome. Provenance and cur
 | [Project original](#project-original-skills) | Digest-backed first-party work with reviewed authorship. | 34 |
 | [Adapted](#adapted-skills) | Modified from a named source with the adaptation recorded. | 0 |
 | [Collected](#collected-skills) | Preserved from a named source with provenance recorded. | 0 |
-| [Unknown origin](#unknown-origin-skills) | Source review is incomplete; inspect before use. | 797 |
+| [Unknown origin](#unknown-origin-skills) | Source review is incomplete; inspect before use. | 798 |
 
 <a id="project-original-skills"></a>
 ### Project original
@@ -105,11 +105,11 @@ No entries currently meet this provenance contract.
 
 Source review is incomplete; inspect before use.
 
-797 entries are awaiting source review. Use the [machine-readable index](./skill-index.json) or browse by outcome below; they are not promoted as curated recommendations.
+798 entries are awaiting source review. Use the [machine-readable index](./skill-index.json) or browse by outcome below; they are not promoted as curated recommendations.
 
 ## 🗂️ Browse by outcome
 
-This revision contains 831 canonical catalog entries. The number is generated here rather than used as a product claim.
+This revision contains 832 canonical catalog entries. The number is generated here rather than used as a product claim.
 
 | Category | Use it for | Entries |
 |---|---|---:|
@@ -119,7 +119,7 @@ This revision contains 831 canonical catalog entries. The number is generated he
 | [📊 Data, Analytics & Research](#data-analytics-research) | Collect evidence, search sources, analyze data, and communicate findings. | 80 |
 | [🛡️ Security, Privacy & Legal](#security-privacy-legal) | Review security, privacy, compliance, permissions, contracts, and legal risk. | 34 |
 | [🎨 Product, Design & UX](#product-design-ux) | Shape product requirements, interfaces, design systems, and user experience. | 22 |
-| [📈 Marketing, SEO & Growth](#marketing-seo-growth) | Acquire audiences through positioning, campaigns, search, ads, and social growth. | 49 |
+| [📈 Marketing, SEO & Growth](#marketing-seo-growth) | Acquire audiences through positioning, campaigns, search, ads, and social growth. | 50 |
 | [✍️ Content, Media & Publishing](#content-media-publishing) | Create, edit, repurpose, and publish writing, images, audio, and video. | 89 |
 | [🤝 Sales, CRM & Customer Success](#sales-crm-customer-success) | Find, win, onboard, support, and retain customers with accountable workflows. | 40 |
 | [💹 Finance, Trading & Markets](#finance-trading-markets) | Analyze markets, backtest strategies, track portfolios, and review financial risk. | 70 |
@@ -522,6 +522,7 @@ Acquire audiences through positioning, campaigns, search, ads, and social growth
 | [`ads-agent`](../skills/ads-agent/) | AI-агент для управления Facebook рекламой. Вызывай для анализа, оптимизации, создания кампаний и отчётов. | Unknown · unreviewed | Unscored | Catalog only |
 | [`apify-competitor-intelligence`](../skills/apify-competitor-intelligence/) | Analyze competitor strategies, content, pricing, ads, and market positioning across Google Maps, Booking.com, Facebook, Instagram, YouTube, and TikTok. | Unknown · unreviewed | Unscored | Catalog only |
 | [`b2b-saas-marketing`](../skills/b2b-saas-marketing/) | Эксперт по B2B SaaS маркетингу. Используй для стратегий генерации спроса, growth-маркетинга, PLG, расчёта CAC/LTV, оптимизации воронки и маркетинговых операций. | Unknown · unreviewed | Unscored | Catalog only |
+| [`brand-design-language-reverse`](../skills/brand-design-language-reverse/) | Reverse-engineer the design language of any live website into structured, immediately-usable CSS design tokens, interaction/motion rules, and a feel- reproducing "recipe". Feed… | Unknown · unreviewed | Unscored | Catalog only |
 | [`brand-guidelines`](../skills/brand-guidelines/) | Applies Anthropic's official brand colors and typography to any sort of artifact that may benefit from having Anthropic's look-and-feel. Use it when brand colors or style… | Unknown · unreviewed | Unscored | Catalog only |
 | [`brand-identity`](../skills/brand-identity/) | Define brand strategy, voice, visual direction, tagline, and usage guidelines. Use when creating, refreshing, or standardizing a product or company brand. | Unknown · unreviewed | Unscored | Portable required assignment · structure checked · CMO |
 | [`brand-voice`](../skills/brand-voice/) | Enforce brand tone and style consistency across all content creation skills. Load brand profiles from workspace/brand/profiles/, apply tone rules (preferred and forbidden… | Unknown · unreviewed | Unscored | Catalog only |
@@ -720,7 +721,7 @@ Analyze markets, backtest strategies, track portfolios, and review financial ris
 
 | Skill | What it helps with | Origin | Curation evidence | Support / review signals |
 |---|---|---|---|---|
-| [`5minbtc`](../skills/5minbtc/) | BTC 5分钟K线实时方向预测。v5.9对抗式审查重构: 13因子收敛到3个有证据信号(half_body延续+volume放量+meanrev回归, 11个47-49%硬币因子清零) + 三层独立信息过滤(多周期4h/1h/15m趋势 + 跨资产ETH/SOL广度 + 真订单流OFI) +… | Project original · stale review | Unscored | Catalog only |
+| [`5minbtc`](../skills/5minbtc/) | BTC 5分钟K线实时方向预测 + 币安预测市场错价套利(paper)。v6.0 真OFI驱动: 方向由当前K线原生 in-candle OFI 净流一票决定(ofi_n=2*(tb/v)-1, REST klines[9] 聚合, 零WS依赖; WS ofi.json 做新鲜度反转保护与交叉校准), 概率=P(close&gt;open\|ofi)… | Project original · stale review | Unscored | Catalog only |
 | [`a-fund-monitor`](../skills/a-fund-monitor/) | A股基金净值监控：盘中实时估值 + 盘后实际净值，定时推送到 Telegram。 | Unknown · unreviewed | Unscored | Catalog only |
 | [`a-share-analysis`](../skills/a-share-analysis/) | 此Skill实现了三层分析体系： 1. 情报采集层 — 7路并发多源新闻采集，自动匹配板块和个股 2. 盘面阅读层 — 美股映射 + 大盘多空判断 + 实时主线(&gt;9%题材分析) 3. 个股精选层 — 产业逻辑 + 形态8分类 + 盘口分析 + 题材排名 + 综合评分 4. 原始新闻浏览 (news.py) — 分类展示影响股票的新闻，源信息不做任何修改 | Unknown · unreviewed | Unscored | Catalog only |
 | [`afrexai-personal-finance`](../skills/afrexai-personal-finance/) | Complete personal finance system — budgeting, debt payoff, investing, tax optimization, net worth tracking, and financial independence planning. Use when managing money, building… | Unknown · unreviewed | Unscored | Catalog only |
@@ -1029,7 +1030,7 @@ Domain-specific helpers and cross-functional tools that need a dedicated review 
 | [`bazi-fortune`](../skills/bazi-fortune/) | 八字四柱命理分析工具，属于 fortune-telling-skills 运势测算套件。基于子平真诠体系， 通过出生年月日时推算四柱八字、十神关系、五行旺衰、大运流年，揭示命局格局和人生走向。 排盘为确定性计算 + LLM 综合解读，无外部 API 依赖。 触发词：八字、四柱、命理、生辰八字、bazi、八字排盘、五行、命局分析。… | Unknown · unreviewed | Unscored | Catalog only |
 | [`channel-truth-run`](../skills/channel-truth-run/) | Automatic channel and contact synchronization | Unknown · unreviewed | Unscored | Catalog only |
 | [`claw-metagenomics`](../skills/claw-metagenomics/) | Shotgun metagenomics profiling — taxonomy, resistome, and functional pathways | Unknown · unreviewed | Unscored | Catalog only |
-| [`coin-vp-scanner`](../skills/coin-vp-scanner/) | 量能分析要点：巨量长阳在顶部 = 常是出货/诱多；安静放量干净破位 = 更可能是真吸筹。别只看放量大小，看"破位是否干净 + 1h 是否过热"。 | Unknown · unreviewed | Unscored | Catalog only |
+| [`coin-vp-scanner`](../skills/coin-vp-scanner/) | 量价能高杠杆短线突破扫描 — 扫币安全市场 USDT 永续，只报放量+强实体+收盘破 1h 结构位+趋势同向的结构突破信号。Use when 扫币/量价/突破信号/短线币。 | Unknown · unreviewed | Unscored | Catalog only |
 | [`composio-sdk`](../skills/composio-sdk/) | Build AI agents and apps with Composio - access 200+ external tools with Tool Router or direct execution | Unknown · unreviewed | Unscored | Catalog only |
 | [`continuous-learning-v2`](../skills/continuous-learning-v2/) | Instinct-based learning system that observes sessions via hooks, creates atomic instincts with confidence scoring, and evolves them into skills/commands/agents. v2.1 adds… | Unknown · unreviewed | Unscored | Catalog only |
 | [`deepwork-tracker`](../skills/deepwork-tracker/) | Track deep work sessions locally (start/stop/status) and generate a GitHub-contribution-graph style minutes-per-day heatmap for sharing (e.g., via Telegram). Use when the user… | Unknown · unreviewed | Unscored | Catalog only |

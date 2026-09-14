@@ -2,31 +2,31 @@
   "schemaVersion": 1,
   "scope": "deterministic-structural-evidence-not-semantic-verification",
   "summary": {
-    "inventoryCount": 831,
-    "structureInvalid": 176,
+    "inventoryCount": 832,
+    "structureInvalid": 174,
     "disclosureWarnings": 570,
     "executionReviewRequired": 176,
     "issueCounts": {
       "description-missing-trigger": 264,
-      "description-over-180": 293,
+      "description-over-180": 294,
       "invalid-frontmatter-yaml": 35,
       "link-outside-repository": 5,
-      "missing-frontmatter": 38,
+      "missing-frontmatter": 37,
       "name-folder-mismatch": 71,
       "over-500-lines": 55,
       "personal-absolute-path": 52,
       "scripts-without-test-evidence": 175,
       "unmentioned-assets": 10,
-      "unmentioned-references": 55,
+      "unmentioned-references": 54,
       "unmentioned-scripts": 76,
-      "unresolved-local-link": 34
+      "unresolved-local-link": 33
     }
   },
   "skills": [
     {
       "skill_id": "5minbtc",
       "path": "skills/5minbtc/SKILL.md",
-      "structure_status": "invalid",
+      "structure_status": "pass",
       "disclosure_status": "warn",
       "execution_status": "review-required",
       "issues": [
@@ -34,9 +34,7 @@
         "description-over-180",
         "personal-absolute-path",
         "scripts-without-test-evidence",
-        "unmentioned-references",
-        "unmentioned-scripts",
-        "unresolved-local-link"
+        "unmentioned-scripts"
       ]
     },
     {
@@ -849,6 +847,17 @@
       ]
     },
     {
+      "skill_id": "brand-design-language-reverse",
+      "path": "skills/brand-design-language-reverse/SKILL.md",
+      "structure_status": "pass",
+      "disclosure_status": "warn",
+      "execution_status": "not-applicable",
+      "issues": [
+        "description-over-180",
+        "personal-absolute-path"
+      ]
+    },
+    {
       "skill_id": "brand-guidelines",
       "path": "skills/brand-guidelines/SKILL.md",
       "structure_status": "pass",
@@ -1208,17 +1217,6 @@
       "execution_status": "not-applicable",
       "issues": [
         "missing-frontmatter"
-      ]
-    },
-    {
-      "skill_id": "coin-vp-scanner",
-      "path": "skills/coin-vp-scanner/SKILL.md",
-      "structure_status": "invalid",
-      "disclosure_status": "warn",
-      "execution_status": "not-applicable",
-      "issues": [
-        "missing-frontmatter",
-        "personal-absolute-path"
       ]
     },
     {
