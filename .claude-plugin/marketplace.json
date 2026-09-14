@@ -8,7 +8,7 @@
     {
       "name": "agi-super-team",
       "description": "Evidence-backed role packs and reusable skills with explicit installation and review boundaries.",
-      "version": "1.0.0",
+      "version": "1.5.0",
       "source": "./"
     }
   ]
