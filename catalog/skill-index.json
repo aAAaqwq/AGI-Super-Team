@@ -51,7 +51,7 @@
       "title": "Marketing, SEO & Growth"
     },
     {
-      "count": 88,
+      "count": 89,
       "description": "Create, edit, repurpose, and publish writing, images, audio, and video.",
       "emoji": "✍️",
       "id": "content-media-publishing",
@@ -93,14 +93,14 @@
       "title": "Chinese Platform Workflows"
     },
     {
-      "count": 44,
+      "count": 45,
       "description": "Domain-specific helpers and cross-functional tools that need a dedicated review path.",
       "emoji": "🧰",
       "id": "general-utilities",
       "title": "Specialized Domains & Utilities"
     }
   ],
-  "inventoryCount": 829,
+  "inventoryCount": 831,
   "inventorySemantics": "tracked physical top-level directories with SKILL.md",
   "schemaVersion": 2,
   "skills": [
@@ -6241,6 +6241,41 @@
       },
       "review_signals": [],
       "skill_id": "coding-agent-orchestrator",
+      "support_level": "catalog",
+      "used_by": []
+    },
+    {
+      "assignments": [],
+      "category_id": "general-utilities",
+      "classification": "fallback;metadata:fallback",
+      "classification_details": {
+        "matched_signals": [],
+        "method": "fallback",
+        "resolution_status": "fallback",
+        "review_state": "unreviewed",
+        "runner_ups": [],
+        "winner": {
+          "category_id": "general-utilities",
+          "match_count": 0,
+          "matched_signals": [],
+          "priority": 0,
+          "tie_detected": false
+        }
+      },
+      "curation": {
+        "runtime_evidence": "pending",
+        "status": "unscored"
+      },
+      "description": "量能分析要点：巨量长阳在顶部 = 常是出货/诱多；安静放量干净破位 = 更可能是真吸筹。别只看放量大小，看\"破位是否干净 + 1h 是否过热\"。",
+      "description_status": "source-text",
+      "path": "skills/coin-vp-scanner/SKILL.md",
+      "portability_class": "catalog-only",
+      "provenance": {
+        "origin_kind": "unknown",
+        "review_state": "unreviewed"
+      },
+      "review_signals": [],
+      "skill_id": "coin-vp-scanner",
       "support_level": "catalog",
       "used_by": []
     },
@@ -20035,6 +20070,45 @@
       },
       "review_signals": [],
       "skill_id": "monday-automation",
+      "support_level": "catalog",
+      "used_by": []
+    },
+    {
+      "assignments": [],
+      "category_id": "content-media-publishing",
+      "classification": "slug:video;metadata:frontmatter",
+      "classification_details": {
+        "matched_signals": [
+          "video"
+        ],
+        "method": "slug",
+        "resolution_status": "rule-match",
+        "review_state": "unreviewed",
+        "runner_ups": [],
+        "winner": {
+          "category_id": "content-media-publishing",
+          "match_count": 1,
+          "matched_signals": [
+            "video"
+          ],
+          "priority": 100,
+          "tie_detected": false
+        }
+      },
+      "curation": {
+        "runtime_evidence": "pending",
+        "status": "unscored"
+      },
+      "description": "Generate one MuAPI FLUX 3 text-to-video clip when a local MP4 is needed, with explicit paid-request confirmation and bounded polling.",
+      "description_status": "source-text",
+      "path": "skills/muapi-video-gen/SKILL.md",
+      "portability_class": "catalog-only",
+      "provenance": {
+        "origin_kind": "unknown",
+        "review_state": "unreviewed"
+      },
+      "review_signals": [],
+      "skill_id": "muapi-video-gen",
       "support_level": "catalog",
       "used_by": []
     },
