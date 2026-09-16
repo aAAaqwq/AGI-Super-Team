@@ -291,6 +291,11 @@ export function buildPlan({ packageRoot, catalog, tools, home, projectDir, inclu
       for (const artifact of artifacts) {
         const path = destination(root, artifact.relativePath);
         let content = artifact.content;
+        if (artifact.skipIf && artifact.skipIf(readSafe(path))) {
+          // 已有内容会让托管块产生冲突（例如 TOML 里重复的 [agents] 表）。
+          // 宁可跳过也不写出目标客户端解析不了的配置 —— 静默跳过由文档兜底说明。
+          continue;
+        }
         if (artifact.managed) {
           const rendered = Buffer.isBuffer(content) ? content.toString("utf8") : String(content);
           const { begin, end } = artifact.managed;

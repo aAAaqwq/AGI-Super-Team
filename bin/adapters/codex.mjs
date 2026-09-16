@@ -10,6 +10,37 @@ import {
 
 export const ADAPTER_ID = "codex";
 
+// Codex 的团队深度由 ~/.codex/config.toml 的 [agents] max_depth 强制。
+// 默认值是 1 —— 装完不改，C-suite 派发叶子时会被 Codex 原生拒绝
+// （"Agent depth limit reached. Solve the task yourself."），且是静默的：
+// 装完看起来一切正常，直到真让团队干活才发现派不出去。所以必须由安装器写入。
+//
+// 值 = 2，不是 3：Codex 的 root session 本身就是 CEO（本 adapter 不写 ast-ceo.toml），
+// 因此链条是 root(CEO)=0 → C-suite=1 → leaf=2。
+// 对比 Claude Code：main=0 → ast-ceo=1 → C-suite=2 → leaf=3，那边才需要 3。
+export const CODEX_CONFIG_BEGIN = "# AGI-SUPER-TEAM:CODEX-CONFIG:BEGIN";
+export const CODEX_CONFIG_END = "# AGI-SUPER-TEAM:CODEX-CONFIG:END";
+export const CODEX_MAX_DEPTH = 2;
+export const CODEX_MAX_THREADS = 12;
+
+/** 用户已有的 [agents] 表会与托管块里的 [agents] 冲突（TOML 不允许重复定义表）。
+ *  没有 warning 通道，所以宁可不写也不能写出一个 Codex 解析不了的配置。 */
+export function hasForeignAgentsTable(existing) {
+  if (existing === null || existing === undefined) return false;
+  const text = Buffer.isBuffer(existing) ? existing.toString("utf8") : String(existing);
+  const begin = text.indexOf(CODEX_CONFIG_BEGIN);
+  const end = text.indexOf(CODEX_CONFIG_END);
+  const outside =
+    begin >= 0 && end > begin
+      ? text.slice(0, begin) + text.slice(end + CODEX_CONFIG_END.length)
+      : text;
+  return /^\s*\[agents\]\s*$/m.test(outside);
+}
+
+export function codexConfigPayload() {
+  return `${CODEX_CONFIG_BEGIN}\n[agents]\nmax_depth = ${CODEX_MAX_DEPTH}\nmax_threads = ${CODEX_MAX_THREADS}\n${CODEX_CONFIG_END}`;
+}
+
 function jsonSkill(assignedSkills, id) {
   return assignedSkills?.byAgent?.[id] || [];
 }
@@ -55,6 +86,14 @@ export function renderAdapterArtifacts({
         content: payload,
         label: "adapter:codex/global-ceo",
         managed: {begin: BEGIN_MARKER, end: END_MARKER},
+      });
+      const codexDir = dirname(tool.agentPaths[0]);
+      artifacts.push({
+        relativePath: join(codexDir, "config.toml"),
+        content: codexConfigPayload(),
+        label: "adapter:codex/config-depth",
+        managed: {begin: CODEX_CONFIG_BEGIN, end: CODEX_CONFIG_END},
+        skipIf: hasForeignAgentsTable,
       });
     }
     for (const agent of agents.filter((item) => item.id !== "ceo")) {

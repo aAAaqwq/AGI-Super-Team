@@ -90,7 +90,7 @@ ast-ceo            唯一公司级协调者
 | 契约项 | Claude Code | Codex | 硬度 |
 |---|---|---|---|
 | **叶子禁止派发** | `disallowedTools: Agent`（frontmatter 黑名单） | 由 `max_depth` 自然导出 | **硬** |
-| **深度上限** | `env.CLAUDE_CODE_MAX_SUBAGENT_SPAWN_DEPTH=3` | `[agents] max_depth = 3` | **硬** |
+| **深度上限** | `env.CLAUDE_CODE_MAX_SUBAGENT_SPAWN_DEPTH=3` | `[agents] max_depth = 2` | **硬** |
 | **并发上限** | `env.CLAUDE_CODE_MAX_CONCURRENT_SUBAGENTS=6` | `[agents] max_threads = 12` | **硬（但全局）** |
 | **每-manager 并发 ≤2** | 做不到（只有会话级全局） | 做不到（只有全局 `max_threads`） | **做不到** |
 | **路由分级 L0–L3** | `~/.claude/CLAUDE.md` | `~/.codex/AGENTS.md` | **软（提示词）** |
@@ -110,6 +110,40 @@ ast-ceo            唯一公司级协调者
 Codex 内置的 spawn 门是「**仅当用户明确要求子代理/委派/并行时才允许 spawn**」。
 而 `~/.codex/AGENTS.md` 以 **user 角色**注入 —— 因此**那张 L0–L3 分级表本身就是这次授权**。没有它，Codex 侧的路由根本不会触发。
 
+### 深度值为什么两家不同（容易配错）
+
+**Codex 的 root session 本身就是 CEO** —— 本 adapter 不写 `ast-ceo.toml`（见下方"分发目标"清单），
+`AGENTS.md` 直接把主 Agent 定义为 CEO。所以两家的链条长度不同：
+
+```
+Claude Code:  main(0) → ast-ceo(1) → C-suite(2) → leaf(3)   → 需要 3
+Codex:        root=CEO(0)         → C-suite(1) → leaf(2)    → 需要 2
+```
+
+⚠️ **Codex 的 `max_depth` 默认值是 1** —— 装完不写就派不出叶子，且报错发生在运行时而非安装时：
+
+```
+Agent depth limit reached. Solve the task yourself.
+```
+
+这是**静默失败**：装完看起来一切正常，直到真让团队干活才发现派不出去。
+因此安装器会写 `~/.codex/config.toml`（见下）。
+
+### 安装器对 `config.toml` 的处理
+
+`bin/adapters/codex.mjs` 用托管块写入，行为如下：
+
+| 情况 | 行为 |
+|---|---|
+| `config.toml` 不存在 | 创建，写入托管块 |
+| 存在、且无 `[agents]` 表 | **保留原有内容**，末尾追加托管块 |
+| 存在、且已有 `[agents]` 表（托管块之外） | **整块跳过，文件零改动** |
+| 已有托管块（重复安装） | 原地替换，幂等 |
+
+第三行是关键：TOML 不允许重复定义表，追加会产生**用户 Codex 无法解析的配置**。
+该情况下安装器宁可不写 —— **你需要手动把 `max_depth = 2` 合进已有的 `[agents]` 表**。
+（判定实现在 `hasForeignAgentsTable()`，由 `core.mjs` 的通用 `skipIf` 钩子调用。）
+
 ---
 
 ## 四、当前实测落地状态（2026-09-15）
@@ -118,7 +152,7 @@ Codex 内置的 spawn 门是「**仅当用户明确要求子代理/委派/并行
 |---|---|---|
 | 14 个顶层角色 description | ✅ 任务式 + 「不适用」边界 | ⚠️ **角色尚未安装** |
 | 92 个叶子 | ✅ 已装（94 个含 `disallowedTools`）| ⚠️ **未安装** |
-| 深度 | ✅ `=3` | ✅ `max_depth = 3` |
+| 深度 | ✅ `=3` | ✅ `max_depth = 2`（安装器自动写入）|
 | 并发 | ✅ `=6` | ✅ `max_threads = 12` |
 | 路由分级规则 | ✅ `~/.claude/CLAUDE.md` | ✅ `~/.codex/AGENTS.md` |
 | 审计 hook | ✅ 已装，**实测触发过** | ⏸ 未装（需交互式 `/hooks` 信任） |
@@ -126,7 +160,10 @@ Codex 内置的 spawn 门是「**仅当用户明确要求子代理/委派/并行
 
 ### 已知缺口
 
-1. **Codex 侧 106 个角色全部不存在** —— `~/.codex/agents/` 为空，`config.toml` 无 `[agents.<name>]`。AGENTS.md 里点名的角色当前无法解析。
+1. **Codex 的叶子默认不装** —— 默认 `--tool codex` 只写 13 个 C-suite/PE/Governor TOML；
+   92 个叶子要显式加 `--all-subagents`（实测：加后共 105 个 TOML）。
+   用户不加就会得到一个"有 manager 没叶子"的团队 —— **且没有任何提示**。
+   本条是可用性缺口，不是实现缺口。
 2. **审计 hook 在 Codex 侧未装** —— 需在 `/hooks` 交互式 review 并记录信任 hash；且 0.139.0 不读 `~/.codex/hooks.json`，必须写进 `config.toml`。
 3. **`scripts/build_codex_csuite_adapter.py` 是另一条 Codex 路径** —— 它的插件 payload 描述仍从 `focus` 派生，未吃到 `trigger` 改造。
 4. **per-manager 并发**两家都做不到，契约里的 `maxConcurrentChildren: 2` 目前**无法硬强制**，只能靠提示词。
