@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "harness": "hermes",
+  "profileId": "ast-cqo",
+  "roleId": "cqo",
+  "roleType": "manager",
+  "description": "CQO (Jim Simons)｜需要量化假设设计、回测与复现、模型评估与独立复核、组合风险控制或实验预登记时调用。 不适用：需要资本配置与预算决策、实盘下单或交易执行、经营现金流与利润预测，或问题缺少可复现数据与量化口径。",
+  "blueprintOnly": true,
+  "runtimeStateCreated": false,
+  "runtimeEvidence": "pending",
+  "canonicalSource": "agents/cqo",
+  "roleSkill": "./skills/agi-super-team-agents/ast-cqo/SKILL.md",
+  "assignedSkills": [
+    "alpha101",
+    "backtest-expert",
+    "backtesting-frameworks",
+    "backtesting-trading-strategies",
+    "company-investment-research",
+    "csv-pipeline",
+    "data-analyst",
+    "deep-research",
+    "defi-risk-assessment",
+    "financial-planning-and-analysis",
+    "quant-analyst",
+    "research-evidence-synthesis",
+    "risk-metrics-calculation",
+    "technical-analysis",
+    "trade-prediction-markets"
+  ],
+  "kanbanTaskSkills": [
+    "ast-cqo",
+    "alpha101",
+    "backtest-expert",
+    "backtesting-frameworks",
+    "backtesting-trading-strategies",
+    "company-investment-research",
+    "csv-pipeline",
+    "data-analyst",
+    "deep-research",
+    "defi-risk-assessment",
+    "financial-planning-and-analysis",
+    "quant-analyst",
+    "research-evidence-synthesis",
+    "risk-metrics-calculation",
+    "technical-analysis",
+    "trade-prediction-markets"
+  ],
+  "profileSkillVisibility": {
+    "reason": "Hermes Profiles use separate HERMES_HOME directories and do not inherit the default profile's Skills implicitly.",
+    "configurationMode": "human-review-required",
+    "configKey": "skills.external_dirs",
+    "requiredExternalDirectory": "./skills",
+    "target": "Hermes Agent",
+    "minimumVersion": "2026.8.3",
+    "runtimeEvidence": "pending",
+    "appliedByAdapter": false
+  },
+  "desiredCapabilities": {
+    "kanbanRole": "worker",
+    "delegateTask": "anonymous-short-task-only",
+    "requiredMaxDepth": 2,
+    "maxConcurrentChildren": 2
+  },
+  "activation": {
+    "humanReviewRequired": true,
+    "profileCreateOrUpdateRequired": true,
+    "gatewayStartRequiredForKanbanDispatch": true,
+    "performedByAdapter": false
+  }
+}

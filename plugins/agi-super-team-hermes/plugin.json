@@ -1,0 +1,13 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "agi-super-team-hermes",
+  "version": "1.6.0",
+  "description": "Evidence-backed AI team packs with preview-first installation and explicit human review",
+  "author": {
+    "name": "Daniel Li",
+    "url": "https://github.com/aAAaqwq/AGI-Super-Team"
+  },
+  "homepage": "https://github.com/aAAaqwq/AGI-Super-Team",
+  "repository": "https://github.com/aAAaqwq/AGI-Super-Team",
+  "license": "MIT"
+}

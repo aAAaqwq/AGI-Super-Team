@@ -1,0 +1,524 @@
+{
+  "schemaVersion": 1,
+  "harness": "openclaw",
+  "runtimeEvidence": "pending",
+  "targetVersion": "2026.7.1-2",
+  "targetHome": ".",
+  "targetStateDir": "./.openclaw",
+  "targetConfigDir": ".",
+  "mergeContract": {
+    "configPath": "./.openclaw/openclaw.json",
+    "path": "agents.list",
+    "key": "id",
+    "strategy": "upsert-managed-preserve-unmanaged",
+    "managedPrefix": "ast-",
+    "preserveUnmanaged": true,
+    "removeUnmentionedManaged": false,
+    "conflictPolicy": "fail-unless-previewed",
+    "mapStrategy": "deep-merge"
+  },
+  "requirements": {
+    "requiredMaxDepth": 2,
+    "maxChildrenPerAgent": 2
+  },
+  "configPatch": {
+    "agents": {
+      "defaults": {
+        "subagents": {
+          "maxSpawnDepth": 2,
+          "maxChildrenPerAgent": 2
+        }
+      },
+      "list": [
+        {
+          "id": "ast-ceo",
+          "name": "CEO (Elon Musk)",
+          "workspace": "./agency-agents/agi-super-team/ast-ceo",
+          "skills": [
+            "agi-super-team-orchestrator",
+            "architecture-decision-records",
+            "company-investment-research",
+            "competitive-analysis",
+            "dispatching-parallel-agents",
+            "executive-decision-system",
+            "financial-analyst",
+            "first-principles-thinking",
+            "internal-comms",
+            "kpi-dashboard-design",
+            "legal-risk-assessment",
+            "orchestrate-agi-super-team",
+            "prioritization-funnel",
+            "project-planner",
+            "setting-okrs-goals",
+            "startup-metrics-framework",
+            "thinking-elon-musk",
+            "verification-before-completion",
+            "web-search"
+          ],
+          "subagents": {
+            "allowAgents": [
+              "ast-cto",
+              "ast-pe",
+              "ast-cpo",
+              "ast-cqo",
+              "ast-cmo",
+              "ast-cfo",
+              "ast-cdo",
+              "ast-cco",
+              "ast-clo",
+              "ast-cro",
+              "ast-cso",
+              "ast-coo",
+              "ast-governor"
+            ],
+            "requireAgentId": true
+          }
+        },
+        {
+          "id": "ast-cto",
+          "name": "CTO (Jensen Huang)",
+          "workspace": "./agency-agents/agi-super-team/ast-cto",
+          "skills": [
+            "api-design",
+            "api-design-patterns",
+            "api-provider-status",
+            "architecture-decision",
+            "architecture-decision-records",
+            "architecture-patterns",
+            "cost-aware-llm-pipeline",
+            "dashboard-builder",
+            "distributed-tracing",
+            "docker-essentials",
+            "kubernetes-deployment",
+            "model-provider-manager",
+            "observability-designer",
+            "postmortem-writer",
+            "pre-push-security-scan",
+            "provider-key-manager",
+            "sentry-automation",
+            "sre-reliability-governance",
+            "tech-decision",
+            "token-reporter"
+          ],
+          "subagents": {
+            "allowAgents": [],
+            "requireAgentId": true
+          },
+          "tools": {
+            "deny": [
+              "sessions_spawn"
+            ]
+          }
+        },
+        {
+          "id": "ast-pe",
+          "name": "PE (Linus Torvalds)",
+          "workspace": "./agency-agents/agi-super-team/ast-pe",
+          "skills": [
+            "bash-pro",
+            "claude-code-runner",
+            "cli-developer",
+            "code-review",
+            "codex-cc-guide",
+            "docker-essentials",
+            "e2e-testing",
+            "finishing-a-development-branch",
+            "gh-issues",
+            "github",
+            "pre-push-security-scan",
+            "react-expert",
+            "receiving-code-review",
+            "redis-inspect",
+            "requesting-code-review",
+            "shell-expert",
+            "sql-optimization",
+            "sql-pro",
+            "systematic-debugging",
+            "tdd-workflow",
+            "verification-before-completion",
+            "vibe-code-auditor"
+          ],
+          "subagents": {
+            "allowAgents": [],
+            "requireAgentId": true
+          },
+          "tools": {
+            "deny": [
+              "sessions_spawn"
+            ]
+          }
+        },
+        {
+          "id": "ast-cpo",
+          "name": "CPO (Steve Jobs)",
+          "workspace": "./agency-agents/agi-super-team/ast-cpo",
+          "skills": [
+            "accessibility-compliance-accessibility-audit",
+            "analytics-tracking",
+            "competitive-analysis",
+            "customer-success",
+            "deep-research",
+            "design-thinking",
+            "doc-coauthoring",
+            "feature-requirements-clarification",
+            "figma-automation",
+            "pm-competitive-teardown",
+            "prioritization-funnel",
+            "product-discovery-portfolio-governance",
+            "user-story",
+            "ux-heuristics",
+            "write-product-documentation"
+          ],
+          "subagents": {
+            "allowAgents": [],
+            "requireAgentId": true
+          },
+          "tools": {
+            "deny": [
+              "sessions_spawn"
+            ]
+          }
+        },
+        {
+          "id": "ast-cqo",
+          "name": "CQO (Jim Simons)",
+          "workspace": "./agency-agents/agi-super-team/ast-cqo",
+          "skills": [
+            "alpha101",
+            "backtest-expert",
+            "backtesting-frameworks",
+            "backtesting-trading-strategies",
+            "company-investment-research",
+            "csv-pipeline",
+            "data-analyst",
+            "deep-research",
+            "defi-risk-assessment",
+            "financial-planning-and-analysis",
+            "quant-analyst",
+            "research-evidence-synthesis",
+            "risk-metrics-calculation",
+            "technical-analysis",
+            "trade-prediction-markets"
+          ],
+          "subagents": {
+            "allowAgents": [],
+            "requireAgentId": true
+          },
+          "tools": {
+            "deny": [
+              "sessions_spawn"
+            ]
+          }
+        },
+        {
+          "id": "ast-cmo",
+          "name": "CMO (David Ogilvy)",
+          "workspace": "./agency-agents/agi-super-team/ast-cmo",
+          "skills": [
+            "analytics-tracking",
+            "brand-identity",
+            "campaign-analytics",
+            "competitive-analysis",
+            "copywriting",
+            "data-storytelling",
+            "deep-research",
+            "doc-coauthoring",
+            "google-analytics",
+            "google-analytics-automation",
+            "mailchimp-automation",
+            "marketing-psychology",
+            "positioning-growth-experiment-system",
+            "programmatic-seo",
+            "seo-audit",
+            "seo-geo",
+            "social-media-management",
+            "traffic-acquisition"
+          ],
+          "subagents": {
+            "allowAgents": [],
+            "requireAgentId": true
+          },
+          "tools": {
+            "deny": [
+              "sessions_spawn"
+            ]
+          }
+        },
+        {
+          "id": "ast-cfo",
+          "name": "CFO (Warren Buffett)",
+          "workspace": "./agency-agents/agi-super-team/ast-cfo",
+          "skills": [
+            "bookkeeping-basics",
+            "business-analyst",
+            "company-investment-research",
+            "cost-aware-llm-pipeline",
+            "cost-optimization",
+            "financial-analyst",
+            "financial-planning-and-analysis",
+            "invoice-organizer",
+            "pricing-strategy",
+            "prioritization-funnel",
+            "risk-metrics-calculation",
+            "saas-metrics-coach",
+            "startup-business-analyst-business-case",
+            "startup-business-analyst-financial-projections",
+            "startup-metrics-framework"
+          ],
+          "subagents": {
+            "allowAgents": [],
+            "requireAgentId": true
+          },
+          "tools": {
+            "deny": [
+              "sessions_spawn"
+            ]
+          }
+        },
+        {
+          "id": "ast-cdo",
+          "name": "CDO (Nate Silver)",
+          "workspace": "./agency-agents/agi-super-team/ast-cdo",
+          "skills": [
+            "analytics-tracking",
+            "business-analyst",
+            "csv-pipeline",
+            "dashboard-builder",
+            "data-analyst",
+            "data-contract-quality-governance",
+            "data-engineering-data-pipeline",
+            "data-storytelling",
+            "design-secure-data-architecture",
+            "kpi-dashboard-design",
+            "postgresql-database-engineering",
+            "senior-data-engineer",
+            "senior-data-scientist",
+            "sql-pro",
+            "startup-metrics-framework",
+            "supabase-postgres-best-practices"
+          ],
+          "subagents": {
+            "allowAgents": [],
+            "requireAgentId": true
+          },
+          "tools": {
+            "deny": [
+              "sessions_spawn"
+            ]
+          }
+        },
+        {
+          "id": "ast-cco",
+          "name": "CCO (MrBeast)",
+          "workspace": "./agency-agents/agi-super-team/ast-cco",
+          "skills": [
+            "ai-marketing-videos",
+            "article-to-infographic",
+            "content-cover-gen",
+            "content-illustration-strategy",
+            "content-ops-toolkit",
+            "content-research-writer",
+            "content-rewriter",
+            "content-typography",
+            "copy-editing",
+            "copywriting",
+            "data-storytelling",
+            "doc-coauthoring",
+            "douyin-smart-publish",
+            "editorial-content-system",
+            "jimeng-storyboard",
+            "nano-banana-pro",
+            "openai-whisper",
+            "seo-content-writer",
+            "social-content",
+            "video-marketing",
+            "video-transcriber",
+            "xhs-publisher"
+          ],
+          "subagents": {
+            "allowAgents": [],
+            "requireAgentId": true
+          },
+          "tools": {
+            "deny": [
+              "sessions_spawn"
+            ]
+          }
+        },
+        {
+          "id": "ast-clo",
+          "name": "CLO (Alan Dershowitz)",
+          "workspace": "./agency-agents/agi-super-team/ast-clo",
+          "skills": [
+            "accessibility-compliance-accessibility-audit",
+            "china-contract-review",
+            "contract-and-proposal-writer",
+            "contract-review",
+            "customs-trade-compliance",
+            "employment-contract-templates",
+            "gdpr-compliance",
+            "gdpr-dsgvo-expert",
+            "legal-advisor",
+            "legal-issue-spotting",
+            "legal-risk-assessment",
+            "prepare-software-ip-filings",
+            "privacy-compliance",
+            "security-compliance-compliance-check"
+          ],
+          "subagents": {
+            "allowAgents": [],
+            "requireAgentId": true
+          },
+          "tools": {
+            "deny": [
+              "sessions_spawn"
+            ]
+          }
+        },
+        {
+          "id": "ast-cro",
+          "name": "CRO (Richard Feynman)",
+          "workspace": "./agency-agents/agi-super-team/ast-cro",
+          "skills": [
+            "arxiv-automation",
+            "company-investment-research",
+            "competitive-analysis",
+            "competitive-intelligence",
+            "deep-research",
+            "first-principles-thinking",
+            "market-sizing-analysis",
+            "pm-competitive-teardown",
+            "research-engineer",
+            "research-evidence-synthesis",
+            "search-first",
+            "search-layer",
+            "search-specialist",
+            "tech-selection-research",
+            "web-search"
+          ],
+          "subagents": {
+            "allowAgents": [],
+            "requireAgentId": true
+          },
+          "tools": {
+            "deny": [
+              "sessions_spawn"
+            ]
+          }
+        },
+        {
+          "id": "ast-cso",
+          "name": "CSO (Michael Dell)",
+          "workspace": "./agency-agents/agi-super-team/ast-cso",
+          "skills": [
+            "account-executive",
+            "close-automation",
+            "cold-email-sequence-generator",
+            "competitive-analysis",
+            "contract-and-proposal-writer",
+            "crm-automation",
+            "customer-success",
+            "deep-research",
+            "doc-coauthoring",
+            "founder-sales",
+            "lead-intelligence",
+            "pricing-strategy",
+            "revenue-opportunity-governance",
+            "salesforce-automation",
+            "sandler-system",
+            "zoho-crm-automation"
+          ],
+          "subagents": {
+            "allowAgents": [],
+            "requireAgentId": true
+          },
+          "tools": {
+            "deny": [
+              "sessions_spawn"
+            ]
+          }
+        },
+        {
+          "id": "ast-coo",
+          "name": "COO (Andy Grove)",
+          "workspace": "./agency-agents/agi-super-team/ast-coo",
+          "skills": [
+            "architecture-decision-records",
+            "asana-automation",
+            "incident-command-and-review",
+            "internal-comms",
+            "jira-automation",
+            "kpi-dashboard-design",
+            "linear-automation",
+            "model-business-processes",
+            "operating-cadence-and-flow",
+            "postmortem-writer",
+            "prioritization-funnel",
+            "project-planner",
+            "systematic-debugging",
+            "thinking-andy-grove",
+            "verification-before-completion"
+          ],
+          "subagents": {
+            "allowAgents": [],
+            "requireAgentId": true
+          },
+          "tools": {
+            "deny": [
+              "sessions_spawn"
+            ]
+          }
+        },
+        {
+          "id": "ast-governor",
+          "name": "Governor",
+          "workspace": "./agency-agents/agi-super-team/ast-governor",
+          "skills": [
+            "accessibility-compliance-accessibility-audit",
+            "architecture-decision-records",
+            "code-review",
+            "contract-review",
+            "design-secure-data-architecture",
+            "eval-harness",
+            "gdpr-compliance",
+            "independent-assurance-gate",
+            "legal-risk-assessment",
+            "pre-push-security-scan",
+            "risk-metrics-calculation",
+            "security-compliance-compliance-check",
+            "verification-before-completion",
+            "vibe-code-auditor"
+          ],
+          "subagents": {
+            "allowAgents": [],
+            "requireAgentId": true
+          },
+          "tools": {
+            "deny": [
+              "sessions_spawn"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "canary": {
+    "status": "pending",
+    "requiredChecks": [
+      "isolated-state-directory",
+      "config-validate",
+      "managed-agents-discovered",
+      "ceo-manager-leaf-dispatch-observed",
+      "governor-raw-child-session-history-observed",
+      "governor-independent-review-observed",
+      "bindings-unchanged"
+    ],
+    "receiptMustBindRepositoryRevision": true
+  },
+  "packageRoot": "plugins/agi-super-team-openclaw",
+  "coordinator": "ast-ceo",
+  "independentReviewer": "ast-governor",
+  "requiredMaxDepth": 2,
+  "maxConcurrentChildren": 2,
+  "generatedBy": "scripts/build_harness_packages.py"
+}

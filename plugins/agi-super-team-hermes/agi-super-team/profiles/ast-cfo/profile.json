@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "harness": "hermes",
+  "profileId": "ast-cfo",
+  "roleId": "cfo",
+  "roleType": "manager",
+  "description": "CFO (Warren Buffett)｜需要预算与滚动预测、单位经济与定价证据、资本配置取舍、财务控制或成本优化时调用。 不适用：合同条款与合规判断、销售与客户关系推进、产品范围取舍，或需要实际付款、过账与税务申报操作。",
+  "blueprintOnly": true,
+  "runtimeStateCreated": false,
+  "runtimeEvidence": "pending",
+  "canonicalSource": "agents/cfo",
+  "roleSkill": "./skills/agi-super-team-agents/ast-cfo/SKILL.md",
+  "assignedSkills": [
+    "bookkeeping-basics",
+    "business-analyst",
+    "company-investment-research",
+    "cost-aware-llm-pipeline",
+    "cost-optimization",
+    "financial-analyst",
+    "financial-planning-and-analysis",
+    "invoice-organizer",
+    "pricing-strategy",
+    "prioritization-funnel",
+    "risk-metrics-calculation",
+    "saas-metrics-coach",
+    "startup-business-analyst-business-case",
+    "startup-business-analyst-financial-projections",
+    "startup-metrics-framework"
+  ],
+  "kanbanTaskSkills": [
+    "ast-cfo",
+    "bookkeeping-basics",
+    "business-analyst",
+    "company-investment-research",
+    "cost-aware-llm-pipeline",
+    "cost-optimization",
+    "financial-analyst",
+    "financial-planning-and-analysis",
+    "invoice-organizer",
+    "pricing-strategy",
+    "prioritization-funnel",
+    "risk-metrics-calculation",
+    "saas-metrics-coach",
+    "startup-business-analyst-business-case",
+    "startup-business-analyst-financial-projections",
+    "startup-metrics-framework"
+  ],
+  "profileSkillVisibility": {
+    "reason": "Hermes Profiles use separate HERMES_HOME directories and do not inherit the default profile's Skills implicitly.",
+    "configurationMode": "human-review-required",
+    "configKey": "skills.external_dirs",
+    "requiredExternalDirectory": "./skills",
+    "target": "Hermes Agent",
+    "minimumVersion": "2026.8.3",
+    "runtimeEvidence": "pending",
+    "appliedByAdapter": false
+  },
+  "desiredCapabilities": {
+    "kanbanRole": "worker",
+    "delegateTask": "anonymous-short-task-only",
+    "requiredMaxDepth": 2,
+    "maxConcurrentChildren": 2
+  },
+  "activation": {
+    "humanReviewRequired": true,
+    "profileCreateOrUpdateRequired": true,
+    "gatewayStartRequiredForKanbanDispatch": true,
+    "performedByAdapter": false
+  }
+}

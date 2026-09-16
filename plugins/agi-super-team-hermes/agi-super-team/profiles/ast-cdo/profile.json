@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "harness": "hermes",
+  "profileId": "ast-cdo",
+  "roleId": "cdo",
+  "roleType": "manager",
+  "description": "CDO (Nate Silver)｜需要数据契约与口径定义、数据质量与血缘治理、指标体系或分析模型设计、数据安全架构评审时调用。 不适用：研究方法设计与一手证据核验、具体业务决策取舍、生产应用与前端编码实现，或数据授权与合规依据尚未确认。",
+  "blueprintOnly": true,
+  "runtimeStateCreated": false,
+  "runtimeEvidence": "pending",
+  "canonicalSource": "agents/cdo",
+  "roleSkill": "./skills/agi-super-team-agents/ast-cdo/SKILL.md",
+  "assignedSkills": [
+    "analytics-tracking",
+    "business-analyst",
+    "csv-pipeline",
+    "dashboard-builder",
+    "data-analyst",
+    "data-contract-quality-governance",
+    "data-engineering-data-pipeline",
+    "data-storytelling",
+    "design-secure-data-architecture",
+    "kpi-dashboard-design",
+    "postgresql-database-engineering",
+    "senior-data-engineer",
+    "senior-data-scientist",
+    "sql-pro",
+    "startup-metrics-framework",
+    "supabase-postgres-best-practices"
+  ],
+  "kanbanTaskSkills": [
+    "ast-cdo",
+    "analytics-tracking",
+    "business-analyst",
+    "csv-pipeline",
+    "dashboard-builder",
+    "data-analyst",
+    "data-contract-quality-governance",
+    "data-engineering-data-pipeline",
+    "data-storytelling",
+    "design-secure-data-architecture",
+    "kpi-dashboard-design",
+    "postgresql-database-engineering",
+    "senior-data-engineer",
+    "senior-data-scientist",
+    "sql-pro",
+    "startup-metrics-framework",
+    "supabase-postgres-best-practices"
+  ],
+  "profileSkillVisibility": {
+    "reason": "Hermes Profiles use separate HERMES_HOME directories and do not inherit the default profile's Skills implicitly.",
+    "configurationMode": "human-review-required",
+    "configKey": "skills.external_dirs",
+    "requiredExternalDirectory": "./skills",
+    "target": "Hermes Agent",
+    "minimumVersion": "2026.8.3",
+    "runtimeEvidence": "pending",
+    "appliedByAdapter": false
+  },
+  "desiredCapabilities": {
+    "kanbanRole": "worker",
+    "delegateTask": "anonymous-short-task-only",
+    "requiredMaxDepth": 2,
+    "maxConcurrentChildren": 2
+  },
+  "activation": {
+    "humanReviewRequired": true,
+    "profileCreateOrUpdateRequired": true,
+    "gatewayStartRequiredForKanbanDispatch": true,
+    "performedByAdapter": false
+  }
+}
