@@ -63,7 +63,8 @@ README counts, badges, plugin manifests, and generated JSON must never override 
 | [`cookbook/`](../../cookbook/) | public-navigation | public-navigation | Long-form references. |
 | [`plugins/`](../../plugins/) | distribution-adapter | distribution-adapters | Curated per-harness packages; each remains manifest-only until a matching client receipt exists. |
 | [`assets/`](../../assets/) | public-navigation | public-navigation | Brand and demo media. |
-| `.agents/`, `.claude-plugin/`, `.cursor-plugin/`, `.kimi-plugin/`, `.codex/` | distribution-adapter | distribution-adapters | Root harness manifests. `.agents/plugins/marketplace.json` is the shared repo marketplace; the rest are client-mandated locations. |
+| `.agents/`, `.claude-plugin/`, `.cursor-plugin/`, `.kimi-plugin/` | distribution-adapter | distribution-adapters | Root harness manifests. `.agents/plugins/marketplace.json` registers the Codex plugin — it is **not** a marketplace shared across harnesses; the rest are client-mandated locations. Per-entry service and delete-consequence: [repository entry map](./repository-entrypoints.md). |
+| `.codex/` | public-navigation | distribution-adapters | Human-facing Codex install guide, owned by the distribution-adapter module. `.codex/INDEX.md` is read by no code; Codex installs from `plugins/agi-super-team-codex/.codex-plugin/plugin.json`. `role` (what the artifact is) and `module` (which subsystem owns it) are orthogonal — `README.md` is `public-navigation`/`public-navigation`, while `AGENTS.md` is `public-navigation`/`governance-memory`. |
 | `ARCHITECTURE.md`, `CONTEXT.md`, `CHARTER.md`, `COLLABORATION.md` | governance / authored-source | governance-memory | Shared language and decision memory. |
 
 ## Important seams

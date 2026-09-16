@@ -63,12 +63,26 @@
 
 具体落盘位置与接线行为见 [主力框架接入手册](../guides/harness-adapters.md)；逐框架的调研结论见 [各 Coding Agent 的装配机制](../researchs/coding-agent-assembly.md)。
 
-## 已知矛盾（记录，未修改）
+## 已修正的一处描述
 
-以下两处不一致**已确认存在**，但本文**不修改**它们——它们分别归属 `config/` 与 `docs/architecture/`，改动需要单独的决策：
+1. **名不副实（已修正）**：[`docs/architecture/repository-architecture.md`](./repository-architecture.md) 曾把 `.agents/` 描述为 "shared repo marketplace"，但该文件实际**只声明 Codex 一个插件**（见上表）。该行已拆为两条，并删去 "shared" 这一与内容不符的措辞。
 
-1. **名不副实**：[`docs/architecture/repository-architecture.md`](./repository-architecture.md) 第 66 行把 `.agents/` 描述为 "shared repo marketplace"，但该文件实际**只声明 Codex 一个插件**（见上表）。称之为 "shared" 与内容不符。
-2. **role / module 错配**：[`config/repository-architecture.json`](../../config/repository-architecture.json) 给 `.codex` 的 `role` 是 `public-navigation`，`module` 是 `distribution-adapters`。role 说它是给公众看的导航，module 说它是分发适配器——两者语义冲突；`.codex/INDEX.md` 实为**仅人类**的安装指引（`[实测]`），更接近导航而非适配器。
+## 记录：一处曾误判、实际不成立的「矛盾」
+
+`config/repository-architecture.json` 给 `.codex` 的 `role` 是 `public-navigation`、`module` 是 `distribution-adapters`。这**曾**被判断为 role/module 语义冲突，**该判断是错的**：
+
+**`role` 与 `module` 是正交的两维** —— 前者答「这是什么性质的产物」，后者答「归哪个子系统所有」。同一条目上二者不同是正常且普遍的：
+
+| 条目 | role | module |
+|---|---|---|
+| `README.md` | public-navigation | public-navigation |
+| `AGENTS.md` | public-navigation | governance-memory |
+| `.codex` | public-navigation | distribution-adapters |
+
+`.codex/` 是**面向人类**的 Codex 安装指引（role），同时**归属分发适配器子系统**（module）—— 两个判断都成立。
+
+判定依据：把它改成 `module: public-navigation` 会直接破坏架构自检 —— `audit_architecture.py` 报 `module distribution-adapters implementation lacks matching ownership: .codex`，契约测试（95 分门槛）随即失败。**注册表原值正确，未做改动。**
+
 
 ## 返回
 

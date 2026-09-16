@@ -66,6 +66,22 @@ def _packed_tarball_paths() -> set[str]:
     return {entry["path"] for entry in _packed_tarball()["files"]}
 
 
+def _glob_matches_published(pattern: str, published: set[str]) -> bool:
+    """Match an npm `files` glob against published paths, not the filesystem.
+
+    Uses `fnmatch` translation over the *tarball* paths. `Path.glob` cannot be
+    used: `Path.glob("a/*/b/**")` needs every intermediate directory to exist
+    on the running machine, so the same commit can pass locally and fail in CI
+    while npm packs the content correctly either way. `**` is translated to
+    match across separators; a single `*` stays within one path segment.
+    """
+    translated = re.escape(pattern)
+    translated = translated.replace(r"\*\*/", ".*/").replace(r"\*\*", ".*")
+    translated = translated.replace(r"\*", "[^/]*")
+    regex = re.compile(f"^{translated}$")
+    return any(regex.match(path) for path in published)
+
+
 class DistributionReleaseContractTests(unittest.TestCase):
     def test_npm_tarball_contains_the_runtime_and_no_transient_files(self) -> None:
         files = {entry["path"]: entry for entry in _packed_tarball()["files"]}
@@ -194,8 +210,16 @@ class DistributionReleaseContractTests(unittest.TestCase):
 
         `!` entries are exclusions rather than content, so matching nothing is
         their healthy state.
+
+        Non-`!` entries are judged by what the *tarball* actually contains,
+        not by `Path.glob`. `Path.glob("a/*/b/**")` requires every intermediate
+        directory to exist on the running machine, so it can report "no match"
+        for a pattern that npm packs correctly -- a difference that made this
+        test pass locally and fail in CI on the same commit. The tarball is the
+        artifact under test, so it is the artifact that gets inspected.
         """
         package = json.loads((ROOT / "package.json").read_text(encoding="utf-8"))
+        published = _packed_tarball_paths()
 
         for entry in package["files"]:
             if entry.startswith("!"):
@@ -206,6 +230,20 @@ class DistributionReleaseContractTests(unittest.TestCase):
                         (ROOT / entry).exists(),
                         f'files entry "{entry}" does not exist and ships no content',
                     )
+                    # Directories are never listed as tarball entries themselves;
+                    # they contribute their contents. Files are listed verbatim.
+                    if (ROOT / entry).is_dir():
+                        prefix = entry.rstrip("/") + "/"
+                        self.assertTrue(
+                            any(path.startswith(prefix) for path in published),
+                            f'files entry "{entry}" is a directory that ships nothing',
+                        )
+                    else:
+                        self.assertIn(
+                            entry,
+                            published,
+                            f'files entry "{entry}" exists but reaches no published path',
+                        )
                     continue
                 self.assertFalse(
                     entry.endswith("/"),
@@ -213,7 +251,7 @@ class DistributionReleaseContractTests(unittest.TestCase):
                     f'publishes as nothing; write "{entry.rstrip("/")}/**" instead',
                 )
                 self.assertTrue(
-                    any(path.is_file() for path in ROOT.glob(entry)),
+                    _glob_matches_published(entry, published),
                     f'files entry "{entry}" matches no file and ships no content',
                 )
 
