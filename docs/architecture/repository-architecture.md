@@ -2,7 +2,7 @@
 
 Agents enter this repository with partial context. This is the map for the whole tree: what each top-level path is, which module owns it, and whether it carries authority.
 
-The authoritative narrative is [`ARCHITECTURE.md`](../ARCHITECTURE.md) at the repository root — read it for the five layers, seams, deletion tests, and change map. The machine-readable ownership contract is [`config/repository-architecture.json`](../config/repository-architecture.json), and this map is derived from it. Consequential decisions live in [`adr/`](./adr/).
+The authoritative narrative is [`ARCHITECTURE.md`](../../ARCHITECTURE.md) at the repository root — read it for the five layers, seams, deletion tests, and change map. The machine-readable ownership contract is [`config/repository-architecture.json`](../../config/repository-architecture.json), and this map is derived from it. Consequential decisions live in [`adr/`](../adr/).
 
 For the files inside `docs/` itself, see the [docs inventory](../reference/docs-inventory.md).
 
@@ -32,7 +32,7 @@ Changing one of these changes meaning for everything downstream. `config/` holds
 - `config/skill-quality-baseline.json` — Quality gate baseline.
 - `config/repository-architecture.json` — Path ownership and authority separation.
 - `config/external-skill-sources.json` — Removed machine-local link tombstones.
-- Canonical physical Skill inventory — tracked `skills/*/SKILL.md` files, interpreted by [`scripts/repository_model.py`](../scripts/repository_model.py).
+- Canonical physical Skill inventory — tracked `skills/*/SKILL.md` files, interpreted by [`scripts/repository_model.py`](../../scripts/repository_model.py).
 
 README counts, badges, plugin manifests, and generated JSON must never override these.
 
@@ -50,19 +50,19 @@ README counts, badges, plugin manifests, and generated JSON must never override 
 
 | Path | Role | Module | Notes |
 |---|---|---|---|
-| [`skills/`](../skills/) | canonical library | catalog-discovery | Foundational; consumed by every pack and catalog. Contains `skills/original/` first-party work. |
-| [`agents/`](../agents/) | authored-source | team-composition | Generic role packs; `agents/*/TOOLS.md` are generated. |
-| [`starter-kits/`](../starter-kits/) | authored-source | team-composition | Outcome-shaped entry points. |
-| [`config/`](../config/) | authored-authority | multiple | Most sources of truth and their schemas. |
-| [`bin/`](../bin/adapters/) | implementation | safe-installation | CLI entry point, installer, and the Adapter registry. |
-| [`install.sh`](../install.sh) | implementation | safe-installation | Generic workspace materializer. |
-| [`catalog/`](../catalog/) | generated-output | catalog-discovery | Built by `npm run build:skills`; never a source. |
-| [`scripts/`](../scripts/) | implementation | verification-evidence | Builders, validators, and audits. |
-| [`tests/`](../tests/) | evidence | verification-evidence | Behavior and contract tests. |
+| [`skills/`](../../skills/) | canonical library | catalog-discovery | Foundational; consumed by every pack and catalog. Contains `skills/original/` first-party work. |
+| [`agents/`](../../agents/) | authored-source | team-composition | Generic role packs; `agents/*/TOOLS.md` are generated. |
+| [`starter-kits/`](../../starter-kits/) | authored-source | team-composition | Outcome-shaped entry points. |
+| [`config/`](../../config/) | authored-authority | multiple | Most sources of truth and their schemas. |
+| [`bin/`](../../bin/adapters/) | implementation | safe-installation | CLI entry point, installer, and the Adapter registry. |
+| [`install.sh`](../../install.sh) | implementation | safe-installation | Generic workspace materializer. |
+| [`catalog/`](../../catalog/) | generated-output | catalog-discovery | Built by `npm run build:skills`; never a source. |
+| [`scripts/`](../../scripts/) | implementation | verification-evidence | Builders, validators, and audits. |
+| [`tests/`](../../tests/) | evidence | verification-evidence | Behavior and contract tests. |
 | [`docs/`](./) | public-navigation | public-navigation | GitHub Pages artifact plus editorial surface. |
-| [`cookbook/`](../cookbook/) | public-navigation | public-navigation | Long-form references. |
-| [`plugins/`](../plugins/) | distribution-adapter | distribution-adapters | Curated per-harness packages; each remains manifest-only until a matching client receipt exists. |
-| [`assets/`](../assets/) | public-navigation | public-navigation | Brand and demo media. |
+| [`cookbook/`](../../cookbook/) | public-navigation | public-navigation | Long-form references. |
+| [`plugins/`](../../plugins/) | distribution-adapter | distribution-adapters | Curated per-harness packages; each remains manifest-only until a matching client receipt exists. |
+| [`assets/`](../../assets/) | public-navigation | public-navigation | Brand and demo media. |
 | `.agents/`, `.claude-plugin/`, `.cursor-plugin/`, `.kimi-plugin/`, `.codex/` | distribution-adapter | distribution-adapters | Root harness manifests. `.agents/plugins/marketplace.json` is the shared repo marketplace; the rest are client-mandated locations. |
 | `ARCHITECTURE.md`, `CONTEXT.md`, `CHARTER.md`, `COLLABORATION.md` | governance / authored-source | governance-memory | Shared language and decision memory. |
 
@@ -105,4 +105,4 @@ README counts, badges, plugin manifests, and generated JSON must never override 
 
 **Neither score proves Skill quality, safety, clean harness installs, fixture outcomes, or external beta evidence.**
 
-Return to the [repository README](../README.md).
+Return to the [repository README](../../README.md).

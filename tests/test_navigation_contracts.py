@@ -23,6 +23,22 @@ PUBLIC_MARKDOWN = (
     "tests/README.md",
     "docs/README.md",
     "docs/adr/README.md",
+    # Maintained docs trees. Added after a docs/ restructure broke relative
+    # links in files that were not on this list — the contract only guards
+    # what it enumerates, so new curated trees must be added here.
+    "docs/architecture/repository-architecture.md",
+    "docs/architecture/adapter-registration.md",
+    "docs/researchs/README.md",
+    "docs/researchs/coding-agent-assembly.md",
+    "docs/researchs/adapter-codex.md",
+    "docs/researchs/adapter-claude-code.md",
+    "docs/researchs/adapter-openclaw.md",
+    "docs/researchs/adapter-hermes.md",
+    "docs/researchs/adapter-kimi.md",
+    "docs/researchs/adapter-dsh.md",
+    "docs/plans/README.md",
+    "docs/plans/dsh-primary-adapter.md",
+    "docs/reference/docs-inventory.md",
 )
 MARKDOWN_LINK = re.compile(r"!?\[[^]]*\]\(([^)]+)\)")
 

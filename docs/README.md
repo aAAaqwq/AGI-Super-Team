@@ -32,8 +32,14 @@ docs/
 
 ## 调研
 
-- [**各 Coding Agent 的装配机制**](./researchs/coding-agent-assembly.md) — Codex、Claude Code、OpenClaw、Hermes、Kimi、DSH 六家的插件机制、技能根与统一策略。含三处结论更正。
+- [**各 Coding Agent 的装配机制**](./researchs/coding-agent-assembly.md) — 六家框架的统一策略、跨工具标准与对比矩阵。
+- 逐框架：[Codex](./researchs/adapter-codex.md) · [Claude Code](./researchs/adapter-claude-code.md) · [OpenClaw](./researchs/adapter-openclaw.md) · [Hermes](./researchs/adapter-hermes.md) · [Kimi](./researchs/adapter-kimi.md) · [DSH](./researchs/adapter-dsh.md)
 - [调研目录说明](./researchs/README.md)
+
+## 计划
+
+- [DSH primary adapter 实施计划](./plans/dsh-primary-adapter.md) — 把 DeepSeek Harness 纳入支持的草案（未实施）。
+- [计划目录说明](./plans/README.md)
 
 ## 安装与使用
 
