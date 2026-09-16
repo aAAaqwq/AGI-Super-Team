@@ -1,21 +1,32 @@
 # Kimi 装配
 
-> **状态**：`[未验证]` —— 以下依据来自 Kimi 官方文档，但**未在本机实测客户端行为**（本机未安装 `kimi` CLI）。在实测确认前，不得声称 Kimi 已支持。
+> **状态**：`[部分核实]` —— 机制层已比对**官方文档原文**核实（2026-09 复核轮，本机仍未安装 `kimi` CLI，`which kimi` 为空，故**无任何 `[实测]` 证据**）。已核实项见下表「证据」列；已修正项见 [核实记录](#核实记录)。**客户端加载行为仍未实测**，在实测确认前不得声称本仓库在 Kimi 上可用。
+
+> **⚠️ 两个产品的文档被混用了**（本轮最重要发现）：Kimi 有两条产品线，官方文档站与仓库各自维护，**技能/插件路径并不一致**：
+>
+> | 产品 | 文档站 | 仓库 | 状态 |
+> |---|---|---|---|
+> | **Kimi Code CLI**（TypeScript，`0.x`） | `kimi.com/code/docs` | `MoonshotAI/kimi-code` | **当前主线** |
+> | kimi-cli（Python，`1.4x`） | `moonshotai.github.io/kimi-cli` | `MoonshotAI/kimi-cli` | 官方 README 声明**逐步下线**（"will be gradually wound down"） |
+>
+> 本文档此前引用的 `kimi plugin` shell 子命令与 `~/.kimi/plugins/` 均出自 **legacy Python 版**；当前 Kimi Code 的对应机制不同（见下）。参考实例：[obra/superpowers 的 Kimi 接入](https://github.com/obra/superpowers/blob/main/docs/README.kimi.md) 用的是 `.kimi-plugin/plugin.json`。
 
 ## 机制
 
 | 项目 | 值 | 证据 |
 |---|---|---|
-| manifest 位置 1 | `.kimi-plugin/plugin.json` | `[官方]` |
-| manifest 位置 2 | `kimi.plugin.json`（**优先级更高**） | `[官方]` |
-| 两者同时存在 | 以 `kimi.plugin.json` 为准 | `[官方]` |
-| 插件管理 | `kimi plugin` 命令 | `[官方]` |
-| 插件安装位置 | `~/.kimi/plugins/<plugin>/` | `[官方]` |
-| 数据根 | `$KIMI_CODE_HOME`（默认 `~/.kimi-code`） | `[官方]` |
+| manifest 位置 1 | `.kimi-plugin/plugin.json` | `[官方]` ✅ 已核实 |
+| manifest 位置 2 | `kimi.plugin.json`（**优先级更高**） | `[官方]` ✅ 已核实 |
+| 两者同时存在 | 以 `kimi.plugin.json` 为准 | `[官方]` ✅ 已核实（原文逐字："When both files exist, `kimi.plugin.json` takes precedence."） |
+| 插件管理（当前 Kimi Code） | TUI 斜杠命令 `/plugins`（`list`/`install`/`info`/`enable`/`disable`/`remove`/`reload`/`marketplace`/`mcp enable\|disable`） | `[官方]` ⚠️ **已修正**（原文写 `kimi plugin` 命令） |
+| 插件管理（legacy kimi-cli） | shell 子命令 `kimi plugin install\|list\|info\|remove` | `[官方]` ⚠️ 仅 legacy Python 版有 |
+| 插件安装位置（当前 Kimi Code） | 托管副本 `$KIMI_CODE_HOME/plugins/managed/<id>/`，安装记录 `$KIMI_CODE_HOME/plugins/installed.json` | `[官方]` ⚠️ **已修正** |
+| 插件安装位置（legacy kimi-cli） | `~/.kimi/plugins/<plugin>/` | `[官方]` ⚠️ 仅 legacy Python 版 |
+| 数据根 | `$KIMI_CODE_HOME`（默认 `~/.kimi-code`） | `[官方]` ✅ 已核实 |
 
 ### 本仓库已有的 manifest
 
-`.kimi-plugin/plugin.json` **正是 Kimi 的官方合法位置之一**，不是自造：
+`.kimi-plugin/plugin.json` **正是 Kimi 的官方合法位置之一**，不是自造（`[官方]`，已核实）：
 
 ```json
 {
@@ -27,48 +38,95 @@
 }
 ```
 
+**manifest 已核实字段**（逐字段比对官方「支持的字段」表）：
+
+| 本仓库字段 | 官方是否支持 | 备注 |
+|---|---|---|
+| `name` | ✅ 必填 | 须匹配 `[a-z0-9][a-z0-9_-]{0,63}` —— `agi-super-team` 通过 |
+| `version` / `description` / `author` | ✅ 展示元数据 | 官方列为纯展示字段 |
+| `skills: "./skills"` | ✅ | 官方要求为 plugin 根目录内的 `./` 路径；仓库根 `skills/` 存在且含 **857 个 `SKILL.md`**（`find skills -name SKILL.md \| wc -l`，`[实测]` 本机） |
+
+**未声明但官方支持的字段**（本仓库暂未使用，供后续扩展参考）：`agents`、`commands`、`sessionStart.skill`、`skillInstructions`、`systemPrompt` / `systemPromptPath`、`mcpServers`、`interface`、`keywords` / `homepage` / `license`。
+
+> **关键不确定性**：官方文档描述的是**安装**流程（`/plugins install <本地路径\|zip\|GitHub URL>` → 复制到 `$KIMI_CODE_HOME/plugins/managed/<id>/`）。**文档未说明** Kimi 会直接加载工作目录里存在的 `.kimi-plugin/plugin.json`（即"仓库放 manifest 即自动生效"）。另一生态项目 [verona-dev-plugin 的 INSTALL.md](https://github.com/burnt-labs/verona-dev-plugin/blob/main/INSTALL.md) 对 Kimi 的说明同样是"用 TUI `/plugins install`（URL 或路径）"而非自动发现。因此本仓库的 manifest **应视为可安装的插件源，而非自动生效的注册**——`[推定]`，需实测。
+>
+> 已搜索未获结果的方向：`kimi plugin project local auto-discovery`、`Kimi Code 仓库内 plugin.json 自动加载`（见 [核实记录](#核实记录)）。
+
 ## 技能
 
 | 项目 | 值 | 证据 |
 |---|---|---|
-| 技能格式 | `SKILL.md`（与 Agent Skills 开放标准一致） | `[官方]` |
-| 用户级技能 | `~/.agents/skills/`、`$KIMI_CODE_HOME/skills/` | `[官方]` |
-| 项目级技能 | `.kimi-code/skills/`、`.agents/skills/` | `[社区]` |
-| 优先级 | 项目 > 用户 > 额外 > 内置 | `[官方]` |
+| 技能格式 | `SKILL.md`（YAML frontmatter + Markdown 正文） | `[官方]` ✅ 已核实 |
+| 用户级技能 | `$KIMI_CODE_HOME/skills/`（默认 `~/.kimi-code/skills/`）、`~/.agents/skills/` | `[官方]` ✅ 已核实 |
+| 项目级技能 | `.kimi-code/skills/`、`.agents/skills/` | `[官方]` ✅ **已升级**（原文标 `[社区]`） |
+| 额外目录 | `extra_skill_dirs`（config.toml 顶层）或 `--skills-dir` | `[官方]` ✅ 已核实 |
+| 优先级 | Project > User > Extra > Built-in | `[官方]` ✅ 已核实（原文逐字一致） |
+| `SKILL.md` 必填字段 | 目录型 skill 的 `name` 与 `description` **均为必填**，缺任一即解析失败 | `[官方]` |
 
-**关键点**：`~/.agents/skills/` **同时被 Codex、DSH、Kimi 读取**。因此一次 Codex 安装（实测写入 170 个技能）理论上即可让 Kimi 也识别这些技能。
+**关键点**：`~/.agents/skills/` **确实被 Kimi 读取** `[官方]`，因此一次 Codex 安装写入的技能理论上可被 Kimi 识别 —— 这一点成立。但注意粒度：
 
-Kimi 文档亦称该路径与 Claude Code 共享同一 skill 根。
+- 官方原文称其为 "generic cross-tool Skills" 通用目录，**并未**称它与 Claude Code 共享同一 skill 根；共享关系针对的是 **brand group**（`~/.kimi/skills/` → `~/.claude/skills/` → `~/.codex/skills/`，**三者互斥取第一个存在者**），而 `~/.agents/skills/` 属于独立的 generic group，两组结果**独立合并**。
+- **`~/.claude/skills/` 的兼容行为出自 legacy kimi-cli 文档**（且是同组互斥，不是并列叠加）。当前 Kimi Code 文档的 user 级只列 `$KIMI_CODE_HOME/skills/` 与 `~/.agents/skills/`，**未见** `~/.claude/skills/`。→ 原文「与 Claude Code 共享同一 skill 根」应降为 `[推定]`。
 
 ### 路径不受 `KIMI_SHARE_DIR` 影响
 
-Kimi 官方特别说明：`KIMI_SHARE_DIR` 定制的是配置、会话、日志等运行时数据的位置，**不影响 Skills 搜索路径**。技能是跨工具共享能力，与应用运行时数据是不同类型。自定义技能路径要用 `--skills-dir` 或 `extra_skill_dirs` 配置。
+`[官方]` ✅ 已核实，原文逐字为 "Skills paths are independent of `KIMI_SHARE_DIR`"（legacy 文档），当前 Kimi Code 文档亦一致：`~/.agents/skills/` 留在真实 OS home 下以便跨工具共享，只有 `$KIMI_CODE_HOME/skills/` 随数据根移动。自定义技能路径用 `--skills-dir` 或 `extra_skill_dirs`。
+
+### 插件自带技能
+
+插件可通过 manifest 的 `skills` 字段（一个或多个 `./` 路径，须位于 plugin 根目录内）提供技能；省略 `skills` 时，根目录下的单个 `SKILL.md` 被当作一个 skill root。插件技能与普通 Agent Skills **格式相同** `[官方]`。
 
 ## Agent 机制
 
-- 插件可携带 `agents/` 目录，或通过 manifest 的 `agents` 字段声明 `./` 路径 `[官方]`
-- Agent 文件格式与 Kimi 的自定义 Agent 相同（**Markdown**，接近 Claude Code 形态） `[官方]`
-- 插件 Agent 的优先级**低于**其他文件来源：同名时用户级、额外目录、项目级与 `--agent-file` 都会覆盖
-- 覆盖内置 Agent 需在 frontmatter 显式写 `override: true`
-- 安装/启用/禁用/移除插件后，Agent 列表在新会话或 `/reload` 时刷新
-- 插件可声明 `mcpServers` 复用 MCP schema
+- 插件可携带 `agents/` 目录，或通过 manifest 的 `agents` 字段声明 `./` 路径（可多个目录） `[官方]` ✅ 已核实
+- Agent 文件格式与 Kimi 的自定义 Agent 相同（**Markdown**，frontmatter 声明 name/description/tool permissions，正文为 system prompt） `[官方]` ✅ 已核实
+- 插件 Agent 的优先级**低于**其他文件来源：同名时用户级、额外目录、项目级与 `--agent-file` 都会覆盖 `[官方]` ✅ 已核实
+- 覆盖内置 Agent 需在 frontmatter 显式写 `override: true` `[官方]` ✅ 已核实
+- 安装/启用/禁用/移除插件后，Agent 列表在新会话或 `/reload` 时刷新（v2 引擎当前会话还支持 `/plugins reload`） `[官方]` ✅ 已核实
+- 插件可声明 `mcpServers` 复用 MCP schema，默认启用、可从 `/plugins` 中禁用 `[官方]` ✅ 已核实
 
 ## 未验证的部分
 
-以下都需要**实际安装 Kimi CLI 后实测**才能确认：
+本机无 `kimi` CLI（`which kimi` 空，`[实测]`），以下**均无实测证据**。官方文档已能解释机制，但无法证明本仓库的产物被正确加载：
 
-1. Kimi 是否真的读取并加载 `.kimi-plugin/plugin.json`
-2. `skills: "./skills"` 字段是否指向本仓库 800+ 技能的根目录并按预期发现
-3. `~/.agents/skills/` 中的技能是否被 Kimi 的 Agent Skills 系统识别
-4. Kimi 的 agent 加载是否与 Claude Code 的 Markdown 格式完全兼容
+1. Kimi 是否**自动读取**工作目录下的 `.kimi-plugin/plugin.json`（还是只能经 `/plugins install` 安装）—— **本轮未找到官方依据，见上方「关键不确定性」**
+2. `skills: "./skills"` 是否指向本仓库 857 个 `SKILL.md` 的根目录并按预期发现
+3. `~/.agents/skills/` 中的技能是否被 Kimi 的 Agent Skills 系统识别（文档层面 `[官方]` 已确认读取该路径，但端到端未实测）
+4. Kimi 的 agent 加载是否与 **Claude Code 的** Markdown frontmatter 完全兼容 —— 官方只说与「Kimi 自定义 Agent 格式相同」，**未承诺与 Claude Code 格式兼容**
+5. `name: "agi-super-team"` 的插件在 `/plugins info` 下的 diagnostics 是否干净
 
 ## 待办
 
-- [ ] 安装 Kimi CLI，实测 `kimi plugin` 是否识别本仓库
-- [ ] 实测后把本文档的 `[未验证]` 标记改为 `[实测]` 并记录输出
+- [ ] 安装 Kimi Code CLI（`curl -fsSL https://code.kimi.com/kimi-code/install.sh | bash`，或 `npm install -g @moonshot-ai/kimi-code`），实测 `/plugins install <仓库根>` 是否识别本仓库
+- [ ] 实测后把本文档「未验证的部分」逐条勾掉，并把状态改为 `[实测]` 并记录输出
+- [ ] 核实是否为该 manifest 补 `version` 之外的 `interface` / `sessionStart.skill` 字段以对齐官方推荐形态
+
+## 核实记录
+
+本轮（2026-09）用 tavily 检索官方文档 + 官方仓库核实，发现并修正如下：
+
+| 原结论 | 核实结果 | 处置 |
+|---|---|---|
+| 状态标 `[未验证]` | 机制层可核实的部分已全部核实，但**客户端行为仍无实测**（本机无 CLI） | 改为 `[部分核实]`，明确无 `[实测]` 证据 |
+| `kimi plugin` 命令管理插件 `[官方]` | **已修正**：该 shell 子命令属 **legacy Python `kimi-cli`**（其文档站 `moonshotai.github.io/kimi-cli`，仓库 README 声明逐步下线）。当前 **Kimi Code** 的插件管理是 TUI 斜杠命令 `/plugins`；非交互 shell 子命令 `kimi plugins ...` 到 2026-07 仍是 [未实现的 feature request #1399](https://github.com/MoonshotAI/kimi-code/issues/1399) | 表中拆成两行并注明归属产品 |
+| 插件安装位置 `~/.kimi/plugins/<plugin>/` `[官方]` | **已修正**：该路径属 legacy Python 版。当前 Kimi Code 为 `$KIMI_CODE_HOME/plugins/managed/<id>/` + `installed.json` | 表中拆成两行 |
+| 项目级技能标 `[社区]` | **已升级为 `[官方]`**：当前文档逐字列出 `.kimi-code/skills/` 与 `.agents/skills/` | 证据等级提升 |
+| 「Kimi 文档亦称该路径与 Claude Code 共享同一 skill 根」 | **降级为 `[推定]`**：该兼容行为（`~/.claude/skills/`）出自 legacy 文档且是 brand group **互斥**（取第一个存在者），非并列；当前 Kimi Code 文档 user 级**未列** `~/.claude/skills/` | 加注说明，避免误导 |
+| `SKILL.md`「与 Agent Skills 开放标准一致」 | 已核实为真（官方明确 SKILL.md + YAML frontmatter，插件技能与普通 Agent Skills 同格式），但官方术语是 "Agent Skills" 且**未提及 agentskills.io** | 保留结论，去掉未经官方确认的标准署名 |
+| manifest 位置与优先级 | **完全属实**，官方原文逐字："When both files exist, `kimi.plugin.json` takes precedence." | 标注 ✅ 已核实 + 引原文 |
+| 数据根 `$KIMI_CODE_HOME`（默认 `~/.kimi-code`） | **完全属实**，官方数据位置页列出完整目录树 | 标注 ✅ 已核实 |
+
+**检索关键词与结果**（未能找到依据的方向已如实记录）：
+
+- ✅ 命中：`Kimi Code CLI plugins custom plugin manifest kimi.plugin.json .kimi-plugin/plugin.json`、`Kimi Code CLI skills directory ~/.agents/skills SKILL.md`、`"kimi plugin" command list install enable disable remove subcommands`、`install Kimi Code CLI npm package name`
+- ❌ 无结果：检索「Kimi Code 仓库内 `/kimi.plugin.json` 自动发现/免安装加载」这一类关键词，官方文档与第三方生态项目说明**都只描述 `/plugins install` 安装流程**，未找到「工作目录 manifest 自动生效」的任何官方依据 → 维持 `[无法证实]`
 
 ## 相关文档
 
 - [装配机制总览](./README.md)
-- [Kimi Code — Plugins](https://www.kimi.com/code/docs/en/kimi-code-cli/customization/plugins.html)
+- [Kimi Code — Plugins](https://www.kimi.com/code/docs/en/kimi-code-cli/customization/plugins.html)（当前产品，本页多数结论出自此页）
+- [Kimi Code — Agent Skills](https://www.kimi.com/code/docs/en/kimi-code-cli/customization/skills.html)
 - [Kimi Code — Data locations](https://www.kimi.com/code/docs/en/kimi-code-cli/configuration/data-locations.html)
+- [kimi-cli — Plugins (Beta)](https://moonshotai.github.io/kimi-cli/en/customization/plugins.html)（**legacy Python 版**，`kimi plugin` 子命令与 `~/.kimi/plugins/` 出自此页）
+- [kimi-cli — Agent Skills](https://moonshotai.github.io/kimi-cli/en/customization/skills.html)（**legacy Python 版**，`~/.claude/skills/` 兼容出自此页）
+- [MoonshotAI/kimi-code #1399 — 非交互 `kimi plugins` CLI](https://github.com/MoonshotAI/kimi-code/issues/1399)（说明当前无 shell 插件管理命令）
