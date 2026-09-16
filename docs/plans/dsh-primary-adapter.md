@@ -1,10 +1,40 @@
 # 实施计划：DSH primary adapter
 
 > **状态**：**草案，未实施**。需要明确批准后才会动代码。
+>
+> **2026-09-16 更新**：第 1 步「零成本验证」**已完成**，见下方
+> [零成本验证结果](#零成本验证结果2026-09-16已完成)。结论改变了本计划的形态 ——
+> 接入是**声明式 patch**，不是「与现有四个都不同的产物渲染路径」。
+> 下方「核心设计问题：Agent 如何装配」一节中的方案 A/B/C 选型**已作废**。
 
 目标：让 DeepSeek Harness (DSH) 成为第 5 个 primary harness，与 Claude Code / Codex / OpenClaw / Hermes 并列。
 
 背景调研见 [DSH 装配](../researchs/adapter-dsh.md) 与 [Adapter 注册机制](../architecture/adapter-registration.md)。
+
+## 零成本验证结果（2026-09-16，已完成）
+
+在本机 `dsh` **0.1.5-rc.1** 上以 `DSH_HOME=/tmp/...` 隔离执行，**未触碰真实 `~/.dsh`**
+（验证前后 `settings.yaml` / `.credentials.yaml` / `sessions` 时间戳均未变）。实测环境需从**中立目录**
+启动 —— 从含 `.env` 的目录启动会被 DSH 的 launcher 安全检查拒绝（`only the launching environment may set`）。
+
+| 验证项 | 结果 |
+|---|---|
+| `$DSH_HOME` 隔离 | ✅ 官方支持，优先级 `显式配置 > $DSH_HOME > ~/.dsh`（`dsh-home-paths/lib/index.js:65-73`） |
+| 宿主 `agent-instructions` / `maxBytes` | ✅ 存在，`maxBytes: 65536` |
+| **`skill-filesystem` / `tool-skill` 宿主层默认 `disabled: true`** | ✅ 证实 —— **技能不会自动生效** |
+| 用户 patch 层位置 | ✅ **`$DSH_HOME/profiles/<profile>/cordis.patch.yml`**（`dsh-app-boot:313-314` `PROFILE_PATCH_FILENAME`） |
+| **patch 能否启用被禁用的 `skill-filesystem`** | ✅ `disabled: false` 生效，dump 注脚显示 `patched by .../cordis.patch.yml` |
+| **patch 能否配 `customSkillDirs`** | ✅ 生效，且 `roots.push(...)` 确认其直接进入技能根列表（`dsh-skill-filesystem:166`） |
+| **`customSkillDirs` 运行时可达** | ✅ 探针技能出现在 headless 的 catalog 中 |
+| **`~/.agents/skills`（rank 500）运行时可达** | ✅ 171 个真实技能被列出，含本仓库的 `orchestrate-agi-super-team` |
+| `skillMode` 需要注意 | `headless` 的 `skill-filesystem` **默认启用**；`web` 默认禁用 —— 两个 profile 行为不同 |
+
+**结论**：接入方式是**声明式用户 patch**，不需要 TypeScript 插件、不需要 `pnpm`、不需要复制 preset、
+不需要 `!!js`。§4 的 `dsh.mjs` 实现规模因此从「核心工作量」降为「写一个 YAML patch + AGENTS.md 托管块」。
+
+**仍待验证（不粉饰）**：未在真实用户 `~/.dsh` 上跑过；DSH 0.1.5-rc.1 官方明示会有破坏性变更；
+`web` profile 下 patch 的运行时效果未观察（只验了 `headless`）。
+
 
 ## 为什么这不是一个小改动
 
