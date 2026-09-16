@@ -43,7 +43,7 @@ docs/
 
 ## 安装与使用
 
-- [主力框架接入手册](./guides/harness-adapters.md) — 四个主力框架的落盘位置与接线行为。
+- [主力框架接入手册](./guides/harness-adapters.md) — 五个主力框架的落盘位置与接线行为。
 - [框架兼容性](./guides/harness-compatibility.html) — 各框架能强制什么、不能强制什么。
 - [Claude Code 安装](./guides/claude-code-install.html) · [Codex 安装](./guides/codex-install.html) · [OpenClaw 安装](./guides/openclaw-install.html) · [Hermes 安装](./guides/hermes-install.html)
 - [DeepSeek Harness 状态](./guides/dsh-install.html) — 尚未接入 CLI 目标，含已实测的手工接线方式

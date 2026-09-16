@@ -14,7 +14,7 @@
   Comienza con un resultado: el CEO coordina a los ejecutivos, los ejecutivos delegan en especialistas, las Skills aportan métodos y el Governor verifica el resultado.
 </p>
 
-AGI Super Team no es un plugin exclusivo de Codex. Es un **sistema organizado y versionado de Agents + Skills** para Claude Code, Codex, OpenClaw, Hermes y otros frameworks locales mediante 18 adaptadores explícitos.
+AGI Super Team no es un plugin exclusivo de Codex. Es un **sistema organizado y versionado de Agents + Skills** para Claude Code, Codex, OpenClaw, Hermes y otros frameworks locales mediante 19 adaptadores explícitos.
 
 El mismo contrato organizativo funciona en todos los frameworks: 14 roles principales, 92 especialistas opcionales, Skills reutilizables, 8 Teams orientados a resultados, revisión independiente y aprobación humana explícita.
 
@@ -53,7 +53,7 @@ La distribución npm mantiene accesibles sus puntos de entrada `SKILL.md` e incl
 
 Reemplaza `claude-code` con un ID de `--list-tools`. Usa `--all-tools` solo cuando quieras intencionalmente cada adaptador global y de proyecto. Una ejecución sin argumentos permanece como la vista previa heredada de Codex; la nueva automatización debe especificar siempre `--tool` o `--all-tools`.
 
-### Cuatro frameworks principales
+### Cinco frameworks principales
 
 | Plataforma | Comando de vista previa | Capacidad instalada |
 |---|---|---|
@@ -61,10 +61,11 @@ Reemplaza `claude-code` con un ID de `--list-tools`. Usa `--all-tools` solo cuan
 | **Codex** | `npx -y agi-super-team@latest --tool codex` | CEO en la sesión principal + Agents TOML nativos + Skills canónicas |
 | **OpenClaw** | `npx -y agi-super-team@latest --tool openclaw` | Workspaces de Agent con namespace + Skills canónicas + fusión segura de configuración |
 | **Hermes Agent** | `npx -y agi-super-team@latest --tool hermes` | Skills de rol + Skills canónicas + blueprints de Profiles/Kanban |
+| **DeepSeek Harness** | `npx -y agi-super-team@latest --tool dsh` | Parche cordis declarativo que habilita la raíz de Skills + bloque CEO en AGENTS.md + preset |
 
 `--install` materializa los archivos; `--install --connect` también escribe un recibo de conexión. OpenClaw hace primero un dry-run y después actualiza las entradas gestionadas de `agents.list`, conservando los Agents no gestionados y sin crear bindings de canal. Claude y Codex usan descubrimiento por sistema de archivos. Hermes genera blueprints, pero no crea Profiles, tareas Cron ni un Gateway. Consulta la [guía de adaptadores principales](./docs/guides/harness-adapters.md) para rutas, permisos y requisitos de recibos.
 
-Claude Code, Codex, OpenClaw y Hermes son entradas de primera clase al mismo sistema de equipo, no ediciones con organizaciones diferentes. El formato de entrega cambia porque cada framework ofrece primitivas distintas de Agent y Skill.
+Claude Code, Codex, OpenClaw, Hermes y DeepSeek Harness son entradas de primera clase al mismo sistema de equipo, no ediciones con organizaciones diferentes. El formato de entrega cambia porque cada framework ofrece primitivas distintas de Agent y Skill.
 
 ### Instalar grupos de subagentes ejecutivos
 
@@ -90,6 +91,7 @@ Las rutas para adaptadores globales son relativas al home seleccionado; los adap
 | `codex` | Codex | Global | CEO principal + TOML: `.codex/agents` | Canónica: `.agents/skills` | Conectado estructuralmente; runtime pendiente |
 | `openclaw` | OpenClaw | Global | Workspace nativo: `.openclaw/agency-agents/agi-super-team` | Canónica: `.openclaw/skills/agi-super-team` | Conectado estructuralmente; runtime pendiente |
 | `hermes` | Hermes Agent | Global | Skills de rol: `.hermes/skills/agi-super-team-agents` | Canónica: `.hermes/skills/agi-super-team` | Blueprint conectado; runtime pendiente |
+| `dsh` | DeepSeek Harness | Global | Preset: `.dsh/.agent-presets/ast-team` | Canónica: `.dsh/skills/agi-super-team` | Adaptador conectado; runtime pendiente |
 | `copilot` | GitHub Copilot | Global | Agente Markdown: `.github/agents`, `.copilot/agents` | Nativo: `.copilot/skills` | Adaptador |
 | `antigravity` | Antigravity | Global | Agente: `.gemini/config/agents` | Nativo: `.gemini/config/skills` | **Experimental** |
 | `gemini-cli` | Gemini CLI | Global | Agente Markdown: `.gemini/agents` | Nativo: `.gemini/skills` | Adaptador |
@@ -134,7 +136,7 @@ Ejecuta de nuevo el mismo comando `--install` para actualizar el contenido gesti
 - Los respaldos son ayudas de recuperación local, no una instantánea completa ni un sistema de desinstalación. Revisa la vista previa y mantén tu propio respaldo de control de versiones o sistema de archivos para configuraciones importantes.
 - Se rechazan destinos con enlaces simbólicos o inseguros. `--no-agents` y `--no-skills` pueden reducir la carga cuando sea necesario.
 - Este proyecto no utiliza un instalador basado en tuberías de scripts remotos; los comandos anteriores usan el ejecutor de paquetes de npm y aún merecen una revisión normal de dependencias.
-- La instalación solo demuestra la materialización de archivos. La evidencia de runtime de los cuatro adaptadores principales permanece `pending` hasta que exista un canary de cliente limpio asociado a una revisión limpia.
+- La instalación solo demuestra la materialización de archivos. La evidencia de runtime de los cinco adaptadores principales permanece `pending` hasta que exista un canary de cliente limpio asociado a una revisión limpia.
 
 El diseño del adaptador se inspiró en parte en [`jnMetaCode/agency-agents-zh`](https://github.com/jnMetaCode/agency-agents-zh) en el commit fijo [`2ecfabf8`](https://github.com/jnMetaCode/agency-agents-zh/commit/2ecfabf8e944ccdfed63ad8c44d5241290af6977). AGI Super Team mantiene aquí su manifiesto, el mapeo de payloads, el comportamiento de seguridad y los límites de evidencia.
 

@@ -908,6 +908,42 @@
       "recommendation": "recommended"
     },
     {
+      "path": "plugins/agi-super-team-claudecode",
+      "role": "distribution-adapter",
+      "module": "distribution-adapters",
+      "authority": false,
+      "generatedBy": "scripts/build_claudecode_package.py",
+      "evidenceStatus": "manifest",
+      "recommendation": "available"
+    },
+    {
+      "path": "plugins/agi-super-team-hermes",
+      "role": "distribution-adapter",
+      "module": "distribution-adapters",
+      "authority": false,
+      "generatedBy": "scripts/build_hermes_package.py",
+      "evidenceStatus": "manifest",
+      "recommendation": "available"
+    },
+    {
+      "path": "plugins/agi-super-team-dsh",
+      "role": "distribution-adapter",
+      "module": "distribution-adapters",
+      "authority": false,
+      "generatedBy": "scripts/build_dsh_package.py",
+      "evidenceStatus": "manifest",
+      "recommendation": "available"
+    },
+    {
+      "path": "plugins/agi-super-team-openclaw",
+      "role": "distribution-adapter",
+      "module": "distribution-adapters",
+      "authority": false,
+      "generatedBy": "scripts/build_openclaw_package.py",
+      "evidenceStatus": "manifest",
+      "recommendation": "available"
+    },
+    {
       "path": "requirements-dev.txt",
       "role": "implementation",
       "module": "verification-evidence",

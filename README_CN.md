@@ -90,7 +90,7 @@ npm 发行包保留可发现的 `SKILL.md` 入口，并完整携带 `config/team
 
 把 `claude-code` 换成 `--list-tools` 输出的目标 ID。只有在确实要同时写入全部全局和项目适配目标时，才使用 `--all-tools`。不带参数仍保留旧版 Codex 预览行为；新脚本应明确写出 `--tool` 或 `--all-tools`。
 
-### 四个主力框架
+### 五个主力框架
 
 | 平台 | 预览命令 | 安装能力 |
 |---|---|---|
@@ -98,8 +98,9 @@ npm 发行包保留可发现的 `SKILL.md` 入口，并完整携带 `config/team
 | **Codex** | `npx -y agi-super-team@latest --tool codex` | 主会话 CEO + 原生 TOML Agent + canonical Skills |
 | **OpenClaw** | `npx -y agi-super-team@latest --tool openclaw` | 命名空间化 Agent Workspace + canonical Skills + 安全配置合并 |
 | **Hermes Agent** | `npx -y agi-super-team@latest --tool hermes` | 角色 Skill + canonical Skills + Profiles/Kanban 蓝图 |
+| **DeepSeek Harness** | `npx -y agi-super-team@latest --tool dsh` | 声明式 cordis patch 启用技能根 + AGENTS.md CEO 块 + preset |
 
-`--install` 负责落盘；`--install --connect` 还会生成接线凭据。OpenClaw 会先 dry-run，再按 `id` 合并 `agents.list`，保留非托管 Agent，且不创建 channel binding。Claude/Codex 采用文件系统发现；Hermes 只生成 Profile 蓝图，不自动创建 Profile、Cron 或 Gateway。完整路径、权限和 receipt 契约见[四个主力框架 Adapter 接入手册](./docs/guides/harness-adapters.md)。
+`--install` 负责落盘；`--install --connect` 还会生成接线凭据。OpenClaw 会先 dry-run，再按 `id` 合并 `agents.list`，保留非托管 Agent，且不创建 channel binding。Claude/Codex 采用文件系统发现；Hermes 只生成 Profile 蓝图，不自动创建 Profile、Cron 或 Gateway。完整路径、权限和 receipt 契约见[五个主力框架 Adapter 接入手册](./docs/guides/harness-adapters.md)。
 
 OpenClaw `2026.7.1-2` 要求 Node.js `>=22.22.3 <23`、`>=24.15.0 <25` 或 `>=25.9.0`。AGI Super Team 本身仍支持 Node.js 18+；这个更严格的条件只在调用当前 OpenClaw CLI 时适用。
 
@@ -190,7 +191,7 @@ npx -y agi-super-team@latest --tool openclaw \
 - 本地备份只用于辅助恢复，不是完整快照或卸载系统。重要配置仍应纳入自己的版本控制或文件系统备份。
 - 安装器拒绝符号链接等不安全目标；需要缩小范围时可使用 `--no-agents` 或 `--no-skills`。
 - 本项目不提供远程脚本管道安装方式；上方命令使用 npm package runner，但仍应按常规审查依赖。
-- 安装只证明文件已生成；当前四个主力 Adapter 的运行证据都保持 `pending`，直到 clean client canary 与干净 revision 匹配。
+- 安装只证明文件已生成；当前五个主力 Adapter 的运行证据都保持 `pending`，直到 clean client canary 与干净 revision 匹配。
 
 适配器设计部分参考了 [`jnMetaCode/agency-agents-zh`](https://github.com/jnMetaCode/agency-agents-zh) 的固定提交 [`2ecfabf8`](https://github.com/jnMetaCode/agency-agents-zh/commit/2ecfabf8e944ccdfed63ad8c44d5241290af6977)。AGI Super Team 在本仓库独立维护 Manifest、Payload 映射、安全行为和证据边界。
 

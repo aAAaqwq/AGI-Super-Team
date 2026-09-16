@@ -14,7 +14,7 @@
   Start with an outcome. Let the CEO route executives, executives dispatch specialists, Skills supply methods, and the Governor verify the result.
 </p>
 
-AGI Super Team is not a Codex-only plugin. It is a versioned, organized **Agents + Skills team system** for Claude Code, Codex, OpenClaw, Hermes, and other mainstream local AI agent frameworks through 18 explicit adapters.
+AGI Super Team is not a Codex-only plugin. It is a versioned, organized **Agents + Skills team system** for Claude Code, Codex, OpenClaw, Hermes, and other mainstream local AI agent frameworks through 19 explicit adapters.
 
 The same organizational contract travels across frameworks: 14 top-level roles, 92 opt-in specialists, reusable Skills, eight outcome Teams, independent review, and explicit human approval.
 
@@ -77,7 +77,7 @@ If native multi-agent delegation is unavailable, execute the same role plan sequ
 <a id="install-into-your-agent-framework"></a>
 ## 🛠️ Manual CLI installation
 
-List all 18 adapter targets, preview one target, then apply the same selection:
+List all 19 adapter targets, preview one target, then apply the same selection:
 
 ```bash
 npx -y agi-super-team@latest --list-tools
@@ -103,7 +103,7 @@ npx -y agi-super-team@latest --tool <id> --install --connect
 npx -y agi-super-team@latest --tool <id> --doctor         # verify what landed
 ```
 
-Four frameworks carry the full harness Adapter contract, including native Agent generation and a connection receipt:
+Five frameworks carry the full harness Adapter contract, including native Agent generation and a connection receipt:
 
 | Platform | `--tool` | Preview command | Installed capability |
 |---|---|---|---|
@@ -111,14 +111,15 @@ Four frameworks carry the full harness Adapter contract, including native Agent 
 | Codex | `codex` | `npx -y agi-super-team@latest --tool codex` | Main-session CEO + native TOML Agents + canonical Skills |
 | OpenClaw | `openclaw` | `npx -y agi-super-team@latest --tool openclaw` | Namespaced Agent workspaces + canonical Skills + safe config merge |
 | Hermes Agent | `hermes` | `npx -y agi-super-team@latest --tool hermes` | Role Skills + canonical Skills + Profiles/Kanban blueprints |
+| DeepSeek Harness | `dsh` | `npx -y agi-super-team@latest --tool dsh` | Declarative cordis patch enabling the Skill root + AGENTS.md CEO block + preset |
 
-The other fourteen targets use the generic installer — same commands, same preview-first safety, without the external Adapter module. See [all 18 targets](#all-18-adapter-targets).
+The other fourteen targets use the generic installer — same commands, same preview-first safety, without the external Adapter module. See [all 19 targets](#all-19-adapter-targets).
 
 `--install` materializes files; `--install --connect` also writes a connection receipt. OpenClaw dry-runs and then upserts managed `agents.list` entries while preserving unmanaged Agents and creating no channel bindings. Claude and Codex use filesystem discovery. Hermes emits blueprints but does not create Profiles, Cron jobs, or a Gateway. See the [primary harness Adapter guide](./docs/guides/harness-adapters.md) for paths, permissions, and receipt requirements.
 
 OpenClaw `2026.7.1-2` requires Node.js `>=22.22.3 <23`, `>=24.15.0 <25`, or `>=25.9.0`. AGI Super Team itself still supports Node.js 18+, so this stricter prerequisite applies only when invoking the current OpenClaw CLI.
 
-Claude Code, Codex, OpenClaw, and Hermes are first-class entry points to the same team system, not separate editions with different organizations.
+Claude Code, Codex, OpenClaw, Hermes, and DeepSeek Harness are first-class entry points to the same team system, not separate editions with different organizations.
 
 Delivery format varies because each framework exposes different native Agent and Skill primitives.
 
@@ -136,7 +137,7 @@ The hierarchy is CEO → eleven manager executives → leaf specialists. CTO als
 
 These are **18 AI client/runtime adapter targets**, not 18 interchangeable CLIs. An adapter can install native Agents, native Skills, project rules/context, or role packs degraded to Agent-as-Skill. File placement does not by itself prove that a current client loaded or executed the content.
 
-### All 18 adapter targets
+### All 19 adapter targets
 
 Global adapters normally resolve from the selected OS-home base; project adapters resolve from the selected project directory. OpenClaw and Hermes instead honor their native runtime roots, as shown below.
 
@@ -161,7 +162,7 @@ Global adapters normally resolve from the selected OS-home base; project adapter
 | `kiro` | Kiro | Global | Markdown Agent: `.kiro/agents` | Native: `.kiro/skills` | Adapter |
 | `qoder` | Qoder | Global | Markdown Agent: `.qoder/agents` | Native: `.qoder/skills` | Adapter |
 
-The matrix describes the adapter contract in [`config/cli-adapters.json`](./config/cli-adapters.json), not a claim that all 18 clients have been runtime-verified. Cursor and Antigravity are explicitly experimental.
+The matrix describes the adapter contract in [`config/cli-adapters.json`](./config/cli-adapters.json), not a claim that all 19 clients have been runtime-verified. Cursor and Antigravity are explicitly experimental.
 
 ### Ecosystem plugins
 
@@ -171,8 +172,10 @@ Beyond file placement, some clients also support installing this repository as a
 |---|---|---|---|
 | Codex | `codex plugin marketplace add aAAaqwq/AGI-Super-Team` | [`.agents/plugins/marketplace.json`](./.agents/plugins/marketplace.json) | Verified end-to-end |
 | Claude Code | marketplace at [`.claude-plugin/marketplace.json`](./.claude-plugin/marketplace.json) | `claude plugin validate .` | Manifest validates clean |
-| Kimi | `plugin.json` at `.kimi-plugin/` or `kimi.plugin.json` | [`.kimi-plugin/plugin.json`](./.kimi-plugin/plugin.json) | Manifest present; not yet client-verified |
-| DeepSeek Harness | `dsh plugin --profile <p> add <repo>` | — | Not yet supported |
+| Kimi | `plugin.json` at `.kimi-plugin/` or `kimi.plugin.json` | [`.kimi-plugin/plugin.json`](./.kimi-plugin/plugin.json) | Manifest valid, but only as an install source — plugins are user-scoped and run from a managed copy |
+| Cursor | `.cursor-plugin/plugin.json` | [`.cursor-plugin/plugin.json`](./.cursor-plugin/plugin.json) | Manifest fields corrected to the official schema (`skills`); client load not yet verified |
+| Gemini CLI | `gemini extensions install <repo>` | [`gemini-extension.json`](./gemini-extension.json) | Manifest valid; mechanism documented, end-to-end unverified |
+| DeepSeek Harness | `npx -y agi-super-team@latest --tool dsh --install` | — | Adapter present; runtime evidence `pending` |
 
 Skills interoperate because `SKILL.md` follows the [agentskills.io](https://agentskills.io) open standard, which these clients share. The `~/.agents/skills/` root in particular is read by more than one client, so a single install can serve several.
 

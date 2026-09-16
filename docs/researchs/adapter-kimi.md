@@ -24,6 +24,15 @@
 | 插件安装位置（legacy kimi-cli） | `~/.kimi/plugins/<plugin>/` | `[官方]` ⚠️ 仅 legacy Python 版 |
 | 数据根 | `$KIMI_CODE_HOME`（默认 `~/.kimi-code`） | `[官方]` ✅ 已核实 |
 
+### 本仓库只有 `.kimi-plugin/plugin.json` 够不够？
+
+**够，且不需要补 `kimi.plugin.json`。** 这是本轮的可操作结论，依据有两条彼此独立：
+
+1. **优先级问题不存在**：「两者同时存在时以 `kimi.plugin.json` 为准」这条规则**只在两个文件都存在时才生效**。本仓库只有 `.kimi-plugin/plugin.json`，不构成冲突，官方把它列为**并列的合法位置之一**（"Manifest 可以放在以下任一位置"）。
+2. **不必迁移的理由**：`kimi.plugin.json` 的优先级优势**只影响「同名时读哪一个」**，而按上面的结论，Kimi **根本不会自动读取工作目录里的任一 manifest**——两者都要经 `/plugins install` 才会被消费。既然自动生效这条路径不存在，换成优先级更高的文件名**不会带来任何行为差异**。
+
+> **反过来说**：如果哪天想同时兼容别的生态（某些工具约定根级 `*.plugin.json`），补一个 `kimi.plugin.json` 是无害的；但**在当前机制下它不会让插件「更容易被加载」**。维持现状是正确选择。
+
 ### 本仓库已有的 manifest
 
 `.kimi-plugin/plugin.json` **正是 Kimi 的官方合法位置之一**，不是自造（`[官方]`，已核实）：
@@ -44,13 +53,22 @@
 |---|---|---|
 | `name` | ✅ 必填 | 须匹配 `[a-z0-9][a-z0-9_-]{0,63}` —— `agi-super-team` 通过 |
 | `version` / `description` / `author` | ✅ 展示元数据 | 官方列为纯展示字段 |
-| `skills: "./skills"` | ✅ | 官方要求为 plugin 根目录内的 `./` 路径；仓库根 `skills/` 存在且含 **857 个 `SKILL.md`**（`find skills -name SKILL.md \| wc -l`，`[实测]` 本机） |
+| `skills: "./skills"` | ✅ | 官方要求为 plugin 根目录内的 `./` 路径；仓库根 `skills/` 存在且含 **837 个 `SKILL.md`**（`find skills -name SKILL.md \| wc -l`，`[实测]` 本机） |
 
 **未声明但官方支持的字段**（本仓库暂未使用，供后续扩展参考）：`agents`、`commands`、`sessionStart.skill`、`skillInstructions`、`systemPrompt` / `systemPromptPath`、`mcpServers`、`interface`、`keywords` / `homepage` / `license`。
 
-> **关键不确定性**：官方文档描述的是**安装**流程（`/plugins install <本地路径\|zip\|GitHub URL>` → 复制到 `$KIMI_CODE_HOME/plugins/managed/<id>/`）。**文档未说明** Kimi 会直接加载工作目录里存在的 `.kimi-plugin/plugin.json`（即"仓库放 manifest 即自动生效"）。另一生态项目 [verona-dev-plugin 的 INSTALL.md](https://github.com/burnt-labs/verona-dev-plugin/blob/main/INSTALL.md) 对 Kimi 的说明同样是"用 TUI `/plugins install`（URL 或路径）"而非自动发现。因此本仓库的 manifest **应视为可安装的插件源，而非自动生效的注册**——`[推定]`，需实测。
+> **关键不确定性（2026-09 复核已找到官方依据，结论：不会自动生效）**：上一轮把「仓库放 manifest 是否自动生效」列为未找到依据。本轮在官方 Plugins 页的**注意事项**中找到了直接答案——
 >
-> 已搜索未获结果的方向：`kimi plugin project local auto-discovery`、`Kimi Code 仓库内 plugin.json 自动加载`（见 [核实记录](#核实记录)）。
+> > "Plugin 目前按用户安装，对所有项目生效，**暂不支持项目级安装范围**。"
+> > —— <https://www.kimi.com/code/docs/kimi-code-cli/customization/plugins.html>
+>
+> 同页另一条同样封死了「编辑源目录即生效」的路径：
+>
+> > "本地安装会被拷贝到 `$KIMI_CODE_HOME/plugins/managed/<id>/`，CLI 始终从这份托管副本运行。**安装后编辑原始源目录不会生效，需重新安装。**"
+>
+> **两条合起来 = 仓库里放 manifest 绝不会被自动读取**：既没有「项目级作用域」（所以工作目录里的 `.kimi-plugin/` 不在任何自动扫描路径上），安装后运行的又是托管副本（所以改仓库也不影响已装插件）。因此本仓库的 manifest **只能视为「可被 `/plugins install` 消费的插件源」，不是自动生效的注册**——级别从 `[推定]` 升为 `[官方]`（否定式结论）。
+>
+> 这也解释了为什么生态项目 [verona-dev-plugin 的 INSTALL.md](https://github.com/burnt-labs/verona-dev-plugin/blob/main/INSTALL.md) 对 Kimi 只写"用 TUI `/plugins install`（URL 或路径）"而没有自动发现一说。
 
 ## 技能
 
@@ -89,7 +107,7 @@
 
 本机无 `kimi` CLI（`which kimi` 空，`[实测]`），以下**均无实测证据**。官方文档已能解释机制，但无法证明本仓库的产物被正确加载：
 
-1. Kimi 是否**自动读取**工作目录下的 `.kimi-plugin/plugin.json`（还是只能经 `/plugins install` 安装）—— **本轮未找到官方依据，见上方「关键不确定性」**
+1. ~~Kimi 是否**自动读取**工作目录下的 `.kimi-plugin/plugin.json`~~ —— **本轮已由官方文档否证**：官方明示「暂不支持项目级安装范围」+「CLI 始终从托管副本运行，编辑源目录不生效」，故不存在自动读取。**该问题已关闭**（结论为否定），只剩「安装流程本身是否跑通」待实测。
 2. `skills: "./skills"` 是否指向本仓库 857 个 `SKILL.md` 的根目录并按预期发现
 3. `~/.agents/skills/` 中的技能是否被 Kimi 的 Agent Skills 系统识别（文档层面 `[官方]` 已确认读取该路径，但端到端未实测）
 4. Kimi 的 agent 加载是否与 **Claude Code 的** Markdown frontmatter 完全兼容 —— 官方只说与「Kimi 自定义 Agent 格式相同」，**未承诺与 Claude Code 格式兼容**
@@ -114,6 +132,8 @@
 | 「Kimi 文档亦称该路径与 Claude Code 共享同一 skill 根」 | **降级为 `[推定]`**：该兼容行为（`~/.claude/skills/`）出自 legacy 文档且是 brand group **互斥**（取第一个存在者），非并列；当前 Kimi Code 文档 user 级**未列** `~/.claude/skills/` | 加注说明，避免误导 |
 | `SKILL.md`「与 Agent Skills 开放标准一致」 | 已核实为真（官方明确 SKILL.md + YAML frontmatter，插件技能与普通 Agent Skills 同格式），但官方术语是 "Agent Skills" 且**未提及 agentskills.io** | 保留结论，去掉未经官方确认的标准署名 |
 | manifest 位置与优先级 | **完全属实**，官方原文逐字："When both files exist, `kimi.plugin.json` takes precedence." | 标注 ✅ 已核实 + 引原文 |
+| 「仓库放 manifest 是否自动生效」`[推定]` | **本轮升级为 `[官方]`（否定式）**：官方注意事项明示「Plugin 目前按用户安装，对所有项目生效，**暂不支持项目级安装范围**」+「本地安装会被拷贝到 `$KIMI_CODE_HOME/plugins/managed/`，CLI 始终从这份托管副本运行；安装后编辑原始源目录不会生效」 | 关掉该开放项，结论=**不会自动生效** |
+| 「只有 `.kimi-plugin/plugin.json` 是否够」 | **够**。优先级规则仅在两文件并存时生效；且既不自动生效，补 `kimi.plugin.json` 无行为差异 | 新增可操作结论小节 |
 | 数据根 `$KIMI_CODE_HOME`（默认 `~/.kimi-code`） | **完全属实**，官方数据位置页列出完整目录树 | 标注 ✅ 已核实 |
 
 **检索关键词与结果**（未能找到依据的方向已如实记录）：

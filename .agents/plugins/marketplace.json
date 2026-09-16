@@ -16,6 +16,54 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Developer Tools"
+    },
+    {
+      "name": "agi-super-team-claudecode",
+      "source": {
+        "source": "local",
+        "path": "./plugins/agi-super-team-claudecode"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    },
+    {
+      "name": "agi-super-team-hermes",
+      "source": {
+        "source": "local",
+        "path": "./plugins/agi-super-team-hermes"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    },
+    {
+      "name": "agi-super-team-dsh",
+      "source": {
+        "source": "local",
+        "path": "./plugins/agi-super-team-dsh"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    },
+    {
+      "name": "agi-super-team-openclaw",
+      "source": {
+        "source": "local",
+        "path": "./plugins/agi-super-team-openclaw"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
     }
   ]
 }
