@@ -11,4 +11,4 @@
 
 ## 现有计划
 
-（暂无）
+- [DSH primary adapter 实施计划](./dsh-primary-adapter.md) — 把 DeepSeek Harness 纳入支持的设计草案与障碍分析。**未实施，需批准。**

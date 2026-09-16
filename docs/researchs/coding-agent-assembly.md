@@ -64,7 +64,7 @@ DSH 文档直接称 `~/.agents/skills/` 为「**行业标准位置**」。Kimi �
 | 框架 | 插件机制 | 权威目录 / 命令 | 技能根 | 证据 |
 |---|---|---|---|---|
 | **Codex** | ✅ marketplace | `.agents/plugins/marketplace.json`<br>`codex plugin marketplace add` | `~/.agents/skills/` | `[实测]` |
-| **Claude Code** | ✅ marketplace | `.claude-plugin/marketplace.json`（**强制**）<br>`claude plugin validate .` | `~/.claude/skills/` | `[官方]` |
+| **Claude Code** | ✅ marketplace | `.claude-plugin/marketplace.json`（**强制**）<br>`claude plugin validate .` | `~/.claude/skills/` | `[实测]` |
 | **OpenClaw** | ✅ plugins | `openclaw plugins install <pkg>`<br>`openclaw.plugin.json` 清单 | 受管 skill 根 | `[官方]` |
 | **Hermes** | ✅ plugins | `hermes plugins install owner/repo`<br>根 `plugin.json` | `~/.hermes/skills/` | `[官方]` |
 | **Kimi** | ✅ plugins | `.kimi-plugin/plugin.json` 或 `kimi.plugin.json`<br>`kimi plugin` 命令 | `~/.agents/skills/`、`~/.kimi-code/skills/` | `[官方]` |
@@ -147,6 +147,41 @@ Installed plugin root: ~/.codex/plugins/cache/agi-super-team/agi-super-team-code
 - **frontmatter 必需** `name`（kebab-case）+ `description`；非法则**静默丢弃** `[官方]`
 - 目录型技能（含 `references/`、`scripts/`）必须声明 `resourceBase`，否则相对路径断裂 `[社区]`
 
+**Agent / 子 agent 机制** `[官方]`：
+
+- DSH **没有独立于 Skill 的 agent 文件目录**。角色与指令通过 **AGENTS.md 指令链**注入
+- 指令文件候选名：`AGENTS.md`、`CLAUDE.md`；本地覆盖：`AGENTS.local.md`、`CLAUDE.local.md`
+- 项目根标记默认 `['.git']`；加载顺序从项目根到会话工作目录，**宽 → 专**
+- 用户全局：`$DSH_HOME/AGENTS.md`（默认 `~/.dsh/AGENTS.md`）
+- subagent 由 `tool-subagent` 插件提供，是**插件能力**而非文件约定
+- 渲染预算：`maxBytes` 必需（默认部署为 65536 字节）；单文件 `maxSourceBytes` 默认 1 MiB
+
+**对本仓库的含义**：DSH 的 agent 装配**不能靠拷贝 `.md` agent 文件实现**，只能写 `AGENTS.md` 指令链。这与 Claude Code / Codex 的「逐 agent 一个文件」模型不同，是接入 DSH 的主要难点。
+
+## 各框架与本仓库的装配映射
+
+本仓库当前**实际支持**的方式，与目标方式的差距：
+
+| 框架 | 本仓库当前做法 | 是否已实测 | 目标做法 |
+|---|---|---|---|
+| Claude Code | 安装器写 `.claude/agents/*.md` + `.claude/skills/` | ✅ 安装成功（170 技能） | 可加 `pluginRoot` 收拢插件本体 |
+| Codex | 安装器写 `~/.agents/skills/` + `~/.codex/agents/*.toml`；另可走 marketplace 插件 | ✅ 插件安装成功 | 已达成 |
+| OpenClaw | `--connect` 合并 `agents.entries` 进 `openclaw.json` | ✅ 安装器路径可用 | 可封装为 OpenClaw 插件 |
+| Hermes | 写 `$HERMES_HOME/skills/` + Profile 蓝图 | ✅ 安装成功 | 需补根 `plugin.json` 插件包 |
+| Kimi | 提供 `.kimi-plugin/plugin.json` | ⚠️ 仅有 manifest，**未实测** | 需实测验证 Kimi 是否识别 |
+| DSH | **无适配器** | ❌ 不支持 | 需新增 Adapter，且受 18 个硬约束限制 |
+
+## 接入 DSH 的具体障碍
+
+若要把 DSH 加入支持（乃至提升为 primary harness），需要：
+
+1. **新增 CLI 目标** —— 同时改三处「恰好 18 个」的约束（见 [Adapter 注册机制](../architecture/adapter-registration.md)）
+2. **实现外置 Adapter 模块** `bin/adapters/dsh.mjs`，导出 `ADAPTER_ID` / `renderAdapterArtifacts` / `buildConnectionSpec`
+3. **加入 `priorityHarnesses`** —— 该集合硬编码于 `bin/installer/catalog.mjs`
+4. **解决 agent 装配模型差异** —— DSH 用 `AGENTS.md` 指令链，不支持逐 agent 文件，需要额外的产物渲染路径
+
+第 4 项是实质工作量：现有四个 primary 的 Adapter 都按「每个角色一个原生文件」建模，DSH 不适用。
+
 ## 统一策略
 
 三层结论：
@@ -180,13 +215,27 @@ Installed plugin root: ~/.codex/plugins/cache/agi-super-team/agi-super-team-code
 ## 复现本文的实测
 
 ```bash
-# Codex 装配（实测命令，已验证）
+# Codex：marketplace + 插件安装（已验证）
 git archive HEAD | (mkdir -p /tmp/probe && tar -x -C /tmp/probe)
 cd /tmp/probe
 CODEX_HOME=/tmp/probe-home codex plugin marketplace add .
 CODEX_HOME=/tmp/probe-home codex plugin list
 CODEX_HOME=/tmp/probe-home codex plugin add agi-super-team-codex@agi-super-team
 ```
+
+```bash
+# Claude Code：marketplace 校验（只读，不安装；已验证）
+claude plugin validate .
+# → ✔ Validation passed
+```
+
+```bash
+# 安装器落盘验证：技能是否进了 ~/.agents/skills（已验证）
+HOME=/tmp/probe node bin/agi-super-team.mjs --tool codex --install
+ls /tmp/probe/.agents/skills | wc -l     # → 170
+```
+
+`openclaw`、`claude`、`codex` 三个 CLI 在本机可用；`kimi`、`dsh`、`hermes` 未安装，因此这三家的**客户端侧行为未实测**。
 
 ## 来源
 
