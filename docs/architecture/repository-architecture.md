@@ -4,7 +4,7 @@ Agents enter this repository with partial context. This is the map for the whole
 
 The authoritative narrative is [`ARCHITECTURE.md`](../ARCHITECTURE.md) at the repository root — read it for the five layers, seams, deletion tests, and change map. The machine-readable ownership contract is [`config/repository-architecture.json`](../config/repository-architecture.json), and this map is derived from it. Consequential decisions live in [`adr/`](./adr/).
 
-For the files inside `docs/` itself, see the [docs inventory](./docs-inventory.md).
+For the files inside `docs/` itself, see the [docs inventory](../reference/docs-inventory.md).
 
 ## Path ownership at a glance
 
@@ -63,7 +63,7 @@ README counts, badges, plugin manifests, and generated JSON must never override 
 | [`cookbook/`](../cookbook/) | public-navigation | public-navigation | Long-form references. |
 | [`plugins/`](../plugins/) | distribution-adapter | distribution-adapters | Curated per-harness packages; each remains manifest-only until a matching client receipt exists. |
 | [`assets/`](../assets/) | public-navigation | public-navigation | Brand and demo media. |
-| `.claude-plugin/`, `.codex-plugin/`, `.cursor-plugin/`, `.kimi-plugin/`, `.agents/`, `.codex/` | distribution-adapter | distribution-adapters | Root harness manifests. |
+| `.agents/`, `.claude-plugin/`, `.cursor-plugin/`, `.kimi-plugin/`, `.codex/` | distribution-adapter | distribution-adapters | Root harness manifests. `.agents/plugins/marketplace.json` is the shared repo marketplace; the rest are client-mandated locations. |
 | `ARCHITECTURE.md`, `CONTEXT.md`, `CHARTER.md`, `COLLABORATION.md` | governance / authored-source | governance-memory | Shared language and decision memory. |
 
 ## Important seams
@@ -85,7 +85,7 @@ README counts, badges, plugin manifests, and generated JSON must never override 
 | Curated Codex package | `plugins/agi-super-team-codex/` and its index | Repository tests plus client receipt when available |
 | Site data or SEO | `docs/`, data builder, site contracts | `npm run test:repository` |
 | Repository boundary or path role | architecture registry, context, relevant ADR | `npm run check:architecture` |
-| CLI target or external Adapter | `config/cli-adapters.json`, `bin/adapters/`, `config/harness-adapters/` | See [Adapter 注册机制](./guides/adapter-registration.md) |
+| CLI target or external Adapter | `config/cli-adapters.json`, `bin/adapters/`, `config/harness-adapters/` | See [Adapter 注册机制](../architecture/adapter-registration.md) |
 
 ## Deletion tests
 

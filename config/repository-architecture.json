@@ -16,10 +16,18 @@
       "id": "skill-library",
       "title": "Canonical skill library",
       "interface": "A tracked physical skills/<id>/SKILL.md entrypoint.",
-      "implementations": ["skills"],
-      "ownershipPrefixes": ["skills"],
+      "implementations": [
+        "skills"
+      ],
+      "ownershipPrefixes": [
+        "skills"
+      ],
       "depth": "foundational",
-      "seams": ["catalog-discovery", "team-composition", "distribution-adapters"],
+      "seams": [
+        "catalog-discovery",
+        "team-composition",
+        "distribution-adapters"
+      ],
       "leverage": "The catalog, generic Agent packs, installer, and full-library manifests consume this inventory.",
       "locality": "Instructions, optional scripts, references, and assets stay under one skill directory."
     },
@@ -27,10 +35,54 @@
       "id": "team-composition",
       "title": "Team and starter-kit composition",
       "interface": "config/team-manifest.json defines the top-level roster and Kits; config/agent-hierarchy.json plus per-manager routing and source locks define optional executive child pyramids.",
-      "implementations": ["agents", "starter-kits", "config/team-manifest.json", "config/agent-hierarchy.json", "config/cto-specialists.json", "config/cpo-specialists.json", "config/cco-specialists.json", "config/cfo-specialists.json", "config/cdo-specialists.json", "config/cqo-specialists.json", "config/cmo-specialists.json", "config/cro-specialists.json", "config/cso-specialists.json", "config/coo-specialists.json", "config/clo-specialists.json", "config/agent-sources.lock.json", "scripts/build_agent_skill_indexes.py", "scripts/build_executive_subagent_sources.py"],
-      "ownershipPrefixes": ["agents", "starter-kits", "config/team-manifest.json", "config/agent-hierarchy.json", "config/agent-hierarchy.schema.json", "config/specialist-routing.schema.json", "config/cto-specialists.json", "config/cpo-specialists.json", "config/cco-specialists.json", "config/cfo-specialists.json", "config/cdo-specialists.json", "config/cqo-specialists.json", "config/cmo-specialists.json", "config/cro-specialists.json", "config/cso-specialists.json", "config/coo-specialists.json", "config/clo-specialists.json", "config/agent-sources.lock.json", "scripts/build_agent_skill_indexes.py", "scripts/build_executive_subagent_sources.py"],
+      "implementations": [
+        "agents",
+        "starter-kits",
+        "config/team-manifest.json",
+        "config/agent-hierarchy.json",
+        "config/cto-specialists.json",
+        "config/cpo-specialists.json",
+        "config/cco-specialists.json",
+        "config/cfo-specialists.json",
+        "config/cdo-specialists.json",
+        "config/cqo-specialists.json",
+        "config/cmo-specialists.json",
+        "config/cro-specialists.json",
+        "config/cso-specialists.json",
+        "config/coo-specialists.json",
+        "config/clo-specialists.json",
+        "config/agent-sources.lock.json",
+        "scripts/build_agent_skill_indexes.py",
+        "scripts/build_executive_subagent_sources.py"
+      ],
+      "ownershipPrefixes": [
+        "agents",
+        "starter-kits",
+        "config/team-manifest.json",
+        "config/agent-hierarchy.json",
+        "config/agent-hierarchy.schema.json",
+        "config/specialist-routing.schema.json",
+        "config/cto-specialists.json",
+        "config/cpo-specialists.json",
+        "config/cco-specialists.json",
+        "config/cfo-specialists.json",
+        "config/cdo-specialists.json",
+        "config/cqo-specialists.json",
+        "config/cmo-specialists.json",
+        "config/cro-specialists.json",
+        "config/cso-specialists.json",
+        "config/coo-specialists.json",
+        "config/clo-specialists.json",
+        "config/agent-sources.lock.json",
+        "scripts/build_agent_skill_indexes.py",
+        "scripts/build_executive_subagent_sources.py"
+      ],
       "depth": "composed",
-      "seams": ["skill-library", "safe-installation", "distribution-adapters"],
+      "seams": [
+        "skill-library",
+        "safe-installation",
+        "distribution-adapters"
+      ],
       "leverage": "One manifest contract updates roster validation, outcome-kit routing, installation, and generated discovery.",
       "locality": "Structural orchestration stays in the manifest while role behavior and Kit wave semantics stay in their Agent and runbook directories."
     },
@@ -38,10 +90,27 @@
       "id": "safe-installation",
       "title": "Preview-first workspace installation",
       "interface": "./install.sh [--apply] [--source PATH] [--destination PATH] [--layout isolated|coordinated] [--skill-tier role-only|core|standard] [--team-tier core|full] (--kit ID|--agent ID).",
-      "implementations": ["install.sh", "bin/agi-super-team.mjs", "bin/installer"],
-      "ownershipPrefixes": ["install.sh", "bin", "bin/agi-super-team.mjs", "bin/installer", ".npmignore", "CHARTER.md", "COLLABORATION.md", "setup.md"],
+      "implementations": [
+        "install.sh",
+        "bin/agi-super-team.mjs",
+        "bin/installer"
+      ],
+      "ownershipPrefixes": [
+        "install.sh",
+        "bin",
+        "bin/agi-super-team.mjs",
+        "bin/installer",
+        ".npmignore",
+        "CHARTER.md",
+        "COLLABORATION.md",
+        "setup.md"
+      ],
       "depth": "composed",
-      "seams": ["team-composition", "skill-library", "verification-evidence"],
+      "seams": [
+        "team-composition",
+        "skill-library",
+        "verification-evidence"
+      ],
       "leverage": "One safety boundary protects every generic workspace installation.",
       "locality": "Installer behavior and its integration fixtures change together."
     },
@@ -49,10 +118,39 @@
       "id": "catalog-discovery",
       "title": "Skill taxonomy and discovery catalog",
       "interface": "Taxonomy, reviewed Gold labels, Skill provenance, and digest-matched curation evidence in; catalog and Agent discovery indexes out.",
-      "implementations": ["scripts/build_skill_catalog.py", "scripts/skill_evidence.py", "scripts/build_skill_taxonomy_evaluation.py", "config/skill-provenance.json", "config/skill-curation.json", "config/skill-taxonomy.json", "config/skill-taxonomy-gold.json", "catalog"],
-      "ownershipPrefixes": ["catalog", "config/skill-taxonomy.json", "config/skill-taxonomy-gold.json", "config/skill-taxonomy-gold.schema.json", "config/skill-taxonomy-evaluation.schema.json", "config/skill-index.schema.json", "config/skill-provenance.json", "config/skill-provenance.schema.json", "config/skill-curation.json", "config/skill-curation.schema.json", "docs/skill-provenance-and-scoring.md", "docs/skill-taxonomy-gold-set.md", "scripts/build_skill_catalog.py", "scripts/skill_evidence.py", "scripts/build_skill_taxonomy_evaluation.py"],
+      "implementations": [
+        "scripts/build_skill_catalog.py",
+        "scripts/skill_evidence.py",
+        "scripts/build_skill_taxonomy_evaluation.py",
+        "config/skill-provenance.json",
+        "config/skill-curation.json",
+        "config/skill-taxonomy.json",
+        "config/skill-taxonomy-gold.json",
+        "catalog"
+      ],
+      "ownershipPrefixes": [
+        "catalog",
+        "config/skill-taxonomy.json",
+        "config/skill-taxonomy-gold.json",
+        "config/skill-taxonomy-gold.schema.json",
+        "config/skill-taxonomy-evaluation.schema.json",
+        "config/skill-index.schema.json",
+        "config/skill-provenance.json",
+        "config/skill-provenance.schema.json",
+        "config/skill-curation.json",
+        "config/skill-curation.schema.json",
+        "docs/skill-provenance-and-scoring.md",
+        "docs/skill-taxonomy-gold-set.md",
+        "scripts/build_skill_catalog.py",
+        "scripts/skill_evidence.py",
+        "scripts/build_skill_taxonomy_evaluation.py"
+      ],
       "depth": "composed",
-      "seams": ["skill-library", "public-navigation", "verification-evidence"],
+      "seams": [
+        "skill-library",
+        "public-navigation",
+        "verification-evidence"
+      ],
       "leverage": "A single classification rule improves human browsing and machine discovery.",
       "locality": "Taxonomy rules, generator, generated outputs, and drift tests have explicit paths."
     },
@@ -60,10 +158,36 @@
       "id": "distribution-adapters",
       "title": "Harness distribution adapters",
       "interface": "renderAdapterArtifacts + buildConnectionSpec, harness manifests, and curated packages with explicit evidence status.",
-      "implementations": ["bin/adapters", ".agents", ".codex", ".codex-plugin", "config/harness-adapters", "plugins", "scripts/build_codex_csuite_adapter.py", ".claude-plugin", ".cursor-plugin", ".kimi-plugin", "gemini-extension.json"],
-      "ownershipPrefixes": ["bin/adapters", ".agents", ".codex", ".codex-plugin", "config/harness-adapters", "plugins", "scripts/build_codex_csuite_adapter.py", ".claude-plugin", ".cursor-plugin", ".kimi-plugin", "gemini-extension.json"],
+      "implementations": [
+        "bin/adapters",
+        ".agents",
+        ".codex",
+        "config/harness-adapters",
+        "plugins",
+        "scripts/build_codex_csuite_adapter.py",
+        ".claude-plugin",
+        ".cursor-plugin",
+        ".kimi-plugin",
+        "gemini-extension.json"
+      ],
+      "ownershipPrefixes": [
+        "bin/adapters",
+        ".agents",
+        ".codex",
+        "config/harness-adapters",
+        "plugins",
+        "scripts/build_codex_csuite_adapter.py",
+        ".claude-plugin",
+        ".cursor-plugin",
+        ".kimi-plugin",
+        "gemini-extension.json"
+      ],
       "depth": "boundary",
-      "seams": ["team-composition", "skill-library", "verification-evidence"],
+      "seams": [
+        "team-composition",
+        "skill-library",
+        "verification-evidence"
+      ],
       "leverage": "Adapters isolate harness conventions from canonical repository content.",
       "locality": "Each distribution keeps its manifests, curated content, and support statement together."
     },
@@ -71,10 +195,32 @@
       "id": "verification-evidence",
       "title": "Repository contracts and evidence",
       "interface": "npm test and npm run validate:strict produce deterministic pass/fail evidence.",
-      "implementations": ["scripts", "tests", ".github/workflows"],
-      "ownershipPrefixes": ["scripts", "tests", ".github", ".githooks", "requirements-dev.txt", "package.json", "design-qa.md", "config/skill-quality-baseline.json", "catalog/skill-quality.json", "docs/data/verification-receipt.json", "docs/data/verification-receipt.schema.json"],
+      "implementations": [
+        "scripts",
+        "tests",
+        ".github/workflows"
+      ],
+      "ownershipPrefixes": [
+        "scripts",
+        "tests",
+        ".github",
+        ".githooks",
+        "requirements-dev.txt",
+        "package.json",
+        "design-qa.md",
+        "config/skill-quality-baseline.json",
+        "catalog/skill-quality.json",
+        "docs/data/verification-receipt.json",
+        "docs/data/verification-receipt.schema.json"
+      ],
       "depth": "foundational",
-      "seams": ["skill-library", "team-composition", "safe-installation", "catalog-discovery", "distribution-adapters"],
+      "seams": [
+        "skill-library",
+        "team-composition",
+        "safe-installation",
+        "catalog-discovery",
+        "distribution-adapters"
+      ],
       "leverage": "One contract gate prevents drift across every public surface.",
       "locality": "Checks live beside repository scripts while behavior fixtures remain under tests."
     },
@@ -82,10 +228,30 @@
       "id": "public-navigation",
       "title": "Public documentation and site",
       "interface": "README routes users to installation, outcomes, skills, Agents, evidence, and contribution.",
-      "implementations": ["README.md", "README_CN.md", "README.es-ES.md", "docs", "cookbook", "assets"],
-      "ownershipPrefixes": ["README.md", "README_CN.md", "README.es-ES.md", "docs", "cookbook", "assets", "SKILL-AGENT-MATRIX.md", "STARTUP.md"],
+      "implementations": [
+        "README.md",
+        "README_CN.md",
+        "README.es-ES.md",
+        "docs",
+        "cookbook",
+        "assets"
+      ],
+      "ownershipPrefixes": [
+        "README.md",
+        "README_CN.md",
+        "README.es-ES.md",
+        "docs",
+        "cookbook",
+        "assets",
+        "SKILL-AGENT-MATRIX.md",
+        "STARTUP.md"
+      ],
       "depth": "boundary",
-      "seams": ["catalog-discovery", "verification-evidence", "governance-memory"],
+      "seams": [
+        "catalog-discovery",
+        "verification-evidence",
+        "governance-memory"
+      ],
       "leverage": "A small set of maintained entrypoints serves GitHub visitors, search, and coding agents.",
       "locality": "Editorial pages link to authorities instead of copying inventory or compatibility claims."
     },
@@ -93,128 +259,733 @@
       "id": "governance-memory",
       "title": "Governance and decision memory",
       "interface": "CONTEXT.md, ARCHITECTURE.md, ADRs, contribution, security, and governance records.",
-      "implementations": ["CONTEXT.md", "ARCHITECTURE.md", "docs/adr"],
-      "ownershipPrefixes": ["AGENTS.md", "ARCHITECTURE.md", "CLAUDE.md", "CODE_OF_CONDUCT.md", "CONTEXT.md", "CONTRIBUTING.md", "LICENSE", "SECURITY.md", ".gitattributes", ".gitignore", "config", "docs/adr"],
+      "implementations": [
+        "CONTEXT.md",
+        "ARCHITECTURE.md",
+        "docs/adr"
+      ],
+      "ownershipPrefixes": [
+        "AGENTS.md",
+        "ARCHITECTURE.md",
+        "CLAUDE.md",
+        "CODE_OF_CONDUCT.md",
+        "CONTEXT.md",
+        "CONTRIBUTING.md",
+        "LICENSE",
+        "SECURITY.md",
+        ".gitattributes",
+        ".gitignore",
+        "config",
+        "docs/adr"
+      ],
       "depth": "foundational",
-      "seams": ["public-navigation", "verification-evidence"],
+      "seams": [
+        "public-navigation",
+        "verification-evidence"
+      ],
       "leverage": "Recorded terminology and decisions reduce contradictory future edits.",
       "locality": "Stable terms live in CONTEXT while consequential decisions live in numbered ADRs."
     }
   ],
   "pathOwnership": [
-    {"path": ".github", "role": "governance", "module": "verification-evidence", "authority": false},
-    {"path": ".gitattributes", "role": "governance", "module": "governance-memory", "authority": false},
-    {"path": ".githooks", "role": "evidence", "module": "verification-evidence", "authority": false},
-    {"path": ".gitignore", "role": "governance", "module": "governance-memory", "authority": false},
-    {"path": ".npmignore", "role": "implementation", "module": "safe-installation", "authority": false},
-    {"path": ".agents", "role": "distribution-adapter", "module": "distribution-adapters", "authority": false, "evidenceStatus": "manifest", "recommendation": "recommended"},
-    {"path": ".codex", "role": "public-navigation", "module": "distribution-adapters", "authority": false},
-    {"path": ".codex-plugin", "role": "distribution-adapter", "module": "distribution-adapters", "authority": false, "evidenceStatus": "legacy", "recommendation": "legacy"},
-    {"path": ".claude-plugin", "role": "distribution-adapter", "module": "distribution-adapters", "authority": false, "evidenceStatus": "legacy", "recommendation": "available"},
-    {"path": ".cursor-plugin", "role": "distribution-adapter", "module": "distribution-adapters", "authority": false, "evidenceStatus": "pending", "recommendation": "available"},
-    {"path": ".kimi-plugin", "role": "distribution-adapter", "module": "distribution-adapters", "authority": false, "evidenceStatus": "pending", "recommendation": "available"},
-    {"path": "AGENTS.md", "role": "public-navigation", "module": "governance-memory", "authority": false},
-    {"path": "ARCHITECTURE.md", "role": "governance", "module": "governance-memory", "authority": false},
-    {"path": "CHARTER.md", "role": "authored-source", "module": "safe-installation", "authority": false},
-    {"path": "CLAUDE.md", "role": "public-navigation", "module": "governance-memory", "authority": false},
-    {"path": "CODE_OF_CONDUCT.md", "role": "governance", "module": "governance-memory", "authority": false},
-    {"path": "COLLABORATION.md", "role": "authored-source", "module": "safe-installation", "authority": false},
-    {"path": "CONTEXT.md", "role": "governance", "module": "governance-memory", "authority": false},
-    {"path": "CONTRIBUTING.md", "role": "governance", "module": "governance-memory", "authority": false},
-    {"path": "LICENSE", "role": "governance", "module": "governance-memory", "authority": false},
-    {"path": "README.md", "role": "public-navigation", "module": "public-navigation", "authority": false},
-    {"path": "README_CN.md", "role": "public-navigation", "module": "public-navigation", "authority": false},
-    {"path": "README.es-ES.md", "role": "public-navigation", "module": "public-navigation", "authority": false},
-    {"path": "SECURITY.md", "role": "governance", "module": "governance-memory", "authority": false},
-    {"path": "SKILL-AGENT-MATRIX.md", "role": "public-navigation", "module": "public-navigation", "authority": false},
-    {"path": "STARTUP.md", "role": "public-navigation", "module": "public-navigation", "authority": false},
-    {"path": "agents", "role": "authored-source", "module": "team-composition", "authority": false},
-    {"path": "agents/cco/TOOLS.md", "role": "generated-output", "module": "team-composition", "authority": false, "generatedBy": "scripts/build_agent_skill_indexes.py", "verify": "npm run check:agent-indexes"},
-    {"path": "agents/cdo/TOOLS.md", "role": "generated-output", "module": "team-composition", "authority": false, "generatedBy": "scripts/build_agent_skill_indexes.py", "verify": "npm run check:agent-indexes"},
-    {"path": "agents/ceo/TOOLS.md", "role": "generated-output", "module": "team-composition", "authority": false, "generatedBy": "scripts/build_agent_skill_indexes.py", "verify": "npm run check:agent-indexes"},
-    {"path": "agents/cfo/TOOLS.md", "role": "generated-output", "module": "team-composition", "authority": false, "generatedBy": "scripts/build_agent_skill_indexes.py", "verify": "npm run check:agent-indexes"},
-    {"path": "agents/clo/TOOLS.md", "role": "generated-output", "module": "team-composition", "authority": false, "generatedBy": "scripts/build_agent_skill_indexes.py", "verify": "npm run check:agent-indexes"},
-    {"path": "agents/cmo/TOOLS.md", "role": "generated-output", "module": "team-composition", "authority": false, "generatedBy": "scripts/build_agent_skill_indexes.py", "verify": "npm run check:agent-indexes"},
-    {"path": "agents/coo/TOOLS.md", "role": "generated-output", "module": "team-composition", "authority": false, "generatedBy": "scripts/build_agent_skill_indexes.py", "verify": "npm run check:agent-indexes"},
-    {"path": "agents/cpo/TOOLS.md", "role": "generated-output", "module": "team-composition", "authority": false, "generatedBy": "scripts/build_agent_skill_indexes.py", "verify": "npm run check:agent-indexes"},
-    {"path": "agents/cqo/TOOLS.md", "role": "generated-output", "module": "team-composition", "authority": false, "generatedBy": "scripts/build_agent_skill_indexes.py", "verify": "npm run check:agent-indexes"},
-    {"path": "agents/cro/TOOLS.md", "role": "generated-output", "module": "team-composition", "authority": false, "generatedBy": "scripts/build_agent_skill_indexes.py", "verify": "npm run check:agent-indexes"},
-    {"path": "agents/cso/TOOLS.md", "role": "generated-output", "module": "team-composition", "authority": false, "generatedBy": "scripts/build_agent_skill_indexes.py", "verify": "npm run check:agent-indexes"},
-    {"path": "agents/cto/TOOLS.md", "role": "generated-output", "module": "team-composition", "authority": false, "generatedBy": "scripts/build_agent_skill_indexes.py", "verify": "npm run check:agent-indexes"},
-    {"path": "agents/governor/TOOLS.md", "role": "generated-output", "module": "team-composition", "authority": false, "generatedBy": "scripts/build_agent_skill_indexes.py", "verify": "npm run check:agent-indexes"},
-    {"path": "agents/pe/TOOLS.md", "role": "generated-output", "module": "team-composition", "authority": false, "generatedBy": "scripts/build_agent_skill_indexes.py", "verify": "npm run check:agent-indexes"},
-    {"path": "assets", "role": "public-navigation", "module": "public-navigation", "authority": false},
-    {"path": "bin", "role": "implementation", "module": "safe-installation", "authority": false},
-    {"path": "bin/adapters", "role": "distribution-adapter", "module": "distribution-adapters", "authority": false, "evidenceStatus": "pending", "recommendation": "available"},
-    {"path": "catalog", "role": "generated-output", "module": "catalog-discovery", "authority": false, "generatedBy": "scripts/build_skill_catalog.py", "verify": "npm run check:skills"},
-    {"path": "catalog/skill-taxonomy-evaluation.json", "role": "generated-output", "module": "catalog-discovery", "authority": false, "generatedBy": "scripts/build_skill_taxonomy_evaluation.py", "verify": "npm run check:taxonomy-evaluation"},
-    {"path": "catalog/skill-quality.json", "role": "generated-output", "module": "verification-evidence", "authority": false, "generatedBy": "scripts/audit_skill_quality.py", "verify": "npm run check:skill-quality"},
-    {"path": "config", "role": "governance", "module": "governance-memory", "authority": false},
-    {"path": "config/harness-adapters", "role": "distribution-adapter", "module": "distribution-adapters", "authority": false, "evidenceStatus": "pending", "recommendation": "available"},
-    {"path": "config/external-skill-sources.json", "role": "authored-authority", "module": "governance-memory", "authority": true},
-    {"path": "config/skill-index.schema.json", "role": "authored-source", "module": "catalog-discovery", "authority": false},
-    {"path": "config/skill-provenance.json", "role": "authored-authority", "module": "catalog-discovery", "authority": true},
-    {"path": "config/skill-provenance.schema.json", "role": "authored-source", "module": "catalog-discovery", "authority": false},
-    {"path": "config/skill-curation.json", "role": "authored-authority", "module": "catalog-discovery", "authority": true},
-    {"path": "config/skill-curation.schema.json", "role": "authored-source", "module": "catalog-discovery", "authority": false},
-    {"path": "config/skill-taxonomy-evaluation.schema.json", "role": "authored-source", "module": "catalog-discovery", "authority": false},
-    {"path": "config/skill-taxonomy-gold.json", "role": "authored-authority", "module": "catalog-discovery", "authority": true},
-    {"path": "config/skill-taxonomy-gold.schema.json", "role": "authored-source", "module": "catalog-discovery", "authority": false},
-    {"path": "config/repository-architecture.json", "role": "authored-authority", "module": "governance-memory", "authority": true},
-    {"path": "config/skill-quality-baseline.json", "role": "authored-authority", "module": "verification-evidence", "authority": true},
-    {"path": "config/skill-taxonomy.json", "role": "authored-authority", "module": "catalog-discovery", "authority": true},
-    {"path": "config/team-manifest.json", "role": "authored-authority", "module": "team-composition", "authority": true},
-    {"path": "config/agent-hierarchy.json", "role": "authored-authority", "module": "team-composition", "authority": true},
-    {"path": "config/agent-hierarchy.schema.json", "role": "authored-source", "module": "team-composition", "authority": false},
-    {"path": "config/specialist-routing.schema.json", "role": "authored-source", "module": "team-composition", "authority": false},
-    {"path": "config/cto-specialists.json", "role": "authored-authority", "module": "team-composition", "authority": true},
-    {"path": "config/cpo-specialists.json", "role": "authored-authority", "module": "team-composition", "authority": true},
-    {"path": "config/cco-specialists.json", "role": "authored-authority", "module": "team-composition", "authority": true},
-    {"path": "config/cfo-specialists.json", "role": "authored-authority", "module": "team-composition", "authority": true},
-    {"path": "config/cdo-specialists.json", "role": "authored-authority", "module": "team-composition", "authority": true},
-    {"path": "config/cqo-specialists.json", "role": "authored-authority", "module": "team-composition", "authority": true},
-    {"path": "config/cmo-specialists.json", "role": "authored-authority", "module": "team-composition", "authority": true},
-    {"path": "config/cro-specialists.json", "role": "authored-authority", "module": "team-composition", "authority": true},
-    {"path": "config/cso-specialists.json", "role": "authored-authority", "module": "team-composition", "authority": true},
-    {"path": "config/coo-specialists.json", "role": "authored-authority", "module": "team-composition", "authority": true},
-    {"path": "config/clo-specialists.json", "role": "authored-authority", "module": "team-composition", "authority": true},
-    {"path": "config/agent-sources.lock.json", "role": "generated-output", "module": "team-composition", "authority": false, "generatedBy": "scripts/build_executive_subagent_sources.py", "verify": "npm run check:subagent-sources"},
-    {"path": "scripts/build_executive_subagent_sources.py", "role": "implementation", "module": "team-composition", "authority": false},
-    {"path": "cookbook", "role": "public-navigation", "module": "public-navigation", "authority": false},
-    {"path": "design-qa.md", "role": "evidence", "module": "verification-evidence", "authority": false},
-    {"path": "docs", "role": "public-navigation", "module": "public-navigation", "authority": false},
-    {"path": "docs/skill-taxonomy-gold-set.md", "role": "authored-source", "module": "catalog-discovery", "authority": false},
-    {"path": "docs/skill-provenance-and-scoring.md", "role": "authored-source", "module": "catalog-discovery", "authority": false},
-    {"path": "docs/adr", "role": "governance", "module": "governance-memory", "authority": false},
-    {"path": "docs/assets/star-history.svg", "role": "generated-output", "module": "public-navigation", "authority": false, "generatedBy": "scripts/build_site_data.py", "verify": "npm run test:repository"},
-    {"path": "docs/data/repo-stats.json", "role": "generated-output", "module": "public-navigation", "authority": false, "generatedBy": "scripts/build_site_data.py", "verify": "npm run test:repository"},
-    {"path": "docs/data/star-history.json", "role": "generated-output", "module": "public-navigation", "authority": false, "generatedBy": "scripts/build_site_data.py", "verify": "npm run test:repository"},
-    {"path": "docs/data/verification-receipt.json", "role": "evidence", "module": "verification-evidence", "authority": false, "verify": "npm run test:repository"},
-    {"path": "docs/data/verification-receipt.schema.json", "role": "authored-source", "module": "verification-evidence", "authority": false},
-    {"path": "gemini-extension.json", "role": "distribution-adapter", "module": "distribution-adapters", "authority": false, "evidenceStatus": "pending", "recommendation": "available"},
-    {"path": "install.sh", "role": "implementation", "module": "safe-installation", "authority": false},
-    {"path": "package.json", "role": "implementation", "module": "verification-evidence", "authority": false},
-    {"path": "plugins", "role": "distribution-adapter", "module": "distribution-adapters", "authority": false, "evidenceStatus": "manifest", "recommendation": "available"},
-    {"path": "plugins/agi-super-team-codex", "role": "distribution-adapter", "module": "distribution-adapters", "authority": false, "evidenceStatus": "manifest", "recommendation": "recommended"},
-    {"path": "requirements-dev.txt", "role": "implementation", "module": "verification-evidence", "authority": false},
-    {"path": "scripts", "role": "implementation", "module": "verification-evidence", "authority": false},
-    {"path": "scripts/build_agent_skill_indexes.py", "role": "implementation", "module": "team-composition", "authority": false},
-    {"path": "scripts/build_codex_csuite_adapter.py", "role": "implementation", "module": "distribution-adapters", "authority": false},
-    {"path": "scripts/build_skill_catalog.py", "role": "implementation", "module": "catalog-discovery", "authority": false},
-    {"path": "scripts/skill_evidence.py", "role": "implementation", "module": "catalog-discovery", "authority": false},
-    {"path": "scripts/build_skill_taxonomy_evaluation.py", "role": "implementation", "module": "catalog-discovery", "authority": false},
-    {"path": "setup.md", "role": "public-navigation", "module": "safe-installation", "authority": false},
-    {"path": "skills", "role": "authored-authority", "module": "skill-library", "authority": true},
-    {"path": "starter-kits", "role": "authored-source", "module": "team-composition", "authority": false},
-    {"path": "tests", "role": "evidence", "module": "verification-evidence", "authority": false},
-    {"path": "tests/test_codex_team_adapter.py", "role": "evidence", "module": "verification-evidence", "authority": false}
+    {
+      "path": ".github",
+      "role": "governance",
+      "module": "verification-evidence",
+      "authority": false
+    },
+    {
+      "path": ".gitattributes",
+      "role": "governance",
+      "module": "governance-memory",
+      "authority": false
+    },
+    {
+      "path": ".githooks",
+      "role": "evidence",
+      "module": "verification-evidence",
+      "authority": false
+    },
+    {
+      "path": ".gitignore",
+      "role": "governance",
+      "module": "governance-memory",
+      "authority": false
+    },
+    {
+      "path": ".npmignore",
+      "role": "implementation",
+      "module": "safe-installation",
+      "authority": false
+    },
+    {
+      "path": ".agents",
+      "role": "distribution-adapter",
+      "module": "distribution-adapters",
+      "authority": false,
+      "evidenceStatus": "manifest",
+      "recommendation": "recommended"
+    },
+    {
+      "path": ".codex",
+      "role": "public-navigation",
+      "module": "distribution-adapters",
+      "authority": false
+    },
+    {
+      "path": ".claude-plugin",
+      "role": "distribution-adapter",
+      "module": "distribution-adapters",
+      "authority": false,
+      "evidenceStatus": "legacy",
+      "recommendation": "available"
+    },
+    {
+      "path": ".cursor-plugin",
+      "role": "distribution-adapter",
+      "module": "distribution-adapters",
+      "authority": false,
+      "evidenceStatus": "pending",
+      "recommendation": "available"
+    },
+    {
+      "path": ".kimi-plugin",
+      "role": "distribution-adapter",
+      "module": "distribution-adapters",
+      "authority": false,
+      "evidenceStatus": "pending",
+      "recommendation": "available"
+    },
+    {
+      "path": "AGENTS.md",
+      "role": "public-navigation",
+      "module": "governance-memory",
+      "authority": false
+    },
+    {
+      "path": "ARCHITECTURE.md",
+      "role": "governance",
+      "module": "governance-memory",
+      "authority": false
+    },
+    {
+      "path": "CHARTER.md",
+      "role": "authored-source",
+      "module": "safe-installation",
+      "authority": false
+    },
+    {
+      "path": "CLAUDE.md",
+      "role": "public-navigation",
+      "module": "governance-memory",
+      "authority": false
+    },
+    {
+      "path": "CODE_OF_CONDUCT.md",
+      "role": "governance",
+      "module": "governance-memory",
+      "authority": false
+    },
+    {
+      "path": "COLLABORATION.md",
+      "role": "authored-source",
+      "module": "safe-installation",
+      "authority": false
+    },
+    {
+      "path": "CONTEXT.md",
+      "role": "governance",
+      "module": "governance-memory",
+      "authority": false
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "role": "governance",
+      "module": "governance-memory",
+      "authority": false
+    },
+    {
+      "path": "LICENSE",
+      "role": "governance",
+      "module": "governance-memory",
+      "authority": false
+    },
+    {
+      "path": "README.md",
+      "role": "public-navigation",
+      "module": "public-navigation",
+      "authority": false
+    },
+    {
+      "path": "README_CN.md",
+      "role": "public-navigation",
+      "module": "public-navigation",
+      "authority": false
+    },
+    {
+      "path": "README.es-ES.md",
+      "role": "public-navigation",
+      "module": "public-navigation",
+      "authority": false
+    },
+    {
+      "path": "SECURITY.md",
+      "role": "governance",
+      "module": "governance-memory",
+      "authority": false
+    },
+    {
+      "path": "SKILL-AGENT-MATRIX.md",
+      "role": "public-navigation",
+      "module": "public-navigation",
+      "authority": false
+    },
+    {
+      "path": "STARTUP.md",
+      "role": "public-navigation",
+      "module": "public-navigation",
+      "authority": false
+    },
+    {
+      "path": "agents",
+      "role": "authored-source",
+      "module": "team-composition",
+      "authority": false
+    },
+    {
+      "path": "agents/cco/TOOLS.md",
+      "role": "generated-output",
+      "module": "team-composition",
+      "authority": false,
+      "generatedBy": "scripts/build_agent_skill_indexes.py",
+      "verify": "npm run check:agent-indexes"
+    },
+    {
+      "path": "agents/cdo/TOOLS.md",
+      "role": "generated-output",
+      "module": "team-composition",
+      "authority": false,
+      "generatedBy": "scripts/build_agent_skill_indexes.py",
+      "verify": "npm run check:agent-indexes"
+    },
+    {
+      "path": "agents/ceo/TOOLS.md",
+      "role": "generated-output",
+      "module": "team-composition",
+      "authority": false,
+      "generatedBy": "scripts/build_agent_skill_indexes.py",
+      "verify": "npm run check:agent-indexes"
+    },
+    {
+      "path": "agents/cfo/TOOLS.md",
+      "role": "generated-output",
+      "module": "team-composition",
+      "authority": false,
+      "generatedBy": "scripts/build_agent_skill_indexes.py",
+      "verify": "npm run check:agent-indexes"
+    },
+    {
+      "path": "agents/clo/TOOLS.md",
+      "role": "generated-output",
+      "module": "team-composition",
+      "authority": false,
+      "generatedBy": "scripts/build_agent_skill_indexes.py",
+      "verify": "npm run check:agent-indexes"
+    },
+    {
+      "path": "agents/cmo/TOOLS.md",
+      "role": "generated-output",
+      "module": "team-composition",
+      "authority": false,
+      "generatedBy": "scripts/build_agent_skill_indexes.py",
+      "verify": "npm run check:agent-indexes"
+    },
+    {
+      "path": "agents/coo/TOOLS.md",
+      "role": "generated-output",
+      "module": "team-composition",
+      "authority": false,
+      "generatedBy": "scripts/build_agent_skill_indexes.py",
+      "verify": "npm run check:agent-indexes"
+    },
+    {
+      "path": "agents/cpo/TOOLS.md",
+      "role": "generated-output",
+      "module": "team-composition",
+      "authority": false,
+      "generatedBy": "scripts/build_agent_skill_indexes.py",
+      "verify": "npm run check:agent-indexes"
+    },
+    {
+      "path": "agents/cqo/TOOLS.md",
+      "role": "generated-output",
+      "module": "team-composition",
+      "authority": false,
+      "generatedBy": "scripts/build_agent_skill_indexes.py",
+      "verify": "npm run check:agent-indexes"
+    },
+    {
+      "path": "agents/cro/TOOLS.md",
+      "role": "generated-output",
+      "module": "team-composition",
+      "authority": false,
+      "generatedBy": "scripts/build_agent_skill_indexes.py",
+      "verify": "npm run check:agent-indexes"
+    },
+    {
+      "path": "agents/cso/TOOLS.md",
+      "role": "generated-output",
+      "module": "team-composition",
+      "authority": false,
+      "generatedBy": "scripts/build_agent_skill_indexes.py",
+      "verify": "npm run check:agent-indexes"
+    },
+    {
+      "path": "agents/cto/TOOLS.md",
+      "role": "generated-output",
+      "module": "team-composition",
+      "authority": false,
+      "generatedBy": "scripts/build_agent_skill_indexes.py",
+      "verify": "npm run check:agent-indexes"
+    },
+    {
+      "path": "agents/governor/TOOLS.md",
+      "role": "generated-output",
+      "module": "team-composition",
+      "authority": false,
+      "generatedBy": "scripts/build_agent_skill_indexes.py",
+      "verify": "npm run check:agent-indexes"
+    },
+    {
+      "path": "agents/pe/TOOLS.md",
+      "role": "generated-output",
+      "module": "team-composition",
+      "authority": false,
+      "generatedBy": "scripts/build_agent_skill_indexes.py",
+      "verify": "npm run check:agent-indexes"
+    },
+    {
+      "path": "assets",
+      "role": "public-navigation",
+      "module": "public-navigation",
+      "authority": false
+    },
+    {
+      "path": "bin",
+      "role": "implementation",
+      "module": "safe-installation",
+      "authority": false
+    },
+    {
+      "path": "bin/adapters",
+      "role": "distribution-adapter",
+      "module": "distribution-adapters",
+      "authority": false,
+      "evidenceStatus": "pending",
+      "recommendation": "available"
+    },
+    {
+      "path": "catalog",
+      "role": "generated-output",
+      "module": "catalog-discovery",
+      "authority": false,
+      "generatedBy": "scripts/build_skill_catalog.py",
+      "verify": "npm run check:skills"
+    },
+    {
+      "path": "catalog/skill-taxonomy-evaluation.json",
+      "role": "generated-output",
+      "module": "catalog-discovery",
+      "authority": false,
+      "generatedBy": "scripts/build_skill_taxonomy_evaluation.py",
+      "verify": "npm run check:taxonomy-evaluation"
+    },
+    {
+      "path": "catalog/skill-quality.json",
+      "role": "generated-output",
+      "module": "verification-evidence",
+      "authority": false,
+      "generatedBy": "scripts/audit_skill_quality.py",
+      "verify": "npm run check:skill-quality"
+    },
+    {
+      "path": "config",
+      "role": "governance",
+      "module": "governance-memory",
+      "authority": false
+    },
+    {
+      "path": "config/harness-adapters",
+      "role": "distribution-adapter",
+      "module": "distribution-adapters",
+      "authority": false,
+      "evidenceStatus": "pending",
+      "recommendation": "available"
+    },
+    {
+      "path": "config/external-skill-sources.json",
+      "role": "authored-authority",
+      "module": "governance-memory",
+      "authority": true
+    },
+    {
+      "path": "config/skill-index.schema.json",
+      "role": "authored-source",
+      "module": "catalog-discovery",
+      "authority": false
+    },
+    {
+      "path": "config/skill-provenance.json",
+      "role": "authored-authority",
+      "module": "catalog-discovery",
+      "authority": true
+    },
+    {
+      "path": "config/skill-provenance.schema.json",
+      "role": "authored-source",
+      "module": "catalog-discovery",
+      "authority": false
+    },
+    {
+      "path": "config/skill-curation.json",
+      "role": "authored-authority",
+      "module": "catalog-discovery",
+      "authority": true
+    },
+    {
+      "path": "config/skill-curation.schema.json",
+      "role": "authored-source",
+      "module": "catalog-discovery",
+      "authority": false
+    },
+    {
+      "path": "config/skill-taxonomy-evaluation.schema.json",
+      "role": "authored-source",
+      "module": "catalog-discovery",
+      "authority": false
+    },
+    {
+      "path": "config/skill-taxonomy-gold.json",
+      "role": "authored-authority",
+      "module": "catalog-discovery",
+      "authority": true
+    },
+    {
+      "path": "config/skill-taxonomy-gold.schema.json",
+      "role": "authored-source",
+      "module": "catalog-discovery",
+      "authority": false
+    },
+    {
+      "path": "config/repository-architecture.json",
+      "role": "authored-authority",
+      "module": "governance-memory",
+      "authority": true
+    },
+    {
+      "path": "config/skill-quality-baseline.json",
+      "role": "authored-authority",
+      "module": "verification-evidence",
+      "authority": true
+    },
+    {
+      "path": "config/skill-taxonomy.json",
+      "role": "authored-authority",
+      "module": "catalog-discovery",
+      "authority": true
+    },
+    {
+      "path": "config/team-manifest.json",
+      "role": "authored-authority",
+      "module": "team-composition",
+      "authority": true
+    },
+    {
+      "path": "config/agent-hierarchy.json",
+      "role": "authored-authority",
+      "module": "team-composition",
+      "authority": true
+    },
+    {
+      "path": "config/agent-hierarchy.schema.json",
+      "role": "authored-source",
+      "module": "team-composition",
+      "authority": false
+    },
+    {
+      "path": "config/specialist-routing.schema.json",
+      "role": "authored-source",
+      "module": "team-composition",
+      "authority": false
+    },
+    {
+      "path": "config/cto-specialists.json",
+      "role": "authored-authority",
+      "module": "team-composition",
+      "authority": true
+    },
+    {
+      "path": "config/cpo-specialists.json",
+      "role": "authored-authority",
+      "module": "team-composition",
+      "authority": true
+    },
+    {
+      "path": "config/cco-specialists.json",
+      "role": "authored-authority",
+      "module": "team-composition",
+      "authority": true
+    },
+    {
+      "path": "config/cfo-specialists.json",
+      "role": "authored-authority",
+      "module": "team-composition",
+      "authority": true
+    },
+    {
+      "path": "config/cdo-specialists.json",
+      "role": "authored-authority",
+      "module": "team-composition",
+      "authority": true
+    },
+    {
+      "path": "config/cqo-specialists.json",
+      "role": "authored-authority",
+      "module": "team-composition",
+      "authority": true
+    },
+    {
+      "path": "config/cmo-specialists.json",
+      "role": "authored-authority",
+      "module": "team-composition",
+      "authority": true
+    },
+    {
+      "path": "config/cro-specialists.json",
+      "role": "authored-authority",
+      "module": "team-composition",
+      "authority": true
+    },
+    {
+      "path": "config/cso-specialists.json",
+      "role": "authored-authority",
+      "module": "team-composition",
+      "authority": true
+    },
+    {
+      "path": "config/coo-specialists.json",
+      "role": "authored-authority",
+      "module": "team-composition",
+      "authority": true
+    },
+    {
+      "path": "config/clo-specialists.json",
+      "role": "authored-authority",
+      "module": "team-composition",
+      "authority": true
+    },
+    {
+      "path": "config/agent-sources.lock.json",
+      "role": "generated-output",
+      "module": "team-composition",
+      "authority": false,
+      "generatedBy": "scripts/build_executive_subagent_sources.py",
+      "verify": "npm run check:subagent-sources"
+    },
+    {
+      "path": "scripts/build_executive_subagent_sources.py",
+      "role": "implementation",
+      "module": "team-composition",
+      "authority": false
+    },
+    {
+      "path": "cookbook",
+      "role": "public-navigation",
+      "module": "public-navigation",
+      "authority": false
+    },
+    {
+      "path": "design-qa.md",
+      "role": "evidence",
+      "module": "verification-evidence",
+      "authority": false
+    },
+    {
+      "path": "docs",
+      "role": "public-navigation",
+      "module": "public-navigation",
+      "authority": false
+    },
+    {
+      "path": "docs/skill-taxonomy-gold-set.md",
+      "role": "authored-source",
+      "module": "catalog-discovery",
+      "authority": false
+    },
+    {
+      "path": "docs/skill-provenance-and-scoring.md",
+      "role": "authored-source",
+      "module": "catalog-discovery",
+      "authority": false
+    },
+    {
+      "path": "docs/adr",
+      "role": "governance",
+      "module": "governance-memory",
+      "authority": false
+    },
+    {
+      "path": "docs/assets/star-history.svg",
+      "role": "generated-output",
+      "module": "public-navigation",
+      "authority": false,
+      "generatedBy": "scripts/build_site_data.py",
+      "verify": "npm run test:repository"
+    },
+    {
+      "path": "docs/data/repo-stats.json",
+      "role": "generated-output",
+      "module": "public-navigation",
+      "authority": false,
+      "generatedBy": "scripts/build_site_data.py",
+      "verify": "npm run test:repository"
+    },
+    {
+      "path": "docs/data/star-history.json",
+      "role": "generated-output",
+      "module": "public-navigation",
+      "authority": false,
+      "generatedBy": "scripts/build_site_data.py",
+      "verify": "npm run test:repository"
+    },
+    {
+      "path": "docs/data/verification-receipt.json",
+      "role": "evidence",
+      "module": "verification-evidence",
+      "authority": false,
+      "verify": "npm run test:repository"
+    },
+    {
+      "path": "docs/data/verification-receipt.schema.json",
+      "role": "authored-source",
+      "module": "verification-evidence",
+      "authority": false
+    },
+    {
+      "path": "gemini-extension.json",
+      "role": "distribution-adapter",
+      "module": "distribution-adapters",
+      "authority": false,
+      "evidenceStatus": "pending",
+      "recommendation": "available"
+    },
+    {
+      "path": "install.sh",
+      "role": "implementation",
+      "module": "safe-installation",
+      "authority": false
+    },
+    {
+      "path": "package.json",
+      "role": "implementation",
+      "module": "verification-evidence",
+      "authority": false
+    },
+    {
+      "path": "plugins",
+      "role": "distribution-adapter",
+      "module": "distribution-adapters",
+      "authority": false,
+      "evidenceStatus": "manifest",
+      "recommendation": "available"
+    },
+    {
+      "path": "plugins/agi-super-team-codex",
+      "role": "distribution-adapter",
+      "module": "distribution-adapters",
+      "authority": false,
+      "evidenceStatus": "manifest",
+      "recommendation": "recommended"
+    },
+    {
+      "path": "requirements-dev.txt",
+      "role": "implementation",
+      "module": "verification-evidence",
+      "authority": false
+    },
+    {
+      "path": "scripts",
+      "role": "implementation",
+      "module": "verification-evidence",
+      "authority": false
+    },
+    {
+      "path": "scripts/build_agent_skill_indexes.py",
+      "role": "implementation",
+      "module": "team-composition",
+      "authority": false
+    },
+    {
+      "path": "scripts/build_codex_csuite_adapter.py",
+      "role": "implementation",
+      "module": "distribution-adapters",
+      "authority": false
+    },
+    {
+      "path": "scripts/build_skill_catalog.py",
+      "role": "implementation",
+      "module": "catalog-discovery",
+      "authority": false
+    },
+    {
+      "path": "scripts/skill_evidence.py",
+      "role": "implementation",
+      "module": "catalog-discovery",
+      "authority": false
+    },
+    {
+      "path": "scripts/build_skill_taxonomy_evaluation.py",
+      "role": "implementation",
+      "module": "catalog-discovery",
+      "authority": false
+    },
+    {
+      "path": "setup.md",
+      "role": "public-navigation",
+      "module": "safe-installation",
+      "authority": false
+    },
+    {
+      "path": "skills",
+      "role": "authored-authority",
+      "module": "skill-library",
+      "authority": true
+    },
+    {
+      "path": "starter-kits",
+      "role": "authored-source",
+      "module": "team-composition",
+      "authority": false
+    },
+    {
+      "path": "tests",
+      "role": "evidence",
+      "module": "verification-evidence",
+      "authority": false
+    },
+    {
+      "path": "tests/test_codex_team_adapter.py",
+      "role": "evidence",
+      "module": "verification-evidence",
+      "authority": false
+    }
   ],
   "qualityGates": {
     "taxonomy": {
       "maxFallbackRatio": 0.06,
       "maxOverrideRatio": 0.03,
       "maxMultipleCategoryMatchRatio": 0.24,
-      "maxPriorityResolvedTieRatio": 0.20,
+      "maxPriorityResolvedTieRatio": 0.2,
       "maxNeedsReviewRatio": 0.06
     },
     "requiredEntrypoints": [

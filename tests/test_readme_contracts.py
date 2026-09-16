@@ -220,12 +220,16 @@ class ReadmeContractTests(unittest.TestCase):
         self.assertIn("config/team-manifest.json", skills)
 
     def test_distribution_metadata_uses_the_evidence_backed_positioning(self) -> None:
+        # The root `.codex-plugin/` copy was removed as a duplicate of
+        # `plugins/agi-super-team-codex/.codex-plugin/`; Codex resolves the
+        # repo marketplace through `.agents/plugins/marketplace.json`, which
+        # now carries the positioning copy this test defends.
         metadata_paths = [
             ".claude-plugin/plugin.json",
             ".claude-plugin/marketplace.json",
-            ".codex-plugin/plugin.json",
             ".cursor-plugin/plugin.json",
             ".kimi-plugin/plugin.json",
+            ".agents/plugins/marketplace.json",
             "gemini-extension.json",
             "package.json",
         ]
