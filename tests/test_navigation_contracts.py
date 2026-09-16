@@ -28,6 +28,7 @@ PUBLIC_MARKDOWN = (
     # what it enumerates, so new curated trees must be added here.
     "docs/architecture/repository-architecture.md",
     "docs/architecture/adapter-registration.md",
+    "docs/architecture/repository-entrypoints.md",
     "docs/researchs/README.md",
     "docs/researchs/coding-agent-assembly.md",
     "docs/researchs/adapter-codex.md",

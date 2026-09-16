@@ -13,7 +13,6 @@ docs/
 ├── plans/                           未实施的计划
 ├── reference/                       清单与目录索引
 ├── adr/                             已接受的架构决策
-├── evidence/                        证据与技能治理（预留）
 ├── assets/  data/                   站点资源、生成数据
 ├── index.html  verification.html    站点页面
 ├── sitemap.xml  404.html            搜索与失败路由
@@ -26,6 +25,7 @@ docs/
 
 - [`repository-architecture.md`](../architecture/repository-architecture.md) — 整仓库架构地图，派生自 `config/repository-architecture.json`。
 - [`adapter-registration.md`](../architecture/adapter-registration.md) — Adapter 的代码层注册与校验机制。
+- [`repository-entrypoints.md`](../architecture/repository-entrypoints.md) — 六个 harness 入口对照与 canonical→分发→文档三层结构。
 
 ## guides/
 
