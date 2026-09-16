@@ -162,8 +162,8 @@ Agent depth limit reached. Solve the task yourself.
 
 1. **Codex 的叶子默认不装** —— 默认 `--tool codex` 只写 13 个 C-suite/PE/Governor TOML；
    92 个叶子要显式加 `--all-subagents`（实测：加后共 105 个 TOML）。
-   用户不加就会得到一个"有 manager 没叶子"的团队 —— **且没有任何提示**。
-   本条是可用性缺口，不是实现缺口。
+   **安装器现在会就此发出明确提示**（`Note: only the C-suite was installed…`），
+   但默认仍是精简安装 —— 这是刻意的默认值选择，不是缺陷。
 2. **审计 hook 在 Codex 侧未装** —— 需在 `/hooks` 交互式 review 并记录信任 hash；且 0.139.0 不读 `~/.codex/hooks.json`，必须写进 `config.toml`。
 3. **`scripts/build_codex_csuite_adapter.py` 是另一条 Codex 路径** —— 它的插件 payload 描述仍从 `focus` 派生，未吃到 `trigger` 改造。
 4. **per-manager 并发**两家都做不到，契约里的 `maxConcurrentChildren: 2` 目前**无法硬强制**，只能靠提示词。

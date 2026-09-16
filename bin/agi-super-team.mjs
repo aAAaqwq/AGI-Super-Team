@@ -451,6 +451,15 @@ function main() {
       throw error;
     }
     console.log("\nInstalled. Restart the selected CLI to load new Agents and Skills.");
+    const leafGroupsRequested =
+      options.allSubagents || options.subagentManagers.length > 0 || options.includeCcoSpecialists;
+    if (options.includeAgents && !leafGroupsRequested) {
+      console.log(
+        "\nNote: only the C-suite was installed — no specialist leaves.\n" +
+        "      Managers will have nobody to delegate to, so L1/L2 routing stops at the manager layer.\n" +
+        "      Add every leaf with `--all-subagents`, or one group with `--with-subagents <id>` (e.g. cto, cco).",
+      );
+    }
   } catch (error) {
     console.error(`error: ${error.message}`);
     process.exitCode = 2;
