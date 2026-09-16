@@ -34,7 +34,7 @@ Pide una página para tu producto y revisa el brief, los archivos y los hallazgo
 
 [**Explorar el sitio →**](https://aaaaqwq.github.io/AGI-Super-Team/)
 
-**Versiones:** el código de GitHub está en `1.5.0`; npm publica `1.4.2`. `@latest` instala la versión de npm. [Estado de publicación](./docs/guides/npm-release-status.md).
+**Versiones:** el código de GitHub está en `1.6.0`; npm publica `1.4.2`. `@latest` instala la versión de npm. [Estado de publicación](./docs/guides/npm-release-status.md).
 
 ## Instalar en tu framework de agentes
 

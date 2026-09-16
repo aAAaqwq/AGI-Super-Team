@@ -32,7 +32,7 @@ AGI Super Team 不是 Codex 专属插件，而是一套版本化、有组织的 
 
 [**浏览官网 →**](https://aaaaqwq.github.io/AGI-Super-Team/)
 
-**版本说明：** GitHub 源码已到 `1.5.0`；npm 当前发布的是 `1.4.2`，`@latest` 安装 npm 已发布版本。[版本差异与补发说明](./docs/guides/npm-release-status.md)。
+**版本说明：** GitHub 源码已到 `1.6.0`；npm 当前发布的是 `1.4.2`，`@latest` 安装 npm 已发布版本。[版本差异与补发说明](./docs/guides/npm-release-status.md)。
 
 <a id="coding-agent-quick-start"></a>
 ## ⚡ 用 Coding Agent 一键安装
