@@ -147,7 +147,7 @@ function orchestratorSkill(agents, groups, specialists) {
   const selected = selectedByManager(specialists);
   const canonicalRoutes = agents
     .filter((agent) => agent.id !== "ceo")
-    .map((agent) => `- \`ast-${agent.id}\`：${agent.focus}`)
+    .map((agent) => `- \`ast-${agent.id}\`：${agent.trigger}`)
     .join("\n");
   const managerRoutes = Object.entries(groups || {})
     .filter(([manager]) => canonicalIds.has(manager))

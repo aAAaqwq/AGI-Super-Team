@@ -16,6 +16,17 @@ function tomlText(value) {
   return JSON.stringify(String(value));
 }
 
+const ROLE_LABELS = {
+  ceo: "跨职能、公司级或高不确定性任务的总协调者",
+  governor: "重大结论与完成声明的独立证据复核者",
+};
+
+export function canonicalAgentDescription(agent) {
+  const roleLabel = ROLE_LABELS[agent.id] || null;
+  const heading = roleLabel ? `${agent.name}｜${roleLabel}。` : `${agent.name}｜`;
+  return `${heading}${agent.trigger} 不适用：${agent.doNotUseWhen}`;
+}
+
 function managerRoutingBody(group, runtimeName = (manager, id) => `${manager}/${id}`, roleName = (id) => id) {
   if (!group?.specialists?.length) return "";
   const specialistRoutes = group.specialists.map((item) =>
@@ -45,7 +56,7 @@ export function roleBody(packageRoot, agent, group = null, runtimeName, roleName
 }
 
 export function markdownAgent(packageRoot, agent, fileSuffix = ".md", group = null) {
-  const frontmatter = `---\nname: ${agent.id}\ndescription: ${yamlText(agent.focus)}\n---\n\n`;
+  const frontmatter = `---\nname: ${agent.id}\ndescription: ${yamlText(canonicalAgentDescription(agent))}\n---\n\n`;
   return { name: `${agent.id}${fileSuffix}`, content: Buffer.from(`${frontmatter}${roleBody(packageRoot, agent, group, (manager, id) => `${manager}-${id}`, (id) => id)}\n`) };
 }
 
@@ -57,7 +68,7 @@ export function codexAgent(packageRoot, agent, group = null) {
   return Buffer.from(
     `# Generated from ${agent.path}; rerun the AGI Super Team installer to update.\n` +
       `name = ${tomlText(`ast-${agent.id}`)}\n` +
-      `description = ${tomlText(`C-suite ${agent.id.toUpperCase()} leaf: ${agent.focus}`)}\n` +
+      `description = ${tomlText(canonicalAgentDescription(agent))}\n` +
       `nickname_candidates = [${tomlText(agent.id.toUpperCase())}]\n` +
       `model_reasoning_effort = "high"\n` +
       `sandbox_mode = "read-only"\n` +
@@ -104,7 +115,7 @@ export function specialistAsSkill(packageRoot, specialist) {
 
 export function agentAsSkill(packageRoot, agent, group = null) {
   return Buffer.from(
-    `---\nname: agi-super-team-${agent.id}\ndescription: ${yamlText(agent.focus)}\n---\n\n# ${agent.name}\n\n${roleBody(packageRoot, agent, group, (manager, id) => `agi-super-team-${manager}-${id}`, (id) => `agi-super-team-${id}`)}\n`,
+    `---\nname: agi-super-team-${agent.id}\ndescription: ${yamlText(canonicalAgentDescription(agent))}\n---\n\n# ${agent.name}\n\n${roleBody(packageRoot, agent, group, (manager, id) => `agi-super-team-${manager}-${id}`, (id) => `agi-super-team-${id}`)}\n`,
   );
 }
 

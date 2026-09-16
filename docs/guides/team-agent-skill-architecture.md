@@ -94,7 +94,9 @@ sequenceDiagram
 - CEO 是唯一公司级协调者，不创建第二个 CEO。
 - 默认选择最小充分 C-suite，不因 `full-team` 可用就广播所有角色。
 - Manager 只能调用路由表列出的直属角色，一轮最多两个并发叶子。
-- 叶子和 Governor 不得继续委派；总深度不超过二。
+- 叶子和 Governor 不得继续委派；主会话到叶子共 **3 层**（main → CEO → C-suite → leaf）。
+  Claude Code 侧由 `CLAUDE_CODE_MAX_SUBAGENT_SPAWN_DEPTH=3` 强制，Codex 侧由 `[agents] max_depth = 3` 强制。
+  各框架的强制能力差异与路由分级见[路由分级与强制层](routing-and-enforcement.md)。
 - Governor 独立复核，不由工作 Agent 自评代替。
 - 发布、部署、凭证、资金、法律承诺和不可逆操作由人类最终批准。
 

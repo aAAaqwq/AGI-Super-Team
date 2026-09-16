@@ -254,9 +254,10 @@ const agentIds = manifest.agents.map(agent => agent && agent.id);
 if (!validIds(agentIds)) process.exit(1);
 const knownAgents = new Set(agentIds);
 for (const agent of manifest.agents) {
-  if (!exactKeys(agent, ['id', 'name', 'path', 'focus', 'outputs', 'boundary', 'skills'])) process.exit(1);
+  if (!exactKeys(agent, ['id', 'name', 'path', 'focus', 'trigger', 'outputs', 'boundary', 'doNotUseWhen', 'skills'])) process.exit(1);
   if (typeof agent.name !== 'string' || !agent.name.trim()) process.exit(1);
-  if (!descriptiveText(agent.focus) || !descriptiveText(agent.boundary)
+  if (!descriptiveText(agent.focus) || !descriptiveText(agent.trigger) || !descriptiveText(agent.boundary)
+      || !descriptiveText(agent.doNotUseWhen)
       || !validOutputs(agent.outputs)) process.exit(1);
   if (agent.path !== `agents/${agent.id}`) process.exit(1);
   if (!exactKeys(agent.skills, ['required', 'optional', 'harnessSpecific', 'recommendedExternal'])) process.exit(1);

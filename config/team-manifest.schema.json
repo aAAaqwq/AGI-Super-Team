@@ -79,8 +79,10 @@
         "name",
         "path",
         "focus",
+        "trigger",
         "outputs",
         "boundary",
+        "doNotUseWhen",
         "skills"
       ],
       "properties": {
@@ -99,6 +101,10 @@
           "type": "string",
           "minLength": 24
         },
+        "trigger": {
+          "type": "string",
+          "minLength": 24
+        },
         "outputs": {
           "type": "array",
           "minItems": 2,
@@ -110,6 +116,10 @@
           }
         },
         "boundary": {
+          "type": "string",
+          "minLength": 24
+        },
+        "doNotUseWhen": {
           "type": "string",
           "minLength": 24
         },

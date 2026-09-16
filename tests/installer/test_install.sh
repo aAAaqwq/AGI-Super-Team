@@ -39,19 +39,25 @@ fs.writeFileSync(path, JSON.stringify({
   agents: [{
     id: 'ceo', name: 'CEO', path: 'agents/ceo',
     focus: 'Set direction and make evidence-backed cross-functional decisions.',
+    trigger: 'Use when a company-level goal needs decomposition, role selection and a synthesized decision.',
     outputs: ['Decision memo', 'Prioritized plan'],
     boundary: 'Specialist decisions remain with their accountable domain owners.',
+    doNotUseWhen: 'A single domain inside its own owner scope, or an independent evidence review.',
     skills: {
     required: skills, optional: [], harnessSpecific: [], recommendedExternal: []}}, {
     id: 'governor', name: 'Governor', path: 'agents/governor',
     focus: 'Independently review evidence and block unsupported completion claims.',
+    trigger: 'Use when a completion claim needs independent evidence review and a gate decision.',
     outputs: ['Independent review', 'Gate decision'],
     boundary: 'Reviews delivery evidence without taking over implementation ownership.',
+    doNotUseWhen: 'Producing the design or implementation artifact, or deciding domain trade-offs.',
     skills: {required: [], optional: [], harnessSpecific: [], recommendedExternal: []}}, {
     id: 'pe', name: 'PE', path: 'agents/pe',
     focus: 'Implement the bounded fixture plan and return deterministic evidence.',
+    trigger: 'Use when an approved fixture plan needs implementation, tests and a reviewable change set.',
     outputs: ['Fixture artifact', 'Verification result'],
     boundary: 'Implements the assigned fixture without changing coordinator decisions.',
+    doNotUseWhen: 'Unapproved designs, fixture scope trade-offs, or single-domain advisory only.',
     skills: {required: [], optional: [], harnessSpecific: [], recommendedExternal: []}}],
   kits: [{
     id: 'fixture-team', name: 'Fixture Team',
@@ -86,8 +92,10 @@ fs.writeFileSync(path, JSON.stringify({
   agents: ids.map(id => ({
     id, name: id.toUpperCase(), path: `agents/${id}`,
     focus: `Own the professional ${id.toUpperCase()} operating domain and its evidence.`,
+    trigger: `Use when the ${id.toUpperCase()} operating domain needs an owned artifact and verified handoff.`,
     outputs: ['Reviewed artifact', 'Verified handoff'],
     boundary: 'Escalate cross-functional decisions to the accountable domain owner.',
+    doNotUseWhen: 'A sibling domain outside this role scope, or an independent evidence review.',
     skills: {
     required: assignments[id].split(/\s+/).filter(Boolean), optional: [], harnessSpecific: [], recommendedExternal: []}})),
   kits: [{

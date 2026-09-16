@@ -1,6 +1,6 @@
 import { join } from "node:path";
 
-import { roleBody, specialistBody } from "../installer/render.mjs";
+import { canonicalAgentDescription, roleBody, specialistBody } from "../installer/render.mjs";
 
 
 export const ADAPTER_ID = "claude-code";
@@ -14,16 +14,6 @@ function yamlString(value) {
 
 function runtimeAgentName(agentId) {
   return `ast-${agentId}`;
-}
-
-function canonicalDescription(agent) {
-  if (agent.id === "ceo") {
-    return `跨职能、公司级或高不确定性任务的总协调者。需要拆解目标、选择 C-suite 角色、保留独立复核并综合决策时调用。${agent.focus}`;
-  }
-  if (agent.id === "governor") {
-    return `重大结论、发布、安全、资金、法律或完成声明需要独立证据复核时调用。${agent.focus}`;
-  }
-  return `任务主要属于 ${agent.name} 的职责范围时调用。${agent.focus}`;
 }
 
 function assignedSkillLines(assignedSkills, agentId) {
@@ -43,7 +33,7 @@ function canonicalAgentArtifact(packageRoot, tool, agent, groups, assignedSkills
   const frontmatter = [
     "---",
     `name: ${name}`,
-    `description: ${yamlString(canonicalDescription(agent))}`,
+    `description: ${yamlString(canonicalAgentDescription(agent))}`,
     "model: inherit",
     ...assignedSkillLines(assignedSkills, agent.id),
     ...(canDelegate ? [] : ["disallowedTools: Agent"]),
@@ -91,7 +81,7 @@ function orchestratorArtifact(tool, agents, groups, specialists) {
   const agentById = new Map(agents.map((agent) => [agent.id, agent]));
   const canonicalRoutes = agents
     .filter((agent) => agent.id !== "ceo")
-    .map((agent) => `- \`${runtimeAgentName(agent.id)}\`（${agent.name}）：${agent.focus}`)
+    .map((agent) => `- \`${runtimeAgentName(agent.id)}\`（${agent.name}）：${agent.trigger}`)
     .join("\n");
   const selectedKeys = new Set(specialists.map((item) => `${item.manager}/${item.id}`));
   const managerSections = Object.values(groups || {}).map((group) => {

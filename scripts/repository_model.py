@@ -746,7 +746,17 @@ def validate_manifest(root: Path) -> ValidationReport:
     physical_skills = _physical_skill_names(root)
     for index, agent in enumerate(agents):
         location = f"{MANIFEST_PATH}:agents[{index}]"
-        agent_fields = {"id", "name", "path", "focus", "outputs", "boundary", "skills"}
+        agent_fields = {
+            "id",
+            "name",
+            "path",
+            "focus",
+            "trigger",
+            "outputs",
+            "boundary",
+            "doNotUseWhen",
+            "skills",
+        }
         if not _expect_exact_keys(report, agent, agent_fields, location):
             continue
         agent_id = agent.get("id")
@@ -762,7 +772,7 @@ def validate_manifest(root: Path) -> ValidationReport:
             report.add(
                 "error", "manifest", "manifest.schema_name", "name must be non-empty", location
             )
-        for field in ("focus", "boundary"):
+        for field in ("focus", "trigger", "boundary", "doNotUseWhen"):
             value = agent.get(field)
             if not isinstance(value, str) or len(value.strip()) < 24:
                 report.add(

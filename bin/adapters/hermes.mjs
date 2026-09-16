@@ -1,5 +1,5 @@
 import { join, resolve } from "node:path";
-import { roleBody, specialistBody } from "../installer/render.mjs";
+import { canonicalAgentDescription, roleBody, specialistBody } from "../installer/render.mjs";
 
 export const ADAPTER_ID = "hermes";
 
@@ -116,7 +116,7 @@ function roleSkillContent(packageRoot, agent, group, assigned) {
   );
   return `---
 name: ${runtimeName}
-description: ${yamlText(`${agent.id.toUpperCase()} 角色｜${agent.focus}`)}
+description: ${yamlText(canonicalAgentDescription(agent))}
 metadata:
   hermes:
     category: agi-super-team-agents
@@ -159,7 +159,7 @@ ${specialistBody(packageRoot, specialist).trim()}
 }
 
 function orchestratorSkillContent(agents, specialists) {
-  const profiles = agents.map((agent) => `- \`ast-${agent.id}\`：${agent.focus}`).join("\n");
+  const profiles = agents.map((agent) => `- \`ast-${agent.id}\`：${agent.trigger}`).join("\n");
   const specialistIndex = specialists.length
     ? specialists.map((item) => `- \`ast-${item.manager}-${item.id}\`：${item.trigger}`).join("\n")
     : "- 本次未选择 specialist Skill。";
@@ -222,7 +222,7 @@ function profileBlueprint(home, agent, assigned) {
     profileId,
     roleId: agent.id,
     roleType: kind,
-    description: agent.focus,
+    description: canonicalAgentDescription(agent),
     blueprintOnly: true,
     runtimeStateCreated: false,
     runtimeEvidence: "pending",

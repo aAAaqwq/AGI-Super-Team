@@ -5,6 +5,7 @@
 - [`index.html`](./index.html) — public homepage.
 - [`guides/`](./guides/) — maintained installation, compatibility, evidence, and use-case guidance.
 - [`guides/team-agent-skill-architecture.md`](./guides/team-agent-skill-architecture.md) — canonical explanation of Team selection, C-suite routing, specialist leaves, Skill assignment, and Adapter compilation.
+- [`guides/routing-and-enforcement.md`](./guides/routing-and-enforcement.md) — the four architecture layers, L0–L3 routing tiers, and which constraints each harness can hard-enforce versus prompt-only.
 - [`adr/`](./adr/) — architecture decision memory.
 - [`data/`](./data/) — generated same-origin statistics plus a separately classified verification receipt; never source authority.
 - [`sitemap.xml`](./sitemap.xml) and [`404.html`](./404.html) — search and failure routes.
