@@ -30,11 +30,11 @@ export function loadCatalog(packageRoot) {
   const manifest = readJson(manifestPath, "team manifest");
   const hierarchy = readJson(hierarchyPath, "agent hierarchy");
   const sourceLock = readJson(sourcesPath, "Agent source lock");
-  if (adapters.schemaVersion !== 1 || !Array.isArray(adapters.tools) || adapters.tools.length !== 18) {
-    throw new Error("CLI adapter manifest must contain exactly 18 tools");
+  if (adapters.schemaVersion !== 1 || !Array.isArray(adapters.tools) || adapters.tools.length !== 19) {
+    throw new Error("CLI adapter manifest must contain exactly 19 tools");
   }
   const ids = new Set();
-  const priorityHarnesses = new Set(["claude-code", "codex", "openclaw", "hermes"]);
+  const priorityHarnesses = new Set(["claude-code", "codex", "openclaw", "hermes", "dsh"]);
   for (const tool of adapters.tools) {
     if (!SAFE_ID.test(tool.id || "") || ids.has(tool.id) || !["global", "project"].includes(tool.scope)) {
       throw new Error(`invalid or duplicate CLI adapter: ${tool.id || "<missing>"}`);

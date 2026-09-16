@@ -15,7 +15,6 @@ docs/
 ├── plans/                 未实施的计划与提案
 ├── reference/             清单与目录索引
 ├── adr/                   已接受的架构决策（不可变）
-├── evidence/              证据与技能治理
 ├── assets/ data/          站点资源与生成数据
 └── *.html                 GitHub Pages 页面
 ```
@@ -24,6 +23,7 @@ docs/
 
 - [**Repository architecture map**](./architecture/repository-architecture.md) — 整仓库结构：五层、21 个权威源、顶层路径归属、接缝、变更对照、删除测试。派生自 [`config/repository-architecture.json`](../config/repository-architecture.json)。
 - [Adapter 注册机制](./architecture/adapter-registration.md) — Adapter 在代码里如何注册与校验，含「恰好 18 个工具」三处硬约束。
+- [**仓库入口地图**](./architecture/repository-entrypoints.md) — 六个 harness 入口（服务谁 / 是否机器必需 / 删除后果）+ canonical→分发→文档三层结构，并点破 `.agents/` 与 `~/.agents/skills/` 的混淆。
 - [Team / C-suite / Subagent / Skill 连接原理](./guides/team-agent-skill-architecture.md) — canonical 团队如何选型与路由。
 - [路由分级与强制层](./guides/routing-and-enforcement.md) — L0–L3 路由与各 harness 的强制边界。
 - [架构决策记录](./adr/) — 见其 [索引](./adr/README.md)。

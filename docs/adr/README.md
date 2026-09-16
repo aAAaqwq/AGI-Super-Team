@@ -7,5 +7,6 @@ ADRs preserve why repository boundaries exist. New records are immutable after a
 - [ADR-0003: Structural evidence and runtime receipts](./0003-structural-evidence-and-runtime-receipts.md)
 - [ADR-0004: Reviewed Skill taxonomy evaluation](./0004-reviewed-skill-taxonomy-evaluation.md)
 - [ADR-0005: Skill provenance and curation evidence](./0005-skill-provenance-and-curation-evidence.md)
+- [ADR-0006: One-command onboarding across primary harnesses](./0006-one-command-onboarding.md)
 
 Return to the [architecture map](../../ARCHITECTURE.md) or [repository context](../../CONTEXT.md).

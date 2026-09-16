@@ -6,6 +6,7 @@ __pycache__/
 *$py.class
 *.so
 .Python
+.pytest_cache/
 build/
 develop-eggs/
 dist/

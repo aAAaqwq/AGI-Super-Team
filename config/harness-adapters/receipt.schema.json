@@ -20,7 +20,7 @@
   ],
   "properties": {
     "schemaVersion": {"const": 1},
-    "harness": {"enum": ["claude-code", "codex", "openclaw", "hermes"]},
+    "harness": {"enum": ["claude-code", "codex", "openclaw", "hermes", "dsh"]},
     "status": {"enum": ["filesystem-connected", "connected-structural"]},
     "runtimeEvidence": {"const": "pending"},
     "checks": {

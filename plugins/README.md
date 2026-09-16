@@ -37,7 +37,7 @@ A package cannot reference canonical content by reference. Measured against `cla
 
 A wrapper that carries no content installs nothing, so packages without components were removed rather
 than kept as placeholders. See
-[ADR-0006](../docs/adr/0006-distribution-package-consolidation.md) for the decision and the coverage
+[ADR-0006](../docs/adr/0006-one-command-onboarding.md) for the decision and the coverage
 matrix across the five primary harnesses.
 
 Use [.codex/INDEX.md](../.codex/INDEX.md) as the human-facing Codex installation guide. Do not infer

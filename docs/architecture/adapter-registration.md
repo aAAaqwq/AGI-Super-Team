@@ -10,10 +10,10 @@
 
 | 层级 | 载体 | 数量 | 作用 |
 |---|---|---|---|
-| **CLI 目标** | `config/cli-adapters.json` 的一个条目 | 18 个 | 声明一个框架的安装目标：路径、产物模式、支持状态 |
-| **外置 Adapter 模块** | `config/harness-adapters/<id>.json` + `bin/adapters/<id>.mjs` | 4 个 | 只有主力框架才有，负责把 canonical Team 翻译成该框架原生格式 |
+| **CLI 目标** | `config/cli-adapters.json` 的一个条目 | 19 个 | 声明一个框架的安装目标：路径、产物模式、支持状态 |
+| **外置 Adapter 模块** | `config/harness-adapters/<id>.json` + `bin/adapters/<id>.mjs` | 5 个 | 只有主力框架才有，负责把 canonical Team 翻译成该框架原生格式 |
 
-**只有 4 个主力框架**（Claude Code、Codex、OpenClaw、Hermes）拥有第二层。其余 14 个目标走安装器的通用渲染逻辑，不需要 `bin/adapters/*.mjs`。
+**只有 5 个主力框架**（Claude Code、Codex、OpenClaw、Hermes、DSH）拥有第二层。其余 14 个目标走安装器的通用渲染逻辑，不需要 `bin/adapters/*.mjs`。
 
 判断一个框架属于哪一类，看它的条目有没有 `adapterModule` 字段。
 
@@ -60,13 +60,13 @@
 | 规则 | 位置 |
 |---|---|
 | `schemaVersion` 必须为 `1` | `catalog.mjs:33` |
-| `tools` 必须恰好 **18** 个 | `catalog.mjs:33` |
+| `tools` 必须恰好 **19** 个 | `catalog.mjs:33` |
 | `id` 合法（`SAFE_ID`）、唯一 | `catalog.mjs:39` |
 | `scope` 必须是 `global` 或 `project` | `catalog.mjs:39` |
 | 必须声明 `agentPaths` 和 `skillPaths` 两个数组 | `catalog.mjs:42` |
 | 主力框架（`priorityHarnesses`）必须额外声明完整契约 | `catalog.mjs:45-54` |
 
-`priorityHarnesses` 硬编码为 `claude-code`、`codex`、`openclaw`、`hermes`。属于这一集合的目标必须满足：
+`priorityHarnesses` 硬编码为 `claude-code`、`codex`、`openclaw`、`hermes`、`dsh`。属于这一集合的目标必须满足：
 
 ```js
 tool.agentMode === "harness-adapter"
@@ -91,15 +91,15 @@ if (
 
 也就是说，模块路径不能自定义、不能指向 `bin/adapters/` 之外、不能是符号链接。**`v1.5.0` 之前存在的安全修复**（拒绝符号链接目标）在这里同样生效。
 
-### 三处 18 个的硬约束
+### 三处 19 个的硬约束
 
 新增或移除一个 CLI 目标，会**同时打破**三个独立的检查点：
 
 | 检查点 | 内容 |
 |---|---|
-| `bin/installer/catalog.mjs:33` | 运行时抛错 `CLI adapter manifest must contain exactly 18 tools` |
-| `tests/test_multi_cli_installer.py:112` | `test_adapter_manifest_has_exactly_eighteen_unique_tool_ids` |
-| `tests/windows_cli_smoke.mjs:83` | 打包后 CLI 的 `--list-tools` 必须返回 18 个唯一 id |
+| `bin/installer/catalog.mjs:33` | 运行时抛错 `CLI adapter manifest must contain exactly 19 tools` |
+| `tests/test_multi_cli_installer.py:113` | `test_adapter_manifest_has_exactly_nineteen_unique_tool_ids` |
+| `tests/windows_cli_smoke.mjs:83` | 打包后 CLI 的 `--list-tools` 必须返回 19 个唯一 id |
 
 **这意味着当前架构不支持增量式地"加一个框架"。** 接入新框架必须同步修改上述三处，并明确这是有意的契约变更，而不是绕过检查。
 
@@ -160,7 +160,7 @@ const ADAPTERS = new Map(
 
 以一个假想的框架 `foo` 为例，最小完整改动集：
 
-1. `config/cli-adapters.json` —— 新增条目，且**三处 18 个的约束同步调整**。
+1. `config/cli-adapters.json` —— 新增条目，且**三处 19 个的约束同步调整**。
 2. `bin/adapters/foo.mjs` —— 实现 `ADAPTER_ID`、`renderAdapterArtifacts`、`buildConnectionSpec`。
 3. `bin/adapters/index.mjs` —— `import` 并加入 `ADAPTERS` Map。
 4. `config/harness-adapters/foo.json` + `foo.schema.json` —— 声明式接线契约。
@@ -169,12 +169,12 @@ const ADAPTERS = new Map(
 改动后必须通过：
 
 ```bash
-npm test          # 含 18 个约束的契约测试
+npm test          # 含 19 个约束的契约测试
 npm run validate:strict
 ```
 
 ## 已知缺口
 
 - **没有运行时注册机制。** CLI 目标与 Adapter 模块都是编译期/静态注册，`--help` 中没有自定义 Adapter 注册标志。第三方框架无法在不改仓库的前提下接入。
-- **18 个是硬编码常量**，不是可推导值。新增框架是一次契约变更，需要同时改代码与测试。
+- **19 个是硬编码常量**，不是可推导值。新增框架是一次契约变更，需要同时改代码与测试。
 - **`priorityHarnesses` 是硬编码集合**，新增主力框架需要改 `catalog.mjs`。
