@@ -60,7 +60,6 @@ CRITICAL_PATH_CONTRACTS: dict[str, dict[str, Any]] = {
     "docs/data/star-history.json": {"role": "generated-output", "module": "public-navigation", "authority": False, "generatedBy": "scripts/build_site_data.py", "verify": "npm run test:repository"},
     "docs/assets/star-history.svg": {"role": "generated-output", "module": "public-navigation", "authority": False, "generatedBy": "scripts/build_site_data.py", "verify": "npm run test:repository"},
     "docs/data/verification-receipt.json": {"role": "evidence", "module": "verification-evidence", "authority": False},
-    ".codex-plugin": {"role": "distribution-adapter", "module": "distribution-adapters", "authority": False, "evidenceStatus": "legacy", "recommendation": "legacy"},
     "plugins/agi-super-team-codex": {"role": "distribution-adapter", "module": "distribution-adapters", "authority": False, "evidenceStatus": "manifest", "recommendation": "recommended"},
     "gemini-extension.json": {"role": "distribution-adapter", "module": "distribution-adapters", "authority": False, "evidenceStatus": "pending", "recommendation": "available"},
 }

@@ -1,5 +1,6 @@
 {
   "name": "agi-super-team",
+  "description": "Evidence-backed AI team packs with preview-first installation and explicit human review",
   "interface": {
     "displayName": "AGI Super Team"
   },
