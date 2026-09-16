@@ -54,7 +54,7 @@ Usage:
 
 Targets:
   --tool <id>            Select a target (repeatable; default: codex)
-  --all-tools            Select all 18 targets
+  --all-tools            Select all 19 targets
   --list-tools           List supported targets
   --home <path>          Override the OS-home base for global targets
   --project-dir <path>   Root for project-scoped targets (default: current directory)
@@ -205,7 +205,7 @@ function ensureDirectoryForExternalStage(path) {
 }
 
 function listTools(catalog) {
-  console.log("AGI Super Team CLI targets (18)");
+  console.log("AGI Super Team CLI targets (19)");
   for (const tool of catalog.tools) {
     console.log(`  ${tool.id.padEnd(14)} ${tool.scope.padEnd(7)} ${tool.support.padEnd(18)} ${tool.label}`);
   }

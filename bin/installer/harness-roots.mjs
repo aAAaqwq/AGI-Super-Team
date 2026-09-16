@@ -55,6 +55,29 @@ export function resolveHermesHome({
   return safeRoot(target, "Hermes home");
 }
 
+function defaultDshHome(home) {
+  return join(home, ".dsh");
+}
+
+/**
+ * Resolve the DeepSeek Harness data root. Mirrors `resolveDshHome()` in
+ * `@deepseek-ai/dsh-home-paths`: an explicit configuration wins, then `$DSH_HOME`,
+ * then `~/.dsh` (a blank value counts as unset).
+ */
+export function resolveDshHome({
+  home,
+  homeExplicit = false,
+  environment = process.env,
+}) {
+  const fallback = defaultDshHome(home);
+  const override = configured(environment, "DSH_HOME");
+  const target = override ? resolveHomePath(override, home) : fallback;
+  if (homeExplicit && override) {
+    requireAlignedExplicitHome("DSH_HOME", target, fallback);
+  }
+  return safeRoot(target, "DSH home");
+}
+
 function firstExistingConfig(effectiveHome, stateDir, stateOverride) {
   const directories = stateOverride
     ? [stateDir]
@@ -152,6 +175,16 @@ export function configureHarnessRoots({
           homeExplicit,
           environment,
           runtimePlatform,
+        }),
+      };
+    }
+    if (tool.id === "dsh") {
+      return {
+        ...tool,
+        installationRoot: resolveDshHome({
+          home,
+          homeExplicit,
+          environment,
         }),
       };
     }

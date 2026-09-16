@@ -76,14 +76,14 @@ function roots(name) {
 try {
   const listHome = join(sandbox, "list-home");
   const listed = invoke("--list-tools", ["--list-tools"], listHome);
-  expectIncludes(listed, "AGI Super Team CLI targets (18)", "--list-tools");
+  expectIncludes(listed, "AGI Super Team CLI targets (19)", "--list-tools");
   const listedTools = listed.split(/\r?\n/)
     .map((line) => /^\s{2}(\S+)\s+(?:global|project)\s+/.exec(line)?.[1])
     .filter(Boolean);
-  if (listedTools.length !== 18 || new Set(listedTools).size !== 18) {
+  if (listedTools.length !== 19 || new Set(listedTools).size !== 19) {
     throw new Error(`--list-tools returned ${listedTools.length} rows (${new Set(listedTools).size} unique)`);
   }
-  for (const tool of ["claude-code", "codex", "openclaw", "hermes"]) {
+  for (const tool of ["claude-code", "codex", "openclaw", "hermes", "dsh"]) {
     if (!listedTools.includes(tool)) throw new Error(`--list-tools omitted ${tool}`);
   }
 

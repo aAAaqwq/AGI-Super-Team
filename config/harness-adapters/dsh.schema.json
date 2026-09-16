@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/aAAaqwq/AGI-Super-Team/config/harness-adapters/dsh.schema.json",
+  "title": "AGI Super Team DeepSeek Harness adapter",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "harness",
+    "adapterMode",
+    "coordinator",
+    "independentReviewer",
+    "requiredMaxDepth",
+    "maxConcurrentChildren",
+    "runtimeEvidence",
+    "runtimePaths",
+    "homeEnvironmentVariable",
+    "profileEnvironmentVariable",
+    "defaultProfile",
+    "presetId",
+    "skillDiscovery",
+    "presetMap",
+    "delegationPolicy",
+    "instructionPolicy",
+    "sideEffects"
+  ],
+  "properties": {
+    "$schema": {"const": "./dsh.schema.json"},
+    "schemaVersion": {"const": 1},
+    "harness": {"const": "dsh"},
+    "adapterMode": {"const": "agent-preset"},
+    "coordinator": {"const": "ceo"},
+    "independentReviewer": {"const": "governor"},
+    "requiredMaxDepth": {"const": 2},
+    "maxConcurrentChildren": {"const": 2},
+    "runtimeEvidence": {
+      "enum": ["pending", "fixture-tested", "external-receipt"]
+    },
+    "runtimePaths": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["globalInstructions", "presetRoot", "presetComposition", "profilePatch", "orchestratorSkill"],
+      "properties": {
+        "globalInstructions": {"const": "AGENTS.md"},
+        "presetRoot": {"const": ".agent-presets/ast-team"},
+        "presetComposition": {"const": ".agent-presets/ast-team/agent.cordis.yml"},
+        "profilePatch": {"const": "profiles/<profile>/cordis.patch.yml"},
+        "orchestratorSkill": {"const": "skills/agi-super-team/agi-super-team-orchestrator/SKILL.md"}
+      }
+    },
+    "homeEnvironmentVariable": {"const": "DSH_HOME"},
+    "profileEnvironmentVariable": {"const": "DSH_PROFILE"},
+    "defaultProfile": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$"},
+    "presetId": {"const": "ast-team"},
+    "skillDiscovery": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["provider", "hostRowDisabledBy", "enabledBy", "customSkillDirsEntry", "sharedAgentsHome"],
+      "properties": {
+        "provider": {"const": "dsh-skill-filesystem"},
+        "hostRowDisabledBy": {"const": "dsh-web-app"},
+        "enabledBy": {"const": "profile-patch"},
+        "customSkillDirsEntry": {"const": "skills/agi-super-team"},
+        "sharedAgentsHome": {"const": "~/.agents/skills"}
+      }
+    },
+    "presetMap": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ceo", "cto", "pe", "cpo", "cqo", "cmo", "cfo", "cdo", "cco", "clo", "cro", "cso", "coo", "governor"],
+      "properties": {
+        "ceo": {"$ref": "#/$defs/coordinatorRole"},
+        "cto": {"$ref": "#/$defs/managerRole"},
+        "pe": {"$ref": "#/$defs/leafRole"},
+        "cpo": {"$ref": "#/$defs/managerRole"},
+        "cqo": {"$ref": "#/$defs/managerRole"},
+        "cmo": {"$ref": "#/$defs/managerRole"},
+        "cfo": {"$ref": "#/$defs/managerRole"},
+        "cdo": {"$ref": "#/$defs/managerRole"},
+        "cco": {"$ref": "#/$defs/managerRole"},
+        "clo": {"$ref": "#/$defs/managerRole"},
+        "cro": {"$ref": "#/$defs/managerRole"},
+        "cso": {"$ref": "#/$defs/managerRole"},
+        "coo": {"$ref": "#/$defs/managerRole"},
+        "governor": {"$ref": "#/$defs/governorRole"}
+      }
+    },
+    "delegationPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["namedRoles", "anonymousShortTasks", "perRoleToolBoundary", "leafDelegationAllowed", "nestedOrchestratorRole"],
+      "properties": {
+        "namedRoles": {"const": "one-shared-preset-per-session"},
+        "anonymousShortTasks": {"const": "subagent"},
+        "perRoleToolBoundary": {"const": "not-enforced-by-harness"},
+        "leafDelegationAllowed": {"const": false},
+        "nestedOrchestratorRole": {"const": "orchestrator"}
+      }
+    },
+    "instructionPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["globalFile", "authority", "maxBytes", "projectChainMarkers", "note"],
+      "properties": {
+        "globalFile": {"const": "AGENTS.md"},
+        "authority": {"const": "advisory"},
+        "maxBytes": {"const": 65536},
+        "projectChainMarkers": {"const": [".git"]},
+        "note": {"type": "string", "minLength": 1}
+      }
+    },
+    "sideEffects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["createProfile", "installPlugins", "startHost", "writeRealUserHome"],
+      "properties": {
+        "createProfile": {"const": false},
+        "installPlugins": {"const": false},
+        "startHost": {"const": false},
+        "writeRealUserHome": {"const": false}
+      }
+    }
+  },
+  "$defs": {
+    "baseRole": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["runtime", "roleType", "roleAgent"],
+      "properties": {
+        "runtime": {"const": "ast-team"},
+        "roleType": {"enum": ["coordinator", "manager", "leaf", "independent-reviewer"]},
+        "roleAgent": {"type": "string", "pattern": "^ast-[a-z0-9]+(?:-[a-z0-9]+)*$"}
+      }
+    },
+    "coordinatorRole": {
+      "allOf": [
+        {"$ref": "#/$defs/baseRole"},
+        {"properties": {"roleType": {"const": "coordinator"}, "roleAgent": {"const": "ast-ceo"}}}
+      ]
+    },
+    "managerRole": {
+      "allOf": [
+        {"$ref": "#/$defs/baseRole"},
+        {"properties": {"roleType": {"const": "manager"}}}
+      ]
+    },
+    "leafRole": {
+      "allOf": [
+        {"$ref": "#/$defs/baseRole"},
+        {"properties": {"roleType": {"const": "leaf"}, "roleAgent": {"const": "ast-pe"}}}
+      ]
+    },
+    "governorRole": {
+      "allOf": [
+        {"$ref": "#/$defs/baseRole"},
+        {"properties": {"roleType": {"const": "independent-reviewer"}, "roleAgent": {"const": "ast-governor"}}}
+      ]
+    }
+  }
+}

@@ -1,11 +1,12 @@
 import * as claudeCode from "./claude-code.mjs";
 import * as codex from "./codex.mjs";
+import * as dsh from "./dsh.mjs";
 import * as hermes from "./hermes.mjs";
 import * as openclaw from "./openclaw.mjs";
 
 
 const ADAPTERS = new Map(
-  [claudeCode, codex, openclaw, hermes].map((adapter) => [
+  [claudeCode, codex, openclaw, hermes, dsh].map((adapter) => [
     adapter.ADAPTER_ID,
     adapter,
   ]),

@@ -1,0 +1,65 @@
+{
+  "$schema": "./dsh.schema.json",
+  "schemaVersion": 1,
+  "harness": "dsh",
+  "adapterMode": "agent-preset",
+  "coordinator": "ceo",
+  "independentReviewer": "governor",
+  "requiredMaxDepth": 2,
+  "maxConcurrentChildren": 2,
+  "runtimeEvidence": "pending",
+  "runtimePaths": {
+    "globalInstructions": "AGENTS.md",
+    "presetRoot": ".agent-presets/ast-team",
+    "presetComposition": ".agent-presets/ast-team/agent.cordis.yml",
+    "profilePatch": "profiles/<profile>/cordis.patch.yml",
+    "orchestratorSkill": "skills/agi-super-team/agi-super-team-orchestrator/SKILL.md"
+  },
+  "homeEnvironmentVariable": "DSH_HOME",
+  "profileEnvironmentVariable": "DSH_PROFILE",
+  "defaultProfile": "web",
+  "presetId": "ast-team",
+  "skillDiscovery": {
+    "provider": "dsh-skill-filesystem",
+    "hostRowDisabledBy": "dsh-web-app",
+    "enabledBy": "profile-patch",
+    "customSkillDirsEntry": "skills/agi-super-team",
+    "sharedAgentsHome": "~/.agents/skills"
+  },
+  "presetMap": {
+    "ceo": {"runtime": "ast-team", "roleType": "coordinator", "roleAgent": "ast-ceo"},
+    "cto": {"runtime": "ast-team", "roleType": "manager", "roleAgent": "ast-cto"},
+    "pe": {"runtime": "ast-team", "roleType": "leaf", "roleAgent": "ast-pe"},
+    "cpo": {"runtime": "ast-team", "roleType": "manager", "roleAgent": "ast-cpo"},
+    "cqo": {"runtime": "ast-team", "roleType": "manager", "roleAgent": "ast-cqo"},
+    "cmo": {"runtime": "ast-team", "roleType": "manager", "roleAgent": "ast-cmo"},
+    "cfo": {"runtime": "ast-team", "roleType": "manager", "roleAgent": "ast-cfo"},
+    "cdo": {"runtime": "ast-team", "roleType": "manager", "roleAgent": "ast-cdo"},
+    "cco": {"runtime": "ast-team", "roleType": "manager", "roleAgent": "ast-cco"},
+    "clo": {"runtime": "ast-team", "roleType": "manager", "roleAgent": "ast-clo"},
+    "cro": {"runtime": "ast-team", "roleType": "manager", "roleAgent": "ast-cro"},
+    "cso": {"runtime": "ast-team", "roleType": "manager", "roleAgent": "ast-cso"},
+    "coo": {"runtime": "ast-team", "roleType": "manager", "roleAgent": "ast-coo"},
+    "governor": {"runtime": "ast-team", "roleType": "independent-reviewer", "roleAgent": "ast-governor"}
+  },
+  "delegationPolicy": {
+    "namedRoles": "one-shared-preset-per-session",
+    "anonymousShortTasks": "subagent",
+    "perRoleToolBoundary": "not-enforced-by-harness",
+    "leafDelegationAllowed": false,
+    "nestedOrchestratorRole": "orchestrator"
+  },
+  "instructionPolicy": {
+    "globalFile": "AGENTS.md",
+    "authority": "advisory",
+    "maxBytes": 65536,
+    "projectChainMarkers": [".git"],
+    "note": "Workspace instructions cannot override system, developer, or direct user instructions, so role capability boundaries live in the preset composition, not here."
+  },
+  "sideEffects": {
+    "createProfile": false,
+    "installPlugins": false,
+    "startHost": false,
+    "writeRealUserHome": false
+  }
+}

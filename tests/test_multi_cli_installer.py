@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CLI = ROOT / "bin" / "agi-super-team.mjs"
 ADAPTERS = ROOT / "config" / "cli-adapters.json"
 NODE = os.environ.get("NODE", "node")
-PRIORITY_TOOLS = ("claude-code", "codex", "openclaw", "hermes")
+PRIORITY_TOOLS = ("claude-code", "codex", "openclaw", "hermes", "dsh")
 EXPECTED_TOOL_IDS = {
     "aider",
     "antigravity",
@@ -22,6 +22,7 @@ EXPECTED_TOOL_IDS = {
     "copilot",
     "cursor",
     "deerflow",
+    "dsh",
     "gemini-cli",
     "hermes",
     "kiro",
@@ -109,11 +110,11 @@ class MultiCliInstallerTests(unittest.TestCase):
                     entries.append((str(index), relative, "directory"))
         return tuple(entries)
 
-    def test_adapter_manifest_has_exactly_eighteen_unique_tool_ids(self) -> None:
+    def test_adapter_manifest_has_exactly_nineteen_unique_tool_ids(self) -> None:
         ids = [tool["id"] for tool in self.manifest["tools"]]
 
-        self.assertEqual(len(ids), 18)
-        self.assertEqual(len(set(ids)), 18)
+        self.assertEqual(len(ids), 19)
+        self.assertEqual(len(set(ids)), 19)
         self.assertEqual(set(ids), EXPECTED_TOOL_IDS)
 
     def test_list_tools_reports_every_manifest_tool(self) -> None:
@@ -352,6 +353,15 @@ class MultiCliInstallerTests(unittest.TestCase):
                     installed = {path.stem.removeprefix("ast-") for path in (home / ".claude/agents").glob("ast-*-*.md") if path.stem.removeprefix("ast-") in expected}
                 elif tool_id == "openclaw":
                     installed = {path.name.removeprefix("ast-") for path in (home / ".openclaw/agency-agents/agi-super-team").glob("ast-*-*") if path.name.removeprefix("ast-") in expected}
+                elif tool_id == "dsh":
+                    # DSH has no per-role file directory, so leaves land as the
+                    # workspace instructions of the ast-team preset's role tree:
+                    # .agent-presets/ast-team/agents/<manager>/subagents/<role>/AGENTS.md
+                    installed = {
+                        f"{path.parents[2].name}-{path.parent.name}"
+                        for path in (home / ".dsh/.agent-presets/ast-team/agents").glob("*/subagents/*/AGENTS.md")
+                        if f"{path.parents[2].name}-{path.parent.name}" in expected
+                    }
                 else:
                     installed = {path.name.removeprefix("ast-") for path in (home / ".hermes/skills/agi-super-team-agents").glob("ast-*-*") if path.name.removeprefix("ast-") in expected}
                 self.assertEqual(installed, expected)
