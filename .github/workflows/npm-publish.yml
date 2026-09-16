@@ -16,8 +16,12 @@ on:
         required: true
         type: string
 
+# `id-token: write` is required by `npm publish --provenance`, which mints a
+# short-lived OIDC token to sign the build attestation. Without it the publish
+# aborts with EUSAGE after authenticating and packing.
 permissions:
   contents: read
+  id-token: write
 
 concurrency:
   group: npm-publish-${{ github.ref }}
