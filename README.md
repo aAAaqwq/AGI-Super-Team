@@ -1,10 +1,12 @@
 <p align="right"><a href="./README_CN.md">🇨🇳 中文</a> · <a href="./README.es-ES.md">Español</a></p>
 
 <p align="center">
-  <img src="assets/banner-v2.png" alt="AGI Super Team: an organized cross-harness team of agents and skills" width="760">
+  <img src="docs/assets/team-intelligence.webp" alt="AGI Super Team: an organized cross-harness team of agents and skills" width="900">
 </p>
 
-<h1 align="center">🤖 AGI Super Team</h1>
+<p align="center"><img src="docs/assets/logo-intelligence.webp" width="64" height="64" alt="AGI Super Team logo"></p>
+
+<h1 align="center">AGI Super Team</h1>
 
 <p align="center"><strong>An organized, installable team of Agents + Skills for local AI agent frameworks.</strong></p>
 
@@ -17,6 +19,22 @@ AGI Super Team is not a Codex-only plugin. It is a versioned, organized **Agents
 The same organizational contract travels across frameworks: 14 top-level roles, 92 opt-in specialists, reusable Skills, eight outcome Teams, independent review, and explicit human approval.
 
 Each adapter maps that contract to the capabilities its target actually supports.
+
+## See what your team actually does
+
+Ask for a landing page. Get a scoped brief, working files, and a review you can inspect. This is an illustrative workflow, not a claim of a completed run.
+
+![Example workflow: CEO and CPO scope a landing page; PE and specialists build it; Governor reviews; you decide the next step.](./docs/assets/team-workflow.svg)
+
+| Your goal | Work to expect | Team |
+|---|---|---|
+| Build a product | Product brief → implementation → review | [product-delivery](./starter-kits/product-delivery/) |
+| Create a content series | Source notes → channel-ready drafts → claims review | [content-creator](./starter-kits/content-creator/) |
+| Research a decision | Question → evidence map → decision memo | [research-decision](./starter-kits/research-decision/) |
+
+[**Explore the website →**](https://aaaaqwq.github.io/AGI-Super-Team/)
+
+**Version note:** GitHub source is `1.5.0`; npm currently publishes `1.4.2`. `@latest` installs the npm release. [Release status and recovery](./docs/guides/npm-release-status.md).
 
 <a id="coding-agent-quick-start"></a>
 ## ⚡ Quick Start for Coding Agents
@@ -68,9 +86,9 @@ npx -y agi-super-team@latest --tool claude-code --install --connect
 npx -y agi-super-team@latest --tool claude-code --doctor
 ```
 
-The commands above use the public npm package. For reproducible automation, replace `@latest` with an exact published version such as `@1.5.0`.
+The commands above use the public npm package. For reproducible automation, replace `@latest` with an exact published version such as `@1.4.2`.
 
-The npm distribution keeps all 817 `SKILL.md` entrypoints discoverable and includes the complete files for every Skill assigned by `config/team-manifest.json`. Browse the provenance-backed [Daniel's Original Skills](./skills/original/) collection for reviewed first-party work. Clone the repository when you need every auxiliary asset from the wider Skill library.
+The npm distribution keeps its `SKILL.md` entrypoints discoverable and includes the complete files for every Skill assigned by `config/team-manifest.json`. Browse the provenance-backed [Daniel's Original Skills](./skills/original/) collection for reviewed first-party work. Clone the repository when you need every auxiliary asset from the wider Skill library.
 
 Replace `claude-code` with an ID from `--list-tools`. Use `--all-tools` only when you intentionally want every global and project adapter. A no-argument run remains the legacy Codex preview; new automation should always name `--tool` or `--all-tools`.
 
@@ -334,7 +352,7 @@ This receipt proves manifest-driven selection, preview safety, staged copying, a
 <summary><strong>👀 See the preview → apply → verify storyboard</strong></summary>
 
 <p align="center">
-  <img src="assets/demo-install.gif" alt="Terminal storyboard showing a read-only preview, explicit apply, and repository checks" width="760">
+  <img src="assets/demo-install.gif" alt="Terminal storyboard showing a read-only preview, explicit apply, and repository checks" width="900">
 </p>
 
 The animation uses sanitized paths and is illustrative, not runtime evidence. Read the [storyboard transcript](./assets/demo-install.txt).

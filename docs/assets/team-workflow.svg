@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600" role="img" aria-labelledby="title desc">
+<title id="title">One brief. Clear owners. Reviewable work.</title><desc id="desc">Example workflow: CEO and CPO scope a landing page; PE and specialists build it; Governor reviews; you decide the next step.</desc>
+<rect width="1200" height="600" rx="24" fill="#080D14"/><g font-family="Arial,Helvetica,'PingFang SC','Microsoft YaHei',sans-serif">
+<text x="48" y="56" fill="#9FE9F5" font-size="14" font-weight="700" letter-spacing="2">A REAL TASK, MADE LEGIBLE</text>
+<text x="48" y="110" fill="#F4F8FC" font-size="36" font-weight="700">One brief. Clear owners. Reviewable work.</text>
+<rect x="48" y="146" width="1104" height="72" rx="12" fill="#132435"/>
+<text x="76" y="191" fill="#F4F8FC" font-size="24" font-weight="400">“Build a landing page for my product.”</text>
+<rect x="48" y="270" width="252" height="230" rx="16" fill="#101C29"/>
+<text x="72" y="311" fill="#9FE9F5" font-size="16" font-weight="700">01</text>
+<text x="72" y="359" fill="#F4F8FC" font-size="28" font-weight="700">Scope</text>
+<text x="72" y="400" fill="#AEC2D0" font-size="17" font-weight="700">CEO + CPO</text>
+<text x="72" y="465" fill="#AEC2D0" font-size="15" font-weight="400">Audience, promise, acceptance</text>
+<path d="M308 382h16m-6-6 6 6-6 6" stroke="#9FE9F5" stroke-width="2" fill="none"/>
+<rect x="332" y="270" width="252" height="230" rx="16" fill="#101C29"/>
+<text x="356" y="311" fill="#9FE9F5" font-size="16" font-weight="700">02</text>
+<text x="356" y="359" fill="#F4F8FC" font-size="28" font-weight="700">Build</text>
+<text x="356" y="400" fill="#AEC2D0" font-size="17" font-weight="700">PE + specialists</text>
+<text x="356" y="465" fill="#AEC2D0" font-size="15" font-weight="400">Page, copy, working changes</text>
+<path d="M592 382h16m-6-6 6 6-6 6" stroke="#9FE9F5" stroke-width="2" fill="none"/>
+<rect x="616" y="270" width="252" height="230" rx="16" fill="#101C29"/>
+<text x="640" y="311" fill="#9FE9F5" font-size="16" font-weight="700">03</text>
+<text x="640" y="359" fill="#F4F8FC" font-size="28" font-weight="700">Review</text>
+<text x="640" y="400" fill="#AEC2D0" font-size="17" font-weight="700">Governor</text>
+<text x="640" y="465" fill="#AEC2D0" font-size="15" font-weight="400">Checks, findings, revisions</text>
+<path d="M876 382h16m-6-6 6 6-6 6" stroke="#9FE9F5" stroke-width="2" fill="none"/>
+<rect x="900" y="270" width="252" height="230" rx="16" fill="#F4F8FC"/>
+<text x="924" y="311" fill="#164F68" font-size="16" font-weight="700">04</text>
+<text x="924" y="359" fill="#080D14" font-size="28" font-weight="700">Decide</text>
+<text x="924" y="400" fill="#213A4B" font-size="17" font-weight="700">You</text>
+<text x="924" y="465" fill="#213A4B" font-size="15" font-weight="400">Approve the next step</text>
+<text x="48" y="551" fill="#AEC2D0" font-size="17" font-weight="400">Skills supply methods. Your agent framework executes the work.</text>
+</g></svg>

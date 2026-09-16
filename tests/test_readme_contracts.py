@@ -40,9 +40,9 @@ class ReadmeContractTests(unittest.TestCase):
             if entry.startswith("skills/") and entry.endswith("/")
         }
         self.assertTrue(assigned_skills <= packaged_skill_roots)
-        self.assertIn("all 817 `SKILL.md` entrypoints", self.english)
-        self.assertIn("全部 817 个 `SKILL.md` 入口", self.chinese)
-        self.assertIn("los 817 puntos de entrada `SKILL.md`", self.spanish)
+        self.assertIn("its `SKILL.md` entrypoints", self.english)
+        self.assertIn("可发现的 `SKILL.md` 入口", self.chinese)
+        self.assertIn("sus puntos de entrada `SKILL.md`", self.spanish)
         cli_entrypoint = ROOT / package["bin"]["agi-super-team"]
         self.assertTrue(cli_entrypoint.stat().st_mode & 0o111)
         self.assertIn("!**/__pycache__/**", package["files"])
@@ -75,8 +75,8 @@ class ReadmeContractTests(unittest.TestCase):
             self.assertIn(framework, self.chinese)
 
     def test_readmes_offer_agent_prompt_install_and_swarm_quick_start(self) -> None:
-        self.assertIn('<h1 align="center">🤖 AGI Super Team</h1>', self.english)
-        self.assertIn('<h1 align="center">🤖 AGI Super Team</h1>', self.chinese)
+        self.assertIn('<h1 align="center">AGI Super Team</h1>', self.english)
+        self.assertIn('<h1 align="center">AGI Super Team</h1>', self.chinese)
         self.assertIn("## ⚡ Quick Start for Coding Agents", self.english)
         self.assertIn("## 🐝 Run your first swarm", self.english)
         self.assertIn("## ⚡ 用 Coding Agent 一键安装", self.chinese)

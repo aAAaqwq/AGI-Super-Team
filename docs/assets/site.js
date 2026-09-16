@@ -41,9 +41,9 @@
   }
 
   const savedTheme = readStorage(themeCacheKey);
-  const preferredTheme = window.matchMedia?.("(prefers-color-scheme: light)").matches
-    ? "light"
-    : "dark";
+  const preferredTheme = document.body.classList.contains("homepage")
+    ? "dark"
+    : window.matchMedia?.("(prefers-color-scheme: light)").matches ? "light" : "dark";
   applyTheme(savedTheme === "light" || savedTheme === "dark" ? savedTheme : preferredTheme);
 
   themeButton?.addEventListener("click", () => {
@@ -64,7 +64,7 @@
     setMenu(menuButton.getAttribute("aria-expanded") !== "true");
   });
   primaryNav?.addEventListener("click", (event) => {
-    if (event.target instanceof HTMLAnchorElement) setMenu(false);
+    if (event.target instanceof Element && event.target.closest("a")) setMenu(false);
   });
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && menuButton?.getAttribute("aria-expanded") === "true") {
@@ -72,6 +72,32 @@
       menuButton.focus();
     }
   });
+
+  const frameworkChoice = document.querySelector("[data-framework-choice]");
+  const frameworkNames = {
+    "claude-code": "Claude Code",
+    codex: "Codex",
+    openclaw: "OpenClaw",
+    hermes: "Hermes Agent",
+  };
+  function updateFrameworkPreview() {
+    const framework = frameworkChoice?.value;
+    if (!Object.hasOwn(frameworkNames, framework)) return;
+    const command = document.querySelector("#install-command code");
+    const label = document.querySelector("[data-command-label]");
+    if (command) {
+      command.textContent = `git clone --depth 1 --branch main https://github.com/aAAaqwq/AGI-Super-Team.git
+cd AGI-Super-Team
+
+# Inspect the checkout, then preview. No files installed.
+node bin/agi-super-team.mjs --tool ${framework}`;
+    }
+    if (label) label.textContent = `${frameworkNames[framework].toUpperCase()} / PREVIEW`;
+    const status = document.querySelector("[data-copy-status]");
+    if (status) status.textContent = `${frameworkNames[framework]} preview commands ready.`;
+  }
+  frameworkChoice?.addEventListener("change", updateFrameworkPreview);
+  if (frameworkChoice) updateFrameworkPreview();
 
   document.querySelectorAll("[data-copy-target]").forEach((button) => {
     button.addEventListener("click", async () => {

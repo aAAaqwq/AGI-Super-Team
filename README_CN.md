@@ -1,10 +1,12 @@
 <p align="right"><a href="./README.md">English</a> · <a href="./README.es-ES.md">Español</a></p>
 
 <p align="center">
-  <img src="assets/banner-v2.png" alt="AGI Super Team：跨框架、有组织的 Agents 与 Skills 团队" width="760">
+  <img src="docs/assets/team-intelligence.webp" alt="AGI Super Team：跨框架、有组织的 Agents 与 Skills 团队" width="900">
 </p>
 
-<h1 align="center">🤖 AGI Super Team</h1>
+<p align="center"><img src="docs/assets/logo-intelligence.webp" width="64" height="64" alt="AGI Super Team logo"></p>
+
+<h1 align="center">AGI Super Team</h1>
 
 <p align="center"><strong>面向本地 AI Agent 框架的、有组织、可安装的 Agents + Skills 团队系统。</strong></p>
 
@@ -15,6 +17,22 @@
 AGI Super Team 不是 Codex 专属插件，而是一套版本化、有组织的 **Agents + Skills 团队系统**。它通过 18 个明确适配器，服务 Claude Code、Codex、OpenClaw、Hermes 等主流本地 AI Agent 框架。
 
 同一套组织契约可以跨框架落地：14 个顶层角色、92 个可选直属专家、可复用 Skills、8 支成果型 Team、独立审查与明确人工批准。不同适配器只负责映射目标框架真实支持的能力。
+
+## 一个真实任务，团队具体做什么？
+
+例如你说：“为我的产品做一个落地页。”团队将任务拆成简报、页面文件和可检查的评审结果。下面展示协作方式，不代表已经完成的运行记录。
+
+![落地页任务示例：CEO 与 CPO 确定范围；PE 与专家制作页面；Governor 独立复核；由你决定下一步。](./docs/assets/team-workflow-zh.svg)
+
+| 你想做什么 | 可以期待的交付物 | 选择 Team |
+|---|---|---|
+| 做一个产品 | 产品简报 → 实现文件 → 评审记录 | [product-delivery](./starter-kits/product-delivery/) |
+| 做一组内容 | 来源笔记 → 分渠道成稿 → 主张核验 | [content-creator](./starter-kits/content-creator/) |
+| 研究一个决策 | 研究问题 → 证据地图 → 决策备忘录 | [research-decision](./starter-kits/research-decision/) |
+
+[**浏览官网 →**](https://aaaaqwq.github.io/AGI-Super-Team/)
+
+**版本说明：** GitHub 源码已到 `1.5.0`；npm 当前发布的是 `1.4.2`，`@latest` 安装 npm 已发布版本。[版本差异与补发说明](./docs/guides/npm-release-status.md)。
 
 <a id="coding-agent-quick-start"></a>
 ## ⚡ 用 Coding Agent 一键安装
@@ -66,9 +84,9 @@ npx -y agi-super-team@latest --tool claude-code --install --connect
 npx -y agi-super-team@latest --tool claude-code --doctor
 ```
 
-以上命令直接使用公开 npm 包。自动化场景建议把 `@latest` 换成明确版本，例如 `@1.5.0`，以获得可复现安装。
+以上命令直接使用公开 npm 包。自动化场景建议把 `@latest` 换成明确版本，例如 `@1.4.2`，以获得可复现安装。
 
-npm 发行包保留全部 817 个 `SKILL.md` 入口，并完整携带 `config/team-manifest.json` 实际分配的所有 Skills。经过来源审查的第一方作品可在 [Daniel 的原创 Skills](./skills/original/) 分类中查看；如果需要整个 Skill 库的全部辅助素材，请克隆仓库。
+npm 发行包保留可发现的 `SKILL.md` 入口，并完整携带 `config/team-manifest.json` 实际分配的所有 Skills。经过来源审查的第一方作品可在 [Daniel 的原创 Skills](./skills/original/) 分类中查看；如果需要整个 Skill 库的全部辅助素材，请克隆仓库。
 
 把 `claude-code` 换成 `--list-tools` 输出的目标 ID。只有在确实要同时写入全部全局和项目适配目标时，才使用 `--all-tools`。不带参数仍保留旧版 Codex 预览行为；新脚本应明确写出 `--tool` 或 `--all-tools`。
 
@@ -347,7 +365,7 @@ npm run check:architecture
 <summary><strong>👀 查看 preview → apply → verify 分镜</strong></summary>
 
 <p align="center">
-  <img src="assets/demo-install.gif" alt="终端分镜：只读预览、显式应用和仓库检查" width="760">
+  <img src="assets/demo-install.gif" alt="终端分镜：只读预览、显式应用和仓库检查" width="900">
 </p>
 
 动画使用脱敏路径，仅为演示 storyboard，不是运行证据。可阅读[分镜文字稿](./assets/demo-install.txt)。

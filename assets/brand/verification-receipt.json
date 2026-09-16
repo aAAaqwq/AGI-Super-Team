@@ -1,0 +1,25 @@
+{
+  "kit": "product-delivery",
+  "mode": "native",
+  "sourceCommit": "27de4aa1cf97f64fe4004ed40e05bc59220fb32b",
+  "scope": "Uncommitted visual refresh in design/visual-refresh-20260915; local preview only",
+  "rolesRequested": ["ast-pe", "ast-cro", "ast-governor"],
+  "rolesObserved": ["ast-pe", "ast-cro", "ast-governor"],
+  "artifacts": ["README.md", "README_CN.md", "README.es-ES.md", "docs/index.html", "docs/assets/site.css", "docs/assets/site.js", "docs/assets/team-intelligence.webp", "docs/assets/logo-intelligence.webp", "docs/assets/team-workflow.svg", "docs/assets/team-workflow-zh.svg", "docs/assets/team-workflow-es.svg", "docs/guides/npm-release-status.md"],
+  "checks": [
+    "Repository suite: 302 tests, OK, 1 skipped; followed by final focused site/README suite: 49 passed",
+    "Installer suite passed",
+    "Subagent sources, agent indexes, Codex team, skills, skill quality and taxonomy generated-output checks passed",
+    "Strict repository validation: zero errors and warnings",
+    "Architecture classification contracts: 100/100",
+    "JavaScript syntax and git diff whitespace checks passed",
+    "Chrome: 375/768/1440 widths in dark/light; no overflow, no broken images, no page errors",
+    "Menu/Escape focus, theme, four framework choices, clipboard and no-JavaScript navigation passed",
+    "npm pack dry-run: 1616 files, 4877115 bytes; all new README images included"
+  ],
+  "governorReview": "approve",
+  "governorScope": "Local preview only. No unresolved blockers. npm count drift corrected and rechecked.",
+  "humanApprovalsPending": ["Git push and official website deployment if requested", "npm release source/version selection and publication if requested"],
+  "limitations": ["No website deployment, Git push or npm publication performed", "No real harness task or business outcome certified", "Browser behavior run by implementation team and inspected by Governor; not independently rerun by Governor", "Built-in image generation used as explicitly authorized; tool exposes no model identifier"],
+  "runtimeEvidence": "observed"
+}
