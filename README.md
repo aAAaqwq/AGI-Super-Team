@@ -92,14 +92,27 @@ The npm distribution keeps its `SKILL.md` entrypoints discoverable and includes 
 
 Replace `claude-code` with an ID from `--list-tools`. Use `--all-tools` only when you intentionally want every global and project adapter. A no-argument run remains the legacy Codex preview; new automation should always name `--tool` or `--all-tools`.
 
-### Four primary frameworks
+### Pick your framework
 
-| Platform | Preview command | Installed capability |
-|---|---|---|
-| **Claude Code** | `npx -y agi-super-team@latest --tool claude-code` | Native Markdown Agents + canonical Skills + Claude orchestrator |
-| **Codex** | `npx -y agi-super-team@latest --tool codex` | Main-session CEO + native TOML Agents + canonical Skills |
-| **OpenClaw** | `npx -y agi-super-team@latest --tool openclaw` | Namespaced Agent workspaces + canonical Skills + safe config merge |
-| **Hermes Agent** | `npx -y agi-super-team@latest --tool hermes` | Role Skills + canonical Skills + Profiles/Kanban blueprints |
+Every command below has the same shape. Substitute the `--tool` ID for whichever client you already use — no framework is a prerequisite for another:
+
+```bash
+npx -y agi-super-team@latest --tool <id>                  # preview, writes nothing
+npx -y agi-super-team@latest --tool <id> --install        # apply
+npx -y agi-super-team@latest --tool <id> --install --connect
+npx -y agi-super-team@latest --tool <id> --doctor         # verify what landed
+```
+
+Four frameworks carry the full harness Adapter contract, including native Agent generation and a connection receipt:
+
+| Platform | `--tool` | Preview command | Installed capability |
+|---|---|---|---|
+| Claude Code | `claude-code` | `npx -y agi-super-team@latest --tool claude-code` | Native Markdown Agents + canonical Skills + Claude orchestrator |
+| Codex | `codex` | `npx -y agi-super-team@latest --tool codex` | Main-session CEO + native TOML Agents + canonical Skills |
+| OpenClaw | `openclaw` | `npx -y agi-super-team@latest --tool openclaw` | Namespaced Agent workspaces + canonical Skills + safe config merge |
+| Hermes Agent | `hermes` | `npx -y agi-super-team@latest --tool hermes` | Role Skills + canonical Skills + Profiles/Kanban blueprints |
+
+The other fourteen targets use the generic installer — same commands, same preview-first safety, without the external Adapter module. See [all 18 targets](#all-18-adapter-targets).
 
 `--install` materializes files; `--install --connect` also writes a connection receipt. OpenClaw dry-runs and then upserts managed `agents.list` entries while preserving unmanaged Agents and creating no channel bindings. Claude and Codex use filesystem discovery. Hermes emits blueprints but does not create Profiles, Cron jobs, or a Gateway. See the [primary harness Adapter guide](./docs/guides/harness-adapters.md) for paths, permissions, and receipt requirements.
 
@@ -111,12 +124,12 @@ Delivery format varies because each framework exposes different native Agent and
 
 ### Install executive subagent groups
 
-The default remains the 14 top-level roles. Add one executive pyramid, or all 92 optional specialists:
+The default remains the 14 top-level roles. Add one executive pyramid, or all 92 optional specialists — these flags work identically for every `--tool`:
 
 ```bash
-npx -y agi-super-team@latest --tool codex --with-subagents cto
-npx -y agi-super-team@latest --tool codex --with-subagents cfo --with-subagents clo
-npx -y agi-super-team@latest --tool codex --all-subagents --install
+npx -y agi-super-team@latest --tool <id> --with-subagents cto
+npx -y agi-super-team@latest --tool <id> --with-subagents cfo --with-subagents clo
+npx -y agi-super-team@latest --tool <id> --all-subagents --install
 ```
 
 The hierarchy is CEO → eleven manager executives → leaf specialists. CTO also references the existing canonical PE as delivery lead; it does not create a second PE identity. All 92 source files under `agents/*/subagents/*/AGENTS.md` are byte-for-byte copies from pinned `jnMetaCode/agency-agents-zh`; local routing and safety envelopes remain separate. CEO retains coordination authority, Governor remains an independent reviewer, and PE remains CTO's canonical delivery leaf rather than another manager. See [`config/agent-sources.lock.json`](./config/agent-sources.lock.json) for source URLs and SHA-256 digests. Nested Codex routing requires `max_depth = 2`; with four threads, run one manager plus at most two children per wave.
@@ -149,6 +162,21 @@ Global adapters normally resolve from the selected OS-home base; project adapter
 | `qoder` | Qoder | Global | Markdown Agent: `.qoder/agents` | Native: `.qoder/skills` | Adapter |
 
 The matrix describes the adapter contract in [`config/cli-adapters.json`](./config/cli-adapters.json), not a claim that all 18 clients have been runtime-verified. Cursor and Antigravity are explicitly experimental.
+
+### Ecosystem plugins
+
+Beyond file placement, some clients also support installing this repository as a native plugin through their own marketplace. The repository carries the manifests for these:
+
+| Client | Mechanism | Manifest | Status |
+|---|---|---|---|
+| Codex | `codex plugin marketplace add aAAaqwq/AGI-Super-Team` | [`.agents/plugins/marketplace.json`](./.agents/plugins/marketplace.json) | Verified end-to-end |
+| Claude Code | marketplace at [`.claude-plugin/marketplace.json`](./.claude-plugin/marketplace.json) | `claude plugin validate .` | Manifest validates clean |
+| Kimi | `plugin.json` at `.kimi-plugin/` or `kimi.plugin.json` | [`.kimi-plugin/plugin.json`](./.kimi-plugin/plugin.json) | Manifest present; not yet client-verified |
+| DeepSeek Harness | `dsh plugin --profile <p> add <repo>` | — | Not yet supported |
+
+Skills interoperate because `SKILL.md` follows the [agentskills.io](https://agentskills.io) open standard, which these clients share. The `~/.agents/skills/` root in particular is read by more than one client, so a single install can serve several.
+
+Which mechanisms each client actually honors is documented in [Coding agent assembly](./docs/researchs/coding-agent-assembly.md), including which claims are verified and which are not.
 
 Use the canonical [`orchestrate-agi-super-team`](./skills/orchestrate-agi-super-team/SKILL.md) Skill when a task needs the complete Team → C-suite → Skills/Subagents → Governor → CEO → human-approval flow. It detects the current framework's real delegation limits and records any flat or sequential fallback instead of pretending native nesting occurred.
 
