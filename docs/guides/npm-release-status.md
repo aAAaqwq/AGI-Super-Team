@@ -2,6 +2,14 @@
 
 Observed on 2026-09-16 UTC. This is a dated release diagnosis, not a live status page. Recheck the registry before relying on it.
 
+## Resolution
+
+`FACT`: 1.5.0 was never published to npm and will not be. `1.6.0` took the next version number and carries the visual refresh plus the installer and adapter changes that main had accumulated after the `v1.5.0` tag.
+
+`FACT`: The root cause was structural, not a one-off slip. The workflow inventory contained no npm publication job, so nothing ever pushed a tag to the registry. [`.github/workflows/npm-publish.yml`](../../.github/workflows/npm-publish.yml) now publishes on `v*` tags, checks that the tag matches `package.json`, and verifies the version resolves after upload.
+
+`ACTION`: Publishing still requires the `NPM_TOKEN` repository secret. Until that secret exists the workflow fails at the publish step by design rather than silently skipping.
+
 ## Finding
 
 `FACT`: GitHub has a published `v1.5.0` release, but the official npm registry has no `agi-super-team@1.5.0`. Both npm distribution tags, `latest` and `next`, resolve to `1.4.2`. A GitHub release and an npm publication are separate distribution steps.
