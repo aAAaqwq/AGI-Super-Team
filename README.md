@@ -34,7 +34,7 @@ Ask for a landing page. Get a scoped brief, working files, and a review you can 
 
 [**Explore the website →**](https://aaaaqwq.github.io/AGI-Super-Team/)
 
-**Version note:** GitHub source is `1.5.0`; npm currently publishes `1.4.2`. `@latest` installs the npm release. [Release status and recovery](./docs/guides/npm-release-status.md).
+**Version note:** GitHub source is `1.6.0`; npm currently publishes `1.4.2`. `@latest` installs the npm release. [Release status and recovery](./docs/guides/npm-release-status.md).
 
 <a id="coding-agent-quick-start"></a>
 ## ⚡ Quick Start for Coding Agents
