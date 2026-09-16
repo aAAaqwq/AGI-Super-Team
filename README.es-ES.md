@@ -1,10 +1,12 @@
 <p align="right"><a href="./README.md">English</a> · <a href="./README_CN.md">中文</a></p>
 
 <p align="center">
-  <img src="assets/banner-v2.png" alt="AGI Super Team: un equipo organizado de Agents y Skills para múltiples frameworks" width="760">
+  <img src="docs/assets/team-intelligence.webp" alt="AGI Super Team: un equipo organizado de Agents y Skills para múltiples frameworks" width="900">
 </p>
 
-<h1 align="center">🤖 AGI Super Team</h1>
+<p align="center"><img src="docs/assets/logo-intelligence.webp" width="64" height="64" alt="AGI Super Team logo"></p>
+
+<h1 align="center">AGI Super Team</h1>
 
 <p align="center"><strong>Un equipo organizado e instalable de Agents + Skills para frameworks de agentes de IA locales.</strong></p>
 
@@ -18,6 +20,22 @@ El mismo contrato organizativo funciona en todos los frameworks: 14 roles princi
 
 Cada adaptador traduce ese contrato a las capacidades reales del framework de destino.
 
+## Qué hace tu equipo en una tarea concreta
+
+Pide una página para tu producto y revisa el brief, los archivos y los hallazgos. Este flujo es ilustrativo; no es el registro de una ejecución completada.
+
+![Ejemplo: CEO y CPO definen una página; PE y especialistas la crean; Governor revisa; tú decides el siguiente paso.](./docs/assets/team-workflow-es.svg)
+
+| Tu objetivo | Entregables esperados | Team |
+|---|---|---|
+| Crear un producto | Brief → implementación → revisión | [product-delivery](./starter-kits/product-delivery/) |
+| Crear contenido | Fuentes → borradores → revisión de afirmaciones | [content-creator](./starter-kits/content-creator/) |
+| Investigar una decisión | Pregunta → evidencias → decisión | [research-decision](./starter-kits/research-decision/) |
+
+[**Explorar el sitio →**](https://aaaaqwq.github.io/AGI-Super-Team/)
+
+**Versiones:** el código de GitHub está en `1.5.0`; npm publica `1.4.2`. `@latest` instala la versión de npm. [Estado de publicación](./docs/guides/npm-release-status.md).
+
 ## Instalar en tu framework de agentes
 
 Lista los 18 objetivos de adaptador, previsualiza uno y luego aplica la misma selección:
@@ -29,9 +47,9 @@ npx -y agi-super-team@latest --tool claude-code --install --connect
 npx -y agi-super-team@latest --tool claude-code --doctor
 ```
 
-Los comandos anteriores usan el paquete público de npm. Para automatizaciones reproducibles, sustituye `@latest` por una versión exacta, por ejemplo `@1.5.0`.
+Los comandos anteriores usan el paquete público de npm. Para automatizaciones reproducibles, sustituye `@latest` por una versión exacta, por ejemplo `@1.4.2`.
 
-La distribución npm mantiene accesibles los 817 puntos de entrada `SKILL.md` e incluye todos los archivos de cada Skill asignado por `config/team-manifest.json`. La colección [Skills originales de Daniel](./skills/original/) reúne el trabajo propio con procedencia revisada. Clona el repositorio si necesitas todos los recursos auxiliares de la biblioteca completa.
+La distribución npm mantiene accesibles sus puntos de entrada `SKILL.md` e incluye todos los archivos de cada Skill asignado por `config/team-manifest.json`. La colección [Skills originales de Daniel](./skills/original/) reúne el trabajo propio con procedencia revisada. Clona el repositorio si necesitas todos los recursos auxiliares de la biblioteca completa.
 
 Reemplaza `claude-code` con un ID de `--list-tools`. Usa `--all-tools` solo cuando quieras intencionalmente cada adaptador global y de proyecto. Una ejecución sin argumentos permanece como la vista previa heredada de Codex; la nueva automatización debe especificar siempre `--tool` o `--all-tools`.
 
@@ -283,7 +301,7 @@ Este recibo demuestra la selección impulsada por manifiesto, la seguridad de la
 <summary><strong>👀 Ver el storyboard: vista previa → aplicar → verificar</strong></summary>
 
 <p align="center">
-  <img src="assets/demo-install.gif" alt="Storyboard de terminal que muestra una vista previa de solo lectura, aplicación explícita y verificaciones del repositorio" width="760">
+  <img src="assets/demo-install.gif" alt="Storyboard de terminal que muestra una vista previa de solo lectura, aplicación explícita y verificaciones del repositorio" width="900">
 </p>
 
 La animación usa rutas sanitizadas y es ilustrativa, no evidencia de tiempo de ejecución. Lee la [transcripción del storyboard](./assets/demo-install.txt).

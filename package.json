@@ -213,6 +213,12 @@
     "README.md",
     "README_CN.md",
     "README.es-ES.md",
+    "docs/assets/logo-intelligence.webp",
+    "docs/assets/team-intelligence.webp",
+    "docs/assets/team-workflow.svg",
+    "docs/assets/team-workflow-zh.svg",
+    "docs/assets/team-workflow-es.svg",
+    "docs/guides/npm-release-status.md",
     "!**/__pycache__/**",
     "!**/*.pyc",
     "!**/*.pyo"

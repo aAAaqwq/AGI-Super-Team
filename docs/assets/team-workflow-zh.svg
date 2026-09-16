@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600" role="img" aria-labelledby="title desc">
+<title id="title">一个任务，明确分工，可检查的交付。</title><desc id="desc">落地页任务示例：CEO 与 CPO 确定范围；PE 与专家制作页面；Governor 独立复核；由你决定下一步。</desc>
+<rect width="1200" height="600" rx="24" fill="#080D14"/><g font-family="Arial,Helvetica,'PingFang SC','Microsoft YaHei',sans-serif">
+<text x="48" y="56" fill="#9FE9F5" font-size="14" font-weight="700" letter-spacing="2">把协作变成看得见的成果</text>
+<text x="48" y="110" fill="#F4F8FC" font-size="36" font-weight="700">一个任务，明确分工，可检查的交付。</text>
+<rect x="48" y="146" width="1104" height="72" rx="12" fill="#132435"/>
+<text x="76" y="191" fill="#F4F8FC" font-size="24" font-weight="400">“为我的产品做一个落地页。”</text>
+<rect x="48" y="270" width="252" height="230" rx="16" fill="#101C29"/>
+<text x="72" y="311" fill="#9FE9F5" font-size="16" font-weight="700">01</text>
+<text x="72" y="359" fill="#F4F8FC" font-size="28" font-weight="700">确定范围</text>
+<text x="72" y="400" fill="#AEC2D0" font-size="17" font-weight="700">CEO + CPO</text>
+<text x="72" y="465" fill="#AEC2D0" font-size="15" font-weight="400">目标用户、卖点、验收标准</text>
+<path d="M308 382h16m-6-6 6 6-6 6" stroke="#9FE9F5" stroke-width="2" fill="none"/>
+<rect x="332" y="270" width="252" height="230" rx="16" fill="#101C29"/>
+<text x="356" y="311" fill="#9FE9F5" font-size="16" font-weight="700">02</text>
+<text x="356" y="359" fill="#F4F8FC" font-size="28" font-weight="700">完成制作</text>
+<text x="356" y="400" fill="#AEC2D0" font-size="17" font-weight="700">PE + 专家</text>
+<text x="356" y="465" fill="#AEC2D0" font-size="15" font-weight="400">页面、文案、可运行改动</text>
+<path d="M592 382h16m-6-6 6 6-6 6" stroke="#9FE9F5" stroke-width="2" fill="none"/>
+<rect x="616" y="270" width="252" height="230" rx="16" fill="#101C29"/>
+<text x="640" y="311" fill="#9FE9F5" font-size="16" font-weight="700">03</text>
+<text x="640" y="359" fill="#F4F8FC" font-size="28" font-weight="700">独立复核</text>
+<text x="640" y="400" fill="#AEC2D0" font-size="17" font-weight="700">Governor</text>
+<text x="640" y="465" fill="#AEC2D0" font-size="15" font-weight="400">检查、问题、修改建议</text>
+<path d="M876 382h16m-6-6 6 6-6 6" stroke="#9FE9F5" stroke-width="2" fill="none"/>
+<rect x="900" y="270" width="252" height="230" rx="16" fill="#F4F8FC"/>
+<text x="924" y="311" fill="#164F68" font-size="16" font-weight="700">04</text>
+<text x="924" y="359" fill="#080D14" font-size="28" font-weight="700">决定下一步</text>
+<text x="924" y="400" fill="#213A4B" font-size="17" font-weight="700">你</text>
+<text x="924" y="465" fill="#213A4B" font-size="15" font-weight="400">审阅结果并批准后续动作</text>
+<text x="48" y="551" fill="#AEC2D0" font-size="17" font-weight="400">Skills 提供方法；你使用的 Agent 框架负责执行。</text>
+</g></svg>

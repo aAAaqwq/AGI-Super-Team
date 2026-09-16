@@ -122,6 +122,23 @@ class SiteContractTests(unittest.TestCase):
         self.assertIn("Preview Solo Founder", self.html)
         self.assertIn("Inspect Codex package", self.html)
 
+    def test_framework_choices_are_real_adapters_and_primary_copy_is_preview_only(self) -> None:
+        options = self.tag_attributes("option")
+        self.assertEqual(
+            {option.get("value") for option in options},
+            {"claude-code", "codex", "openclaw", "hermes"},
+        )
+        adapters = json.loads((ROOT / "config/cli-adapters.json").read_text())["tools"]
+        self.assertTrue({option.get("value") for option in options} <= {adapter["id"] for adapter in adapters})
+        command = re.search(r'<pre id="install-command"><code>(.*?)</code></pre>', self.html, re.DOTALL)
+        self.assertIsNotNone(command)
+        preview = command.group(1)
+        self.assertIn("git clone", preview)
+        self.assertIn("node bin/agi-super-team.mjs --tool claude-code", preview)
+        self.assertNotIn("--install", preview)
+        self.assertNotIn("--apply", preview)
+        self.assertNotIn("npx", preview)
+
     def test_site_routes_and_sitemap_are_present(self) -> None:
         required = [
             DOCS / "verification.html",
