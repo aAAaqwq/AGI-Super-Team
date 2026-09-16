@@ -1,0 +1,10 @@
+# AGI-SUPER-TEAM:DSH-PATCH:BEGIN
+# Managed by the AGI Super Team installer. Edits inside this block are
+# overwritten on reinstall; add your own entries above or below it.
+- id: skill-filesystem
+  name: "@deepseek-ai/dsh-skill-filesystem"
+  disabled: false
+  config:
+    customSkillDirs:
+      - "./skills/agi-super-team"
+# AGI-SUPER-TEAM:DSH-PATCH:END

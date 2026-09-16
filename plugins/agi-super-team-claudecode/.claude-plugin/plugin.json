@@ -1,0 +1,9 @@
+{
+  "name": "agi-super-team-claudecode",
+  "version": "1.6.0",
+  "description": "Evidence-backed role packs for Claude Code: a Musk CEO coordinator, eight C-suite outcome teams, and an independent Governor, as 14 installable ast-* subagents.",
+  "author": {
+    "name": "Daniel Li",
+    "url": "https://github.com/aAAaqwq/AGI-Super-Team"
+  }
+}

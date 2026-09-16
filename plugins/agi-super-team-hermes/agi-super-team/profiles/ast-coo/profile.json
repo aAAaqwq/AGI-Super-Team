@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "harness": "hermes",
+  "profileId": "ast-coo",
+  "roleId": "coo",
+  "roleType": "manager",
+  "description": "COO (Andy Grove)｜需要运营计划与执行节奏、责任与依赖映射、跨部门流程与 SOP 设计、产能规划或异常恢复安排时调用。 不适用：产品范围取舍、技术架构选型、财务预算与定价决策，或需要独立证据复核与放行门判定。",
+  "blueprintOnly": true,
+  "runtimeStateCreated": false,
+  "runtimeEvidence": "pending",
+  "canonicalSource": "agents/coo",
+  "roleSkill": "./skills/agi-super-team-agents/ast-coo/SKILL.md",
+  "assignedSkills": [
+    "architecture-decision-records",
+    "asana-automation",
+    "incident-command-and-review",
+    "internal-comms",
+    "jira-automation",
+    "kpi-dashboard-design",
+    "linear-automation",
+    "model-business-processes",
+    "operating-cadence-and-flow",
+    "postmortem-writer",
+    "prioritization-funnel",
+    "project-planner",
+    "systematic-debugging",
+    "thinking-andy-grove",
+    "verification-before-completion"
+  ],
+  "kanbanTaskSkills": [
+    "ast-coo",
+    "architecture-decision-records",
+    "asana-automation",
+    "incident-command-and-review",
+    "internal-comms",
+    "jira-automation",
+    "kpi-dashboard-design",
+    "linear-automation",
+    "model-business-processes",
+    "operating-cadence-and-flow",
+    "postmortem-writer",
+    "prioritization-funnel",
+    "project-planner",
+    "systematic-debugging",
+    "thinking-andy-grove",
+    "verification-before-completion"
+  ],
+  "profileSkillVisibility": {
+    "reason": "Hermes Profiles use separate HERMES_HOME directories and do not inherit the default profile's Skills implicitly.",
+    "configurationMode": "human-review-required",
+    "configKey": "skills.external_dirs",
+    "requiredExternalDirectory": "./skills",
+    "target": "Hermes Agent",
+    "minimumVersion": "2026.8.3",
+    "runtimeEvidence": "pending",
+    "appliedByAdapter": false
+  },
+  "desiredCapabilities": {
+    "kanbanRole": "worker",
+    "delegateTask": "anonymous-short-task-only",
+    "requiredMaxDepth": 2,
+    "maxConcurrentChildren": 2
+  },
+  "activation": {
+    "humanReviewRequired": true,
+    "profileCreateOrUpdateRequired": true,
+    "gatewayStartRequiredForKanbanDispatch": true,
+    "performedByAdapter": false
+  }
+}

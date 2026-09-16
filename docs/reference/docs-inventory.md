@@ -29,7 +29,7 @@ docs/
 
 ## guides/
 
-- [`harness-adapters.md`](../guides/harness-adapters.md) — 四个主力框架的落盘位置与接线行为。
+- [`harness-adapters.md`](../guides/harness-adapters.md) — 五个主力框架的落盘位置与接线行为。
 - [`team-agent-skill-architecture.md`](../guides/team-agent-skill-architecture.md) — Team / C-suite / Subagent / Skill 的连接原理。
 - [`routing-and-enforcement.md`](../guides/routing-and-enforcement.md) — 路由分级与强制层。
 - [`npm-release-status.md`](../guides/npm-release-status.md) — npm 发布漂移诊断与修复。

@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "harness": "hermes",
+  "profileId": "ast-cpo",
+  "roleId": "cpo",
+  "roleType": "manager",
+  "description": "CPO (Steve Jobs)｜需要产品方向取舍、用户问题定义与需求澄清、体验与可访问性评审、优先级排序或可验证需求拆解时调用。 不适用：技术可行性与架构选型、获客渠道与投放执行、跨部门交付排期，或用户证据已充分只需界面与信息架构设计。",
+  "blueprintOnly": true,
+  "runtimeStateCreated": false,
+  "runtimeEvidence": "pending",
+  "canonicalSource": "agents/cpo",
+  "roleSkill": "./skills/agi-super-team-agents/ast-cpo/SKILL.md",
+  "assignedSkills": [
+    "accessibility-compliance-accessibility-audit",
+    "analytics-tracking",
+    "competitive-analysis",
+    "customer-success",
+    "deep-research",
+    "design-thinking",
+    "doc-coauthoring",
+    "feature-requirements-clarification",
+    "figma-automation",
+    "pm-competitive-teardown",
+    "prioritization-funnel",
+    "product-discovery-portfolio-governance",
+    "user-story",
+    "ux-heuristics",
+    "write-product-documentation"
+  ],
+  "kanbanTaskSkills": [
+    "ast-cpo",
+    "accessibility-compliance-accessibility-audit",
+    "analytics-tracking",
+    "competitive-analysis",
+    "customer-success",
+    "deep-research",
+    "design-thinking",
+    "doc-coauthoring",
+    "feature-requirements-clarification",
+    "figma-automation",
+    "pm-competitive-teardown",
+    "prioritization-funnel",
+    "product-discovery-portfolio-governance",
+    "user-story",
+    "ux-heuristics",
+    "write-product-documentation"
+  ],
+  "profileSkillVisibility": {
+    "reason": "Hermes Profiles use separate HERMES_HOME directories and do not inherit the default profile's Skills implicitly.",
+    "configurationMode": "human-review-required",
+    "configKey": "skills.external_dirs",
+    "requiredExternalDirectory": "./skills",
+    "target": "Hermes Agent",
+    "minimumVersion": "2026.8.3",
+    "runtimeEvidence": "pending",
+    "appliedByAdapter": false
+  },
+  "desiredCapabilities": {
+    "kanbanRole": "worker",
+    "delegateTask": "anonymous-short-task-only",
+    "requiredMaxDepth": 2,
+    "maxConcurrentChildren": 2
+  },
+  "activation": {
+    "humanReviewRequired": true,
+    "profileCreateOrUpdateRequired": true,
+    "gatewayStartRequiredForKanbanDispatch": true,
+    "performedByAdapter": false
+  }
+}

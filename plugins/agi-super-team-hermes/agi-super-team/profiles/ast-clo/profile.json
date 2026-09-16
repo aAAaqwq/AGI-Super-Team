@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "harness": "hermes",
+  "profileId": "ast-clo",
+  "roleId": "clo",
+  "roleType": "manager",
+  "description": "CLO (Alan Dershowitz)｜需要合同与协议风险评审、隐私与跨境合规检查、许可与知识产权问题识别、监管政策适用判断时调用。 不适用：需要特定司法辖区的正式法律意见或诉讼代理、商业与财务取舍、技术安全实现，或交易结构与事实尚未明确。",
+  "blueprintOnly": true,
+  "runtimeStateCreated": false,
+  "runtimeEvidence": "pending",
+  "canonicalSource": "agents/clo",
+  "roleSkill": "./skills/agi-super-team-agents/ast-clo/SKILL.md",
+  "assignedSkills": [
+    "accessibility-compliance-accessibility-audit",
+    "china-contract-review",
+    "contract-and-proposal-writer",
+    "contract-review",
+    "customs-trade-compliance",
+    "employment-contract-templates",
+    "gdpr-compliance",
+    "gdpr-dsgvo-expert",
+    "legal-advisor",
+    "legal-issue-spotting",
+    "legal-risk-assessment",
+    "prepare-software-ip-filings",
+    "privacy-compliance",
+    "security-compliance-compliance-check"
+  ],
+  "kanbanTaskSkills": [
+    "ast-clo",
+    "accessibility-compliance-accessibility-audit",
+    "china-contract-review",
+    "contract-and-proposal-writer",
+    "contract-review",
+    "customs-trade-compliance",
+    "employment-contract-templates",
+    "gdpr-compliance",
+    "gdpr-dsgvo-expert",
+    "legal-advisor",
+    "legal-issue-spotting",
+    "legal-risk-assessment",
+    "prepare-software-ip-filings",
+    "privacy-compliance",
+    "security-compliance-compliance-check"
+  ],
+  "profileSkillVisibility": {
+    "reason": "Hermes Profiles use separate HERMES_HOME directories and do not inherit the default profile's Skills implicitly.",
+    "configurationMode": "human-review-required",
+    "configKey": "skills.external_dirs",
+    "requiredExternalDirectory": "./skills",
+    "target": "Hermes Agent",
+    "minimumVersion": "2026.8.3",
+    "runtimeEvidence": "pending",
+    "appliedByAdapter": false
+  },
+  "desiredCapabilities": {
+    "kanbanRole": "worker",
+    "delegateTask": "anonymous-short-task-only",
+    "requiredMaxDepth": 2,
+    "maxConcurrentChildren": 2
+  },
+  "activation": {
+    "humanReviewRequired": true,
+    "profileCreateOrUpdateRequired": true,
+    "gatewayStartRequiredForKanbanDispatch": true,
+    "performedByAdapter": false
+  }
+}

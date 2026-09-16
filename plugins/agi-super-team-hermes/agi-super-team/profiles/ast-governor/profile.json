@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "harness": "hermes",
+  "profileId": "ast-governor",
+  "roleId": "governor",
+  "roleType": "independent-reviewer",
+  "description": "Governor｜重大结论与完成声明的独立证据复核者。需要独立复核重大结论、发布、安全、资金、法律或完成声明，并给出放行门决定或风险升级时调用。 不适用：需要设计与实现交付物、替领域负责人作专业判断、替 CEO 作资源取舍，或声明方无法提供可复核证据。",
+  "blueprintOnly": true,
+  "runtimeStateCreated": false,
+  "runtimeEvidence": "pending",
+  "canonicalSource": "agents/governor",
+  "roleSkill": "./skills/agi-super-team-agents/ast-governor/SKILL.md",
+  "assignedSkills": [
+    "accessibility-compliance-accessibility-audit",
+    "architecture-decision-records",
+    "code-review",
+    "contract-review",
+    "design-secure-data-architecture",
+    "eval-harness",
+    "gdpr-compliance",
+    "independent-assurance-gate",
+    "legal-risk-assessment",
+    "pre-push-security-scan",
+    "risk-metrics-calculation",
+    "security-compliance-compliance-check",
+    "verification-before-completion",
+    "vibe-code-auditor"
+  ],
+  "kanbanTaskSkills": [
+    "ast-governor",
+    "accessibility-compliance-accessibility-audit",
+    "architecture-decision-records",
+    "code-review",
+    "contract-review",
+    "design-secure-data-architecture",
+    "eval-harness",
+    "gdpr-compliance",
+    "independent-assurance-gate",
+    "legal-risk-assessment",
+    "pre-push-security-scan",
+    "risk-metrics-calculation",
+    "security-compliance-compliance-check",
+    "verification-before-completion",
+    "vibe-code-auditor"
+  ],
+  "profileSkillVisibility": {
+    "reason": "Hermes Profiles use separate HERMES_HOME directories and do not inherit the default profile's Skills implicitly.",
+    "configurationMode": "human-review-required",
+    "configKey": "skills.external_dirs",
+    "requiredExternalDirectory": "./skills",
+    "target": "Hermes Agent",
+    "minimumVersion": "2026.8.3",
+    "runtimeEvidence": "pending",
+    "appliedByAdapter": false
+  },
+  "desiredCapabilities": {
+    "kanbanRole": "reviewer",
+    "delegateTask": "disabled",
+    "requiredMaxDepth": 2,
+    "maxConcurrentChildren": 0
+  },
+  "activation": {
+    "humanReviewRequired": true,
+    "profileCreateOrUpdateRequired": true,
+    "gatewayStartRequiredForKanbanDispatch": true,
+    "performedByAdapter": false
+  }
+}

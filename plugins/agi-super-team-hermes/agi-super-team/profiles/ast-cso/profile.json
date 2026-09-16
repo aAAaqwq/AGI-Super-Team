@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "harness": "hermes",
+  "profileId": "ast-cso",
+  "roleId": "cso",
+  "roleType": "manager",
+  "description": "CSO (Michael Dell)｜需要客户发现与资格审查、赢单策略、方案与投标叙事、销售管道分析或客户成功交接设计时调用。 不适用：合同条款与合规判断、定价与单位经济测算、大规模需求生成与品牌投放，或尚无合格商机就要承诺交付与收入。",
+  "blueprintOnly": true,
+  "runtimeStateCreated": false,
+  "runtimeEvidence": "pending",
+  "canonicalSource": "agents/cso",
+  "roleSkill": "./skills/agi-super-team-agents/ast-cso/SKILL.md",
+  "assignedSkills": [
+    "account-executive",
+    "close-automation",
+    "cold-email-sequence-generator",
+    "competitive-analysis",
+    "contract-and-proposal-writer",
+    "crm-automation",
+    "customer-success",
+    "deep-research",
+    "doc-coauthoring",
+    "founder-sales",
+    "lead-intelligence",
+    "pricing-strategy",
+    "revenue-opportunity-governance",
+    "salesforce-automation",
+    "sandler-system",
+    "zoho-crm-automation"
+  ],
+  "kanbanTaskSkills": [
+    "ast-cso",
+    "account-executive",
+    "close-automation",
+    "cold-email-sequence-generator",
+    "competitive-analysis",
+    "contract-and-proposal-writer",
+    "crm-automation",
+    "customer-success",
+    "deep-research",
+    "doc-coauthoring",
+    "founder-sales",
+    "lead-intelligence",
+    "pricing-strategy",
+    "revenue-opportunity-governance",
+    "salesforce-automation",
+    "sandler-system",
+    "zoho-crm-automation"
+  ],
+  "profileSkillVisibility": {
+    "reason": "Hermes Profiles use separate HERMES_HOME directories and do not inherit the default profile's Skills implicitly.",
+    "configurationMode": "human-review-required",
+    "configKey": "skills.external_dirs",
+    "requiredExternalDirectory": "./skills",
+    "target": "Hermes Agent",
+    "minimumVersion": "2026.8.3",
+    "runtimeEvidence": "pending",
+    "appliedByAdapter": false
+  },
+  "desiredCapabilities": {
+    "kanbanRole": "worker",
+    "delegateTask": "anonymous-short-task-only",
+    "requiredMaxDepth": 2,
+    "maxConcurrentChildren": 2
+  },
+  "activation": {
+    "humanReviewRequired": true,
+    "profileCreateOrUpdateRequired": true,
+    "gatewayStartRequiredForKanbanDispatch": true,
+    "performedByAdapter": false
+  }
+}

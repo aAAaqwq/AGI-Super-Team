@@ -1,0 +1,27 @@
+{
+  "id": "agi-super-team-openclaw",
+  "name": "AGI Super Team",
+  "version": "1.6.0",
+  "description": "Evidence-backed AI team packs with preview-first installation and explicit human review",
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "managedPrefix": {
+        "type": "string",
+        "default": "ast-",
+        "description": "Only agents whose id starts with this prefix are managed; unmanaged agents are preserved."
+      },
+      "requiredMaxDepth": {
+        "type": "integer",
+        "default": 2,
+        "description": "Maximum subagent spawn depth for the ast-* team."
+      },
+      "maxChildrenPerAgent": {
+        "type": "integer",
+        "default": 2,
+        "description": "Maximum concurrent child sessions per ast-* manager."
+      }
+    }
+  }
+}

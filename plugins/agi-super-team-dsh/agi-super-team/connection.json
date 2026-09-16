@@ -1,0 +1,62 @@
+{
+  "connectionMode": "agent-preset-plus-user-patch",
+  "coordinatorRuntime": "global-agents-md-and-ast-team-preset",
+  "home": ".",
+  "paths": {
+    "globalInstructions": "./AGENTS.md",
+    "presetRoot": "./.agent-presets/ast-team",
+    "presetComposition": "./.agent-presets/ast-team/agent.cordis.yml",
+    "profilePatch": "./profiles/web/cordis.patch.yml",
+    "orchestratorSkill": "./skills/agi-super-team/agi-super-team-orchestrator/SKILL.md"
+  },
+  "profile": "web",
+  "presetId": "ast-team",
+  "roleAgents": [
+    "ast-ceo",
+    "ast-cto",
+    "ast-pe",
+    "ast-cpo",
+    "ast-cqo",
+    "ast-cmo",
+    "ast-cfo",
+    "ast-cdo",
+    "ast-cco",
+    "ast-clo",
+    "ast-cro",
+    "ast-cso",
+    "ast-coo",
+    "ast-governor"
+  ],
+  "specialistAgents": [],
+  "activation": {
+    "mode": "dsh-agent-preset",
+    "entrySkill": "agi-super-team-orchestrator",
+    "requiresProfilePatch": true,
+    "presetMustBeSelectedByUser": true
+  },
+  "limitations": [
+    "DSH exposes no per-role tool or capability boundary: every ast-* role composes from the same ast-team preset, so the C-suite/leaf separation is carried by the persona routing and the host approval stack rather than by the harness.",
+    "The skill-filesystem patch is skipped when the target profile's cordis.patch.yml already declares entries; a patch file is one YAML document and cannot be merged into.",
+    "The runtime effect of the patch was observed on DSH 0.1.5-rc.1 (developer preview, breaking changes expected) and under the headless profile only."
+  ],
+  "canary": {
+    "status": "pending",
+    "requiresDshCli": true,
+    "requiredFlow": [
+      "ast-ceo",
+      "manager-output",
+      "ast-governor",
+      "ast-ceo-synthesis"
+    ],
+    "receiptMustBindRepositoryRevision": true
+  },
+  "schemaVersion": 1,
+  "harness": "dsh",
+  "runtimeEvidence": "pending",
+  "packageRoot": "plugins/agi-super-team-dsh",
+  "coordinator": "ast-ceo",
+  "independentReviewer": "ast-governor",
+  "requiredMaxDepth": 2,
+  "maxConcurrentChildren": 2,
+  "generatedBy": "scripts/build_harness_packages.py"
+}

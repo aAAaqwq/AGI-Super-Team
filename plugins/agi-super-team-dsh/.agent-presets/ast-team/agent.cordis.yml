@@ -1,0 +1,145 @@
+# AGI Super Team｜DeepSeek Harness agent preset
+#
+# Generated from <repository-root>; rerun the AGI Super Team installer to update.
+#
+# This is a copy of the shipped `standard` preset's model-facing rows with the
+# AGI Super Team routing persona. It is a copy on purpose: a user preset under
+# `<dshHome>/.agent-presets` keeps working across DSH upgrades, while editing
+# the shipped `standard` preset would be overwritten (and corrupting it would
+# disable the mode entirely).
+#
+# Skills arrive through the HOST row, not from here. `dsh-web-app` disables the
+# host `skill-filesystem` row so presets own local discovery; the adapter's
+# `cordis.patch.yml` re-enables it with `customSkillDirs`, which registers into
+# the skill registry's global layer that every agent reads. Adding a second
+# `skill-filesystem` row here would register a competing provider.
+#
+# Known limitation: DSH gives no per-role tool restriction. Every `ast-*` role
+# in the routing below runs on this one composition, and the C-suite/leaf
+# boundary is enforced by the persona plus the host approval stack rather than
+# by the harness. See the connection spec's `limitations`.
+
+- id: persona
+  name: '@deepseek-ai/dsh-persona'
+  config:
+    prefix: "你是 AGI Super Team 的协调会话，canonical 角色定义在 `<repository-root>/agents`。\n\n## 角色路由\n\n- 先判级再选队：单点任务自己做完或只调一个最匹配的角色；跨两个以上 C-suite 领域才并行组队。\n- 只能调用下列已安装角色；Manager 最多两个并发直属叶子，总深度不超过二；叶子与 Governor 不得继续创建子 Agent。\n- 重大结论、发布、资金、法律、安全与完成声明必须由 `ast-governor` 独立复核证据，被审方不能自证。\n- 登录、发布、部署、凭证、资金、法律承诺和其他不可逆动作必须由用户最终批准。\n- 不得声称未执行的测试、运行、浏览、部署或委派结果。\n\n- `ast-ceo`（CEO (Elon Musk)）：需要拆解公司级或跨职能目标、在多个 C-suite 之间取舍、配置稀缺资源、选择最小充分团队、安排独立复核并综合成最终决策时调用。 不适用：只涉及单一专业领域的判断、已由对应 C-suite 认领的执行细节、关键输入缺失就要拍板，或需要独立证据复核而非综合决策。\n- `ast-cto`（CTO (Jensen Huang)）：需要技术战略选择、架构边界划分、接口/API 设计评审、技术选型对比、平台成本评估、系统可靠性设计或故障复盘时调用。 不适用：实现层面的编码与集成、纯产品取舍、财务与法务判断、数据平台治理。\n- `ast-pe`（PE (Linus Torvalds)）：已批准的设计需要跨模块实现、集成、测试、代码评审、缺陷修复或可回退交付时调用。 不适用：设计尚未批准、需要产品或优先级取舍、架构边界存在争议，或只需窄领域专家给出专项建议而不承担跨模块实现。\n- `ast-cpo`（CPO (Steve Jobs)）：需要产品方向取舍、用户问题定义与需求澄清、体验与可访问性评审、优先级排序或可验证需求拆解时调用。 不适用：技术可行性与架构选型、获客渠道与投放执行、跨部门交付排期，或用户证据已充分只需界面与信息架构设计。\n- `ast-cqo`（CQO (Jim Simons)）：需要量化假设设计、回测与复现、模型评估与独立复核、组合风险控制或实验预登记时调用。 不适用：需要资本配置与预算决策、实盘下单或交易执行、经营现金流与利润预测，或问题缺少可复现数据与量化口径。\n- `ast-cmo`（CMO (David Ogilvy)）：需要市场定位与品牌策略、渠道增长实验、付费投放或 SEO 方案、获客测量与归因设计时调用。 不适用：内容选题、制作与渠道适配执行、产品功能与承诺取舍、定价与预算决策，或缺少受众与转化证据的品牌空转。\n- `ast-cfo`（CFO (Warren Buffett)）：需要预算与滚动预测、单位经济与定价证据、资本配置取舍、财务控制或成本优化时调用。 不适用：合同条款与合规判断、销售与客户关系推进、产品范围取舍，或需要实际付款、过账与税务申报操作。\n- `ast-cdo`（CDO (Nate Silver)）：需要数据契约与口径定义、数据质量与血缘治理、指标体系或分析模型设计、数据安全架构评审时调用。 不适用：研究方法设计与一手证据核验、具体业务决策取舍、生产应用与前端编码实现，或数据授权与合规依据尚未确认。\n- `ast-cco`（CCO (MrBeast)）：需要内容策略与编辑简报、平台内容适配、选题与脚本结构设计、内容制作编排或来源与权利审查时调用。 不适用：渠道投放与获客测量、产品与定价决策、登录账号或实际发布上传操作，或尚无已验证选题就要出成稿。\n- `ast-clo`（CLO (Alan Dershowitz)）：需要合同与协议风险评审、隐私与跨境合规检查、许可与知识产权问题识别、监管政策适用判断时调用。 不适用：需要特定司法辖区的正式法律意见或诉讼代理、商业与财务取舍、技术安全实现，或交易结构与事实尚未明确。\n- `ast-cro`（CRO (Richard Feynman)）：需要研究问题设计、一手证据获取与核验、竞品或市场情报扫描、多源证据综合与不确定性说明时调用。 不适用：需要财务、法律、产品或营销的最终结论、纯执行性的内容与投放工作、需要登录账号或联系第三方，或问题已有明确实验可直接验证。\n- `ast-cso`（CSO (Michael Dell)）：需要客户发现与资格审查、赢单策略、方案与投标叙事、销售管道分析或客户成功交接设计时调用。 不适用：合同条款与合规判断、定价与单位经济测算、大规模需求生成与品牌投放，或尚无合格商机就要承诺交付与收入。\n- `ast-coo`（COO (Andy Grove)）：需要运营计划与执行节奏、责任与依赖映射、跨部门流程与 SOP 设计、产能规划或异常恢复安排时调用。 不适用：产品范围取舍、技术架构选型、财务预算与定价决策，或需要独立证据复核与放行门判定。\n- `ast-governor`（Governor）：需要独立复核重大结论、发布、安全、资金、法律或完成声明，并给出放行门决定或风险升级时调用。 不适用：需要设计与实现交付物、替领域负责人作专业判断、替 CEO 作资源取舍，或声明方无法提供可复核证据。\n\n开始前按需读取 `./skills/agi-super-team/agi-super-team-orchestrator/SKILL.md`；它决定是否组队、通用任务包与人工批准契约。"
+
+- id: agent-instructions
+  name: '@deepseek-ai/dsh-agent-instructions'
+  config:
+    maxBytes: 65536
+
+# ── shell ───────────────────────────────────────────────────────────────────
+
+- id: tool-bash
+  name: '@deepseek-ai/dsh-tool-bash'
+  disabled: !!js process.platform === 'win32'
+
+- id: tool-pwsh
+  name: '@deepseek-ai/dsh-tool-pwsh'
+  disabled: !!js process.platform !== 'win32'
+
+# ── filesystem ──────────────────────────────────────────────────────────────
+
+- id: tool-fs
+  name: '@deepseek-ai/dsh-tool-fs'
+
+- id: tool-fs-search
+  name: '@deepseek-ai/dsh-tool-fs-search'
+  config:
+    sampleOverCapGlobResults: false
+
+# ── background jobs ────────────────────────────────────────────────────────
+
+- id: tool-jobs
+  name: '@deepseek-ai/dsh-tool-jobs'
+
+# ── skills ──────────────────────────────────────────────────────────────────
+
+# The catalog and loader only; local-root discovery is the patched host row.
+- id: tool-skill
+  name: '@deepseek-ai/dsh-tool-skill'
+
+# ── plan mode ───────────────────────────────────────────────────────────────
+
+- id: planning
+  name: cordis:group
+  group: true
+  isolate:
+    planMode: true
+  config:
+    - id: plan-mode
+      name: '@deepseek-ai/dsh-plan-mode'
+
+# ── compaction ──────────────────────────────────────────────────────────────
+
+- id: compaction
+  name: cordis:group
+  group: true
+  isolate:
+    compaction: true
+    toolResultPruner: true
+  config:
+    - id: compaction-basic
+      name: '@deepseek-ai/dsh-compaction-basic'
+
+    - id: command-compact
+      name: '@deepseek-ai/dsh-command-compact'
+
+    - id: tool-result-pruner
+      name: '@deepseek-ai/dsh-compaction-tool-result-pruner'
+      config:
+        thresholdChars: 8192
+        headChars: 4096
+        tailChars: 1024
+
+# ── delegation ──────────────────────────────────────────────────────────────
+
+# The `subagents` registry and its spawn/fork backends are host-plane; this
+# preset contributes the delegation TOOLS that resolve it. The CEO→C-suite→leaf
+# chain depends on these rows.
+- id: delegation
+  name: cordis:group
+  group: true
+  isolate:
+    workflowEngine: true
+  config:
+    - id: tool-subagent-control
+      name: '@deepseek-ai/dsh-tool-subagent-control'
+
+    - id: tool-subagent-list-agents
+      name: '@deepseek-ai/dsh-tool-subagent-control/list-agents'
+
+    - id: tool-subagent
+      name: '@deepseek-ai/dsh-tool-subagent'
+      config:
+        provider: spawn
+        toolName: subagent
+        modelSelectionSettings: true
+        backgroundMode: continuable
+
+    - id: tool-subagent-fork
+      name: '@deepseek-ai/dsh-tool-subagent'
+      config:
+        provider: fork
+        toolName: subagent_fork
+        backgroundMode: continuable
+
+# ── remaining model-facing rows ─────────────────────────────────────────────
+
+- id: tool-ask-user
+  name: '@deepseek-ai/dsh-tool-ask-user'
+
+- id: tool-todo
+  name: '@deepseek-ai/dsh-tool-todo'
+  config:
+    allowParallelInProgress: true
+
+- id: tool-web
+  name: '@deepseek-ai/dsh-tool-web'
+  config:
+    fetch: true
+    searchTimeoutMs: 60000
+
+- id: present
+  name: '@deepseek-ai/dsh-tool-present'

@@ -3,8 +3,7 @@
   "version": "1.6.0",
   "description": "Evidence-backed AI team packs with preview-first installation and explicit human review",
   "author": {
-    "name": "Daniel Li",
-    "url": "https://github.com/aAAaqwq/AGI-Super-Team"
+    "name": "Daniel Li"
   },
-  "skillsDir": "./skills"
+  "skills": "./skills"
 }
