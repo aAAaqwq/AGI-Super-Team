@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AGI Super Team for DeepSeek Harness: status and manual wiring</title>
+  <meta name="description" content="DeepSeek Harness is not yet a CLI target of the AGI Super Team installer. Understand the current status, the manual cordis.patch.yml wiring that was verified, and what remains unproven.">
+  <link rel="canonical" href="https://aaaaqwq.github.io/AGI-Super-Team/guides/dsh-install.html">
+  <meta name="theme-color" content="#070b18">
+  <link rel="icon" href="../assets/favicon-intelligence.png" sizes="any">
+  <link rel="stylesheet" href="../assets/site.css">
+  <script src="../assets/site.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header"><div class="shell header-inner"><a class="brand" href="../"><img src="../assets/logo-intelligence.webp" width="36" height="36" alt=""><span>AGI Super Team</span></a><nav class="primary-nav guide-nav" aria-label="Primary"><a href="../">Home</a><a href="./">Guides</a><a href="https://github.com/aAAaqwq/AGI-Super-Team">GitHub</a></nav><button class="icon-button" type="button" data-theme-button aria-label="Switch to light theme"><img class="theme-icon theme-icon-dark" src="../assets/icons/sun.svg" width="20" height="20" alt=""><img class="theme-icon theme-icon-light" src="../assets/icons/moon.svg" width="20" height="20" alt=""></button></div></header>
+  <main id="main-content" class="guide-main">
+    <article class="shell guide-article">
+      <header class="guide-hero">
+        <p class="kicker">DeepSeek Harness status</p>
+        <h1>Not installable yet. Here is the wiring that was verified.</h1>
+        <p class="hero-lede">DeepSeek Harness is a planned primary harness, not a supported one. There is no <code>dsh</code> tool target today, so the one-command install does not apply. This page records the status, the manual patch that was verified on a developer preview build, and the parts that remain unproven.</p>
+        <p class="guide-meta">Last reviewed: 2026-07-21 · Surface: planned target, no CLI entry</p>
+      </header>
+      <section>
+        <h2>Prerequisites</h2>
+        <ul>
+          <li>A DeepSeek Harness installation you are willing to modify. The verified build was <code>0.1.5-rc.1</code>, a developer preview whose own documentation states there will be compatibility-breaking changes.</li>
+          <li>Node.js and <code>pnpm</code> if you intend to install DSH plugins. The <code>dsh plugin</code> command forwards its arguments to pnpm, which must be on your path.</li>
+          <li>A decision about <code>DSH_HOME</code>. It resolves as explicit configuration, then <code>$DSH_HOME</code>, then <code>~/.dsh</code>, and it governs the profile root, settings, sessions, and credentials.</li>
+          <li>Willingness to edit a profile patch file by hand. There is no installer path that does this for you.</li>
+        </ul>
+        <p>Start DSH from a neutral working directory when you experiment. Its launcher rejects a launch environment that carries a competing configuration.</p>
+      </section>
+      <section>
+        <h2>Install step by step</h2>
+        <ol class="guide-steps">
+          <li><strong>Treat this as unavailable</strong><span>Do not run an installer command for DSH. The CLI target list contains 18 tools and <code>dsh</code> is not one of them, so a <code>--tool dsh</code> invocation fails with an unknown tool error rather than installing anything.</span></li>
+          <li><strong>Read the status before planning work</strong><span>The target list, the adapter module registry, and the primary harness set are all hardcoded, so adding DSH is a deliberate contract change rather than a configuration toggle.</span></li>
+          <li><strong>Reuse the skills you already have if you want partial value now</strong><span>An existing Codex install writes skills to <code>~/.agents/skills</code>, which is also a DSH skill root at lower precedence than the project and DSH home roots.</span></li>
+          <li><strong>Wire the skill filesystem by hand only if you are evaluating</strong><span>This is the verified manual route. It is not a supported install and it is not performed by any AGI Super Team command.</span></li>
+        </ol>
+        <pre><code>npx -y agi-super-team@latest --tool dsh
+# error: unknown tool: dsh
+npx -y agi-super-team@latest --tool dsh --install
+# error: unknown tool: dsh</code></pre>
+        <p>Both commands fail. Nothing is installed, and no partial state is written. When DSH becomes a target, the command will read the same way as the other primary harnesses. Until then, this page exists so that a reader is not left guessing whether support is missing or merely undocumented.</p>
+      </section>
+      <section>
+        <h2>What the manual wiring looks like</h2>
+        <p>DSH is not a plugin marketplace model. Plugins are installed with <code>dsh plugin --profile &lt;profile&gt; add &lt;package&gt;</code>, and the interface is started with <code>dsh web</code>. More importantly for this team, the component that discovers skills on disk ships disabled. The <code>skill-filesystem</code> plugin is off by default in the <code>web</code> profile, so files placed on disk do not become available until something enables it.</p>
+        <p>The verified route is a declarative patch in the profile that both enables the component and points it at a skill root:</p>
+        <pre><code># $DSH_HOME/profiles/&lt;profile&gt;/cordis.patch.yml
+- id: skill-filesystem
+  name: '@deepseek-ai/dsh-skill-filesystem'
+  disabled: false
+  config:
+    customSkillDirs: [ /path/to/skill-root ]</code></pre>
+        <p>This shape was verified on an isolated <code>DSH_HOME</code> without touching a real user directory. The patch took effect and the configuration dump annotated the line as patched by the profile patch file. A custom skill directory was reachable at runtime, and <code>~/.agents/skills</code>, which is a lower-precedence root, was also reachable with real skills listed including this repository's orchestrator skill.</p>
+        <div class="callout"><strong>Read this before copying the patch</strong><p>Two profile behaviours differ. The <code>headless</code> profile has the skill filesystem enabled by default, while <code>web</code> does not, and the runtime effect of the patch was observed under <code>headless</code> only. The patch was also never applied to a real <code>~/.dsh</code>. Confirm the effective configuration for your own profile before trusting the snippet, for example with <code>dsh &lt;profile&gt; --dump-config</code>.</p></div>
+        <div class="callout"><strong>No agent wiring is claimed</strong><p>DSH has no built-in per-role agent file directory. A role's capability boundary lives in an agent preset, its persona lives in a separate persona line, and workspace instruction files are advisory context only, explicitly unable to override system, developer, or user instructions. No AGI Super Team artifact for presets, personas, or a managed instruction block has been built or tested.</p></div>
+      </section>
+      <section>
+        <h2>Check the result</h2>
+        <p>If you applied the patch for evaluation, inspect the effective configuration rather than the file you wrote. A patch that parses is not a patch that took effect, and a skill root that is listed is not a skill that the model can call.</p>
+        <pre><code>dsh --version
+dsh &lt;profile&gt; --dump-config
+dsh web</code></pre>
+        <p>Look for the skill filesystem line being enabled and annotated as patched, and for your skill directory appearing in the resolved roots. Anything beyond that, including whether a session actually receives the team, was not observed.</p>
+      </section>
+      <section>
+        <h2>Limitations</h2>
+        <p>Read this section as the honest summary of the status.</p>
+        <ul>
+          <li>Not supported. There is no CLI target, no adapter module, no connection contract, and no receipt for DSH. It does not appear in the adapter manifest.</li>
+          <li>Not verified at runtime in the way that matters. The skill roots were confirmed reachable from a headless probe on one preview build, but no real session was run to observe a team being loaded, delegated to, or reviewed.</li>
+          <li>Preview software. The build in question is <code>0.1.5-rc.1</code>. Both the patch format and the default component state can change without notice.</li>
+          <li>Version-sensitive roots. Skill precedence runs from project directories through custom directories to the DSH home and the shared agents home. A profile patch can override the shared agents home, so a root being readable on one profile does not guarantee it on another.</li>
+          <li>No agent story. Only the skill layer has a verified route. Role assembly through presets and personas remains an open design question.</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Rollback and uninstall</h2>
+        <p>Nothing was installed, so there is nothing this package needs to remove. If you applied the manual patch for evaluation, delete the added block from <code>$DSH_HOME/profiles/&lt;profile&gt;/cordis.patch.yml</code> or delete the file if you created it solely for this test, then confirm with a configuration dump that the skill filesystem is back to its default state for that profile.</p>
+        <p>If you pointed a custom skill directory at a checkout, remove the directory reference as well. Skills that arrived through an unrelated Codex install under <code>~/.agents/skills</code> are that install's artifacts; remove them with the Codex uninstall path rather than by deleting the shared directory.</p>
+      </section>
+      <footer class="guide-cta"><p>Check whether the target exists before following an install recipe.</p><a class="button button-primary" href="https://github.com/aAAaqwq/AGI-Super-Team/blob/main/docs/guides/harness-compatibility.html">See the harness status matrix</a></footer>
+    </article>
+  </main>
+  <footer class="site-footer"><div class="shell footer-inner"><div><strong>AGI Super Team guides</strong><p>Say what is not supported, not only what is.</p></div><nav aria-label="Footer"><a href="harness-compatibility.html">Compatibility</a><a href="../verification.html">Verification</a><a href="./">All guides</a></nav></div></footer>
+</body>
+</html>

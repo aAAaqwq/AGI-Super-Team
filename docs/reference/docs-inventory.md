@@ -33,7 +33,8 @@ docs/
 - [`team-agent-skill-architecture.md`](../guides/team-agent-skill-architecture.md) — Team / C-suite / Subagent / Skill 的连接原理。
 - [`routing-and-enforcement.md`](../guides/routing-and-enforcement.md) — 路由分级与强制层。
 - [`npm-release-status.md`](../guides/npm-release-status.md) — npm 发布漂移诊断与修复。
-- [`claude-code-install.html`](../guides/claude-code-install.html) · [`codex-install.html`](../guides/codex-install.html) — 各框架安装指南。
+- [`claude-code-install.html`](../guides/claude-code-install.html) · [`codex-install.html`](../guides/codex-install.html) · [`openclaw-install.html`](../guides/openclaw-install.html) · [`hermes-install.html`](../guides/hermes-install.html) — 各框架安装指南。
+- [`dsh-install.html`](../guides/dsh-install.html) — DeepSeek Harness 状态说明（尚未接入，含实测的手工接线方式）。
 - [`harness-compatibility.html`](../guides/harness-compatibility.html) — 各框架能力边界。
 - [`choose-ai-team.html`](../guides/choose-ai-team.html) — 团队选型。
 - [`solo-founder.html`](../guides/solo-founder.html) · [`content-creator.html`](../guides/content-creator.html) · [`quant-research.html`](../guides/quant-research.html) — 用例。

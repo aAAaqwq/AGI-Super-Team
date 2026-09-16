@@ -162,7 +162,7 @@ class SiteContractTests(unittest.TestCase):
 
     def test_editorial_guides_are_unique_self_canonical_and_in_sitemap(self) -> None:
         guide_paths = sorted((DOCS / "guides").glob("*.html"))
-        self.assertEqual(len(guide_paths), 8)
+        self.assertEqual(len(guide_paths), 11)
         sitemap = (DOCS / "sitemap.xml").read_text(encoding="utf-8")
         sitemap_urls = set(re.findall(r"<loc>([^<]+)</loc>", sitemap))
         titles: set[str] = set()

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Install AGI Super Team for OpenClaw with an isolated state</title>
+  <meta name="description" content="Preview and install the AGI Super Team OpenClaw workspace artifacts and skills through the npm installer, understand what the connect step merges, and roll back safely.">
+  <link rel="canonical" href="https://aaaaqwq.github.io/AGI-Super-Team/guides/openclaw-install.html">
+  <meta name="theme-color" content="#070b18">
+  <link rel="icon" href="../assets/favicon-intelligence.png" sizes="any">
+  <link rel="stylesheet" href="../assets/site.css">
+  <script src="../assets/site.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header"><div class="shell header-inner"><a class="brand" href="../"><img src="../assets/logo-intelligence.webp" width="36" height="36" alt=""><span>AGI Super Team</span></a><nav class="primary-nav guide-nav" aria-label="Primary"><a href="../">Home</a><a href="./">Guides</a><a href="https://github.com/aAAaqwq/AGI-Super-Team">GitHub</a></nav><button class="icon-button" type="button" data-theme-button aria-label="Switch to light theme"><img class="theme-icon theme-icon-dark" src="../assets/icons/sun.svg" width="20" height="20" alt=""><img class="theme-icon theme-icon-light" src="../assets/icons/moon.svg" width="20" height="20" alt=""></button></div></header>
+  <main id="main-content" class="guide-main">
+    <article class="shell guide-article">
+      <header class="guide-hero">
+        <p class="kicker">OpenClaw installation</p>
+        <h1>Install into a state directory you can read and remove.</h1>
+        <p class="hero-lede">OpenClaw gets its team through the npm installer, not through a plugin package. The installer writes agent workspaces and skills under the resolved configuration directory, and only the optional connect step edits your OpenClaw configuration.</p>
+        <p class="guide-meta">Last reviewed: 2026-07-21 · Surface: npm installer, openclaw tool target</p>
+      </header>
+      <section>
+        <h2>Prerequisites</h2>
+        <ul>
+          <li>A current OpenClaw installation whose Node.js runtime satisfies the OpenClaw CLI requirement: <code>&gt;=22.22.3 &lt;23</code>, <code>&gt;=24.15.0 &lt;25</code>, or <code>&gt;=25.9.0</code>. AGI Super Team itself still supports Node.js 18+, but that applies only to the installer, not to the OpenClaw CLI.</li>
+          <li>Node.js 18+ with <code>npx</code> available, and network access to the npm registry.</li>
+          <li>A decision about which directory is authoritative: <code>OPENCLAW_STATE_DIR</code>, <code>OPENCLAW_CONFIG_PATH</code>, or the default state directory.</li>
+          <li>Permission to write the OpenClaw configuration only if you intend to run <code>--connect</code>.</li>
+        </ul>
+        <p>If you plan to run the optional connect step, back up <code>openclaw.json</code> yourself first. The installer creates its own backup, but a second copy costs nothing and makes the rollback path independent of this tool.</p>
+      </section>
+      <section>
+        <h2>Install step by step</h2>
+        <ol class="guide-steps">
+          <li><strong>Resolve the target root</strong><span>The installer resolves the OpenClaw configuration directory in this order: explicit state, then the directory holding an explicitly set configuration file, then the default state. Set <code>OPENCLAW_STATE_DIR</code> and <code>OPENCLAW_CONFIG_PATH</code> together so the answer is unambiguous.</span></li>
+          <li><strong>Preview without writing</strong><span>Run the command without <code>--install</code>. Every action prints as <code>add</code>, <code>update</code>, or <code>unchanged</code> with an absolute path. Nothing is written.</span></li>
+          <li><strong>Apply the file changes</strong><span>Rerun with <code>--install</code>. Managed targets that already exist are backed up before being replaced. Nothing outside the selected scope is deleted.</span></li>
+          <li><strong>Connect the configuration</strong><span>Add <code>--connect</code> to merge the managed agents into your OpenClaw configuration and write a pending receipt. This is the only step that edits your configuration file.</span></li>
+        </ol>
+        <pre><code>npx -y agi-super-team@latest --tool openclaw
+npx -y agi-super-team@latest --tool openclaw --install
+OPENCLAW_STATE_DIR="$HOME/.openclaw" \
+OPENCLAW_CONFIG_PATH="$HOME/.openclaw/openclaw.json" \
+  npx -y agi-super-team@latest --tool openclaw --install --connect</code></pre>
+        <p>Add <code>--all-subagents</code> to install all 92 specialists; the default installs only the 14 canonical roles. <code>--connect</code> is rejected unless <code>--install</code> is also present. Repeat <code>--tool</code> to target several harnesses in one run.</p>
+        <div class="callout"><strong>Agent entries, not the legacy list</strong><p>Current OpenClaw documentation describes multi-agent routing through <code>agents.entries.*</code>. The older <code>agents.list</code> roster is migrated to keyed entries by <code>openclaw doctor --fix</code>. This installer merges by agent <code>id</code> into whichever structure your configuration currently uses, so run the doctor migration before connecting if your configuration predates keyed entries.</p></div>
+      </section>
+      <section>
+        <h2>What the package changes</h2>
+        <p>Two things land under the resolved configuration directory, and a third only if you connect.</p>
+        <ul>
+          <li><strong>Agent workspaces</strong> at <code>&lt;config-dir&gt;/agency-agents/agi-super-team/ast-*</code>. Each named role receives the bootstrap file set OpenClaw reads as project context: <code>IDENTITY.md</code>, <code>SOUL.md</code>, <code>AGENTS.md</code>, <code>USER.md</code>, <code>TOOLS.md</code>, and <code>MEMORY.md</code>.</li>
+          <li><strong>Canonical skills</strong> at <code>&lt;config-dir&gt;/skills/agi-super-team/&lt;skill&gt;</code>, copied byte for byte from the repository.</li>
+          <li><strong>Connection state</strong> at <code>&lt;config-dir&gt;/agi-super-team/connection.json</code>, plus a <code>receipt.json</code> written by <code>--connect</code>.</li>
+        </ul>
+        <p>The connect step runs a dry run first, then merges each managed <code>ast-*</code> agent by <code>id</code>, preserving agents it does not own. It does not create channel bindings, and it does not reformat or reorder unrelated configuration keys.</p>
+        <div class="callout"><strong>Two paths, verified separately</strong><p>Previewed locally against the v1.6.0 checklist at an isolated state directory: 580 file additions, zero updates, no writes to the real state directory. The merge into <code>agents.entries</code> or the legacy <code>agents.list</code>, the canary delegation run, and the Governor review were not exercised in that preview.</p></div>
+      </section>
+      <section>
+        <h2>Check the result</h2>
+        <p>Re-run the preview. Anything reported as <code>unchanged</code> is already present with the same content, so a clean second run should report no new additions. Then ask OpenClaw what it loaded rather than assuming file presence equals loading.</p>
+        <pre><code>openclaw plugins list --enabled --verbose
+openclaw plugins inspect &lt;name&gt; --json --runtime
+openclaw doctor --fix</code></pre>
+        <p>A file existing on disk means structural wiring succeeded. The receipt keeps <code>runtimeEvidence</code> at <code>pending</code> until a real session shows the team delegating and an independent Governor reviewing a child session.</p>
+      </section>
+      <section>
+        <h2>Limitations</h2>
+        <p>The installer targets OpenClaw's documented file layout, not a published plugin contract. AGI Super Team is not packaged as a native OpenClaw plugin: there is no <code>openclaw.plugin.json</code> and no <code>openclaw</code> field in <code>package.json</code>. Skill discovery depth, the managed skill root, and the agent roster key are version dependent, and the local install under <code>~/.openclaw/agency-agents/</code> was checked on OpenClaw 2026.6.8.</p>
+        <p>One path divergence is reasoned from the installer source rather than observed at runtime. When only <code>OPENCLAW_CONFIG_PATH</code> is set and its directory is not the state directory, the installer writes skills to <code>dirname(configPath)/skills</code> while OpenClaw documents its managed skill root under the state directory. Setting <code>OPENCLAW_STATE_DIR</code> and <code>OPENCLAW_CONFIG_PATH</code> together avoids the ambiguity.</p>
+        <p>Connect refuses to run when <code>openclaw config get</code> returns the redaction sentinel <code>__OPENCLAW_REDACTED__</code>, and when the primary configuration contains <code>$include</code>. Both cases require manual wiring.</p>
+      </section>
+      <section>
+        <h2>Rollback and uninstall</h2>
+        <p>Remove the two managed directories under the resolved configuration root: <code>agency-agents/agi-super-team/</code> and <code>skills/agi-super-team/</code>. Delete <code>&lt;config-dir&gt;/agi-super-team/</code> to remove the connection and receipt.</p>
+        <p>If you connected, restore your configuration from the backup the installer recorded before it edited the file, and remove only the managed <code>ast-*</code> entries rather than rewriting the whole configuration. Do not delete the entire OpenClaw state directory: it also holds credentials, sessions, and unrelated plugins. If the legacy <code>agents.list</code> structure was migrated by the doctor command, that migration is OpenClaw's own change and is not undone by uninstalling this package.</p>
+      </section>
+      <footer class="guide-cta"><p>Preview the file list before you connect anything.</p><a class="button button-primary" href="https://github.com/aAAaqwq/AGI-Super-Team/blob/main/docs/guides/harness-adapters.md">Read the adapter placement table</a></footer>
+    </article>
+  </main>
+  <footer class="site-footer"><div class="shell footer-inner"><div><strong>AGI Super Team guides</strong><p>Evidence first, write access second.</p></div><nav aria-label="Footer"><a href="harness-compatibility.html">Compatibility</a><a href="../verification.html">Verification</a><a href="./">All guides</a></nav></div></footer>
+</body>
+</html>
