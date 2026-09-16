@@ -7,6 +7,17 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 
+# Every curated distribution package, and the manifest that makes it
+# discoverable by its harness. Kept in lockstep with config/repository-architecture.json
+# and plugins/README.md.
+#
+# A package belongs here only when it ships real components. A manifest that
+# installs nothing overstates compatibility, so packages without content are
+# removed rather than kept as placeholders (ADR-0006).
+DISTRIBUTION_MANIFESTS = {
+    "agi-super-team-codex": ".codex-plugin/plugin.json",
+}
+
 
 class DistributionReleaseContractTests(unittest.TestCase):
     def test_npm_tarball_contains_the_runtime_and_no_transient_files(self) -> None:
@@ -49,6 +60,44 @@ class DistributionReleaseContractTests(unittest.TestCase):
 
         self.assertRegex(package["version"], r"^\d+\.\d+\.\d+$")
         self.assertEqual(plugin["version"], package["version"])
+
+    def test_every_distribution_package_ships_a_manifest_in_the_tarball(self) -> None:
+        result = subprocess.run(
+            ["npm", "pack", "--dry-run", "--json", "--ignore-scripts"],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        published = {
+            entry["path"] for entry in json.loads(result.stdout)[0]["files"]
+        }
+        for package, manifest in DISTRIBUTION_MANIFESTS.items():
+            with self.subTest(package=package):
+                relative = f"plugins/{package}/{manifest}"
+                self.assertTrue(
+                    (ROOT / relative).is_file(),
+                    f"{relative} must exist on disk",
+                )
+                self.assertIn(
+                    relative,
+                    published,
+                    f"{relative} must be published, not only present in the checkout",
+                )
+
+    def test_distribution_packages_share_the_release_version(self) -> None:
+        package = json.loads((ROOT / "package.json").read_text(encoding="utf-8"))
+        for name, manifest in DISTRIBUTION_MANIFESTS.items():
+            with self.subTest(package=name):
+                document = json.loads(
+                    (ROOT / "plugins" / name / manifest).read_text(encoding="utf-8")
+                )
+                self.assertEqual(
+                    document["version"],
+                    package["version"],
+                    f"{name} must track the npm release version",
+                )
 
     def test_codex_marketplace_install_never_tracks_a_mutable_branch(self) -> None:
         package = json.loads((ROOT / "package.json").read_text(encoding="utf-8"))

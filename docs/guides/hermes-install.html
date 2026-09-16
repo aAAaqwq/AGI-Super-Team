@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Install AGI Super Team for Hermes Agent with a chosen home</title>
+  <meta name="description" content="Preview and install the AGI Super Team Hermes skills and profile blueprints through the npm installer, verify what lands under HERMES_HOME, and uninstall cleanly.">
+  <link rel="canonical" href="https://aaaaqwq.github.io/AGI-Super-Team/guides/hermes-install.html">
+  <meta name="theme-color" content="#070b18">
+  <link rel="icon" href="../assets/favicon-intelligence.png" sizes="any">
+  <link rel="stylesheet" href="../assets/site.css">
+  <script src="../assets/site.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header"><div class="shell header-inner"><a class="brand" href="../"><img src="../assets/logo-intelligence.webp" width="36" height="36" alt=""><span>AGI Super Team</span></a><nav class="primary-nav guide-nav" aria-label="Primary"><a href="../">Home</a><a href="./">Guides</a><a href="https://github.com/aAAaqwq/AGI-Super-Team">GitHub</a></nav><button class="icon-button" type="button" data-theme-button aria-label="Switch to light theme"><img class="theme-icon theme-icon-dark" src="../assets/icons/sun.svg" width="20" height="20" alt=""><img class="theme-icon theme-icon-light" src="../assets/icons/moon.svg" width="20" height="20" alt=""></button></div></header>
+  <main id="main-content" class="guide-main">
+    <article class="shell guide-article">
+      <header class="guide-hero">
+        <p class="kicker">Hermes installation</p>
+        <h1>Know which home receives the skills before you install.</h1>
+        <p class="hero-lede">Hermes takes its team through the npm installer rather than the Hermes plugin index. Roles arrive as read-only role skills plus profile blueprints; canonical skills arrive as ordinary skills under the same home. Nothing is created or started automatically.</p>
+        <p class="guide-meta">Last reviewed: 2026-07-21 · Surface: npm installer, hermes tool target</p>
+      </header>
+      <section>
+        <h2>Prerequisites</h2>
+        <ul>
+          <li>Node.js 18+ with <code>npx</code> available, and network access to the npm registry.</li>
+          <li>A decision about the target home. A non-empty <code>HERMES_HOME</code> is the final root for the installer. With it unset, POSIX resolves to <code>~/.hermes</code> and Windows to <code>%LOCALAPPDATA%\hermes</code>.</li>
+          <li>Awareness that Hermes itself resolves its home in three layers, not two: a context-local override injected by a wrapper script, then <code>HERMES_HOME</code>, then the platform default. <code>HERMES_HOME</code> is the process-level answer, and a profile-aware wrapper can override it inside a running process.</li>
+        </ul>
+        <p>If you run Hermes in more than one profile, set <code>HERMES_HOME</code> explicitly. When it is unset while a non-default profile is sticky-active, Hermes falls back to the platform default home and only logs a one-time warning in <code>errors.log</code>, which is how cross-profile data lands in the wrong place.</p>
+      </section>
+      <section>
+        <h2>Install step by step</h2>
+        <ol class="guide-steps">
+          <li><strong>Preview without writing</strong><span>Run the command without <code>--install</code>. Every planned file prints with an absolute path under <code>HERMES_HOME</code>. Read the list before applying it.</span></li>
+          <li><strong>Apply the file changes</strong><span>Rerun with <code>--install</code>. Existing managed targets are backed up before replacement, and nothing outside the selected scope is deleted.</span></li>
+          <li><strong>Inspect the two skill roots</strong><span>Confirm that role skills are under <code>skills/agi-super-team-agents/</code> and canonical skills under <code>skills/agi-super-team/</code>. Both live under the same resolved home.</span></li>
+          <li><strong>Decide about profiles yourself</strong><span>The installer writes profile blueprints but does not run <code>hermes profile create</code>, schedule cron, or start a gateway. Creating profiles is a separate, deliberate action.</span></li>
+        </ol>
+        <pre><code>npx -y agi-super-team@latest --tool hermes
+HERMES_HOME=/path/to/hermes npx -y agi-super-team@latest --tool hermes --install
+npx -y agi-super-team@latest --tool hermes --install --connect</code></pre>
+        <p>Add <code>--all-subagents</code> to install all 92 specialists; the default installs only the 14 canonical roles. Passing <code>--home</code> and <code>HERMES_HOME</code> at the same time is an error unless both resolve to the same directory. Repeat <code>--tool</code> to target several harnesses in one run.</p>
+      </section>
+      <section>
+        <h2>What the package changes</h2>
+        <ul>
+          <li><strong>Role skills</strong> at <code>$HERMES_HOME/skills/agi-super-team-agents/ast-*/SKILL.md</code>, one skill per canonical role.</li>
+          <li><strong>Canonical skills</strong> at <code>$HERMES_HOME/skills/agi-super-team/&lt;skill&gt;</code>, copied byte for byte.</li>
+          <li><strong>Profile blueprints</strong> at <code>$HERMES_HOME/agi-super-team/profiles/ast-*/profile.json</code>, one per executive role and the Governor.</li>
+          <li><strong>Connection state</strong> at <code>$HERMES_HOME/agi-super-team/connection.json</code>, plus a <code>receipt.json</code> written by <code>--connect</code>.</li>
+        </ul>
+        <p>The adapter mode behind the blueprints is a real Hermes concept: profiles are first-class, each with its own configuration, sessions, skills, gateway, and persona, and the Kanban board assigns tasks per profile. The Blueprint file format is not. Hermes has no <code>profile.json</code> blueprint schema; that file is an AGI Super Team product, marked blueprint-only, and Hermes creates profiles through its own profile commands such as <code>hermes profile create</code>.</p>
+        <div class="callout"><strong>Evidence boundary</strong><p>Checked locally against the v1.6.0 checklist at an isolated home: 524 file additions, including all fourteen executive profile blueprints, and no <code>profiles/</code> directory was created for you. Runtime role loading, Kanban dependency chains, and an independent Governor profile were not exercised.</p></div>
+      </section>
+      <section>
+        <h2>Check the result</h2>
+        <pre><code>ls "$HERMES_HOME/skills/agi-super-team-agents"
+ls "$HERMES_HOME/agi-super-team/profiles"
+hermes skills list
+hermes profile list</code></pre>
+        <p>Re-run the preview afterwards. Everything that landed correctly reports as <code>unchanged</code>. A file on disk proves the artifact exists; it does not prove Hermes loads or delegates to it, so the receipt keeps <code>runtimeEvidence</code> at <code>pending</code> until a real session shows the roles being loaded and used.</p>
+      </section>
+      <section>
+        <h2>Limitations</h2>
+        <p>AGI Super Team is not packaged as a Hermes plugin. There is no package root <code>plugin.json</code> for Hermes to consume, so <code>hermes plugins install</code> is not a route into this team; the installer is. The blueprint files are a repository convention layered on a real Hermes mechanism, and they are not validated by Hermes itself.</p>
+        <p>Role skills land under <code>skills/agi-super-team-agents/</code> rather than in a directory Hermes documents as a role registry. Whether Hermes treats them as delegatable roles or as loadable knowledge depends on how your Hermes release surfaces skills, and that was not verified here.</p>
+        <p>The path semantics in this guide follow the installer's resolution rules. Hermes upstream has since added the context-local override layer described above, and the repository's versioned reference for those rules is a commit pinned at official tag <code>v2026.8.3</code>, which is behind the current release. Treat the resolution order as current, and the pinned line references as historical.</p>
+        <div class="callout"><strong>An external directory you add yourself is not a write boundary</strong><p><code>skills.external_dirs</code> is a supported Hermes mechanism, but Hermes documents that external directories are not a read-only boundary: if the process can write the directory, an agent's skill management calls can edit or delete files there. The installer does not write this key for you. If you point it at a shared location, use filesystem read-only permissions or isolate it in a dedicated profile, and keep a change audit.</p></div>
+      </section>
+      <section>
+        <h2>Rollback and uninstall</h2>
+        <p>Remove the two managed skill trees, <code>skills/agi-super-team-agents/</code> and <code>skills/agi-super-team/</code>, plus <code>agi-super-team/</code> for the connection and receipt. These are scoped paths, so removing them does not disturb unrelated skills.</p>
+        <p>Profiles you created yourself with <code>hermes profile create</code> are yours: this package never created them, and uninstalling does not delete them. Remove them with the Hermes profile commands if you no longer want them. Do not delete the whole <code>HERMES_HOME</code> directory, which also holds credentials, sessions, and configuration.</p>
+      </section>
+      <footer class="guide-cta"><p>Check the resolved home before you write into it.</p><a class="button button-primary" href="https://github.com/aAAaqwq/AGI-Super-Team/blob/main/docs/guides/harness-adapters.md">Read the adapter placement table</a></footer>
+    </article>
+  </main>
+  <footer class="site-footer"><div class="shell footer-inner"><div><strong>AGI Super Team guides</strong><p>Inspect what lands before you rely on it.</p></div><nav aria-label="Footer"><a href="harness-compatibility.html">Compatibility</a><a href="../verification.html">Verification</a><a href="./">All guides</a></nav></div></footer>
+</body>
+</html>

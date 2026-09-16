@@ -28,6 +28,7 @@
     "config/*-specialists.json",
     "config/specialist-routing.schema.json",
     "config/team-manifest.json",
+    "plugins/README.md",
     "plugins/agi-super-team-codex/.codex-plugin/plugin.json",
     "plugins/agi-super-team-codex/payload/",
     "plugins/agi-super-team-codex/README.md",
