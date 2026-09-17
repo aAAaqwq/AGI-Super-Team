@@ -161,7 +161,7 @@ try {
   const codexCalls = readFileSync(codexLog, "utf8").split(/\r?\n/).filter(Boolean);
   for (const expected of [
     "--version",
-    "plugin marketplace add aAAaqwq/AGI-Super-Team --ref v1.6.0",
+    "plugin marketplace add aAAaqwq/AGI-Super-Team --ref v1.6.1",
     "plugin marketplace upgrade agi-super-team",
     "plugin add agi-super-team-codex@agi-super-team",
   ]) {
