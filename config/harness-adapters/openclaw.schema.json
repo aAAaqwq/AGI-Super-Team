@@ -75,6 +75,32 @@
     },
     "requiredMaxDepth": {"const": 2},
     "maxChildrenPerAgent": {"const": 2},
-    "runtimeEvidence": {"const": "pending"}
+    "runtimeEvidence": {"const": "pending"},
+    "cleanClientReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "configEnvironmentVariable",
+        "receiptMustBindRepositoryRevision",
+        "requiredChecks"
+      ],
+      "properties": {
+        "status": {"enum": ["pending", "passed", "failed"]},
+        "configEnvironmentVariable": {"const": "OPENCLAW_STATE_DIR"},
+        "receiptMustBindRepositoryRevision": {"const": true},
+        "requiredChecks": {
+          "const": [
+            "isolated-state-directory",
+            "config-validate",
+            "managed-agents-discovered",
+            "ceo-manager-leaf-dispatch-observed",
+            "governor-raw-child-session-history-observed",
+            "governor-independent-review-observed",
+            "bindings-unchanged"
+          ]
+        }
+      }
+    }
   }
 }

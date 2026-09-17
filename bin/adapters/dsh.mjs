@@ -262,6 +262,7 @@ export function buildConnectionSpec({
     canary: {
       status: "pending",
       requiresDshCli: true,
+      configEnvironmentVariable: "DSH_HOME",
       requiredFlow: ["ast-ceo", "manager-output", "ast-governor", "ast-ceo-synthesis"],
       receiptMustBindRepositoryRevision: true,
     },

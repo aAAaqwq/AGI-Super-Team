@@ -54,6 +54,30 @@
         "coo": {"$ref": "#/$defs/manager"},
         "clo": {"$ref": "#/$defs/manager"}
       }
+    },
+    "cleanClientReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "configEnvironmentVariable",
+        "receiptMustBindRepositoryRevision",
+        "requiredChecks"
+      ],
+      "properties": {
+        "status": {"enum": ["pending", "passed", "failed"]},
+        "configEnvironmentVariable": {"const": "CODEX_HOME"},
+        "receiptMustBindRepositoryRevision": {"const": true},
+        "requiredChecks": {
+          "const": [
+            "fresh-codex-home",
+            "agents-discovered",
+            "orchestrator-semantic-trigger",
+            "ceo-manager-leaf-dispatch-observed",
+            "governor-independent-review-observed"
+          ]
+        }
+      }
     }
   },
   "$defs": {

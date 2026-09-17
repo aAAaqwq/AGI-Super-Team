@@ -375,6 +375,7 @@ export function buildConnectionSpec({ home, tool, agents, groups = {}, specialis
     canary: {
       status: "pending",
       requiresHermesCli: true,
+      configEnvironmentVariable: "HERMES_HOME",
       requiredFlow: ["ast-ceo", "manager-output", "ast-governor", "ast-ceo-synthesis"],
       receiptMustBindRepositoryRevision: true,
     },

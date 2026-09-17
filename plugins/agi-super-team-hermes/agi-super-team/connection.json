@@ -1159,6 +1159,7 @@
   "canary": {
     "status": "pending",
     "requiresHermesCli": true,
+    "configEnvironmentVariable": "HERMES_HOME",
     "requiredFlow": [
       "ast-ceo",
       "manager-output",

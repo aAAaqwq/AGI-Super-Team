@@ -42,6 +42,7 @@
   "canary": {
     "status": "pending",
     "requiresDshCli": true,
+    "configEnvironmentVariable": "DSH_HOME",
     "requiredFlow": [
       "ast-ceo",
       "manager-output",

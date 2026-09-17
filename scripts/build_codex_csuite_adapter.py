@@ -177,6 +177,18 @@ def build_outputs(root: Path) -> dict[Path, str]:
             agent["id"]: f"ast-{agent['id']}" for agent in leaf_agents
         },
         "requiredMaxDepth": hierarchy["requiredMaxDepth"],
+        "cleanClientReceipt": {
+            "status": "pending",
+            "configEnvironmentVariable": "CODEX_HOME",
+            "receiptMustBindRepositoryRevision": True,
+            "requiredChecks": [
+                "fresh-codex-home",
+                "agents-discovered",
+                "orchestrator-semantic-trigger",
+                "ceo-manager-leaf-dispatch-observed",
+                "governor-independent-review-observed",
+            ],
+        },
         "managerAgentMap": {
             manager: {
                 "agent": f"ast-{manager}",

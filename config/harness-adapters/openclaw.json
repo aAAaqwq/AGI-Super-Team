@@ -30,5 +30,19 @@
   },
   "requiredMaxDepth": 2,
   "maxChildrenPerAgent": 2,
-  "runtimeEvidence": "pending"
+  "runtimeEvidence": "pending",
+  "cleanClientReceipt": {
+    "status": "pending",
+    "configEnvironmentVariable": "OPENCLAW_STATE_DIR",
+    "receiptMustBindRepositoryRevision": true,
+    "requiredChecks": [
+      "isolated-state-directory",
+      "config-validate",
+      "managed-agents-discovered",
+      "ceo-manager-leaf-dispatch-observed",
+      "governor-raw-child-session-history-observed",
+      "governor-independent-review-observed",
+      "bindings-unchanged"
+    ]
+  }
 }
