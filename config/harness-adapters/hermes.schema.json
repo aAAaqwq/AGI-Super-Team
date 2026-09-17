@@ -32,6 +32,26 @@
     "runtimeEvidence": {
       "enum": ["pending", "fixture-tested", "external-receipt"]
     },
+    "cleanClientReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "configEnvironmentVariable",
+        "requiresHermesCli",
+        "receiptMustBindRepositoryRevision",
+        "requiredFlow"
+      ],
+      "properties": {
+        "status": {"enum": ["pending", "passed", "failed"]},
+        "configEnvironmentVariable": {"const": "HERMES_HOME"},
+        "requiresHermesCli": {"const": true},
+        "receiptMustBindRepositoryRevision": {"const": true},
+        "requiredFlow": {
+          "const": ["ast-ceo", "manager-output", "ast-governor", "ast-ceo-synthesis"]
+        }
+      }
+    },
     "runtimePaths": {
       "type": "object",
       "additionalProperties": false,

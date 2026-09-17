@@ -27,6 +27,18 @@
     "governor": "ast-governor"
   },
   "requiredMaxDepth": 2,
+  "cleanClientReceipt": {
+    "status": "pending",
+    "configEnvironmentVariable": "CODEX_HOME",
+    "receiptMustBindRepositoryRevision": true,
+    "requiredChecks": [
+      "fresh-codex-home",
+      "agents-discovered",
+      "orchestrator-semantic-trigger",
+      "ceo-manager-leaf-dispatch-observed",
+      "governor-independent-review-observed"
+    ]
+  },
   "managerAgentMap": {
     "cto": {
       "agent": "ast-cto",

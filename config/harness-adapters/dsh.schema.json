@@ -37,6 +37,26 @@
     "runtimeEvidence": {
       "enum": ["pending", "fixture-tested", "external-receipt"]
     },
+    "cleanClientReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "configEnvironmentVariable",
+        "requiresDshCli",
+        "receiptMustBindRepositoryRevision",
+        "requiredFlow"
+      ],
+      "properties": {
+        "status": {"enum": ["pending", "passed", "failed"]},
+        "configEnvironmentVariable": {"const": "DSH_HOME"},
+        "requiresDshCli": {"const": true},
+        "receiptMustBindRepositoryRevision": {"const": true},
+        "requiredFlow": {
+          "const": ["ast-ceo", "manager-output", "ast-governor", "ast-ceo-synthesis"]
+        }
+      }
+    },
     "runtimePaths": {
       "type": "object",
       "additionalProperties": false,

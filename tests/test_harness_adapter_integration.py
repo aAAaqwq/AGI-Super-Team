@@ -12,7 +12,10 @@ from jsonschema import Draft202012Validator
 ROOT = Path(__file__).resolve().parents[1]
 CLI = ROOT / "bin" / "agi-super-team.mjs"
 NODE = os.environ.get("NODE", "node")
-PRIORITY_HARNESSES = ("claude-code", "codex", "openclaw", "hermes")
+# The five harnesses that ship an external adapter module. DSH is carried here
+# too: `config/cli-adapters.json` gives it an `adapterModule` like the other
+# four, so leaving it out let its contract drift untested.
+PRIORITY_HARNESSES = ("claude-code", "codex", "openclaw", "hermes", "dsh")
 
 
 def snapshot_tree(root: Path) -> dict[str, tuple[str, bytes | None]]:

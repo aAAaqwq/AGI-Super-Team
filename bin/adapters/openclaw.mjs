@@ -377,6 +377,7 @@ export function buildConnectionSpec({
     },
     canary: {
       status: "pending",
+      configEnvironmentVariable: "OPENCLAW_STATE_DIR",
       requiredChecks: [
         "isolated-state-directory",
         "config-validate",

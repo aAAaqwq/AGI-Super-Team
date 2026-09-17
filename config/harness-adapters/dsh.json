@@ -8,6 +8,18 @@
   "requiredMaxDepth": 2,
   "maxConcurrentChildren": 2,
   "runtimeEvidence": "pending",
+  "cleanClientReceipt": {
+    "status": "pending",
+    "configEnvironmentVariable": "DSH_HOME",
+    "requiresDshCli": true,
+    "receiptMustBindRepositoryRevision": true,
+    "requiredFlow": [
+      "ast-ceo",
+      "manager-output",
+      "ast-governor",
+      "ast-ceo-synthesis"
+    ]
+  },
   "runtimePaths": {
     "globalInstructions": "AGENTS.md",
     "presetRoot": ".agent-presets/ast-team",

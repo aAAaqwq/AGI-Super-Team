@@ -8,6 +8,18 @@
   "requiredMaxDepth": 2,
   "maxConcurrentChildren": 2,
   "runtimeEvidence": "pending",
+  "cleanClientReceipt": {
+    "status": "pending",
+    "configEnvironmentVariable": "HERMES_HOME",
+    "requiresHermesCli": true,
+    "receiptMustBindRepositoryRevision": true,
+    "requiredFlow": [
+      "ast-ceo",
+      "manager-output",
+      "ast-governor",
+      "ast-ceo-synthesis"
+    ]
+  },
   "runtimePaths": {
     "roleSkillRoot": "skills/agi-super-team-agents",
     "orchestratorSkill": "skills/agi-super-team-orchestrator/SKILL.md",

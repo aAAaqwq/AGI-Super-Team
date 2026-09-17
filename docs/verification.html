@@ -42,6 +42,53 @@
         <div class="callout callout-pending"><strong>Validation pending</strong><p>The public site remains pending until the full repository gate and an outcome fixture pass on the same main commit. Local improvements alone do not turn this label green.</p></div>
       </section>
       <section>
+        <h2>Runtime evidence: clean Claude Code client</h2>
+        <div class="callout callout-pending"><strong>Not the public fixture</strong><p>Per <a href="https://github.com/aAAaqwq/AGI-Super-Team/blob/main/docs/adr/0003-structural-evidence-and-runtime-receipts.md">ADR-0003</a>, structural and runtime evidence are separate scorecards. The results below are real and reproducible, but they are <strong>not</strong> the public outcome fixture the site requires, so the label above stays pending. They make no claim about any harness other than Claude Code.</p></div>
+        <table>
+          <thead><tr><th>Field</th><th>Value</th></tr></thead>
+          <tbody>
+            <tr><td>commit</td><td><code>ad6582f8621bf3c21a116828626869b6c481a09a</code></td></tr>
+            <tr><td>package</td><td><code>agi-super-team@1.6.0</code></td></tr>
+            <tr><td>harness</td><td><code>Claude Code 2.1.207</code></td></tr>
+            <tr><td>fixture</td><td>none — ad-hoc reproduction, not a public fixture</td></tr>
+            <tr><td>isolation</td><td><code>CLAUDE_CONFIG_DIR</code> pointed at <code>&lt;home&gt;/.claude</code>; empty project directory</td></tr>
+          </tbody>
+        </table>
+        <p>The five <code>cleanClientReceipt.requiredChecks</code> declared in <a href="https://github.com/aAAaqwq/AGI-Super-Team/blob/main/config/harness-adapters/claude-code.json"><code>config/harness-adapters/claude-code.json</code></a>, measured on a fresh install:</p>
+        <table>
+          <thead><tr><th>Check</th><th>Result</th><th>Observed</th></tr></thead>
+          <tbody>
+            <tr><td><code>fresh-config-directory</code></td><td>passed</td><td>Install into an empty home succeeded; 106 agent definitions and 170 Skill directories written.</td></tr>
+            <tr><td><code>agents-discovered</code></td><td>passed</td><td>Session initialization listed all 106 <code>ast-*</code> agents and 169 skills, including <code>agi-super-team-orchestrator</code>.</td></tr>
+            <tr><td><code>orchestrator-semantic-trigger</code></td><td>passed</td><td>An unprompted cross-functional request caused the model to invoke the <code>agi-super-team-orchestrator</code> Skill on its own.</td></tr>
+            <tr><td><code>ceo-manager-leaf-dispatch-observed</code></td><td>passed</td><td>Nested dispatch observed to depth 2: the CEO selected five C-suite managers, and managers dispatched their own leaves, in parallel branches.</td></tr>
+            <tr><td><code>governor-independent-review-observed</code></td><td>passed</td><td><code>ast-governor</code> gathered its own evidence, returned a Block verdict, and escalated two unexamined veto points.</td></tr>
+          </tbody>
+        </table>
+        <h3>Contract and artifact agree</h3>
+        <p>The <code>delegation</code> block declares 11 managers plus the coordinator. In the installed artifacts exactly 12 definitions omit <code>disallowedTools: Agent</code> (<code>ast-ceo</code> plus those 11), and the remaining 94 — every leaf and <code>ast-governor</code> — carry it. Nested dispatch reached depth 2, matching <code>requiredMaxDepth</code>.</p>
+        <h3>Other primary harnesses</h3>
+        <p>Codex, OpenClaw, Hermes, and DSH each install and generate their connection receipt, but none has been run against a clean client. The table records what was verified in this pass and what was not, so an unmeasured surface is not read as a measured one.</p>
+        <table>
+          <thead><tr><th>Harness</th><th>Installs and lands where the README says</th><th>Receipt declared</th><th>Clean-client run</th></tr></thead>
+          <tbody>
+            <tr><td>Codex</td><td>verified</td><td>5 checks</td><td>not run</td></tr>
+            <tr><td>OpenClaw</td><td>verified</td><td>7 checks</td><td>not run</td></tr>
+            <tr><td>Hermes</td><td>verified</td><td>4-step flow</td><td>not run</td></tr>
+            <tr><td>DSH</td><td>verified</td><td>4-step flow</td><td>not run</td></tr>
+          </tbody>
+        </table>
+        <p>"Installs and lands where the README says" means a real run into an isolated root produced the documented paths, not that a client loaded them. The receipt column names the check list each adapter emits; none has been executed.</p>
+        <h3>Limitations</h3>
+        <ul>
+          <li>One local run by the maintainer, not a public fixture. A different model, prompt, or harness version may behave differently.</li>
+          <li>Only Claude Code was exercised. Codex, OpenClaw, Hermes, and DSH remain <code>runtimeEvidence: pending</code>.</li>
+          <li>Prompts were written by the maintainer to elicit dispatch deliberately; this is not an unbiased quality measurement.</li>
+          <li>Reproduce by installing into a clean <code>CLAUDE_CONFIG_DIR</code>, then rerunning the commands below with <code>--output-format stream-json --verbose</code> and inspecting <code>parent_tool_use_id</code> on each <code>tool_use</code>.</li>
+          <li>Rollback: remove the installed <code>.claude/agents</code>, <code>.claude/skills</code>, and <code>.claude/agi-super-team</code> paths, or delete the throwaway config directory entirely.</li>
+        </ul>
+      </section>
+      <section>
         <h2>Receipt contract</h2>
         <pre><code>{
   "commit": "full Git commit SHA",

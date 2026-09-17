@@ -184,6 +184,7 @@ export function buildConnectionSpec({
     revisionMatchedReceipt: {
       status: "pending",
       required: true,
+      configEnvironmentVariable: "CODEX_HOME",
       requiredFields: [
         "sourceRevision",
         "sourceDirty",
