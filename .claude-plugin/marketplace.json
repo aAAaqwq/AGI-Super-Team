@@ -8,13 +8,13 @@
     {
       "name": "agi-super-team",
       "description": "Evidence-backed role packs and reusable skills with explicit installation and review boundaries.",
-      "version": "1.6.1",
+      "version": "1.7.0",
       "source": "./"
     },
     {
       "name": "agi-super-team-claudecode",
       "description": "Evidence-backed Claude Code package: 14 ast-* subagents, the orchestrator Skill, and a connection spec. Ships no Skill bodies -- install through the generic installer for those.",
-      "version": "1.6.1",
+      "version": "1.7.0",
       "source": "./plugins/agi-super-team-claudecode"
     }
   ]

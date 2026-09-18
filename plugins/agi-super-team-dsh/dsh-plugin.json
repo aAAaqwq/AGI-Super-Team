@@ -1,6 +1,6 @@
 {
   "name": "agi-super-team-dsh",
-  "version": "1.6.1",
+  "version": "1.7.0",
   "description": "Evidence-backed AI team packs with preview-first installation and explicit human review",
   "files": [
     "AGENTS.md",
