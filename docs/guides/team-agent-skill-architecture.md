@@ -95,7 +95,11 @@ sequenceDiagram
 - 默认选择最小充分 C-suite，不因 `full-team` 可用就广播所有角色。
 - Manager 只能调用路由表列出的直属角色，一轮最多两个并发叶子。
 - 叶子和 Governor 不得继续委派；主会话到叶子共 **3 层**（main → CEO → C-suite → leaf）。
-  Claude Code 侧由 `CLAUDE_CODE_MAX_SUBAGENT_SPAWN_DEPTH=3` 强制，Codex 侧由 `[agents] max_depth = 3` 强制。
+  ⚠️ **两家的深度值不同，不要互相照抄**：Claude Code 侧是 `CLAUDE_CODE_MAX_SUBAGENT_SPAWN_DEPTH=3`
+  （main=0 → ast-ceo=1 → C-suite=2 → leaf=3）；Codex 侧是 `[agents] max_depth = 2`
+  —— 因为 **Codex 的 root session 本身就是 CEO**（其适配器不写 `ast-ceo.toml`），
+  链条是 root=CEO(0) → C-suite(1) → leaf(2)。
+  ⚠️ 另注：Codex 的 `max_depth` **默认值是 1** —— 安装器会写 `config.toml`，装完不改则 C-suite 生不出叶子。
   各框架的强制能力差异与路由分级见[路由分级与强制层](routing-and-enforcement.md)。
 - Governor 独立复核，不由工作 Agent 自评代替。
 - 发布、部署、凭证、资金、法律承诺和不可逆操作由人类最终批准。
