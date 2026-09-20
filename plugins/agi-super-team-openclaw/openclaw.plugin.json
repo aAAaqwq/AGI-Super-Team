@@ -1,7 +1,7 @@
 {
   "id": "agi-super-team-openclaw",
   "name": "AGI Super Team",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "description": "Evidence-backed AI team packs with preview-first installation and explicit human review",
   "configSchema": {
     "type": "object",

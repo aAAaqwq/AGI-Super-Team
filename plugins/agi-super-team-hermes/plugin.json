@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "agi-super-team-hermes",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "description": "Evidence-backed AI team packs with preview-first installation and explicit human review",
   "author": {
     "name": "Daniel Li",

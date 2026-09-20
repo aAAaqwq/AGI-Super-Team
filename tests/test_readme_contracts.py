@@ -24,8 +24,11 @@ class ReadmeContractTests(unittest.TestCase):
         package = json.loads((ROOT / "package.json").read_text(encoding="utf-8"))
         self.assertEqual(package["name"], "agi-super-team")
         self.assertIn("README.es-ES.md", package["files"])
-        self.assertNotIn("skills/", package["files"])
-        self.assertIn("skills/*/SKILL.md", package["files"])
+        # ADR-0008: the complete `skills/` tree ships, replacing the per-skill
+        # enumeration. Every assigned skill is therefore packaged by construction,
+        # so the old assigned-subset-of-packaged-roots cross-check no longer applies.
+        self.assertIn("skills/", package["files"])
+        self.assertNotIn("skills/*/SKILL.md", package["files"])
         manifest = json.loads((ROOT / "config/team-manifest.json").read_text(encoding="utf-8"))
         assigned_skills = {
             skill
@@ -34,12 +37,6 @@ class ReadmeContractTests(unittest.TestCase):
             for skill in agent["skills"][tier]
         }
         self.assertEqual(len(assigned_skills), 169)
-        packaged_skill_roots = {
-            entry.removeprefix("skills/").removesuffix("/")
-            for entry in package["files"]
-            if entry.startswith("skills/") and entry.endswith("/")
-        }
-        self.assertTrue(assigned_skills <= packaged_skill_roots)
         self.assertIn("its `SKILL.md` entrypoints", self.english)
         self.assertIn("可发现的 `SKILL.md` 入口", self.chinese)
         self.assertIn("sus puntos de entrada `SKILL.md`", self.spanish)
