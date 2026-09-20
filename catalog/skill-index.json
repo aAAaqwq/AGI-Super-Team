@@ -79,7 +79,7 @@
       "title": "Business Operations & Strategy"
     },
     {
-      "count": 89,
+      "count": 90,
       "description": "Connect everyday apps, browsers, messaging systems, and repeatable workflows.",
       "emoji": "⚙️",
       "id": "apps-workflow-automation",
@@ -100,7 +100,7 @@
       "title": "Specialized Domains & Utilities"
     }
   ],
-  "inventoryCount": 832,
+  "inventoryCount": 833,
   "inventorySemantics": "tracked physical top-level directories with SKILL.md",
   "schemaVersion": 2,
   "skills": [
@@ -24651,6 +24651,45 @@
         "financial-action"
       ],
       "skill_id": "relayer-trade",
+      "support_level": "catalog",
+      "used_by": []
+    },
+    {
+      "assignments": [],
+      "category_id": "apps-workflow-automation",
+      "classification": "slug:automation;metadata:frontmatter",
+      "classification_details": {
+        "matched_signals": [
+          "automation"
+        ],
+        "method": "slug",
+        "resolution_status": "rule-match",
+        "review_state": "unreviewed",
+        "runner_ups": [],
+        "winner": {
+          "category_id": "apps-workflow-automation",
+          "match_count": 1,
+          "matched_signals": [
+            "automation"
+          ],
+          "priority": 70,
+          "tie_detected": false
+        }
+      },
+      "curation": {
+        "runtime_evidence": "pending",
+        "status": "unscored"
+      },
+      "description": "让自动运转的 agent 团队不静默失败：定时/事件任务跑了没有、跑成功没有（watchdog 查产物与心跳）、重跑不重复副作用（idempotency）。适用：常驻 agent 任务、L3 人工闸门、失败可见性。",
+      "description_status": "source-text",
+      "path": "skills/reliable-automation/SKILL.md",
+      "portability_class": "catalog-only",
+      "provenance": {
+        "origin_kind": "unknown",
+        "review_state": "unreviewed"
+      },
+      "review_signals": [],
+      "skill_id": "reliable-automation",
       "support_level": "catalog",
       "used_by": []
     },

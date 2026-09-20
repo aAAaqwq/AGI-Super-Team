@@ -1,7 +1,8 @@
-# ADR-0007: Ship the complete `skills/` directory in the npm package
+# ADR-0008: Ship the complete `skills/` directory in the npm package
 
 - Status: Accepted
 - Date: 2026-09-18
+- 编号说明：本文原编为 0007，与随后在文献综述线上合入的 [ADR-0007: 壳与魂的分层归属](./0007-shell-soul-layering-and-borrowing.md) 撞号，故重编为 0008。两者讨论不同问题，不构成取代关系。
 
 ## Context
 

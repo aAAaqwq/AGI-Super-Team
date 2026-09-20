@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "inventory": {
     "agentCount": 14,
-    "physicalSkillCount": 832,
+    "physicalSkillCount": 833,
     "skillEntrypoint": "SKILL.md",
     "symlinkPolicy": "forbid"
   },

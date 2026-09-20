@@ -42,7 +42,7 @@ Choose a reviewed origin boundary before browsing by outcome. Provenance and cur
 | [Project original](#project-original-skills) | Digest-backed first-party work with reviewed authorship. | 34 |
 | [Adapted](#adapted-skills) | Modified from a named source with the adaptation recorded. | 0 |
 | [Collected](#collected-skills) | Preserved from a named source with provenance recorded. | 0 |
-| [Unknown origin](#unknown-origin-skills) | Source review is incomplete; inspect before use. | 798 |
+| [Unknown origin](#unknown-origin-skills) | Source review is incomplete; inspect before use. | 799 |
 
 <a id="project-original-skills"></a>
 ### Project original
@@ -105,11 +105,11 @@ No entries currently meet this provenance contract.
 
 Source review is incomplete; inspect before use.
 
-798 entries are awaiting source review. Use the [machine-readable index](./skill-index.json) or browse by outcome below; they are not promoted as curated recommendations.
+799 entries are awaiting source review. Use the [machine-readable index](./skill-index.json) or browse by outcome below; they are not promoted as curated recommendations.
 
 ## 🗂️ Browse by outcome
 
-This revision contains 832 canonical catalog entries. The number is generated here rather than used as a product claim.
+This revision contains 833 canonical catalog entries. The number is generated here rather than used as a product claim.
 
 | Category | Use it for | Entries |
 |---|---|---:|
@@ -124,7 +124,7 @@ This revision contains 832 canonical catalog entries. The number is generated he
 | [🤝 Sales, CRM & Customer Success](#sales-crm-customer-success) | Find, win, onboard, support, and retain customers with accountable workflows. | 40 |
 | [💹 Finance, Trading & Markets](#finance-trading-markets) | Analyze markets, backtest strategies, track portfolios, and review financial risk. | 70 |
 | [🧭 Business Operations & Strategy](#business-operations-strategy) | Plan work, make decisions, manage teams, and improve operating systems. | 74 |
-| [⚙️ Apps & Workflow Automation](#apps-workflow-automation) | Connect everyday apps, browsers, messaging systems, and repeatable workflows. | 89 |
+| [⚙️ Apps & Workflow Automation](#apps-workflow-automation) | Connect everyday apps, browsers, messaging systems, and repeatable workflows. | 90 |
 | [🇨🇳 Chinese Platform Workflows](#chinese-platform-workflows) | Create, analyze, and publish for major Chinese-language platforms and channels. | 40 |
 | [🧰 Specialized Domains & Utilities](#general-utilities) | Domain-specific helpers and cross-functional tools that need a dedicated review path. | 45 |
 
@@ -945,6 +945,7 @@ Connect everyday apps, browsers, messaging systems, and repeatable workflows.
 | [`qq-email-operator`](../skills/qq-email-operator/) | QQ邮箱操作技能。支持通过 IMAP/SMTP 读取邮件、搜索邮件、回复邮件、发送邮件。凭据通过 pass 安全存储。 | Unknown · unreviewed | Unscored | Catalog only |
 | [`quickbooks-automation`](../skills/quickbooks-automation/) | Automate QuickBooks accounting workflows including invoicing, expenses, reporting, and bank reconciliation | Unknown · unreviewed | Unscored | Catalog only |
 | [`reddit-automation`](../skills/reddit-automation/) | Automate Reddit tasks via Rube MCP (Composio): search subreddits, create posts, manage comments, and browse top content. Always search tools first for current schemas. | Unknown · unreviewed | Unscored | Catalog only |
+| [`reliable-automation`](../skills/reliable-automation/) | 让自动运转的 agent 团队不静默失败：定时/事件任务跑了没有、跑成功没有（watchdog 查产物与心跳）、重跑不重复副作用（idempotency）。适用：常驻 agent 任务、L3 人工闸门、失败可见性。 | Unknown · unreviewed | Unscored | Catalog only |
 | [`rss-automation`](../skills/rss-automation/) | RSS feed aggregation and monitoring. Parse RSS/Atom feeds, filter entries, | Unknown · unreviewed | Unscored | Catalog only |
 | [`segment-automation`](../skills/segment-automation/) | Automate Segment tasks via Rube MCP (Composio): track events, identify users, manage groups, page views, aliases, batch operations. Always search tools first for current schemas. | Unknown · unreviewed | Unscored | Catalog only |
 | [`sendgrid-automation`](../skills/sendgrid-automation/) | Automate SendGrid email operations including sending emails, managing contacts/lists, sender identities, templates, and analytics via Rube MCP (Composio). Always search tools… | Unknown · unreviewed | Unscored | Catalog only |
