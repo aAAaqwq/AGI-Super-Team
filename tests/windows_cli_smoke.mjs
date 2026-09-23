@@ -95,7 +95,7 @@ try {
     "--project-dir", preview.project, "--skip-plugin",
   ], preview.home);
   expectIncludes(previewed, "AGI Super Team — PREVIEW", "claude-code preview");
-  expectIncludes(previewed, "Tools: claude-code", "claude-code preview");
+  expectIncludes(previewed, "target: claude-code", "claude-code preview");
   expectIncludes(previewed, "Preview only. Add --install to apply.", "claude-code preview");
   const afterPreview = tree(previewParent);
   if (JSON.stringify(afterPreview) !== JSON.stringify(beforePreview)) {
@@ -268,7 +268,7 @@ if (args.length === 1 && args[0] === "--version") {
     "--project-dir", openclaw.project, "--skip-plugin", "--all-subagents",
   ], openclaw.home);
   expectIncludes(openclawOutput, "AGI Super Team — PREVIEW", "openclaw --all-subagents preview");
-  expectIncludes(openclawOutput, "Tools: openclaw", "openclaw --all-subagents preview");
+  expectIncludes(openclawOutput, "target: openclaw", "openclaw --all-subagents preview");
   expectIncludes(openclawOutput, "Preview only. Add --install to apply.", "openclaw --all-subagents preview");
   if (tree(dirname(openclaw.home)).length !== 0) throw new Error("openclaw preview mutated its isolated roots");
 
@@ -314,7 +314,7 @@ if (args.length === 1 && args[0] === "--version") {
     "--project-dir", allTools.project, "--skip-plugin",
   ], allTools.home);
   expectIncludes(allToolsOutput, "AGI Super Team — PREVIEW", "--all-tools preview");
-  expectIncludes(allToolsOutput, "Tools: claude-code, codex, openclaw, hermes", "--all-tools preview");
+  expectIncludes(allToolsOutput, "target: claude-code, codex, openclaw, hermes", "--all-tools preview");
   expectIncludes(allToolsOutput, "Preview only. Add --install to apply.", "--all-tools preview");
   if (tree(dirname(allTools.home)).length !== 0) throw new Error("--all-tools preview mutated its isolated roots");
 

@@ -14,7 +14,7 @@
   从一个成果开始：CEO 路由高管，高管调度专家，Skills 提供方法，Governor 独立验收。
 </p>
 
-AGI Super Team 不是 Codex 专属插件，而是一套版本化、有组织的 **Agents + Skills 团队系统**。它通过 18 个明确适配器，服务 Claude Code、Codex、OpenClaw、Hermes 等主流本地 AI Agent 框架。
+AGI Super Team 不是 Codex 专属插件，而是一套版本化、有组织的 **Agents + Skills 团队系统**。它通过 19 个明确适配器，服务 Claude Code、Codex、OpenClaw、Hermes 等主流本地 AI Agent 框架。
 
 同一套组织契约可以跨框架落地：14 个顶层角色、92 个可选直属专家、可复用 Skills、8 支成果型 Team、独立审查与明确人工批准。不同适配器只负责映射目标框架真实支持的能力。
 
@@ -32,7 +32,14 @@ AGI Super Team 不是 Codex 专属插件，而是一套版本化、有组织的 
 
 [**浏览官网 →**](https://aaaaqwq.github.io/AGI-Super-Team/)
 
-**版本说明：** GitHub 源码已到 `1.6.0`；npm 当前发布的是 `1.4.2`，`@latest` 安装 npm 已发布版本。[版本差异与补发说明](./docs/guides/npm-release-status.md)。
+**版本说明：** 这里刻意不写具体版本号——写死的数字下一次发版就会过期。`@latest` 安装的是 npm 当前发布的版本，可能与本仓库源码不一致。请自行核对，不要相信文档里的数字：
+
+```bash
+npm view agi-super-team version               # `@latest` 实际解析到的版本
+node -p "require('./package.json').version"   # 本仓库源码版本
+```
+
+`latest` 以外的 dist-tag 不保证指向当前版本。关于一次源码与 registry 不一致的带日期案例及其恢复步骤，见 [1.5.0 发布诊断](./docs/guides/npm-release-status.md)。
 
 <a id="coding-agent-quick-start"></a>
 ## ⚡ 用 Coding Agent 一键安装
@@ -75,7 +82,7 @@ Swarm agents: <你的目标>
 <a id="安装到你的-agent-框架"></a>
 ## 🛠️ 手动 CLI 安装
 
-先列出全部 18 个适配目标，再预览一个目标，确认后用同一选择安装：
+先列出全部 19 个适配目标，再预览一个目标，确认后用同一选择安装：
 
 ```bash
 npx -y agi-super-team@latest --list-tools
@@ -84,7 +91,12 @@ npx -y agi-super-team@latest --tool claude-code --install --connect
 npx -y agi-super-team@latest --tool claude-code --doctor
 ```
 
-以上命令直接使用公开 npm 包。自动化场景建议把 `@latest` 换成明确版本，例如 `@1.4.2`，以获得可复现安装。
+以上命令直接使用公开 npm 包。自动化场景不要把 `@latest` 留在固定流水线里：先解析出确切的已发布版本再固定它，这样后续发版不会改变本次安装内容：
+
+```bash
+AGI_VERSION="$(npm view agi-super-team version)"
+npx -y "agi-super-team@${AGI_VERSION}" --tool claude-code --install --connect
+```
 
 npm 发行包保留可发现的 `SKILL.md` 入口，并完整携带 `config/team-manifest.json` 实际分配的所有 Skills。经过来源审查的第一方作品可在 [Daniel 的原创 Skills](./skills/original/) 分类中查看；如果需要整个 Skill 库的全部辅助素材，请克隆仓库。
 
@@ -135,9 +147,9 @@ npx -y agi-super-team@latest --tool codex --all-subagents --install
 
 Codex 的嵌套调用需要 `max_depth = 2`。在 `max_threads = 4` 下，一次只运行一个管理者波次：CEO + 一个高管 + 最多两个直属叶子。若深度仍为 1，由 CEO 平铺调用同一专家并如实标记降级，不声称高管完成了嵌套委派。
 
-这里列出的是 **18 个 AI 客户端/运行时适配目标**，不是 18 个功能相同的 CLI。适配器可能安装原生 Agent、原生 Skill、项目规则/上下文，或把角色包降级为 Agent-as-Skill。文件写入成功不等于当前客户端已经加载或执行这些内容。
+这里列出的是 **19 个 AI 客户端/运行时适配目标**，不是 19 个功能相同的 CLI。适配器可能安装原生 Agent、原生 Skill、项目规则/上下文，或把角色包降级为 Agent-as-Skill。文件写入成功不等于当前客户端已经加载或执行这些内容。
 
-### 18 个适配目标矩阵
+### 19 个适配目标矩阵
 
 全局适配器通常从所选 OS Home 基准解析；项目适配器从所选项目目录解析。OpenClaw 与 Hermes 会优先遵循各自的原生运行时根目录，见下表。
 
@@ -147,6 +159,7 @@ Codex 的嵌套调用需要 `max_depth = 2`。在 `max_threads = 4` 下，一次
 | `codex` | Codex | 全局 | 主会话 CEO + TOML：`.codex/agents` | canonical：`.agents/skills` | 结构接入；Runtime pending |
 | `openclaw` | OpenClaw | 全局 | 原生 Workspace：`<当前配置目录>/agency-agents/agi-super-team` | canonical：`<当前配置目录>/skills/agi-super-team` | 结构接入；Runtime pending |
 | `hermes` | Hermes Agent | 全局 | 角色 Skill：`$HERMES_HOME/skills/agi-super-team-agents` | canonical：`$HERMES_HOME/skills/agi-super-team` | 蓝图接入；Runtime pending |
+| `dsh` | DeepSeek Harness | 全局 | Preset：`.dsh/.agent-presets/ast-team` | canonical：`.dsh/skills/agi-super-team` | 结构接入；Runtime pending |
 | `copilot` | GitHub Copilot | 全局 | Markdown Agent：`.github/agents`、`.copilot/agents` | 原生：`.copilot/skills` | 适配器 |
 | `antigravity` | Antigravity | 全局 | Agent：`.gemini/config/agents` | 原生：`.gemini/config/skills` | **实验性** |
 | `gemini-cli` | Gemini CLI | 全局 | Markdown Agent：`.gemini/agents` | 原生：`.gemini/skills` | 适配器 |
@@ -162,7 +175,7 @@ Codex 的嵌套调用需要 `max_depth = 2`。在 `max_threads = 4` 下，一次
 | `kiro` | Kiro | 全局 | Markdown Agent：`.kiro/agents` | 原生：`.kiro/skills` | 适配器 |
 | `qoder` | Qoder | 全局 | Markdown Agent：`.qoder/agents` | 原生：`.qoder/skills` | 适配器 |
 
-矩阵描述的是 [`config/cli-adapters.json`](./config/cli-adapters.json) 中的适配契约，并不表示 18 个客户端都做过运行时验证。Cursor 与 Antigravity 明确处于实验状态。
+矩阵描述的是 [`config/cli-adapters.json`](./config/cli-adapters.json) 中的适配契约，并不表示 19 个客户端都做过运行时验证。Cursor 与 Antigravity 明确处于实验状态。
 
 复杂任务可直接使用 canonical [`orchestrate-agi-super-team`](./skills/orchestrate-agi-super-team/SKILL.md) Skill，执行 Team → C-suite → Skills/Subagents → Governor → CEO → 人工批准的完整流程。它会识别当前框架的真实委派限制，并记录平铺或顺序降级，不伪称发生了原生嵌套。
 
@@ -375,7 +388,7 @@ npm run check:architecture
 
 ## 🔌 选择分发方式
 
-为指定 Agent 框架安装时，优先使用[一段提示词安装](#coding-agent-quick-start)，也可以使用上方的 18 目标 npm CLI。
+为指定 Agent 框架安装时，优先使用[一段提示词安装](#coding-agent-quick-start)，也可以使用上方的 19 目标 npm CLI。
 
 需要 Codex 专用细节时查看 [Codex 精选包](./.codex/INDEX.md)；需要与客户端无关的文件时使用旧版通用工作区生成器。
 
@@ -462,6 +475,14 @@ AGI Super Team 不是模型、自治编排器或 Agent 运行时。安装文件�
 - [安装与恢复](./setup.md)
 - [安全政策](./SECURITY.md)
 - [MIT 许可证](./LICENSE)
+
+仓库中有八份派生数据（技能 catalog、agent 索引、harness 包、质量与分类评估报告等）由 `skills/` 与 `config/` 生成并入库。每份克隆后执行一次，启用 pre-commit hook，让改动这两个目录时自动重新生成、而不是放任漂移：
+
+```bash
+git config core.hooksPath .githooks
+```
+
+hook 会在提交触及 `skills/` 或 `config/` 时运行 `npm run build:all`，把重写的产物重新 `git add`；任一生成器失败、或改动把某项指标顶破质量基线的棘轮上限，都会阻断提交。它**默认不生效**——`core.hooksPath` 属于每份克隆的本地配置——所以克隆后请执行上面这条命令。两类守卫与手动回退方式见 [CONTRIBUTING.md](./CONTRIBUTING.md)。
 
 ## ⭐ GitHub Stars
 

@@ -68,6 +68,7 @@ Content and actions:
   --doctor               Verify the selected installation (read-only)
   --install              Apply changes (default: preview)
   --connect              Connect installed Adapter state and write a pending receipt
+  --verbose              Print every planned file instead of the condensed summary
   --plugin               Explicitly install/update the Codex plugin (network side effect)
   --skip-plugin          Compatibility alias that keeps plugin installation disabled
 
@@ -87,7 +88,7 @@ function parseArgs(argv) {
     ["--tool", "--all-tools", "--list-tools", "--home", "--project-dir", "--no-agents", "--no-skills", "--with-subagents", "--all-subagents", "--with-cco-specialists", "--doctor", "--connect"].includes(argument),
   );
   const options = {
-    install: false, connect: false, doctor: false, listTools: false, listTeams: false,
+    install: false, connect: false, doctor: false, listTools: false, listTeams: false, verbose: false,
     tools: [], allTools: false, home: homedir(), homeExplicit: false, projectDir: process.cwd(),
     includeAgents: true, includeSkills: true, teams: [], allTeams: true,
     allAgents: false, globalCeo: true, codexHome: process.env.CODEX_HOME || null,
@@ -98,6 +99,7 @@ function parseArgs(argv) {
     if (argument === "--install") options.install = true;
     else if (argument === "--connect") options.connect = true;
     else if (argument === "--doctor") options.doctor = true;
+    else if (argument === "--verbose") options.verbose = true;
     else if (argument === "--all-tools") options.allTools = true;
     else if (argument === "--list-tools") options.listTools = true;
     else if (argument === "--no-agents") options.includeAgents = false;
@@ -275,16 +277,174 @@ function configureCodexRoot(tools, options, home) {
   } : tool);
 }
 
-function printPlan(plan, options, tools) {
-  const counts = Object.fromEntries(["add", "update", "unchanged"].map((status) => [status, plan.filter((item) => item.status === status).length]));
-  console.log(`AGI Super Team — ${options.install ? "INSTALL" : "PREVIEW"}`);
-  console.log(`Tools: ${tools.map((tool) => tool.id).join(", ")}`);
+const BACKUP_DIRECTORY = ".agi-super-team-backups";
+const WARNING_FILE_LIMIT = 10;
+const ROOT_LIMIT = 5;
+const SPECIALIST_LABEL = /(?:^|[/\s-])specialists?[:/\s]/i;
+const SKILL_LABEL = /(?:^|[/\s-])skills?[:/\s]|(?:^|[/\s-])orchestrator$/i;
+const AGENT_LABEL = /(?:^|[/\s-])(?:agents?|roles?)[:/\s]|(?:^|[/\s-])global-ceo$/i;
+
+/**
+ * The plan is the only authority on what a run writes, so the preview counts
+ * come from plan labels. Every adapter family names its role artifacts one of
+ * four ways (`agent:<id>`, `role:<id>`, `… Agent ast-<id>`, `…-agent:<id>`), the
+ * Codex `--all-agents` payload labels leaves as `agent:ast-<manager>-<leaf>`, and
+ * Skills are always `skill:<name>` plus one Adapter orchestrator Skill.
+ */
+function artifactName(label) {
+  const token = label.split(/[/\s:]+/).filter(Boolean).pop() || label;
+  return token
+    .replace(/^global-/, "")
+    .replace(/^ast-/, "")
+    .replace(/\.(?:toml|md|json)$/i, "");
+}
+
+function specialistName(label, managers) {
+  const name = artifactName(label);
+  for (const manager of managers) {
+    if (name.startsWith(`${manager}-`)) return name.slice(manager.length + 1);
+  }
+  return name;
+}
+
+/**
+ * `combined-rules` targets (aider, windsurf) merge every role and Skill into one
+ * rules file, so their plan carries no per-role artifact to count. The selection
+ * is what lands in that file, so it is seeded from the catalog instead.
+ */
+function mergedSelection(catalog, options, tools, agentIds, subagentManagers) {
+  if (!tools.some((tool) => tool.agentMode === "combined-rules")) return null;
+  const agents = options.includeAgents
+    ? (agentIds ? catalog.agents.filter((agent) => agentIds.has(agent.id)) : catalog.agents)
+    : [];
+  const specialists = options.includeAgents
+    ? [...subagentManagers].flatMap((manager) => catalog.specialistGroups[manager].specialists)
+    : [];
+  return {
+    agents: agents.map((agent) => agent.id),
+    specialists: specialists.map((specialist) => specialist.id),
+    skills: options.includeSkills ? catalog.skills.map((skill) => `skill:${skill}`) : [],
+  };
+}
+
+function planCounts(plan, catalog, merged = null) {
+  const managers = Object.keys(catalog.specialistGroups);
+  const agents = new Set();
+  const specialists = new Set();
+  const skills = new Set();
+  for (const item of plan) {
+    const label = item.label || "";
+    if (SKILL_LABEL.test(label)) { skills.add(label); continue; }
+    if (SPECIALIST_LABEL.test(label)) { specialists.add(specialistName(label, managers)); continue; }
+    if (AGENT_LABEL.test(label)) {
+      const name = artifactName(label);
+      if (managers.some((manager) => name.startsWith(`${manager}-`))) specialists.add(specialistName(label, managers));
+      else agents.add(name);
+    }
+  }
+  if (merged) {
+    for (const id of merged.agents) agents.add(id);
+    for (const id of merged.specialists) specialists.add(id);
+    for (const label of merged.skills) skills.add(label);
+  }
+  return {agents: agents.size, specialists: specialists.size, skills: skills.size};
+}
+
+function nextInstallCommand(options, tools, supportsConnect) {
+  const parts = ["npx -y agi-super-team"];
+  if (options.legacy) {
+    // The legacy Codex interface has its own flags; repeat the ones in use so the
+    // suggested command reproduces the same selection.
+    if (options.codexHome) parts.push("--codex-home", options.codexHome);
+    for (const team of options.teams) parts.push("--team", team);
+    if (options.allAgents) parts.push("--all-agents");
+    if (!options.globalCeo) parts.push("--no-global-ceo");
+  } else if (options.allTools) {
+    parts.push("--all-tools");
+  } else {
+    for (const tool of tools) parts.push("--tool", tool.id);
+  }
+  if (!options.includeAgents) parts.push("--no-agents");
+  if (!options.includeSkills) parts.push("--no-skills");
+  if (options.allSubagents) parts.push("--all-subagents");
+  else for (const manager of options.subagentManagers) parts.push("--with-subagents", manager);
+  if (options.plugin) parts.push("--plugin");
+  if (options.homeExplicit) parts.push("--home", options.home);
+  if (options.projectDir && resolve(options.projectDir) !== resolve(process.cwd())) {
+    parts.push("--project-dir", options.projectDir);
+  }
+  parts.push("--install");
+  if (supportsConnect) parts.push("--connect");
+  return parts.join(" ");
+}
+
+function overwriteWarning(replaced) {
+  const noun = replaced.length === 1 ? "file" : "files";
+  const backupRoots = [...new Set(replaced.map((item) => join(item.root, BACKUP_DIRECTORY)))].sort();
+  const lines = [
+    `!! WARNING: ${replaced.length} existing ${noun} will be REPLACED — current content is copied to`,
+    ...backupRoots.map((root) => `     ${join(root, "<timestamp>-XXXXXX")}/`),
+    "   before anything is written. Files written by a previous AGI Super Team run are included.",
+    "   Backups are a local recovery aid, not an uninstall system, so keep your own copy of anything you cannot lose.",
+  ];
+  for (const item of replaced.slice(0, WARNING_FILE_LIMIT)) {
+    lines.push(`     update ${item.tool.padEnd(14)} ${item.destination}`);
+  }
+  if (replaced.length > WARNING_FILE_LIMIT) {
+    lines.push(`     … and ${replaced.length - WARNING_FILE_LIMIT} more (pass --verbose for the full list)`);
+  }
+  return lines;
+}
+
+function leafWarning() {
+  return [
+    "!! WARNING: no specialist leaves selected — managers will have nobody to delegate to,",
+    "   so L1/L2 routing stops at the manager layer.",
+    "   Add every leaf with `--all-subagents`, or one group with `--with-subagents <id>` (e.g. cto, cco).",
+  ];
+}
+
+function printPlan(plan, options, tools, counts) {
+  const statusCounts = Object.fromEntries(["add", "update", "unchanged"].map((status) => [status, plan.filter((item) => item.status === status).length]));
+  const replaced = plan.filter((item) => item.status === "update");
+  const roots = [...new Set(plan.map((item) => item.root))].sort();
+  // Mirrors the install-time check: --connect needs a generated connection spec per
+  // target, which legacy Codex TOML installs do not produce.
+  const supportsConnect = tools.every((tool) => plan.some((item) => item.label === `adapter:${tool.id}/connection`));
+  const mergedRoles = tools.every((tool) => tool.agentMode === "combined-rules") ? " (merged into the target rules file)" : "";
+  console.log(`AGI Super Team — ${options.install ? "INSTALL" : "PREVIEW"}   (target: ${tools.map((tool) => tool.id).join(", ")})`);
   if (tools.some((tool) => tool.id === "codex")) {
     console.log(`Codex plugin: ${options.plugin ? "explicitly requested" : "disabled (add --plugin to opt in)"}`);
   }
-  console.log(`Files: add=${counts.add} update=${counts.update} unchanged=${counts.unchanged}`);
-  for (const item of plan) if (item.status !== "unchanged") {
-    console.log(`  ${item.status.padEnd(6)} ${item.tool.padEnd(14)} ${item.destination}`);
+  console.log("");
+  console.log(`  ${(roots.length === 1 ? "Root" : "Roots").padEnd(12)}: ${roots[0] || "(none)"}`);
+  for (const root of roots.slice(1, ROOT_LIMIT)) console.log(`  ${"".padEnd(12)}  ${root}`);
+  if (roots.length > ROOT_LIMIT) console.log(`  ${"".padEnd(12)}  … and ${roots.length - ROOT_LIMIT} more`);
+  console.log(`  ${"Agents".padEnd(12)}: ${counts.agents} canonical + ${counts.specialists} specialists${mergedRoles}`);
+  console.log(`  ${"Skills".padEnd(12)}: ${counts.skills}`);
+  console.log(`  ${"Overwrites".padEnd(12)}: ${replaced.length}`);
+  console.log(`  ${"Files".padEnd(12)}: add=${statusCounts.add} update=${statusCounts.update} unchanged=${statusCounts.unchanged}${options.verbose ? "" : " — pass --verbose for every planned file"}`);
+  const warnings = [];
+  if (replaced.length) warnings.push(...overwriteWarning(replaced));
+  const leavesRequested = options.allSubagents || options.subagentManagers.length > 0 || options.includeCcoSpecialists;
+  // --install repeats this warning after the writes, so the preview only carries it
+  // once; the overwrite warning always shows because it must precede the write.
+  if (!options.install && options.includeAgents && !leavesRequested) warnings.push(...leafWarning());
+  if (warnings.length) {
+    console.log("");
+    for (const line of warnings) console.log(line);
+  }
+  if (!options.install) {
+    const client = tools.length === 1 ? tools[0].label : "the selected CLI";
+    console.log("");
+    console.log(`  Next: ${nextInstallCommand(options, tools, supportsConnect)}`);
+    console.log(`  Then: restart ${client}, then start a task with: Swarm agents: <your outcome>`);
+  }
+  if (options.verbose) {
+    console.log("");
+    for (const item of plan) if (item.status !== "unchanged") {
+      console.log(`  ${item.status.padEnd(6)} ${item.tool.padEnd(14)} ${item.destination}`);
+    }
   }
 }
 
@@ -359,7 +519,8 @@ function main() {
       if (!result.ok) process.exitCode = 1;
       return;
     }
-    printPlan(plan, options, tools);
+    const counts = planCounts(plan, catalog, mergedSelection(catalog, options, tools, agentIds, subagentManagers));
+    printPlan(plan, options, tools, counts);
     if (!options.install) { console.log("\nPreview only. Add --install to apply."); return; }
     if (options.connect) {
       for (const tool of tools) {

@@ -34,11 +34,18 @@ Pide una página para tu producto y revisa el brief, los archivos y los hallazgo
 
 [**Explorar el sitio →**](https://aaaaqwq.github.io/AGI-Super-Team/)
 
-**Versiones:** el código de GitHub está en `1.6.0`; npm publica `1.4.2`. `@latest` instala la versión de npm. [Estado de publicación](./docs/guides/npm-release-status.md).
+**Versiones:** Aquí no se escribe ningún número de versión a propósito: un número fijo queda obsoleto en la siguiente publicación. `@latest` instala lo que npm publique en ese momento, que puede no coincidir con este checkout. Compruébalo tú mismo en lugar de confiar en el texto:
+
+```bash
+npm view agi-super-team version               # la versión a la que resuelve `@latest`
+node -p "require('./package.json').version"   # este árbol de código
+```
+
+Las dist-tags distintas de `latest` no garantizan apuntar a una versión actual. Para un ejemplo fechado de divergencia entre código y registry, con su recuperación, consulta el [diagnóstico de la versión 1.5.0](./docs/guides/npm-release-status.md).
 
 ## Instalar en tu framework de agentes
 
-Lista los 18 objetivos de adaptador, previsualiza uno y luego aplica la misma selección:
+Lista los 19 objetivos de adaptador, previsualiza uno y luego aplica la misma selección:
 
 ```bash
 npx -y agi-super-team@latest --list-tools
@@ -47,7 +54,12 @@ npx -y agi-super-team@latest --tool claude-code --install --connect
 npx -y agi-super-team@latest --tool claude-code --doctor
 ```
 
-Los comandos anteriores usan el paquete público de npm. Para automatizaciones reproducibles, sustituye `@latest` por una versión exacta, por ejemplo `@1.4.2`.
+Los comandos anteriores usan el paquete público de npm. Para automatizaciones reproducibles, no dejes `@latest` en una canalización fijada: resuelve primero una versión publicada exacta y fija esa, de modo que una publicación posterior no cambie lo que instala tu ejecución:
+
+```bash
+AGI_VERSION="$(npm view agi-super-team version)"
+npx -y "agi-super-team@${AGI_VERSION}" --tool claude-code --install --connect
+```
 
 La distribución npm mantiene accesibles sus puntos de entrada `SKILL.md` e incluye todos los archivos de cada Skill asignado por `config/team-manifest.json`. La colección [Skills originales de Daniel](./skills/original/) reúne el trabajo propio con procedencia revisada. Clona el repositorio si necesitas todos los recursos auxiliares de la biblioteca completa.
 
@@ -79,9 +91,9 @@ npx -y agi-super-team@latest --tool codex --all-subagents --install
 
 La jerarquía es CEO → 11 ejecutivos gestores → especialistas hoja. CTO también referencia al PE canónico como responsable de entrega y no crea una segunda identidad PE. Los 92 archivos `agents/*/subagents/*/AGENTS.md` son copias byte a byte de una revisión fijada de `jnMetaCode/agency-agents-zh`; el enrutamiento local y los límites de seguridad se mantienen separados. CEO conserva la coordinación, Governor actúa como revisor independiente y PE sigue siendo la hoja de entrega canónica de CTO. Consulta [`config/agent-sources.lock.json`](./config/agent-sources.lock.json) para las fuentes y hashes SHA-256. La delegación anidada de Codex requiere `max_depth = 2`; con cuatro hilos, ejecuta un gestor con un máximo de dos hijos por oleada.
 
-Estos son **18 objetivos de adaptador de cliente/runtime de IA**, no 18 CLIs intercambiables. Un adaptador puede instalar Agentes nativos, Habilidades nativas, reglas/contexto de proyecto, o paquetes de roles degradados a Agente-como-Habilidad. La colocación de archivos por sí sola no demuestra que un cliente actual haya cargado o ejecutado el contenido.
+Estos son **19 objetivos de adaptador de cliente/runtime de IA**, no 19 CLIs intercambiables. Un adaptador puede instalar Agentes nativos, Habilidades nativas, reglas/contexto de proyecto, o paquetes de roles degradados a Agente-como-Habilidad. La colocación de archivos por sí sola no demuestra que un cliente actual haya cargado o ejecutado el contenido.
 
-### Todos los 18 objetivos de adaptador
+### Todos los 19 objetivos de adaptador
 
 Las rutas para adaptadores globales son relativas al home seleccionado; los adaptadores de proyecto son relativos al directorio de proyecto seleccionado.
 
@@ -91,7 +103,7 @@ Las rutas para adaptadores globales son relativas al home seleccionado; los adap
 | `codex` | Codex | Global | CEO principal + TOML: `.codex/agents` | Canónica: `.agents/skills` | Conectado estructuralmente; runtime pendiente |
 | `openclaw` | OpenClaw | Global | Workspace nativo: `.openclaw/agency-agents/agi-super-team` | Canónica: `.openclaw/skills/agi-super-team` | Conectado estructuralmente; runtime pendiente |
 | `hermes` | Hermes Agent | Global | Skills de rol: `.hermes/skills/agi-super-team-agents` | Canónica: `.hermes/skills/agi-super-team` | Blueprint conectado; runtime pendiente |
-| `dsh` | DeepSeek Harness | Global | Preset: `.dsh/.agent-presets/ast-team` | Canónica: `.dsh/skills/agi-super-team` | Adaptador conectado; runtime pendiente |
+| `dsh` | DeepSeek Harness | Global | Preset: `.dsh/.agent-presets/ast-team` | Canónica: `.dsh/skills/agi-super-team` | Conectado estructuralmente; runtime pendiente |
 | `copilot` | GitHub Copilot | Global | Agente Markdown: `.github/agents`, `.copilot/agents` | Nativo: `.copilot/skills` | Adaptador |
 | `antigravity` | Antigravity | Global | Agente: `.gemini/config/agents` | Nativo: `.gemini/config/skills` | **Experimental** |
 | `gemini-cli` | Gemini CLI | Global | Agente Markdown: `.gemini/agents` | Nativo: `.gemini/skills` | Adaptador |
@@ -107,7 +119,7 @@ Las rutas para adaptadores globales son relativas al home seleccionado; los adap
 | `kiro` | Kiro | Global | Agente Markdown: `.kiro/agents` | Nativo: `.kiro/skills` | Adaptador |
 | `qoder` | Qoder | Global | Agente Markdown: `.qoder/agents` | Nativo: `.qoder/skills` | Adaptador |
 
-La matriz describe el contrato de [`config/cli-adapters.json`](./config/cli-adapters.json), no afirma que los 18 clientes hayan sido verificados en tiempo de ejecución. Cursor y Antigravity son explícitamente experimentales.
+La matriz describe el contrato de [`config/cli-adapters.json`](./config/cli-adapters.json), no afirma que los 19 clientes hayan sido verificados en tiempo de ejecución. Cursor y Antigravity son explícitamente experimentales.
 
 Usa la Skill canónica [`orchestrate-agi-super-team`](./skills/orchestrate-agi-super-team/SKILL.md) cuando una tarea necesite el flujo completo Team → C-suite → Skills/Subagents → Governor → CEO → aprobación humana. Detecta los límites reales de delegación del framework y registra cualquier degradación plana o secuencial, sin fingir que hubo anidamiento nativo.
 
@@ -312,7 +324,7 @@ La animación usa rutas sanitizadas y es ilustrativa, no evidencia de tiempo de 
 
 ## 🔌 Elegir una distribución
 
-Usa el [instalador npm de 18 objetivos](#instalar-en-tu-framework-de-agentes) para un framework concreto, el [paquete Codex curado](./.codex/INDEX.md) para detalles específicos de Codex o el materializador genérico anterior para archivos neutrales respecto al harness. La [guía de Claude Code](./docs/guides/claude-code-install.html) y la [guía de compatibilidad](./docs/guides/harness-compatibility.html) aportan contexto adicional, pero el manifiesto actual y los recibos vinculados a commits gobiernan las afirmaciones de soporte.
+Usa el [instalador npm de 19 objetivos](#instalar-en-tu-framework-de-agentes) para un framework concreto, el [paquete Codex curado](./.codex/INDEX.md) para detalles específicos de Codex o el materializador genérico anterior para archivos neutrales respecto al harness. La [guía de Claude Code](./docs/guides/claude-code-install.html) y la [guía de compatibilidad](./docs/guides/harness-compatibility.html) aportan contexto adicional, pero el manifiesto actual y los recibos vinculados a commits gobiernan las afirmaciones de soporte.
 
 La ruta genérica requiere Bash y Node.js; la verificación del repositorio también requiere npm y Python 3. El soporte exacto de sistema operativo y versión de cliente permanece limitado por CI y recibos publicados. La presencia del adaptador nunca establece paridad de características.
 
@@ -395,6 +407,14 @@ AGI Super Team no es un modelo, orquestador autónomo ni runtime de agente. Inst
 - [Configuración y recuperación](./setup.md)
 - [Política de seguridad](./SECURITY.md)
 - [Licencia MIT](./LICENSE)
+
+Ocho conjuntos de datos de este repositorio — el catálogo de skills, los índices de agentes, los paquetes de harness y los informes de calidad y taxonomía, entre otros — se generan a partir de `skills/` y `config/` y se confirman junto a ellos. Activa el hook de pre-commit una vez por clon para que editar cualquiera de esos directorios los regenere en lugar de dejarlos desincronizados:
+
+```bash
+git config core.hooksPath .githooks
+```
+
+El hook ejecuta `npm run build:all` en los commits que tocan `skills/` o `config/`, prepara lo que reescribió y bloquea el commit cuando falla un generador o cuando el cambio supera un límite del trinquete de calidad. **No está activo por defecto** — `core.hooksPath` es estado de cada clon — así que ejecuta el comando anterior después de clonar. Consulta [CONTRIBUTING.md](./CONTRIBUTING.md) para las dos barreras y la alternativa manual.
 
 ## ⭐ Estrellas de GitHub
 

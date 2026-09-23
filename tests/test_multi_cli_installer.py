@@ -430,6 +430,51 @@ class MultiCliInstallerTests(unittest.TestCase):
             self.assertIn("UNCHANGED", preview.stdout.upper())
             self.assertEqual(self.snapshot(home, project), before)
 
+    def test_preview_summarizes_plan_and_warns_before_overwriting(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            home = root / "home"
+            project = root / "project"
+            project.mkdir()
+            destination = home / ".claude" / "skills" / "github" / "SKILL.md"
+            destination.parent.mkdir(parents=True)
+            sentinel = "user-owned github skill\n"
+            destination.write_text(sentinel, encoding="utf-8")
+            before = self.snapshot(home, project)
+
+            preview = self.run_cli(home, project, "--tool", "claude-code")
+
+            self.assert_success(preview)
+            self.assertIn("AGI Super Team — PREVIEW", preview.stdout)
+            self.assertIn("target: claude-code", preview.stdout)
+            self.assertIn("14 canonical", preview.stdout)
+            self.assertIn("Skills", preview.stdout)
+            self.assertIn("WARNING", preview.stdout)
+            self.assertIn("will be REPLACED", preview.stdout)
+            self.assertIn(".agi-super-team-backups", preview.stdout)
+            self.assertIn(".claude/skills/github/SKILL.md", preview.stdout)
+            self.assertIn("--install", preview.stdout)
+            self.assertIn("Swarm agents:", preview.stdout)
+            self.assertEqual(self.snapshot(home, project), before)
+            self.assertEqual(destination.read_text(encoding="utf-8"), sentinel)
+
+    def test_preview_file_list_requires_verbose(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            home = root / "home"
+            project = root / "project"
+            project.mkdir()
+
+            preview = self.run_cli(home, project, "--tool", "claude-code")
+            verbose = self.run_cli(home, project, "--tool", "claude-code", "--verbose")
+
+            self.assert_success(preview)
+            self.assert_success(verbose)
+            self.assertNotIn("agents/ast-ceo.md", preview.stdout)
+            self.assertIn("agents/ast-ceo.md", verbose.stdout)
+            self.assertGreater(len(verbose.stdout.splitlines()), len(preview.stdout.splitlines()))
+            self.assertIn("target: claude-code", verbose.stdout)
+
     def test_existing_destination_is_preserved_or_backed_up(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

@@ -34,7 +34,14 @@ Ask for a landing page. Get a scoped brief, working files, and a review you can 
 
 [**Explore the website →**](https://aaaaqwq.github.io/AGI-Super-Team/)
 
-**Version note:** GitHub source is `1.6.0`; npm currently publishes `1.4.2`. `@latest` installs the npm release. [Release status and recovery](./docs/guides/npm-release-status.md).
+**Version note:** No version number is written here on purpose — a hardcoded one goes stale at the next release. `@latest` installs whatever npm currently publishes, which may differ from this checkout. Resolve both yourself instead of trusting prose:
+
+```bash
+npm view agi-super-team version               # the version `@latest` resolves to
+node -p "require('./package.json').version"   # this source tree
+```
+
+Dist-tags other than `latest` are not guaranteed to point at a current release. For one dated example of a source/registry divergence and its recovery, see the [1.5.0 release diagnosis](./docs/guides/npm-release-status.md).
 
 <a id="coding-agent-quick-start"></a>
 ## ⚡ Quick Start for Coding Agents
@@ -86,7 +93,12 @@ npx -y agi-super-team@latest --tool claude-code --install --connect
 npx -y agi-super-team@latest --tool claude-code --doctor
 ```
 
-The commands above use the public npm package. For reproducible automation, replace `@latest` with an exact published version such as `@1.4.2`.
+The commands above use the public npm package. For reproducible automation, do not leave `@latest` in a pinned pipeline — resolve an exact published version first and pin that, so a later release cannot change what your run installs:
+
+```bash
+AGI_VERSION="$(npm view agi-super-team version)"
+npx -y "agi-super-team@${AGI_VERSION}" --tool claude-code --install --connect
+```
 
 The npm distribution keeps its `SKILL.md` entrypoints discoverable and includes the complete files for every Skill assigned by `config/team-manifest.json`. Browse the provenance-backed [Daniel's Original Skills](./skills/original/) collection for reviewed first-party work. Clone the repository when you need every auxiliary asset from the wider Skill library.
 
@@ -135,7 +147,7 @@ npx -y agi-super-team@latest --tool <id> --all-subagents --install
 
 The hierarchy is CEO → eleven manager executives → leaf specialists. CTO also references the existing canonical PE as delivery lead; it does not create a second PE identity. All 92 source files under `agents/*/subagents/*/AGENTS.md` are byte-for-byte copies from pinned `jnMetaCode/agency-agents-zh`; local routing and safety envelopes remain separate. CEO retains coordination authority, Governor remains an independent reviewer, and PE remains CTO's canonical delivery leaf rather than another manager. See [`config/agent-sources.lock.json`](./config/agent-sources.lock.json) for source URLs and SHA-256 digests. Nested Codex routing requires `max_depth = 2`; with four threads, run one manager plus at most two children per wave.
 
-These are **18 AI client/runtime adapter targets**, not 18 interchangeable CLIs. An adapter can install native Agents, native Skills, project rules/context, or role packs degraded to Agent-as-Skill. File placement does not by itself prove that a current client loaded or executed the content.
+These are **19 AI client/runtime adapter targets**, not 19 interchangeable CLIs. An adapter can install native Agents, native Skills, project rules/context, or role packs degraded to Agent-as-Skill. File placement does not by itself prove that a current client loaded or executed the content.
 
 ### All 19 adapter targets
 
@@ -147,6 +159,7 @@ Global adapters normally resolve from the selected OS-home base; project adapter
 | `codex` | Codex | Global | Main-session CEO + TOML: `.codex/agents` | Canonical: `.agents/skills` | Structurally connected; runtime pending |
 | `openclaw` | OpenClaw | Global | Native workspace: `<active config dir>/agency-agents/agi-super-team` | Canonical: `<active config dir>/skills/agi-super-team` | Structurally connected; runtime pending |
 | `hermes` | Hermes Agent | Global | Role Skills: `$HERMES_HOME/skills/agi-super-team-agents` | Canonical: `$HERMES_HOME/skills/agi-super-team` | Blueprint connected; runtime pending |
+| `dsh` | DeepSeek Harness | Global | Preset: `.dsh/.agent-presets/ast-team` | Canonical: `.dsh/skills/agi-super-team` | Structurally connected; runtime pending |
 | `copilot` | GitHub Copilot | Global | Markdown Agent: `.github/agents`, `.copilot/agents` | Native: `.copilot/skills` | Adapter |
 | `antigravity` | Antigravity | Global | Agent: `.gemini/config/agents` | Native: `.gemini/config/skills` | **Experimental** |
 | `gemini-cli` | Gemini CLI | Global | Markdown Agent: `.gemini/agents` | Native: `.gemini/skills` | Adapter |
@@ -392,7 +405,7 @@ The animation uses sanitized paths and is illustrative, not runtime evidence. Re
 
 ## 🔌 Choose a distribution
 
-Use the [one-prompt Coding Agent installer](#coding-agent-quick-start) or the manual 18-target npm installer above for a named Agent framework.
+Use the [one-prompt Coding Agent installer](#coding-agent-quick-start) or the manual 19-target npm installer above for a named Agent framework.
 
 Use the [curated Codex package](./.codex/INDEX.md) for Codex-specific details, or the legacy generic workspace materializer for harness-neutral files.
 
@@ -479,6 +492,14 @@ AGI Super Team is not a model, autonomous orchestrator, or agent runtime. Instal
 - [Setup and recovery](./setup.md)
 - [Security policy](./SECURITY.md)
 - [MIT License](./LICENSE)
+
+Eight datasets in this repository — the skill catalog, agent indexes, harness packages, quality and taxonomy reports among them — are generated from `skills/` and `config/` and committed alongside them. Enable the pre-commit hook once per clone so that editing either directory regenerates them instead of letting them drift:
+
+```bash
+git config core.hooksPath .githooks
+```
+
+The hook regenerates that derived data on commits touching `skills/` or `config/`, stages what it rewrote, and blocks the commit when a generator fails or when the change pushes a metric past the quality-baseline ratchet. It is not enabled by default — `core.hooksPath` is per-clone state — so run the command above after cloning. See [CONTRIBUTING.md](./CONTRIBUTING.md) for both guards and the manual fallback.
 
 ## ⭐ GitHub Stars
 
