@@ -1,40 +1,195 @@
-#!/bin/bash
-# pre-commit hook: detect hardcoded secrets
-set -e
+#!/usr/bin/env bash
+# pre-commit hook. Enable it once per clone:
+#
+#   git config core.hooksPath .githooks
+#
+# Commits touching neither skills/ nor config/ return immediately. For the rest,
+# this hook enforces two different kinds of guard. They are not interchangeable,
+# and the difference is the whole point of the second one.
+#
+# 1. Derived data must not be stale. Eight generators under scripts/ derive
+#    datasets from skills/ and config/ (catalog, original-skills index, agent
+#    indexes, subagent provenance, codex team, harness packages, skill-quality
+#    report, taxonomy evaluation). Nothing forced them to be regenerated, so on
+#    2026-09-21 a skill was merged without refreshing the catalog and `main`
+#    failed its own contract checks for two days: a step that nothing enforces
+#    does not happen. `npm run build:all` regenerates all eight and the
+#    artifacts it rewrites are re-staged, so the commit stays atomic. A
+#    generator that fails blocks the commit. This class is mechanical - running
+#    the generators is the entire fix.
+#
+# 2. Structural quality debt must not grow. config/skill-quality-baseline.json
+#    is a ratchet: its own `scope` is
+#    "ratchet-current-structural-debt-without-claiming-semantic-verification",
+#    and its numbers are ceilings meant to fall. No generator can lower a
+#    ceiling, so a regression that survives a successful build is a real -
+#    deliberate or accidental - increase in debt that needs a human decision.
+#    The 2026-09-21 incident included this class too ("3 项计数漂移"), and
+#    regenerating artifacts alone would not have caught it.
+#
+#    `check:skill-quality` is the only check:* that is a ratchet. Every other
+#    check:* asserts that a generated artifact matches its sources, which guard
+#    1 already covers, so they are deliberately not run here: repeating them
+#    would add seconds to every commit for no new information.
+#
+# 3. Staged text is scanned for credentials (pre-existing behaviour).
+
+set -u
+
+REPO_ROOT=$(git rev-parse --show-toplevel 2>/dev/null) || REPO_ROOT=""
+if [ -z "$REPO_ROOT" ]; then
+  printf 'pre-commit: not inside a git work tree; skipping.\n' >&2
+  exit 0
+fi
+cd "$REPO_ROOT" || exit 1
+
+# One listing feeds every part of the hook.
+staged=$(git diff --cached --name-only)
+
+# Every path the generators in scripts/build_all.sh write. Re-staging is scoped
+# to these on purpose: a bare `git add -u` would sweep unrelated edits into the
+# commit, and `git add -A -- skills/` would stage skill changes the author
+# deliberately left out. Keep this list in step with the generators; if one
+# starts writing somewhere new, add that path here.
+GENERATED_PATHS=(
+  catalog
+  skills/original
+  config/agent-sources.lock.json
+  plugins/agi-super-team-claudecode
+  plugins/agi-super-team-codex
+  plugins/agi-super-team-dsh
+  plugins/agi-super-team-hermes
+  plugins/agi-super-team-openclaw
+  'agents/*/TOOLS.md'
+)
+
+relevant=$(printf '%s\n' "$staged" | grep -E '^(skills|config)/')
+
+if [ -n "$relevant" ]; then
+  printf 'pre-commit: %s staged path(s) under skills/ or config/.\n' \
+    "$(printf '%s\n' "$relevant" | grep -c .)"
+  printf 'pre-commit: running `npm run build:all` so derived data cannot drift.\n\n'
+
+  if ! command -v npm >/dev/null 2>&1; then
+    printf 'pre-commit: COMMIT BLOCKED - npm is not on PATH, so derived data cannot be\n' >&2
+    printf 'regenerated. Install Node.js (engines: node >=18).\n' >&2
+    exit 1
+  fi
+
+  # --- guard 1: derived-data freshness ------------------------------------
+  if ! npm run build:all; then
+    printf '\n' >&2
+    printf 'pre-commit: COMMIT BLOCKED - `npm run build:all` failed, so the generated\n' >&2
+    printf 'artifacts in this commit would not match the sources they derive from.\n' >&2
+    printf '\nNothing was staged or reverted; your index is as you left it.\n' >&2
+    printf 'Fix the failing generator above, then commit again. To run one generator\n' >&2
+    printf 'alone: npm run build:<name> (see package.json).\n' >&2
+    exit 1
+  fi
+
+  # The build succeeded, so sources and artifacts now agree. Staging waits
+  # until guard 2 has passed as well, so that either guard failing leaves the
+  # index exactly as the author left it.
+  #
+  # --- guard 2: ratchet ceiling -------------------------------------------
+  # Deliberately after build:all: `--check` also fails on a stale report, and
+  # rebuilding first leaves only genuine ceiling regressions to explain, so the
+  # message below can name the real cause instead of guessing.
+  printf '\npre-commit: checking the skill-quality ratchet (config/skill-quality-baseline.json).\n'
+  quality=$(npm run check:skill-quality 2>&1)
+  quality_status=$?
+
+  if [ "$quality_status" -ne 0 ]; then
+    # "<metric> regressed: maximum <N>, got <M>" -> aligned "<metric>  N → M"
+    debt=$(printf '%s\n' "$quality" \
+      | sed -n 's/.*baseline: \(.*\) regressed: maximum \([0-9][0-9]*\), got \([0-9][0-9]*\)$/\1|\2|\3/p' \
+      | awk -F'|' '{printf "  %-30s %s → %s\n", $1, $2, $3}')
+
+    printf '\n' >&2
+    if [ -n "$debt" ]; then
+      printf 'pre-commit: COMMIT BLOCKED — new content adds quality debt\n' >&2
+      printf '\n%s\n' "$debt" >&2
+      printf '\nThis is structural debt, not a stale artifact: the report was just rebuilt\n' >&2
+      printf 'and still exceeds the authored ceilings in config/skill-quality-baseline.json.\n' >&2
+      printf 'A new skill usually causes this with a description that lacks a trigger\n' >&2
+      printf 'phrase or runs past 180 characters. Two options:\n' >&2
+      printf '\n  A) Fix the content (recommended) so the description satisfies:\n' >&2
+      printf '     - at most 180 characters, and\n' >&2
+      printf '     - a trigger phrase (use / when / for / 适用 / 用于 / 触发).\n' >&2
+      printf '     e.g. rewrite it as "<what it does>. Use when <the situation>."\n' >&2
+      printf '\n  B) Raise the ceiling deliberately - only when this debt genuinely must be\n' >&2
+      printf '     accepted: edit that number in config/skill-quality-baseline.json and say\n' >&2
+      printf '     why in the commit message.\n' >&2
+      printf '\nBackground: the baseline is a ratchet (scope:\n' >&2
+      printf '"ratchet-current-structural-debt-without-claiming-semantic-verification"),\n' >&2
+      printf 'so its numbers are meant to fall. A is the default answer.\n' >&2
+    else
+      printf 'pre-commit: COMMIT BLOCKED - `npm run check:skill-quality` failed.\n' >&2
+      printf 'It reported no ceiling regression, so the cause is something else:\n' >&2
+      printf '\n%s\n' "$quality" >&2
+    fi
+    printf '\nNothing was staged or reverted; your index is as you left it.\n' >&2
+    exit 1
+  fi
+
+  # Both guards passed, so sources and artifacts agree and no debt was added.
+  # Stage the regenerated artifacts alongside the source change so the commit
+  # stays atomic.
+  git add -A -- "${GENERATED_PATHS[@]}"
+  regenerated=$(git diff --cached --name-only -- "${GENERATED_PATHS[@]}")
+  printf 'pre-commit: derived data regenerated and staged; %s generated path(s)\n' \
+    "$(printf '%s\n' "$regenerated" | grep -c .)"
+  printf 'are in this commit alongside your source change.\n'
+fi
+
+# --- credential scan ------------------------------------------------------
+# Same patterns and messages as the original hook; it reuses the listing
+# computed above and tests all eight patterns in one grep per file instead of
+# eight, which is part of what keeps unrelated commits cheap.
 
 RED='\033[0;31m'
 NC='\033[0m'
 
 FOUND=0
 
-# Check staged files only
-for file in $(git diff --cached --name-only --diff-filter=ACM); do
-  # Skip binary files
+PATTERNS=(
+  'cli_a[0-9a-f]{16}'
+  'oc_[0-9a-f]{20,}'
+  'sk-[A-Za-z0-9]{20,}'
+  'AKIA[0-9A-Z]{16}'
+  'pub_[0-9a-f]{20,}'
+  '[0-9]{8,10}:[A-Za-z0-9_-]{30,}'
+  '(?i)api_key\s*[=:]\s*["\x27][^"\x27YOUR_][A-Za-z0-9]{10,}'
+  '(?i)app_secret\s*[=:]\s*["\x27][A-Za-z0-9]{10,}'
+)
+
+grep_args=()
+for pattern in "${PATTERNS[@]}"; do
+  grep_args+=(-e "$pattern")
+done
+
+while IFS= read -r file; do
+  [ -n "$file" ] || continue
+  # A deleted path has no staged text to scan.
+  [ -f "$file" ] || continue
+  # Skip binary files.
   if file "$file" | grep -q binary; then
     continue
   fi
 
-  # Patterns to detect
-  PATTERNS=(
-    'cli_a[0-9a-f]{16}'
-    'oc_[0-9a-f]{20,}'
-    'sk-[A-Za-z0-9]{20,}'
-    'AKIA[0-9A-Z]{16}'
-    'pub_[0-9a-f]{20,}'
-    '[0-9]{8,10}:[A-Za-z0-9_-]{30,}'
-    '(?i)api_key\s*[=:]\s*["\x27][^"\x27YOUR_][A-Za-z0-9]{10,}'
-    '(?i)app_secret\s*[=:]\s*["\x27][A-Za-z0-9]{10,}'
-  )
+  patch=$(git diff --cached -- "$file")
+  # One cheap pass decides whether the per-pattern attribution is needed at all.
+  if printf '%s\n' "$patch" | grep -qP "${grep_args[@]}" 2>/dev/null; then
+    for pattern in "${PATTERNS[@]}"; do
+      if printf '%s\n' "$patch" | grep -qP "$pattern" 2>/dev/null; then
+        echo -e "${RED}⚠ SECRET DETECTED${NC} in $file (pattern: $pattern)"
+        FOUND=1
+      fi
+    done
+  fi
+done <<< "$staged"
 
-  for pattern in "${PATTERNS[@]}"; do
-    if git diff --cached "$file" | grep -qP "$pattern" 2>/dev/null; then
-      echo -e "${RED}⚠ SECRET DETECTED${NC} in $file (pattern: $pattern)"
-      FOUND=1
-    fi
-  done
-done
-
-if [ $FOUND -ne 0 ]; then
+if [ "$FOUND" -ne 0 ]; then
   echo ""
   echo -e "${RED}🚫 COMMIT BLOCKED: Potential secrets detected!${NC}"
   echo "Use environment variables or .env files instead."

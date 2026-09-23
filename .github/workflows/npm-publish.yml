@@ -32,6 +32,12 @@ jobs:
     name: Validate and publish tagged release
     runs-on: ubuntu-latest
     timeout-minutes: 25
+    # `npm run validate:strict` and the publish-time `prepublishOnly` gate both
+    # resolve their interpreter through scripts/python.sh, which auto-detects by
+    # name. Pin it so a release validates against the 3.12 installed below
+    # rather than whichever python3.x the runner image exposes first.
+    env:
+      AGI_SUPER_TEAM_PYTHON: python3.12
     steps:
       - name: Check out the tagged commit
         uses: actions/checkout@v7

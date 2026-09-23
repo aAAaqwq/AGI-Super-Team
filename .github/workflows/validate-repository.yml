@@ -19,6 +19,12 @@ jobs:
     name: Test and validate repository contracts
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    # Every npm script resolves its interpreter through scripts/python.sh,
+    # which auto-detects by name. Pin it here so CI runs the 3.12 this job
+    # installs rather than whichever python3.x the runner image happens to
+    # expose first. The action provides `python3.12` on PATH.
+    env:
+      AGI_SUPER_TEAM_PYTHON: python3.12
     steps:
       - name: Check out repository
         uses: actions/checkout@v7
