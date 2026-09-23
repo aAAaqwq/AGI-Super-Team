@@ -872,6 +872,14 @@
       "authority": false
     },
     {
+      "path": "docs/reference/team-index.md",
+      "role": "generated-output",
+      "module": "public-navigation",
+      "authority": false,
+      "generatedBy": "scripts/build_team_index.py",
+      "verify": "npm run check:team-index"
+    },
+    {
       "path": "gemini-extension.json",
       "role": "distribution-adapter",
       "module": "distribution-adapters",

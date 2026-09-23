@@ -59,6 +59,7 @@ docs/
 
 ## 清单与参考
 
+- [**团队精华索引（L1）**](./reference/team-index.md) — 一页回答「这个团队能干什么、该叫谁」：14 个顶层角色 + 169 个已分配 Skill（按 C-suite 分组，含 trigger / doNotUseWhen / 配置方法 / 可派发的 92 个叶子），并按层指向方法反查、快速开始与工具箱。派生自 `config/`，由 `scripts/build_team_index.py` 生成。
 - [Docs 文件清单](./reference/docs-inventory.md)
 - [**冗余与质量审计**](./optimization/) — 回归事件、体积账本、已提交的运行产物、内容层冗余、治理缺口
 - [100 个开发 Skill 待选清单](./reference/100-dev-skills-candidates.md)

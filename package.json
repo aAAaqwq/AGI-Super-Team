@@ -69,11 +69,10 @@
     "access": "public"
   },
   "scripts": {
-    "prepare": "node -e \"const{execFileSync}=require('node:child_process');try{execFileSync('git',['rev-parse','--git-dir'],{stdio:'ignore'});execFileSync('git',['config','core.hooksPath','.githooks'],{stdio:'ignore'});console.log('pre-commit hook enabled (core.hooksPath=.githooks)')}catch{}\"",
     "prepublishOnly": "npm test && npm run validate:strict && git diff --check",
     "build:all": "bash scripts/build_all.sh",
-    "test": "npm run test:repository && npm run test:installer && npm run check:subagent-sources && npm run check:agent-indexes && npm run check:codex-team && npm run check:harness-packages && npm run check:skills && npm run check:skill-quality && npm run check:taxonomy-evaluation && npm run check:architecture",
-    "test:site": "bash scripts/python.sh -m unittest -v tests.test_site_contracts tests.test_site_data tests.test_official_stars_contract tests.test_readme_contracts",
+    "test": "npm run test:repository && npm run test:installer && npm run check:subagent-sources && npm run check:agent-indexes && npm run check:team-index && npm run check:codex-team && npm run check:harness-packages && npm run check:skills && npm run check:skill-quality && npm run check:taxonomy-evaluation && npm run check:architecture",
+    "test:site": "bash scripts/python.sh --stdlib -m unittest -v tests.test_site_contracts tests.test_site_data tests.test_official_stars_contract tests.test_readme_contracts",
     "test:repository": "bash scripts/python.sh -m unittest discover -s tests -p 'test_*.py'",
     "test:windows-cli": "node tests/windows_cli_smoke.mjs",
     "test:installer": "bash tests/installer/test_install.sh",
@@ -81,6 +80,8 @@
     "validate:strict": "bash scripts/python.sh scripts/validate_repository.py --warnings-as-errors",
     "build:agent-indexes": "bash scripts/python.sh scripts/build_agent_skill_indexes.py",
     "check:agent-indexes": "bash scripts/python.sh scripts/build_agent_skill_indexes.py --check",
+    "build:team-index": "bash scripts/python.sh scripts/build_team_index.py",
+    "check:team-index": "bash scripts/python.sh scripts/build_team_index.py --check",
     "build:subagent-sources": "bash scripts/python.sh scripts/build_executive_subagent_sources.py",
     "check:subagent-sources": "bash scripts/python.sh scripts/build_executive_subagent_sources.py --check",
     "build:codex-team": "bash scripts/python.sh scripts/build_codex_csuite_adapter.py",

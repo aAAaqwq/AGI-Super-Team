@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 # `npm run build:all` - regenerate every derived artifact in dependency order.
 #
-# Why this exists: the repository derives eight datasets from skills/ and
-# config/ (catalog, original-skills index, agent indexes, subagent provenance,
-# codex team, harness packages, skill-quality report, taxonomy evaluation) and
+# Why this exists: the repository derives nine datasets from skills/ and
+# config/ (catalog, original-skills index, agent indexes, team index, subagent
+# provenance, codex team, harness packages, skill-quality report, taxonomy
+# evaluation) and
 # nothing forced them to be regenerated. On 2026-09-21 a skill was merged
 # without refreshing the catalog; the repository then failed its own contract
 # checks on `main` for two days because a checklist cannot fail a build.
@@ -37,6 +38,7 @@ STEPS=(
   "build:skill-catalog|scripts/build_skill_catalog.py"
   "build:original-skills|scripts/build_original_skills_index.py"
   "build:agent-indexes|scripts/build_agent_skill_indexes.py"
+  "build:team-index|scripts/build_team_index.py"
   "build:subagent-sources|scripts/build_executive_subagent_sources.py"
   "build:codex-team|scripts/build_codex_csuite_adapter.py"
   "build:harness-packages|scripts/check_harness_packages.py"
@@ -44,7 +46,7 @@ STEPS=(
   "build:taxonomy-evaluation|scripts/build_skill_taxonomy_evaluation.py"
 )
 
-# Stop this list from going stale. Adding a ninth generator to package.json
+# Stop this list from going stale. Adding a tenth generator to package.json
 # without adding it here would silently reintroduce the very drift this script
 # exists to prevent, so the omission is made to fail loudly instead. The scan
 # reads every `build:*` entry, follows composites, and compares the union of
