@@ -37,7 +37,7 @@
       "title": "Security, Privacy & Legal"
     },
     {
-      "count": 22,
+      "count": 23,
       "description": "Shape product requirements, interfaces, design systems, and user experience.",
       "emoji": "🎨",
       "id": "product-design-ux",
@@ -100,7 +100,7 @@
       "title": "Specialized Domains & Utilities"
     }
   ],
-  "inventoryCount": 833,
+  "inventoryCount": 834,
   "inventorySemantics": "tracked physical top-level directories with SKILL.md",
   "schemaVersion": 2,
   "skills": [
@@ -34591,6 +34591,45 @@
       },
       "review_signals": [],
       "skill_id": "videocut-subtitle",
+      "support_level": "catalog",
+      "used_by": []
+    },
+    {
+      "assignments": [],
+      "category_id": "product-design-ux",
+      "classification": "slug:(?:^|-)product(?:-|$)|\\bproduct\\b;metadata:frontmatter",
+      "classification_details": {
+        "matched_signals": [
+          "(?:^|-)product(?:-|$)|\\bproduct\\b"
+        ],
+        "method": "slug",
+        "resolution_status": "rule-match",
+        "review_state": "unreviewed",
+        "runner_ups": [],
+        "winner": {
+          "category_id": "product-design-ux",
+          "match_count": 1,
+          "matched_signals": [
+            "(?:^|-)product(?:-|$)|\\bproduct\\b"
+          ],
+          "priority": 90,
+          "tie_detected": false
+        }
+      },
+      "curation": {
+        "runtime_evidence": "pending",
+        "status": "unscored"
+      },
+      "description": "爆火产品演示视频脚本生成器——基于实测爆款公式，为 SaaS/AI/效率/企业类产品生成可直接拍摄的演示或宣传视频脚本。Use when 需要产品宣传片、演示视频、种草视频、获客视频脚本。",
+      "description_status": "source-text",
+      "path": "skills/viral-product-demo/SKILL.md",
+      "portability_class": "catalog-only",
+      "provenance": {
+        "origin_kind": "unknown",
+        "review_state": "unreviewed"
+      },
+      "review_signals": [],
+      "skill_id": "viral-product-demo",
       "support_level": "catalog",
       "used_by": []
     },

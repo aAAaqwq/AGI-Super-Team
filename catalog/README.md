@@ -42,7 +42,7 @@ Choose a reviewed origin boundary before browsing by outcome. Provenance and cur
 | [Project original](#project-original-skills) | Digest-backed first-party work with reviewed authorship. | 34 |
 | [Adapted](#adapted-skills) | Modified from a named source with the adaptation recorded. | 0 |
 | [Collected](#collected-skills) | Preserved from a named source with provenance recorded. | 0 |
-| [Unknown origin](#unknown-origin-skills) | Source review is incomplete; inspect before use. | 799 |
+| [Unknown origin](#unknown-origin-skills) | Source review is incomplete; inspect before use. | 800 |
 
 <a id="project-original-skills"></a>
 ### Project original
@@ -105,11 +105,11 @@ No entries currently meet this provenance contract.
 
 Source review is incomplete; inspect before use.
 
-799 entries are awaiting source review. Use the [machine-readable index](./skill-index.json) or browse by outcome below; they are not promoted as curated recommendations.
+800 entries are awaiting source review. Use the [machine-readable index](./skill-index.json) or browse by outcome below; they are not promoted as curated recommendations.
 
 ## 🗂️ Browse by outcome
 
-This revision contains 833 canonical catalog entries. The number is generated here rather than used as a product claim.
+This revision contains 834 canonical catalog entries. The number is generated here rather than used as a product claim.
 
 | Category | Use it for | Entries |
 |---|---|---:|
@@ -118,7 +118,7 @@ This revision contains 833 canonical catalog entries. The number is generated he
 | [☁️ Cloud, DevOps & Reliability](#cloud-devops-reliability) | Deploy, observe, troubleshoot, and operate cloud and local infrastructure. | 35 |
 | [📊 Data, Analytics & Research](#data-analytics-research) | Collect evidence, search sources, analyze data, and communicate findings. | 80 |
 | [🛡️ Security, Privacy & Legal](#security-privacy-legal) | Review security, privacy, compliance, permissions, contracts, and legal risk. | 34 |
-| [🎨 Product, Design & UX](#product-design-ux) | Shape product requirements, interfaces, design systems, and user experience. | 22 |
+| [🎨 Product, Design & UX](#product-design-ux) | Shape product requirements, interfaces, design systems, and user experience. | 23 |
 | [📈 Marketing, SEO & Growth](#marketing-seo-growth) | Acquire audiences through positioning, campaigns, search, ads, and social growth. | 50 |
 | [✍️ Content, Media & Publishing](#content-media-publishing) | Create, edit, repurpose, and publish writing, images, audio, and video. | 89 |
 | [🤝 Sales, CRM & Customer Success](#sales-crm-customer-success) | Find, win, onboard, support, and retain customers with accountable workflows. | 40 |
@@ -507,6 +507,7 @@ Shape product requirements, interfaces, design systems, and user experience.
 | [`uml-diagram-design`](../skills/uml-diagram-design/) | UML 图表设计和绘制。当用户需要创建系统架构图、类图、时序图、用例图或其他 UML 图表时使用此技能。 | Unknown · unreviewed | Unscored | Catalog only |
 | [`user-story`](../skills/user-story/) | Create clear, concise user stories that combine Mike Cohn's user story format with Gherkin-style acceptance criteria. Use this to translate user needs into actionable development… | Unknown · unreviewed | Unscored | Portable optional assignment · structure checked · CPO |
 | [`ux-heuristics`](../skills/ux-heuristics/) | Evaluate and improve interface usability using heuristic analysis. Use when the user mentions "usability audit", "UX review", "users are confused", "heuristic evaluation", "form… | Unknown · unreviewed | Unscored | Portable required assignment · structure checked · CPO |
+| [`viral-product-demo`](../skills/viral-product-demo/) | 爆火产品演示视频脚本生成器——基于实测爆款公式，为 SaaS/AI/效率/企业类产品生成可直接拍摄的演示或宣传视频脚本。Use when 需要产品宣传片、演示视频、种草视频、获客视频脚本。 | Unknown · unreviewed | Unscored | Catalog only |
 | [`web-artifacts-builder`](../skills/web-artifacts-builder/) | Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern frontend web technologies (React, Tailwind CSS, shadcn/ui). Use for complex artifacts… | Unknown · unreviewed | Unscored | Catalog only |
 | [`web-design-guidelines`](../skills/web-design-guidelines/) | Review UI code for Web Interface Guidelines compliance. Use when asked to "review my UI", "check accessibility", "audit design", "review UX", or "check my site against best… | Unknown · unreviewed | Unscored | Catalog only |
 | [`write-product-documentation`](../skills/write-product-documentation/) | Create fact-based product documentation from code and release evidence. Use for manuals, operations, installation, specifications, acceptance, release notes, FAQs, or claim audits. | Unknown · unreviewed | Unscored | Portable optional assignment · structure checked · CPO |
