@@ -15,6 +15,7 @@ docs/
 ├── plans/                 未实施的计划与提案
 ├── reference/             清单与目录索引
 ├── adr/                   已接受的架构决策（不可变）
+├── optimization/          质量审计与减重提案（一次性快照）
 ├── assets/ data/          站点资源与生成数据
 └── *.html                 GitHub Pages 页面
 ```
@@ -59,6 +60,7 @@ docs/
 ## 清单与参考
 
 - [Docs 文件清单](./reference/docs-inventory.md)
+- [**冗余与质量审计**](./optimization/) — 回归事件、体积账本、已提交的运行产物、内容层冗余、治理缺口
 - [100 个开发 Skill 待选清单](./reference/100-dev-skills-candidates.md)
 - [Legacy Agent 矩阵](./skills-matrix.md)
 

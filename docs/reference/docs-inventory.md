@@ -13,6 +13,7 @@ docs/
 ├── plans/                           未实施的计划
 ├── reference/                       清单与目录索引
 ├── adr/                             已接受的架构决策
+├── optimization/                    质量审计与减重提案
 ├── assets/  data/                   站点资源、生成数据
 ├── index.html  verification.html    站点页面
 ├── sitemap.xml  404.html            搜索与失败路由
@@ -55,6 +56,7 @@ docs/
 ## 其他
 
 - [`adr/`](../adr/) — 架构决策记录，见其 [索引](../adr/README.md)。
+- [`optimization/`](../optimization/) — 质量审计与减重提案，见其 [索引](../optimization/README.md)。结论须附可复现命令；长期有效者才升级为 ADR。
 - [`data/`](../data/) — 生成的同源统计与独立分类的验证凭据；**不是权威来源**。
 - [`assets/`](../assets/) — 站点图片与图标。
 - [`index.html`](../index.html) · [`verification.html`](../verification.html) — 站点页面。
