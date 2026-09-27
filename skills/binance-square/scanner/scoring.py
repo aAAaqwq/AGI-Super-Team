@@ -115,6 +115,10 @@ class ScoredOpportunity:
     cost_model_status: CostModelStatus = CostModelStatus.NOT_CONFIGURED
     evidence_captured_at: datetime | None = None
     source_detail_captured_at: datetime | None = None
+    setup_kind: str | None = None
+    setup_reason: str | None = None
+    setup_evidence: tuple[str, ...] = ()
+    setup_policy_version: str | None = None
 
     @property
     def signal_id(self) -> str:

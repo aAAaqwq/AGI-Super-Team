@@ -50,6 +50,11 @@ from .discovery import (
     reconcile_profile_fetch_plan,
     validate_feed_snapshot,
 )
+from .freshness import (
+    DEFAULT_MAX_POINTER_AGE,
+    assert_pointer_fresh,
+    read_verified_latest_pointer,
+)
 from .market import BinanceMarketClient, MarketApiError, MarketSnapshot
 from .opportunities import (
     ConsensusObservation,
@@ -65,6 +70,7 @@ from .profile_pipeline import (
 )
 from .reports import build_local_report, render_local_markdown
 from .scoring import build_opportunity_board, score_opportunity
+from .setups import classify_setup
 from .smart_money import (
     EVIDENCE_SCHEMA_VERSION as SMART_MONEY_SCHEMA_VERSION,
     ORDER as SMART_MONEY_ORDER,
@@ -111,6 +117,7 @@ class PipelineConfig:
     no_send: bool = True
     scheduled_retry: bool = False
     dedup_baseline_post_ids: frozenset[str] | tuple[str, ...] | None = None
+    allow_stale_pointer: bool | None = None
     smart_money_enabled: bool = False
     smart_money_fixture: Path | None = None
     smart_money_square_mapping_evidence: Path | None = None
@@ -1070,6 +1077,9 @@ def _candidate_audit(
         "consensus_author_ids": list(consensus_author_ids),
         "consensus_distinct_other_authors": len(consensus_author_ids),
         "author_score_assumption": 0,
+        "setup_kind": getattr(scored, "setup_kind", None),
+        "setup_reason": getattr(scored, "setup_reason", None),
+        "setup_policy_version": getattr(scored, "setup_policy_version", None),
         "source_post_url": scored.post_url,
         "market_source": (
             scored.market_source.value if scored.market_source is not None else None
@@ -1092,6 +1102,7 @@ def _derivation_rejection_audit(
 ) -> dict[str, Any]:
     """Keep rejected shadow re-entry evidence visible instead of dropping it."""
 
+    setup_label = classify_setup(candidate, market)
     return {
         "signal_id": candidate.signal_id,
         "symbol": candidate.symbol,
@@ -1108,6 +1119,9 @@ def _derivation_rejection_audit(
         "consensus_author_ids": [],
         "consensus_distinct_other_authors": 0,
         "author_score_assumption": 0,
+        "setup_kind": setup_label.value,
+        "setup_reason": setup_label.reason,
+        "setup_policy_version": setup_label.policy_version,
         "source_post_url": candidate.post_url,
         "market_source": market.source.value,
         "market_captured_at": format_utc(market.captured_at),
@@ -1459,6 +1473,16 @@ def run_shadow_radar(
                 parsed_snapshot,
                 consumed_at=now,
                 maximum_age=MAX_PRODUCTION_SLOT_LATENESS,
+            )
+            # The Feed input itself may resolve through the compatibility
+            # ``latest`` pointer.  Re-assert pointer freshness so a frozen
+            # pointer fails closed instead of silently feeding old data.
+            assert_pointer_fresh(
+                config.input_snapshot,
+                parsed_snapshot,
+                consumed_at=now,
+                maximum_age=MAX_PRODUCTION_SLOT_LATENESS,
+                allow_stale=config.allow_stale_pointer,
             )
             discovery_snapshot_payload = parsed_snapshot
         if config.mode == "real" and config.signals_json is not None:
@@ -2008,6 +2032,16 @@ def run_shadow_radar(
                     value,
                     evidence=tuple(derivation.evidence) + value.evidence,
                 )
+            # Additive "why" layer: classify the setup archetype from the same
+            # point-in-time snapshot.  This never feeds back into the score.
+            setup_label = classify_setup(candidate, market)
+            value = replace(
+                value,
+                setup_kind=setup_label.value,
+                setup_reason=setup_label.reason,
+                setup_evidence=setup_label.evidence,
+                setup_policy_version=setup_label.policy_version,
+            )
             scored.append(value)
             consensus_author_ids = consensus_index.other_author_ids(
                 symbol=candidate.symbol,

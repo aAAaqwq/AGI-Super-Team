@@ -712,6 +712,8 @@ def _opportunity(value: Any, *, watch: bool) -> dict[str, Any]:
         "nominal_rr": _json_value(nominal_rr),
         "cost_model_status": _json_value(cost_model_status),
         "evidence_captured_at": evidence_captured_at,
+        "setup_kind": _read(value, "setup_kind"),
+        "setup_reason": _read(value, "setup_reason"),
         "missing_market_fields": _json_value(
             _read(value, "missing_market_fields", "missing_fields", default=())
         ),
