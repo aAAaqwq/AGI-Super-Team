@@ -124,8 +124,13 @@ def market_line(d):
     """组合 UP/DOWN 价 (真实优先, 无则模拟) + 模拟持仓 文本块."""
     up, down = fetch_predict_prices()
     out = []
-    if up is not None:
+    if up is not None and down is not None:
         out.append(f"预测市场: UP {up:.2f} | DOWN {down:.2f}")
+    elif up is not None or down is not None:
+        # REST 兜底各边独立取值, 可能只有一边有报价; 显示已有的一边, 缺失标 ?
+        u_s = f"{up:.2f}" if up is not None else "?"
+        d_s = f"{down:.2f}" if down is not None else "?"
+        out.append(f"预测市场: UP {u_s} | DOWN {d_s} (单边缺失)")
     else:
         p_up = _sim_prices(d)
         if p_up is not None:

@@ -44,7 +44,18 @@ def load_env():
 
 
 def get_up_down_price():
-    """拉当前 BTC 5m 预测市场 UP/DOWN 真实价. 失败返回 (None, None)."""
+    """拉当前 BTC 5m 预测市场 UP/DOWN 真实价. 失败返回 (None, None).
+    优先读 WS 实时缓存 (~/bb-auto/prediction-ws.json, <1ms); 缓存无值才走 REST 兜底.
+    允许单边: 调用方只取所需的那一边, 单边命中即可算 edge, 不必两边齐全."""
+    try:
+        cur = (json.loads((Path.home() / "bb-auto" / "prediction-ws.json").read_text())
+               .get("current") or {})
+        up, dn = cur.get("up_ask"), cur.get("down_ask")
+        if up is not None or dn is not None:
+            return (float(up) if up is not None else None,
+                    float(dn) if dn is not None else None)
+    except Exception:
+        pass
     try:
         load_env()
         sys.path.insert(0, str(SKILL / "scripts"))
