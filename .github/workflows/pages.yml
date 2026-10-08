@@ -5,7 +5,11 @@ on:
     branches:
       - main
   schedule:
-    - cron: "17 */6 * * *"
+    # The scheduled run only refreshes star history / repository statistics.
+    # Every 6 hours was buying no freshness anyone consumes and cost ~3 extra
+    # full Pages builds a day, so it now runs weekly with the other Monday job.
+    # The :17 offset avoids the top-of-hour runner queue.
+    - cron: "17 4 * * 1"
   workflow_dispatch:
 
 permissions:
