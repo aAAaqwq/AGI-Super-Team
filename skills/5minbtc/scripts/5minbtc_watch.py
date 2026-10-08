@@ -152,10 +152,17 @@ MUTE = False  # 全局静默开关 (--mute 时关闭事件推送, 保留记录+�
 def push(msg):
     if MUTE:
         return
+    # 超时必须 > telegram_push.send() 的最坏预算 (3×10+2×1=32s), 否则重试会被杀在半路。
+    # 此前是 20s < 旧预算 49s —— 约 14% 的推送在"差一点成功"处被静默丢弃。
     try:
-        subprocess.run([PY, str(PUSH), msg], timeout=20, capture_output=True)
-    except Exception:
-        pass
+        r = subprocess.run([PY, str(PUSH), msg], timeout=40, capture_output=True, text=True)
+        out = (r.stdout or "").strip()
+        if out.startswith("ERR") or r.returncode != 0:
+            print(f"[push失败] {out or (r.stderr or '').strip()[:160]}", flush=True)
+    except subprocess.TimeoutExpired:
+        print("[push失败] TimeoutExpired(40s)", flush=True)
+    except Exception as e:
+        print(f"[push失败] {type(e).__name__}: {e}", flush=True)
 
 
 def run_engine():

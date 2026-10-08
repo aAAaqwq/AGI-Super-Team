@@ -32,17 +32,20 @@ def load_telegram_creds():
 
 
 def send(token, chat_id, text):
+    """最坏耗时 = 3 attempt × 10s + 2 × 1s = 32s。
+    调用方 (watch / realtime) 的 subprocess 超时必须 > 32s, 否则重试跑不完就被杀 —— 见下方注释。
+    实测: 成功约 2.4–4.4s, 失败是 15s 级握手超时; 故 10s 上限不误杀成功路径。"""
     url = f"https://api.telegram.org/bot{token}/sendMessage"
     data = urllib.parse.urlencode({"chat_id": chat_id, "text": text}).encode()
     for attempt in range(3):
         try:
             req = urllib.request.Request(url, data=data)
-            with urllib.request.urlopen(req, timeout=15) as resp:
+            with urllib.request.urlopen(req, timeout=10) as resp:
                 return resp.status
         except Exception as e:
             if attempt == 2:
                 return f"ERR {e}"
-            time.sleep(2)
+            time.sleep(1)
     return "ERR"
 
 

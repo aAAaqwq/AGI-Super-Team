@@ -164,10 +164,17 @@ def run_engine():
 def push(msg, enabled=True):
     if not enabled:
         return
+    # 超时必须 > telegram_push.send() 的最坏预算 (3×10+2×1=32s), 否则重试会被杀在半路。
+    # 此前是 20s < 旧预算 49s —— 约 14% 的推送在"差一点成功"处被静默丢弃。
     try:
-        subprocess.run([PY, str(PUSH), msg], capture_output=True, timeout=20)
-    except Exception:
-        pass
+        r = subprocess.run([PY, str(PUSH), msg], capture_output=True, text=True, timeout=40)
+        out = (r.stdout or "").strip()
+        if out.startswith("ERR") or r.returncode != 0:
+            print(f"[push失败] {out or (r.stderr or '').strip()[:160]}", flush=True)
+    except subprocess.TimeoutExpired:
+        print("[push失败] TimeoutExpired(40s)", flush=True)
+    except Exception as e:
+        print(f"[push失败] {type(e).__name__}: {e}", flush=True)
 
 
 # 2026-09-10 按最小无用原则删除的死代码 (均无调用点, 可从 git 历史取回):
