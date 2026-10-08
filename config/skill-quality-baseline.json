@@ -3,11 +3,11 @@
   "schemaVersion": 1,
   "scope": "ratchet-current-structural-debt-without-claiming-semantic-verification",
   "structureInvalid": 174,
-  "disclosureWarnings": 570,
+  "disclosureWarnings": 573,
   "executionReviewRequired": 176,
   "issueCounts": {
     "description-missing-trigger": 264,
-    "description-over-180": 294,
+    "description-over-180": 297,
     "invalid-frontmatter-yaml": 35,
     "link-outside-repository": 5,
     "missing-frontmatter": 37,

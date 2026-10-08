@@ -12,10 +12,10 @@
 | | 数量 | 会被安装吗 | 读哪一节 |
 |---|---|---|---|
 | **团队精华**：已分配给某个角色的 Skill | 169 | 会：5 个目标声明 `canonical-assigned`（`claude-code`、`codex`、`dsh`、`hermes`、`openclaw`），装的就是这 169 个 | 第 2、3 节 |
-| **工具箱**：未分配给任何角色的 Skill | 665 | 不会：包里有、安装器不复制 | 第 7 节 · [`catalog/`](../../catalog/) |
-| 物理总量（`skills/` 下的可发现入口） | 834 | — | — |
+| **工具箱**：未分配给任何角色的 Skill | 668 | 不会：包里有、安装器不复制 | 第 7 节 · [`catalog/`](../../catalog/) |
+| 物理总量（`skills/` 下的可发现入口） | 837 | — | — |
 
-**一句话**：`169` 个方法 + `14` 个角色 = 精华；另外 `665` 个不是废料，只是不在任何角色的职责范围内，按需取用即可。
+**一句话**：`169` 个方法 + `14` 个角色 = 精华；另外 `668` 个不是废料，只是不在任何角色的职责范围内，按需取用即可。
 
 **怎么读这一页（层层递进，每层结尾指向下一层）**
 
@@ -26,7 +26,7 @@
 | C | 某个方法归谁管 | 第 4 节 方法反查（169） | 反查到方法及其归属角色 |
 | D | 怎么开始动手 | 第 5 节 快速开始 | 选一个 RUNBOOK 跑起来 |
 | E | Agent 怎么执行和复核 | 第 6 节 操作规则 | 判级、派发、复核一次做对 |
-| F | 剩下 665 个怎么取 | 第 7 节 工具箱 | 知道去哪找、还缺哪条命令 |
+| F | 剩下 668 个怎么取 | 第 7 节 工具箱 | 知道去哪找、还缺哪条命令 |
 
 > 本页是**导航**，不是策略权威。路由分级（L0–L3）与各框架强制边界的完整定义在 [路由分级与强制层](../../docs/guides/routing-and-enforcement.md)；团队与 Skill 的连接原理在 [Team/C-suite/Subagent/Skill 连接原理](../../docs/guides/team-agent-skill-architecture.md)。
 
@@ -774,9 +774,9 @@
 
 判级与强制边界的完整定义见 [路由分级与强制层](../../docs/guides/routing-and-enforcement.md)；各框架能强制什么、不能强制什么见 [框架兼容性](../../docs/guides/harness-compatibility.html)。
 
-## 7 · 工具箱：没装的那 665 个
+## 7 · 工具箱：没装的那 668 个
 
-`skills/` 下有 834 个物理入口，其中 169 个属于团队（第 3、4 节），剩下 665 个不属于任何角色，安装器不会复制。它们仍然可以：
+`skills/` 下有 837 个物理入口，其中 169 个属于团队（第 3、4 节），剩下 668 个不属于任何角色，安装器不会复制。它们仍然可以：
 
 - **检索**：看生成目录 [`catalog/README.md`](../../catalog/README.md) 或机器可读的 [`catalog/skill-index.json`](../../catalog/skill-index.json)。
 - **取用**：目录是完整的。npm 安装的包里有整棵 `skills/` 树（`node_modules/agi-super-team/skills/<id>/`，[ADR-0008](../../docs/adr/0008-ship-complete-skills-directory.md) 决定全量打包）；git 用户直接在 `skills/<id>/` 下拿。要取就取整个目录 —— 只拿 `SKILL.md` 会得到一个坏 Skill，因为它的正文会引用自己的 `references/` 与 `scripts/`。

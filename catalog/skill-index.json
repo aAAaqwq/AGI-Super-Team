@@ -9,7 +9,7 @@
       "title": "AI Agents & Orchestration"
     },
     {
-      "count": 83,
+      "count": 85,
       "description": "Build, test, review, debug, and maintain applications and developer tooling.",
       "emoji": "💻",
       "id": "software-engineering",
@@ -72,7 +72,7 @@
       "title": "Finance, Trading & Markets"
     },
     {
-      "count": 74,
+      "count": 75,
       "description": "Plan work, make decisions, manage teams, and improve operating systems.",
       "emoji": "🧭",
       "id": "business-operations-strategy",
@@ -100,7 +100,7 @@
       "title": "Specialized Domains & Utilities"
     }
   ],
-  "inventoryCount": 834,
+  "inventoryCount": 837,
   "inventorySemantics": "tracked physical top-level directories with SKILL.md",
   "schemaVersion": 2,
   "skills": [
@@ -8225,6 +8225,45 @@
       "used_by": [
         "CFO"
       ]
+    },
+    {
+      "assignments": [],
+      "category_id": "software-engineering",
+      "classification": "description:\\bapi\\b;metadata:frontmatter",
+      "classification_details": {
+        "matched_signals": [
+          "\\bapi\\b"
+        ],
+        "method": "description",
+        "resolution_status": "rule-match",
+        "review_state": "unreviewed",
+        "runner_ups": [],
+        "winner": {
+          "category_id": "software-engineering",
+          "match_count": 1,
+          "matched_signals": [
+            "\\bapi\\b"
+          ],
+          "priority": 80,
+          "tie_detected": false
+        }
+      },
+      "curation": {
+        "runtime_evidence": "pending",
+        "status": "unscored"
+      },
+      "description": "改动前的耦合分析（Coupling Analysis / 防蝴蝶效应）——任何改动「共享参数、共享状态、 公共接口、全局常量、被多处引用的逻辑」之前，先画约束图，找出互斥约束与影响面， 再决定动手。触发场景：改参数/阈值/常量；改被多个模块调用的函数；改数据库 schema； 改 API 契约；改配置默认值；用户说\"改一下 X\"但 X 与 Y 耦合时；…",
+      "description_status": "source-text",
+      "path": "skills/coupling-analysis/SKILL.md",
+      "portability_class": "catalog-only",
+      "provenance": {
+        "origin_kind": "unknown",
+        "review_state": "unreviewed"
+      },
+      "review_signals": [],
+      "skill_id": "coupling-analysis",
+      "support_level": "catalog",
+      "used_by": []
     },
     {
       "assignments": [],
@@ -17827,6 +17866,45 @@
         "CLO",
         "GOVERNOR"
       ]
+    },
+    {
+      "assignments": [],
+      "category_id": "business-operations-strategy",
+      "classification": "slug:decision;metadata:frontmatter",
+      "classification_details": {
+        "matched_signals": [
+          "decision"
+        ],
+        "method": "slug",
+        "resolution_status": "rule-match",
+        "review_state": "unreviewed",
+        "runner_ups": [],
+        "winner": {
+          "category_id": "business-operations-strategy",
+          "match_count": 1,
+          "matched_signals": [
+            "decision"
+          ],
+          "priority": 65,
+          "tie_detected": false
+        }
+      },
+      "curation": {
+        "runtime_evidence": "pending",
+        "status": "unscored"
+      },
+      "description": "用《高性价比人生指南》(github.com/eternity4719/HowToLiveBetter) 的正文回答具体的人生决策：该不该做、值不值、怎么选、出事了先做什么、能领哪笔钱、这么干犯不犯法。先把相关条目查出来再答，按成本（钱/时间/毅力）、收益量级和证据等级 A/B/C…",
+      "description_status": "source-text",
+      "path": "skills/life-decision-guide/SKILL.md",
+      "portability_class": "catalog-only",
+      "provenance": {
+        "origin_kind": "unknown",
+        "review_state": "unreviewed"
+      },
+      "review_signals": [],
+      "skill_id": "life-decision-guide",
+      "support_level": "catalog",
+      "used_by": []
     },
     {
       "assignments": [
@@ -33346,6 +33424,45 @@
       },
       "review_signals": [],
       "skill_id": "trello-automation",
+      "support_level": "catalog",
+      "used_by": []
+    },
+    {
+      "assignments": [],
+      "category_id": "software-engineering",
+      "classification": "description:\\bapi\\b;metadata:frontmatter",
+      "classification_details": {
+        "matched_signals": [
+          "\\bapi\\b"
+        ],
+        "method": "description",
+        "resolution_status": "rule-match",
+        "review_state": "unreviewed",
+        "runner_ups": [],
+        "winner": {
+          "category_id": "software-engineering",
+          "match_count": 1,
+          "matched_signals": [
+            "\\bapi\\b"
+          ],
+          "priority": 80,
+          "tie_detected": false
+        }
+      },
+      "curation": {
+        "runtime_evidence": "pending",
+        "status": "unscored"
+      },
+      "description": "反编造纪律（Truth Discipline / 不说假话）——任何带数字、日期、引文、API 行为、 版本号、星数、论文结论、事实性断言的输出前，必须先回源核对并分级标注。 触发场景：给用户写含数据的报告/表格/对比；引用外部仓库、论文、新闻、文档； 总结别人写的内容（如\"帮我总结这份指南\"）；复述历史结论；写\"据称/研究表明\"类句子；…",
+      "description_status": "source-text",
+      "path": "skills/truth-discipline/SKILL.md",
+      "portability_class": "catalog-only",
+      "provenance": {
+        "origin_kind": "unknown",
+        "review_state": "unreviewed"
+      },
+      "review_signals": [],
+      "skill_id": "truth-discipline",
       "support_level": "catalog",
       "used_by": []
     },

@@ -2,13 +2,13 @@
   "schemaVersion": 1,
   "scope": "deterministic-structural-evidence-not-semantic-verification",
   "summary": {
-    "inventoryCount": 834,
+    "inventoryCount": 837,
     "structureInvalid": 174,
-    "disclosureWarnings": 570,
+    "disclosureWarnings": 573,
     "executionReviewRequired": 176,
     "issueCounts": {
       "description-missing-trigger": 264,
-      "description-over-180": 294,
+      "description-over-180": 297,
       "invalid-frontmatter-yaml": 35,
       "link-outside-repository": 5,
       "missing-frontmatter": 37,
@@ -1534,6 +1534,16 @@
     {
       "skill_id": "cost-optimization",
       "path": "skills/cost-optimization/SKILL.md",
+      "structure_status": "pass",
+      "disclosure_status": "warn",
+      "execution_status": "not-applicable",
+      "issues": [
+        "description-over-180"
+      ]
+    },
+    {
+      "skill_id": "coupling-analysis",
+      "path": "skills/coupling-analysis/SKILL.md",
       "structure_status": "pass",
       "disclosure_status": "warn",
       "execution_status": "not-applicable",
@@ -3177,6 +3187,16 @@
     {
       "skill_id": "legal-cog",
       "path": "skills/legal-cog/SKILL.md",
+      "structure_status": "pass",
+      "disclosure_status": "warn",
+      "execution_status": "not-applicable",
+      "issues": [
+        "description-over-180"
+      ]
+    },
+    {
+      "skill_id": "life-decision-guide",
+      "path": "skills/life-decision-guide/SKILL.md",
       "structure_status": "pass",
       "disclosure_status": "warn",
       "execution_status": "not-applicable",
@@ -6399,6 +6419,16 @@
       "execution_status": "not-applicable",
       "issues": [
         "description-missing-trigger"
+      ]
+    },
+    {
+      "skill_id": "truth-discipline",
+      "path": "skills/truth-discipline/SKILL.md",
+      "structure_status": "pass",
+      "disclosure_status": "warn",
+      "execution_status": "not-applicable",
+      "issues": [
+        "description-over-180"
       ]
     },
     {

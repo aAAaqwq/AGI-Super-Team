@@ -42,7 +42,7 @@ Choose a reviewed origin boundary before browsing by outcome. Provenance and cur
 | [Project original](#project-original-skills) | Digest-backed first-party work with reviewed authorship. | 34 |
 | [Adapted](#adapted-skills) | Modified from a named source with the adaptation recorded. | 0 |
 | [Collected](#collected-skills) | Preserved from a named source with provenance recorded. | 0 |
-| [Unknown origin](#unknown-origin-skills) | Source review is incomplete; inspect before use. | 800 |
+| [Unknown origin](#unknown-origin-skills) | Source review is incomplete; inspect before use. | 803 |
 
 <a id="project-original-skills"></a>
 ### Project original
@@ -105,16 +105,16 @@ No entries currently meet this provenance contract.
 
 Source review is incomplete; inspect before use.
 
-800 entries are awaiting source review. Use the [machine-readable index](./skill-index.json) or browse by outcome below; they are not promoted as curated recommendations.
+803 entries are awaiting source review. Use the [machine-readable index](./skill-index.json) or browse by outcome below; they are not promoted as curated recommendations.
 
 ## 🗂️ Browse by outcome
 
-This revision contains 834 canonical catalog entries. The number is generated here rather than used as a product claim.
+This revision contains 837 canonical catalog entries. The number is generated here rather than used as a product claim.
 
 | Category | Use it for | Entries |
 |---|---|---:|
 | [🤖 AI Agents & Orchestration](#ai-agents-orchestration) | Coordinate agents, context, memory, models, prompts, and tool protocols. | 81 |
-| [💻 Software Engineering](#software-engineering) | Build, test, review, debug, and maintain applications and developer tooling. | 83 |
+| [💻 Software Engineering](#software-engineering) | Build, test, review, debug, and maintain applications and developer tooling. | 85 |
 | [☁️ Cloud, DevOps & Reliability](#cloud-devops-reliability) | Deploy, observe, troubleshoot, and operate cloud and local infrastructure. | 35 |
 | [📊 Data, Analytics & Research](#data-analytics-research) | Collect evidence, search sources, analyze data, and communicate findings. | 80 |
 | [🛡️ Security, Privacy & Legal](#security-privacy-legal) | Review security, privacy, compliance, permissions, contracts, and legal risk. | 34 |
@@ -123,7 +123,7 @@ This revision contains 834 canonical catalog entries. The number is generated he
 | [✍️ Content, Media & Publishing](#content-media-publishing) | Create, edit, repurpose, and publish writing, images, audio, and video. | 89 |
 | [🤝 Sales, CRM & Customer Success](#sales-crm-customer-success) | Find, win, onboard, support, and retain customers with accountable workflows. | 40 |
 | [💹 Finance, Trading & Markets](#finance-trading-markets) | Analyze markets, backtest strategies, track portfolios, and review financial risk. | 70 |
-| [🧭 Business Operations & Strategy](#business-operations-strategy) | Plan work, make decisions, manage teams, and improve operating systems. | 74 |
+| [🧭 Business Operations & Strategy](#business-operations-strategy) | Plan work, make decisions, manage teams, and improve operating systems. | 75 |
 | [⚙️ Apps & Workflow Automation](#apps-workflow-automation) | Connect everyday apps, browsers, messaging systems, and repeatable workflows. | 90 |
 | [🇨🇳 Chinese Platform Workflows](#chinese-platform-workflows) | Create, analyze, and publish for major Chinese-language platforms and channels. | 40 |
 | [🧰 Specialized Domains & Utilities](#general-utilities) | Domain-specific helpers and cross-functional tools that need a dedicated review path. | 45 |
@@ -245,6 +245,7 @@ Build, test, review, debug, and maintain applications and developer tooling.
 | [`collaboration`](../skills/collaboration/) | Guide for collaborating on GitHub projects. This skill should be used when contributing to projects, creating PRs, reviewing code, or managing issues on GitHub. | Unknown · unreviewed | Unscored | Catalog only |
 | [`commit-analyzer`](../skills/commit-analyzer/) | Analyze git commit frequency, categories, and timing patterns to diagnose | Unknown · unreviewed | Unscored | Catalog only |
 | [`conventional-commits`](../skills/conventional-commits/) | Format commit messages using the Conventional Commits specification. Use when creating commits, writing commit messages, or when the user mentions commits, git commits, or commit… | Unknown · unreviewed | Unscored | Catalog only |
+| [`coupling-analysis`](../skills/coupling-analysis/) | 改动前的耦合分析（Coupling Analysis / 防蝴蝶效应）——任何改动「共享参数、共享状态、 公共接口、全局常量、被多处引用的逻辑」之前，先画约束图，找出互斥约束与影响面， 再决定动手。触发场景：改参数/阈值/常量；改被多个模块调用的函数；改数据库 schema； 改 API 契约；改配置默认值；用户说"改一下 X"但 X 与 Y 耦合时；… | Unknown · unreviewed | Unscored | Catalog only |
 | [`css-ninja`](../skills/css-ninja/) | Master CSS with Tailwind, CSS-in-JS, responsive layouts, animations, and modern styling patterns. Use when: (1) responsive design implementation, (2) Tailwind CSS setup and… | Unknown · unreviewed | Unscored | Catalog only |
 | [`db-migrator`](../skills/db-migrator/) | Database schema migration, versioning, and rollback management for SQL and NoSQL databases. Use when: (1) creating database migrations, (2) modifying table schemas, (3)… | Unknown · unreviewed | Unscored | Catalog only |
 | [`digital-human-api`](../skills/digital-human-api/) | Digital human video generation via Qingyun API — avatar-based talking head videos | Unknown · unreviewed | Unscored | Catalog only |
@@ -301,6 +302,7 @@ Build, test, review, debug, and maintain applications and developer tooling.
 | [`tdd-workflow`](../skills/tdd-workflow/) | Use this skill when writing new features, fixing bugs, or refactoring code. Enforces test-driven development with 80%+ coverage including unit, integration, and E2E tests. | Unknown · unreviewed | Unscored | Portable required assignment · structure checked · PE |
 | [`test-automator`](../skills/test-automator/) | Master AI-powered test automation with modern frameworks, self-healing tests, and comprehensive quality engineering. Build scalable testing strategies with advanced CI/CD… | Unknown · unreviewed | Unscored | Catalog only |
 | [`test-driven-development`](../skills/test-driven-development/) | Use when implementing any feature or bugfix, before writing implementation code | Unknown · unreviewed | Unscored | Catalog only |
+| [`truth-discipline`](../skills/truth-discipline/) | 反编造纪律（Truth Discipline / 不说假话）——任何带数字、日期、引文、API 行为、 版本号、星数、论文结论、事实性断言的输出前，必须先回源核对并分级标注。 触发场景：给用户写含数据的报告/表格/对比；引用外部仓库、论文、新闻、文档； 总结别人写的内容（如"帮我总结这份指南"）；复述历史结论；写"据称/研究表明"类句子；… | Unknown · unreviewed | Unscored | Catalog only |
 | [`using-git-worktrees`](../skills/using-git-worktrees/) | Use when starting feature work that needs isolation from current workspace or before executing implementation plans - creates isolated git worktrees with smart directory… | Unknown · unreviewed | Unscored | Catalog only |
 | [`verification-before-completion`](../skills/verification-before-completion/) | Use when about to claim work is complete, fixed, or passing, before committing or creating PRs - requires running verification commands and confirming output before making any… | Unknown · unreviewed | Unscored | Portable required assignment · structure checked · CEO, COO, GOVERNOR, PE |
 | [`vibe-code-auditor`](../skills/vibe-code-auditor/) | Audit rapidly generated or AI-produced code for structural flaws, fragility, and production risks. | Unknown · unreviewed | Unscored | Portable required assignment · structure checked · GOVERNOR, PE |
@@ -812,6 +814,7 @@ Plan work, make decisions, manage teams, and improve operating systems.
 | [`executive-decision-system`](../skills/executive-decision-system/) | 将模糊的公司级议题转成可追溯的战略选择、资源配置和复查机制。用于重大方向选择、业务组合取舍、跨职能优先级冲突、进入或退出市场、年度或季度重点决策；不用于日常项目排期、流程优化、专业领域定论或对已完成工作的独立验收。 | Project original · reviewed | 78/100 · Selected | Portable required assignment · structure checked · CEO |
 | [`first-principles-thinking`](../skills/first-principles-thinking/) | Use Socratic questioning to expose assumptions, reduce a problem to fundamental truths, and rebuild options when a user is stuck or requests first-principles analysis. | Unknown · unreviewed | Unscored | Portable required assignment · structure checked · CEO, CRO |
 | [`independent-assurance-gate`](../skills/independent-assurance-gate/) | 独立审查重要完成声明，建立声明—证据映射，寻找反例，校准严重度并给出通过、有条件通过、阻断或待验证结论。用于发布前验收、高风险变更、跨角色交付、外部结果声明和整改复验；不用于审查者自己的主要实现、替领域负责人设计方案、替 CEO 作资源取舍或替人类接受现实风险。 | Project original · reviewed | 78/100 · Selected | Portable required assignment · structure checked · GOVERNOR |
+| [`life-decision-guide`](../skills/life-decision-guide/) | 用《高性价比人生指南》(github.com/eternity4719/HowToLiveBetter) 的正文回答具体的人生决策：该不该做、值不值、怎么选、出事了先做什么、能领哪笔钱、这么干犯不犯法。先把相关条目查出来再答，按成本（钱/时间/毅力）、收益量级和证据等级 A/B/C… | Unknown · unreviewed | Unscored | Catalog only |
 | [`linkedin-inbound-run`](../skills/linkedin-inbound-run/) | Automatic inbound LinkedIn message processing | Unknown · unreviewed | Unscored | Catalog only |
 | [`market-nightly-evolution`](../skills/market-nightly-evolution/) | Nightly market evolution report — overnight market analysis and strategy prep | Unknown · unreviewed | Unscored | Catalog only |
 | [`meeting-insights-analyzer`](../skills/meeting-insights-analyzer/) | Analyzes meeting transcripts and recordings to uncover behavioral patterns, communication insights, and actionable feedback. Identifies when you avoid conflict, use filler words,… | Unknown · unreviewed | Unscored | Catalog only |
