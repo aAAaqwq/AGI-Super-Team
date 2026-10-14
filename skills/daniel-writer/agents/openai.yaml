@@ -1,0 +1,4 @@
+interface:
+  display_name: "Daniel 写作"
+  short_description: "统一完成 Daniel 六平台创作、内容打包与视频交接"
+  default_prompt: "使用 $daniel-writer 作为唯一创作入口：先过 Daniel 判断门并建立逐稿证据台账；如果我没有提供核心判断，只返回候选角度。通过品牌与事实门后，按目标平台合同生成原生候选，或把真实项目整理成内容工作包。"

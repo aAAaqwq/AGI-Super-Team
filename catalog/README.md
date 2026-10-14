@@ -42,7 +42,7 @@ Choose a reviewed origin boundary before browsing by outcome. Provenance and cur
 | [Project original](#project-original-skills) | Digest-backed first-party work with reviewed authorship. | 34 |
 | [Adapted](#adapted-skills) | Modified from a named source with the adaptation recorded. | 0 |
 | [Collected](#collected-skills) | Preserved from a named source with provenance recorded. | 0 |
-| [Unknown origin](#unknown-origin-skills) | Source review is incomplete; inspect before use. | 803 |
+| [Unknown origin](#unknown-origin-skills) | Source review is incomplete; inspect before use. | 813 |
 
 <a id="project-original-skills"></a>
 ### Project original
@@ -105,27 +105,27 @@ No entries currently meet this provenance contract.
 
 Source review is incomplete; inspect before use.
 
-803 entries are awaiting source review. Use the [machine-readable index](./skill-index.json) or browse by outcome below; they are not promoted as curated recommendations.
+813 entries are awaiting source review. Use the [machine-readable index](./skill-index.json) or browse by outcome below; they are not promoted as curated recommendations.
 
 ## 🗂️ Browse by outcome
 
-This revision contains 837 canonical catalog entries. The number is generated here rather than used as a product claim.
+This revision contains 847 canonical catalog entries. The number is generated here rather than used as a product claim.
 
 | Category | Use it for | Entries |
 |---|---|---:|
 | [🤖 AI Agents & Orchestration](#ai-agents-orchestration) | Coordinate agents, context, memory, models, prompts, and tool protocols. | 81 |
 | [💻 Software Engineering](#software-engineering) | Build, test, review, debug, and maintain applications and developer tooling. | 85 |
 | [☁️ Cloud, DevOps & Reliability](#cloud-devops-reliability) | Deploy, observe, troubleshoot, and operate cloud and local infrastructure. | 35 |
-| [📊 Data, Analytics & Research](#data-analytics-research) | Collect evidence, search sources, analyze data, and communicate findings. | 80 |
+| [📊 Data, Analytics & Research](#data-analytics-research) | Collect evidence, search sources, analyze data, and communicate findings. | 81 |
 | [🛡️ Security, Privacy & Legal](#security-privacy-legal) | Review security, privacy, compliance, permissions, contracts, and legal risk. | 34 |
 | [🎨 Product, Design & UX](#product-design-ux) | Shape product requirements, interfaces, design systems, and user experience. | 23 |
-| [📈 Marketing, SEO & Growth](#marketing-seo-growth) | Acquire audiences through positioning, campaigns, search, ads, and social growth. | 50 |
-| [✍️ Content, Media & Publishing](#content-media-publishing) | Create, edit, repurpose, and publish writing, images, audio, and video. | 89 |
+| [📈 Marketing, SEO & Growth](#marketing-seo-growth) | Acquire audiences through positioning, campaigns, search, ads, and social growth. | 51 |
+| [✍️ Content, Media & Publishing](#content-media-publishing) | Create, edit, repurpose, and publish writing, images, audio, and video. | 94 |
 | [🤝 Sales, CRM & Customer Success](#sales-crm-customer-success) | Find, win, onboard, support, and retain customers with accountable workflows. | 40 |
 | [💹 Finance, Trading & Markets](#finance-trading-markets) | Analyze markets, backtest strategies, track portfolios, and review financial risk. | 70 |
 | [🧭 Business Operations & Strategy](#business-operations-strategy) | Plan work, make decisions, manage teams, and improve operating systems. | 75 |
 | [⚙️ Apps & Workflow Automation](#apps-workflow-automation) | Connect everyday apps, browsers, messaging systems, and repeatable workflows. | 90 |
-| [🇨🇳 Chinese Platform Workflows](#chinese-platform-workflows) | Create, analyze, and publish for major Chinese-language platforms and channels. | 40 |
+| [🇨🇳 Chinese Platform Workflows](#chinese-platform-workflows) | Create, analyze, and publish for major Chinese-language platforms and channels. | 43 |
 | [🧰 Specialized Domains & Utilities](#general-utilities) | Domain-specific helpers and cross-functional tools that need a dedicated review path. | 45 |
 
 <a id="ai-agents-orchestration"></a>
@@ -436,6 +436,7 @@ Collect evidence, search sources, analyze data, and communicate findings.
 | [`telegram-scrape`](../skills/telegram-scrape/) | Search Telegram channels, read posts, ad contacts | Unknown · unreviewed | Unscored | Catalog only |
 | [`telegram-scraper-run`](../skills/telegram-scraper-run/) | Automatic Telegram scraping | Unknown · unreviewed | Unscored | Catalog only |
 | [`vcf-annotator`](../skills/vcf-annotator/) | Annotate VCF variants with VEP, ClinVar, gnomAD frequencies, and ancestry-aware context. Generates prioritised variant reports. | Unknown · unreviewed | Unscored | Catalog only |
+| [`vibe-knowledge-award`](../skills/vibe-knowledge-award/) | 抖音 2026 年 9-10 月主推的知识类视频活动，核心特征： | Unknown · unreviewed | Unscored | Catalog only |
 | [`web-scraping-automation`](../skills/web-scraping-automation/) | 自动化爬取网站数据和 API 接口。当用户需要抓取网页内容、调用 API、解析数据或创建爬虫脚本时使用此技能。 | Unknown · unreviewed | Unscored | Catalog only |
 | [`web-search`](../skills/web-search/) | 网络搜索与网页内容获取。当用户需要搜索互联网信息、获取网页内容、查找实时数据、进行 websearch 时使用此技能。支持多种搜索工具：WebFetch、Firecrawl skill、Tavily skill。 | Unknown · unreviewed | Unscored | Harness-specific assignment · generic installer skips · CEO, CRO |
 | [`xlsx`](../skills/xlsx/) | Comprehensive spreadsheet creation, editing, and analysis with support for formulas, formatting, data analysis, and visualization. When Claude needs to work with spreadsheets… | Unknown · unreviewed | Unscored | Catalog only |
@@ -556,6 +557,7 @@ Acquire audiences through positioning, campaigns, search, ads, and social growth
 | [`positioning-growth-experiment-system`](../skills/positioning-growth-experiment-system/) | 基于真实市场、受众与产品证据设计定位、信息架构、渠道组合、增长实验和增量测量。用于市场细分、品牌定位、价值主张、渠道选择、活动实验、SEO/GEO 方向、归因复盘或扩张/停止决策；不要用于直接制作大量内容、自动发布、投放广告、群发消息、购买流量、修改产品事实或在证据不足时宣称 ROI、CAC 和增长因果。 | Project original · reviewed | 82/100 · Selected | Portable required assignment · structure checked · CMO |
 | [`postbridge-social-growth`](../skills/postbridge-social-growth/) | Organic social media growth coach using the Post Bridge methodology (500M+ views, 132K+ downloads, $33K+ revenue). Act as a personalized growth coach for apps, products, and… | Unknown · unreviewed | Unscored | Catalog only |
 | [`programmatic-seo`](../skills/programmatic-seo/) | Design and evaluate template-driven SEO page systems. Use for programmatic SEO, directories, location pages, comparisons, integrations, or scaled keyword patterns. | Unknown · unreviewed | Unscored | Portable optional assignment · structure checked · CMO |
+| [`real-browser-social-publisher`](../skills/real-browser-social-publisher/) | Safely prepare, review, and publish video or image posts through real creator-site browser interfaces using Computer Use with human approval gates. Use for Douyin, Xiaohongshu,… | Unknown · unreviewed | Unscored | Catalog only |
 | [`roi-analysis`](../skills/roi-analysis/) | Use when calculating marketing ROI on Xiaohongshu, measuring campaign return on investment, analyzing cost per acquisition, evaluating marketing spend efficiency, or proving… | Unknown · unreviewed | Unscored | Catalog only |
 | [`seo-audit`](../skills/seo-audit/) | Diagnose and audit SEO issues affecting crawlability, indexation, rankings, and organic performance. Use when the user asks for an SEO audit, technical SEO review, ranking… | Unknown · unreviewed | Unscored | Portable required assignment · structure checked · CMO |
 | [`seo-competitor-analysis`](../skills/seo-competitor-analysis/) | Deep SEO competitor analysis — keyword mapping, backlink profiling, content strategy audit, SERP share analysis, and technical SEO comparison. Use when user asks to 'analyze… | Unknown · unreviewed | Unscored | Catalog only |
@@ -607,7 +609,11 @@ Create, edit, repurpose, and publish writing, images, audio, and video.
 | [`copywriting`](../skills/copywriting/) | Write, rewrite, or improve marketing copy for homepages, landing pages, pricing pages, feature pages, and about pages. Use when the user needs conversion-focused copy with clear… | Unknown · unreviewed | Unscored | Portable required assignment · structure checked · CCO, CMO |
 | [`cross-platform-poster`](../skills/cross-platform-poster/) | Publish one piece of content across MoltX, Twitter/X, Discord, and Telegram | Unknown · unreviewed | Unscored | Catalog only |
 | [`daniel-aesthetic-director`](../skills/daniel-aesthetic-director/) | 将主题、内容或品牌意图转化为有审美依据、可执行、可迭代的视觉方向与生成式图像提示词。适用于选择艺术/摄影/设计/东方美学/3D 风格，分析参考图，设计封面、海报、品牌视觉、产品图、插画或概念图，为 Midjourney、SDXL、GPT Image、即梦等模型生成提示词，以及解决“画面好看但不对题”“风格堆砌”“多张图不统一”等问题。 | Project original · reviewed | Unscored | Catalog only |
+| [`daniel-auto-publish`](../skills/daniel-auto-publish/) | 通过用户自有的真实浏览器和 Computer Use，安全辅助抖音、小红书、快手、微信视频号、哔哩哔哩、YouTube、TikTok 与百家号的视频、图文或公众号文章发布。用于选择图文排版模板、生成并预览图片卡片或微信… | Unknown · unreviewed | Unscored | Catalog only |
 | [`daniel-content-writing-style`](../skills/daniel-content-writing-style/) | 为明确以 A.A 身份发布的文章、教程、复盘或视频脚本建立证据账本并起草、改写或审稿；仅在当前核心版本获明确批准后，调用一个平台专业 Subagent 适配并由主 Agent 回审。不用于其他作者、纯选题或增长研究、摘要、发布或外部操作。 | Unknown · unreviewed | Unscored | Catalog only |
+| [`daniel-new-media-ops`](../skills/daniel-new-media-ops/) | 路由 Daniel 新媒体内容从选题、写作、视觉化、视频制作到多平台草稿与发布核验。适用于用户要求制作或分发 Daniel 品牌内容时；单纯文案润色优先直接使用 daniel-writer。 | Unknown · unreviewed | Unscored | Catalog only |
+| [`daniel-self-media-top-mindset`](../skills/daniel-self-media-top-mindset/) | 将 Daniel 的利他、真实藏露、情绪纪律、需求聚焦与商业闭环心法应用到自媒体决策。凡涉及 Daniel 个人 IP 的定位、选题、写稿、脚本、封面、跨平台改编、发布规划、增长、变现或复盘时必须先使用；不用于保证爆款、虚构经历、泄露隐私或自动发布。 | Unknown · unreviewed | Unscored | Catalog only |
+| [`daniel-writer`](../skills/daniel-writer/) | Daniel 的统一创作入口：按品牌、证据、声音和人机分工合同，完成选题、母故事、项目内容工作包、微信公众号、X、小红书、B站、知乎、抖音的起草改写与平台适配，并生成获批短视频脚本的本地制作交接和技术候选。适用于 AI、Agent、工具实测、教程、失败复盘、创作反思、图文卡片、口播分镜与跨平台内容生产。正式 Daniel… | Unknown · unreviewed | Unscored | Catalog only |
 | [`daniel-x-writer`](../skills/daniel-x-writer/) | Use for concise Chinese X/Twitter posts in Daniel's first-person voice, mixing human tension, numerical evidence, explicit decision rules, and a sharp reflective ending. | Project original · reviewed | Unscored | Catalog only |
 | [`doc-coauthoring`](../skills/doc-coauthoring/) | Guide users through a structured workflow for co-authoring documentation. Use when user wants to write documentation, proposals, technical specs, decision docs, or similar… | Unknown · unreviewed | Unscored | Portable optional assignment · structure checked · CCO, CMO, CPO, CSO |
 | [`docx`](../skills/docx/) | Comprehensive document creation, editing, and analysis with support for tracked changes, comments, formatting preservation, and text extraction. When Claude needs to work with… | Unknown · unreviewed | Unscored | Catalog only |
@@ -647,6 +653,7 @@ Create, edit, repurpose, and publish writing, images, audio, and video.
 | [`theme-factory`](../skills/theme-factory/) | Toolkit for styling artifacts with a theme. These artifacts can be slides, docs, reportings, HTML landing pages, etc. There are 10 pre-set themes with colors/fonts that you can… | Unknown · unreviewed | Unscored | Catalog only |
 | [`vectornode-image-gen`](../skills/vectornode-image-gen/) | GPT image generation/editing via VectorNode relay; auto-routes token vs per-request billing based on prompt length. | Unknown · unreviewed | Unscored | Catalog only |
 | [`vectronode-image`](../skills/vectronode-image/) | VectorNode 中转站 GPT Image 图片生成与编辑（按提示词长度自动路由 gpt-image-2 Token 计费 / gpt-image-2-all 按次计费）。Use when: 画图、生图、生成图片、gpt生图、VectorNode、gpt-image、image generate、image edit、编辑图片。Requires… | Unknown · unreviewed | Unscored | Catalog only |
+| [`video-benchmark-breakdown`](../skills/video-benchmark-breakdown/) | 对标视频拆解流水线：把竞品/爆款视频（B站/YouTube/抖音/快手/X 等）下载或提取→转写逐字稿→结构化拆解剧情、高光与脚本。适用「拆解这条爆款视频」「对标账号视频分析」「把竞品视频转成逐字稿」；不用于下载受版权保护内容用于再分发或规避平台限制。 | Unknown · unreviewed | Unscored | Catalog only |
 | [`video-caption-burner`](../skills/video-caption-burner/) | Burn existing subtitles or captions directly into video exports so they remain visible across platforms and players. Use when a team already has captions and needs a… | Unknown · unreviewed | Unscored | Catalog only |
 | [`video-content-analyzer`](../skills/video-content-analyzer/) | 下载视频并用AI分析内容 - 支持B站/抖音/YouTube等平台，提取语音内容并分析视频结构 | Unknown · unreviewed | Unscored | Catalog only |
 | [`video-downloader`](../skills/video-downloader/) | Download YouTube videos with customizable quality and format options. Use this skill when the user asks to download, save, or grab YouTube videos. Supports various quality… | Unknown · unreviewed | Unscored | Catalog only |
@@ -988,6 +995,8 @@ Create, analyze, and publish for major Chinese-language platforms and channels.
 | [`daily-douyin-content`](../skills/daily-douyin-content/) | 你是 CCO，Daniel Li 的内容 Agent。 | Project original · reviewed | Unscored | Catalog only |
 | [`daily-gzh-content`](../skills/daily-gzh-content/) | 公众号每日内容生产：选题→创作→素材生成→质量检查→保存→发布草稿 | Project original · reviewed | Unscored | Catalog only |
 | [`daily-xhs-content`](../skills/daily-xhs-content/) | 你是 CCO，Daniel Li 的内容 Agent。 | Project original · reviewed | Unscored | Catalog only |
+| [`daniel-wechat-writing`](../skills/daniel-wechat-writing/) | 微信公众号 AI 论文解读类爆款文章的写作 skill。对标新智元/机器之心/量子位， 从论文 arXiv 链接或主题出发，端到端产出可直接复制到公众号后台的成稿。 触发词："解读这篇论文"、"论文推文"、"AI论文公众号"、"arXiv 写公众号"、 "把论文改成公众号"、"paper explainer"。 适用：arXiv… | Unknown · unreviewed | Unscored | Catalog only |
+| [`daniel-xhs-writing`](../skills/daniel-xhs-writing/) | name: daniel-xhs-writing | Unknown · unreviewed | Unscored | Catalog only |
 | [`douyin-creator`](../skills/douyin-creator/) | Description needs review; inspect source. | Unknown · unreviewed | Unscored | Catalog only |
 | [`douyin-hot-trend`](../skills/douyin-hot-trend/) | 获取抖音热榜/热搜榜数据，包含热门视频、挑战赛、音乐等多领域热门内容，并输出标题、热度值、跳转链接及封面图（如有）。 | Unknown · unreviewed | Unscored | Catalog only |
 | [`douyin-publisher`](../skills/douyin-publisher/) | 抖音图文/视频发布（OpenClaw Browser 自动化）：登录检测→内容校验→上传页导航→填标题/正文→上传封面+素材→暂存离开。 | Unknown · unreviewed | Unscored | Catalog only · review: credentials, external-write |
@@ -1005,6 +1014,7 @@ Create, analyze, and publish for major Chinese-language platforms and channels.
 | [`redbook`](../skills/redbook/) | Search, read, analyze, and automate Xiaohongshu (小红书) content via CLI | Unknown · unreviewed | Unscored | Catalog only |
 | [`tianyancha-cn`](../skills/tianyancha-cn/) | 企业信息查询 - 天眼查/企查查/爱企查数据查询（Bloomberg 终端中国版） | Unknown · unreviewed | Unscored | Catalog only |
 | [`wechat-ai-radar`](../skills/wechat-ai-radar/) | 微信朋友圈AI雷达 — 自动化采集276+条朋友圈内容，通过AI视觉提取、分类分析、商机发现，生成结构化简报。支持每日定时任务，一键生成热点报告。 | Unknown · unreviewed | Unscored | Catalog only |
+| [`wechat-article-analysis`](../skills/wechat-article-analysis/) | 获取并深度分析微信公众号文章。输入 mp.weixin.qq.com 链接或公众号文章正文，输出可追溯的批判性阅读地图（议题/结论/论证链/证据核查/遗漏视角）。用于"分析这篇公众号文章"、"拆解这篇爆文"、"这篇文章可信吗"、"帮我解读公众号文章"等场景。获取被 robots.txt 拦截时走真实浏览器读取；分析内核复用… | Unknown · unreviewed | Unscored | Catalog only |
 | [`wechat-channel`](../skills/wechat-channel/) | 微信 (WeChat) 与 OpenClaw 的双向集成通道。基于 Wechaty + PadLocal 实现微信消息的接收和发送，支持私聊、群聊、@提及检测、图片/文件传输。当需要通过微信与 | Unknown · unreviewed | Unscored | Catalog only |
 | [`wechat-personal-message`](../skills/wechat-personal-message/) | 微信自动化助手 — 激活微信 → 置顶窗口 → 搜索联系人 → Vision OCR识别 → 进入聊天 → 自动发送。全程本地运行，支持 OCR 视觉反馈校验，可被外部工具调用。 | Unknown · unreviewed | Unscored | Catalog only |
 | [`wechat-pipeline`](../skills/wechat-pipeline/) | 公众号文章全自动流水线：写作→封面→发布。三段式编排 wechat-article-writer / code-to-image / md2wechat， 每段设断点检查，用户确认后才进入下一段。触发: '公众号创作' '写公众号文章' '公众号发布' '公众号流水线' '发公众号'。 Author: Daniel Li | Unknown · unreviewed | Unscored | Catalog only |

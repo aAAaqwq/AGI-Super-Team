@@ -2,22 +2,22 @@
   "$schema": "./skill-quality-baseline.schema.json",
   "schemaVersion": 1,
   "scope": "ratchet-current-structural-debt-without-claiming-semantic-verification",
-  "structureInvalid": 174,
-  "disclosureWarnings": 573,
-  "executionReviewRequired": 176,
+  "structureInvalid": 180,
+  "disclosureWarnings": 579,
+  "executionReviewRequired": 177,
   "issueCounts": {
     "description-missing-trigger": 264,
-    "description-over-180": 297,
+    "description-over-180": 302,
     "invalid-frontmatter-yaml": 35,
-    "link-outside-repository": 5,
-    "missing-frontmatter": 37,
+    "link-outside-repository": 7,
+    "missing-frontmatter": 39,
     "name-folder-mismatch": 71,
-    "over-500-lines": 55,
-    "personal-absolute-path": 52,
-    "scripts-without-test-evidence": 175,
+    "over-500-lines": 56,
+    "personal-absolute-path": 55,
+    "scripts-without-test-evidence": 176,
     "unmentioned-assets": 10,
     "unmentioned-references": 54,
-    "unmentioned-scripts": 76,
-    "unresolved-local-link": 33
+    "unmentioned-scripts": 77,
+    "unresolved-local-link": 35
   }
 }

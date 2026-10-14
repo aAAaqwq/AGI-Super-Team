@@ -1,0 +1,4 @@
+interface:
+  display_name: "Daniel 自动发布"
+  short_description: "通过真实浏览器安全完成多平台图文排版、人工确认、内容发布与结果核验"
+  default_prompt: "使用 $daniel-auto-publish，为这篇内容选择排版模板、生成预览，并通过真实浏览器安全发布。"

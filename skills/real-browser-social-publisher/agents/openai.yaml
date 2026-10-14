@@ -1,0 +1,4 @@
+interface:
+  display_name: "真实浏览器社媒发布"
+  short_description: "通过真实浏览器安全辅助完成多平台内容发布与结果核验"
+  default_prompt: "Use $real-browser-social-publisher to prepare and safely publish this content through the platform creator UI."
