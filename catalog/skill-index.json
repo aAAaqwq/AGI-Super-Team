@@ -23,7 +23,7 @@
       "title": "Cloud, DevOps & Reliability"
     },
     {
-      "count": 80,
+      "count": 81,
       "description": "Collect evidence, search sources, analyze data, and communicate findings.",
       "emoji": "📊",
       "id": "data-analytics-research",
@@ -44,14 +44,14 @@
       "title": "Product, Design & UX"
     },
     {
-      "count": 50,
+      "count": 51,
       "description": "Acquire audiences through positioning, campaigns, search, ads, and social growth.",
       "emoji": "📈",
       "id": "marketing-seo-growth",
       "title": "Marketing, SEO & Growth"
     },
     {
-      "count": 89,
+      "count": 94,
       "description": "Create, edit, repurpose, and publish writing, images, audio, and video.",
       "emoji": "✍️",
       "id": "content-media-publishing",
@@ -86,7 +86,7 @@
       "title": "Apps & Workflow Automation"
     },
     {
-      "count": 40,
+      "count": 43,
       "description": "Create, analyze, and publish for major Chinese-language platforms and channels.",
       "emoji": "🇨🇳",
       "id": "chinese-platform-workflows",
@@ -100,7 +100,7 @@
       "title": "Specialized Domains & Utilities"
     }
   ],
-  "inventoryCount": 837,
+  "inventoryCount": 847,
   "inventorySemantics": "tracked physical top-level directories with SKILL.md",
   "schemaVersion": 2,
   "skills": [
@@ -9719,6 +9719,45 @@
     {
       "assignments": [],
       "category_id": "content-media-publishing",
+      "classification": "slug:publish;metadata:frontmatter",
+      "classification_details": {
+        "matched_signals": [
+          "publish"
+        ],
+        "method": "slug",
+        "resolution_status": "rule-match",
+        "review_state": "unreviewed",
+        "runner_ups": [],
+        "winner": {
+          "category_id": "content-media-publishing",
+          "match_count": 1,
+          "matched_signals": [
+            "publish"
+          ],
+          "priority": 100,
+          "tie_detected": false
+        }
+      },
+      "curation": {
+        "runtime_evidence": "pending",
+        "status": "unscored"
+      },
+      "description": "通过用户自有的真实浏览器和 Computer Use，安全辅助抖音、小红书、快手、微信视频号、哔哩哔哩、YouTube、TikTok 与百家号的视频、图文或公众号文章发布。用于选择图文排版模板、生成并预览图片卡片或微信…",
+      "description_status": "source-text",
+      "path": "skills/daniel-auto-publish/SKILL.md",
+      "portability_class": "catalog-only",
+      "provenance": {
+        "origin_kind": "unknown",
+        "review_state": "unreviewed"
+      },
+      "review_signals": [],
+      "skill_id": "daniel-auto-publish",
+      "support_level": "catalog",
+      "used_by": []
+    },
+    {
+      "assignments": [],
+      "category_id": "content-media-publishing",
       "classification": "slug:content,writing;metadata:frontmatter",
       "classification_details": {
         "matched_signals": [
@@ -9766,6 +9805,172 @@
       },
       "review_signals": [],
       "skill_id": "daniel-content-writing-style",
+      "support_level": "catalog",
+      "used_by": []
+    },
+    {
+      "assignments": [],
+      "category_id": "content-media-publishing",
+      "classification": "slug:media;metadata:frontmatter",
+      "classification_details": {
+        "matched_signals": [
+          "media"
+        ],
+        "method": "slug",
+        "resolution_status": "rule-match",
+        "review_state": "unreviewed",
+        "runner_ups": [],
+        "winner": {
+          "category_id": "content-media-publishing",
+          "match_count": 1,
+          "matched_signals": [
+            "media"
+          ],
+          "priority": 100,
+          "tie_detected": false
+        }
+      },
+      "curation": {
+        "runtime_evidence": "pending",
+        "status": "unscored"
+      },
+      "description": "路由 Daniel 新媒体内容从选题、写作、视觉化、视频制作到多平台草稿与发布核验。适用于用户要求制作或分发 Daniel 品牌内容时；单纯文案润色优先直接使用 daniel-writer。",
+      "description_status": "source-text",
+      "path": "skills/daniel-new-media-ops/SKILL.md",
+      "portability_class": "catalog-only",
+      "provenance": {
+        "origin_kind": "unknown",
+        "review_state": "unreviewed"
+      },
+      "review_signals": [],
+      "skill_id": "daniel-new-media-ops",
+      "support_level": "catalog",
+      "used_by": []
+    },
+    {
+      "assignments": [],
+      "category_id": "content-media-publishing",
+      "classification": "slug:media;metadata:frontmatter",
+      "classification_details": {
+        "matched_signals": [
+          "media"
+        ],
+        "method": "slug",
+        "resolution_status": "rule-match",
+        "review_state": "unreviewed",
+        "runner_ups": [],
+        "winner": {
+          "category_id": "content-media-publishing",
+          "match_count": 1,
+          "matched_signals": [
+            "media"
+          ],
+          "priority": 100,
+          "tie_detected": false
+        }
+      },
+      "curation": {
+        "runtime_evidence": "pending",
+        "status": "unscored"
+      },
+      "description": "将 Daniel 的利他、真实藏露、情绪纪律、需求聚焦与商业闭环心法应用到自媒体决策。凡涉及 Daniel 个人 IP 的定位、选题、写稿、脚本、封面、跨平台改编、发布规划、增长、变现或复盘时必须先使用；不用于保证爆款、虚构经历、泄露隐私或自动发布。",
+      "description_status": "source-text",
+      "path": "skills/daniel-self-media-top-mindset/SKILL.md",
+      "portability_class": "catalog-only",
+      "provenance": {
+        "origin_kind": "unknown",
+        "review_state": "unreviewed"
+      },
+      "review_signals": [],
+      "skill_id": "daniel-self-media-top-mindset",
+      "support_level": "catalog",
+      "used_by": []
+    },
+    {
+      "assignments": [],
+      "category_id": "chinese-platform-workflows",
+      "classification": "slug:wechat;metadata:frontmatter",
+      "classification_details": {
+        "matched_signals": [
+          "wechat"
+        ],
+        "method": "slug",
+        "resolution_status": "priority-tie",
+        "review_state": "unreviewed",
+        "runner_ups": [
+          {
+            "category_id": "content-media-publishing",
+            "match_count": 1,
+            "matched_signals": [
+              "writing"
+            ],
+            "priority": 100,
+            "tied_for_first": true
+          }
+        ],
+        "winner": {
+          "category_id": "chinese-platform-workflows",
+          "match_count": 1,
+          "matched_signals": [
+            "wechat"
+          ],
+          "priority": 130,
+          "tie_detected": true
+        }
+      },
+      "curation": {
+        "runtime_evidence": "pending",
+        "status": "unscored"
+      },
+      "description": "微信公众号 AI 论文解读类爆款文章的写作 skill。对标新智元/机器之心/量子位， 从论文 arXiv 链接或主题出发，端到端产出可直接复制到公众号后台的成稿。 触发词：\"解读这篇论文\"、\"论文推文\"、\"AI论文公众号\"、\"arXiv 写公众号\"、 \"把论文改成公众号\"、\"paper explainer\"。 适用：arXiv…",
+      "description_status": "source-text",
+      "path": "skills/daniel-wechat-writing/SKILL.md",
+      "portability_class": "catalog-only",
+      "provenance": {
+        "origin_kind": "unknown",
+        "review_state": "unreviewed"
+      },
+      "review_signals": [],
+      "skill_id": "daniel-wechat-writing",
+      "support_level": "catalog",
+      "used_by": []
+    },
+    {
+      "assignments": [],
+      "category_id": "content-media-publishing",
+      "classification": "slug:writer;metadata:frontmatter",
+      "classification_details": {
+        "matched_signals": [
+          "writer"
+        ],
+        "method": "slug",
+        "resolution_status": "rule-match",
+        "review_state": "unreviewed",
+        "runner_ups": [],
+        "winner": {
+          "category_id": "content-media-publishing",
+          "match_count": 1,
+          "matched_signals": [
+            "writer"
+          ],
+          "priority": 100,
+          "tie_detected": false
+        }
+      },
+      "curation": {
+        "runtime_evidence": "pending",
+        "status": "unscored"
+      },
+      "description": "Daniel 的统一创作入口：按品牌、证据、声音和人机分工合同，完成选题、母故事、项目内容工作包、微信公众号、X、小红书、B站、知乎、抖音的起草改写与平台适配，并生成获批短视频脚本的本地制作交接和技术候选。适用于 AI、Agent、工具实测、教程、失败复盘、创作反思、图文卡片、口播分镜与跨平台内容生产。正式 Daniel…",
+      "description_status": "source-text",
+      "path": "skills/daniel-writer/SKILL.md",
+      "portability_class": "catalog-only",
+      "provenance": {
+        "origin_kind": "unknown",
+        "review_state": "unreviewed"
+      },
+      "review_signals": [],
+      "skill_id": "daniel-writer",
       "support_level": "catalog",
       "used_by": []
     },
@@ -9824,6 +10029,55 @@
       },
       "review_signals": [],
       "skill_id": "daniel-x-writer",
+      "support_level": "catalog",
+      "used_by": []
+    },
+    {
+      "assignments": [],
+      "category_id": "chinese-platform-workflows",
+      "classification": "slug:xhs;metadata:fallback",
+      "classification_details": {
+        "matched_signals": [
+          "xhs"
+        ],
+        "method": "slug",
+        "resolution_status": "priority-tie",
+        "review_state": "unreviewed",
+        "runner_ups": [
+          {
+            "category_id": "content-media-publishing",
+            "match_count": 1,
+            "matched_signals": [
+              "writing"
+            ],
+            "priority": 100,
+            "tied_for_first": true
+          }
+        ],
+        "winner": {
+          "category_id": "chinese-platform-workflows",
+          "match_count": 1,
+          "matched_signals": [
+            "xhs"
+          ],
+          "priority": 130,
+          "tie_detected": true
+        }
+      },
+      "curation": {
+        "runtime_evidence": "pending",
+        "status": "unscored"
+      },
+      "description": "name: daniel-xhs-writing",
+      "description_status": "source-text",
+      "path": "skills/daniel-xhs-writing/SKILL.md",
+      "portability_class": "catalog-only",
+      "provenance": {
+        "origin_kind": "unknown",
+        "review_state": "unreviewed"
+      },
+      "review_signals": [],
+      "skill_id": "daniel-xhs-writing",
       "support_level": "catalog",
       "used_by": []
     },
@@ -24408,6 +24662,64 @@
       ]
     },
     {
+      "assignments": [],
+      "category_id": "marketing-seo-growth",
+      "classification": "slug:social;metadata:frontmatter",
+      "classification_details": {
+        "matched_signals": [
+          "social"
+        ],
+        "method": "slug",
+        "resolution_status": "priority-tie",
+        "review_state": "unreviewed",
+        "runner_ups": [
+          {
+            "category_id": "content-media-publishing",
+            "match_count": 1,
+            "matched_signals": [
+              "publish"
+            ],
+            "priority": 100,
+            "tied_for_first": true
+          },
+          {
+            "category_id": "apps-workflow-automation",
+            "match_count": 1,
+            "matched_signals": [
+              "browser"
+            ],
+            "priority": 70,
+            "tied_for_first": true
+          }
+        ],
+        "winner": {
+          "category_id": "marketing-seo-growth",
+          "match_count": 1,
+          "matched_signals": [
+            "social"
+          ],
+          "priority": 105,
+          "tie_detected": true
+        }
+      },
+      "curation": {
+        "runtime_evidence": "pending",
+        "status": "unscored"
+      },
+      "description": "Safely prepare, review, and publish video or image posts through real creator-site browser interfaces using Computer Use with human approval gates. Use for Douyin, Xiaohongshu,…",
+      "description_status": "source-text",
+      "path": "skills/real-browser-social-publisher/SKILL.md",
+      "portability_class": "catalog-only",
+      "provenance": {
+        "origin_kind": "unknown",
+        "review_state": "unreviewed"
+      },
+      "review_signals": [],
+      "skill_id": "real-browser-social-publisher",
+      "support_level": "catalog",
+      "used_by": []
+    },
+    {
       "assignments": [
         {
           "agent": "PE",
@@ -34117,6 +34429,84 @@
     },
     {
       "assignments": [],
+      "category_id": "data-analytics-research",
+      "classification": "slug:knowledge;metadata:fallback",
+      "classification_details": {
+        "matched_signals": [
+          "knowledge"
+        ],
+        "method": "slug",
+        "resolution_status": "rule-match",
+        "review_state": "unreviewed",
+        "runner_ups": [],
+        "winner": {
+          "category_id": "data-analytics-research",
+          "match_count": 1,
+          "matched_signals": [
+            "knowledge"
+          ],
+          "priority": 95,
+          "tie_detected": false
+        }
+      },
+      "curation": {
+        "runtime_evidence": "pending",
+        "status": "unscored"
+      },
+      "description": "抖音 2026 年 9-10 月主推的知识类视频活动，核心特征：",
+      "description_status": "source-text",
+      "path": "skills/vibe-knowledge-award/SKILL.md",
+      "portability_class": "catalog-only",
+      "provenance": {
+        "origin_kind": "unknown",
+        "review_state": "unreviewed"
+      },
+      "review_signals": [],
+      "skill_id": "vibe-knowledge-award",
+      "support_level": "catalog",
+      "used_by": []
+    },
+    {
+      "assignments": [],
+      "category_id": "content-media-publishing",
+      "classification": "slug:video;metadata:frontmatter",
+      "classification_details": {
+        "matched_signals": [
+          "video"
+        ],
+        "method": "slug",
+        "resolution_status": "rule-match",
+        "review_state": "unreviewed",
+        "runner_ups": [],
+        "winner": {
+          "category_id": "content-media-publishing",
+          "match_count": 1,
+          "matched_signals": [
+            "video"
+          ],
+          "priority": 100,
+          "tie_detected": false
+        }
+      },
+      "curation": {
+        "runtime_evidence": "pending",
+        "status": "unscored"
+      },
+      "description": "对标视频拆解流水线：把竞品/爆款视频（B站/YouTube/抖音/快手/X 等）下载或提取→转写逐字稿→结构化拆解剧情、高光与脚本。适用「拆解这条爆款视频」「对标账号视频分析」「把竞品视频转成逐字稿」；不用于下载受版权保护内容用于再分发或规避平台限制。",
+      "description_status": "source-text",
+      "path": "skills/video-benchmark-breakdown/SKILL.md",
+      "portability_class": "catalog-only",
+      "provenance": {
+        "origin_kind": "unknown",
+        "review_state": "unreviewed"
+      },
+      "review_signals": [],
+      "skill_id": "video-benchmark-breakdown",
+      "support_level": "catalog",
+      "used_by": []
+    },
+    {
+      "assignments": [],
       "category_id": "content-media-publishing",
       "classification": "slug:video;metadata:frontmatter",
       "classification_details": {
@@ -35249,6 +35639,55 @@
       },
       "review_signals": [],
       "skill_id": "wechat-ai-radar",
+      "support_level": "catalog",
+      "used_by": []
+    },
+    {
+      "assignments": [],
+      "category_id": "chinese-platform-workflows",
+      "classification": "slug:wechat;metadata:frontmatter",
+      "classification_details": {
+        "matched_signals": [
+          "wechat"
+        ],
+        "method": "slug",
+        "resolution_status": "priority-tie",
+        "review_state": "unreviewed",
+        "runner_ups": [
+          {
+            "category_id": "content-media-publishing",
+            "match_count": 1,
+            "matched_signals": [
+              "article"
+            ],
+            "priority": 100,
+            "tied_for_first": true
+          }
+        ],
+        "winner": {
+          "category_id": "chinese-platform-workflows",
+          "match_count": 1,
+          "matched_signals": [
+            "wechat"
+          ],
+          "priority": 130,
+          "tie_detected": true
+        }
+      },
+      "curation": {
+        "runtime_evidence": "pending",
+        "status": "unscored"
+      },
+      "description": "获取并深度分析微信公众号文章。输入 mp.weixin.qq.com 链接或公众号文章正文，输出可追溯的批判性阅读地图（议题/结论/论证链/证据核查/遗漏视角）。用于\"分析这篇公众号文章\"、\"拆解这篇爆文\"、\"这篇文章可信吗\"、\"帮我解读公众号文章\"等场景。获取被 robots.txt 拦截时走真实浏览器读取；分析内核复用…",
+      "description_status": "source-text",
+      "path": "skills/wechat-article-analysis/SKILL.md",
+      "portability_class": "catalog-only",
+      "provenance": {
+        "origin_kind": "unknown",
+        "review_state": "unreviewed"
+      },
+      "review_signals": [],
+      "skill_id": "wechat-article-analysis",
       "support_level": "catalog",
       "used_by": []
     },

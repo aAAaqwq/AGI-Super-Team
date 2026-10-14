@@ -2,24 +2,24 @@
   "schemaVersion": 1,
   "scope": "deterministic-structural-evidence-not-semantic-verification",
   "summary": {
-    "inventoryCount": 837,
-    "structureInvalid": 174,
-    "disclosureWarnings": 573,
-    "executionReviewRequired": 176,
+    "inventoryCount": 847,
+    "structureInvalid": 180,
+    "disclosureWarnings": 579,
+    "executionReviewRequired": 177,
     "issueCounts": {
       "description-missing-trigger": 264,
-      "description-over-180": 297,
+      "description-over-180": 302,
       "invalid-frontmatter-yaml": 35,
-      "link-outside-repository": 5,
-      "missing-frontmatter": 37,
+      "link-outside-repository": 7,
+      "missing-frontmatter": 39,
       "name-folder-mismatch": 71,
-      "over-500-lines": 55,
-      "personal-absolute-path": 52,
-      "scripts-without-test-evidence": 175,
+      "over-500-lines": 56,
+      "personal-absolute-path": 55,
+      "scripts-without-test-evidence": 176,
       "unmentioned-assets": 10,
       "unmentioned-references": 54,
-      "unmentioned-scripts": 76,
-      "unresolved-local-link": 33
+      "unmentioned-scripts": 77,
+      "unresolved-local-link": 35
     }
   },
   "skills": [
@@ -1833,6 +1833,64 @@
     {
       "skill_id": "daily-xhs-content",
       "path": "skills/daily-xhs-content/SKILL.md",
+      "structure_status": "invalid",
+      "disclosure_status": "pass",
+      "execution_status": "not-applicable",
+      "issues": [
+        "missing-frontmatter"
+      ]
+    },
+    {
+      "skill_id": "daniel-auto-publish",
+      "path": "skills/daniel-auto-publish/SKILL.md",
+      "structure_status": "pass",
+      "disclosure_status": "warn",
+      "execution_status": "not-applicable",
+      "issues": [
+        "description-over-180"
+      ]
+    },
+    {
+      "skill_id": "daniel-new-media-ops",
+      "path": "skills/daniel-new-media-ops/SKILL.md",
+      "structure_status": "invalid",
+      "disclosure_status": "warn",
+      "execution_status": "not-applicable",
+      "issues": [
+        "link-outside-repository",
+        "personal-absolute-path"
+      ]
+    },
+    {
+      "skill_id": "daniel-wechat-writing",
+      "path": "skills/daniel-wechat-writing/SKILL.md",
+      "structure_status": "invalid",
+      "disclosure_status": "warn",
+      "execution_status": "not-applicable",
+      "issues": [
+        "description-over-180",
+        "over-500-lines",
+        "personal-absolute-path",
+        "unresolved-local-link"
+      ]
+    },
+    {
+      "skill_id": "daniel-writer",
+      "path": "skills/daniel-writer/SKILL.md",
+      "structure_status": "invalid",
+      "disclosure_status": "warn",
+      "execution_status": "review-required",
+      "issues": [
+        "description-over-180",
+        "link-outside-repository",
+        "personal-absolute-path",
+        "scripts-without-test-evidence",
+        "unmentioned-scripts"
+      ]
+    },
+    {
+      "skill_id": "daniel-xhs-writing",
+      "path": "skills/daniel-xhs-writing/SKILL.md",
       "structure_status": "invalid",
       "disclosure_status": "pass",
       "execution_status": "not-applicable",
@@ -4517,6 +4575,16 @@
       ]
     },
     {
+      "skill_id": "real-browser-social-publisher",
+      "path": "skills/real-browser-social-publisher/SKILL.md",
+      "structure_status": "pass",
+      "disclosure_status": "warn",
+      "execution_status": "not-applicable",
+      "issues": [
+        "description-over-180"
+      ]
+    },
+    {
       "skill_id": "receiving-code-review",
       "path": "skills/receiving-code-review/SKILL.md",
       "structure_status": "pass",
@@ -6548,6 +6616,26 @@
       ]
     },
     {
+      "skill_id": "vibe-knowledge-award",
+      "path": "skills/vibe-knowledge-award/SKILL.md",
+      "structure_status": "invalid",
+      "disclosure_status": "pass",
+      "execution_status": "not-applicable",
+      "issues": [
+        "missing-frontmatter"
+      ]
+    },
+    {
+      "skill_id": "video-benchmark-breakdown",
+      "path": "skills/video-benchmark-breakdown/SKILL.md",
+      "structure_status": "invalid",
+      "disclosure_status": "pass",
+      "execution_status": "not-applicable",
+      "issues": [
+        "unresolved-local-link"
+      ]
+    },
+    {
       "skill_id": "video-caption-burner",
       "path": "skills/video-caption-burner/SKILL.md",
       "structure_status": "pass",
@@ -6795,6 +6883,16 @@
         "description-missing-trigger",
         "scripts-without-test-evidence",
         "unmentioned-scripts"
+      ]
+    },
+    {
+      "skill_id": "wechat-article-analysis",
+      "path": "skills/wechat-article-analysis/SKILL.md",
+      "structure_status": "pass",
+      "disclosure_status": "warn",
+      "execution_status": "not-applicable",
+      "issues": [
+        "description-over-180"
       ]
     },
     {

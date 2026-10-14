@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "policy": {
+    "auto_install": false,
+    "exact_version_lock": false,
+    "report_actual_versions": true,
+    "media_backend": "pyav",
+    "forbidden_runtime_dependencies": [
+      "ffmpeg",
+      "ffprobe"
+    ]
+  },
+  "dependencies": {
+    "yt-dlp": {
+      "kind": "python_module_or_executable",
+      "required_for": [
+        "acfun",
+        "cctv",
+        "facebook_reels",
+        "instagram_reels",
+        "mgtv",
+        "pearvideo",
+        "sohu",
+        "tencent_video",
+        "tiktok",
+        "twitch_clips",
+        "x",
+        "youtube"
+      ],
+      "version_policy": "Use a currently supported version and report the detected version; do not pin permanently.",
+      "observed_versions": [
+        "2025.10.14",
+        "2026.07.04"
+      ]
+    },
+    "av": {
+      "kind": "python_package",
+      "display_name": "PyAV",
+      "required_for": [
+        "audio_conversion",
+        "video_understanding"
+      ],
+      "optional_for": [
+        "download_verification"
+      ],
+      "version_policy": "Use an installed PyAV version that exposes the required decode, resample, and encode APIs; report the detected version.",
+      "observed_versions": [
+        "15.1.0",
+        "18.0.0"
+      ]
+    },
+    "lark-cli": {
+      "kind": "executable",
+      "required_for": [
+        "lark_minutes"
+      ],
+      "observed_version": "1.0.80"
+    }
+  }
+}
