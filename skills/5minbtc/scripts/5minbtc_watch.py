@@ -166,17 +166,13 @@ def push(msg):
 
 
 def run_engine():
+    """优先走常驻引擎服务 (连接复用, 实测 ~3.7s); 不可用则回退子进程 (~9s)。"""
     try:
-        out = subprocess.run([PY, str(ENGINE)], capture_output=True,
-                             text=True, timeout=45)
-    except subprocess.TimeoutExpired:
-        return None, "TimeoutExpired(45s)"
+        from engine_client import run_engine as _run
+        d = _run()
+        return (d, None) if d is not None else (None, "engine unavailable")
     except Exception as e:
         return None, f"{type(e).__name__}: {e}"
-    try:
-        return json.loads(out.stdout), None
-    except json.JSONDecodeError as e:
-        return None, f"JSONDecode {e}; stderr={out.stderr.strip()[:200]}"
 
 
 def run_settle_all():
