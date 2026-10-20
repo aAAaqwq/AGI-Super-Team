@@ -16,6 +16,7 @@ import json
 import os
 import subprocess
 import sys
+import threading
 import time
 import urllib.request
 from datetime import datetime, timezone, timedelta
@@ -162,19 +163,26 @@ def run_engine():
 
 
 def push(msg, enabled=True):
+    """异步推送 — 永不阻塞交易主循环。
+    同步版会把循环卡住 2.3s(成功) ~ 32s(重试耗尽), 而主循环每轮光引擎就要 12s;
+    盘口机会是按秒计的, 让 Telegram 的抖动决定下单时机不可接受。"""
     if not enabled:
         return
-    # 超时必须 > telegram_push.send() 的最坏预算 (3×10+2×1=32s), 否则重试会被杀在半路。
-    # 此前是 20s < 旧预算 49s —— 约 14% 的推送在"差一点成功"处被静默丢弃。
-    try:
-        r = subprocess.run([PY, str(PUSH), msg], capture_output=True, text=True, timeout=40)
-        out = (r.stdout or "").strip()
-        if out.startswith("ERR") or r.returncode != 0:
-            print(f"[push失败] {out or (r.stderr or '').strip()[:160]}", flush=True)
-    except subprocess.TimeoutExpired:
-        print("[push失败] TimeoutExpired(40s)", flush=True)
-    except Exception as e:
-        print(f"[push失败] {type(e).__name__}: {e}", flush=True)
+
+    def _send():
+        # 超时必须 > telegram_push.send() 的最坏预算 (3×10+2×1=32s), 否则重试会被杀在半路。
+        # 此前是 20s < 旧预算 49s —— 约 14% 的推送在"差一点成功"处被静默丢弃。
+        try:
+            r = subprocess.run([PY, str(PUSH), msg], capture_output=True, text=True, timeout=40)
+            out = (r.stdout or "").strip()
+            if out.startswith("ERR") or r.returncode != 0:
+                print(f"[push失败] {out or (r.stderr or '').strip()[:160]}", flush=True)
+        except subprocess.TimeoutExpired:
+            print("[push失败] TimeoutExpired(40s)", flush=True)
+        except Exception as e:
+            print(f"[push失败] {type(e).__name__}: {e}", flush=True)
+
+    threading.Thread(target=_send, daemon=True).start()
 
 
 # 2026-09-10 按最小无用原则删除的死代码 (均无调用点, 可从 git 历史取回):
@@ -363,6 +371,12 @@ def main():
           f"min-edge {args.min_edge} | 下单时段 {sorted(active_hours)}点", flush=True)
 
     while True:
+        # 结算/挂单检查放在引擎之前: 二者都不依赖引擎输出 (settle_open 只看账本时间戳,
+        # check_pending 只用缓存价), 而引擎单次约 12s —— 放在后面会让每条结算推送
+        # 白等一个完整引擎周期。
+        check_pending(args.push)
+        settle_open(load_paper(), args.push)
+
         d = run_engine()
         if d is None:
             time.sleep(args.refresh)
@@ -449,10 +463,6 @@ def main():
                           f"(edge {prob_side-ask:+.2f}) ofi_n={(d.get('ofi') or {}).get('ofi_n')}",
                           flush=True)
                     push(fmt_order(d, side, ask, prob_side), args.push)
-
-        # 检查挂单 + 结算已收盘持仓 (每5秒)
-        check_pending(args.push)
-        settle_open(load_paper(), args.push)
 
         time.sleep(args.refresh)
 
