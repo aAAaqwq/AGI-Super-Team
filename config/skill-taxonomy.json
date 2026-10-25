@@ -571,7 +571,8 @@
     "soushen-hunter": "data-analytics-research",
     "tdd-workflow": "software-engineering",
     "xiaohongshu-growth": "chinese-platform-workflows",
-    "bb-scalper": "finance-trading-markets"
+    "bb-scalper": "finance-trading-markets",
+    "agent-qa": "software-engineering"
   },
   "overrideRationales": {
     "ads-agent": "Its primary user outcome is campaign acquisition, not general agent orchestration.",
@@ -597,7 +598,8 @@
     "soushen-hunter": "The opaque product name hides a Bing search and deep webpage extraction workflow whose primary output is structured research evidence.",
     "tdd-workflow": "The workflow exists to implement and verify software changes.",
     "xiaohongshu-growth": "The platform-specific publishing and growth workflow belongs with Chinese platforms.",
-    "bb-scalper": "The core outcome is crypto futures Bollinger mean-reversion trading, not general utilities."
+    "bb-scalper": "The core outcome is crypto futures Bollinger mean-reversion trading, not general utilities.",
+    "agent-qa": "The primary outcome is application regression testing and failure review; agent is part of the tool name, not an orchestration workflow."
   },
   "riskLabels": [
     {
@@ -692,6 +694,11 @@
     "ziliu-publisher": [
       "credentials",
       "external-write"
+    ],
+    "agent-qa": [
+      "credentials",
+      "external-write",
+      "personal-data"
     ]
   }
 }

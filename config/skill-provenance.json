@@ -817,6 +817,28 @@
         "skills/bb-scalper/docs/backtest-records.md"
       ],
       "creation_commit": "a3b942f64e1535103fc569f769ba6de07b5f385f"
+    },
+    {
+      "skill_id": "agent-qa",
+      "origin_kind": "unknown",
+      "review_state": "unreviewed",
+      "authors": [
+        "vostride"
+      ],
+      "license": {
+        "spdx": "MIT",
+        "evidence": "LICENSE"
+      },
+      "declared_hints": [
+        "Original instructions contributed for this repository using the linked public agent-qa documentation. Authorship and curation review are pending; no runtime verification is claimed.",
+        "The external agent-qa runtime is separately licensed FSL-1.1-ALv2 and is not bundled."
+      ],
+      "evidence": [
+        "skills/agent-qa/SKILL.md",
+        "https://vostride.com/docs/agent-qa/cli",
+        "https://vostride.com/docs/agent-qa/guides/review-a-run",
+        "https://vostride.com/docs/agent-qa/memory/inspect"
+      ]
     }
   ]
 }
