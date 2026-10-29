@@ -38,11 +38,14 @@ class Handler(BaseHTTPRequestHandler):
 
     def _send(self, code, payload):
         body = json.dumps(payload, ensure_ascii=False).encode()
-        self.send_response(code)
-        self.send_header("Content-Type", "application/json")
-        self.send_header("Content-Length", str(len(body)))
-        self.end_headers()
-        self.wfile.write(body)
+        try:
+            self.send_response(code)
+            self.send_header("Content-Type", "application/json")
+            self.send_header("Content-Length", str(len(body)))
+            self.end_headers()
+            self.wfile.write(body)
+        except BrokenPipeError:
+            pass  # 客户端已断开(通常是自己超时), 不影响服务继续运行
 
     def do_GET(self):
         path = self.path.split("?")[0]
@@ -53,14 +56,23 @@ class Handler(BaseHTTPRequestHandler):
         if path != "/predict":
             self._send(404, {"error": "not found"})
             return
-        try:
-            with _run_lock:
-                result = engine.run()
-            _served["count"] += 1
-            _served["last_ts"] = time.strftime("%H:%M:%S")
-            self._send(200, result)
-        except Exception as e:  # 网络等异常 → 调用方据此回退
-            self._send(500, {"error": f"{type(e).__name__}: {e}"})
+        result = None
+        last_err = None
+        for attempt in (0, 1):
+            try:
+                with _run_lock:
+                    result = engine.run()
+                break
+            except Exception as e:
+                last_err = e
+                if attempt == 0:
+                    time.sleep(1)  # 瞬时网络错误: 隔 1 秒重试一次, 避免把整轮打成 500
+        if result is None:
+            self._send(500, {"error": f"{type(last_err).__name__}: {last_err}"})
+            return
+        _served["count"] += 1
+        _served["last_ts"] = time.strftime("%H:%M:%S")
+        self._send(200, result)
 
     def log_message(self, *args):
         pass  # 不写访问日志, 避免刷屏

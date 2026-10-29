@@ -14,6 +14,7 @@ SKILL = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ENGINE = os.path.join(SKILL, "5minbtc-engine-v6.0.py")
 PY = "/usr/bin/python3"
 SERVER_URL = os.environ.get("ENGINE_SERVER_URL", "http://127.0.0.1:8791/predict")
+HEALTH_URL = SERVER_URL.rsplit("/", 1)[0] + "/health"
 
 _last_path = {"value": None}  # 诊断用: "server" / "subprocess"
 
@@ -22,16 +23,30 @@ def last_path():
     return _last_path["value"]
 
 
-def run_engine(server_timeout=12, subprocess_timeout=45):
-    """返回引擎结果 dict; 两条路都不通则返回 None (调用方自行决定重试)。"""
+def _server_alive(timeout=2):
     try:
-        with urllib.request.urlopen(SERVER_URL, timeout=server_timeout) as r:
-            data = json.loads(r.read())
-        if isinstance(data, dict) and "prediction" in data:
-            _last_path["value"] = "server"
-            return data
+        with urllib.request.urlopen(HEALTH_URL, timeout=timeout) as r:
+            return json.loads(r.read()).get("ok") is True
     except Exception:
-        pass
+        return False
+
+
+def run_engine(server_timeout=35, subprocess_timeout=45):
+    """返回引擎结果 dict; 两条路都不通则返回 None (调用方自行决定重试)。
+
+    先探活再调用: 引擎正常约 8s, 网络抖动时会到 20s+。若用固定短超时,
+    "服务慢"会被误判成"服务挂"→ 回退到更慢的子进程(45s), 反而更糟。
+    实测 2026-10-29 因此连丢 3 根 K 线。
+    """
+    if _server_alive():
+        try:
+            with urllib.request.urlopen(SERVER_URL, timeout=server_timeout) as r:
+                data = json.loads(r.read())
+            if isinstance(data, dict) and "prediction" in data:
+                _last_path["value"] = "server"
+                return data
+        except Exception:
+            pass
 
     try:
         out = subprocess.run([PY, ENGINE], capture_output=True, text=True,

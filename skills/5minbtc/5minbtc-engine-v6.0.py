@@ -120,7 +120,7 @@ def fetch_klines(symbol="BTCUSDT", interval="5m", limit=80):
     # limit=80: 代码里最长回看是 vol_regime_ratio 的 long=60 (+EMA/MACD 预热),
     # 同快照实测 80 根与 200 根的指标最大偏差 0.117%, 故原先的 200 根是 3.3 倍冗余。
     path = f"/api/v3/klines?symbol={symbol}&interval={interval}&limit={limit}"
-    raw = json.loads(_priv_get("data-api.binance.vision", path, timeout=10,
+    raw = json.loads(_priv_get("data-api.binance.vision", path, timeout=6,
                                headers={"User-Agent": "5minbtc/6.0"}))
     return [{"o": float(c[1]), "h": float(c[2]), "l": float(c[3]), "c": float(c[4]),
              "v": float(c[5]), "ct": int(c[6]),
@@ -129,7 +129,7 @@ def fetch_klines(symbol="BTCUSDT", interval="5m", limit=80):
 def fetch_depth(symbol="BTCUSDT", limit=20):
     try:
         path = f"/api/v3/depth?symbol={symbol}&limit={limit}"
-        data = json.loads(_priv_get("data-api.binance.vision", path, timeout=5,
+        data = json.loads(_priv_get("data-api.binance.vision", path, timeout=4,
                                     headers={"User-Agent": "5minbtc/6.0"}))
         bids = [(float(b[0]), float(b[1])) for b in data["bids"][:limit]]
         asks = [(float(a[0]), float(a[1])) for a in data["asks"][:limit]]
