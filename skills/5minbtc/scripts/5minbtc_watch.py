@@ -62,14 +62,20 @@ def _load_predict_env():
         pass
 
 
+MAX_QUOTE_AGE_SEC = 60  # 缓存报价超过这个年龄即视为不可用
+
+
 def fetch_predict_prices():
     """返回 (up_price, down_price) 或 (None, None).
-    优先读 WS 实时缓存 (~/bb-auto/prediction-ws.json, <200ms), 失败则 REST 轮询兜底."""
+    优先读 WS 实时缓存 (~/bb-auto/prediction-ws.json, <200ms), 失败则 REST 轮询兜底.
+    超过 MAX_QUOTE_AGE_SEC 的缓存直接丢弃, 免得用作废价格算 edge (见 realtime 同名注释)."""
     try:
         cache = json.loads((Path.home() / "bb-auto" / "prediction-ws.json").read_text())
-        cur = cache.get("current") or {}
-        if cur.get("up_ask") is not None and cur.get("down_ask") is not None:
-            return float(cur["up_ask"]), float(cur["down_ask"])
+        age = (time.time() * 1000 - (cache.get("updated_ms") or 0)) / 1000
+        if age <= MAX_QUOTE_AGE_SEC:
+            cur = cache.get("current") or {}
+            if cur.get("up_ask") is not None and cur.get("down_ask") is not None:
+                return float(cur["up_ask"]), float(cur["down_ask"])
     except Exception:
         pass
     try:

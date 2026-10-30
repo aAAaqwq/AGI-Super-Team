@@ -27,7 +27,10 @@ ENV_FILE = Path.home() / "bb-auto" / "prediction.env"
 CACHE = Path.home() / "bb-auto" / "prediction-ws.json"
 BASE = "wss://api.binance.com/sapi/wss"
 TOPIC = "web3_prediction_orderbook_data"   # 聚合所有市场
-REST_REFRESH_SEC = 300                      # 每根 5min K线刷新一次 UP/DOWN 权威价
+REST_REFRESH_SEC = 30                       # 每 30 秒刷新 UP/DOWN 权威价
+# 原为 300s（每根 K 线一次）。但 realtime/watch 现在有 60s 新鲜度防线
+# (MAX_QUOTE_AGE_SEC)：WS 稳定不重连时，300s 的刷新间隔会让合法数据被判为陈旧。
+# 这是一个 5 分钟结算的市场，30s ≈ 每根 K 线 10 个报价点，才是合理粒度。
 WS_PING = 30                                # 心跳秒
 
 

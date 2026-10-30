@@ -44,17 +44,29 @@ def load_env():
                 os.environ.setdefault(k.strip(), v.strip())
 
 
+MAX_QUOTE_AGE_SEC = 60  # 缓存报价超过这个年龄即视为不可用
+
+
 def get_up_down_price():
     """拉当前 BTC 5m 预测市场 UP/DOWN 真实价. 失败返回 (None, None).
     优先读 WS 实时缓存 (~/bb-auto/prediction-ws.json, <1ms); 缓存无值才走 REST 兜底.
-    允许单边: 调用方只取所需的那一边, 单边命中即可算 edge, 不必两边齐全."""
+    允许单边: 调用方只取所需的那一边, 单边命中即可算 edge, 不必两边齐全.
+
+    ⚠️ 新鲜度防线: 超过 MAX_QUOTE_AGE_SEC 的缓存一律丢弃。
+    2026-10-30 因 API key 的 IP 白名单失效, 缓存积压了 7.6 小时,
+    系统仍拿作废价格算 edge 并下单 7 小时 —— 没有报错, 只是安静地用旧数据。
+    宁可返回"不可用", 也不要用过期价格交易。"""
     try:
-        cur = (json.loads((Path.home() / "bb-auto" / "prediction-ws.json").read_text())
-               .get("current") or {})
-        up, dn = cur.get("up_ask"), cur.get("down_ask")
-        if up is not None or dn is not None:
-            return (float(up) if up is not None else None,
-                    float(dn) if dn is not None else None)
+        cache = json.loads((Path.home() / "bb-auto" / "prediction-ws.json").read_text())
+        age = (time.time() * 1000 - (cache.get("updated_ms") or 0)) / 1000
+        if age <= MAX_QUOTE_AGE_SEC:
+            cur = cache.get("current") or {}
+            up, dn = cur.get("up_ask"), cur.get("down_ask")
+            if up is not None or dn is not None:
+                return (float(up) if up is not None else None,
+                        float(dn) if dn is not None else None)
+        else:
+            print(f"[取价] 缓存陈旧 {age:.0f}s > {MAX_QUOTE_AGE_SEC}s，判定不可用", flush=True)
     except Exception:
         pass
     try:
