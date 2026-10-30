@@ -62,35 +62,62 @@ def _load_predict_env():
         pass
 
 
-MAX_QUOTE_AGE_SEC = 60  # 缓存报价超过这个年龄即视为不可用
+MAX_QUOTE_AGE_SEC = 60        # 常时段允许的缓存年龄
+MAX_QUOTE_AGE_TAIL_SEC = 15   # 尾盘（K线进度 ≥ 80%）收紧
+TAIL_PROGRESS_PCT = 80
+QUOTE_SUM_MIN, QUOTE_SUM_MAX = 0.97, 1.15
+
+
+def _candle_progress_pct():
+    now = datetime.datetime.now(CST)
+    return ((now.minute % 5) * 60 + now.second) / 300 * 100
 
 
 def fetch_predict_prices():
     """返回 (up_price, down_price) 或 (None, None).
-    优先读 WS 实时缓存 (~/bb-auto/prediction-ws.json, <200ms), 失败则 REST 轮询兜底.
-    超过 MAX_QUOTE_AGE_SEC 的缓存直接丢弃, 免得用作废价格算 edge (见 realtime 同名注释)."""
+
+    四道防线，与 realtime.get_up_down_price 完全一致：
+      1) 新鲜度：常时段 60s，尾盘 15s（尾盘价格变化极快）
+      2) 完整性：必须两边都有（_token_price 会在无卖单时静默返回买价）
+      3) 一致性：UP+DOWN ∈ [0.99, 1.15]（两边都是真卖价时必然 >1）
+      4) 未结算：缓存里的市场不能已经结束（换线瞬间会残留上一根 K 线的价格）
+    """
+    max_age = (MAX_QUOTE_AGE_TAIL_SEC if _candle_progress_pct() >= TAIL_PROGRESS_PCT
+               else MAX_QUOTE_AGE_SEC)
+    up = dn = None
     try:
         cache = json.loads((Path.home() / "bb-auto" / "prediction-ws.json").read_text())
         age = (time.time() * 1000 - (cache.get("updated_ms") or 0)) / 1000
-        if age <= MAX_QUOTE_AGE_SEC:
-            cur = cache.get("current") or {}
-            if cur.get("up_ask") is not None and cur.get("down_ask") is not None:
-                return float(cur["up_ask"]), float(cur["down_ask"])
+        cur = cache.get("current") or {}
+        end_ms = cur.get("market_end_ms")
+        if end_ms and int(end_ms) <= time.time() * 1000:
+            pass  # 市场已结束 → 丢弃，落到 REST 兜底
+        elif age <= max_age:
+            up, dn = cur.get("up_ask"), cur.get("down_ask")
     except Exception:
         pass
-    try:
-        import importlib
-        _load_predict_env()
-        if str(SCRIPTS) not in sys.path:
-            sys.path.insert(0, str(SCRIPTS))
-        trader = importlib.import_module("5minbtc_trader")
-        found = trader.find_btc_5m_market()
-        if not found:
+
+    if up is None or dn is None:
+        try:
+            import importlib
+            _load_predict_env()
+            if str(SCRIPTS) not in sys.path:
+                sys.path.insert(0, str(SCRIPTS))
+            trader = importlib.import_module("5minbtc_trader")
+            found = trader.find_btc_5m_market()
+            if found:
+                _, market_id, up_tok, down_tok, _, _ = found
+                up = trader._token_price(market_id, up_tok)
+                dn = trader._token_price(market_id, down_tok)
+        except Exception:
             return None, None
-        _, market_id, up_tok, down_tok, _, _ = found
-        return trader._token_price(market_id, up_tok), trader._token_price(market_id, down_tok)
-    except Exception:
+
+    if up is None or dn is None:
         return None, None
+    s = float(up) + float(dn)
+    if not (QUOTE_SUM_MIN <= s <= QUOTE_SUM_MAX):
+        return None, None
+    return float(up), float(dn)
 
 
 def paper_positions():

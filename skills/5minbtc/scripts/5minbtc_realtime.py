@@ -44,43 +44,70 @@ def load_env():
                 os.environ.setdefault(k.strip(), v.strip())
 
 
-MAX_QUOTE_AGE_SEC = 60  # 缓存报价超过这个年龄即视为不可用
+MAX_QUOTE_AGE_SEC = 60        # 常时段允许的缓存年龄
+MAX_QUOTE_AGE_TAIL_SEC = 15   # 尾盘（K线进度 ≥ 80%）收紧到这个值
+TAIL_PROGRESS_PCT = 80
+QUOTE_SUM_MIN, QUOTE_SUM_MAX = 0.97, 1.15
+
+
+def _candle_progress_pct():
+    now = datetime.now(CST)
+    return ((now.minute % 5) * 60 + now.second) / 300 * 100
 
 
 def get_up_down_price():
     """拉当前 BTC 5m 预测市场 UP/DOWN 真实价. 失败返回 (None, None).
-    优先读 WS 实时缓存 (~/bb-auto/prediction-ws.json, <1ms); 缓存无值才走 REST 兜底.
-    允许单边: 调用方只取所需的那一边, 单边命中即可算 edge, 不必两边齐全.
 
-    ⚠️ 新鲜度防线: 超过 MAX_QUOTE_AGE_SEC 的缓存一律丢弃。
-    2026-10-30 因 API key 的 IP 白名单失效, 缓存积压了 7.6 小时,
-    系统仍拿作废价格算 edge 并下单 7 小时 —— 没有报错, 只是安静地用旧数据。
-    宁可返回"不可用", 也不要用过期价格交易。"""
+    三道防线, 每一条都是踩过的坑:
+    1) 新鲜度: 常时段 60s; 尾盘(K线进度≥80%)收紧到 15s。
+       实测尾盘 18 秒 UP 价能走 11 美分, 60s 前的价完全不可参考。
+       2026-10-30 IP 白名单失效 → 缓存积压 7.6 小时, 系统仍拿作废价下单 7 小时。
+    2) 完整性: 必须两边都有。_token_price() 在没有卖单时会静默返回买价,
+       单边数据无法交叉验证, 一律不用。
+    3) 一致性: UP+DOWN 必须落在 [0.99, 1.15]。两边都是真卖价时和 = 1+双边价差,
+       必然 >1; 实测 9% 的历史报价和 <1.00 —— 那是买卖价混用, 会让 edge 被高估。
+    """
+    max_age = (MAX_QUOTE_AGE_TAIL_SEC if _candle_progress_pct() >= TAIL_PROGRESS_PCT
+               else MAX_QUOTE_AGE_SEC)
+    up = dn = None
     try:
         cache = json.loads((Path.home() / "bb-auto" / "prediction-ws.json").read_text())
         age = (time.time() * 1000 - (cache.get("updated_ms") or 0)) / 1000
-        if age <= MAX_QUOTE_AGE_SEC:
-            cur = cache.get("current") or {}
+        cur = cache.get("current") or {}
+        end_ms = cur.get("market_end_ms")
+        # 第 4 道防线: 换线瞬间缓存仍指向上一根已结算的市场(0.97/0.03),
+        # 而"新鲜/两边齐全/和值1.0"三项检查全部通过 —— 只有结束时间能识别。
+        if end_ms and int(end_ms) <= time.time() * 1000:
+            print(f"[取价] 缓存市场已结束 end={end_ms}（上一根K线的报价），判定不可用", flush=True)
+        elif age <= max_age:
             up, dn = cur.get("up_ask"), cur.get("down_ask")
-            if up is not None or dn is not None:
-                return (float(up) if up is not None else None,
-                        float(dn) if dn is not None else None)
         else:
-            print(f"[取价] 缓存陈旧 {age:.0f}s > {MAX_QUOTE_AGE_SEC}s，判定不可用", flush=True)
+            print(f"[取价] 缓存陈旧 {age:.0f}s > {max_age}s，判定不可用", flush=True)
     except Exception:
         pass
-    try:
-        load_env()
-        sys.path.insert(0, str(SKILL / "scripts"))
-        import importlib
-        trader = importlib.import_module("5minbtc_trader")
-        found = trader.find_btc_5m_market()
-        if not found:
+
+    if up is None or dn is None:
+        try:
+            load_env()
+            sys.path.insert(0, str(SKILL / "scripts"))
+            import importlib
+            trader = importlib.import_module("5minbtc_trader")
+            found = trader.find_btc_5m_market()
+            if found:
+                _, mid, up_tok, dn_tok, _, _ = found
+                up = trader._token_price(mid, up_tok)
+                dn = trader._token_price(mid, dn_tok)
+        except Exception:
             return None, None
-        _, mid, up_tok, dn_tok, _, _ = found
-        return trader._token_price(mid, up_tok), trader._token_price(mid, dn_tok)
-    except Exception:
+
+    if up is None or dn is None:
+        print(f"[取价] 单边缺失 UP={up} DOWN={dn}，判定不可用", flush=True)
         return None, None
+    s = float(up) + float(dn)
+    if not (QUOTE_SUM_MIN <= s <= QUOTE_SUM_MAX):
+        print(f"[取价] 双边和 {s:.3f} 超出 [{QUOTE_SUM_MIN}, {QUOTE_SUM_MAX}]，判定不可信", flush=True)
+        return None, None
+    return float(up), float(dn)
 
 
 def load_paper():

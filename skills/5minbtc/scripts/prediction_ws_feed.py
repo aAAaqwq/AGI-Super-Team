@@ -84,8 +84,12 @@ def rest_current():
         found = trader.find_btc_5m_market()
         if not found:
             return None
-        _, market_id, up_tok, down_tok, _, _ = found
+        _, market_id, up_tok, down_tok, _, end_date = found
         return {"market_id": market_id, "up_token": up_tok, "down_token": down_tok,
+                # 市场结束时间(epoch ms)。消费端据此判断"这份报价是不是已经结算的旧市场":
+                # 2026-10-30 实测换线瞬间(20:10:00)缓存仍是上一根K线的 0.97/0.03,
+                # 而且"新鲜、两边齐全、和值1.0"三道检查全过 —— 只有结束时间能识别它。
+                "market_end_ms": int(end_date) if end_date else None,
                 "up_ask": trader._token_price(market_id, up_tok),
                 "down_ask": trader._token_price(market_id, down_tok),
                 "ts": int(time.time() * 1000)}
