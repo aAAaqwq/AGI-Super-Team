@@ -9,7 +9,7 @@
       "title": "AI Agents & Orchestration"
     },
     {
-      "count": 85,
+      "count": 86,
       "description": "Build, test, review, debug, and maintain applications and developer tooling.",
       "emoji": "💻",
       "id": "software-engineering",
@@ -100,7 +100,7 @@
       "title": "Specialized Domains & Utilities"
     }
   ],
-  "inventoryCount": 847,
+  "inventoryCount": 848,
   "inventorySemantics": "tracked physical top-level directories with SKILL.md",
   "schemaVersion": 2,
   "skills": [
@@ -1089,6 +1089,75 @@
       },
       "review_signals": [],
       "skill_id": "agent-patterns",
+      "support_level": "catalog",
+      "used_by": []
+    },
+    {
+      "assignments": [],
+      "category_id": "software-engineering",
+      "classification": "override;metadata:frontmatter",
+      "classification_details": {
+        "base_candidates": [
+          {
+            "category_id": "ai-agents-orchestration",
+            "match_count": 1,
+            "matched_signals": [
+              "(?:^|-)agent(?:-|$)"
+            ],
+            "priority": 75,
+            "tied_for_first": true
+          }
+        ],
+        "base_method": "slug",
+        "matched_signals": [],
+        "method": "override",
+        "rationale": "The primary outcome is application regression testing and failure review; agent is part of the tool name, not an orchestration workflow.",
+        "resolution_status": "override",
+        "review_state": "unreviewed",
+        "runner_ups": [],
+        "winner": {
+          "category_id": "software-engineering",
+          "match_count": 0,
+          "matched_signals": [],
+          "priority": 80,
+          "tie_detected": false
+        }
+      },
+      "curation": {
+        "runtime_evidence": "pending",
+        "status": "unscored"
+      },
+      "description": "Application testing with agent-qa. Use when running selected web or mobile regressions, reviewing recorded failures, or tracing memidex hints in a configured agent-qa project.",
+      "description_status": "source-text",
+      "path": "skills/agent-qa/SKILL.md",
+      "portability_class": "catalog-only",
+      "provenance": {
+        "authors": [
+          "vostride"
+        ],
+        "declared_hints": [
+          "Original instructions contributed for this repository using the linked public agent-qa documentation. Authorship and curation review are pending; no runtime verification is claimed.",
+          "The external agent-qa runtime is separately licensed FSL-1.1-ALv2 and is not bundled."
+        ],
+        "evidence": [
+          "skills/agent-qa/SKILL.md",
+          "https://vostride.com/docs/agent-qa/cli",
+          "https://vostride.com/docs/agent-qa/guides/review-a-run",
+          "https://vostride.com/docs/agent-qa/memory/inspect"
+        ],
+        "license": {
+          "evidence": "LICENSE",
+          "spdx": "MIT"
+        },
+        "origin_kind": "unknown",
+        "review_state": "unreviewed"
+      },
+      "review_signals": [
+        "credentials",
+        "external-write",
+        "personal-data"
+      ],
+      "skill_id": "agent-qa",
       "support_level": "catalog",
       "used_by": []
     },

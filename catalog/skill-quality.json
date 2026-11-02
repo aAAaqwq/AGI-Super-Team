@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "scope": "deterministic-structural-evidence-not-semantic-verification",
   "summary": {
-    "inventoryCount": 847,
+    "inventoryCount": 848,
     "structureInvalid": 180,
     "disclosureWarnings": 579,
     "executionReviewRequired": 177,

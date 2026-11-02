@@ -42,7 +42,7 @@ Choose a reviewed origin boundary before browsing by outcome. Provenance and cur
 | [Project original](#project-original-skills) | Digest-backed first-party work with reviewed authorship. | 34 |
 | [Adapted](#adapted-skills) | Modified from a named source with the adaptation recorded. | 0 |
 | [Collected](#collected-skills) | Preserved from a named source with provenance recorded. | 0 |
-| [Unknown origin](#unknown-origin-skills) | Source review is incomplete; inspect before use. | 813 |
+| [Unknown origin](#unknown-origin-skills) | Source review is incomplete; inspect before use. | 814 |
 
 <a id="project-original-skills"></a>
 ### Project original
@@ -105,16 +105,16 @@ No entries currently meet this provenance contract.
 
 Source review is incomplete; inspect before use.
 
-813 entries are awaiting source review. Use the [machine-readable index](./skill-index.json) or browse by outcome below; they are not promoted as curated recommendations.
+814 entries are awaiting source review. Use the [machine-readable index](./skill-index.json) or browse by outcome below; they are not promoted as curated recommendations.
 
 ## 🗂️ Browse by outcome
 
-This revision contains 847 canonical catalog entries. The number is generated here rather than used as a product claim.
+This revision contains 848 canonical catalog entries. The number is generated here rather than used as a product claim.
 
 | Category | Use it for | Entries |
 |---|---|---:|
 | [🤖 AI Agents & Orchestration](#ai-agents-orchestration) | Coordinate agents, context, memory, models, prompts, and tool protocols. | 81 |
-| [💻 Software Engineering](#software-engineering) | Build, test, review, debug, and maintain applications and developer tooling. | 85 |
+| [💻 Software Engineering](#software-engineering) | Build, test, review, debug, and maintain applications and developer tooling. | 86 |
 | [☁️ Cloud, DevOps & Reliability](#cloud-devops-reliability) | Deploy, observe, troubleshoot, and operate cloud and local infrastructure. | 35 |
 | [📊 Data, Analytics & Research](#data-analytics-research) | Collect evidence, search sources, analyze data, and communicate findings. | 81 |
 | [🛡️ Security, Privacy & Legal](#security-privacy-legal) | Review security, privacy, compliance, permissions, contracts, and legal risk. | 34 |
@@ -224,6 +224,7 @@ Build, test, review, debug, and maintain applications and developer tooling.
 
 | Skill | What it helps with | Origin | Curation evidence | Support / review signals |
 |---|---|---|---|---|
+| [`agent-qa`](../skills/agent-qa/) | Application testing with agent-qa. Use when running selected web or mobile regressions, reviewing recorded failures, or tracing memidex hints in a configured agent-qa project. | Unknown · unreviewed | Unscored | Catalog only · review: credentials, external-write, personal-data |
 | [`api-design`](../skills/api-design/) | REST API design patterns including resource naming, status codes, pagination, filtering, error responses, versioning, and rate limiting for production APIs. | Unknown · unreviewed | Unscored | Portable optional assignment · structure checked · CTO |
 | [`api-design-patterns`](../skills/api-design-patterns/) | Comprehensive API design patterns covering REST, GraphQL, gRPC, versioning, authentication, and modern API best practices | Unknown · unreviewed | Unscored | Portable required assignment · structure checked · CTO |
 | [`api-gateway`](../skills/api-gateway/) | Description needs review; inspect source. | Unknown · unreviewed | Unscored | Catalog only |
