@@ -39,10 +39,10 @@ Choose a reviewed origin boundary before browsing by outcome. Provenance and cur
 
 | Origin | Meaning | Entries |
 |---|---|---:|
-| [Project original](#project-original-skills) | Digest-backed first-party work with reviewed authorship. | 60 |
+| [Project original](#project-original-skills) | Digest-backed first-party work with reviewed authorship. | 65 |
 | [Adapted](#adapted-skills) | Modified from a named source with the adaptation recorded. | 0 |
 | [Collected](#collected-skills) | Preserved from a named source with provenance recorded. | 0 |
-| [Unknown origin](#unknown-origin-skills) | Source review is incomplete; inspect before use. | 793 |
+| [Unknown origin](#unknown-origin-skills) | Source review is incomplete; inspect before use. | 788 |
 
 <a id="project-original-skills"></a>
 ### Project original
@@ -51,24 +51,28 @@ Digest-backed first-party work with reviewed authorship.
 
 | Skill | Outcome category | Provenance | Curation evidence | Runtime |
 |---|---|---|---|---|
-| [`5minbtc`](../skills/5minbtc/) | 💹 Finance, Trading & Markets | Project original · stale review | Unscored | Pending |
+| [`5minbtc`](../skills/5minbtc/) | 💹 Finance, Trading & Markets | Project original · reviewed | Unscored | Pending |
 | [`a-fund-monitor`](../skills/a-fund-monitor/) | 💹 Finance, Trading & Markets | Project original · reviewed | Unscored | Pending |
 | [`a-share-analysis`](../skills/a-share-analysis/) | 💹 Finance, Trading & Markets | Project original · reviewed | Unscored | Pending |
+| [`agent-qa`](../skills/agent-qa/) | 💻 Software Engineering | Project original · reviewed | Unscored | Pending |
+| [`agent-team-orchestration`](../skills/agent-team-orchestration/) | 🤖 AI Agents & Orchestration | Project original · reviewed | Unscored | Pending |
 | [`ai-trader-arena`](../skills/ai-trader-arena/) | 💹 Finance, Trading & Markets | Project original · reviewed | Unscored | Pending |
 | [`ashare-auction-analysis`](../skills/ashare-auction-analysis/) | 💹 Finance, Trading & Markets | Project original · reviewed | Unscored | Pending |
 | [`ashare-volume-resonance-analysis`](../skills/ashare-volume-resonance-analysis/) | 💹 Finance, Trading & Markets | Project original · reviewed | Unscored | Pending |
-| [`bb-scalper`](../skills/bb-scalper/) | 💹 Finance, Trading & Markets | Project original · stale review | Unscored | Pending |
-| [`binance-square`](../skills/binance-square/) | 💹 Finance, Trading & Markets | Project original · stale review | Unscored | Pending |
+| [`bb-scalper`](../skills/bb-scalper/) | 💹 Finance, Trading & Markets | Project original · reviewed | Unscored | Pending |
+| [`binance-square`](../skills/binance-square/) | 💹 Finance, Trading & Markets | Project original · reviewed | Unscored | Pending |
 | [`btc-5min-scalper`](../skills/btc-5min-scalper/) | 💹 Finance, Trading & Markets | Project original · reviewed | Unscored | Pending |
 | [`chip-peak-and-screening-methods`](../skills/chip-peak-and-screening-methods/) | 💹 Finance, Trading & Markets | Project original · reviewed | Unscored | Pending |
 | [`content-cover-gen`](../skills/content-cover-gen/) | ✍️ Content, Media & Publishing | Project original · reviewed | Unscored | Pending |
 | [`content-illustration-strategy`](../skills/content-illustration-strategy/) | ✍️ Content, Media & Publishing | Project original · reviewed | Unscored | Pending |
 | [`content-typography`](../skills/content-typography/) | ✍️ Content, Media & Publishing | Project original · reviewed | 80/100 · Selected | Pending |
+| [`cross-platform-poster`](../skills/cross-platform-poster/) | ✍️ Content, Media & Publishing | Project original · reviewed | Unscored | Pending |
 | [`daily-douyin-content`](../skills/daily-douyin-content/) | 🇨🇳 Chinese Platform Workflows | Project original · reviewed | Unscored | Pending |
 | [`daily-gzh-content`](../skills/daily-gzh-content/) | 🇨🇳 Chinese Platform Workflows | Project original · reviewed | Unscored | Pending |
 | [`daily-xhs-content`](../skills/daily-xhs-content/) | 🇨🇳 Chinese Platform Workflows | Project original · reviewed | Unscored | Pending |
 | [`daniel-aesthetic-director`](../skills/daniel-aesthetic-director/) | ✍️ Content, Media & Publishing | Project original · reviewed | Unscored | Pending |
 | [`daniel-auto-publish`](../skills/daniel-auto-publish/) | ✍️ Content, Media & Publishing | Project original · reviewed | Unscored | Pending |
+| [`daniel-content-writing-style`](../skills/daniel-content-writing-style/) | ✍️ Content, Media & Publishing | Project original · reviewed | Unscored | Pending |
 | [`daniel-new-media-ops`](../skills/daniel-new-media-ops/) | ✍️ Content, Media & Publishing | Project original · reviewed | Unscored | Pending |
 | [`daniel-self-media-top-mindset`](../skills/daniel-self-media-top-mindset/) | ✍️ Content, Media & Publishing | Project original · reviewed | Unscored | Pending |
 | [`daniel-wechat-writing`](../skills/daniel-wechat-writing/) | 🇨🇳 Chinese Platform Workflows | Project original · reviewed | Unscored | Pending |
@@ -110,6 +114,7 @@ Digest-backed first-party work with reviewed authorship.
 | [`weixin-channels-publish`](../skills/weixin-channels-publish/) | 🇨🇳 Chinese Platform Workflows | Project original · reviewed | Unscored | Pending |
 | [`xhs-skill`](../skills/xhs-skill/) | 🇨🇳 Chinese Platform Workflows | Project original · reviewed | Unscored | Pending |
 | [`xhs-smart-publisher`](../skills/xhs-smart-publisher/) | 🇨🇳 Chinese Platform Workflows | Project original · reviewed | Unscored | Pending |
+| [`xhs-writing-coach`](../skills/xhs-writing-coach/) | 🇨🇳 Chinese Platform Workflows | Project original · reviewed | Unscored | Pending |
 | [`youzi-stock-quality-screen`](../skills/youzi-stock-quality-screen/) | 💹 Finance, Trading & Markets | Project original · reviewed | Unscored | Pending |
 
 <a id="adapted-skills"></a>
@@ -131,7 +136,7 @@ No entries currently meet this provenance contract.
 
 Source review is incomplete; inspect before use.
 
-793 entries are awaiting source review. Use the [machine-readable index](./skill-index.json) or browse by outcome below; they are not promoted as curated recommendations.
+788 entries are awaiting source review. Use the [machine-readable index](./skill-index.json) or browse by outcome below; they are not promoted as curated recommendations.
 
 ## 🗂️ Browse by outcome
 
@@ -171,7 +176,7 @@ Coordinate agents, context, memory, models, prompts, and tool protocols.
 | [`agent-skill-repository-index`](../skills/agent-skill-repository-index/) | Find and compare Daniel's reviewed GitHub skill sources. Use for high-star skill discovery, link checks, or safe installation, update, and removal of one selected skill. | Unknown · unreviewed | Unscored | Catalog only |
 | [`agent-skills-audit`](../skills/agent-skills-audit/) | Run a two-pass, multidisciplinary code audit led by a tie-breaker lead, combining security, performance, UX, DX, and edge-case analysis into one prioritized report with concrete… | Unknown · unreviewed | Unscored | Catalog only |
 | [`agent-task-confirm`](../skills/agent-task-confirm/) | Use when confirming whether a dispatched agent task was actually received, activated, and progressing after sessions_send or other task handoff actions. | Unknown · unreviewed | Unscored | Catalog only |
-| [`agent-team-orchestration`](../skills/agent-team-orchestration/) | Orchestrate multi-agent teams with defined roles, task lifecycles, handoff protocols, and review workflows. Use when: (1) Setting up a team of 2+ agents with different… | Unknown · unreviewed | Unscored | Catalog only |
+| [`agent-team-orchestration`](../skills/agent-team-orchestration/) | Orchestrate multi-agent teams with defined roles, task lifecycles, handoff protocols, and review workflows. Use when: (1) Setting up a team of 2+ agents with different… | Project original · reviewed | Unscored | Catalog only |
 | [`agent-tester`](../skills/agent-tester/) | Test agent: dry-run, unit, integration, compatibility | Unknown · unreviewed | Unscored | Catalog only |
 | [`agent-values-alignment-detector`](../skills/agent-values-alignment-detector/) | 与明镜联合扫描Agent日志，检测其决策模式是否长期偏离"创造幸福"的核心价值观，早期发现，防患于未然。 | Unknown · unreviewed | Unscored | Catalog only |
 | [`aigc-director`](../skills/aigc-director/) | AI 视频生成全流程：通过 6 个阶段（剧本→角色/场景设计→分镜→参考图→视频生成→后期剪辑）将用户想法转化为完整视频。支持临时工作台（单独调用 LLM、VLM、文生图、图生图、视频生成）。触发词：视频生成、AI视频、AIGC、创作视频、制作视频、AI画图。 | Unknown · unreviewed | Unscored | Catalog only |
@@ -250,7 +255,7 @@ Build, test, review, debug, and maintain applications and developer tooling.
 
 | Skill | What it helps with | Origin | Curation evidence | Support / review signals |
 |---|---|---|---|---|
-| [`agent-qa`](../skills/agent-qa/) | Application testing with agent-qa. Use when running selected web or mobile regressions, reviewing recorded failures, or tracing memidex hints in a configured agent-qa project. | Unknown · unreviewed | Unscored | Catalog only · review: credentials, external-write, personal-data |
+| [`agent-qa`](../skills/agent-qa/) | Application testing with agent-qa. Use when running selected web or mobile regressions, reviewing recorded failures, or tracing memidex hints in a configured agent-qa project. | Project original · reviewed | Unscored | Catalog only · review: credentials, external-write, personal-data |
 | [`api-design`](../skills/api-design/) | REST API design patterns including resource naming, status codes, pagination, filtering, error responses, versioning, and rate limiting for production APIs. | Unknown · unreviewed | Unscored | Portable optional assignment · structure checked · CTO |
 | [`api-design-patterns`](../skills/api-design-patterns/) | Comprehensive API design patterns covering REST, GraphQL, gRPC, versioning, authentication, and modern API best practices | Unknown · unreviewed | Unscored | Portable required assignment · structure checked · CTO |
 | [`api-gateway`](../skills/api-gateway/) | Description needs review; inspect source. | Unknown · unreviewed | Unscored | Catalog only |
@@ -634,10 +639,10 @@ Create, edit, repurpose, and publish writing, images, audio, and video.
 | [`content-typography`](../skills/content-typography/) | Description needs review; inspect source. | Project original · reviewed | 80/100 · Selected | Portable required assignment · structure checked · CCO |
 | [`copy-editing`](../skills/copy-editing/) | When the user wants to edit, review, or improve existing marketing copy. Also use when the user mentions 'edit this copy,' 'review my copy,' 'copy feedback,' 'proofread,' 'polish… | Unknown · unreviewed | Unscored | Portable required assignment · structure checked · CCO |
 | [`copywriting`](../skills/copywriting/) | Write, rewrite, or improve marketing copy for homepages, landing pages, pricing pages, feature pages, and about pages. Use when the user needs conversion-focused copy with clear… | Unknown · unreviewed | Unscored | Portable required assignment · structure checked · CCO, CMO |
-| [`cross-platform-poster`](../skills/cross-platform-poster/) | Publish one piece of content across MoltX, Twitter/X, Discord, and Telegram | Unknown · unreviewed | Unscored | Catalog only |
+| [`cross-platform-poster`](../skills/cross-platform-poster/) | Publish one piece of content across MoltX, Twitter/X, Discord, and Telegram | Project original · reviewed | Unscored | Catalog only |
 | [`daniel-aesthetic-director`](../skills/daniel-aesthetic-director/) | 将主题、内容或品牌意图转化为有审美依据、可执行、可迭代的视觉方向与生成式图像提示词。适用于选择艺术/摄影/设计/东方美学/3D 风格，分析参考图，设计封面、海报、品牌视觉、产品图、插画或概念图，为 Midjourney、SDXL、GPT Image、即梦等模型生成提示词，以及解决“画面好看但不对题”“风格堆砌”“多张图不统一”等问题。 | Project original · reviewed | Unscored | Catalog only |
 | [`daniel-auto-publish`](../skills/daniel-auto-publish/) | 通过用户自有的真实浏览器和 Computer Use，安全辅助抖音、小红书、快手、微信视频号、哔哩哔哩、YouTube、TikTok 与百家号的视频、图文或公众号文章发布。用于选择图文排版模板、生成并预览图片卡片或微信… | Project original · reviewed | Unscored | Catalog only |
-| [`daniel-content-writing-style`](../skills/daniel-content-writing-style/) | 为明确以 A.A 身份发布的文章、教程、复盘或视频脚本建立证据账本并起草、改写或审稿；仅在当前核心版本获明确批准后，调用一个平台专业 Subagent 适配并由主 Agent 回审。不用于其他作者、纯选题或增长研究、摘要、发布或外部操作。 | Unknown · unreviewed | Unscored | Catalog only |
+| [`daniel-content-writing-style`](../skills/daniel-content-writing-style/) | 为明确以 A.A 身份发布的文章、教程、复盘或视频脚本建立证据账本并起草、改写或审稿；仅在当前核心版本获明确批准后，调用一个平台专业 Subagent 适配并由主 Agent 回审。不用于其他作者、纯选题或增长研究、摘要、发布或外部操作。 | Project original · reviewed | Unscored | Catalog only |
 | [`daniel-new-media-ops`](../skills/daniel-new-media-ops/) | 路由 Daniel 新媒体内容从选题、写作、视觉化、视频制作到多平台草稿与发布核验。适用于用户要求制作或分发 Daniel 品牌内容时；单纯文案润色优先直接使用 daniel-writer。 | Project original · reviewed | Unscored | Catalog only |
 | [`daniel-self-media-top-mindset`](../skills/daniel-self-media-top-mindset/) | 将 Daniel 的利他、真实藏露、情绪纪律、需求聚焦与商业闭环心法应用到自媒体决策。凡涉及 Daniel 个人 IP 的定位、选题、写稿、脚本、封面、跨平台改编、发布规划、增长、变现或复盘时必须先使用；不用于保证爆款、虚构经历、泄露隐私或自动发布。 | Project original · reviewed | Unscored | Catalog only |
 | [`daniel-writer`](../skills/daniel-writer/) | Daniel 的统一创作入口：按品牌、证据、声音和人机分工合同，完成选题、母故事、项目内容工作包、微信公众号、X、小红书、B站、知乎、抖音的起草改写与平台适配，并生成获批短视频脚本的本地制作交接和技术候选。适用于 AI、Agent、工具实测、教程、失败复盘、创作反思、图文卡片、口播分镜与跨平台内容生产。正式 Daniel… | Project original · reviewed | Unscored | Catalog only |
@@ -758,7 +763,7 @@ Analyze markets, backtest strategies, track portfolios, and review financial ris
 
 | Skill | What it helps with | Origin | Curation evidence | Support / review signals |
 |---|---|---|---|---|
-| [`5minbtc`](../skills/5minbtc/) | BTC 5分钟K线实时方向预测 + 币安预测市场错价套利(paper)。v6.0 真OFI驱动: 方向由当前K线原生 in-candle OFI 净流一票决定(ofi_n=2*(tb/v)-1, REST klines[9] 聚合, 零WS依赖; WS ofi.json 做新鲜度反转保护与交叉校准), 概率=P(close&gt;open\|ofi)… | Project original · stale review | Unscored | Catalog only |
+| [`5minbtc`](../skills/5minbtc/) | BTC 5分钟K线实时方向预测 + 币安预测市场错价套利(paper)。v6.0 真OFI驱动: 方向由当前K线原生 in-candle OFI 净流一票决定(ofi_n=2*(tb/v)-1, REST klines[9] 聚合, 零WS依赖; WS ofi.json 做新鲜度反转保护与交叉校准), 概率=P(close&gt;open\|ofi)… | Project original · reviewed | Unscored | Catalog only |
 | [`a-fund-monitor`](../skills/a-fund-monitor/) | A股基金净值监控：盘中实时估值 + 盘后实际净值，定时推送到 Telegram。 | Project original · reviewed | Unscored | Catalog only |
 | [`a-share-analysis`](../skills/a-share-analysis/) | 此Skill实现了三层分析体系： 1. 情报采集层 — 7路并发多源新闻采集，自动匹配板块和个股 2. 盘面阅读层 — 美股映射 + 大盘多空判断 + 实时主线(&gt;9%题材分析) 3. 个股精选层 — 产业逻辑 + 形态8分类 + 盘口分析 + 题材排名 + 综合评分 4. 原始新闻浏览 (news.py) — 分类展示影响股票的新闻，源信息不做任何修改 | Project original · reviewed | Unscored | Catalog only |
 | [`afrexai-personal-finance`](../skills/afrexai-personal-finance/) | Complete personal finance system — budgeting, debt payoff, investing, tax optimization, net worth tracking, and financial independence planning. Use when managing money, building… | Unknown · unreviewed | Unscored | Catalog only |
@@ -771,9 +776,9 @@ Analyze markets, backtest strategies, track portfolios, and review financial ris
 | [`backtesting-trading-strategies`](../skills/backtesting-trading-strategies/) | Backtest crypto and traditional trading strategies against historical data. Calculates performance metrics (Sharpe, Sortino, max drawdown), generates equity curves, and optimizes… | Unknown · unreviewed | Unscored | Harness-specific assignment · generic installer skips · CQO |
 | [`bankr`](../skills/bankr/) | AI-powered crypto trading agent and LLM gateway via natural language. Use when the user wants to trade crypto, check portfolio balances, view token prices, transfer crypto,… | Unknown · unreviewed | Unscored | Catalog only |
 | [`bankr-signals`](../skills/bankr-signals/) | Transaction-verified trading signals on Base blockchain. Agents publish trades | Unknown · unreviewed | Unscored | Catalog only |
-| [`bb-scalper`](../skills/bb-scalper/) | BB 双向套利策略：加密合约 10x 杠杆布林带均值回归。布林带收窄=横盘→在下轨买、上轨卖；三重过滤器(1h趋势/RSI/BB甜区)确认碗平放，轨对轨止盈(RR… | Project original · stale review | Unscored | Catalog only |
+| [`bb-scalper`](../skills/bb-scalper/) | BB 双向套利策略：加密合约 10x 杠杆布林带均值回归。布林带收窄=横盘→在下轨买、上轨卖；三重过滤器(1h趋势/RSI/BB甜区)确认碗平放，轨对轨止盈(RR… | Project original · reviewed | Unscored | Catalog only |
 | [`billing-automation`](../skills/billing-automation/) | Build automated billing systems for recurring payments, invoicing, subscription lifecycle, and dunning management. Use when implementing subscription billing, automating… | Unknown · unreviewed | Unscored | Catalog only |
-| [`binance-square`](../skills/binance-square/) | 币安广场合约投机雷达 v5：以最近24小时专业交易帖为主要证据，回源核验帖子， 联合币安公共合约行情、4周期K线、布林带、ATR、量能和RR，生成可审计的本地影子报告。 触发词：币安广场、扫描币安、binance square、合约机会、交易信号雷达、4小时雷达 | Project original · stale review | Unscored | Catalog only |
+| [`binance-square`](../skills/binance-square/) | 币安广场合约投机雷达 v5：以最近24小时专业交易帖为主要证据，回源核验帖子， 联合币安公共合约行情、4周期K线、布林带、ATR、量能和RR，生成可审计的本地影子报告。 触发词：币安广场、扫描币安、binance square、合约机会、交易信号雷达、4小时雷达 | Project original · reviewed | Unscored | Catalog only |
 | [`binance-trending`](../skills/binance-trending/) | Description needs review; inspect source. | Unknown · unreviewed | Unscored | Catalog only |
 | [`bookkeeping-basics`](../skills/bookkeeping-basics/) | Set up and maintain basic bookkeeping for a solopreneur business. Use when tracking income and expenses, preparing for taxes, managing invoices and receipts, understanding cash… | Unknown · unreviewed | Unscored | Portable optional assignment · structure checked · CFO |
 | [`btc-5min-scalper`](../skills/btc-5min-scalper/) | BTC 5-minute Up/Down paper trading on Polymarket. Scans Binance 1m candles for momentum/mean-reversion/volume signals, makes virtual trades on Polymarket 5-min markets, tracks… | Project original · reviewed | Unscored | Catalog only |
@@ -1061,7 +1066,7 @@ Create, analyze, and publish for major Chinese-language platforms and channels.
 | [`xhs-publisher`](../skills/xhs-publisher/) | 将 Markdown 文章自动发布到小红书（XHS）草稿箱。支持多图上传（封面+素材）。 | Unknown · unreviewed | Unscored | Harness-specific assignment · generic installer skips · CCO · review: credentials, external-write |
 | [`xhs-skill`](../skills/xhs-skill/) | 小红书（创作者中心）登录拿 cookies、发布笔记、导出数据的单一入口技能（浏览器交互委托 agent-browser-stealth） | Project original · reviewed | Unscored | Catalog only |
 | [`xhs-smart-publisher`](../skills/xhs-smart-publisher/) | 小红书智能发布：内容适配→排版→Playwright自动发布/存草稿。覆盖标题公式(≤20字+emoji+数字)、正文排版(空行分段+emoji点缀)、标签策略(热门+长尾3-8个)、封面规格(3:4竖版1080×1440)、CES算法优化。支持图文笔记和轮播。触发：'发小红书'、'小红书发布'、'xhs | Project original · reviewed | Unscored | Catalog only |
-| [`xhs-writing-coach`](../skills/xhs-writing-coach/) | Coach and generate Xiaohongshu (小红书/RedNote/XHS) note writing. Use when the user wants help writing XHS notes (标题/正文/标签/评论引导/封面文案), improving engagement, or turning raw points… | Unknown · unreviewed | Unscored | Catalog only |
+| [`xhs-writing-coach`](../skills/xhs-writing-coach/) | Coach and generate Xiaohongshu (小红书/RedNote/XHS) note writing. Use when the user wants help writing XHS notes (标题/正文/标签/评论引导/封面文案), improving engagement, or turning raw points… | Project original · reviewed | Unscored | Catalog only |
 | [`xiaohongshu-growth`](../skills/xiaohongshu-growth/) | 小红书内容创作运营增长综合解决方案。包含爆款内容创作、封面设计、发布优化、数据分析和账号增长策略。当用户需要：(1) 创建小红书爆款内容 (2) 优化账号运营策略 (3) 分析竞品和热点 (4) 发布内容到草稿箱 (5) 提升账号流量和变现能力时触发。支持完整的内容创作流水线和多agent协作。 | Unknown · unreviewed | Unscored | Catalog only |
 | [`ziliu-publisher`](../skills/ziliu-publisher/) | 字流(Ziliu) - AI驱动的多平台内容分发工具。用于一次创作、智能适配排版、一键分发到16+平台（公众号/知乎/小红书/B站/抖音/微博/X等）。当用户需要多平台发布、内容排版、格式适配时使用。触发词：字流、ziliu、多平台发布、一键分发、内容分发、排版发布。 | Unknown · unreviewed | Unscored | Catalog only · review: credentials, external-write |
 | [`zsxq-smart-publish`](../skills/zsxq-smart-publish/) | Publish and manage content on 知识星球 (zsxq.com). Supports talk posts, Q&amp;A, long articles, file sharing, digest/bookmark, homework tasks, and tag management. Use when publishing… | Unknown · unreviewed | Unscored | Catalog only |

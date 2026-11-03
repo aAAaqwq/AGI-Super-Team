@@ -2,13 +2,19 @@
   "schemaVersion": 1,
   "scope": "reviewed-project-original-skills",
   "generatedFrom": "config/skill-provenance.json",
-  "inventoryCount": 60,
+  "inventoryCount": 65,
   "categories": [
     {
       "id": "ai-agents-orchestration",
       "name": "AI Agents & Orchestration",
       "emoji": "🤖",
-      "count": 2
+      "count": 3
+    },
+    {
+      "id": "software-engineering",
+      "name": "Software Engineering",
+      "emoji": "💻",
+      "count": 1
     },
     {
       "id": "cloud-devops-reliability",
@@ -38,7 +44,7 @@
       "id": "content-media-publishing",
       "name": "Content, Media & Publishing",
       "emoji": "✍️",
-      "count": 15
+      "count": 17
     },
     {
       "id": "sales-crm-customer-success",
@@ -62,7 +68,7 @@
       "id": "chinese-platform-workflows",
       "name": "Chinese Platform Workflows",
       "emoji": "🇨🇳",
-      "count": 17
+      "count": 18
     },
     {
       "id": "general-utilities",
@@ -102,6 +108,26 @@
       ],
       "creation_commit": "229ab60c514300dd79472828441c7e9eac24ee66",
       "category_id": "finance-trading-markets"
+    },
+    {
+      "skill_id": "agent-qa",
+      "path": "skills/agent-qa/SKILL.md",
+      "description": "Application testing with agent-qa. Use when running selected web or mobile regressions, reviewing recorded failures, or tracing memidex hints in a configured agent-qa project.",
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "39c8fe8a371852a75093d299b0cf5c27a0e78708",
+      "category_id": "software-engineering"
+    },
+    {
+      "skill_id": "agent-team-orchestration",
+      "path": "skills/agent-team-orchestration/SKILL.md",
+      "description": "Orchestrate multi-agent teams with defined roles, task lifecycles, handoff protocols, and review workflows. Use when: (1) Setting up a team of 2+ agents with different…",
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "5eff0c25e2c8428f84f3d7290a3a14aae4ccb542",
+      "category_id": "ai-agents-orchestration"
     },
     {
       "skill_id": "ai-trader-arena",
@@ -205,6 +231,16 @@
       "category_id": "content-media-publishing"
     },
     {
+      "skill_id": "cross-platform-poster",
+      "path": "skills/cross-platform-poster/SKILL.md",
+      "description": "Publish one piece of content across MoltX, Twitter/X, Discord, and Telegram",
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "dcd0591e668a878a8e3f640f561da72ea68d81ac",
+      "category_id": "content-media-publishing"
+    },
+    {
       "skill_id": "daily-douyin-content",
       "path": "skills/daily-douyin-content/SKILL.md",
       "description": "你是 CCO，Daniel Li 的内容 Agent。",
@@ -255,6 +291,16 @@
         "Daniel Li"
       ],
       "creation_commit": "dff8b4bdbeabb658bad0c4b75d173b60b91bd7ca",
+      "category_id": "content-media-publishing"
+    },
+    {
+      "skill_id": "daniel-content-writing-style",
+      "path": "skills/daniel-content-writing-style/SKILL.md",
+      "description": "为明确以 A.A 身份发布的文章、教程、复盘或视频脚本建立证据账本并起草、改写或审稿；仅在当前核心版本获明确批准后，调用一个平台专业 Subagent 适配并由主 Agent 回审。不用于其他作者、纯选题或增长研究、摘要、发布或外部操作。",
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "fae719b01d91c35e2d20f339b3ea8d727fff6c81",
       "category_id": "content-media-publishing"
     },
     {
@@ -680,6 +726,16 @@
         "Daniel Li"
       ],
       "creation_commit": "8e3aed4ee64ce93d593ef9f10d67ae9f08e2c425",
+      "category_id": "chinese-platform-workflows"
+    },
+    {
+      "skill_id": "xhs-writing-coach",
+      "path": "skills/xhs-writing-coach/SKILL.md",
+      "description": "Coach and generate Xiaohongshu (小红书/RedNote/XHS) note writing. Use when the user wants help writing XHS notes (标题/正文/标签/评论引导/封面文案), improving engagement, or turning raw points…",
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "dcd0591e668a878a8e3f640f561da72ea68d81ac",
       "category_id": "chinese-platform-workflows"
     },
     {

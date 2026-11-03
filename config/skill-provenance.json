@@ -29,10 +29,10 @@
     },
     {
       "skill_id": "daniel-content-writing-style",
-      "origin_kind": "unknown",
-      "review_state": "unreviewed",
+      "origin_kind": "project-original",
+      "review_state": "reviewed",
       "declared_hints": [
-        "Copied at the project owner's request from a local Daniel personal-IP workspace after multi-agent content, contract, and forward-test review; no immutable creation commit or separately reviewed license evidence is available yet."
+        "Daniel Li 于 2026-11-03 确认该 Skill 为其原创；内容来自其个人 IP 工作区，经多 Agent 审阅后同步至本仓库。创建提交、MIT 许可证与当前树摘要已记录。"
       ],
       "evidence": [
         "skills/daniel-content-writing-style/SKILL.md",
@@ -42,19 +42,38 @@
         "skills/daniel-content-writing-style/references/platform-agent-registry.schema.json",
         "skills/daniel-content-writing-style/scripts/validate_platform_agent_registry.py",
         "skills/daniel-content-writing-style/references/writing-style-decisions.md"
-      ]
+      ],
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "fae719b01d91c35e2d20f339b3ea8d727fff6c81",
+      "license": {
+        "spdx": "MIT",
+        "evidence": "LICENSE"
+      },
+      "local_tree_digest": "sha256:34a866ff1570d39d7ab0574ac136f9ef1636d839c5e8557cfbd86d7ce9b7065e"
     },
     {
       "skill_id": "agent-team-orchestration",
-      "origin_kind": "unknown",
-      "review_state": "unreviewed",
+      "origin_kind": "project-original",
+      "review_state": "reviewed",
       "declared_hints": [
-        "ClawHub registry metadata identifies an installed package and owner ID but no reviewable upstream repository, pinned commit, or license."
+        "Daniel Li 于 2026-11-03 确认该 Skill 为其原创；ClawHub 安装记录仅说明分发来源，作者、创建提交、MIT 许可证与当前树摘要已记录。"
       ],
       "evidence": [
+        "skills/agent-team-orchestration/SKILL.md",
         "skills/agent-team-orchestration/.clawhub/origin.json",
         "skills/agent-team-orchestration/_meta.json"
-      ]
+      ],
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "5eff0c25e2c8428f84f3d7290a3a14aae4ccb542",
+      "license": {
+        "spdx": "MIT",
+        "evidence": "LICENSE"
+      },
+      "local_tree_digest": "sha256:baf92b9b3bda722ab20c9c46da062ae9985c9277d440472621566f42ff4ba945"
     },
     {
       "skill_id": "content-typography",
@@ -442,9 +461,10 @@
         "spdx": "MIT",
         "evidence": "LICENSE"
       },
-      "local_tree_digest": "sha256:294effb8976789998d3d9a9be8e1b615bbbc847fb04c6a6c1930533cc07dc5ca",
+      "local_tree_digest": "sha256:b0096d3de93c90268c6b1b7b2b7a107f675588d44f87028eac6e4dfc570ce7cb",
       "declared_hints": [
-        "Created as a first-party CQO Skill and iterated in this repository; the maintainer explicitly identifies it as an original Skill."
+        "Created as a first-party CQO Skill and iterated in this repository; the maintainer explicitly identifies it as an original Skill.",
+        "2026-11-03: Daniel Li 确认当前版本仍为原创，并在复核后刷新树摘要。"
       ],
       "evidence": [
         "commit:aae3f692c9dedb348e35da534026281e73ebc30c",
@@ -465,10 +485,11 @@
         "spdx": "MIT",
         "evidence": "LICENSE"
       },
-      "local_tree_digest": "sha256:9aa204c1dd73e0a121e633bc4047dc109aa00203e13a06980105b1ebcbda16e8",
+      "local_tree_digest": "sha256:577f6afda8924a98709aa4bb3e6c3e6793384b18baf97b9f04eb3231b322cb1e",
       "declared_hints": [
         "The v4 shadow implementation, v5 scoring/report evolution, and subsequent production-gate hardening were built in this repository under the maintainer's direction.",
-        "The v5 synchronization excludes runtime captures, SQLite databases, caches, locks, delivery state, and operator credentials."
+        "The v5 synchronization excludes runtime captures, SQLite databases, caches, locks, delivery state, and operator credentials.",
+        "2026-11-03: Daniel Li 确认当前版本仍为原创，并在复核后刷新树摘要。"
       ],
       "evidence": [
         "commit:da4e86d351b5c8d0c3d5b2a81602b93de24fe605",
@@ -805,10 +826,11 @@
         "spdx": "MIT",
         "evidence": "LICENSE"
       },
-      "local_tree_digest": "sha256:6c2be96a4c63ed1889bb4eea51825f2ffc25dea25ca85b6802413e2fc943318b",
+      "local_tree_digest": "sha256:66bb8a8590d8b6456c4f096e3c9fc33d9dcb8a8b2c321d08ed96a0d08f93e884",
       "declared_hints": [
         "BB 双向套利策略为 Daniel Li 自研(布林带均值回归+三重过滤+轨对轨), 在 bb-scalper 项目内开发, 经回测/单元测试/实时模拟盘验证后同步至此。",
-        "The Skill entrypoint declares Daniel Li as author."
+        "The Skill entrypoint declares Daniel Li as author.",
+        "2026-11-03: Daniel Li 确认当前版本仍为原创，并在复核后刷新树摘要。"
       ],
       "evidence": [
         "skills/bb-scalper/SKILL.md",
@@ -820,25 +842,27 @@
     },
     {
       "skill_id": "agent-qa",
-      "origin_kind": "unknown",
-      "review_state": "unreviewed",
+      "origin_kind": "project-original",
+      "review_state": "reviewed",
       "authors": [
-        "vostride"
+        "Daniel Li"
       ],
       "license": {
         "spdx": "MIT",
         "evidence": "LICENSE"
       },
       "declared_hints": [
-        "Original instructions contributed for this repository using the linked public agent-qa documentation. Authorship and curation review are pending; no runtime verification is claimed.",
-        "The external agent-qa runtime is separately licensed FSL-1.1-ALv2 and is not bundled."
+        "Daniel Li 于 2026-11-03 确认该 Skill 的指令内容为其原创；PR #42 由 Pranshu Chittora 提交至本仓库。",
+        "该 Skill 面向外部 agent-qa 运行时；其运行时为 FSL-1.1-ALv2 单独授权，未随仓库打包。"
       ],
       "evidence": [
         "skills/agent-qa/SKILL.md",
         "https://vostride.com/docs/agent-qa/cli",
         "https://vostride.com/docs/agent-qa/guides/review-a-run",
         "https://vostride.com/docs/agent-qa/memory/inspect"
-      ]
+      ],
+      "creation_commit": "39c8fe8a371852a75093d299b0cf5c27a0e78708",
+      "local_tree_digest": "sha256:a68719118b9d6178206d16d6bad7a8d81a587fbef4f1caa8ab3c696df617c155"
     },
     {
       "skill_id": "chip-peak-and-screening-methods",
@@ -1410,6 +1434,50 @@
         "evidence": "LICENSE"
       },
       "local_tree_digest": "sha256:debe614ae8cdf1568a9e640bbaf625af90b55250049265beccd64e36b15b5ddc"
+    },
+    {
+      "skill_id": "cross-platform-poster",
+      "origin_kind": "project-original",
+      "review_state": "reviewed",
+      "declared_hints": [
+        "Daniel Li 于 2026-11-03 确认该 Skill 为其原创；ClawHub 安装记录仅说明分发来源，作者、创建提交、MIT 许可证与当前树摘要已记录。"
+      ],
+      "evidence": [
+        "skills/cross-platform-poster/SKILL.md",
+        "skills/cross-platform-poster/.clawhub/origin.json",
+        "skills/cross-platform-poster/_meta.json"
+      ],
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "dcd0591e668a878a8e3f640f561da72ea68d81ac",
+      "license": {
+        "spdx": "MIT",
+        "evidence": "LICENSE"
+      },
+      "local_tree_digest": "sha256:28070011881ab463d88ff9ee4db9e666adac3a480563b90ebae824989af3da15"
+    },
+    {
+      "skill_id": "xhs-writing-coach",
+      "origin_kind": "project-original",
+      "review_state": "reviewed",
+      "declared_hints": [
+        "Daniel Li 于 2026-11-03 确认该 Skill 为其原创；ClawHub 安装记录仅说明分发来源，作者、创建提交、MIT 许可证与当前树摘要已记录。"
+      ],
+      "evidence": [
+        "skills/xhs-writing-coach/SKILL.md",
+        "skills/xhs-writing-coach/.clawhub/origin.json",
+        "skills/xhs-writing-coach/_meta.json"
+      ],
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "dcd0591e668a878a8e3f640f561da72ea68d81ac",
+      "license": {
+        "spdx": "MIT",
+        "evidence": "LICENSE"
+      },
+      "local_tree_digest": "sha256:1e65e1f9bfcd3e9648201b93cbddcf2af64eb21367e32e0bba7af2efff84bb15"
     }
   ]
 }

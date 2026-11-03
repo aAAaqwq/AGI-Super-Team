@@ -4,16 +4,21 @@
 
 这里收录经 `config/skill-provenance.json` 审查为 `project-original + reviewed` 的第一方 Skills。
 
-当前共 **60** 个。目录是索引视图；Skill 仍保留在 `skills/<skill-id>/` 的规范位置，避免复制、漂移和重复加载。
+当前共 **65** 个。目录是索引视图；Skill 仍保留在 `skills/<skill-id>/` 的规范位置，避免复制、漂移和重复加载。
 
 > 原创身份只说明可审计的作者与来源，不代表已经通过生产运行、投资有效性或跨平台兼容性验证。
 
 候选检索范围与暂不收录原因见 [`CANDIDATE_AUDIT.md`](./CANDIDATE_AUDIT.md)。
 
-## 🤖 AI Agents & Orchestration（2）
+## 🤖 AI Agents & Orchestration（3）
 
+- [`agent-team-orchestration`](../agent-team-orchestration/) — Orchestrate multi-agent teams with defined roles, task lifecycles, handoff protocols, and review workflows. Use when: (1) Setting up a team of 2+ agents with different…（作者：Daniel Li）
 - [`meta-cognition`](../meta-cognition/) — Meta-cognitive framing for analyze-before-doing, ownership routing, risk gating, minimum-closure planning, and retrospective extraction in multi-agent work. Use when the user…（作者：Daniel Li）
 - [`orchestrate-agi-super-team`](../orchestrate-agi-super-team/) — 按 Team→C-suite→Skills/直属 Subagents→Governor→CEO→人工批准契约编排 AGI Super Team。适用于用户要求跨职能团队、专家委派、独立复核，或需在 Claude Code、Codex、OpenClaw、Hermes 中选择真实执行方式；单领域一步任务不要启用。（作者：Daniel Li、AGI Super Team contributors）
+
+## 💻 Software Engineering（1）
+
+- [`agent-qa`](../agent-qa/) — Application testing with agent-qa. Use when running selected web or mobile regressions, reviewing recorded failures, or tracing memidex hints in a configured agent-qa project.（作者：Daniel Li）
 
 ## ☁️ Cloud, DevOps & Reliability（2）
 
@@ -33,13 +38,15 @@
 
 - [`positioning-growth-experiment-system`](../positioning-growth-experiment-system/) — 基于真实市场、受众与产品证据设计定位、信息架构、渠道组合、增长实验和增量测量。用于市场细分、品牌定位、价值主张、渠道选择、活动实验、SEO/GEO 方向、归因复盘或扩张/停止决策；不要用于直接制作大量内容、自动发布、投放广告、群发消息、购买流量、修改产品事实或在证据不足时宣称 ROI、CAC 和增长因果。（作者：Daniel Li、AGI Super Team contributors）
 
-## ✍️ Content, Media & Publishing（15）
+## ✍️ Content, Media & Publishing（17）
 
 - [`content-cover-gen`](../content-cover-gen/) — 内容驱动封面生成:从文章标题/核心观点自动生成视觉隐喻提示词,调用 relay-image-gen 出图。 每张封面3秒内传达文章核心观点,杜绝通用背景。 支持小红书(3:4)、抖音(9:16)、公众号(16:9)、知识星球(1:1)、掘金(16:9)。 触发:'生成封面'、'封面生成'、'cover'、'thumbnail'、'封面图'、'缩略图'。（作者：Daniel Li）
 - [`content-illustration-strategy`](../content-illustration-strategy/) — 文章配图决策 skill：根据文章内容判断该配什么图、图从哪里来、什么时候该用 Telegram 真实对话截图，什么时候该用工具界面图、官网图、生成插图或流程图。 适用于公众号、小红书长图文、知识星球、掘金、博客等内容配图。触发词包括：'配图'、'插图'、'素材图'、'这篇文章该配什么图'、'截图进素材库'、'给这篇稿子补图'、'根据内容选图'。（作者：Daniel Li）
 - [`content-typography`](../content-typography/) — 这不是“选个字体” skill。（作者：Daniel Li）
+- [`cross-platform-poster`](../cross-platform-poster/) — Publish one piece of content across MoltX, Twitter/X, Discord, and Telegram（作者：Daniel Li）
 - [`daniel-aesthetic-director`](../daniel-aesthetic-director/) — 将主题、内容或品牌意图转化为有审美依据、可执行、可迭代的视觉方向与生成式图像提示词。适用于选择艺术/摄影/设计/东方美学/3D 风格，分析参考图，设计封面、海报、品牌视觉、产品图、插画或概念图，为 Midjourney、SDXL、GPT Image、即梦等模型生成提示词，以及解决“画面好看但不对题”“风格堆砌”“多张图不统一”等问题。（作者：Daniel Li）
 - [`daniel-auto-publish`](../daniel-auto-publish/) — 通过用户自有的真实浏览器和 Computer Use，安全辅助抖音、小红书、快手、微信视频号、哔哩哔哩、YouTube、TikTok 与百家号的视频、图文或公众号文章发布。用于选择图文排版模板、生成并预览图片卡片或微信…（作者：Daniel Li）
+- [`daniel-content-writing-style`](../daniel-content-writing-style/) — 为明确以 A.A 身份发布的文章、教程、复盘或视频脚本建立证据账本并起草、改写或审稿；仅在当前核心版本获明确批准后，调用一个平台专业 Subagent 适配并由主 Agent 回审。不用于其他作者、纯选题或增长研究、摘要、发布或外部操作。（作者：Daniel Li）
 - [`daniel-new-media-ops`](../daniel-new-media-ops/) — 路由 Daniel 新媒体内容从选题、写作、视觉化、视频制作到多平台草稿与发布核验。适用于用户要求制作或分发 Daniel 品牌内容时；单纯文案润色优先直接使用 daniel-writer。（作者：Daniel Li）
 - [`daniel-self-media-top-mindset`](../daniel-self-media-top-mindset/) — 将 Daniel 的利他、真实藏露、情绪纪律、需求聚焦与商业闭环心法应用到自媒体决策。凡涉及 Daniel 个人 IP 的定位、选题、写稿、脚本、封面、跨平台改编、发布规划、增长、变现或复盘时必须先使用；不用于保证爆款、虚构经历、泄露隐私或自动发布。（作者：Daniel Li）
 - [`daniel-writer`](../daniel-writer/) — Daniel 的统一创作入口：按品牌、证据、声音和人机分工合同，完成选题、母故事、项目内容工作包、微信公众号、X、小红书、B站、知乎、抖音的起草改写与平台适配，并生成获批短视频脚本的本地制作交接和技术候选。适用于 AI、Agent、工具实测、教程、失败复盘、创作反思、图文卡片、口播分镜与跨平台内容生产。正式 Daniel…（作者：Daniel Li）
@@ -77,7 +84,7 @@
 - [`executive-decision-system`](../executive-decision-system/) — 将模糊的公司级议题转成可追溯的战略选择、资源配置和复查机制。用于重大方向选择、业务组合取舍、跨职能优先级冲突、进入或退出市场、年度或季度重点决策；不用于日常项目排期、流程优化、专业领域定论或对已完成工作的独立验收。（作者：Daniel Li、AGI Super Team contributors）
 - [`independent-assurance-gate`](../independent-assurance-gate/) — 独立审查重要完成声明，建立声明—证据映射，寻找反例，校准严重度并给出通过、有条件通过、阻断或待验证结论。用于发布前验收、高风险变更、跨角色交付、外部结果声明和整改复验；不用于审查者自己的主要实现、替领域负责人设计方案、替 CEO 作资源取舍或替人类接受现实风险。（作者：Daniel Li、AGI Super Team contributors）
 
-## 🇨🇳 Chinese Platform Workflows（17）
+## 🇨🇳 Chinese Platform Workflows（18）
 
 - [`daily-douyin-content`](../daily-douyin-content/) — 你是 CCO，Daniel Li 的内容 Agent。（作者：Daniel Li、AGI Super Team contributors）
 - [`daily-gzh-content`](../daily-gzh-content/) — 公众号每日内容生产：选题→创作→素材生成→质量检查→保存→发布草稿（作者：Daniel Li、AGI Super Team contributors）
@@ -96,6 +103,7 @@
 - [`weixin-channels-publish`](../weixin-channels-publish/) — 微信视频号助手网页版视频发布全流程。通过浏览器自动化操控 channels.weixin.qq.com 完成登录检测、扫码登录、上传视频、填写描述和短标题、截图确认后发布或保存草稿。触发场景：用户需要发布视频到视频号、视频号发布、视频号上传视频、发视频号。（作者：Daniel Li）
 - [`xhs-skill`](../xhs-skill/) — 小红书（创作者中心）登录拿 cookies、发布笔记、导出数据的单一入口技能（浏览器交互委托 agent-browser-stealth）（作者：Daniel Li）
 - [`xhs-smart-publisher`](../xhs-smart-publisher/) — 小红书智能发布：内容适配→排版→Playwright自动发布/存草稿。覆盖标题公式(≤20字+emoji+数字)、正文排版(空行分段+emoji点缀)、标签策略(热门+长尾3-8个)、封面规格(3:4竖版1080×1440)、CES算法优化。支持图文笔记和轮播。触发：'发小红书'、'小红书发布'、'xhs（作者：Daniel Li）
+- [`xhs-writing-coach`](../xhs-writing-coach/) — Coach and generate Xiaohongshu (小红书/RedNote/XHS) note writing. Use when the user wants help writing XHS notes (标题/正文/标签/评论引导/封面文案), improving engagement, or turning raw points…（作者：Daniel Li）
 
 ## 🧰 Specialized Domains & Utilities（3）
 
