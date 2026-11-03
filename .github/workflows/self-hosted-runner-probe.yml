@@ -1,0 +1,31 @@
+name: self-hosted-runner-probe
+
+# Phase 0 闸门：验证 github-actions-hub 自托管 runner（mac-m4-peter / ci-mac-m4）
+# 在 fleet/devices.yaml 注册 `aAAaqwq/AGI-Super-Team` 后，手动触发本 workflow 验证 runner 可用。
+# 跑通后再把 validate-repository.yml 里的 macOS 矩阵 job 迁到 [self-hosted, macOS, ARM64, ci-mac-m4]。
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [probe]
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: [self-hosted, macOS, ARM64, ci-mac-m4]
+    timeout-minutes: 5
+    steps:
+      - name: Host facts
+        run: |
+          echo "host=$(hostname)"
+          echo "user=$(whoami)"
+          echo "arch=$(uname -m)"
+          sw_vers
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Verify repo
+        run: |
+          test -d skills && echo "✓ skills/ 存在" || { echo "✗ skills/ 缺失"; exit 1; }
+          echo "skill 目录数: $(find skills -mindepth 1 -maxdepth 1 -type d | wc -l | tr -d ' ')"
