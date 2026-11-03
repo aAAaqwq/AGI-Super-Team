@@ -4,7 +4,7 @@
 
 这里收录经 `config/skill-provenance.json` 审查为 `project-original + reviewed` 的第一方 Skills。
 
-当前共 **34** 个。目录是索引视图；Skill 仍保留在 `skills/<skill-id>/` 的规范位置，避免复制、漂移和重复加载。
+当前共 **39** 个。目录是索引视图；Skill 仍保留在 `skills/<skill-id>/` 的规范位置，避免复制、漂移和重复加载。
 
 > 原创身份只说明可审计的作者与来源，不代表已经通过生产运行、投资有效性或跨平台兼容性验证。
 
@@ -50,13 +50,18 @@
 
 - [`revenue-opportunity-governance`](../revenue-opportunity-governance/) — 将销售线索和客户对话治理为有证据的发现、资格、机会阶段、方案、预测、谈判和客户成功交接。用于机会审查、发现准备、资格判断、管道复盘、提案协调、谈判准备、预测校准、失单复盘或成交后交接；不要用于自动外联、群发、写入 CRM、报价、折扣、签约、抓取个人资料、承诺产品/交期/条款，也不要把回复、会议、试用或口头兴趣冒充成交。（作者：Daniel Li、AGI Super Team contributors）
 
-## 💹 Finance, Trading & Markets（5）
+## 💹 Finance, Trading & Markets（10）
 
 - [`5minbtc`](../5minbtc/) — BTC 5分钟K线实时方向预测 + 币安预测市场错价套利(paper)。v6.0 真OFI驱动: 方向由当前K线原生 in-candle OFI 净流一票决定(ofi_n=2*(tb/v)-1, REST klines[9] 聚合, 零WS依赖; WS ofi.json 做新鲜度反转保护与交叉校准), 概率=P(close>open|ofi)…（作者：Daniel Li、AGI Super Team contributors）
+- [`ashare-auction-analysis`](../ashare-auction-analysis/) — Use when 分析A股集合竞价（9:15-9:25）、开盘跳空、盘口五档，判断当日走势与操作。（作者：Daniel Li）
+- [`ashare-volume-resonance-analysis`](../ashare-volume-resonance-analysis/) — Use when 判断个股/板块量能是否真共振（时间/结构/节奏/量价四轴+共振度打分）。（作者：Daniel Li）
 - [`bb-scalper`](../bb-scalper/) — BB 双向套利策略：加密合约 10x 杠杆布林带均值回归。布林带收窄=横盘→在下轨买、上轨卖；三重过滤器(1h趋势/RSI/BB甜区)确认碗平放，轨对轨止盈(RR…（作者：Daniel Li）
 - [`binance-square`](../binance-square/) — 币安广场合约投机雷达 v5：以最近24小时专业交易帖为主要证据，回源核验帖子， 联合币安公共合约行情、4周期K线、布林带、ATR、量能和RR，生成可审计的本地影子报告。 触发词：币安广场、扫描币安、binance square、合约机会、交易信号雷达、4小时雷达（作者：Daniel Li、AGI Super Team contributors）
+- [`chip-peak-and-screening-methods`](../chip-peak-and-screening-methods/) — 筹码峰分析 + 三套选股法（三步漏斗/真龙识别/一夜持股）+ 回测校准数据。Use when 看筹码分布、判断支撑压力、按条件筛股。（作者：Daniel Li）
 - [`financial-planning-and-analysis`](../financial-planning-and-analysis/) — 为经营决策建立可复算的预算、滚动预测、现金跑道、三表连接、单位经济、实际预算差异、情景敏感性和资本配置备忘录。适用于业务规划、资源分配、定价经济性与下行评估；不用于代替会计税务审计意见、个人化投资建议、保证收益融资估值，或执行付款、转账、交易、借贷、开户和报税。（作者：Daniel Li、AGI Super Team contributors）
+- [`main-force-prelaunch-pattern`](../main-force-prelaunch-pattern/) — A股主力拉升前"五步曲"识别与伏击。Use when 找起涨前的票、判断地量是否见底、需要观察期+确认启动机制。（作者：Daniel Li）
 - [`product-discovery-portfolio-governance`](../product-discovery-portfolio-governance/) — 将模糊产品想法、客户请求或路线图争议转化为有证据的用户机会、产品组合取舍和阶段门决策。用于产品发现、机会评估、组合优先级、MVP 范围、路线图审查、发布前准备或继续/调整/停止决策；不要用于直接决定技术架构、营销投放、销售承诺、价格、法律结论，也不要把无研究证据的功能清单包装成产品战略。（作者：Daniel Li、AGI Super Team contributors）
+- [`youzi-stock-quality-screen`](../youzi-stock-quality-screen/) — Use when 按游资标准筛优质股、判断持仓质量、定位主力阶段（五标准+量价四象限+四维共振）。（作者：Daniel Li）
 
 ## 🧭 Business Operations & Strategy（2）
 
