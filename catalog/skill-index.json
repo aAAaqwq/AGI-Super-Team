@@ -191,8 +191,26 @@
       "path": "skills/a-fund-monitor/SKILL.md",
       "portability_class": "catalog-only",
       "provenance": {
-        "origin_kind": "unknown",
-        "review_state": "unreviewed"
+        "authors": [
+          "Daniel Li"
+        ],
+        "creation_commit": "7e00aecbde32547c655e8808effab24b5da72294",
+        "declared_hints": [
+          "Daniel Li 于 2026-11-03 确认该 Skill 为其原创；仓库内 Skill 实现与后续迭代为本项目第一方产出，第三方运行时/依赖按其自身许可证使用。作者、创建提交、MIT 许可证与当前树摘要已记录。"
+        ],
+        "evidence": [
+          "skills/a-fund-monitor/SKILL.md",
+          "skills/a-fund-monitor/scripts/fund_estimate.sh",
+          "skills/a-fund-monitor/scripts/fund_monitor.py",
+          "skills/a-fund-monitor/scripts/fund_nav.sh",
+          "skills/a-fund-monitor/references/eastmoney-api.md"
+        ],
+        "license": {
+          "evidence": "LICENSE",
+          "spdx": "MIT"
+        },
+        "origin_kind": "project-original",
+        "review_state": "reviewed"
       },
       "review_signals": [],
       "skill_id": "a-fund-monitor",
@@ -230,8 +248,22 @@
       "path": "skills/a-share-analysis/SKILL.md",
       "portability_class": "catalog-only",
       "provenance": {
-        "origin_kind": "unknown",
-        "review_state": "unreviewed"
+        "authors": [
+          "Daniel Li"
+        ],
+        "creation_commit": "229ab60c514300dd79472828441c7e9eac24ee66",
+        "declared_hints": [
+          "Daniel Li 于 2026-11-03 确认该 Skill 为其原创；仓库内 Skill 实现与后续迭代为本项目第一方产出，第三方运行时/依赖按其自身许可证使用。作者、创建提交、MIT 许可证与当前树摘要已记录。"
+        ],
+        "evidence": [
+          "skills/a-share-analysis/SKILL.md"
+        ],
+        "license": {
+          "evidence": "LICENSE",
+          "spdx": "MIT"
+        },
+        "origin_kind": "project-original",
+        "review_state": "reviewed"
       },
       "review_signals": [],
       "skill_id": "a-share-analysis",
@@ -1658,8 +1690,22 @@
       "path": "skills/ai-trader-arena/SKILL.md",
       "portability_class": "catalog-only",
       "provenance": {
-        "origin_kind": "unknown",
-        "review_state": "unreviewed"
+        "authors": [
+          "Daniel Li"
+        ],
+        "creation_commit": "98034e2fa64ab7d5ce14cddd0bae71be66b3428d",
+        "declared_hints": [
+          "Daniel Li 于 2026-11-03 确认该 Skill 为其原创；仓库内 Skill 实现与后续迭代为本项目第一方产出，第三方运行时/依赖按其自身许可证使用。作者、创建提交、MIT 许可证与当前树摘要已记录。"
+        ],
+        "evidence": [
+          "skills/ai-trader-arena/SKILL.md"
+        ],
+        "license": {
+          "evidence": "LICENSE",
+          "spdx": "MIT"
+        },
+        "origin_kind": "project-original",
+        "review_state": "reviewed"
       },
       "review_signals": [],
       "skill_id": "ai-trader-arena",
@@ -4815,8 +4861,25 @@
       "path": "skills/btc-5min-scalper/SKILL.md",
       "portability_class": "catalog-only",
       "provenance": {
-        "origin_kind": "unknown",
-        "review_state": "unreviewed"
+        "authors": [
+          "Daniel Li"
+        ],
+        "creation_commit": "6255c784f984d4ce19b78da22fcd0a0331a531f8",
+        "declared_hints": [
+          "Daniel Li 于 2026-11-03 确认该 Skill 为其原创；仓库内 Skill 实现与后续迭代为本项目第一方产出，第三方运行时/依赖按其自身许可证使用。作者、创建提交、MIT 许可证与当前树摘要已记录。"
+        ],
+        "evidence": [
+          "skills/btc-5min-scalper/SKILL.md",
+          "skills/btc-5min-scalper/scripts/scan_signals.sh",
+          "skills/btc-5min-scalper/references/iteration-log.md",
+          "skills/btc-5min-scalper/references/parameters.md"
+        ],
+        "license": {
+          "evidence": "LICENSE",
+          "spdx": "MIT"
+        },
+        "origin_kind": "project-original",
+        "review_state": "reviewed"
       },
       "review_signals": [],
       "skill_id": "btc-5min-scalper",
@@ -9979,8 +10042,25 @@
       "path": "skills/daniel-auto-publish/SKILL.md",
       "portability_class": "catalog-only",
       "provenance": {
-        "origin_kind": "unknown",
-        "review_state": "unreviewed"
+        "authors": [
+          "Daniel Li"
+        ],
+        "creation_commit": "dff8b4bdbeabb658bad0c4b75d173b60b91bd7ca",
+        "declared_hints": [
+          "Daniel Li 于 2026-11-03 确认该 Skill 为其原创；仓库内 Skill 实现与后续迭代为本项目第一方产出，第三方运行时/依赖按其自身许可证使用。作者、创建提交、MIT 许可证与当前树摘要已记录。"
+        ],
+        "evidence": [
+          "skills/daniel-auto-publish/SKILL.md",
+          "skills/daniel-auto-publish/references/bilibili.md",
+          "skills/daniel-auto-publish/references/common-workflow.md",
+          "skills/daniel-auto-publish/references/detection-and-safety.md"
+        ],
+        "license": {
+          "evidence": "LICENSE",
+          "spdx": "MIT"
+        },
+        "origin_kind": "project-original",
+        "review_state": "reviewed"
       },
       "review_signals": [],
       "skill_id": "daniel-auto-publish",
@@ -10071,8 +10151,23 @@
       "path": "skills/daniel-new-media-ops/SKILL.md",
       "portability_class": "catalog-only",
       "provenance": {
-        "origin_kind": "unknown",
-        "review_state": "unreviewed"
+        "authors": [
+          "Daniel Li"
+        ],
+        "creation_commit": "dff8b4bdbeabb658bad0c4b75d173b60b91bd7ca",
+        "declared_hints": [
+          "Daniel Li 于 2026-11-03 确认该 Skill 为其原创；仓库内 Skill 实现与后续迭代为本项目第一方产出，第三方运行时/依赖按其自身许可证使用。作者、创建提交、MIT 许可证与当前树摘要已记录。"
+        ],
+        "evidence": [
+          "skills/daniel-new-media-ops/SKILL.md",
+          "skills/daniel-new-media-ops/references/capability-map.md"
+        ],
+        "license": {
+          "evidence": "LICENSE",
+          "spdx": "MIT"
+        },
+        "origin_kind": "project-original",
+        "review_state": "reviewed"
       },
       "review_signals": [],
       "skill_id": "daniel-new-media-ops",
@@ -10110,8 +10205,22 @@
       "path": "skills/daniel-self-media-top-mindset/SKILL.md",
       "portability_class": "catalog-only",
       "provenance": {
-        "origin_kind": "unknown",
-        "review_state": "unreviewed"
+        "authors": [
+          "Daniel Li"
+        ],
+        "creation_commit": "dff8b4bdbeabb658bad0c4b75d173b60b91bd7ca",
+        "declared_hints": [
+          "Daniel Li 于 2026-11-03 确认该 Skill 为其原创；仓库内 Skill 实现与后续迭代为本项目第一方产出，第三方运行时/依赖按其自身许可证使用。作者、创建提交、MIT 许可证与当前树摘要已记录。"
+        ],
+        "evidence": [
+          "skills/daniel-self-media-top-mindset/SKILL.md"
+        ],
+        "license": {
+          "evidence": "LICENSE",
+          "spdx": "MIT"
+        },
+        "origin_kind": "project-original",
+        "review_state": "reviewed"
       },
       "review_signals": [],
       "skill_id": "daniel-self-media-top-mindset",
@@ -10159,8 +10268,24 @@
       "path": "skills/daniel-wechat-writing/SKILL.md",
       "portability_class": "catalog-only",
       "provenance": {
-        "origin_kind": "unknown",
-        "review_state": "unreviewed"
+        "authors": [
+          "Daniel Li"
+        ],
+        "creation_commit": "dff8b4bdbeabb658bad0c4b75d173b60b91bd7ca",
+        "declared_hints": [
+          "Daniel Li 于 2026-11-03 确认该 Skill 为其原创；仓库内 Skill 实现与后续迭代为本项目第一方产出，第三方运行时/依赖按其自身许可证使用。作者、创建提交、MIT 许可证与当前树摘要已记录。"
+        ],
+        "evidence": [
+          "skills/daniel-wechat-writing/SKILL.md",
+          "skills/daniel-wechat-writing/references/sample-xinzhiyuan-deepseek-r1.md",
+          "skills/daniel-wechat-writing/references/sample-xinzhiyuan-dream-rsi.md"
+        ],
+        "license": {
+          "evidence": "LICENSE",
+          "spdx": "MIT"
+        },
+        "origin_kind": "project-original",
+        "review_state": "reviewed"
       },
       "review_signals": [],
       "skill_id": "daniel-wechat-writing",
@@ -10198,8 +10323,29 @@
       "path": "skills/daniel-writer/SKILL.md",
       "portability_class": "catalog-only",
       "provenance": {
-        "origin_kind": "unknown",
-        "review_state": "unreviewed"
+        "authors": [
+          "Daniel Li"
+        ],
+        "creation_commit": "dff8b4bdbeabb658bad0c4b75d173b60b91bd7ca",
+        "declared_hints": [
+          "Daniel Li 于 2026-11-03 确认该 Skill 为其原创；仓库内 Skill 实现与后续迭代为本项目第一方产出，第三方运行时/依赖按其自身许可证使用。作者、创建提交、MIT 许可证与当前树摘要已记录。"
+        ],
+        "evidence": [
+          "skills/daniel-writer/SKILL.md",
+          "skills/daniel-writer/scripts/check_x_length.py",
+          "skills/daniel-writer/scripts/init_content_package.py",
+          "skills/daniel-writer/scripts/style_lint.py",
+          "skills/daniel-writer/scripts/test_check_x_length.py",
+          "skills/daniel-writer/references/benchmark-synthesis.md",
+          "skills/daniel-writer/references/brand-and-taste.md",
+          "skills/daniel-writer/references/content-methodology.md"
+        ],
+        "license": {
+          "evidence": "LICENSE",
+          "spdx": "MIT"
+        },
+        "origin_kind": "project-original",
+        "review_state": "reviewed"
       },
       "review_signals": [],
       "skill_id": "daniel-writer",
@@ -10305,8 +10451,22 @@
       "path": "skills/daniel-xhs-writing/SKILL.md",
       "portability_class": "catalog-only",
       "provenance": {
-        "origin_kind": "unknown",
-        "review_state": "unreviewed"
+        "authors": [
+          "Daniel Li"
+        ],
+        "creation_commit": "dff8b4bdbeabb658bad0c4b75d173b60b91bd7ca",
+        "declared_hints": [
+          "Daniel Li 于 2026-11-03 确认该 Skill 为其原创；仓库内 Skill 实现与后续迭代为本项目第一方产出，第三方运行时/依赖按其自身许可证使用。作者、创建提交、MIT 许可证与当前树摘要已记录。"
+        ],
+        "evidence": [
+          "skills/daniel-xhs-writing/SKILL.md"
+        ],
+        "license": {
+          "evidence": "LICENSE",
+          "spdx": "MIT"
+        },
+        "origin_kind": "project-original",
+        "review_state": "reviewed"
       },
       "review_signals": [],
       "skill_id": "daniel-xhs-writing",
@@ -11788,8 +11948,22 @@
       "path": "skills/douyin-creator/SKILL.md",
       "portability_class": "catalog-only",
       "provenance": {
-        "origin_kind": "unknown",
-        "review_state": "unreviewed"
+        "authors": [
+          "Daniel Li"
+        ],
+        "creation_commit": "3ab7cdfc8db464b3cc6fdc4775d70d4bf1e32fa1",
+        "declared_hints": [
+          "Daniel Li 于 2026-11-03 确认该 Skill 为其原创；仓库内 Skill 实现与后续迭代为本项目第一方产出，第三方运行时/依赖按其自身许可证使用。作者、创建提交、MIT 许可证与当前树摘要已记录。"
+        ],
+        "evidence": [
+          "skills/douyin-creator/SKILL.md"
+        ],
+        "license": {
+          "evidence": "LICENSE",
+          "spdx": "MIT"
+        },
+        "origin_kind": "project-original",
+        "review_state": "reviewed"
       },
       "review_signals": [],
       "skill_id": "douyin-creator",
@@ -11866,8 +12040,25 @@
       "path": "skills/douyin-publisher/SKILL.md",
       "portability_class": "catalog-only",
       "provenance": {
-        "origin_kind": "unknown",
-        "review_state": "unreviewed"
+        "authors": [
+          "Daniel Li"
+        ],
+        "creation_commit": "49c10e92ab14f748639832d66e382c58b57edd9a",
+        "declared_hints": [
+          "Daniel Li 于 2026-11-03 确认该 Skill 为其原创；仓库内 Skill 实现与后续迭代为本项目第一方产出，第三方运行时/依赖按其自身许可证使用。作者、创建提交、MIT 许可证与当前树摘要已记录。"
+        ],
+        "evidence": [
+          "skills/douyin-publisher/SKILL.md",
+          "skills/douyin-publisher/references/content-style-guide.md",
+          "skills/douyin-publisher/references/handoff-and-human-trace.md",
+          "skills/douyin-publisher/references/platform-rules.md"
+        ],
+        "license": {
+          "evidence": "LICENSE",
+          "spdx": "MIT"
+        },
+        "origin_kind": "project-original",
+        "review_state": "reviewed"
       },
       "review_signals": [
         "credentials",
@@ -11980,8 +12171,25 @@
       "path": "skills/douyin-video-analyst/SKILL.md",
       "portability_class": "catalog-only",
       "provenance": {
-        "origin_kind": "unknown",
-        "review_state": "unreviewed"
+        "authors": [
+          "Daniel Li"
+        ],
+        "creation_commit": "1fe622cfc8a11e255c340e06c0fd51baf80a49f2",
+        "declared_hints": [
+          "Daniel Li 于 2026-11-03 确认该 Skill 为其原创；仓库内 Skill 实现与后续迭代为本项目第一方产出，第三方运行时/依赖按其自身许可证使用。作者、创建提交、MIT 许可证与当前树摘要已记录。"
+        ],
+        "evidence": [
+          "skills/douyin-video-analyst/SKILL.md",
+          "skills/douyin-video-analyst/_meta.json",
+          "skills/douyin-video-analyst/references/setup.md",
+          "skills/douyin-video-analyst/references/troubleshooting.md"
+        ],
+        "license": {
+          "evidence": "LICENSE",
+          "spdx": "MIT"
+        },
+        "origin_kind": "project-original",
+        "review_state": "reviewed"
       },
       "review_signals": [],
       "skill_id": "douyin-video-analyst",
@@ -35921,8 +36129,24 @@
       "path": "skills/wechat-ai-radar/SKILL.md",
       "portability_class": "catalog-only",
       "provenance": {
-        "origin_kind": "unknown",
-        "review_state": "unreviewed"
+        "authors": [
+          "Daniel Li"
+        ],
+        "creation_commit": "d574a317e2016859349d017849f861ccef410ec2",
+        "declared_hints": [
+          "Daniel Li 于 2026-11-03 确认该 Skill 为其原创；仓库内 Skill 实现与后续迭代为本项目第一方产出，第三方运行时/依赖按其自身许可证使用。作者、创建提交、MIT 许可证与当前树摘要已记录。"
+        ],
+        "evidence": [
+          "skills/wechat-ai-radar/SKILL.md",
+          "skills/wechat-ai-radar/scripts/wechat_radar.sh",
+          "skills/wechat-ai-radar/scripts/wechat_radar_briefing.py"
+        ],
+        "license": {
+          "evidence": "LICENSE",
+          "spdx": "MIT"
+        },
+        "origin_kind": "project-original",
+        "review_state": "reviewed"
       },
       "review_signals": [],
       "skill_id": "wechat-ai-radar",
@@ -36021,8 +36245,22 @@
       "path": "skills/wechat-article-writer/SKILL.md",
       "portability_class": "catalog-only",
       "provenance": {
-        "origin_kind": "unknown",
-        "review_state": "unreviewed"
+        "authors": [
+          "Daniel Li"
+        ],
+        "creation_commit": "dcd0591e668a878a8e3f640f561da72ea68d81ac",
+        "declared_hints": [
+          "Daniel Li 于 2026-11-03 确认该 Skill 为其原创；仓库内 Skill 实现与后续迭代为本项目第一方产出，第三方运行时/依赖按其自身许可证使用。作者、创建提交、MIT 许可证与当前树摘要已记录。"
+        ],
+        "evidence": [
+          "skills/wechat-article-writer/SKILL.md"
+        ],
+        "license": {
+          "evidence": "LICENSE",
+          "spdx": "MIT"
+        },
+        "origin_kind": "project-original",
+        "review_state": "reviewed"
       },
       "review_signals": [],
       "skill_id": "wechat-article-writer",
@@ -36060,8 +36298,25 @@
       "path": "skills/wechat-channel/SKILL.md",
       "portability_class": "catalog-only",
       "provenance": {
-        "origin_kind": "unknown",
-        "review_state": "unreviewed"
+        "authors": [
+          "Daniel Li"
+        ],
+        "creation_commit": "af69814d0af62b9a4407e252755dc8db4ff0e1f7",
+        "declared_hints": [
+          "Daniel Li 于 2026-11-03 确认该 Skill 为其原创；仓库内 Skill 实现与后续迭代为本项目第一方产出，第三方运行时/依赖按其自身许可证使用。作者、创建提交、MIT 许可证与当前树摘要已记录。"
+        ],
+        "evidence": [
+          "skills/wechat-channel/SKILL.md",
+          "skills/wechat-channel/package.json",
+          "skills/wechat-channel/scripts/wechat-bridge.js",
+          "skills/wechat-channel/references/wechaty-api.md"
+        ],
+        "license": {
+          "evidence": "LICENSE",
+          "spdx": "MIT"
+        },
+        "origin_kind": "project-original",
+        "review_state": "reviewed"
       },
       "review_signals": [],
       "skill_id": "wechat-channel",
@@ -36099,8 +36354,23 @@
       "path": "skills/wechat-personal-message/SKILL.md",
       "portability_class": "catalog-only",
       "provenance": {
-        "origin_kind": "unknown",
-        "review_state": "unreviewed"
+        "authors": [
+          "Daniel Li"
+        ],
+        "creation_commit": "d574a317e2016859349d017849f861ccef410ec2",
+        "declared_hints": [
+          "Daniel Li 于 2026-11-03 确认该 Skill 为其原创；仓库内 Skill 实现与后续迭代为本项目第一方产出，第三方运行时/依赖按其自身许可证使用。作者、创建提交、MIT 许可证与当前树摘要已记录。"
+        ],
+        "evidence": [
+          "skills/wechat-personal-message/SKILL.md",
+          "skills/wechat-personal-message/scripts/wechat_automator.py"
+        ],
+        "license": {
+          "evidence": "LICENSE",
+          "spdx": "MIT"
+        },
+        "origin_kind": "project-original",
+        "review_state": "reviewed"
       },
       "review_signals": [],
       "skill_id": "wechat-personal-message",
@@ -36138,8 +36408,23 @@
       "path": "skills/wechat-pipeline/SKILL.md",
       "portability_class": "catalog-only",
       "provenance": {
-        "origin_kind": "unknown",
-        "review_state": "unreviewed"
+        "authors": [
+          "Daniel Li"
+        ],
+        "creation_commit": "9e94c515a92237c4a1da0e56d2d1bc48ce9b2e93",
+        "declared_hints": [
+          "Daniel Li 于 2026-11-03 确认该 Skill 为其原创；仓库内 Skill 实现与后续迭代为本项目第一方产出，第三方运行时/依赖按其自身许可证使用。作者、创建提交、MIT 许可证与当前树摘要已记录。"
+        ],
+        "evidence": [
+          "skills/wechat-pipeline/SKILL.md",
+          "skills/wechat-pipeline/_meta.json"
+        ],
+        "license": {
+          "evidence": "LICENSE",
+          "spdx": "MIT"
+        },
+        "origin_kind": "project-original",
+        "review_state": "reviewed"
       },
       "review_signals": [],
       "skill_id": "wechat-pipeline",
@@ -36177,8 +36462,30 @@
       "path": "skills/wechat-toolkit/SKILL.md",
       "portability_class": "catalog-only",
       "provenance": {
-        "origin_kind": "unknown",
-        "review_state": "unreviewed"
+        "authors": [
+          "Daniel Li"
+        ],
+        "creation_commit": "dcd0591e668a878a8e3f640f561da72ea68d81ac",
+        "declared_hints": [
+          "Daniel Li 于 2026-11-03 确认该 Skill 为其原创；仓库内 Skill 实现与后续迭代为本项目第一方产出，第三方运行时/依赖按其自身许可证使用。作者、创建提交、MIT 许可证与当前树摘要已记录。"
+        ],
+        "evidence": [
+          "skills/wechat-toolkit/SKILL.md",
+          "skills/wechat-toolkit/README.md",
+          "skills/wechat-toolkit/_meta.json",
+          "skills/wechat-toolkit/scripts/downloader/download.js",
+          "skills/wechat-toolkit/scripts/downloader/package-lock.json",
+          "skills/wechat-toolkit/scripts/downloader/package.json",
+          "skills/wechat-toolkit/scripts/publisher/publish.js",
+          "skills/wechat-toolkit/references/themes.md",
+          "skills/wechat-toolkit/references/troubleshooting.md"
+        ],
+        "license": {
+          "evidence": "LICENSE",
+          "spdx": "MIT"
+        },
+        "origin_kind": "project-original",
+        "review_state": "reviewed"
       },
       "review_signals": [],
       "skill_id": "wechat-toolkit",
@@ -37191,8 +37498,26 @@
       "path": "skills/xhs-skill/SKILL.md",
       "portability_class": "catalog-only",
       "provenance": {
-        "origin_kind": "unknown",
-        "review_state": "unreviewed"
+        "authors": [
+          "Daniel Li"
+        ],
+        "creation_commit": "d574a317e2016859349d017849f861ccef410ec2",
+        "declared_hints": [
+          "Daniel Li 于 2026-11-03 确认该 Skill 为其原创；仓库内 Skill 实现与后续迭代为本项目第一方产出，第三方运行时/依赖按其自身许可证使用。作者、创建提交、MIT 许可证与当前树摘要已记录。"
+        ],
+        "evidence": [
+          "skills/xhs-skill/SKILL.md",
+          "skills/xhs-skill/package.json",
+          "skills/xhs-skill/scripts/review_publish_payload.mjs",
+          "skills/xhs-skill/scripts/verify_login.mjs",
+          "skills/xhs-skill/scripts/verify_publish_payload.mjs"
+        ],
+        "license": {
+          "evidence": "LICENSE",
+          "spdx": "MIT"
+        },
+        "origin_kind": "project-original",
+        "review_state": "reviewed"
       },
       "review_signals": [],
       "skill_id": "xhs-skill",
@@ -37230,8 +37555,22 @@
       "path": "skills/xhs-smart-publisher/SKILL.md",
       "portability_class": "catalog-only",
       "provenance": {
-        "origin_kind": "unknown",
-        "review_state": "unreviewed"
+        "authors": [
+          "Daniel Li"
+        ],
+        "creation_commit": "8e3aed4ee64ce93d593ef9f10d67ae9f08e2c425",
+        "declared_hints": [
+          "Daniel Li 于 2026-11-03 确认该 Skill 为其原创；仓库内 Skill 实现与后续迭代为本项目第一方产出，第三方运行时/依赖按其自身许可证使用。作者、创建提交、MIT 许可证与当前树摘要已记录。"
+        ],
+        "evidence": [
+          "skills/xhs-smart-publisher/SKILL.md"
+        ],
+        "license": {
+          "evidence": "LICENSE",
+          "spdx": "MIT"
+        },
+        "origin_kind": "project-original",
+        "review_state": "reviewed"
       },
       "review_signals": [],
       "skill_id": "xhs-smart-publisher",

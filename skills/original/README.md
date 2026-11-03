@@ -4,7 +4,7 @@
 
 这里收录经 `config/skill-provenance.json` 审查为 `project-original + reviewed` 的第一方 Skills。
 
-当前共 **39** 个。目录是索引视图；Skill 仍保留在 `skills/<skill-id>/` 的规范位置，避免复制、漂移和重复加载。
+当前共 **60** 个。目录是索引视图；Skill 仍保留在 `skills/<skill-id>/` 的规范位置，避免复制、漂移和重复加载。
 
 > 原创身份只说明可审计的作者与来源，不代表已经通过生产运行、投资有效性或跨平台兼容性验证。
 
@@ -33,30 +33,39 @@
 
 - [`positioning-growth-experiment-system`](../positioning-growth-experiment-system/) — 基于真实市场、受众与产品证据设计定位、信息架构、渠道组合、增长实验和增量测量。用于市场细分、品牌定位、价值主张、渠道选择、活动实验、SEO/GEO 方向、归因复盘或扩张/停止决策；不要用于直接制作大量内容、自动发布、投放广告、群发消息、购买流量、修改产品事实或在证据不足时宣称 ROI、CAC 和增长因果。（作者：Daniel Li、AGI Super Team contributors）
 
-## ✍️ Content, Media & Publishing（10）
+## ✍️ Content, Media & Publishing（15）
 
 - [`content-cover-gen`](../content-cover-gen/) — 内容驱动封面生成:从文章标题/核心观点自动生成视觉隐喻提示词,调用 relay-image-gen 出图。 每张封面3秒内传达文章核心观点,杜绝通用背景。 支持小红书(3:4)、抖音(9:16)、公众号(16:9)、知识星球(1:1)、掘金(16:9)。 触发:'生成封面'、'封面生成'、'cover'、'thumbnail'、'封面图'、'缩略图'。（作者：Daniel Li）
 - [`content-illustration-strategy`](../content-illustration-strategy/) — 文章配图决策 skill：根据文章内容判断该配什么图、图从哪里来、什么时候该用 Telegram 真实对话截图，什么时候该用工具界面图、官网图、生成插图或流程图。 适用于公众号、小红书长图文、知识星球、掘金、博客等内容配图。触发词包括：'配图'、'插图'、'素材图'、'这篇文章该配什么图'、'截图进素材库'、'给这篇稿子补图'、'根据内容选图'。（作者：Daniel Li）
 - [`content-typography`](../content-typography/) — 这不是“选个字体” skill。（作者：Daniel Li）
 - [`daniel-aesthetic-director`](../daniel-aesthetic-director/) — 将主题、内容或品牌意图转化为有审美依据、可执行、可迭代的视觉方向与生成式图像提示词。适用于选择艺术/摄影/设计/东方美学/3D 风格，分析参考图，设计封面、海报、品牌视觉、产品图、插画或概念图，为 Midjourney、SDXL、GPT Image、即梦等模型生成提示词，以及解决“画面好看但不对题”“风格堆砌”“多张图不统一”等问题。（作者：Daniel Li）
+- [`daniel-auto-publish`](../daniel-auto-publish/) — 通过用户自有的真实浏览器和 Computer Use，安全辅助抖音、小红书、快手、微信视频号、哔哩哔哩、YouTube、TikTok 与百家号的视频、图文或公众号文章发布。用于选择图文排版模板、生成并预览图片卡片或微信…（作者：Daniel Li）
+- [`daniel-new-media-ops`](../daniel-new-media-ops/) — 路由 Daniel 新媒体内容从选题、写作、视觉化、视频制作到多平台草稿与发布核验。适用于用户要求制作或分发 Daniel 品牌内容时；单纯文案润色优先直接使用 daniel-writer。（作者：Daniel Li）
+- [`daniel-self-media-top-mindset`](../daniel-self-media-top-mindset/) — 将 Daniel 的利他、真实藏露、情绪纪律、需求聚焦与商业闭环心法应用到自媒体决策。凡涉及 Daniel 个人 IP 的定位、选题、写稿、脚本、封面、跨平台改编、发布规划、增长、变现或复盘时必须先使用；不用于保证爆款、虚构经历、泄露隐私或自动发布。（作者：Daniel Li）
+- [`daniel-writer`](../daniel-writer/) — Daniel 的统一创作入口：按品牌、证据、声音和人机分工合同，完成选题、母故事、项目内容工作包、微信公众号、X、小红书、B站、知乎、抖音的起草改写与平台适配，并生成获批短视频脚本的本地制作交接和技术候选。适用于 AI、Agent、工具实测、教程、失败复盘、创作反思、图文卡片、口播分镜与跨平台内容生产。正式 Daniel…（作者：Daniel Li）
 - [`daniel-x-writer`](../daniel-x-writer/) — Use for concise Chinese X/Twitter posts in Daniel's first-person voice, mixing human tension, numerical evidence, explicit decision rules, and a sharp reflective ending.（作者：Daniel Li、AGI Super Team contributors）
 - [`editorial-content-system`](../editorial-content-system/) — 为组织设计或审计内容战略、编辑组合、内容 brief、主张来源与素材权利清单、生产质量门、发布交接和实验复盘。适用于搭建可持续内容生产系统、定义编辑标准、治理多渠道母版和修复内容流程失控；不用于只改一句文案、决定营销投放/渠道增长、登录账号或自动发布内容。（作者：Daniel Li、AGI Super Team contributors）
 - [`jimeng-storyboard`](../jimeng-storyboard/) — 将口播视频剧本拆解为即梦AI数字人平台的分镜头脚本。输出格式为每个镜头的角色说（台词）和动作描述（镜头语言/数字人动作），适配即梦 jimeng.jianying.com 数字人视频生成界面。触发场景：用户需要生成口播视频分镜、数字人视频剧本拆解、即梦分镜脚本、短视频口播脚本分镜、数字人台词加动作拆分。（作者：Daniel Li）
 - [`relay-image-gen`](../relay-image-gen/) — Multi-provider image generation with automatic priority fallback（作者：Daniel Li）
 - [`relay-video-gen`](../relay-video-gen/) — Multi-provider video generation with async polling and automatic model fallback（作者：Daniel Li）
 - [`video-merge-send`](../video-merge-send/) — 合并多个分段视频为一个完整视频，并发送到飞书。使用ffmpeg拼接视频片段，支持淡入淡出转场。触发场景：用户需要合并视频片段、拼接分镜视频、视频合并后发飞书、把多个短视频合成一个、分段视频合并发送。配合 jimeng-storyboard skill 使用，完成数字人视频全流程。（作者：Daniel Li）
+- [`wechat-article-writer`](../wechat-article-writer/) — 公众号文章自动化写作流程。支持资料搜索、文章撰写、爆款标题生成、排版优化。当用户提到写公众号、微信文章、自媒体写作、爆款文章、内容创作时使用此（作者：Daniel Li）
 
 ## 🤝 Sales, CRM & Customer Success（1）
 
 - [`revenue-opportunity-governance`](../revenue-opportunity-governance/) — 将销售线索和客户对话治理为有证据的发现、资格、机会阶段、方案、预测、谈判和客户成功交接。用于机会审查、发现准备、资格判断、管道复盘、提案协调、谈判准备、预测校准、失单复盘或成交后交接；不要用于自动外联、群发、写入 CRM、报价、折扣、签约、抓取个人资料、承诺产品/交期/条款，也不要把回复、会议、试用或口头兴趣冒充成交。（作者：Daniel Li、AGI Super Team contributors）
 
-## 💹 Finance, Trading & Markets（10）
+## 💹 Finance, Trading & Markets（14）
 
 - [`5minbtc`](../5minbtc/) — BTC 5分钟K线实时方向预测 + 币安预测市场错价套利(paper)。v6.0 真OFI驱动: 方向由当前K线原生 in-candle OFI 净流一票决定(ofi_n=2*(tb/v)-1, REST klines[9] 聚合, 零WS依赖; WS ofi.json 做新鲜度反转保护与交叉校准), 概率=P(close>open|ofi)…（作者：Daniel Li、AGI Super Team contributors）
+- [`a-fund-monitor`](../a-fund-monitor/) — A股基金净值监控：盘中实时估值 + 盘后实际净值，定时推送到 Telegram。（作者：Daniel Li）
+- [`a-share-analysis`](../a-share-analysis/) — 此Skill实现了三层分析体系： 1. 情报采集层 — 7路并发多源新闻采集，自动匹配板块和个股 2. 盘面阅读层 — 美股映射 + 大盘多空判断 + 实时主线(>9%题材分析) 3. 个股精选层 — 产业逻辑 + 形态8分类 + 盘口分析 + 题材排名 + 综合评分 4. 原始新闻浏览 (news.py) — 分类展示影响股票的新闻，源信息不做任何修改（作者：Daniel Li）
+- [`ai-trader-arena`](../ai-trader-arena/) — AI trading arena, 模型竞技, 多模型交易, trading competition, historical replay, MCP trading, ai4trade（作者：Daniel Li）
 - [`ashare-auction-analysis`](../ashare-auction-analysis/) — Use when 分析A股集合竞价（9:15-9:25）、开盘跳空、盘口五档，判断当日走势与操作。（作者：Daniel Li）
 - [`ashare-volume-resonance-analysis`](../ashare-volume-resonance-analysis/) — Use when 判断个股/板块量能是否真共振（时间/结构/节奏/量价四轴+共振度打分）。（作者：Daniel Li）
 - [`bb-scalper`](../bb-scalper/) — BB 双向套利策略：加密合约 10x 杠杆布林带均值回归。布林带收窄=横盘→在下轨买、上轨卖；三重过滤器(1h趋势/RSI/BB甜区)确认碗平放，轨对轨止盈(RR…（作者：Daniel Li）
 - [`binance-square`](../binance-square/) — 币安广场合约投机雷达 v5：以最近24小时专业交易帖为主要证据，回源核验帖子， 联合币安公共合约行情、4周期K线、布林带、ATR、量能和RR，生成可审计的本地影子报告。 触发词：币安广场、扫描币安、binance square、合约机会、交易信号雷达、4小时雷达（作者：Daniel Li、AGI Super Team contributors）
+- [`btc-5min-scalper`](../btc-5min-scalper/) — BTC 5-minute Up/Down paper trading on Polymarket. Scans Binance 1m candles for momentum/mean-reversion/volume signals, makes virtual trades on Polymarket 5-min markets, tracks…（作者：Daniel Li）
 - [`chip-peak-and-screening-methods`](../chip-peak-and-screening-methods/) — 筹码峰分析 + 三套选股法（三步漏斗/真龙识别/一夜持股）+ 回测校准数据。Use when 看筹码分布、判断支撑压力、按条件筛股。（作者：Daniel Li）
 - [`financial-planning-and-analysis`](../financial-planning-and-analysis/) — 为经营决策建立可复算的预算、滚动预测、现金跑道、三表连接、单位经济、实际预算差异、情景敏感性和资本配置备忘录。适用于业务规划、资源分配、定价经济性与下行评估；不用于代替会计税务审计意见、个人化投资建议、保证收益融资估值，或执行付款、转账、交易、借贷、开户和报税。（作者：Daniel Li、AGI Super Team contributors）
 - [`main-force-prelaunch-pattern`](../main-force-prelaunch-pattern/) — A股主力拉升前"五步曲"识别与伏击。Use when 找起涨前的票、判断地量是否见底、需要观察期+确认启动机制。（作者：Daniel Li）
@@ -68,13 +77,25 @@
 - [`executive-decision-system`](../executive-decision-system/) — 将模糊的公司级议题转成可追溯的战略选择、资源配置和复查机制。用于重大方向选择、业务组合取舍、跨职能优先级冲突、进入或退出市场、年度或季度重点决策；不用于日常项目排期、流程优化、专业领域定论或对已完成工作的独立验收。（作者：Daniel Li、AGI Super Team contributors）
 - [`independent-assurance-gate`](../independent-assurance-gate/) — 独立审查重要完成声明，建立声明—证据映射，寻找反例，校准严重度并给出通过、有条件通过、阻断或待验证结论。用于发布前验收、高风险变更、跨角色交付、外部结果声明和整改复验；不用于审查者自己的主要实现、替领域负责人设计方案、替 CEO 作资源取舍或替人类接受现实风险。（作者：Daniel Li、AGI Super Team contributors）
 
-## 🇨🇳 Chinese Platform Workflows（5）
+## 🇨🇳 Chinese Platform Workflows（17）
 
 - [`daily-douyin-content`](../daily-douyin-content/) — 你是 CCO，Daniel Li 的内容 Agent。（作者：Daniel Li、AGI Super Team contributors）
 - [`daily-gzh-content`](../daily-gzh-content/) — 公众号每日内容生产：选题→创作→素材生成→质量检查→保存→发布草稿（作者：Daniel Li、AGI Super Team contributors）
 - [`daily-xhs-content`](../daily-xhs-content/) — 你是 CCO，Daniel Li 的内容 Agent。（作者：Daniel Li、AGI Super Team contributors）
+- [`daniel-wechat-writing`](../daniel-wechat-writing/) — 微信公众号 AI 论文解读类爆款文章的写作 skill。对标新智元/机器之心/量子位， 从论文 arXiv 链接或主题出发，端到端产出可直接复制到公众号后台的成稿。 触发词："解读这篇论文"、"论文推文"、"AI论文公众号"、"arXiv 写公众号"、 "把论文改成公众号"、"paper explainer"。 适用：arXiv…（作者：Daniel Li）
+- [`daniel-xhs-writing`](../daniel-xhs-writing/) — name: daniel-xhs-writing（作者：Daniel Li）
+- [`douyin-creator`](../douyin-creator/) — douyin-creator（作者：Daniel Li）
+- [`douyin-publisher`](../douyin-publisher/) — 抖音图文/视频发布（OpenClaw Browser 自动化）：登录检测→内容校验→上传页导航→填标题/正文→上传封面+素材→暂存离开。（作者：Daniel Li）
 - [`douyin-smart-publish`](../douyin-smart-publish/) — 抖音创作者平台智能发布（视频/图文）：内容适配→上传→填描述/#话题→封面→存草稿→截图回传确认。默认只存草稿；只有在 Daniel 明确确认后才允许点击发布。覆盖标题(≤55字)、描述(建议≤200字)、#话题标签(3-5个)、封面设置、定时发布、可见性、合拍/下载开关。Playwright 自动化。触发：'发抖音'、'抖音发布'、'douyin…（作者：Daniel Li）
+- [`douyin-video-analyst`](../douyin-video-analyst/) — 抖音账号视频批量采集与文案分析工作流。当用户提供抖音账号主页链接、要求抓取最新 N 条视频链接、提取视频文案（语音转文字）、或对视频内容进行总结归纳时，激活此 skill。依赖 browser 工具（抓取视频列表）和 mcporter + douyin-mcp（文案提取）。（作者：Daniel Li）
+- [`wechat-ai-radar`](../wechat-ai-radar/) — 微信朋友圈AI雷达 — 自动化采集276+条朋友圈内容，通过AI视觉提取、分类分析、商机发现，生成结构化简报。支持每日定时任务，一键生成热点报告。（作者：Daniel Li）
+- [`wechat-channel`](../wechat-channel/) — 微信 (WeChat) 与 OpenClaw 的双向集成通道。基于 Wechaty + PadLocal 实现微信消息的接收和发送，支持私聊、群聊、@提及检测、图片/文件传输。当需要通过微信与（作者：Daniel Li）
+- [`wechat-personal-message`](../wechat-personal-message/) — 微信自动化助手 — 激活微信 → 置顶窗口 → 搜索联系人 → Vision OCR识别 → 进入聊天 → 自动发送。全程本地运行，支持 OCR 视觉反馈校验，可被外部工具调用。（作者：Daniel Li）
+- [`wechat-pipeline`](../wechat-pipeline/) — 公众号文章全自动流水线：写作→封面→发布。三段式编排 wechat-article-writer / code-to-image / md2wechat， 每段设断点检查，用户确认后才进入下一段。触发: '公众号创作' '写公众号文章' '公众号发布' '公众号流水线' '发公众号'。 Author: Daniel Li（作者：Daniel Li）
+- [`wechat-toolkit`](../wechat-toolkit/) — 微信公众号一站式工具包 — 集成文章搜索、文章下载、AI洗稿改写、公众号发布四大功能。当用户需要搜索/下载/改写/发布微信公众号文章时使用。（作者：Daniel Li）
 - [`weixin-channels-publish`](../weixin-channels-publish/) — 微信视频号助手网页版视频发布全流程。通过浏览器自动化操控 channels.weixin.qq.com 完成登录检测、扫码登录、上传视频、填写描述和短标题、截图确认后发布或保存草稿。触发场景：用户需要发布视频到视频号、视频号发布、视频号上传视频、发视频号。（作者：Daniel Li）
+- [`xhs-skill`](../xhs-skill/) — 小红书（创作者中心）登录拿 cookies、发布笔记、导出数据的单一入口技能（浏览器交互委托 agent-browser-stealth）（作者：Daniel Li）
+- [`xhs-smart-publisher`](../xhs-smart-publisher/) — 小红书智能发布：内容适配→排版→Playwright自动发布/存草稿。覆盖标题公式(≤20字+emoji+数字)、正文排版(空行分段+emoji点缀)、标签策略(热门+长尾3-8个)、封面规格(3:4竖版1080×1440)、CES算法优化。支持图文笔记和轮播。触发：'发小红书'、'小红书发布'、'xhs（作者：Daniel Li）
 
 ## 🧰 Specialized Domains & Utilities（3）
 

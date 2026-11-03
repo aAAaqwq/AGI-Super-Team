@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "scope": "reviewed-project-original-skills",
   "generatedFrom": "config/skill-provenance.json",
-  "inventoryCount": 39,
+  "inventoryCount": 60,
   "categories": [
     {
       "id": "ai-agents-orchestration",
@@ -38,7 +38,7 @@
       "id": "content-media-publishing",
       "name": "Content, Media & Publishing",
       "emoji": "✍️",
-      "count": 10
+      "count": 15
     },
     {
       "id": "sales-crm-customer-success",
@@ -50,7 +50,7 @@
       "id": "finance-trading-markets",
       "name": "Finance, Trading & Markets",
       "emoji": "💹",
-      "count": 10
+      "count": 14
     },
     {
       "id": "business-operations-strategy",
@@ -62,7 +62,7 @@
       "id": "chinese-platform-workflows",
       "name": "Chinese Platform Workflows",
       "emoji": "🇨🇳",
-      "count": 5
+      "count": 17
     },
     {
       "id": "general-utilities",
@@ -81,6 +81,36 @@
         "AGI Super Team contributors"
       ],
       "creation_commit": "aae3f692c9dedb348e35da534026281e73ebc30c",
+      "category_id": "finance-trading-markets"
+    },
+    {
+      "skill_id": "a-fund-monitor",
+      "path": "skills/a-fund-monitor/SKILL.md",
+      "description": "A股基金净值监控：盘中实时估值 + 盘后实际净值，定时推送到 Telegram。",
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "7e00aecbde32547c655e8808effab24b5da72294",
+      "category_id": "finance-trading-markets"
+    },
+    {
+      "skill_id": "a-share-analysis",
+      "path": "skills/a-share-analysis/SKILL.md",
+      "description": "此Skill实现了三层分析体系： 1. 情报采集层 — 7路并发多源新闻采集，自动匹配板块和个股 2. 盘面阅读层 — 美股映射 + 大盘多空判断 + 实时主线(>9%题材分析) 3. 个股精选层 — 产业逻辑 + 形态8分类 + 盘口分析 + 题材排名 + 综合评分 4. 原始新闻浏览 (news.py) — 分类展示影响股票的新闻，源信息不做任何修改",
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "229ab60c514300dd79472828441c7e9eac24ee66",
+      "category_id": "finance-trading-markets"
+    },
+    {
+      "skill_id": "ai-trader-arena",
+      "path": "skills/ai-trader-arena/SKILL.md",
+      "description": "AI trading arena, 模型竞技, 多模型交易, trading competition, historical replay, MCP trading, ai4trade",
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "98034e2fa64ab7d5ce14cddd0bae71be66b3428d",
       "category_id": "finance-trading-markets"
     },
     {
@@ -122,6 +152,16 @@
         "AGI Super Team contributors"
       ],
       "creation_commit": "da4e86d351b5c8d0c3d5b2a81602b93de24fe605",
+      "category_id": "finance-trading-markets"
+    },
+    {
+      "skill_id": "btc-5min-scalper",
+      "path": "skills/btc-5min-scalper/SKILL.md",
+      "description": "BTC 5-minute Up/Down paper trading on Polymarket. Scans Binance 1m candles for momentum/mean-reversion/volume signals, makes virtual trades on Polymarket 5-min markets, tracks…",
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "6255c784f984d4ce19b78da22fcd0a0331a531f8",
       "category_id": "finance-trading-markets"
     },
     {
@@ -208,6 +248,56 @@
       "category_id": "content-media-publishing"
     },
     {
+      "skill_id": "daniel-auto-publish",
+      "path": "skills/daniel-auto-publish/SKILL.md",
+      "description": "通过用户自有的真实浏览器和 Computer Use，安全辅助抖音、小红书、快手、微信视频号、哔哩哔哩、YouTube、TikTok 与百家号的视频、图文或公众号文章发布。用于选择图文排版模板、生成并预览图片卡片或微信…",
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "dff8b4bdbeabb658bad0c4b75d173b60b91bd7ca",
+      "category_id": "content-media-publishing"
+    },
+    {
+      "skill_id": "daniel-new-media-ops",
+      "path": "skills/daniel-new-media-ops/SKILL.md",
+      "description": "路由 Daniel 新媒体内容从选题、写作、视觉化、视频制作到多平台草稿与发布核验。适用于用户要求制作或分发 Daniel 品牌内容时；单纯文案润色优先直接使用 daniel-writer。",
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "dff8b4bdbeabb658bad0c4b75d173b60b91bd7ca",
+      "category_id": "content-media-publishing"
+    },
+    {
+      "skill_id": "daniel-self-media-top-mindset",
+      "path": "skills/daniel-self-media-top-mindset/SKILL.md",
+      "description": "将 Daniel 的利他、真实藏露、情绪纪律、需求聚焦与商业闭环心法应用到自媒体决策。凡涉及 Daniel 个人 IP 的定位、选题、写稿、脚本、封面、跨平台改编、发布规划、增长、变现或复盘时必须先使用；不用于保证爆款、虚构经历、泄露隐私或自动发布。",
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "dff8b4bdbeabb658bad0c4b75d173b60b91bd7ca",
+      "category_id": "content-media-publishing"
+    },
+    {
+      "skill_id": "daniel-wechat-writing",
+      "path": "skills/daniel-wechat-writing/SKILL.md",
+      "description": "微信公众号 AI 论文解读类爆款文章的写作 skill。对标新智元/机器之心/量子位， 从论文 arXiv 链接或主题出发，端到端产出可直接复制到公众号后台的成稿。 触发词：\"解读这篇论文\"、\"论文推文\"、\"AI论文公众号\"、\"arXiv 写公众号\"、 \"把论文改成公众号\"、\"paper explainer\"。 适用：arXiv…",
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "dff8b4bdbeabb658bad0c4b75d173b60b91bd7ca",
+      "category_id": "chinese-platform-workflows"
+    },
+    {
+      "skill_id": "daniel-writer",
+      "path": "skills/daniel-writer/SKILL.md",
+      "description": "Daniel 的统一创作入口：按品牌、证据、声音和人机分工合同，完成选题、母故事、项目内容工作包、微信公众号、X、小红书、B站、知乎、抖音的起草改写与平台适配，并生成获批短视频脚本的本地制作交接和技术候选。适用于 AI、Agent、工具实测、教程、失败复盘、创作反思、图文卡片、口播分镜与跨平台内容生产。正式 Daniel…",
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "dff8b4bdbeabb658bad0c4b75d173b60b91bd7ca",
+      "category_id": "content-media-publishing"
+    },
+    {
       "skill_id": "daniel-x-writer",
       "path": "skills/daniel-x-writer/SKILL.md",
       "description": "Use for concise Chinese X/Twitter posts in Daniel's first-person voice, mixing human tension, numerical evidence, explicit decision rules, and a sharp reflective ending.",
@@ -217,6 +307,16 @@
       ],
       "creation_commit": "2f733c5f97c7783c314878b5b3ea3ed39117c9ab",
       "category_id": "content-media-publishing"
+    },
+    {
+      "skill_id": "daniel-xhs-writing",
+      "path": "skills/daniel-xhs-writing/SKILL.md",
+      "description": "name: daniel-xhs-writing",
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "dff8b4bdbeabb658bad0c4b75d173b60b91bd7ca",
+      "category_id": "chinese-platform-workflows"
     },
     {
       "skill_id": "data-contract-quality-governance",
@@ -230,6 +330,26 @@
       "category_id": "security-privacy-legal"
     },
     {
+      "skill_id": "douyin-creator",
+      "path": "skills/douyin-creator/SKILL.md",
+      "description": "douyin-creator",
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "3ab7cdfc8db464b3cc6fdc4775d70d4bf1e32fa1",
+      "category_id": "chinese-platform-workflows"
+    },
+    {
+      "skill_id": "douyin-publisher",
+      "path": "skills/douyin-publisher/SKILL.md",
+      "description": "抖音图文/视频发布（OpenClaw Browser 自动化）：登录检测→内容校验→上传页导航→填标题/正文→上传封面+素材→暂存离开。",
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "49c10e92ab14f748639832d66e382c58b57edd9a",
+      "category_id": "chinese-platform-workflows"
+    },
+    {
       "skill_id": "douyin-smart-publish",
       "path": "skills/douyin-smart-publish/SKILL.md",
       "description": "抖音创作者平台智能发布（视频/图文）：内容适配→上传→填描述/#话题→封面→存草稿→截图回传确认。默认只存草稿；只有在 Daniel 明确确认后才允许点击发布。覆盖标题(≤55字)、描述(建议≤200字)、#话题标签(3-5个)、封面设置、定时发布、可见性、合拍/下载开关。Playwright 自动化。触发：'发抖音'、'抖音发布'、'douyin…",
@@ -237,6 +357,16 @@
         "Daniel Li"
       ],
       "creation_commit": "3ab7cdfc8db464b3cc6fdc4775d70d4bf1e32fa1",
+      "category_id": "chinese-platform-workflows"
+    },
+    {
+      "skill_id": "douyin-video-analyst",
+      "path": "skills/douyin-video-analyst/SKILL.md",
+      "description": "抖音账号视频批量采集与文案分析工作流。当用户提供抖音账号主页链接、要求抓取最新 N 条视频链接、提取视频文案（语音转文字）、或对视频内容进行总结归纳时，激活此 skill。依赖 browser 工具（抓取视频列表）和 mcporter + douyin-mcp（文案提取）。",
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "1fe622cfc8a11e255c340e06c0fd51baf80a49f2",
       "category_id": "chinese-platform-workflows"
     },
     {
@@ -463,6 +593,66 @@
       "category_id": "content-media-publishing"
     },
     {
+      "skill_id": "wechat-ai-radar",
+      "path": "skills/wechat-ai-radar/SKILL.md",
+      "description": "微信朋友圈AI雷达 — 自动化采集276+条朋友圈内容，通过AI视觉提取、分类分析、商机发现，生成结构化简报。支持每日定时任务，一键生成热点报告。",
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "d574a317e2016859349d017849f861ccef410ec2",
+      "category_id": "chinese-platform-workflows"
+    },
+    {
+      "skill_id": "wechat-article-writer",
+      "path": "skills/wechat-article-writer/SKILL.md",
+      "description": "公众号文章自动化写作流程。支持资料搜索、文章撰写、爆款标题生成、排版优化。当用户提到写公众号、微信文章、自媒体写作、爆款文章、内容创作时使用此",
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "dcd0591e668a878a8e3f640f561da72ea68d81ac",
+      "category_id": "content-media-publishing"
+    },
+    {
+      "skill_id": "wechat-channel",
+      "path": "skills/wechat-channel/SKILL.md",
+      "description": "微信 (WeChat) 与 OpenClaw 的双向集成通道。基于 Wechaty + PadLocal 实现微信消息的接收和发送，支持私聊、群聊、@提及检测、图片/文件传输。当需要通过微信与",
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "af69814d0af62b9a4407e252755dc8db4ff0e1f7",
+      "category_id": "chinese-platform-workflows"
+    },
+    {
+      "skill_id": "wechat-personal-message",
+      "path": "skills/wechat-personal-message/SKILL.md",
+      "description": "微信自动化助手 — 激活微信 → 置顶窗口 → 搜索联系人 → Vision OCR识别 → 进入聊天 → 自动发送。全程本地运行，支持 OCR 视觉反馈校验，可被外部工具调用。",
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "d574a317e2016859349d017849f861ccef410ec2",
+      "category_id": "chinese-platform-workflows"
+    },
+    {
+      "skill_id": "wechat-pipeline",
+      "path": "skills/wechat-pipeline/SKILL.md",
+      "description": "公众号文章全自动流水线：写作→封面→发布。三段式编排 wechat-article-writer / code-to-image / md2wechat， 每段设断点检查，用户确认后才进入下一段。触发: '公众号创作' '写公众号文章' '公众号发布' '公众号流水线' '发公众号'。 Author: Daniel Li",
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "9e94c515a92237c4a1da0e56d2d1bc48ce9b2e93",
+      "category_id": "chinese-platform-workflows"
+    },
+    {
+      "skill_id": "wechat-toolkit",
+      "path": "skills/wechat-toolkit/SKILL.md",
+      "description": "微信公众号一站式工具包 — 集成文章搜索、文章下载、AI洗稿改写、公众号发布四大功能。当用户需要搜索/下载/改写/发布微信公众号文章时使用。",
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "dcd0591e668a878a8e3f640f561da72ea68d81ac",
+      "category_id": "chinese-platform-workflows"
+    },
+    {
       "skill_id": "weixin-channels-publish",
       "path": "skills/weixin-channels-publish/SKILL.md",
       "description": "微信视频号助手网页版视频发布全流程。通过浏览器自动化操控 channels.weixin.qq.com 完成登录检测、扫码登录、上传视频、填写描述和短标题、截图确认后发布或保存草稿。触发场景：用户需要发布视频到视频号、视频号发布、视频号上传视频、发视频号。",
@@ -470,6 +660,26 @@
         "Daniel Li"
       ],
       "creation_commit": "02262c4ef67b43de4622652f0c10a4718ed3715d",
+      "category_id": "chinese-platform-workflows"
+    },
+    {
+      "skill_id": "xhs-skill",
+      "path": "skills/xhs-skill/SKILL.md",
+      "description": "小红书（创作者中心）登录拿 cookies、发布笔记、导出数据的单一入口技能（浏览器交互委托 agent-browser-stealth）",
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "d574a317e2016859349d017849f861ccef410ec2",
+      "category_id": "chinese-platform-workflows"
+    },
+    {
+      "skill_id": "xhs-smart-publisher",
+      "path": "skills/xhs-smart-publisher/SKILL.md",
+      "description": "小红书智能发布：内容适配→排版→Playwright自动发布/存草稿。覆盖标题公式(≤20字+emoji+数字)、正文排版(空行分段+emoji点缀)、标签策略(热门+长尾3-8个)、封面规格(3:4竖版1080×1440)、CES算法优化。支持图文笔记和轮播。触发：'发小红书'、'小红书发布'、'xhs",
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "8e3aed4ee64ce93d593ef9f10d67ae9f08e2c425",
       "category_id": "chinese-platform-workflows"
     },
     {

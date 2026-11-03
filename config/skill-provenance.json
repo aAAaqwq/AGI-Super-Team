@@ -945,6 +945,471 @@
         "evidence": "LICENSE"
       },
       "local_tree_digest": "sha256:95426016747a36ab9d3ef0995f2a29f8284cae640e41711e66122a6ca5184e08"
+    },
+    {
+      "skill_id": "a-fund-monitor",
+      "origin_kind": "project-original",
+      "review_state": "reviewed",
+      "declared_hints": [
+        "Daniel Li 于 2026-11-03 确认该 Skill 为其原创；仓库内 Skill 实现与后续迭代为本项目第一方产出，第三方运行时/依赖按其自身许可证使用。作者、创建提交、MIT 许可证与当前树摘要已记录。"
+      ],
+      "evidence": [
+        "skills/a-fund-monitor/SKILL.md",
+        "skills/a-fund-monitor/scripts/fund_estimate.sh",
+        "skills/a-fund-monitor/scripts/fund_monitor.py",
+        "skills/a-fund-monitor/scripts/fund_nav.sh",
+        "skills/a-fund-monitor/references/eastmoney-api.md"
+      ],
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "7e00aecbde32547c655e8808effab24b5da72294",
+      "license": {
+        "spdx": "MIT",
+        "evidence": "LICENSE"
+      },
+      "local_tree_digest": "sha256:26ef3f1748be8e75f4e553ff227091183a23e37222a7cbe4380a56857a84dd15"
+    },
+    {
+      "skill_id": "a-share-analysis",
+      "origin_kind": "project-original",
+      "review_state": "reviewed",
+      "declared_hints": [
+        "Daniel Li 于 2026-11-03 确认该 Skill 为其原创；仓库内 Skill 实现与后续迭代为本项目第一方产出，第三方运行时/依赖按其自身许可证使用。作者、创建提交、MIT 许可证与当前树摘要已记录。"
+      ],
+      "evidence": [
+        "skills/a-share-analysis/SKILL.md"
+      ],
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "229ab60c514300dd79472828441c7e9eac24ee66",
+      "license": {
+        "spdx": "MIT",
+        "evidence": "LICENSE"
+      },
+      "local_tree_digest": "sha256:8d3341497908f0f248cb2f745b981261e78a0e83c9dd2efa1bfa608444c75e89"
+    },
+    {
+      "skill_id": "ai-trader-arena",
+      "origin_kind": "project-original",
+      "review_state": "reviewed",
+      "declared_hints": [
+        "Daniel Li 于 2026-11-03 确认该 Skill 为其原创；仓库内 Skill 实现与后续迭代为本项目第一方产出，第三方运行时/依赖按其自身许可证使用。作者、创建提交、MIT 许可证与当前树摘要已记录。"
+      ],
+      "evidence": [
+        "skills/ai-trader-arena/SKILL.md"
+      ],
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "98034e2fa64ab7d5ce14cddd0bae71be66b3428d",
+      "license": {
+        "spdx": "MIT",
+        "evidence": "LICENSE"
+      },
+      "local_tree_digest": "sha256:da2ffc9fd6fbd7f8920cb043a3ffb009c14be8c940c0be4d85ae647ab8ce5b35"
+    },
+    {
+      "skill_id": "btc-5min-scalper",
+      "origin_kind": "project-original",
+      "review_state": "reviewed",
+      "declared_hints": [
+        "Daniel Li 于 2026-11-03 确认该 Skill 为其原创；仓库内 Skill 实现与后续迭代为本项目第一方产出，第三方运行时/依赖按其自身许可证使用。作者、创建提交、MIT 许可证与当前树摘要已记录。"
+      ],
+      "evidence": [
+        "skills/btc-5min-scalper/SKILL.md",
+        "skills/btc-5min-scalper/scripts/scan_signals.sh",
+        "skills/btc-5min-scalper/references/iteration-log.md",
+        "skills/btc-5min-scalper/references/parameters.md"
+      ],
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "6255c784f984d4ce19b78da22fcd0a0331a531f8",
+      "license": {
+        "spdx": "MIT",
+        "evidence": "LICENSE"
+      },
+      "local_tree_digest": "sha256:243dd18b4656bf8123a8f55a455340ba4caca54472dc847804e7471887ec4971"
+    },
+    {
+      "skill_id": "daniel-auto-publish",
+      "origin_kind": "project-original",
+      "review_state": "reviewed",
+      "declared_hints": [
+        "Daniel Li 于 2026-11-03 确认该 Skill 为其原创；仓库内 Skill 实现与后续迭代为本项目第一方产出，第三方运行时/依赖按其自身许可证使用。作者、创建提交、MIT 许可证与当前树摘要已记录。"
+      ],
+      "evidence": [
+        "skills/daniel-auto-publish/SKILL.md",
+        "skills/daniel-auto-publish/references/bilibili.md",
+        "skills/daniel-auto-publish/references/common-workflow.md",
+        "skills/daniel-auto-publish/references/detection-and-safety.md"
+      ],
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "dff8b4bdbeabb658bad0c4b75d173b60b91bd7ca",
+      "license": {
+        "spdx": "MIT",
+        "evidence": "LICENSE"
+      },
+      "local_tree_digest": "sha256:e731e5b42feabbb0eba262d78c4da2c47ea65dcd30488d693261eb60c25d4a72"
+    },
+    {
+      "skill_id": "daniel-new-media-ops",
+      "origin_kind": "project-original",
+      "review_state": "reviewed",
+      "declared_hints": [
+        "Daniel Li 于 2026-11-03 确认该 Skill 为其原创；仓库内 Skill 实现与后续迭代为本项目第一方产出，第三方运行时/依赖按其自身许可证使用。作者、创建提交、MIT 许可证与当前树摘要已记录。"
+      ],
+      "evidence": [
+        "skills/daniel-new-media-ops/SKILL.md",
+        "skills/daniel-new-media-ops/references/capability-map.md"
+      ],
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "dff8b4bdbeabb658bad0c4b75d173b60b91bd7ca",
+      "license": {
+        "spdx": "MIT",
+        "evidence": "LICENSE"
+      },
+      "local_tree_digest": "sha256:f4b3884ed802183610bcb3889e9b6d08024d411fe60e19a27d4025e902d8ec4d"
+    },
+    {
+      "skill_id": "daniel-self-media-top-mindset",
+      "origin_kind": "project-original",
+      "review_state": "reviewed",
+      "declared_hints": [
+        "Daniel Li 于 2026-11-03 确认该 Skill 为其原创；仓库内 Skill 实现与后续迭代为本项目第一方产出，第三方运行时/依赖按其自身许可证使用。作者、创建提交、MIT 许可证与当前树摘要已记录。"
+      ],
+      "evidence": [
+        "skills/daniel-self-media-top-mindset/SKILL.md"
+      ],
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "dff8b4bdbeabb658bad0c4b75d173b60b91bd7ca",
+      "license": {
+        "spdx": "MIT",
+        "evidence": "LICENSE"
+      },
+      "local_tree_digest": "sha256:60d08273801864fa24ad94bbc505ef3b91141dc510644093bc774073b6459094"
+    },
+    {
+      "skill_id": "daniel-wechat-writing",
+      "origin_kind": "project-original",
+      "review_state": "reviewed",
+      "declared_hints": [
+        "Daniel Li 于 2026-11-03 确认该 Skill 为其原创；仓库内 Skill 实现与后续迭代为本项目第一方产出，第三方运行时/依赖按其自身许可证使用。作者、创建提交、MIT 许可证与当前树摘要已记录。"
+      ],
+      "evidence": [
+        "skills/daniel-wechat-writing/SKILL.md",
+        "skills/daniel-wechat-writing/references/sample-xinzhiyuan-deepseek-r1.md",
+        "skills/daniel-wechat-writing/references/sample-xinzhiyuan-dream-rsi.md"
+      ],
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "dff8b4bdbeabb658bad0c4b75d173b60b91bd7ca",
+      "license": {
+        "spdx": "MIT",
+        "evidence": "LICENSE"
+      },
+      "local_tree_digest": "sha256:cf86f266f6cb015da0045a480b701c182b42a14934ec4699eb6430a8a142879d"
+    },
+    {
+      "skill_id": "daniel-writer",
+      "origin_kind": "project-original",
+      "review_state": "reviewed",
+      "declared_hints": [
+        "Daniel Li 于 2026-11-03 确认该 Skill 为其原创；仓库内 Skill 实现与后续迭代为本项目第一方产出，第三方运行时/依赖按其自身许可证使用。作者、创建提交、MIT 许可证与当前树摘要已记录。"
+      ],
+      "evidence": [
+        "skills/daniel-writer/SKILL.md",
+        "skills/daniel-writer/scripts/check_x_length.py",
+        "skills/daniel-writer/scripts/init_content_package.py",
+        "skills/daniel-writer/scripts/style_lint.py",
+        "skills/daniel-writer/scripts/test_check_x_length.py",
+        "skills/daniel-writer/references/benchmark-synthesis.md",
+        "skills/daniel-writer/references/brand-and-taste.md",
+        "skills/daniel-writer/references/content-methodology.md"
+      ],
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "dff8b4bdbeabb658bad0c4b75d173b60b91bd7ca",
+      "license": {
+        "spdx": "MIT",
+        "evidence": "LICENSE"
+      },
+      "local_tree_digest": "sha256:0f9a5abc76d660242c3bf26af3bd622c257d677ec897e87ab9c34148f138606d"
+    },
+    {
+      "skill_id": "daniel-xhs-writing",
+      "origin_kind": "project-original",
+      "review_state": "reviewed",
+      "declared_hints": [
+        "Daniel Li 于 2026-11-03 确认该 Skill 为其原创；仓库内 Skill 实现与后续迭代为本项目第一方产出，第三方运行时/依赖按其自身许可证使用。作者、创建提交、MIT 许可证与当前树摘要已记录。"
+      ],
+      "evidence": [
+        "skills/daniel-xhs-writing/SKILL.md"
+      ],
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "dff8b4bdbeabb658bad0c4b75d173b60b91bd7ca",
+      "license": {
+        "spdx": "MIT",
+        "evidence": "LICENSE"
+      },
+      "local_tree_digest": "sha256:1ba9f61e327c1932174ecdd8e3fe4303bb373f690258ec99d4d1b0485cb00f39"
+    },
+    {
+      "skill_id": "douyin-creator",
+      "origin_kind": "project-original",
+      "review_state": "reviewed",
+      "declared_hints": [
+        "Daniel Li 于 2026-11-03 确认该 Skill 为其原创；仓库内 Skill 实现与后续迭代为本项目第一方产出，第三方运行时/依赖按其自身许可证使用。作者、创建提交、MIT 许可证与当前树摘要已记录。"
+      ],
+      "evidence": [
+        "skills/douyin-creator/SKILL.md"
+      ],
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "3ab7cdfc8db464b3cc6fdc4775d70d4bf1e32fa1",
+      "license": {
+        "spdx": "MIT",
+        "evidence": "LICENSE"
+      },
+      "local_tree_digest": "sha256:870096be5415e5611cb2a8a0a77a8b55ccf9c6921566b6dcb8ff4c52abecf8c4"
+    },
+    {
+      "skill_id": "douyin-publisher",
+      "origin_kind": "project-original",
+      "review_state": "reviewed",
+      "declared_hints": [
+        "Daniel Li 于 2026-11-03 确认该 Skill 为其原创；仓库内 Skill 实现与后续迭代为本项目第一方产出，第三方运行时/依赖按其自身许可证使用。作者、创建提交、MIT 许可证与当前树摘要已记录。"
+      ],
+      "evidence": [
+        "skills/douyin-publisher/SKILL.md",
+        "skills/douyin-publisher/references/content-style-guide.md",
+        "skills/douyin-publisher/references/handoff-and-human-trace.md",
+        "skills/douyin-publisher/references/platform-rules.md"
+      ],
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "49c10e92ab14f748639832d66e382c58b57edd9a",
+      "license": {
+        "spdx": "MIT",
+        "evidence": "LICENSE"
+      },
+      "local_tree_digest": "sha256:2d74c4b26d2ac7ce7dae5f8ba63dde3046c30f193d6a8eb87b36e86c514a35b3"
+    },
+    {
+      "skill_id": "douyin-video-analyst",
+      "origin_kind": "project-original",
+      "review_state": "reviewed",
+      "declared_hints": [
+        "Daniel Li 于 2026-11-03 确认该 Skill 为其原创；仓库内 Skill 实现与后续迭代为本项目第一方产出，第三方运行时/依赖按其自身许可证使用。作者、创建提交、MIT 许可证与当前树摘要已记录。"
+      ],
+      "evidence": [
+        "skills/douyin-video-analyst/SKILL.md",
+        "skills/douyin-video-analyst/_meta.json",
+        "skills/douyin-video-analyst/references/setup.md",
+        "skills/douyin-video-analyst/references/troubleshooting.md"
+      ],
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "1fe622cfc8a11e255c340e06c0fd51baf80a49f2",
+      "license": {
+        "spdx": "MIT",
+        "evidence": "LICENSE"
+      },
+      "local_tree_digest": "sha256:c670e4d7ec78d0677e8ae2f2691d601cf83c30975202949284cfbc9c476b60ca"
+    },
+    {
+      "skill_id": "wechat-ai-radar",
+      "origin_kind": "project-original",
+      "review_state": "reviewed",
+      "declared_hints": [
+        "Daniel Li 于 2026-11-03 确认该 Skill 为其原创；仓库内 Skill 实现与后续迭代为本项目第一方产出，第三方运行时/依赖按其自身许可证使用。作者、创建提交、MIT 许可证与当前树摘要已记录。"
+      ],
+      "evidence": [
+        "skills/wechat-ai-radar/SKILL.md",
+        "skills/wechat-ai-radar/scripts/wechat_radar.sh",
+        "skills/wechat-ai-radar/scripts/wechat_radar_briefing.py"
+      ],
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "d574a317e2016859349d017849f861ccef410ec2",
+      "license": {
+        "spdx": "MIT",
+        "evidence": "LICENSE"
+      },
+      "local_tree_digest": "sha256:783c234c67b8edc3ea338dcaa3fc6ee70022edb11cb2bfc8003e84571fba167d"
+    },
+    {
+      "skill_id": "wechat-article-writer",
+      "origin_kind": "project-original",
+      "review_state": "reviewed",
+      "declared_hints": [
+        "Daniel Li 于 2026-11-03 确认该 Skill 为其原创；仓库内 Skill 实现与后续迭代为本项目第一方产出，第三方运行时/依赖按其自身许可证使用。作者、创建提交、MIT 许可证与当前树摘要已记录。"
+      ],
+      "evidence": [
+        "skills/wechat-article-writer/SKILL.md"
+      ],
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "dcd0591e668a878a8e3f640f561da72ea68d81ac",
+      "license": {
+        "spdx": "MIT",
+        "evidence": "LICENSE"
+      },
+      "local_tree_digest": "sha256:de873cfbda9b213d9cdc1e3c7d44de68b5ee222fa8dcfc0e3ab2eeee77ea7861"
+    },
+    {
+      "skill_id": "wechat-channel",
+      "origin_kind": "project-original",
+      "review_state": "reviewed",
+      "declared_hints": [
+        "Daniel Li 于 2026-11-03 确认该 Skill 为其原创；仓库内 Skill 实现与后续迭代为本项目第一方产出，第三方运行时/依赖按其自身许可证使用。作者、创建提交、MIT 许可证与当前树摘要已记录。"
+      ],
+      "evidence": [
+        "skills/wechat-channel/SKILL.md",
+        "skills/wechat-channel/package.json",
+        "skills/wechat-channel/scripts/wechat-bridge.js",
+        "skills/wechat-channel/references/wechaty-api.md"
+      ],
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "af69814d0af62b9a4407e252755dc8db4ff0e1f7",
+      "license": {
+        "spdx": "MIT",
+        "evidence": "LICENSE"
+      },
+      "local_tree_digest": "sha256:c380795573f3fb871c6cf10b1dee859b47ccf7cded2454a550c2235b5a7cf9ac"
+    },
+    {
+      "skill_id": "wechat-personal-message",
+      "origin_kind": "project-original",
+      "review_state": "reviewed",
+      "declared_hints": [
+        "Daniel Li 于 2026-11-03 确认该 Skill 为其原创；仓库内 Skill 实现与后续迭代为本项目第一方产出，第三方运行时/依赖按其自身许可证使用。作者、创建提交、MIT 许可证与当前树摘要已记录。"
+      ],
+      "evidence": [
+        "skills/wechat-personal-message/SKILL.md",
+        "skills/wechat-personal-message/scripts/wechat_automator.py"
+      ],
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "d574a317e2016859349d017849f861ccef410ec2",
+      "license": {
+        "spdx": "MIT",
+        "evidence": "LICENSE"
+      },
+      "local_tree_digest": "sha256:2a405cc5806156bfc81e3c491a31b3129f1aafc0502565acc79272a73ed992dc"
+    },
+    {
+      "skill_id": "wechat-pipeline",
+      "origin_kind": "project-original",
+      "review_state": "reviewed",
+      "declared_hints": [
+        "Daniel Li 于 2026-11-03 确认该 Skill 为其原创；仓库内 Skill 实现与后续迭代为本项目第一方产出，第三方运行时/依赖按其自身许可证使用。作者、创建提交、MIT 许可证与当前树摘要已记录。"
+      ],
+      "evidence": [
+        "skills/wechat-pipeline/SKILL.md",
+        "skills/wechat-pipeline/_meta.json"
+      ],
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "9e94c515a92237c4a1da0e56d2d1bc48ce9b2e93",
+      "license": {
+        "spdx": "MIT",
+        "evidence": "LICENSE"
+      },
+      "local_tree_digest": "sha256:9d34037f6e3da6884de8335e0c99549879ea1f1b4b5e83829b16b50f9f71f044"
+    },
+    {
+      "skill_id": "wechat-toolkit",
+      "origin_kind": "project-original",
+      "review_state": "reviewed",
+      "declared_hints": [
+        "Daniel Li 于 2026-11-03 确认该 Skill 为其原创；仓库内 Skill 实现与后续迭代为本项目第一方产出，第三方运行时/依赖按其自身许可证使用。作者、创建提交、MIT 许可证与当前树摘要已记录。"
+      ],
+      "evidence": [
+        "skills/wechat-toolkit/SKILL.md",
+        "skills/wechat-toolkit/README.md",
+        "skills/wechat-toolkit/_meta.json",
+        "skills/wechat-toolkit/scripts/downloader/download.js",
+        "skills/wechat-toolkit/scripts/downloader/package-lock.json",
+        "skills/wechat-toolkit/scripts/downloader/package.json",
+        "skills/wechat-toolkit/scripts/publisher/publish.js",
+        "skills/wechat-toolkit/references/themes.md",
+        "skills/wechat-toolkit/references/troubleshooting.md"
+      ],
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "dcd0591e668a878a8e3f640f561da72ea68d81ac",
+      "license": {
+        "spdx": "MIT",
+        "evidence": "LICENSE"
+      },
+      "local_tree_digest": "sha256:97e3e1720609f5a7849dda4e536769216029b92719fb58c5ede58ae7d3243250"
+    },
+    {
+      "skill_id": "xhs-skill",
+      "origin_kind": "project-original",
+      "review_state": "reviewed",
+      "declared_hints": [
+        "Daniel Li 于 2026-11-03 确认该 Skill 为其原创；仓库内 Skill 实现与后续迭代为本项目第一方产出，第三方运行时/依赖按其自身许可证使用。作者、创建提交、MIT 许可证与当前树摘要已记录。"
+      ],
+      "evidence": [
+        "skills/xhs-skill/SKILL.md",
+        "skills/xhs-skill/package.json",
+        "skills/xhs-skill/scripts/review_publish_payload.mjs",
+        "skills/xhs-skill/scripts/verify_login.mjs",
+        "skills/xhs-skill/scripts/verify_publish_payload.mjs"
+      ],
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "d574a317e2016859349d017849f861ccef410ec2",
+      "license": {
+        "spdx": "MIT",
+        "evidence": "LICENSE"
+      },
+      "local_tree_digest": "sha256:007cdd030ca06c663415c6d2611e3a12f33a8445fed8776513943e03cf6a29bc"
+    },
+    {
+      "skill_id": "xhs-smart-publisher",
+      "origin_kind": "project-original",
+      "review_state": "reviewed",
+      "declared_hints": [
+        "Daniel Li 于 2026-11-03 确认该 Skill 为其原创；仓库内 Skill 实现与后续迭代为本项目第一方产出，第三方运行时/依赖按其自身许可证使用。作者、创建提交、MIT 许可证与当前树摘要已记录。"
+      ],
+      "evidence": [
+        "skills/xhs-smart-publisher/SKILL.md"
+      ],
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "8e3aed4ee64ce93d593ef9f10d67ae9f08e2c425",
+      "license": {
+        "spdx": "MIT",
+        "evidence": "LICENSE"
+      },
+      "local_tree_digest": "sha256:debe614ae8cdf1568a9e640bbaf625af90b55250049265beccd64e36b15b5ddc"
     }
   ]
 }
