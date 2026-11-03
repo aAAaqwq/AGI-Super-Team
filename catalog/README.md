@@ -39,10 +39,10 @@ Choose a reviewed origin boundary before browsing by outcome. Provenance and cur
 
 | Origin | Meaning | Entries |
 |---|---|---:|
-| [Project original](#project-original-skills) | Digest-backed first-party work with reviewed authorship. | 34 |
+| [Project original](#project-original-skills) | Digest-backed first-party work with reviewed authorship. | 39 |
 | [Adapted](#adapted-skills) | Modified from a named source with the adaptation recorded. | 0 |
 | [Collected](#collected-skills) | Preserved from a named source with provenance recorded. | 0 |
-| [Unknown origin](#unknown-origin-skills) | Source review is incomplete; inspect before use. | 819 |
+| [Unknown origin](#unknown-origin-skills) | Source review is incomplete; inspect before use. | 814 |
 
 <a id="project-original-skills"></a>
 ### Project original
@@ -52,8 +52,11 @@ Digest-backed first-party work with reviewed authorship.
 | Skill | Outcome category | Provenance | Curation evidence | Runtime |
 |---|---|---|---|---|
 | [`5minbtc`](../skills/5minbtc/) | 💹 Finance, Trading & Markets | Project original · stale review | Unscored | Pending |
+| [`ashare-auction-analysis`](../skills/ashare-auction-analysis/) | 💹 Finance, Trading & Markets | Project original · reviewed | Unscored | Pending |
+| [`ashare-volume-resonance-analysis`](../skills/ashare-volume-resonance-analysis/) | 💹 Finance, Trading & Markets | Project original · reviewed | Unscored | Pending |
 | [`bb-scalper`](../skills/bb-scalper/) | 💹 Finance, Trading & Markets | Project original · stale review | Unscored | Pending |
 | [`binance-square`](../skills/binance-square/) | 💹 Finance, Trading & Markets | Project original · stale review | Unscored | Pending |
+| [`chip-peak-and-screening-methods`](../skills/chip-peak-and-screening-methods/) | 💹 Finance, Trading & Markets | Project original · reviewed | Unscored | Pending |
 | [`content-cover-gen`](../skills/content-cover-gen/) | ✍️ Content, Media & Publishing | Project original · reviewed | Unscored | Pending |
 | [`content-illustration-strategy`](../skills/content-illustration-strategy/) | ✍️ Content, Media & Publishing | Project original · reviewed | Unscored | Pending |
 | [`content-typography`](../skills/content-typography/) | ✍️ Content, Media & Publishing | Project original · reviewed | 80/100 · Selected | Pending |
@@ -73,6 +76,7 @@ Digest-backed first-party work with reviewed authorship.
 | [`jimeng-login`](../skills/jimeng-login/) | 🧰 Specialized Domains & Utilities | Project original · reviewed | Unscored | Pending |
 | [`jimeng-storyboard`](../skills/jimeng-storyboard/) | ✍️ Content, Media & Publishing | Project original · reviewed | 78/100 · Selected | Pending |
 | [`legal-issue-spotting`](../skills/legal-issue-spotting/) | 🛡️ Security, Privacy & Legal | Project original · reviewed | 78/100 · Selected | Pending |
+| [`main-force-prelaunch-pattern`](../skills/main-force-prelaunch-pattern/) | 💹 Finance, Trading & Markets | Project original · reviewed | Unscored | Pending |
 | [`meta-cognition`](../skills/meta-cognition/) | 🤖 AI Agents & Orchestration | Project original · reviewed | Unscored | Pending |
 | [`operating-cadence-and-flow`](../skills/operating-cadence-and-flow/) | 🧰 Specialized Domains & Utilities | Project original · reviewed | 78/100 · Selected | Pending |
 | [`orchestrate-agi-super-team`](../skills/orchestrate-agi-super-team/) | 🤖 AI Agents & Orchestration | Project original · reviewed | 80/100 · Selected | Pending |
@@ -85,6 +89,7 @@ Digest-backed first-party work with reviewed authorship.
 | [`sre-reliability-governance`](../skills/sre-reliability-governance/) | ☁️ Cloud, DevOps & Reliability | Project original · reviewed | 78/100 · Selected | Pending |
 | [`video-merge-send`](../skills/video-merge-send/) | ✍️ Content, Media & Publishing | Project original · reviewed | Unscored | Pending |
 | [`weixin-channels-publish`](../skills/weixin-channels-publish/) | 🇨🇳 Chinese Platform Workflows | Project original · reviewed | Unscored | Pending |
+| [`youzi-stock-quality-screen`](../skills/youzi-stock-quality-screen/) | 💹 Finance, Trading & Markets | Project original · reviewed | Unscored | Pending |
 
 <a id="adapted-skills"></a>
 ### Adapted
@@ -105,7 +110,7 @@ No entries currently meet this provenance contract.
 
 Source review is incomplete; inspect before use.
 
-819 entries are awaiting source review. Use the [machine-readable index](./skill-index.json) or browse by outcome below; they are not promoted as curated recommendations.
+814 entries are awaiting source review. Use the [machine-readable index](./skill-index.json) or browse by outcome below; they are not promoted as curated recommendations.
 
 ## 🗂️ Browse by outcome
 
@@ -738,8 +743,8 @@ Analyze markets, backtest strategies, track portfolios, and review financial ris
 | [`afrexai-personal-finance`](../skills/afrexai-personal-finance/) | Complete personal finance system — budgeting, debt payoff, investing, tax optimization, net worth tracking, and financial independence planning. Use when managing money, building… | Unknown · unreviewed | Unscored | Catalog only |
 | [`ai-trader-arena`](../skills/ai-trader-arena/) | AI trading arena, 模型竞技, 多模型交易, trading competition, historical replay, MCP trading, ai4trade | Unknown · unreviewed | Unscored | Catalog only |
 | [`alpha101`](../skills/alpha101/) | WorldQuant 101 Formulaic Alphas — 因子计算、IC测试、回测一体化工具包。 基于Kakushadze (2015) 论文，提供101个价量/波动率/相关性因子的Python/Pandas实现。 Use when: "alpha101", "101因子", "formulaic alphas", "因子回测",… | Unknown · unreviewed | Unscored | Harness-specific assignment · generic installer skips · CQO |
-| [`ashare-auction-analysis`](../skills/ashare-auction-analysis/) | Use when 分析A股集合竞价（9:15-9:25）、开盘跳空、盘口五档，判断当日走势与操作。 | Unknown · unreviewed | Unscored | Catalog only |
-| [`ashare-volume-resonance-analysis`](../skills/ashare-volume-resonance-analysis/) | Use when 判断个股/板块量能是否真共振（时间/结构/节奏/量价四轴+共振度打分）。 | Unknown · unreviewed | Unscored | Catalog only |
+| [`ashare-auction-analysis`](../skills/ashare-auction-analysis/) | Use when 分析A股集合竞价（9:15-9:25）、开盘跳空、盘口五档，判断当日走势与操作。 | Project original · reviewed | Unscored | Catalog only |
+| [`ashare-volume-resonance-analysis`](../skills/ashare-volume-resonance-analysis/) | Use when 判断个股/板块量能是否真共振（时间/结构/节奏/量价四轴+共振度打分）。 | Project original · reviewed | Unscored | Catalog only |
 | [`backtest-expert`](../skills/backtest-expert/) | Expert guidance for systematic backtesting of trading strategies. Use when developing, testing, stress-testing, or validating quantitative trading strategies. Covers "beating… | Unknown · unreviewed | Unscored | Portable required assignment · structure checked · CQO |
 | [`backtesting-frameworks`](../skills/backtesting-frameworks/) | Build trading-strategy backtests that account for look-ahead bias, survivorship bias, and costs. Use when validating strategies or designing backtest infrastructure. | Unknown · unreviewed | Unscored | Portable required assignment · structure checked · CQO |
 | [`backtesting-trading-strategies`](../skills/backtesting-trading-strategies/) | Backtest crypto and traditional trading strategies against historical data. Calculates performance metrics (Sharpe, Sortino, max drawdown), generates equity curves, and optimizes… | Unknown · unreviewed | Unscored | Harness-specific assignment · generic installer skips · CQO |
@@ -751,7 +756,7 @@ Analyze markets, backtest strategies, track portfolios, and review financial ris
 | [`binance-trending`](../skills/binance-trending/) | Description needs review; inspect source. | Unknown · unreviewed | Unscored | Catalog only |
 | [`bookkeeping-basics`](../skills/bookkeeping-basics/) | Set up and maintain basic bookkeeping for a solopreneur business. Use when tracking income and expenses, preparing for taxes, managing invoices and receipts, understanding cash… | Unknown · unreviewed | Unscored | Portable optional assignment · structure checked · CFO |
 | [`btc-5min-scalper`](../skills/btc-5min-scalper/) | BTC 5-minute Up/Down paper trading on Polymarket. Scans Binance 1m candles for momentum/mean-reversion/volume signals, makes virtual trades on Polymarket 5-min markets, tracks… | Unknown · unreviewed | Unscored | Catalog only |
-| [`chip-peak-and-screening-methods`](../skills/chip-peak-and-screening-methods/) | 筹码峰分析 + 三套选股法（三步漏斗/真龙识别/一夜持股）+ 回测校准数据。Use when 看筹码分布、判断支撑压力、按条件筛股。 | Unknown · unreviewed | Unscored | Catalog only |
+| [`chip-peak-and-screening-methods`](../skills/chip-peak-and-screening-methods/) | 筹码峰分析 + 三套选股法（三步漏斗/真龙识别/一夜持股）+ 回测校准数据。Use when 看筹码分布、判断支撑压力、按条件筛股。 | Project original · reviewed | Unscored | Catalog only |
 | [`clanker`](../skills/clanker/) | Plan and review ERC20 deployment with the Clanker SDK. Use for token configuration, vesting, airdrops, rewards, metadata, and transaction preparation on supported EVM chains. | Unknown · unreviewed | Unscored | Catalog only · review: external-write, financial-action |
 | [`company-analyzer`](../skills/company-analyzer/) | Description needs review; inspect source. | Unknown · unreviewed | Unscored | Catalog only |
 | [`crypto-bd-agent`](../skills/crypto-bd-agent/) | This skill teaches AI agents systematic crypto business development: discover | Unknown · unreviewed | Unscored | Catalog only |
@@ -778,7 +783,7 @@ Analyze markets, backtest strategies, track portfolios, and review financial ris
 | [`invoice-organizer`](../skills/invoice-organizer/) | Use when "organizing invoices", "sorting receipts", "tax preparation", "expense tracking", or asking about "invoice renaming", "financial documents", "bookkeeping automation" | Unknown · unreviewed | Unscored | Portable optional assignment · structure checked · CFO |
 | [`jiuyangongshe-stock-industry-logic`](../skills/jiuyangongshe-stock-industry-logic/) | 爬取韭研公社个股产业逻辑与异动解析。输入个股名（如白银有色），自动获取该股异动解析、题材标签、相关文章与产业逻辑内容。 | Unknown · unreviewed | Unscored | Catalog only |
 | [`llm-stock-analyzer`](../skills/llm-stock-analyzer/) | stock analysis, 个股分析, A股分析, 港股分析, 美股分析, daily analysis, 决策仪表盘 | Unknown · unreviewed | Unscored | Catalog only |
-| [`main-force-prelaunch-pattern`](../skills/main-force-prelaunch-pattern/) | A股主力拉升前"五步曲"识别与伏击。Use when 找起涨前的票、判断地量是否见底、需要观察期+确认启动机制。 | Unknown · unreviewed | Unscored | Catalog only |
+| [`main-force-prelaunch-pattern`](../skills/main-force-prelaunch-pattern/) | A股主力拉升前"五步曲"识别与伏击。Use when 找起涨前的票、判断地量是否见底、需要观察期+确认启动机制。 | Project original · reviewed | Unscored | Catalog only |
 | [`market-movers-scanner`](../skills/market-movers-scanner/) | Description needs review; inspect source. | Unknown · unreviewed | Unscored | Catalog only |
 | [`market-price-tracker`](../skills/market-price-tracker/) | Foundation skill providing real-time and historical cryptocurrency price data. This skill is the data layer for the crypto plugin ecosystem - 10+ othe | Unknown · unreviewed | Unscored | Catalog only |
 | [`market-sentiment-analyzer`](../skills/market-sentiment-analyzer/) | This skill provides comprehensive cryptocurrency market sentiment analysis by combining multiple data sources | Unknown · unreviewed | Unscored | Catalog only |
@@ -806,7 +811,7 @@ Analyze markets, backtest strategies, track portfolios, and review financial ris
 | [`trade-prediction-markets`](../skills/trade-prediction-markets/) | Build and test Polymarket prediction market trading strategies for YES/NO token trading. Provides 6 tools: get_all_prediction_events (browse markets, $0.001),… | Unknown · unreviewed | Unscored | Harness-specific assignment · generic installer skips · CQO |
 | [`trading-strategy-backtester`](../skills/trading-strategy-backtester/) | Validate trading strategies against historical data before risking real capital. This skill provides a complete backtesting framework with 8 built-in | Unknown · unreviewed | Unscored | Catalog only |
 | [`whale-alert-monitor`](../skills/whale-alert-monitor/) | Track large cryptocurrency transactions and whale wallet movements across multiple blockchains. Monitor exchange inflows/outflows, manage watchlists, | Unknown · unreviewed | Unscored | Catalog only |
-| [`youzi-stock-quality-screen`](../skills/youzi-stock-quality-screen/) | Use when 按游资标准筛优质股、判断持仓质量、定位主力阶段（五标准+量价四象限+四维共振）。 | Unknown · unreviewed | Unscored | Catalog only |
+| [`youzi-stock-quality-screen`](../skills/youzi-stock-quality-screen/) | Use when 按游资标准筛优质股、判断持仓质量、定位主力阶段（五标准+量价四象限+四维共振）。 | Project original · reviewed | Unscored | Catalog only |
 
 <a id="business-operations-strategy"></a>
 ## 🧭 Business Operations & Strategy

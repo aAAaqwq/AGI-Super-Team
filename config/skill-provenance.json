@@ -842,64 +842,109 @@
     },
     {
       "skill_id": "chip-peak-and-screening-methods",
-      "origin_kind": "unknown",
-      "review_state": "unreviewed",
+      "origin_kind": "project-original",
+      "review_state": "reviewed",
       "declared_hints": [
-        "A股选股实盘验证 skill：由 Daniel 基于抖音/B站选股学习内容与黎承祖学习笔记，在仓内自行回测 36 万+ 信号（30天/6个月/2年三份报告，见 chip-peak-and-screening-methods/references/回测报告）后固化为可执行框架。上游视频源未逐条固定 commit/URL，暂标 unknown，待正式 provenance 审查后升级 project-original。"
+        "A股选股实盘验证 skill：由 Daniel Li 原创整理、回测并固化为可执行框架；公开学习资料仅作背景参考，仓库内实现与回测结论为本项目第一方产出。作者、许可证、创建提交与当前树摘要已记录。"
       ],
       "evidence": [
         "skills/chip-peak-and-screening-methods/SKILL.md",
         "skills/chip-peak-and-screening-methods/references/回测报告/30天验证.md",
         "skills/chip-peak-and-screening-methods/references/回测报告/6个月验证.md",
         "skills/chip-peak-and-screening-methods/references/回测报告/2年验证.md"
-      ]
+      ],
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "823cff2c0974dc9a9e2168a983703cf979165c82",
+      "license": {
+        "spdx": "MIT",
+        "evidence": "LICENSE"
+      },
+      "local_tree_digest": "sha256:ec241c0fcee3e2f21675b09c9347b3a171008f4c1e05e171c4d1aef3d0ba1638"
     },
     {
       "skill_id": "youzi-stock-quality-screen",
-      "origin_kind": "unknown",
-      "review_state": "unreviewed",
+      "origin_kind": "project-original",
+      "review_state": "reviewed",
       "declared_hints": [
-        "A股选股实盘验证 skill：由 Daniel 基于抖音/B站选股学习内容与黎承祖学习笔记，在仓内自行回测 36 万+ 信号（30天/6个月/2年三份报告，见 chip-peak-and-screening-methods/references/回测报告）后固化为可执行框架。上游视频源未逐条固定 commit/URL，暂标 unknown，待正式 provenance 审查后升级 project-original。"
+        "A股选股实盘验证 skill：由 Daniel Li 原创整理、回测并固化为可执行框架；公开学习资料仅作背景参考，仓库内实现与回测结论为本项目第一方产出。作者、许可证、创建提交与当前树摘要已记录。"
       ],
       "evidence": [
         "skills/youzi-stock-quality-screen/SKILL.md"
-      ]
+      ],
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "823cff2c0974dc9a9e2168a983703cf979165c82",
+      "license": {
+        "spdx": "MIT",
+        "evidence": "LICENSE"
+      },
+      "local_tree_digest": "sha256:d27c26b9310c813aaa9425437f6529d0040ba80fc62ac9d90b27b845efecdb25"
     },
     {
       "skill_id": "main-force-prelaunch-pattern",
-      "origin_kind": "unknown",
-      "review_state": "unreviewed",
+      "origin_kind": "project-original",
+      "review_state": "reviewed",
       "declared_hints": [
-        "A股选股实盘验证 skill：由 Daniel 基于抖音/B站选股学习内容与黎承祖学习笔记，在仓内自行回测 36 万+ 信号（30天/6个月/2年三份报告，见 chip-peak-and-screening-methods/references/回测报告）后固化为可执行框架。上游视频源未逐条固定 commit/URL，暂标 unknown，待正式 provenance 审查后升级 project-original。"
+        "A股选股实盘验证 skill：由 Daniel Li 原创整理、回测并固化为可执行框架；公开学习资料仅作背景参考，仓库内实现与回测结论为本项目第一方产出。作者、许可证、创建提交与当前树摘要已记录。"
       ],
       "evidence": [
         "skills/main-force-prelaunch-pattern/SKILL.md",
         "skills/main-force-prelaunch-pattern/README.md",
         "skills/main-force-prelaunch-pattern/scripts/prelaunch_scan.py"
-      ]
+      ],
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "823cff2c0974dc9a9e2168a983703cf979165c82",
+      "license": {
+        "spdx": "MIT",
+        "evidence": "LICENSE"
+      },
+      "local_tree_digest": "sha256:931619fac599ea0e3263ca04615fb96bf4684e3d9c99a67c445703231a0525ea"
     },
     {
       "skill_id": "ashare-volume-resonance-analysis",
-      "origin_kind": "unknown",
-      "review_state": "unreviewed",
+      "origin_kind": "project-original",
+      "review_state": "reviewed",
       "declared_hints": [
-        "A股选股实盘验证 skill：由 Daniel 基于抖音/B站选股学习内容与黎承祖学习笔记，在仓内自行回测 36 万+ 信号（30天/6个月/2年三份报告，见 chip-peak-and-screening-methods/references/回测报告）后固化为可执行框架。上游视频源未逐条固定 commit/URL，暂标 unknown，待正式 provenance 审查后升级 project-original。"
+        "A股选股实盘验证 skill：由 Daniel Li 原创整理、回测并固化为可执行框架；公开学习资料仅作背景参考，仓库内实现与回测结论为本项目第一方产出。作者、许可证、创建提交与当前树摘要已记录。"
       ],
       "evidence": [
         "skills/ashare-volume-resonance-analysis/SKILL.md",
         "skills/ashare-volume-resonance-analysis/scripts/volume_resonance.py"
-      ]
+      ],
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "823cff2c0974dc9a9e2168a983703cf979165c82",
+      "license": {
+        "spdx": "MIT",
+        "evidence": "LICENSE"
+      },
+      "local_tree_digest": "sha256:7e5a59dfcc3d3d3f407c5c5d6c4ecf96a526af3590d964a55edf23697dffd894"
     },
     {
       "skill_id": "ashare-auction-analysis",
-      "origin_kind": "unknown",
-      "review_state": "unreviewed",
+      "origin_kind": "project-original",
+      "review_state": "reviewed",
       "declared_hints": [
-        "A股选股实盘验证 skill：由 Daniel 基于抖音/B站选股学习内容与黎承祖学习笔记，在仓内自行回测 36 万+ 信号（30天/6个月/2年三份报告，见 chip-peak-and-screening-methods/references/回测报告）后固化为可执行框架。上游视频源未逐条固定 commit/URL，暂标 unknown，待正式 provenance 审查后升级 project-original。"
+        "A股选股实盘验证 skill：由 Daniel Li 原创整理、回测并固化为可执行框架；公开学习资料仅作背景参考，仓库内实现与回测结论为本项目第一方产出。作者、许可证、创建提交与当前树摘要已记录。"
       ],
       "evidence": [
         "skills/ashare-auction-analysis/SKILL.md"
-      ]
+      ],
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "823cff2c0974dc9a9e2168a983703cf979165c82",
+      "license": {
+        "spdx": "MIT",
+        "evidence": "LICENSE"
+      },
+      "local_tree_digest": "sha256:95426016747a36ab9d3ef0995f2a29f8284cae640e41711e66122a6ca5184e08"
     }
   ]
 }

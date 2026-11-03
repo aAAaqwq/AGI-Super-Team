@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "scope": "reviewed-project-original-skills",
   "generatedFrom": "config/skill-provenance.json",
-  "inventoryCount": 34,
+  "inventoryCount": 39,
   "categories": [
     {
       "id": "ai-agents-orchestration",
@@ -50,7 +50,7 @@
       "id": "finance-trading-markets",
       "name": "Finance, Trading & Markets",
       "emoji": "💹",
-      "count": 5
+      "count": 10
     },
     {
       "id": "business-operations-strategy",
@@ -84,6 +84,26 @@
       "category_id": "finance-trading-markets"
     },
     {
+      "skill_id": "ashare-auction-analysis",
+      "path": "skills/ashare-auction-analysis/SKILL.md",
+      "description": "Use when 分析A股集合竞价（9:15-9:25）、开盘跳空、盘口五档，判断当日走势与操作。",
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "823cff2c0974dc9a9e2168a983703cf979165c82",
+      "category_id": "finance-trading-markets"
+    },
+    {
+      "skill_id": "ashare-volume-resonance-analysis",
+      "path": "skills/ashare-volume-resonance-analysis/SKILL.md",
+      "description": "Use when 判断个股/板块量能是否真共振（时间/结构/节奏/量价四轴+共振度打分）。",
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "823cff2c0974dc9a9e2168a983703cf979165c82",
+      "category_id": "finance-trading-markets"
+    },
+    {
       "skill_id": "bb-scalper",
       "path": "skills/bb-scalper/SKILL.md",
       "description": "BB 双向套利策略：加密合约 10x 杠杆布林带均值回归。布林带收窄=横盘→在下轨买、上轨卖；三重过滤器(1h趋势/RSI/BB甜区)确认碗平放，轨对轨止盈(RR…",
@@ -102,6 +122,16 @@
         "AGI Super Team contributors"
       ],
       "creation_commit": "da4e86d351b5c8d0c3d5b2a81602b93de24fe605",
+      "category_id": "finance-trading-markets"
+    },
+    {
+      "skill_id": "chip-peak-and-screening-methods",
+      "path": "skills/chip-peak-and-screening-methods/SKILL.md",
+      "description": "筹码峰分析 + 三套选股法（三步漏斗/真龙识别/一夜持股）+ 回测校准数据。Use when 看筹码分布、判断支撑压力、按条件筛股。",
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "823cff2c0974dc9a9e2168a983703cf979165c82",
       "category_id": "finance-trading-markets"
     },
     {
@@ -306,6 +336,16 @@
       "category_id": "security-privacy-legal"
     },
     {
+      "skill_id": "main-force-prelaunch-pattern",
+      "path": "skills/main-force-prelaunch-pattern/SKILL.md",
+      "description": "A股主力拉升前\"五步曲\"识别与伏击。Use when 找起涨前的票、判断地量是否见底、需要观察期+确认启动机制。",
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "823cff2c0974dc9a9e2168a983703cf979165c82",
+      "category_id": "finance-trading-markets"
+    },
+    {
       "skill_id": "meta-cognition",
       "path": "skills/meta-cognition/SKILL.md",
       "description": "Meta-cognitive framing for analyze-before-doing, ownership routing, risk gating, minimum-closure planning, and retrospective extraction in multi-agent work. Use when the user…",
@@ -431,6 +471,16 @@
       ],
       "creation_commit": "02262c4ef67b43de4622652f0c10a4718ed3715d",
       "category_id": "chinese-platform-workflows"
+    },
+    {
+      "skill_id": "youzi-stock-quality-screen",
+      "path": "skills/youzi-stock-quality-screen/SKILL.md",
+      "description": "Use when 按游资标准筛优质股、判断持仓质量、定位主力阶段（五标准+量价四象限+四维共振）。",
+      "authors": [
+        "Daniel Li"
+      ],
+      "creation_commit": "823cff2c0974dc9a9e2168a983703cf979165c82",
+      "category_id": "finance-trading-markets"
     }
   ]
 }
