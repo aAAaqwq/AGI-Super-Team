@@ -65,7 +65,7 @@
       "title": "Sales, CRM & Customer Success"
     },
     {
-      "count": 70,
+      "count": 75,
       "description": "Analyze markets, backtest strategies, track portfolios, and review financial risk.",
       "emoji": "💹",
       "id": "finance-trading-markets",
@@ -100,7 +100,7 @@
       "title": "Specialized Domains & Utilities"
     }
   ],
-  "inventoryCount": 848,
+  "inventoryCount": 853,
   "inventorySemantics": "tracked physical top-level directories with SKILL.md",
   "schemaVersion": 2,
   "skills": [
@@ -2842,6 +2842,97 @@
     },
     {
       "assignments": [],
+      "category_id": "finance-trading-markets",
+      "classification": "description:(?:^|-)(?:a-share|stock|equity)(?:-|$).{0,24}(?:analysis|screening)|A股|个股|选股;metadata:frontmatter",
+      "classification_details": {
+        "matched_signals": [
+          "(?:^|-)(?:a-share|stock|equity)(?:-|$).{0,24}(?:analysis|screening)|A股|个股|选股"
+        ],
+        "method": "description",
+        "resolution_status": "rule-match",
+        "review_state": "unreviewed",
+        "runner_ups": [],
+        "winner": {
+          "category_id": "finance-trading-markets",
+          "match_count": 1,
+          "matched_signals": [
+            "(?:^|-)(?:a-share|stock|equity)(?:-|$).{0,24}(?:analysis|screening)|A股|个股|选股"
+          ],
+          "priority": 120,
+          "tie_detected": false
+        }
+      },
+      "curation": {
+        "runtime_evidence": "pending",
+        "status": "unscored"
+      },
+      "description": "Use when 分析A股集合竞价（9:15-9:25）、开盘跳空、盘口五档，判断当日走势与操作。",
+      "description_status": "source-text",
+      "path": "skills/ashare-auction-analysis/SKILL.md",
+      "portability_class": "catalog-only",
+      "provenance": {
+        "declared_hints": [
+          "A股选股实盘验证 skill：由 Daniel 基于抖音/B站选股学习内容与黎承祖学习笔记，在仓内自行回测 36 万+ 信号（30天/6个月/2年三份报告，见 chip-peak-and-screening-methods/references/回测报告）后固化为可执行框架。上游视频源未逐条固定 commit/URL，暂标 unknown，待正式 provenance 审查后升级 project-original。"
+        ],
+        "evidence": [
+          "skills/ashare-auction-analysis/SKILL.md"
+        ],
+        "origin_kind": "unknown",
+        "review_state": "unreviewed"
+      },
+      "review_signals": [],
+      "skill_id": "ashare-auction-analysis",
+      "support_level": "catalog",
+      "used_by": []
+    },
+    {
+      "assignments": [],
+      "category_id": "finance-trading-markets",
+      "classification": "description:(?:^|-)(?:a-share|stock|equity)(?:-|$).{0,24}(?:analysis|screening)|A股|个股|选股;metadata:frontmatter",
+      "classification_details": {
+        "matched_signals": [
+          "(?:^|-)(?:a-share|stock|equity)(?:-|$).{0,24}(?:analysis|screening)|A股|个股|选股"
+        ],
+        "method": "description",
+        "resolution_status": "rule-match",
+        "review_state": "unreviewed",
+        "runner_ups": [],
+        "winner": {
+          "category_id": "finance-trading-markets",
+          "match_count": 1,
+          "matched_signals": [
+            "(?:^|-)(?:a-share|stock|equity)(?:-|$).{0,24}(?:analysis|screening)|A股|个股|选股"
+          ],
+          "priority": 120,
+          "tie_detected": false
+        }
+      },
+      "curation": {
+        "runtime_evidence": "pending",
+        "status": "unscored"
+      },
+      "description": "Use when 判断个股/板块量能是否真共振（时间/结构/节奏/量价四轴+共振度打分）。",
+      "description_status": "source-text",
+      "path": "skills/ashare-volume-resonance-analysis/SKILL.md",
+      "portability_class": "catalog-only",
+      "provenance": {
+        "declared_hints": [
+          "A股选股实盘验证 skill：由 Daniel 基于抖音/B站选股学习内容与黎承祖学习笔记，在仓内自行回测 36 万+ 信号（30天/6个月/2年三份报告，见 chip-peak-and-screening-methods/references/回测报告）后固化为可执行框架。上游视频源未逐条固定 commit/URL，暂标 unknown，待正式 provenance 审查后升级 project-original。"
+        ],
+        "evidence": [
+          "skills/ashare-volume-resonance-analysis/SKILL.md",
+          "skills/ashare-volume-resonance-analysis/scripts/volume_resonance.py"
+        ],
+        "origin_kind": "unknown",
+        "review_state": "unreviewed"
+      },
+      "review_signals": [],
+      "skill_id": "ashare-volume-resonance-analysis",
+      "support_level": "catalog",
+      "used_by": []
+    },
+    {
+      "assignments": [],
       "category_id": "content-media-publishing",
       "classification": "slug:video;metadata:frontmatter",
       "classification_details": {
@@ -5313,6 +5404,54 @@
       "used_by": [
         "CLO"
       ]
+    },
+    {
+      "assignments": [],
+      "category_id": "finance-trading-markets",
+      "classification": "description:(?:^|-)(?:a-share|stock|equity)(?:-|$).{0,24}(?:analysis|screening)|A股|个股|选股;metadata:frontmatter",
+      "classification_details": {
+        "matched_signals": [
+          "(?:^|-)(?:a-share|stock|equity)(?:-|$).{0,24}(?:analysis|screening)|A股|个股|选股"
+        ],
+        "method": "description",
+        "resolution_status": "rule-match",
+        "review_state": "unreviewed",
+        "runner_ups": [],
+        "winner": {
+          "category_id": "finance-trading-markets",
+          "match_count": 1,
+          "matched_signals": [
+            "(?:^|-)(?:a-share|stock|equity)(?:-|$).{0,24}(?:analysis|screening)|A股|个股|选股"
+          ],
+          "priority": 120,
+          "tie_detected": false
+        }
+      },
+      "curation": {
+        "runtime_evidence": "pending",
+        "status": "unscored"
+      },
+      "description": "筹码峰分析 + 三套选股法（三步漏斗/真龙识别/一夜持股）+ 回测校准数据。Use when 看筹码分布、判断支撑压力、按条件筛股。",
+      "description_status": "source-text",
+      "path": "skills/chip-peak-and-screening-methods/SKILL.md",
+      "portability_class": "catalog-only",
+      "provenance": {
+        "declared_hints": [
+          "A股选股实盘验证 skill：由 Daniel 基于抖音/B站选股学习内容与黎承祖学习笔记，在仓内自行回测 36 万+ 信号（30天/6个月/2年三份报告，见 chip-peak-and-screening-methods/references/回测报告）后固化为可执行框架。上游视频源未逐条固定 commit/URL，暂标 unknown，待正式 provenance 审查后升级 project-original。"
+        ],
+        "evidence": [
+          "skills/chip-peak-and-screening-methods/SKILL.md",
+          "skills/chip-peak-and-screening-methods/references/回测报告/30天验证.md",
+          "skills/chip-peak-and-screening-methods/references/回测报告/6个月验证.md",
+          "skills/chip-peak-and-screening-methods/references/回测报告/2年验证.md"
+        ],
+        "origin_kind": "unknown",
+        "review_state": "unreviewed"
+      },
+      "review_signals": [],
+      "skill_id": "chip-peak-and-screening-methods",
+      "support_level": "catalog",
+      "used_by": []
     },
     {
       "assignments": [],
@@ -18802,6 +18941,53 @@
       "used_by": [
         "CMO"
       ]
+    },
+    {
+      "assignments": [],
+      "category_id": "finance-trading-markets",
+      "classification": "description:(?:^|-)(?:a-share|stock|equity)(?:-|$).{0,24}(?:analysis|screening)|A股|个股|选股;metadata:frontmatter",
+      "classification_details": {
+        "matched_signals": [
+          "(?:^|-)(?:a-share|stock|equity)(?:-|$).{0,24}(?:analysis|screening)|A股|个股|选股"
+        ],
+        "method": "description",
+        "resolution_status": "rule-match",
+        "review_state": "unreviewed",
+        "runner_ups": [],
+        "winner": {
+          "category_id": "finance-trading-markets",
+          "match_count": 1,
+          "matched_signals": [
+            "(?:^|-)(?:a-share|stock|equity)(?:-|$).{0,24}(?:analysis|screening)|A股|个股|选股"
+          ],
+          "priority": 120,
+          "tie_detected": false
+        }
+      },
+      "curation": {
+        "runtime_evidence": "pending",
+        "status": "unscored"
+      },
+      "description": "A股主力拉升前\"五步曲\"识别与伏击。Use when 找起涨前的票、判断地量是否见底、需要观察期+确认启动机制。",
+      "description_status": "source-text",
+      "path": "skills/main-force-prelaunch-pattern/SKILL.md",
+      "portability_class": "catalog-only",
+      "provenance": {
+        "declared_hints": [
+          "A股选股实盘验证 skill：由 Daniel 基于抖音/B站选股学习内容与黎承祖学习笔记，在仓内自行回测 36 万+ 信号（30天/6个月/2年三份报告，见 chip-peak-and-screening-methods/references/回测报告）后固化为可执行框架。上游视频源未逐条固定 commit/URL，暂标 unknown，待正式 provenance 审查后升级 project-original。"
+        ],
+        "evidence": [
+          "skills/main-force-prelaunch-pattern/SKILL.md",
+          "skills/main-force-prelaunch-pattern/README.md",
+          "skills/main-force-prelaunch-pattern/scripts/prelaunch_scan.py"
+        ],
+        "origin_kind": "unknown",
+        "review_state": "unreviewed"
+      },
+      "review_signals": [],
+      "skill_id": "main-force-prelaunch-pattern",
+      "support_level": "catalog",
+      "used_by": []
     },
     {
       "assignments": [],
@@ -37382,6 +37568,51 @@
       },
       "review_signals": [],
       "skill_id": "youtube-knowledge-extractor",
+      "support_level": "catalog",
+      "used_by": []
+    },
+    {
+      "assignments": [],
+      "category_id": "finance-trading-markets",
+      "classification": "slug:stock;metadata:frontmatter",
+      "classification_details": {
+        "matched_signals": [
+          "stock"
+        ],
+        "method": "slug",
+        "resolution_status": "rule-match",
+        "review_state": "unreviewed",
+        "runner_ups": [],
+        "winner": {
+          "category_id": "finance-trading-markets",
+          "match_count": 1,
+          "matched_signals": [
+            "stock"
+          ],
+          "priority": 120,
+          "tie_detected": false
+        }
+      },
+      "curation": {
+        "runtime_evidence": "pending",
+        "status": "unscored"
+      },
+      "description": "Use when 按游资标准筛优质股、判断持仓质量、定位主力阶段（五标准+量价四象限+四维共振）。",
+      "description_status": "source-text",
+      "path": "skills/youzi-stock-quality-screen/SKILL.md",
+      "portability_class": "catalog-only",
+      "provenance": {
+        "declared_hints": [
+          "A股选股实盘验证 skill：由 Daniel 基于抖音/B站选股学习内容与黎承祖学习笔记，在仓内自行回测 36 万+ 信号（30天/6个月/2年三份报告，见 chip-peak-and-screening-methods/references/回测报告）后固化为可执行框架。上游视频源未逐条固定 commit/URL，暂标 unknown，待正式 provenance 审查后升级 project-original。"
+        ],
+        "evidence": [
+          "skills/youzi-stock-quality-screen/SKILL.md"
+        ],
+        "origin_kind": "unknown",
+        "review_state": "unreviewed"
+      },
+      "review_signals": [],
+      "skill_id": "youzi-stock-quality-screen",
       "support_level": "catalog",
       "used_by": []
     },
