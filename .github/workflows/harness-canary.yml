@@ -1,0 +1,93 @@
+name: Harness Canary (manual)
+
+on:
+  workflow_dispatch:
+    inputs:
+      harness:
+        description: "Harness to canary"
+        type: choice
+        options: ["claude-code", "codex"]
+        default: "claude-code"
+      mode:
+        description: "discovery lists loaded agents; route checks C-suite selection"
+        type: choice
+        options: ["discovery", "route"]
+        default: "discovery"
+      live:
+        description: "Actually call the model (requires the matching repository secret)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  canary:
+    name: ${{ inputs.harness }} ${{ inputs.mode }} canary
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+
+      - name: Decide whether the canary can run
+        id: gate
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          set -euo pipefail
+          run=false
+          if [ "${{ inputs.live }}" = "true" ]; then
+            case "${{ inputs.harness }}" in
+              claude-code) [ -n "$ANTHROPIC_API_KEY" ] && run=true ;;
+              codex) [ -n "$OPENAI_API_KEY" ] && run=true ;;
+            esac
+          fi
+          echo "run=$run" >> "$GITHUB_OUTPUT"
+          if [ "$run" != "true" ]; then
+            echo "Canary skipped: live=false or the matching API key secret is absent."
+          fi
+
+      - name: Install the selected harness CLI
+        if: steps.gate.outputs.run == 'true'
+        run: |
+          set -euo pipefail
+          if [ "${{ inputs.harness }}" = "claude-code" ]; then
+            npm install --global @anthropic-ai/claude-code
+          else
+            npm install --global @openai/codex
+          fi
+
+      - name: Install AGI Super Team into an isolated home
+        if: steps.gate.outputs.run == 'true'
+        run: |
+          set -euo pipefail
+          node bin/agi-super-team.mjs --tool "${{ inputs.harness }}" --home "$RUNNER_TEMP/ast-canary" --install
+
+      - name: Run the canary
+        if: steps.gate.outputs.run == 'true'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          AST_CANARY_HOME: ${{ runner.temp }}/ast-canary
+        run: |
+          set -euo pipefail
+          node tests/harness_canary.mjs \
+            --harness "${{ inputs.harness }}" \
+            --mode "${{ inputs.mode }}" \
+            --expect cqo \
+            --receipt "$RUNNER_TEMP/canary-receipt.json"
+
+      - name: Upload canary receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: canary-receipt-${{ inputs.harness }}-${{ inputs.mode }}
+          path: ${{ runner.temp }}/canary-receipt.json
+          if-no-files-found: ignore

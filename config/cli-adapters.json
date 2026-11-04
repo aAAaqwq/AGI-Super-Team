@@ -108,7 +108,8 @@
       "skillPaths": [
         ".copilot/skills"
       ],
-      "support": "adapter"
+      "support": "adapter",
+      "skillSource": "canonical-assigned"
     },
     {
       "id": "antigravity",
@@ -122,7 +123,8 @@
       "skillPaths": [
         ".gemini/config/skills"
       ],
-      "support": "experimental"
+      "support": "experimental",
+      "skillSource": "canonical-assigned"
     },
     {
       "id": "gemini-cli",
@@ -136,7 +138,8 @@
       "skillPaths": [
         ".gemini/skills"
       ],
-      "support": "adapter"
+      "support": "adapter",
+      "skillSource": "canonical-assigned"
     },
     {
       "id": "opencode",
@@ -150,7 +153,8 @@
       "skillPaths": [
         ".config/opencode/skills"
       ],
-      "support": "adapter"
+      "support": "adapter",
+      "skillSource": "canonical-assigned"
     },
     {
       "id": "cursor",
@@ -164,7 +168,8 @@
       "skillPaths": [
         ".cursor/skills"
       ],
-      "support": "experimental"
+      "support": "experimental",
+      "skillSource": "canonical-assigned"
     },
     {
       "id": "trae",
@@ -178,7 +183,8 @@
       "skillPaths": [
         ".trae/skills"
       ],
-      "support": "project-adapter"
+      "support": "project-adapter",
+      "skillSource": "canonical-assigned"
     },
     {
       "id": "aider",
@@ -216,7 +222,8 @@
       "skillPaths": [
         ".qwen/skills"
       ],
-      "support": "adapter"
+      "support": "adapter",
+      "skillSource": "canonical-assigned"
     },
     {
       "id": "deerflow",
@@ -230,7 +237,8 @@
       "skillPaths": [
         "skills/custom/agi-super-team"
       ],
-      "support": "project-adapter"
+      "support": "project-adapter",
+      "skillSource": "canonical-assigned"
     },
     {
       "id": "workbuddy",
@@ -244,7 +252,8 @@
       "skillPaths": [
         ".workbuddy/skills/agi-super-team"
       ],
-      "support": "adapter"
+      "support": "adapter",
+      "skillSource": "canonical-assigned"
     },
     {
       "id": "codewhale",
@@ -258,7 +267,8 @@
       "skillPaths": [
         ".codewhale/skills/agi-super-team"
       ],
-      "support": "adapter"
+      "support": "adapter",
+      "skillSource": "canonical-assigned"
     },
     {
       "id": "kiro",
@@ -272,7 +282,8 @@
       "skillPaths": [
         ".kiro/skills"
       ],
-      "support": "adapter"
+      "support": "adapter",
+      "skillSource": "canonical-assigned"
     },
     {
       "id": "qoder",
@@ -286,7 +297,8 @@
       "skillPaths": [
         ".qoder/skills"
       ],
-      "support": "adapter"
+      "support": "adapter",
+      "skillSource": "canonical-assigned"
     },
     {
       "id": "pi",

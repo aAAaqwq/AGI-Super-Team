@@ -21,6 +21,8 @@ Observed on 2026-11-04. This is a dated release snapshot, not a live status page
 ## Known gaps
 
 - Publishing requires an authenticated npm session or the `NPM_TOKEN` repository secret. The local CLI currently returns 401.
+- Default CI verifies the discovery contract only: artifacts install, agent frontmatter parses, connection manifests point at real Skills, orchestrator routes resolve, and Skill links exist. It does not start a model or observe delegation.
+- A manual `Harness Canary (manual)` workflow can run `discovery` or `route` checks against a real client. It skips unless `live=true` and the matching `ANTHROPIC_API_KEY` / `OPENAI_API_KEY` secret exists; every run writes a receipt artifact.
 - `--doctor` still derives its expected file set from the current flags, so a plain `--doctor` after `--all-subagents --install` reports drift. Use the same flags for the check.
 - The Codex `config.toml` depth block is intentionally skipped when the user already owns an `[agents]` table; that install then keeps `max_depth = 1`. Merging into a foreign table is not implemented.
 

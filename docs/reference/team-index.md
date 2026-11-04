@@ -11,7 +11,7 @@
 
 | | 数量 | 会被安装吗 | 读哪一节 |
 |---|---|---|---|
-| **团队精华**：已分配给某个角色的 Skill | 192 | 会：8 个目标声明 `canonical-assigned`（`claude-code`、`codex`、`dsh`、`grok-build`、`hermes`、`oh-my-pi`、`openclaw`、`pi`），装的就是这 192 个 | 第 2、3 节 |
+| **团队精华**：已分配给某个角色的 Skill | 192 | 会：20 个目标声明 `canonical-assigned`（`antigravity`、`claude-code`、`codewhale`、`codex`、`copilot`、`cursor`、`deerflow`、`dsh`、`gemini-cli`、`grok-build`、`hermes`、`kiro`、`oh-my-pi`、`openclaw`、`opencode`、`pi`、`qoder`、`qwen`、`trae`、`workbuddy`），装的就是这 192 个 | 第 2、3 节 |
 | **工具箱**：未分配给任何角色的 Skill | 661 | 不会：包里有、安装器不复制 | 第 7 节 · [`catalog/`](../../catalog/) |
 | 物理总量（`skills/` 下的可发现入口） | 853 | — | — |
 

@@ -83,6 +83,7 @@
     "test:repository": "bash scripts/python.sh -m unittest discover -s tests -p 'test_*.py'",
     "test:windows-cli": "node tests/windows_cli_smoke.mjs",
     "test:platform-install": "node tests/platform_install_smoke.mjs",
+    "test:canary": "node tests/harness_canary.mjs",
     "test:installer": "bash tests/installer/test_install.sh",
     "validate": "bash scripts/python.sh scripts/validate_repository.py",
     "validate:strict": "bash scripts/python.sh scripts/validate_repository.py --warnings-as-errors",
