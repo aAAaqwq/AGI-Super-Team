@@ -30,8 +30,8 @@ export function loadCatalog(packageRoot) {
   const manifest = readJson(manifestPath, "team manifest");
   const hierarchy = readJson(hierarchyPath, "agent hierarchy");
   const sourceLock = readJson(sourcesPath, "Agent source lock");
-  if (adapters.schemaVersion !== 1 || !Array.isArray(adapters.tools) || adapters.tools.length !== 19) {
-    throw new Error("CLI adapter manifest must contain exactly 19 tools");
+  if (adapters.schemaVersion !== 1 || !Array.isArray(adapters.tools) || adapters.tools.length === 0) {
+    throw new Error("CLI adapter manifest must declare at least one tool");
   }
   const ids = new Set();
   const priorityHarnesses = new Set(["claude-code", "codex", "openclaw", "hermes", "dsh"]);
@@ -148,6 +148,12 @@ export function loadCatalog(packageRoot) {
       }),
   );
   const physicalSkillList = [...physicalSkills].sort();
+  const skillIndexPath = join(packageRoot, "catalog", "skill-index.json");
+  const skillIndex = existsSync(skillIndexPath) ? readJson(skillIndexPath, "Skill index") : null;
+  const skillCategories = skillIndex?.categories || [];
+  const categoryBySkill = new Map(
+    (skillIndex?.skills || []).map((item) => [item.skill_id, item.category_id]),
+  );
   const byAgent = {};
   for (const agent of manifest.agents) {
     const selected = new Set();
@@ -174,6 +180,8 @@ export function loadCatalog(packageRoot) {
     curatedSkillsRoot,
     canonicalSkillsRoot,
     physicalSkills: physicalSkillList,
+    skillCategories,
+    categoryBySkill,
     assignedSkills,
   };
 }

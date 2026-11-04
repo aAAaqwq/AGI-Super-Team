@@ -24,10 +24,13 @@ EXPECTED_TOOL_IDS = {
     "deerflow",
     "dsh",
     "gemini-cli",
+    "grok-build",
     "hermes",
     "kiro",
+    "oh-my-pi",
     "opencode",
     "openclaw",
+    "pi",
     "qoder",
     "qwen",
     "trae",
@@ -110,11 +113,11 @@ class MultiCliInstallerTests(unittest.TestCase):
                     entries.append((str(index), relative, "directory"))
         return tuple(entries)
 
-    def test_adapter_manifest_has_exactly_nineteen_unique_tool_ids(self) -> None:
+    def test_adapter_manifest_has_exactly_twenty_two_unique_tool_ids(self) -> None:
         ids = [tool["id"] for tool in self.manifest["tools"]]
 
-        self.assertEqual(len(ids), 19)
-        self.assertEqual(len(set(ids)), 19)
+        self.assertEqual(len(ids), 22)
+        self.assertEqual(len(set(ids)), 22)
         self.assertEqual(set(ids), EXPECTED_TOOL_IDS)
 
     def test_list_tools_reports_every_manifest_tool(self) -> None:

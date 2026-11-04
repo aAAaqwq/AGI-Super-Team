@@ -43,6 +43,7 @@ STEPS=(
   "build:codex-team|scripts/build_codex_csuite_adapter.py"
   "build:harness-packages|scripts/check_harness_packages.py"
   "build:skill-quality|scripts/audit_skill_quality.py"
+  "build:intent-routing|scripts/build_intent_routing.py"
   "build:taxonomy-evaluation|scripts/build_skill_taxonomy_evaluation.py"
 )
 

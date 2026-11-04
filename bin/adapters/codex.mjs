@@ -5,6 +5,7 @@ import {
   codexAgent,
   codexSpecialist,
   globalCeoPayload,
+  intentRoutingSection,
 } from "../installer/render.mjs";
 
 
@@ -45,10 +46,10 @@ function jsonSkill(assignedSkills, id) {
   return assignedSkills?.byAgent?.[id] || [];
 }
 
-function orchestratorSkill() {
+function orchestratorSkill(packageRoot) {
   return `---
 name: agi-super-team-orchestrator
-description: 在 Codex 中按 CEO→C-suite→Leaf→Governor 路由复杂任务；需要跨职能并行、独立复核或完整团队交付时使用。
+description: 在 Codex 中按意图路由选择主责 C-suite，再按 C-suite→Leaf→Governor 执行；需要跨职能并行、独立复核或完整团队交付时使用。禁止默认调用 CTO。
 ---
 
 # AGI Super Team｜Codex Adapter
@@ -56,6 +57,8 @@ description: 在 Codex 中按 CEO→C-suite→Leaf→Governor 路由复杂任务
 这是 Codex 的运行时包装 Skill。开始前必须读取同一 Skill 根目录中的 \`../orchestrate-agi-super-team/SKILL.md\`，并按需读取其 references；canonical Skill 决定是否组队、通用任务包、Governor 和人工批准契约，本文件只补充 Codex 调度方式。
 
 你是主会话中的 CEO 协调者。先定义结果、约束和验收，再按任务选择最小充分团队。
+
+${intentRoutingSection(packageRoot)}
 
 - 使用 \`spawn_agent\` 调用已安装的 \`ast-*\` Agent。
 - CEO 只能调用 C-suite、PE 和 Governor。
@@ -122,7 +125,7 @@ export function renderAdapterArtifacts({
           "agi-super-team-orchestrator",
           "SKILL.md",
         ),
-        content: orchestratorSkill(),
+        content: orchestratorSkill(packageRoot),
         label: `adapter:codex/skill:orchestrator:${skillPath}`,
       });
     }

@@ -53,6 +53,35 @@ jobs:
       - name: Enforce repository contracts
         run: npm run validate:strict
 
+  platform-install-smoke:
+    name: Install every adapter from the packed CLI (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ["ubuntu-latest", "macos-latest", "windows-latest"]
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+
+      - name: Pack and install CLI into an isolated prefix
+        shell: bash
+        run: |
+          set -euo pipefail
+          tarball=$(npm pack --json --ignore-scripts | node -e 'const fs=require("node:fs");const p=JSON.parse(fs.readFileSync(0,"utf8"));const o=Array.isArray(p)?p[0]:Object.values(p)[0];process.stdout.write(o.filename)')
+          prefix="${RUNNER_TEMP}/ast-platform-prefix"
+          npm install --prefix "$prefix" --ignore-scripts "$PWD/$tarball"
+
+      - name: Install and verify all adapters
+        shell: bash
+        run: node tests/platform_install_smoke.mjs "${RUNNER_TEMP}/ast-platform-prefix/node_modules/agi-super-team/bin/agi-super-team.mjs"
+
   windows-packed-cli-smoke:
     name: Test packed Windows CLI and primary harnesses (Node ${{ matrix.node-version }})
     runs-on: windows-latest

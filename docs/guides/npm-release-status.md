@@ -10,15 +10,17 @@ Observed on 2026-11-04. This is a dated release snapshot, not a live status page
 
 ## What 1.8.0 changes
 
-- **Skill library is installable.** `--list-skills` lists every canonical Skill; `--skill <name>` installs one; `--all-skills` installs the full library. The default remains the `config/team-manifest.json` assignment for the selected Agents.
-- **New Skills registered.** The 17 Skills added since `v1.7.1` are assigned to their owning roles instead of being catalog-only. Two malformed frontmatter blocks (`daniel-xhs-writing`, `vibe-knowledge-award`) were repaired so the generated index carries real names and descriptions.
+- **Skill library is installable and categorized.** `--list-skills` groups every canonical Skill by category; `--list-categories` prints category counts; `--skill <name>` installs one; `--skill-pack <category>` installs a category; `--all-skills` installs the full library. The default remains the `config/team-manifest.json` assignment for the selected Agents.
+- **22 adapter targets.** Pi (`.pi/agent/skills`), Oh My Pi (`.omp/agent`), and Grok Build (`.grok`) join the existing Claude Code, Codex, OpenClaw, Hermes, DSH, OpenCode, Gemini CLI, and generic adapters. CI installs every adapter from the packed tarball on Linux, macOS, and Windows.
+- **Intent routing is explicit.** The orchestrator Skill and every harness wrapper now embed a routing table keyed by work object and delivery, and each C-suite Agent description carries concrete trigger keywords. Single-domain tasks go to the matching C-suite; CTO is no longer a default fallback; CEO is reserved for cross-domain trade-offs.
+- **New Skills registered.** The 22 Skills added since `v1.7.1` are assigned to their owning roles instead of being catalog-only. Two malformed frontmatter blocks (`daniel-xhs-writing`, `vibe-knowledge-award`) and 17 unparseable YAML blocks were repaired so the generated index carries real names and descriptions.
 - **Installed Agent links resolve.** Agent/role text is now rebased from the repository layout to each harness's real Skill directory. Smoke installs of `claude-code` and `codex` report 0 broken relative links (previously 235 and 217).
 - **`--no-skills` is consistent.** Claude Code frontmatter and adapter connection specs no longer advertise Skills that were not installed.
-- **Packaging.** `catalog/skill-index.json` and its schema ship with the package; runtime logs, scan dumps, and `data/**/*.jsonl` are excluded; unused non-Codex plugin copies are no longer packed; a `prepack` step normalizes file modes to `0644`/`0755`. The packed archive is about 16.9 MB packed / 46.7 MB unpacked across roughly 5,200 files.
+- **Packaging.** `catalog/skill-index.json`, the intent-routing config, and their schemas ship with the package; runtime logs, scan dumps, and `data/**/*.jsonl` are excluded; a `prepack` step normalizes file modes to `0644`/`0755`. The packed archive is about 16.9 MB packed / 47 MB unpacked across roughly 5,200 files.
 
 ## Known gaps
 
-- This checkout is 4 commits behind `origin/main`, which adds 5 A-share Skills. Sync and register those before tagging `v1.8.0`.
+- Publishing requires an authenticated npm session or the `NPM_TOKEN` repository secret. The local CLI currently returns 401.
 - `--doctor` still derives its expected file set from the current flags, so a plain `--doctor` after `--all-subagents --install` reports drift. Use the same flags for the check.
 - The Codex `config.toml` depth block is intentionally skipped when the user already owns an `[agents]` table; that install then keeps `max_depth = 1`. Merging into a foreign table is not implemented.
 

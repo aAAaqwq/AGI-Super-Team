@@ -139,6 +139,13 @@ function skillSources(catalog, tool, assignedSkills, skillSelection) {
       throw new Error(`unknown Skill: ${name}`);
     });
   }
+  if (skillSelection?.category) {
+    const names = catalog.physicalSkills.filter(
+      (name) => catalog.categoryBySkill.get(name) === skillSelection.category,
+    );
+    if (!names.length) throw new Error(`unknown or empty Skill category: ${skillSelection.category}`);
+    return names.map((name) => ({ name, root: catalog.canonicalSkillsRoot }));
+  }
   if (skillSelection?.all) {
     const sources = catalog.physicalSkills.map((name) => ({ name, root: catalog.canonicalSkillsRoot }));
     if (!canonical) {

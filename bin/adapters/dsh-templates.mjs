@@ -12,6 +12,8 @@
  * the adapter module only decides where they land.
  */
 
+import { intentRoutingSection } from "../installer/render.mjs";
+
 export const DSH_PRESET_ID = "ast-team";
 export const DSH_DEFAULT_PROFILE = "web";
 
@@ -259,12 +261,14 @@ export function dshPresetMetadata() {
 export function dshOrchestratorSkill(packageRoot, skillRoot) {
   return `---
 name: ${ORCHESTRATOR_SKILL_DIR}
-description: 在 DeepSeek Harness 中按 CEO→C-suite→Leaf→Governor 路由复杂任务；需要跨职能并行、独立复核或完整团队交付时使用。
+description: 在 DeepSeek Harness 中先按意图路由选择主责 C-suite，再按 C-suite→Leaf→Governor 执行；需要跨职能并行、独立复核或完整团队交付时使用。禁止默认 CTO。
 ---
 
 # AGI Super Team｜DeepSeek Harness Adapter
 
 这是 DSH 的运行时包装 Skill。开始前必须读取 canonical Skill：\`../orchestrate-agi-super-team/SKILL.md\`，并按需读取其 references。canonical Skill 决定是否组队、通用任务包、Governor 和人工批准契约；本文件只补充 DSH 的调度方式。
+
+${intentRoutingSection(packageRoot)}
 
 你是会话中的 CEO 协调者。先定义结果、约束和验收，再按任务选择最小充分团队。
 

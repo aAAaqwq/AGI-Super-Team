@@ -1,6 +1,6 @@
 import { join } from "node:path";
 
-import { canonicalAgentDescription, roleBody, specialistBody } from "../installer/render.mjs";
+import { canonicalAgentDescription, intentRoutingSection, roleBody, specialistBody } from "../installer/render.mjs";
 
 
 export const ADAPTER_ID = "claude-code";
@@ -77,7 +77,7 @@ function specialistAgentArtifact(packageRoot, tool, specialist) {
   };
 }
 
-function orchestratorArtifact(tool, agents, groups, specialists) {
+function orchestratorArtifact(packageRoot, tool, agents, groups, specialists) {
   const agentById = new Map(agents.map((agent) => [agent.id, agent]));
   const canonicalRoutes = agents
     .filter((agent) => agent.id !== "ceo")
@@ -98,7 +98,7 @@ function orchestratorArtifact(tool, agents, groups, specialists) {
     .join("\n\n");
   const content = `---
 name: agi-super-team-orchestrator
-description: 跨职能、公司级、高不确定性或用户明确要求 AGI Super Team、C-suite、团队协作、并行专家、独立复核时使用。先按职责选择最小团队，再用 Claude Code Agent 工具精准委派并综合证据。
+description: 跨职能、公司级、高不确定性或用户明确要求 AGI Super Team、C-suite、团队协作、并行专家、独立复核时使用。启动后先按意图路由表选择主责 C-suite，禁止默认 CTO；只有跨领域取舍才升级 CEO。
 ---
 
 # AGI Super Team｜Claude Code 编排器
@@ -106,6 +106,8 @@ description: 跨职能、公司级、高不确定性或用户明确要求 AGI Su
 开始前先读取同一 Skill 根目录中的 \`../orchestrate-agi-super-team/SKILL.md\`，并按需读取其 references。canonical Skill 决定是否组队、通用任务包、Governor 与人工批准契约；本 Skill 只定义 Claude Code 的运行时编排方式。
 
 canonical 角色正文和专业 Skills 由安装器逐字复制；本文件不改写它们。
+
+${intentRoutingSection(packageRoot)}
 
 ## 启动条件
 
@@ -160,7 +162,7 @@ export function renderAdapterArtifacts({
       ...specialists.map((specialist) => specialistAgentArtifact(packageRoot, tool, specialist)),
     );
   }
-  if (includeSkills) artifacts.push(orchestratorArtifact(tool, agents, groups, specialists));
+  if (includeSkills) artifacts.push(orchestratorArtifact(packageRoot, tool, agents, groups, specialists));
   return artifacts;
 }
 

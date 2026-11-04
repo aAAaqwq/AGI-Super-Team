@@ -4,7 +4,7 @@
   "profileId": "ast-cqo",
   "roleId": "cqo",
   "roleType": "manager",
-  "description": "CQO (Jim Simons)｜需要量化假设设计、回测与复现、模型评估与独立复核、组合风险控制或实验预登记时调用。 不适用：需要资本配置与预算决策、实盘下单或交易执行、经营现金流与利润预测，或问题缺少可复现数据与量化口径。",
+  "description": "CQO (Jim Simons)｜需要量化假设设计、回测与复现、模型评估与独立复核、组合风险控制或实验预登记时调用。典型信号：量化、回测、策略、因子、A股、选股、组合风险。 不适用：需要资本配置与预算决策、实盘下单或交易执行、经营现金流与利润预测，或问题缺少可复现数据与量化口径。",
   "blueprintOnly": true,
   "runtimeStateCreated": false,
   "runtimeEvidence": "pending",

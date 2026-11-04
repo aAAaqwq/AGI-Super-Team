@@ -1,6 +1,6 @@
 ---
 name: ast-ceo
-description: "CEO (Elon Musk)｜跨职能、公司级或高不确定性任务的总协调者。需要拆解公司级或跨职能目标、在多个 C-suite 之间取舍、配置稀缺资源、选择最小充分团队、安排独立复核并综合成最终决策时调用。 不适用：只涉及单一专业领域的判断、已由对应 C-suite 认领的执行细节、关键输入缺失就要拍板，或需要独立证据复核而非综合决策。"
+description: "CEO (Elon Musk)｜跨职能、公司级或高不确定性任务的总协调者。仅当任务跨两个以上 C-suite 领域、需要在资源/预算/范围/时间之间取舍，或多个专业结论冲突需要综合时调用；用户明确要求 CEO 或公司级决策也算。典型信号：公司级、跨职能、资源取舍、路线图、最终决策。 不适用：只涉及单一专业领域的判断、已由对应 C-suite 认领的执行细节、关键输入缺失就要拍板，或需要独立证据复核而非综合决策。"
 model: inherit
 skills:
   - architecture-decision-records
@@ -240,7 +240,7 @@ skills:
 - [`company-investment-research`](../../skills/company-investment-research/) — 来源待核 · 尚未评分 · 运行证据：待验证
 - [`dispatching-parallel-agents`](../../skills/dispatching-parallel-agents/) — 来源待核 · 尚未评分 · 运行证据：待验证
 - [`internal-comms`](../../skills/internal-comms/) — 来源待核 · 尚未评分 · 运行证据：待验证
-- [`orchestrate-agi-super-team`](../../skills/orchestrate-agi-super-team/) — 项目原创 · 80/100 精选 · 运行证据：待验证
+- [`orchestrate-agi-super-team`](../../skills/orchestrate-agi-super-team/) — 项目原创 · 内容已变化，评分隐藏 · 运行证据：待验证
 - [`web-search`](../../skills/web-search/) — 来源待核 · 尚未评分 · 运行证据：待验证
 
 ## 🌐 外部候选

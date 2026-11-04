@@ -22203,28 +22203,11 @@
         }
       },
       "curation": {
-        "dimensions": {
-          "instruction_design": 15,
-          "outcome_evidence": 12,
-          "provenance_and_license": 20,
-          "resource_integrity": 15,
-          "safety_and_reversibility": 18
-        },
-        "evidence": [
-          "skills/orchestrate-agi-super-team/SKILL.md",
-          "skills/orchestrate-agi-super-team/agents/openai.yaml",
-          "skills/orchestrate-agi-super-team/references/execution-contract.md",
-          "skills/orchestrate-agi-super-team/references/framework-mechanisms.md"
-        ],
         "limitations": [
-          "No commit-matched four-framework runtime fixture or clean-client canary receipt is published yet."
+          "Skill content changed after review; score hidden until re-review."
         ],
-        "reason": "A first-party orchestration workflow that preserves one canonical organization while translating real delegation limits across four Agent frameworks.",
-        "reviewed_at": "2026-07-30",
         "runtime_evidence": "pending",
-        "score": 80,
-        "status": "selected",
-        "tier": "selected"
+        "status": "stale"
       },
       "description": "按 Team→C-suite→Skills/直属 Subagents→Governor→CEO→人工批准契约编排 AGI Super Team。适用于用户要求跨职能团队、专家委派、独立复核，或需在 Claude Code、Codex、OpenClaw、Hermes 中选择真实执行方式；单领域一步任务不要启用。",
       "description_status": "source-text",
@@ -22251,7 +22234,7 @@
           "spdx": "MIT"
         },
         "origin_kind": "project-original",
-        "review_state": "reviewed"
+        "review_state": "stale"
       },
       "review_signals": [],
       "skill_id": "orchestrate-agi-super-team",

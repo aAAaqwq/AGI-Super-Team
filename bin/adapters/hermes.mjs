@@ -1,5 +1,5 @@
 import { join, resolve } from "node:path";
-import { canonicalAgentDescription, roleBody, specialistBody } from "../installer/render.mjs";
+import { canonicalAgentDescription, intentRoutingSection, roleBody, specialistBody } from "../installer/render.mjs";
 
 export const ADAPTER_ID = "hermes";
 
@@ -158,14 +158,14 @@ ${specialistBody(packageRoot, specialist).trim()}
 `;
 }
 
-function orchestratorSkillContent(agents, specialists) {
+function orchestratorSkillContent(packageRoot, agents, specialists) {
   const profiles = agents.map((agent) => `- \`ast-${agent.id}\`：${agent.trigger}`).join("\n");
   const specialistIndex = specialists.length
     ? specialists.map((item) => `- \`ast-${item.manager}-${item.id}\`：${item.trigger}`).join("\n")
     : "- 本次未选择 specialist Skill。";
   return `---
 name: agi-super-team-orchestrator
-description: 使用 Hermes Profiles 与 Kanban 路由 AGI Super Team
+description: 使用 Hermes Profiles 与 Kanban 按意图路由到主责 C-suite；需要跨职能并行、独立复核或完整团队交付时使用。禁止默认 CTO。
 metadata:
   hermes:
     category: orchestration
@@ -178,6 +178,8 @@ metadata:
 runtimeEvidence: pending
 
 开始前先读取 \`../agi-super-team/orchestrate-agi-super-team/SKILL.md\`，并按需读取其 references。canonical Skill 决定是否组队、通用任务包、Governor 与人工批准契约；本 Skill 只补充 Hermes Profile、Kanban 与 delegation 方式。
+
+${intentRoutingSection(packageRoot)}
 
 ## 触发条件
 
@@ -291,7 +293,7 @@ export function renderAdapterArtifacts({
   if (includeSkills) {
     artifacts.push({
       relativePath: ORCHESTRATOR_SKILL,
-      content: Buffer.from(orchestratorSkillContent(agents, specialists)),
+      content: Buffer.from(orchestratorSkillContent(packageRoot, agents, specialists)),
       label: "hermes-orchestrator",
     });
   }

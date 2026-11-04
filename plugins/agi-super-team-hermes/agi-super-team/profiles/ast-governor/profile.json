@@ -4,7 +4,7 @@
   "profileId": "ast-governor",
   "roleId": "governor",
   "roleType": "independent-reviewer",
-  "description": "Governor｜重大结论与完成声明的独立证据复核者。需要独立复核重大结论、发布、安全、资金、法律或完成声明，并给出放行门决定或风险升级时调用。 不适用：需要设计与实现交付物、替领域负责人作专业判断、替 CEO 作资源取舍，或声明方无法提供可复核证据。",
+  "description": "Governor｜重大结论与完成声明的独立证据复核者。需要独立复核重大结论、发布、安全、资金、法律或完成声明，并给出放行门决定或风险升级时调用。典型信号：复核、放行、审计、风险升级、完成声明。 不适用：需要设计与实现交付物、替领域负责人作专业判断、替 CEO 作资源取舍，或声明方无法提供可复核证据。",
   "blueprintOnly": true,
   "runtimeStateCreated": false,
   "runtimeEvidence": "pending",

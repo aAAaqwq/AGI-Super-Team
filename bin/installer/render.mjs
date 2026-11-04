@@ -201,3 +201,34 @@ export function antigravityAgent(packageRoot, agent, group = null) {
 export function displayPath(path) {
   return basename(path) || path;
 }
+
+const ROUTING_LABELS = {
+  ceo: "CEO", cto: "CTO", pe: "PE", cpo: "CPO", cqo: "CQO", cmo: "CMO", cfo: "CFO",
+  cdo: "CDO", cco: "CCO", clo: "CLO", cro: "CRO", cso: "CSO", coo: "COO", governor: "Governor",
+};
+
+export function intentRoutingSection(packageRoot) {
+  const path = join(packageRoot, "config", "intent-routing.json");
+  if (!existsSync(path)) return "";
+  const config = JSON.parse(readFileSync(path, "utf8"));
+  const label = (id) => `${ROUTING_LABELS[id] || id}（\`${id}\`）`;
+  const rows = config.routes.map((route) => {
+    const supporting = route.supporting.map((id) => ROUTING_LABELS[id] || id).join("、") || "—";
+    return `| ${route.intent} | ${label(route.primary)} | ${supporting} | ${route.keywords.join("、")} |`;
+  });
+  const escalation = config.escalation;
+  return [
+    "## 意图路由（先选主责，禁止默认 CTO）",
+    "",
+    "先识别工作对象与交付物，再选主责 C-suite。单一领域任务直接调用对应角色，不要先找 CEO。",
+    "",
+    "| 意图信号 | 主责 | 可协作 | 典型关键词 |",
+    "|---|---|---|---|",
+    ...rows,
+    "",
+    `只在以下任一条件成立时升级到 ${label(escalation.primary)}：`,
+    ...escalation.when.map((item) => `- ${item}`),
+    "",
+    `兜底：${config.fallback}`,
+  ].join("\n");
+}

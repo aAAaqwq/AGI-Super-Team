@@ -82,13 +82,17 @@ Swarm agents: <你的目标>
 <a id="安装到你的-agent-框架"></a>
 ## 🛠️ 手动 CLI 安装
 
-先列出全部 19 个适配目标，再预览一个目标，确认后用同一选择安装：
+先列出全部 22 个适配目标，再预览一个目标，确认后用同一选择安装：
 
 ```bash
 npx -y agi-super-team@latest --list-tools
 npx -y agi-super-team@latest --tool claude-code
 npx -y agi-super-team@latest --tool claude-code --install --connect
 npx -y agi-super-team@latest --tool claude-code --doctor
+
+npx -y agi-super-team@latest --list-categories
+npx -y agi-super-team@latest --list-skills --category finance-trading-markets
+npx -y agi-super-team@latest --tool pi --skill-pack software-engineering --install
 ```
 
 以上命令直接使用公开 npm 包。自动化场景不要把 `@latest` 留在固定流水线里：先解析出确切的已发布版本再固定它，这样后续发版不会改变本次安装内容：
@@ -147,7 +151,7 @@ npx -y agi-super-team@latest --tool codex --all-subagents --install
 
 Codex 的嵌套调用需要 `max_depth = 2`。在 `max_threads = 4` 下，一次只运行一个管理者波次：CEO + 一个高管 + 最多两个直属叶子。若深度仍为 1，由 CEO 平铺调用同一专家并如实标记降级，不声称高管完成了嵌套委派。
 
-这里列出的是 **19 个 AI 客户端/运行时适配目标**，不是 19 个功能相同的 CLI。适配器可能安装原生 Agent、原生 Skill、项目规则/上下文，或把角色包降级为 Agent-as-Skill。文件写入成功不等于当前客户端已经加载或执行这些内容。
+这里列出的是 **22 个 AI 客户端/运行时适配目标**，不是 22 个功能相同的 CLI。适配器可能安装原生 Agent、原生 Skill、项目规则/上下文，或把角色包降级为 Agent-as-Skill。文件写入成功不等于当前客户端已经加载或执行这些内容。
 
 ### 19 个适配目标矩阵
 
@@ -160,6 +164,9 @@ Codex 的嵌套调用需要 `max_depth = 2`。在 `max_threads = 4` 下，一次
 | `openclaw` | OpenClaw | 全局 | 原生 Workspace：`<当前配置目录>/agency-agents/agi-super-team` | canonical：`<当前配置目录>/skills/agi-super-team` | 结构接入；Runtime pending |
 | `hermes` | Hermes Agent | 全局 | 角色 Skill：`$HERMES_HOME/skills/agi-super-team-agents` | canonical：`$HERMES_HOME/skills/agi-super-team` | 蓝图接入；Runtime pending |
 | `dsh` | DeepSeek Harness | 全局 | Preset：`.dsh/.agent-presets/ast-team` | canonical：`.dsh/skills/agi-super-team` | 结构接入；Runtime pending |
+| `pi` | Pi | 全局 | Agent-as-Skill：`.pi/agent/skills/<id>/SKILL.md` | 原生：`.pi/agent/skills` | 适配器 |
+| `oh-my-pi` | Oh My Pi | 全局 | Markdown Agent：`.omp/agent/agents` | 原生：`.omp/agent/skills` | 适配器 |
+| `grok-build` | Grok Build | 全局 | Markdown Agent：`.grok/agents` | 原生：`.grok/skills` | 适配器 |
 | `copilot` | GitHub Copilot | 全局 | Markdown Agent：`.github/agents`、`.copilot/agents` | 原生：`.copilot/skills` | 适配器 |
 | `antigravity` | Antigravity | 全局 | Agent：`.gemini/config/agents` | 原生：`.gemini/config/skills` | **实验性** |
 | `gemini-cli` | Gemini CLI | 全局 | Markdown Agent：`.gemini/agents` | 原生：`.gemini/skills` | 适配器 |
@@ -175,7 +182,7 @@ Codex 的嵌套调用需要 `max_depth = 2`。在 `max_threads = 4` 下，一次
 | `kiro` | Kiro | 全局 | Markdown Agent：`.kiro/agents` | 原生：`.kiro/skills` | 适配器 |
 | `qoder` | Qoder | 全局 | Markdown Agent：`.qoder/agents` | 原生：`.qoder/skills` | 适配器 |
 
-矩阵描述的是 [`config/cli-adapters.json`](./config/cli-adapters.json) 中的适配契约，并不表示 19 个客户端都做过运行时验证。Cursor 与 Antigravity 明确处于实验状态。
+矩阵描述的是 [`config/cli-adapters.json`](./config/cli-adapters.json) 中的适配契约，并不表示 22 个客户端都做过运行时验证。Cursor 与 Antigravity 明确处于实验状态。
 
 复杂任务可直接使用 canonical [`orchestrate-agi-super-team`](./skills/orchestrate-agi-super-team/SKILL.md) Skill，执行 Team → C-suite → Skills/Subagents → Governor → CEO → 人工批准的完整流程。它会识别当前框架的真实委派限制，并记录平铺或顺序降级，不伪称发生了原生嵌套。
 
@@ -388,7 +395,7 @@ npm run check:architecture
 
 ## 🔌 选择分发方式
 
-为指定 Agent 框架安装时，优先使用[一段提示词安装](#coding-agent-quick-start)，也可以使用上方的 19 目标 npm CLI。
+为指定 Agent 框架安装时，优先使用[一段提示词安装](#coding-agent-quick-start)，也可以使用上方的 22 目标 npm CLI。
 
 需要 Codex 专用细节时查看 [Codex 精选包](./.codex/INDEX.md)；需要与客户端无关的文件时使用旧版通用工作区生成器。
 

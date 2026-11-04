@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/aAAaqwq/AGI-Super-Team/config/intent-routing.schema.json",
+  "title": "AGI Super Team intent routing",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "policy", "routes", "escalation", "fallback"],
+  "properties": {
+    "schemaVersion": {"const": 1},
+    "policy": {"type": "string", "minLength": 1},
+    "routes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["intent", "primary", "supporting", "keywords"],
+        "properties": {
+          "intent": {"type": "string", "minLength": 1},
+          "primary": {"type": "string", "pattern": "^(ceo|cto|pe|cpo|cqo|cmo|cfo|cdo|cco|clo|cro|cso|coo|governor)$"},
+          "supporting": {
+            "type": "array",
+            "items": {"type": "string", "pattern": "^(ceo|cto|pe|cpo|cqo|cmo|cfo|cdo|cco|clo|cro|cso|coo|governor)$"}
+          },
+          "keywords": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+        }
+      }
+    },
+    "escalation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["primary", "when", "keywords"],
+      "properties": {
+        "primary": {"const": "ceo"},
+        "when": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "keywords": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+      }
+    },
+    "fallback": {"type": "string", "minLength": 1}
+  }
+}

@@ -10,7 +10,7 @@
 
 | 层级 | 载体 | 数量 | 作用 |
 |---|---|---|---|
-| **CLI 目标** | `config/cli-adapters.json` 的一个条目 | 19 个 | 声明一个框架的安装目标：路径、产物模式、支持状态 |
+| **CLI 目标** | `config/cli-adapters.json` 的一个条目 | 22 个 | 声明一个框架的安装目标：路径、产物模式、支持状态 |
 | **外置 Adapter 模块** | `config/harness-adapters/<id>.json` + `bin/adapters/<id>.mjs` | 5 个 | 只有主力框架才有，负责把 canonical Team 翻译成该框架原生格式 |
 
 **只有 5 个主力框架**（Claude Code、Codex、OpenClaw、Hermes、DSH）拥有第二层。其余 14 个目标走安装器的通用渲染逻辑，不需要 `bin/adapters/*.mjs`。
@@ -60,7 +60,7 @@
 | 规则 | 位置 |
 |---|---|
 | `schemaVersion` 必须为 `1` | `catalog.mjs:33` |
-| `tools` 必须恰好 **19** 个 | `catalog.mjs:33` |
+| `tools` 必须恰好 **22** 个 | `catalog.mjs:33` |
 | `id` 合法（`SAFE_ID`）、唯一 | `catalog.mjs:39` |
 | `scope` 必须是 `global` 或 `project` | `catalog.mjs:39` |
 | 必须声明 `agentPaths` 和 `skillPaths` 两个数组 | `catalog.mjs:42` |
@@ -97,7 +97,7 @@ if (
 
 | 检查点 | 内容 |
 |---|---|
-| `bin/installer/catalog.mjs:33` | 运行时抛错 `CLI adapter manifest must contain exactly 19 tools` |
+| `bin/installer/catalog.mjs:33` | 运行时抛错 `CLI adapter manifest must contain at least one tool` |
 | `tests/test_multi_cli_installer.py:113` | `test_adapter_manifest_has_exactly_nineteen_unique_tool_ids` |
 | `tests/windows_cli_smoke.mjs:83` | 打包后 CLI 的 `--list-tools` 必须返回 19 个唯一 id |
 

@@ -14,7 +14,7 @@
   Start with an outcome. Let the CEO route executives, executives dispatch specialists, Skills supply methods, and the Governor verify the result.
 </p>
 
-AGI Super Team is not a Codex-only plugin. It is a versioned, organized **Agents + Skills team system** for Claude Code, Codex, OpenClaw, Hermes, and other mainstream local AI agent frameworks through 19 explicit adapters.
+AGI Super Team is not a Codex-only plugin. It is a versioned, organized **Agents + Skills team system** for Claude Code, Codex, OpenClaw, Hermes, and other mainstream local AI agent frameworks through 22 explicit adapters.
 
 The same organizational contract travels across frameworks: 14 top-level roles, 92 opt-in specialists, reusable Skills, eight outcome Teams, independent review, and explicit human approval.
 
@@ -84,13 +84,17 @@ If native multi-agent delegation is unavailable, execute the same role plan sequ
 <a id="install-into-your-agent-framework"></a>
 ## 🛠️ Manual CLI installation
 
-List all 19 adapter targets, preview one target, then apply the same selection:
+List all 22 adapter targets, preview one target, then apply the same selection:
 
 ```bash
 npx -y agi-super-team@latest --list-tools
 npx -y agi-super-team@latest --tool claude-code
 npx -y agi-super-team@latest --tool claude-code --install --connect
 npx -y agi-super-team@latest --tool claude-code --doctor
+
+npx -y agi-super-team@latest --list-categories
+npx -y agi-super-team@latest --list-skills --category finance-trading-markets
+npx -y agi-super-team@latest --tool pi --skill-pack software-engineering --install
 ```
 
 The commands above use the public npm package. For reproducible automation, do not leave `@latest` in a pinned pipeline — resolve an exact published version first and pin that, so a later release cannot change what your run installs:
@@ -125,7 +129,7 @@ Five frameworks carry the full harness Adapter contract, including native Agent 
 | Hermes Agent | `hermes` | `npx -y agi-super-team@latest --tool hermes` | Role Skills + canonical Skills + Profiles/Kanban blueprints |
 | DeepSeek Harness | `dsh` | `npx -y agi-super-team@latest --tool dsh` | Declarative cordis patch enabling the Skill root + AGENTS.md CEO block + preset |
 
-The other fourteen targets use the generic installer — same commands, same preview-first safety, without the external Adapter module. See [all 19 targets](#all-19-adapter-targets).
+The other seventeen targets use the generic installer — same commands, same preview-first safety, without the external Adapter module. See [all 22 targets](#all-22-adapter-targets).
 
 `--install` materializes files; `--install --connect` also writes a connection receipt. OpenClaw dry-runs and then upserts managed `agents.list` entries while preserving unmanaged Agents and creating no channel bindings. Claude and Codex use filesystem discovery. Hermes emits blueprints but does not create Profiles, Cron jobs, or a Gateway. See the [primary harness Adapter guide](./docs/guides/harness-adapters.md) for paths, permissions, and receipt requirements.
 
@@ -147,9 +151,9 @@ npx -y agi-super-team@latest --tool <id> --all-subagents --install
 
 The hierarchy is CEO → eleven manager executives → leaf specialists. CTO also references the existing canonical PE as delivery lead; it does not create a second PE identity. All 92 source files under `agents/*/subagents/*/AGENTS.md` are byte-for-byte copies from pinned `jnMetaCode/agency-agents-zh`; local routing and safety envelopes remain separate. CEO retains coordination authority, Governor remains an independent reviewer, and PE remains CTO's canonical delivery leaf rather than another manager. See [`config/agent-sources.lock.json`](./config/agent-sources.lock.json) for source URLs and SHA-256 digests. Nested Codex routing requires `max_depth = 2`; with four threads, run one manager plus at most two children per wave.
 
-These are **19 AI client/runtime adapter targets**, not 19 interchangeable CLIs. An adapter can install native Agents, native Skills, project rules/context, or role packs degraded to Agent-as-Skill. File placement does not by itself prove that a current client loaded or executed the content.
+These are **22 AI client/runtime adapter targets**, not 22 interchangeable CLIs. An adapter can install native Agents, native Skills, project rules/context, or role packs degraded to Agent-as-Skill. File placement does not by itself prove that a current client loaded or executed the content.
 
-### All 19 adapter targets
+### All 22 adapter targets
 
 Global adapters normally resolve from the selected OS-home base; project adapters resolve from the selected project directory. OpenClaw and Hermes instead honor their native runtime roots, as shown below.
 
@@ -160,6 +164,9 @@ Global adapters normally resolve from the selected OS-home base; project adapter
 | `openclaw` | OpenClaw | Global | Native workspace: `<active config dir>/agency-agents/agi-super-team` | Canonical: `<active config dir>/skills/agi-super-team` | Structurally connected; runtime pending |
 | `hermes` | Hermes Agent | Global | Role Skills: `$HERMES_HOME/skills/agi-super-team-agents` | Canonical: `$HERMES_HOME/skills/agi-super-team` | Blueprint connected; runtime pending |
 | `dsh` | DeepSeek Harness | Global | Preset: `.dsh/.agent-presets/ast-team` | Canonical: `.dsh/skills/agi-super-team` | Structurally connected; runtime pending |
+| `pi` | Pi | Global | Agent-as-Skill: `.pi/agent/skills/<id>/SKILL.md` | Native: `.pi/agent/skills` | Adapter |
+| `oh-my-pi` | Oh My Pi | Global | Markdown Agent: `.omp/agent/agents` | Native: `.omp/agent/skills` | Adapter |
+| `grok-build` | Grok Build | Global | Markdown Agent: `.grok/agents` | Native: `.grok/skills` | Adapter |
 | `copilot` | GitHub Copilot | Global | Markdown Agent: `.github/agents`, `.copilot/agents` | Native: `.copilot/skills` | Adapter |
 | `antigravity` | Antigravity | Global | Agent: `.gemini/config/agents` | Native: `.gemini/config/skills` | **Experimental** |
 | `gemini-cli` | Gemini CLI | Global | Markdown Agent: `.gemini/agents` | Native: `.gemini/skills` | Adapter |
@@ -175,7 +182,7 @@ Global adapters normally resolve from the selected OS-home base; project adapter
 | `kiro` | Kiro | Global | Markdown Agent: `.kiro/agents` | Native: `.kiro/skills` | Adapter |
 | `qoder` | Qoder | Global | Markdown Agent: `.qoder/agents` | Native: `.qoder/skills` | Adapter |
 
-The matrix describes the adapter contract in [`config/cli-adapters.json`](./config/cli-adapters.json), not a claim that all 19 clients have been runtime-verified. Cursor and Antigravity are explicitly experimental.
+The matrix describes the adapter contract in [`config/cli-adapters.json`](./config/cli-adapters.json), not a claim that all 22 clients have been runtime-verified. Cursor and Antigravity are explicitly experimental.
 
 ### Ecosystem plugins
 

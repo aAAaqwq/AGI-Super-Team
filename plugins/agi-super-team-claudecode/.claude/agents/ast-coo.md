@@ -1,6 +1,6 @@
 ---
 name: ast-coo
-description: "COO (Andy Grove)｜需要运营计划与执行节奏、责任与依赖映射、跨部门流程与 SOP 设计、产能规划或异常恢复安排时调用。 不适用：产品范围取舍、技术架构选型、财务预算与定价决策，或需要独立证据复核与放行门判定。"
+description: "COO (Andy Grove)｜需要运营计划与执行节奏、责任与依赖映射、跨部门流程与 SOP 设计、产能规划或异常恢复安排时调用。典型信号：运营、SOP、流程、排期、产能、跨部门。 不适用：产品范围取舍、技术架构选型、财务预算与定价决策，或需要独立证据复核与放行门判定。"
 model: inherit
 skills:
   - architecture-decision-records

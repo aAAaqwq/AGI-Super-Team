@@ -18,8 +18,8 @@
     },
     "tools": {
       "type": "array",
-      "minItems": 19,
-      "maxItems": 19,
+      "minItems": 22,
+      "maxItems": 22,
       "items": {"$ref": "#/$defs/tool"}
     }
   },

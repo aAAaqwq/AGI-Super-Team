@@ -76,14 +76,17 @@ function roots(name) {
 try {
   const listHome = join(sandbox, "list-home");
   const listed = invoke("--list-tools", ["--list-tools"], listHome);
-  expectIncludes(listed, "AGI Super Team CLI targets (19)", "--list-tools");
+  const adapterCount = JSON.parse(
+    readFileSync(join(repositoryRoot, "config", "cli-adapters.json"), "utf8"),
+  ).tools.length;
+  expectIncludes(listed, `AGI Super Team CLI targets (${adapterCount})`, "--list-tools");
   const listedTools = listed.split(/\r?\n/)
     .map((line) => /^\s{2}(\S+)\s+(?:global|project)\s+/.exec(line)?.[1])
     .filter(Boolean);
-  if (listedTools.length !== 19 || new Set(listedTools).size !== 19) {
+  if (listedTools.length !== adapterCount || new Set(listedTools).size !== adapterCount) {
     throw new Error(`--list-tools returned ${listedTools.length} rows (${new Set(listedTools).size} unique)`);
   }
-  for (const tool of ["claude-code", "codex", "openclaw", "hermes", "dsh"]) {
+  for (const tool of ["claude-code", "codex", "openclaw", "hermes", "dsh", "pi", "oh-my-pi", "grok-build"]) {
     if (!listedTools.includes(tool)) throw new Error(`--list-tools omitted ${tool}`);
   }
 

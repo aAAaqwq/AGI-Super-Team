@@ -4,7 +4,7 @@
   "profileId": "ast-pe",
   "roleId": "pe",
   "roleType": "leaf",
-  "description": "PE (Linus Torvalds)｜已批准的设计需要跨模块实现、集成、测试、代码评审、缺陷修复或可回退交付时调用。 不适用：设计尚未批准、需要产品或优先级取舍、架构边界存在争议，或只需窄领域专家给出专项建议而不承担跨模块实现。",
+  "description": "PE (Linus Torvalds)｜已批准的设计需要跨模块实现、集成、测试、代码评审、缺陷修复或可回退交付时调用。典型信号：实现、编码、集成、测试、重构、缺陷修复、交付。 不适用：设计尚未批准、需要产品或优先级取舍、架构边界存在争议，或只需窄领域专家给出专项建议而不承担跨模块实现。",
   "blueprintOnly": true,
   "runtimeStateCreated": false,
   "runtimeEvidence": "pending",

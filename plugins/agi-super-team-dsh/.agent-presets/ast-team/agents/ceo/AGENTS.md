@@ -220,7 +220,7 @@ DSH 不提供逐角色工具边界：真实约束来自 preset 的 persona 路�
 - [`company-investment-research`](../../skills/company-investment-research/) — 来源待核 · 尚未评分 · 运行证据：待验证
 - [`dispatching-parallel-agents`](../../skills/dispatching-parallel-agents/) — 来源待核 · 尚未评分 · 运行证据：待验证
 - [`internal-comms`](../../skills/internal-comms/) — 来源待核 · 尚未评分 · 运行证据：待验证
-- [`orchestrate-agi-super-team`](../../skills/orchestrate-agi-super-team/) — 项目原创 · 80/100 精选 · 运行证据：待验证
+- [`orchestrate-agi-super-team`](../../skills/orchestrate-agi-super-team/) — 项目原创 · 内容已变化，评分隐藏 · 运行证据：待验证
 - [`web-search`](../../skills/web-search/) — 来源待核 · 尚未评分 · 运行证据：待验证
 
 ## 🌐 外部候选

@@ -1,6 +1,6 @@
 ---
 name: ast-cfo
-description: "CFO (Warren Buffett)｜需要预算与滚动预测、单位经济与定价证据、资本配置取舍、财务控制或成本优化时调用。 不适用：合同条款与合规判断、销售与客户关系推进、产品范围取舍，或需要实际付款、过账与税务申报操作。"
+description: "CFO (Warren Buffett)｜需要预算与滚动预测、单位经济与定价证据、资本配置取舍、财务控制或成本优化时调用。典型信号：预算、定价、单位经济、成本、现金流、融资。 不适用：合同条款与合规判断、销售与客户关系推进、产品范围取舍，或需要实际付款、过账与税务申报操作。"
 metadata:
   hermes:
     category: agi-super-team-agents
