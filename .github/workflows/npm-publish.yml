@@ -91,13 +91,17 @@ jobs:
         run: |
           set -euo pipefail
           expected="${{ steps.version.outputs.version }}"
-          for attempt in 1 2 3 4 5; do
-            observed=$(npm view "agi-super-team@$expected" version 2>/dev/null || true)
+          # npm accepts a large tarball immediately but can keep it in
+          # "processing" for several minutes before the version resolves.
+          # Poll for 10 minutes instead of failing after 50 seconds.
+          for attempt in $(seq 1 30); do
+            observed=$(npm view "agi-super-team@$expected" version --prefer-online 2>/dev/null || true)
             if [ "$observed" = "$expected" ]; then
               echo "npm publishes agi-super-team@$expected"
               exit 0
             fi
-            sleep 10
+            echo "attempt $attempt/30: agi-super-team@$expected not visible yet"
+            sleep 20
           done
-          echo "Registry did not resolve agi-super-team@$expected after publication." >&2
+          echo "Registry did not resolve agi-super-team@$expected within 10 minutes of publication." >&2
           exit 1

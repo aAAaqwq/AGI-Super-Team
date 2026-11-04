@@ -4,9 +4,8 @@ Observed on 2026-11-04. This is a dated release snapshot, not a live status page
 
 ## Registry state
 
-- `latest` resolves to `1.7.1` (published 2026-09-20).
-- `next` still resolves to `1.4.2`; it is stale and should not be used.
-- `1.8.0` is prepared in this checkout but not published.
+- `latest` and `next` both resolve to `1.8.0` (published 2026-11-04).
+- `1.7.1` remains the previous published version.
 
 ## What 1.8.0 changes
 
@@ -20,7 +19,7 @@ Observed on 2026-11-04. This is a dated release snapshot, not a live status page
 
 ## Known gaps
 
-- Publishing requires an authenticated npm session or the `NPM_TOKEN` repository secret. The local CLI currently returns 401.
+- npm can accept a large tarball immediately and keep it in `processing` for several minutes. The publish workflow polls the exact version for up to 10 minutes before declaring failure.
 - Default CI verifies the discovery contract only: artifacts install, agent frontmatter parses, connection manifests point at real Skills, orchestrator routes resolve, and Skill links exist. It does not start a model or observe delegation.
 - A manual `Harness Canary (manual)` workflow can run `discovery` or `route` checks against a real client. It skips unless `live=true` and the matching `ANTHROPIC_API_KEY` / `OPENAI_API_KEY` secret exists; every run writes a receipt artifact.
 - `--doctor` still derives its expected file set from the current flags, so a plain `--doctor` after `--all-subagents --install` reports drift. Use the same flags for the check.
