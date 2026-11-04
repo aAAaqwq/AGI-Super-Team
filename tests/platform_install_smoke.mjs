@@ -23,11 +23,17 @@ const HARNESS_ROOT = {
 };
 
 function baseFor(tool) {
+  if (tool.id === "hermes" && process.platform === "win32") {
+    return join(home, "AppData", "Local", "hermes");
+  }
   return HARNESS_ROOT[tool.id] ? join(home, HARNESS_ROOT[tool.id]) : home;
 }
 
 function environment() {
   const env = { ...process.env, NO_COLOR: "1" };
+  if (process.platform === "win32") {
+    env.LOCALAPPDATA = join(home, "AppData", "Local");
+  }
   for (const name of ["OPENCLAW_HOME", "OPENCLAW_STATE_DIR", "HERMES_HOME", "DSH_HOME"]) {
     delete env[name];
   }
