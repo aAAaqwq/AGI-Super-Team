@@ -25,7 +25,8 @@
     "search-layer",
     "search-specialist",
     "tech-selection-research",
-    "web-search"
+    "web-search",
+    "wechat-article-analysis"
   ],
   "kanbanTaskSkills": [
     "ast-cro",
@@ -43,7 +44,8 @@
     "search-layer",
     "search-specialist",
     "tech-selection-research",
-    "web-search"
+    "web-search",
+    "wechat-article-analysis"
   ],
   "profileSkillVisibility": {
     "reason": "Hermes Profiles use separate HERMES_HOME directories and do not inherit the default profile's Skills implicitly.",

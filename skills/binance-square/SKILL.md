@@ -151,6 +151,20 @@ python3 scripts/repair_latest.py \
   --database data/v4/radar.sqlite
 ```
 
+### latest 指针 STALE 门禁（失败关闭）
+
+读取 `latest.json` 指针时，必须校验其记录的产物时间与当前时间的差值。默认阈值为 **260 分钟**：雷达按固定 4 小时 UTC 槽运行，每次成功运行才原子切换指针，因此窗口必须覆盖「一个完整槽 + 一次 +10 分钟重试 + 槽内最大 10 分钟迟到」。若沿用 Feed 快照的 10 分钟阈值，则每次运行后数分钟就会把最新指针误判为 STALE——历史 10 分钟值来自 Feed 快照窗口，两者节奏不同，不可共用。指针陈旧或来自未来时**失败关闭**（非零退出），错误信息包含指针路径、指针时间戳、当前时间与超时时长。**禁止静默消费旧数据。**
+
+```bash
+python3 scripts/check_latest_freshness.py \
+  --pointer data/v4/runs/latest.json \
+  --check-only
+```
+
+逃生阀（显式使用时会打印 `[WARN] STALE_LATEST_POINTER` 警告，不会静默降级）：`--allow-stale` 或环境变量 `BINANCE_ALLOW_STALE=1`。`scripts/run_radar.py` 同样接受 `--allow-stale`，经 `PipelineConfig.allow_stale_pointer` 传入 Feed 输入快照的指针重校验点（`scanner/pipeline.py`）。
+
+**注意：未来时间戳（`is_future`）不受逃生阀影响**——它代表时钟/逻辑故障而非旧数据，即使传 `--allow-stale` 也仍然失败关闭（仅额外打印一条 `[WARN]`），避免被误当作正常服务。可用 `--max-age-minutes` 显式覆盖阈值。
+
 ## 离线验收
 
 ```bash

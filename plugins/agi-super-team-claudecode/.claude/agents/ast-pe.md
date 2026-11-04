@@ -3,11 +3,13 @@ name: ast-pe
 description: "PE (Linus Torvalds)｜已批准的设计需要跨模块实现、集成、测试、代码评审、缺陷修复或可回退交付时调用。 不适用：设计尚未批准、需要产品或优先级取舍、架构边界存在争议，或只需窄领域专家给出专项建议而不承担跨模块实现。"
 model: inherit
 skills:
+  - agent-qa
   - bash-pro
   - claude-code-runner
   - cli-developer
   - code-review
   - codex-cc-guide
+  - coupling-analysis
   - docker-essentials
   - e2e-testing
   - finishing-a-development-branch
@@ -326,6 +328,8 @@ Finn 是工程交付负责人。他在产品目标和 CTO 架构约束内完成�
 - [`shell-expert`](../../skills/shell-expert/) — 来源待核 · 尚未评分 · 运行证据：待验证
 - [`sql-pro`](../../skills/sql-pro/) — 来源待核 · 尚未评分 · 运行证据：待验证
 - [`sql-optimization`](../../skills/sql-optimization/) — 来源待核 · 尚未评分 · 运行证据：待验证
+- [`agent-qa`](../../skills/agent-qa/) — 来源待核 · 尚未评分 · 运行证据：待验证
+- [`coupling-analysis`](../../skills/coupling-analysis/) — 来源待核 · 尚未评分 · 运行证据：待验证
 
 ## 🔌 Harness 专属能力
 

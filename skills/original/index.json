@@ -578,7 +578,7 @@
     {
       "skill_id": "relay-image-gen",
       "path": "skills/relay-image-gen/SKILL.md",
-      "description": "Multi-provider image generation with automatic priority fallback",
+      "description": "Multi-provider image generation with automatic priority fallback. Priority: vectronode (gpt-image-2/gpt-image-2-all) → qingyun Gemini → OpenClaw image tool → relay providers.…",
       "authors": [
         "Daniel Li"
       ],
@@ -588,7 +588,7 @@
     {
       "skill_id": "relay-video-gen",
       "path": "skills/relay-video-gen/SKILL.md",
-      "description": "Multi-provider video generation with async polling and automatic model fallback",
+      "description": "Multi-provider video generation with async polling and automatic model fallback Generate short videos via relay with provider priority fallback. Google Gemini Veo 3.1 (primary,…",
       "authors": [
         "Daniel Li"
       ],

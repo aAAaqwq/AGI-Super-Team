@@ -44,7 +44,7 @@
     "validationAllCategoriesRepresented": true,
     "validationMacroF1AtLeast75": true
   },
-  "goldSetSha256": "73dfedf806ba9b8a0c3b1b336209ad825312af6ede51c993ce03199352058933",
+  "goldSetSha256": "54e70325e9a9f942ecdd89796ae32a2de5bfa62efdf48efa0e00972ce26e121b",
   "humanApproved": false,
   "metrics": {
     "accuracy": 0.9642857142857143,

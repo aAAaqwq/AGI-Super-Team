@@ -33,6 +33,17 @@
 - [`doc-coauthoring`](../../skills/doc-coauthoring/) — 来源待核 · 尚未评分 · 运行证据：待验证
 - [`openai-whisper`](../../skills/openai-whisper/) — 来源待核 · 尚未评分 · 运行证据：待验证
 - [`video-marketing`](../../skills/video-marketing/) — 来源待核 · 尚未评分 · 运行证据：待验证
+- [`daniel-auto-publish`](../../skills/daniel-auto-publish/) — 来源待核 · 尚未评分 · 运行证据：待验证
+- [`daniel-new-media-ops`](../../skills/daniel-new-media-ops/) — 来源待核 · 尚未评分 · 运行证据：待验证
+- [`daniel-self-media-top-mindset`](../../skills/daniel-self-media-top-mindset/) — 来源待核 · 尚未评分 · 运行证据：待验证
+- [`daniel-wechat-writing`](../../skills/daniel-wechat-writing/) — 来源待核 · 尚未评分 · 运行证据：待验证
+- [`daniel-writer`](../../skills/daniel-writer/) — 来源待核 · 尚未评分 · 运行证据：待验证
+- [`daniel-xhs-writing`](../../skills/daniel-xhs-writing/) — 来源待核 · 尚未评分 · 运行证据：待验证
+- [`real-browser-social-publisher`](../../skills/real-browser-social-publisher/) — 来源待核 · 尚未评分 · 运行证据：待验证
+- [`vibe-knowledge-award`](../../skills/vibe-knowledge-award/) — 来源待核 · 尚未评分 · 运行证据：待验证
+- [`video-benchmark-breakdown`](../../skills/video-benchmark-breakdown/) — 来源待核 · 尚未评分 · 运行证据：待验证
+- [`viral-product-demo`](../../skills/viral-product-demo/) — 来源待核 · 尚未评分 · 运行证据：待验证
+- [`wechat-article-analysis`](../../skills/wechat-article-analysis/) — 来源待核 · 尚未评分 · 运行证据：待验证
 
 ## 🔌 Harness 专属能力
 

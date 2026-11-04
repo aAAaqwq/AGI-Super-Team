@@ -162,6 +162,15 @@ def _arguments(argv: list[str] | None = None) -> argparse.Namespace:
         default=False,
         help="bypass decision-at timing gate for production retry",
     )
+    parser.add_argument(
+        "--allow-stale",
+        action="store_true",
+        default=None,
+        help=(
+            "explicitly accept a stale latest pointer; prints a loud warning. "
+            "Equivalent to BINANCE_ALLOW_STALE=1."
+        ),
+    )
     return parser.parse_args(argv)
 
 
@@ -194,6 +203,7 @@ def main(argv: list[str] | None = None) -> int:
                 production_job_id=args.production_job_id,
                 no_send=True,
                 scheduled_retry=args.scheduled_retry,
+                allow_stale_pointer=args.allow_stale,
                 dedup_baseline_post_ids=(
                     frozenset(args.dedup_baseline_post_id)
                     if args.dedup_baseline_post_id is not None

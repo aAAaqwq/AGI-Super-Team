@@ -313,6 +313,8 @@ Quant 是量化研究与组合风险方法的负责人。他设计可证伪假�
 - [`defi-risk-assessment`](../../skills/defi-risk-assessment/) — 来源待核 · 尚未评分 · 运行证据：待验证
 - [`financial-planning-and-analysis`](../../skills/financial-planning-and-analysis/) — 项目原创 · 78/100 精选 · 运行证据：待验证
 - [`technical-analysis`](../../skills/technical-analysis/) — 来源待核 · 尚未评分 · 运行证据：待验证
+- [`5minbtc`](../../skills/5minbtc/) — 项目原创 · 尚未评分 · 运行证据：待验证
+- [`binance-square`](../../skills/binance-square/) — 项目原创 · 尚未评分 · 运行证据：待验证
 
 ## 🔌 Harness 专属能力
 

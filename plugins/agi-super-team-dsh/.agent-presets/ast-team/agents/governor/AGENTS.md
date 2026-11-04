@@ -210,6 +210,8 @@ DSH 不提供逐角色工具边界：真实约束来自 preset 的 persona 路�
 - [`risk-metrics-calculation`](../../skills/risk-metrics-calculation/) — 来源待核 · 尚未评分 · 运行证据：待验证
 - [`security-compliance-compliance-check`](../../skills/security-compliance-compliance-check/) — 来源待核 · 尚未评分 · 运行证据：待验证
 - [`vibe-code-auditor`](../../skills/vibe-code-auditor/) — 来源待核 · 尚未评分 · 运行证据：待验证
+- [`truth-discipline`](../../skills/truth-discipline/) — 来源待核 · 尚未评分 · 运行证据：待验证
+- [`agent-qa`](../../skills/agent-qa/) — 来源待核 · 尚未评分 · 运行证据：待验证
 
 ## 🔌 Harness 专属能力
 

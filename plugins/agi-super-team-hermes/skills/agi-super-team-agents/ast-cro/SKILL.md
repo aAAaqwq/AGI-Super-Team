@@ -34,6 +34,7 @@ metadata:
 - `search-specialist`
 - `tech-selection-research`
 - `web-search`
+- `wechat-article-analysis`
 
 ## IDENTITY
 
@@ -296,6 +297,7 @@ Richard Feynman 的求真、可解释性与亲手验证只作为研究方法论�
 - [`pm-competitive-teardown`](../../skills/pm-competitive-teardown/) — 来源待核 · 尚未评分 · 运行证据：待验证
 - [`research-engineer`](../../skills/research-engineer/) — 来源待核 · 尚未评分 · 运行证据：待验证
 - [`search-first`](../../skills/search-first/) — 来源待核 · 尚未评分 · 运行证据：待验证
+- [`wechat-article-analysis`](../../skills/wechat-article-analysis/) — 来源待核 · 尚未评分 · 运行证据：待验证
 
 ## 🔌 Harness 专属能力
 

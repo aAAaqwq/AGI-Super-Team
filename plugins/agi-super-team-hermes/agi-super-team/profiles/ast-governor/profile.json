@@ -12,6 +12,7 @@
   "roleSkill": "./skills/agi-super-team-agents/ast-governor/SKILL.md",
   "assignedSkills": [
     "accessibility-compliance-accessibility-audit",
+    "agent-qa",
     "architecture-decision-records",
     "code-review",
     "contract-review",
@@ -23,12 +24,14 @@
     "pre-push-security-scan",
     "risk-metrics-calculation",
     "security-compliance-compliance-check",
+    "truth-discipline",
     "verification-before-completion",
     "vibe-code-auditor"
   ],
   "kanbanTaskSkills": [
     "ast-governor",
     "accessibility-compliance-accessibility-audit",
+    "agent-qa",
     "architecture-decision-records",
     "code-review",
     "contract-review",
@@ -40,6 +43,7 @@
     "pre-push-security-scan",
     "risk-metrics-calculation",
     "security-compliance-compliance-check",
+    "truth-discipline",
     "verification-before-completion",
     "vibe-code-auditor"
   ],

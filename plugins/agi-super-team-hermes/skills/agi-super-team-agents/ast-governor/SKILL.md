@@ -20,6 +20,7 @@ metadata:
 ## 分配的 canonical Skills
 
 - `accessibility-compliance-accessibility-audit`
+- `agent-qa`
 - `architecture-decision-records`
 - `code-review`
 - `contract-review`
@@ -31,6 +32,7 @@ metadata:
 - `pre-push-security-scan`
 - `risk-metrics-calculation`
 - `security-compliance-compliance-check`
+- `truth-discipline`
 - `verification-before-completion`
 - `vibe-code-auditor`
 
@@ -240,6 +242,8 @@ metadata:
 - [`risk-metrics-calculation`](../../skills/risk-metrics-calculation/) — 来源待核 · 尚未评分 · 运行证据：待验证
 - [`security-compliance-compliance-check`](../../skills/security-compliance-compliance-check/) — 来源待核 · 尚未评分 · 运行证据：待验证
 - [`vibe-code-auditor`](../../skills/vibe-code-auditor/) — 来源待核 · 尚未评分 · 运行证据：待验证
+- [`truth-discipline`](../../skills/truth-discipline/) — 来源待核 · 尚未评分 · 运行证据：待验证
+- [`agent-qa`](../../skills/agent-qa/) — 来源待核 · 尚未评分 · 运行证据：待验证
 
 ## 🔌 Harness 专属能力
 

@@ -2,24 +2,24 @@
   "schemaVersion": 1,
   "scope": "deterministic-structural-evidence-not-semantic-verification",
   "summary": {
-    "inventoryCount": 853,
-    "structureInvalid": 180,
-    "disclosureWarnings": 579,
+    "inventoryCount": 848,
+    "structureInvalid": 157,
+    "disclosureWarnings": 592,
     "executionReviewRequired": 177,
     "issueCounts": {
-      "description-missing-trigger": 264,
-      "description-over-180": 302,
-      "invalid-frontmatter-yaml": 35,
-      "link-outside-repository": 7,
-      "missing-frontmatter": 39,
+      "description-missing-trigger": 269,
+      "description-over-180": 321,
+      "invalid-frontmatter-yaml": 16,
+      "link-outside-repository": 5,
+      "missing-frontmatter": 37,
       "name-folder-mismatch": 71,
       "over-500-lines": 56,
-      "personal-absolute-path": 55,
+      "personal-absolute-path": 52,
       "scripts-without-test-evidence": 176,
       "unmentioned-assets": 10,
       "unmentioned-references": 54,
       "unmentioned-scripts": 77,
-      "unresolved-local-link": 35
+      "unresolved-local-link": 33
     }
   },
   "skills": [
@@ -106,11 +106,11 @@
     {
       "skill_id": "ads",
       "path": "skills/ads/SKILL.md",
-      "structure_status": "invalid",
-      "disclosure_status": "pass",
+      "structure_status": "pass",
+      "disclosure_status": "warn",
       "execution_status": "not-applicable",
       "issues": [
-        "invalid-frontmatter-yaml"
+        "description-over-180"
       ]
     },
     {
@@ -425,11 +425,11 @@
     {
       "skill_id": "api-gateway",
       "path": "skills/api-gateway/SKILL.md",
-      "structure_status": "invalid",
+      "structure_status": "pass",
       "disclosure_status": "warn",
       "execution_status": "not-applicable",
       "issues": [
-        "invalid-frontmatter-yaml",
+        "description-over-180",
         "over-500-lines",
         "unmentioned-references"
       ]
@@ -538,11 +538,12 @@
     {
       "skill_id": "article-material-collect",
       "path": "skills/article-material-collect/SKILL.md",
-      "structure_status": "invalid",
-      "disclosure_status": "pass",
+      "structure_status": "pass",
+      "disclosure_status": "warn",
       "execution_status": "not-applicable",
       "issues": [
-        "invalid-frontmatter-yaml"
+        "description-missing-trigger",
+        "description-over-180"
       ]
     },
     {
@@ -707,11 +708,12 @@
     {
       "skill_id": "bankr-signals",
       "path": "skills/bankr-signals/SKILL.md",
-      "structure_status": "invalid",
+      "structure_status": "pass",
       "disclosure_status": "warn",
       "execution_status": "review-required",
       "issues": [
-        "invalid-frontmatter-yaml",
+        "description-missing-trigger",
+        "description-over-180",
         "scripts-without-test-evidence",
         "unmentioned-references",
         "unmentioned-scripts"
@@ -1564,11 +1566,11 @@
     {
       "skill_id": "create-viral-content",
       "path": "skills/create-viral-content/SKILL.md",
-      "structure_status": "invalid",
-      "disclosure_status": "pass",
+      "structure_status": "pass",
+      "disclosure_status": "warn",
       "execution_status": "not-applicable",
       "issues": [
-        "invalid-frontmatter-yaml"
+        "description-over-180"
       ]
     },
     {
@@ -1634,11 +1636,11 @@
     {
       "skill_id": "crypto-bd-agent",
       "path": "skills/crypto-bd-agent/SKILL.md",
-      "structure_status": "invalid",
-      "disclosure_status": "pass",
+      "structure_status": "pass",
+      "disclosure_status": "warn",
       "execution_status": "not-applicable",
       "issues": [
-        "invalid-frontmatter-yaml"
+        "description-over-180"
       ]
     },
     {
@@ -1851,51 +1853,26 @@
       ]
     },
     {
-      "skill_id": "daniel-new-media-ops",
-      "path": "skills/daniel-new-media-ops/SKILL.md",
-      "structure_status": "invalid",
-      "disclosure_status": "warn",
-      "execution_status": "not-applicable",
-      "issues": [
-        "link-outside-repository",
-        "personal-absolute-path"
-      ]
-    },
-    {
       "skill_id": "daniel-wechat-writing",
       "path": "skills/daniel-wechat-writing/SKILL.md",
-      "structure_status": "invalid",
+      "structure_status": "pass",
       "disclosure_status": "warn",
       "execution_status": "not-applicable",
       "issues": [
         "description-over-180",
-        "over-500-lines",
-        "personal-absolute-path",
-        "unresolved-local-link"
+        "over-500-lines"
       ]
     },
     {
       "skill_id": "daniel-writer",
       "path": "skills/daniel-writer/SKILL.md",
-      "structure_status": "invalid",
+      "structure_status": "pass",
       "disclosure_status": "warn",
       "execution_status": "review-required",
       "issues": [
         "description-over-180",
-        "link-outside-repository",
-        "personal-absolute-path",
         "scripts-without-test-evidence",
         "unmentioned-scripts"
-      ]
-    },
-    {
-      "skill_id": "daniel-xhs-writing",
-      "path": "skills/daniel-xhs-writing/SKILL.md",
-      "structure_status": "invalid",
-      "disclosure_status": "pass",
-      "execution_status": "not-applicable",
-      "issues": [
-        "missing-frontmatter"
       ]
     },
     {
@@ -2574,11 +2551,11 @@
     {
       "skill_id": "football-data",
       "path": "skills/football-data/SKILL.md",
-      "structure_status": "invalid",
+      "structure_status": "pass",
       "disclosure_status": "warn",
       "execution_status": "review-required",
       "issues": [
-        "invalid-frontmatter-yaml",
+        "description-over-180",
         "scripts-without-test-evidence",
         "unmentioned-references",
         "unmentioned-scripts"
@@ -2918,11 +2895,11 @@
     {
       "skill_id": "humanizer",
       "path": "skills/humanizer/SKILL.md",
-      "structure_status": "invalid",
+      "structure_status": "pass",
       "disclosure_status": "warn",
       "execution_status": "not-applicable",
       "issues": [
-        "invalid-frontmatter-yaml",
+        "description-over-180",
         "personal-absolute-path"
       ]
     },
@@ -3350,11 +3327,12 @@
     {
       "skill_id": "longform-visual-notes",
       "path": "skills/longform-visual-notes/SKILL.md",
-      "structure_status": "invalid",
-      "disclosure_status": "pass",
+      "structure_status": "pass",
+      "disclosure_status": "warn",
       "execution_status": "not-applicable",
       "issues": [
-        "invalid-frontmatter-yaml"
+        "description-missing-trigger",
+        "description-over-180"
       ]
     },
     {
@@ -3781,10 +3759,10 @@
       "skill_id": "mv-generator",
       "path": "skills/mv-generator/SKILL.md",
       "structure_status": "invalid",
-      "disclosure_status": "pass",
+      "disclosure_status": "warn",
       "execution_status": "review-required",
       "issues": [
-        "invalid-frontmatter-yaml",
+        "description-over-180",
         "scripts-without-test-evidence",
         "unresolved-local-link"
       ]
@@ -3824,11 +3802,11 @@
     {
       "skill_id": "nemo-edit",
       "path": "skills/nemo-edit/SKILL.md",
-      "structure_status": "invalid",
-      "disclosure_status": "pass",
+      "structure_status": "pass",
+      "disclosure_status": "warn",
       "execution_status": "not-applicable",
       "issues": [
-        "invalid-frontmatter-yaml"
+        "description-over-180"
       ]
     },
     {
@@ -4419,11 +4397,11 @@
     {
       "skill_id": "proxmox-ops-skill",
       "path": "skills/proxmox-ops-skill/SKILL.md",
-      "structure_status": "invalid",
-      "disclosure_status": "pass",
+      "structure_status": "pass",
+      "disclosure_status": "warn",
       "execution_status": "review-required",
       "issues": [
-        "invalid-frontmatter-yaml",
+        "description-over-180",
         "scripts-without-test-evidence"
       ]
     },
@@ -4567,11 +4545,11 @@
     {
       "skill_id": "react-component-generator",
       "path": "skills/react-component-generator/SKILL.md",
-      "structure_status": "invalid",
-      "disclosure_status": "pass",
+      "structure_status": "pass",
+      "disclosure_status": "warn",
       "execution_status": "not-applicable",
       "issues": [
-        "invalid-frontmatter-yaml"
+        "description-over-180"
       ]
     },
     {
@@ -4620,11 +4598,11 @@
     {
       "skill_id": "relay-image-gen",
       "path": "skills/relay-image-gen/SKILL.md",
-      "structure_status": "invalid",
+      "structure_status": "pass",
       "disclosure_status": "warn",
       "execution_status": "review-required",
       "issues": [
-        "invalid-frontmatter-yaml",
+        "description-over-180",
         "scripts-without-test-evidence",
         "unmentioned-scripts"
       ]
@@ -4632,11 +4610,11 @@
     {
       "skill_id": "relay-video-gen",
       "path": "skills/relay-video-gen/SKILL.md",
-      "structure_status": "invalid",
-      "disclosure_status": "pass",
+      "structure_status": "pass",
+      "disclosure_status": "warn",
       "execution_status": "review-required",
       "issues": [
-        "invalid-frontmatter-yaml",
+        "description-over-180",
         "scripts-without-test-evidence"
       ]
     },
@@ -5141,11 +5119,11 @@
     {
       "skill_id": "skill-security-auditor",
       "path": "skills/skill-security-auditor/SKILL.md",
-      "structure_status": "invalid",
-      "disclosure_status": "pass",
+      "structure_status": "pass",
+      "disclosure_status": "warn",
       "execution_status": "review-required",
       "issues": [
-        "invalid-frontmatter-yaml",
+        "description-over-180",
         "scripts-without-test-evidence"
       ]
     },
@@ -5722,11 +5700,12 @@
     {
       "skill_id": "synthetic-market-research",
       "path": "skills/synthetic-market-research/SKILL.md",
-      "structure_status": "invalid",
-      "disclosure_status": "pass",
+      "structure_status": "pass",
+      "disclosure_status": "warn",
       "execution_status": "not-applicable",
       "issues": [
-        "invalid-frontmatter-yaml"
+        "description-missing-trigger",
+        "description-over-180"
       ]
     },
     {
@@ -6416,10 +6395,10 @@
       "skill_id": "token-budget-advisor",
       "path": "skills/token-budget-advisor/SKILL.md",
       "structure_status": "invalid",
-      "disclosure_status": "pass",
+      "disclosure_status": "warn",
       "execution_status": "not-applicable",
       "issues": [
-        "invalid-frontmatter-yaml",
+        "description-over-180",
         "unresolved-local-link"
       ]
     },
@@ -6616,26 +6595,6 @@
       ]
     },
     {
-      "skill_id": "vibe-knowledge-award",
-      "path": "skills/vibe-knowledge-award/SKILL.md",
-      "structure_status": "invalid",
-      "disclosure_status": "pass",
-      "execution_status": "not-applicable",
-      "issues": [
-        "missing-frontmatter"
-      ]
-    },
-    {
-      "skill_id": "video-benchmark-breakdown",
-      "path": "skills/video-benchmark-breakdown/SKILL.md",
-      "structure_status": "invalid",
-      "disclosure_status": "pass",
-      "execution_status": "not-applicable",
-      "issues": [
-        "unresolved-local-link"
-      ]
-    },
-    {
       "skill_id": "video-caption-burner",
       "path": "skills/video-caption-burner/SKILL.md",
       "structure_status": "pass",
@@ -6825,11 +6784,12 @@
     {
       "skill_id": "web-content-capture",
       "path": "skills/web-content-capture/SKILL.md",
-      "structure_status": "invalid",
-      "disclosure_status": "pass",
+      "structure_status": "pass",
+      "disclosure_status": "warn",
       "execution_status": "not-applicable",
       "issues": [
-        "invalid-frontmatter-yaml"
+        "description-missing-trigger",
+        "description-over-180"
       ]
     },
     {

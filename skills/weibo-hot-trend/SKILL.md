@@ -9,11 +9,14 @@ description: 获取微博热搜榜数据，返回热搜标题、热度值和跳�
 
 ```bash
 # 默认获取50条
-node scripts/weibo.js
+node scripts/weibo.cjs
 
 # 获取前N条
-node scripts/weibo.js 20
+node scripts/weibo.cjs 20
 ```
+
+`scripts/weibo.js` 是同一实现的旧入口；仓库根 `package.json` 声明了 `"type": "module"`，
+在该仓库内请使用 `.cjs`，独立安装时可继续使用 `.js`。
 
 ## 数据来源
 

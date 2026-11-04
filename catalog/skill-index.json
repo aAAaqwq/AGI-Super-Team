@@ -105,7 +105,12 @@
   "schemaVersion": 2,
   "skills": [
     {
-      "assignments": [],
+      "assignments": [
+        {
+          "agent": "CQO",
+          "level": "optional"
+        }
+      ],
       "category_id": "finance-trading-markets",
       "classification": "description:\\bbtc\\b;metadata:frontmatter",
       "classification_details": {
@@ -133,7 +138,7 @@
       "description": "BTC 5分钟K线实时方向预测 + 币安预测市场错价套利(paper)。v6.0 真OFI驱动: 方向由当前K线原生 in-candle OFI 净流一票决定(ofi_n=2*(tb/v)-1, REST klines[9] 聚合, 零WS依赖; WS ofi.json 做新鲜度反转保护与交叉校准), 概率=P(close>open|ofi)…",
       "description_status": "source-text",
       "path": "skills/5minbtc/SKILL.md",
-      "portability_class": "catalog-only",
+      "portability_class": "portable-optional",
       "provenance": {
         "authors": [
           "Daniel Li",
@@ -159,7 +164,9 @@
       "review_signals": [],
       "skill_id": "5minbtc",
       "support_level": "catalog",
-      "used_by": []
+      "used_by": [
+        "CQO"
+      ]
     },
     {
       "assignments": [],
@@ -528,7 +535,7 @@
         "runtime_evidence": "pending",
         "status": "unscored"
       },
-      "description": "Comprehensive ad account analysis across all major platforms (Google, Meta",
+      "description": "Comprehensive ad account analysis and paid advertising audit across all major platforms (Google, Meta, LinkedIn, TikTok, Microsoft). Performs full multi-platform audits,…",
       "description_status": "source-text",
       "path": "skills/ads/SKILL.md",
       "portability_class": "catalog-only",
@@ -1126,7 +1133,16 @@
       "used_by": []
     },
     {
-      "assignments": [],
+      "assignments": [
+        {
+          "agent": "GOVERNOR",
+          "level": "optional"
+        },
+        {
+          "agent": "PE",
+          "level": "optional"
+        }
+      ],
       "category_id": "software-engineering",
       "classification": "override;metadata:frontmatter",
       "classification_details": {
@@ -1163,7 +1179,7 @@
       "description": "Application testing with agent-qa. Use when running selected web or mobile regressions, reviewing recorded failures, or tracing memidex hints in a configured agent-qa project.",
       "description_status": "source-text",
       "path": "skills/agent-qa/SKILL.md",
-      "portability_class": "catalog-only",
+      "portability_class": "portable-optional",
       "provenance": {
         "authors": [
           "Daniel Li"
@@ -1193,7 +1209,10 @@
       ],
       "skill_id": "agent-qa",
       "support_level": "catalog",
-      "used_by": []
+      "used_by": [
+        "GOVERNOR",
+        "PE"
+      ]
     },
     {
       "assignments": [],
@@ -2201,8 +2220,8 @@
         "runtime_evidence": "pending",
         "status": "unscored"
       },
-      "description": "Passthrough proxy for direct access to third-party APIs using managed OAuth connections, provided by [Maton](https://maton.ai). The API gateway lets y",
-      "description_status": "needs-review",
+      "description": "Passthrough proxy for direct access to third-party APIs using managed OAuth connections, provided by [Maton](https://maton.ai). The API gateway lets y Connect to 100+ APIs…",
+      "description_status": "source-text",
       "path": "skills/api-gateway/SKILL.md",
       "portability_class": "catalog-only",
       "provenance": {
@@ -2732,7 +2751,7 @@
         "runtime_evidence": "pending",
         "status": "unscored"
       },
-      "description": "上层编排 Skill，通过 **Brave Search 发现 → 智能选择浏览器截图** 完成结构化素材采集。",
+      "description": "上层编排 Skill，通过 **Brave Search 发现 → 智能选择浏览器截图** 完成结构化素材采集。 文章素材收集编排Skill。为MediaClaw内容生产提供结构化的多平台素材采集workflow。 强制使用OpenClaw Browser截图实际文章页面，支持GitHub/Reddit/X/Medium/知乎等。 用法: (1)…",
       "description_status": "source-text",
       "path": "skills/article-material-collect/SKILL.md",
       "portability_class": "catalog-only",
@@ -3794,7 +3813,7 @@
         "runtime_evidence": "pending",
         "status": "unscored"
       },
-      "description": "Transaction-verified trading signals on Base blockchain. Agents publish trades",
+      "description": "Transaction-verified trading signals on Base blockchain. Agents publish trades Transaction-verified trading signals on Base. Register agent as signal provider, publish trades…",
       "description_status": "source-text",
       "path": "skills/bankr-signals/SKILL.md",
       "portability_class": "catalog-only",
@@ -4192,7 +4211,12 @@
       "used_by": []
     },
     {
-      "assignments": [],
+      "assignments": [
+        {
+          "agent": "CQO",
+          "level": "optional"
+        }
+      ],
       "category_id": "finance-trading-markets",
       "classification": "override;metadata:frontmatter",
       "classification_details": {
@@ -4238,7 +4262,7 @@
       "description": "币安广场合约投机雷达 v5：以最近24小时专业交易帖为主要证据，回源核验帖子， 联合币安公共合约行情、4周期K线、布林带、ATR、量能和RR，生成可审计的本地影子报告。 触发词：币安广场、扫描币安、binance square、合约机会、交易信号雷达、4小时雷达",
       "description_status": "source-text",
       "path": "skills/binance-square/SKILL.md",
-      "portability_class": "catalog-only",
+      "portability_class": "portable-optional",
       "provenance": {
         "authors": [
           "Daniel Li",
@@ -4269,7 +4293,9 @@
       "review_signals": [],
       "skill_id": "binance-square",
       "support_level": "catalog",
-      "used_by": []
+      "used_by": [
+        "CQO"
+      ]
     },
     {
       "assignments": [],
@@ -8535,7 +8561,12 @@
       ]
     },
     {
-      "assignments": [],
+      "assignments": [
+        {
+          "agent": "PE",
+          "level": "optional"
+        }
+      ],
       "category_id": "software-engineering",
       "classification": "description:\\bapi\\b;metadata:frontmatter",
       "classification_details": {
@@ -8563,7 +8594,7 @@
       "description": "改动前的耦合分析（Coupling Analysis / 防蝴蝶效应）——任何改动「共享参数、共享状态、 公共接口、全局常量、被多处引用的逻辑」之前，先画约束图，找出互斥约束与影响面， 再决定动手。触发场景：改参数/阈值/常量；改被多个模块调用的函数；改数据库 schema； 改 API 契约；改配置默认值；用户说\"改一下 X\"但 X 与 Y 耦合时；…",
       "description_status": "source-text",
       "path": "skills/coupling-analysis/SKILL.md",
-      "portability_class": "catalog-only",
+      "portability_class": "portable-optional",
       "provenance": {
         "origin_kind": "unknown",
         "review_state": "unreviewed"
@@ -8571,7 +8602,9 @@
       "review_signals": [],
       "skill_id": "coupling-analysis",
       "support_level": "catalog",
-      "used_by": []
+      "used_by": [
+        "PE"
+      ]
     },
     {
       "assignments": [],
@@ -8648,7 +8681,7 @@
         "runtime_evidence": "pending",
         "status": "unscored"
       },
-      "description": "This skill synthesizes findings from 40 documented research sources",
+      "description": "This skill synthesizes findings from 40 documented research sources AUTOMATIC ACTIVATION: Use this skill whenever generating content for social media platforms including Reddit…",
       "description_status": "source-text",
       "path": "skills/create-viral-content/SKILL.md",
       "portability_class": "catalog-only",
@@ -9032,7 +9065,7 @@
         "runtime_evidence": "pending",
         "status": "unscored"
       },
-      "description": "This skill teaches AI agents systematic crypto business development: discover",
+      "description": "This skill teaches AI agents systematic crypto business development: discover Autonomous crypto business development patterns — multi-chain token discovery, 100-point scoring…",
       "description_status": "source-text",
       "path": "skills/crypto-bd-agent/SKILL.md",
       "portability_class": "catalog-only",
@@ -10041,7 +10074,12 @@
       "used_by": []
     },
     {
-      "assignments": [],
+      "assignments": [
+        {
+          "agent": "CCO",
+          "level": "optional"
+        }
+      ],
       "category_id": "content-media-publishing",
       "classification": "slug:publish;metadata:frontmatter",
       "classification_details": {
@@ -10069,7 +10107,7 @@
       "description": "通过用户自有的真实浏览器和 Computer Use，安全辅助抖音、小红书、快手、微信视频号、哔哩哔哩、YouTube、TikTok 与百家号的视频、图文或公众号文章发布。用于选择图文排版模板、生成并预览图片卡片或微信…",
       "description_status": "source-text",
       "path": "skills/daniel-auto-publish/SKILL.md",
-      "portability_class": "catalog-only",
+      "portability_class": "portable-optional",
       "provenance": {
         "authors": [
           "Daniel Li"
@@ -10094,7 +10132,9 @@
       "review_signals": [],
       "skill_id": "daniel-auto-publish",
       "support_level": "catalog",
-      "used_by": []
+      "used_by": [
+        "CCO"
+      ]
     },
     {
       "assignments": [],
@@ -10158,7 +10198,12 @@
       "used_by": []
     },
     {
-      "assignments": [],
+      "assignments": [
+        {
+          "agent": "CCO",
+          "level": "optional"
+        }
+      ],
       "category_id": "content-media-publishing",
       "classification": "slug:media;metadata:frontmatter",
       "classification_details": {
@@ -10186,7 +10231,7 @@
       "description": "路由 Daniel 新媒体内容从选题、写作、视觉化、视频制作到多平台草稿与发布核验。适用于用户要求制作或分发 Daniel 品牌内容时；单纯文案润色优先直接使用 daniel-writer。",
       "description_status": "source-text",
       "path": "skills/daniel-new-media-ops/SKILL.md",
-      "portability_class": "catalog-only",
+      "portability_class": "portable-optional",
       "provenance": {
         "authors": [
           "Daniel Li"
@@ -10209,10 +10254,17 @@
       "review_signals": [],
       "skill_id": "daniel-new-media-ops",
       "support_level": "catalog",
-      "used_by": []
+      "used_by": [
+        "CCO"
+      ]
     },
     {
-      "assignments": [],
+      "assignments": [
+        {
+          "agent": "CCO",
+          "level": "optional"
+        }
+      ],
       "category_id": "content-media-publishing",
       "classification": "slug:media;metadata:frontmatter",
       "classification_details": {
@@ -10240,7 +10292,7 @@
       "description": "将 Daniel 的利他、真实藏露、情绪纪律、需求聚焦与商业闭环心法应用到自媒体决策。凡涉及 Daniel 个人 IP 的定位、选题、写稿、脚本、封面、跨平台改编、发布规划、增长、变现或复盘时必须先使用；不用于保证爆款、虚构经历、泄露隐私或自动发布。",
       "description_status": "source-text",
       "path": "skills/daniel-self-media-top-mindset/SKILL.md",
-      "portability_class": "catalog-only",
+      "portability_class": "portable-optional",
       "provenance": {
         "authors": [
           "Daniel Li"
@@ -10262,10 +10314,17 @@
       "review_signals": [],
       "skill_id": "daniel-self-media-top-mindset",
       "support_level": "catalog",
-      "used_by": []
+      "used_by": [
+        "CCO"
+      ]
     },
     {
-      "assignments": [],
+      "assignments": [
+        {
+          "agent": "CCO",
+          "level": "optional"
+        }
+      ],
       "category_id": "chinese-platform-workflows",
       "classification": "slug:wechat;metadata:frontmatter",
       "classification_details": {
@@ -10303,7 +10362,7 @@
       "description": "微信公众号 AI 论文解读类爆款文章的写作 skill。对标新智元/机器之心/量子位， 从论文 arXiv 链接或主题出发，端到端产出可直接复制到公众号后台的成稿。 触发词：\"解读这篇论文\"、\"论文推文\"、\"AI论文公众号\"、\"arXiv 写公众号\"、 \"把论文改成公众号\"、\"paper explainer\"。 适用：arXiv…",
       "description_status": "source-text",
       "path": "skills/daniel-wechat-writing/SKILL.md",
-      "portability_class": "catalog-only",
+      "portability_class": "portable-optional",
       "provenance": {
         "authors": [
           "Daniel Li"
@@ -10327,10 +10386,17 @@
       "review_signals": [],
       "skill_id": "daniel-wechat-writing",
       "support_level": "catalog",
-      "used_by": []
+      "used_by": [
+        "CCO"
+      ]
     },
     {
-      "assignments": [],
+      "assignments": [
+        {
+          "agent": "CCO",
+          "level": "optional"
+        }
+      ],
       "category_id": "content-media-publishing",
       "classification": "slug:writer;metadata:frontmatter",
       "classification_details": {
@@ -10358,7 +10424,7 @@
       "description": "Daniel 的统一创作入口：按品牌、证据、声音和人机分工合同，完成选题、母故事、项目内容工作包、微信公众号、X、小红书、B站、知乎、抖音的起草改写与平台适配，并生成获批短视频脚本的本地制作交接和技术候选。适用于 AI、Agent、工具实测、教程、失败复盘、创作反思、图文卡片、口播分镜与跨平台内容生产。正式 Daniel…",
       "description_status": "source-text",
       "path": "skills/daniel-writer/SKILL.md",
-      "portability_class": "catalog-only",
+      "portability_class": "portable-optional",
       "provenance": {
         "authors": [
           "Daniel Li"
@@ -10387,7 +10453,9 @@
       "review_signals": [],
       "skill_id": "daniel-writer",
       "support_level": "catalog",
-      "used_by": []
+      "used_by": [
+        "CCO"
+      ]
     },
     {
       "assignments": [],
@@ -10448,9 +10516,14 @@
       "used_by": []
     },
     {
-      "assignments": [],
+      "assignments": [
+        {
+          "agent": "CCO",
+          "level": "optional"
+        }
+      ],
       "category_id": "chinese-platform-workflows",
-      "classification": "slug:xhs;metadata:fallback",
+      "classification": "slug:xhs;metadata:frontmatter",
       "classification_details": {
         "matched_signals": [
           "xhs"
@@ -10483,10 +10556,10 @@
         "runtime_evidence": "pending",
         "status": "unscored"
       },
-      "description": "name: daniel-xhs-writing",
+      "description": "小红书图文写作：选题、标题、封面、正文、标签与公众号长文改写。需要把素材或长文做成可发布的小红书图文时使用；不用于保证爆火、伪造亲历、自动发布或刷量。",
       "description_status": "source-text",
       "path": "skills/daniel-xhs-writing/SKILL.md",
-      "portability_class": "catalog-only",
+      "portability_class": "portable-optional",
       "provenance": {
         "authors": [
           "Daniel Li"
@@ -10508,7 +10581,9 @@
       "review_signals": [],
       "skill_id": "daniel-xhs-writing",
       "support_level": "catalog",
-      "used_by": []
+      "used_by": [
+        "CCO"
+      ]
     },
     {
       "assignments": [
@@ -14660,7 +14735,7 @@
         "runtime_evidence": "pending",
         "status": "unscored"
       },
-      "description": "Before first use, check if the CLI is available",
+      "description": "Before first use, check if the CLI is available Football (soccer) data across 13 leagues — standings, schedules, match stats, xG, transfers, player profiles. Zero config, no API…",
       "description_status": "source-text",
       "path": "skills/football-data/SKILL.md",
       "portability_class": "catalog-only",
@@ -16337,8 +16412,8 @@
         "runtime_evidence": "pending",
         "status": "unscored"
       },
-      "description": "You are a writing editor that identifies and removes signs of AI-generated text to make writing sound more natural and human. This guide is based on W",
-      "description_status": "needs-review",
+      "description": "You are a writing editor that identifies and removes signs of AI-generated text to make writing sound more natural and human. This guide is based on W Remove signs of…",
+      "description_status": "source-text",
       "path": "skills/humanizer/SKILL.md",
       "portability_class": "catalog-only",
       "provenance": {
@@ -18599,7 +18674,12 @@
       ]
     },
     {
-      "assignments": [],
+      "assignments": [
+        {
+          "agent": "CEO",
+          "level": "optional"
+        }
+      ],
       "category_id": "business-operations-strategy",
       "classification": "slug:decision;metadata:frontmatter",
       "classification_details": {
@@ -18627,7 +18707,7 @@
       "description": "用《高性价比人生指南》(github.com/eternity4719/HowToLiveBetter) 的正文回答具体的人生决策：该不该做、值不值、怎么选、出事了先做什么、能领哪笔钱、这么干犯不犯法。先把相关条目查出来再答，按成本（钱/时间/毅力）、收益量级和证据等级 A/B/C…",
       "description_status": "source-text",
       "path": "skills/life-decision-guide/SKILL.md",
-      "portability_class": "catalog-only",
+      "portability_class": "portable-optional",
       "provenance": {
         "origin_kind": "unknown",
         "review_state": "unreviewed"
@@ -18635,7 +18715,9 @@
       "review_signals": [],
       "skill_id": "life-decision-guide",
       "support_level": "catalog",
-      "used_by": []
+      "used_by": [
+        "CEO"
+      ]
     },
     {
       "assignments": [
@@ -19088,9 +19170,11 @@
     {
       "assignments": [],
       "category_id": "content-media-publishing",
-      "classification": "description:media;metadata:frontmatter",
+      "classification": "description:content,image,media;metadata:frontmatter",
       "classification_details": {
         "matched_signals": [
+          "content",
+          "image",
           "media"
         ],
         "method": "description",
@@ -19099,8 +19183,10 @@
         "runner_ups": [],
         "winner": {
           "category_id": "content-media-publishing",
-          "match_count": 1,
+          "match_count": 3,
           "matched_signals": [
+            "content",
+            "image",
             "media"
           ],
           "priority": 100,
@@ -19111,7 +19197,7 @@
         "runtime_evidence": "pending",
         "status": "unscored"
       },
-      "description": "MediaClaw内容生产的核心配图skill。当有长篇文章需要转化为可传播的视觉笔记时调用。",
+      "description": "MediaClaw内容生产的核心配图skill。当有长篇文章需要转化为可传播的视觉笔记时调用。 长文知识提取转图Skill。将深度长文降维提取核心逻辑，生成3-5张高真实感、含密集中文文字信息的视觉笔记图。 使用qingyun-api的gemini-3-pro-image模型生成。 用法: (1) content-ops-toolkit配图阶段调用…",
       "description_status": "source-text",
       "path": "skills/longform-visual-notes/SKILL.md",
       "portability_class": "catalog-only",
@@ -21192,9 +21278,10 @@
     {
       "assignments": [],
       "category_id": "content-media-publishing",
-      "classification": "description:media;metadata:frontmatter",
+      "classification": "description:video,media;metadata:frontmatter",
       "classification_details": {
         "matched_signals": [
+          "video",
           "media"
         ],
         "method": "description",
@@ -21203,8 +21290,9 @@
         "runner_ups": [],
         "winner": {
           "category_id": "content-media-publishing",
-          "match_count": 1,
+          "match_count": 2,
           "matched_signals": [
+            "video",
             "media"
           ],
           "priority": 100,
@@ -21215,7 +21303,7 @@
         "runtime_evidence": "pending",
         "status": "unscored"
       },
-      "description": "MediaClaw 内置的音乐视频端到端生成技能。",
+      "description": "MediaClaw 内置的音乐视频端到端生成技能。 End-to-end MV (music video) generation pipeline for virtual singers. Audio analysis → Scene timeline → Frame generation → Video generation → Final…",
       "description_status": "source-text",
       "path": "skills/mv-generator/SKILL.md",
       "portability_class": "catalog-only",
@@ -21388,7 +21476,7 @@
         "runtime_evidence": "pending",
         "status": "unscored"
       },
-      "description": "Most video editing tools make a promise they don't keep: \"easy video editing.\" Then you spend 45 minutes figuring out how to sync audio, another 30 mi",
+      "description": "Most video editing tools make a promise they don't keep: \"easy video editing.\" Then you spend 45 minutes figuring out how to sync audio, another 30 mi Nemo Edit is a powerful…",
       "description_status": "source-text",
       "path": "skills/nemo-edit/SKILL.md",
       "portability_class": "catalog-only",
@@ -24464,7 +24552,7 @@
         "runtime_evidence": "pending",
         "status": "unscored"
       },
-      "description": "Create a credential file at `~/.proxmox-credentials`",
+      "description": "Create a credential file at `~/.proxmox-credentials` Ops-focused Proxmox VE management via REST API — monitor, control, provision, and troubleshoot VMs and LXC containers with…",
       "description_status": "source-text",
       "path": "skills/proxmox-ops-skill/SKILL.md",
       "portability_class": "catalog-only",
@@ -25134,7 +25222,7 @@
         "runtime_evidence": "pending",
         "status": "unscored"
       },
-      "description": "This skill provides automated assistance for react component generator tasks within the Frontend Development domain",
+      "description": "This skill provides automated assistance for react component generator tasks within the Frontend Development domain Generate react component generator operations. Auto-activating…",
       "description_status": "needs-review",
       "path": "skills/react-component-generator/SKILL.md",
       "portability_class": "catalog-only",
@@ -25194,7 +25282,12 @@
       ]
     },
     {
-      "assignments": [],
+      "assignments": [
+        {
+          "agent": "CCO",
+          "level": "optional"
+        }
+      ],
       "category_id": "marketing-seo-growth",
       "classification": "slug:social;metadata:frontmatter",
       "classification_details": {
@@ -25241,7 +25334,7 @@
       "description": "Safely prepare, review, and publish video or image posts through real creator-site browser interfaces using Computer Use with human approval gates. Use for Douyin, Xiaohongshu,…",
       "description_status": "source-text",
       "path": "skills/real-browser-social-publisher/SKILL.md",
-      "portability_class": "catalog-only",
+      "portability_class": "portable-optional",
       "provenance": {
         "origin_kind": "unknown",
         "review_state": "unreviewed"
@@ -25249,7 +25342,9 @@
       "review_signals": [],
       "skill_id": "real-browser-social-publisher",
       "support_level": "catalog",
-      "used_by": []
+      "used_by": [
+        "CCO"
+      ]
     },
     {
       "assignments": [
@@ -25447,7 +25542,7 @@
         "runtime_evidence": "pending",
         "status": "unscored"
       },
-      "description": "Multi-provider image generation with automatic priority fallback",
+      "description": "Multi-provider image generation with automatic priority fallback. Priority: vectronode (gpt-image-2/gpt-image-2-all) → qingyun Gemini → OpenClaw image tool → relay providers.…",
       "description_status": "source-text",
       "path": "skills/relay-image-gen/SKILL.md",
       "portability_class": "catalog-only",
@@ -25469,7 +25564,7 @@
           "spdx": "MIT"
         },
         "origin_kind": "project-original",
-        "review_state": "reviewed"
+        "review_state": "stale"
       },
       "review_signals": [],
       "skill_id": "relay-image-gen",
@@ -25502,7 +25597,7 @@
         "runtime_evidence": "pending",
         "status": "unscored"
       },
-      "description": "Multi-provider video generation with async polling and automatic model fallback",
+      "description": "Multi-provider video generation with async polling and automatic model fallback Generate short videos via relay with provider priority fallback. Google Gemini Veo 3.1 (primary,…",
       "description_status": "source-text",
       "path": "skills/relay-video-gen/SKILL.md",
       "portability_class": "catalog-only",
@@ -25524,7 +25619,7 @@
           "spdx": "MIT"
         },
         "origin_kind": "project-original",
-        "review_state": "reviewed"
+        "review_state": "stale"
       },
       "review_signals": [],
       "skill_id": "relay-video-gen",
@@ -28386,8 +28481,8 @@
         "runtime_evidence": "pending",
         "status": "unscored"
       },
-      "description": "Scan and audit AI agent skills for security risks before installation. Produces a",
-      "description_status": "needs-review",
+      "description": "Scan and audit AI agent skills for security risks before installation. Produces a Security audit and vulnerability scanner for AI agent skills before installation. Use when: (1)…",
+      "description_status": "source-text",
       "path": "skills/skill-security-auditor/SKILL.md",
       "portability_class": "catalog-only",
       "provenance": {
@@ -30985,7 +31080,7 @@
         "runtime_evidence": "pending",
         "status": "unscored"
       },
-      "description": "You are an expert market researcher who uses LLM-generated synthetic survey responses and Semantic Similarity Rating (SSR) to produce fast, cheap, dir",
+      "description": "You are an expert market researcher who uses LLM-generated synthetic survey responses and Semantic Similarity Rating (SSR) to produce fast, cheap, dir Fast, cheap market research…",
       "description_status": "source-text",
       "path": "skills/synthetic-market-research/SKILL.md",
       "portability_class": "catalog-only",
@@ -33989,7 +34084,7 @@
         "runtime_evidence": "pending",
         "status": "unscored"
       },
-      "description": "Intercept the response flow to offer the user a choice about response depth **before** Claude answers",
+      "description": "Intercept the response flow to offer the user a choice about response depth **before** Claude answers Offers the user an informed choice about how much response depth to consume…",
       "description_status": "source-text",
       "path": "skills/token-budget-advisor/SKILL.md",
       "portability_class": "catalog-only",
@@ -34272,7 +34367,12 @@
       "used_by": []
     },
     {
-      "assignments": [],
+      "assignments": [
+        {
+          "agent": "GOVERNOR",
+          "level": "optional"
+        }
+      ],
       "category_id": "software-engineering",
       "classification": "description:\\bapi\\b;metadata:frontmatter",
       "classification_details": {
@@ -34300,7 +34400,7 @@
       "description": "反编造纪律（Truth Discipline / 不说假话）——任何带数字、日期、引文、API 行为、 版本号、星数、论文结论、事实性断言的输出前，必须先回源核对并分级标注。 触发场景：给用户写含数据的报告/表格/对比；引用外部仓库、论文、新闻、文档； 总结别人写的内容（如\"帮我总结这份指南\"）；复述历史结论；写\"据称/研究表明\"类句子；…",
       "description_status": "source-text",
       "path": "skills/truth-discipline/SKILL.md",
-      "portability_class": "catalog-only",
+      "portability_class": "portable-optional",
       "provenance": {
         "origin_kind": "unknown",
         "review_state": "unreviewed"
@@ -34308,7 +34408,9 @@
       "review_signals": [],
       "skill_id": "truth-discipline",
       "support_level": "catalog",
-      "used_by": []
+      "used_by": [
+        "GOVERNOR"
+      ]
     },
     {
       "assignments": [],
@@ -34960,9 +35062,14 @@
       ]
     },
     {
-      "assignments": [],
+      "assignments": [
+        {
+          "agent": "CCO",
+          "level": "optional"
+        }
+      ],
       "category_id": "data-analytics-research",
-      "classification": "slug:knowledge;metadata:fallback",
+      "classification": "slug:knowledge;metadata:frontmatter",
       "classification_details": {
         "matched_signals": [
           "knowledge"
@@ -34985,10 +35092,10 @@
         "runtime_evidence": "pending",
         "status": "unscored"
       },
-      "description": "抖音 2026 年 9-10 月主推的知识类视频活动，核心特征：",
+      "description": "抖音「Vibe 知识大赏」知识科普短视频创作：用 AI 写代码 + Remotion/HyperFrames 生成动画短片，覆盖选题、脚本、分镜、渲染与发布门。不用于实拍口播、产品带货、剧情短剧或纯混剪。",
       "description_status": "source-text",
       "path": "skills/vibe-knowledge-award/SKILL.md",
-      "portability_class": "catalog-only",
+      "portability_class": "portable-optional",
       "provenance": {
         "origin_kind": "unknown",
         "review_state": "unreviewed"
@@ -34996,10 +35103,17 @@
       "review_signals": [],
       "skill_id": "vibe-knowledge-award",
       "support_level": "catalog",
-      "used_by": []
+      "used_by": [
+        "CCO"
+      ]
     },
     {
-      "assignments": [],
+      "assignments": [
+        {
+          "agent": "CCO",
+          "level": "optional"
+        }
+      ],
       "category_id": "content-media-publishing",
       "classification": "slug:video;metadata:frontmatter",
       "classification_details": {
@@ -35027,7 +35141,7 @@
       "description": "对标视频拆解流水线：把竞品/爆款视频（B站/YouTube/抖音/快手/X 等）下载或提取→转写逐字稿→结构化拆解剧情、高光与脚本。适用「拆解这条爆款视频」「对标账号视频分析」「把竞品视频转成逐字稿」；不用于下载受版权保护内容用于再分发或规避平台限制。",
       "description_status": "source-text",
       "path": "skills/video-benchmark-breakdown/SKILL.md",
-      "portability_class": "catalog-only",
+      "portability_class": "portable-optional",
       "provenance": {
         "origin_kind": "unknown",
         "review_state": "unreviewed"
@@ -35035,7 +35149,9 @@
       "review_signals": [],
       "skill_id": "video-benchmark-breakdown",
       "support_level": "catalog",
-      "used_by": []
+      "used_by": [
+        "CCO"
+      ]
     },
     {
       "assignments": [],
@@ -35634,7 +35750,12 @@
       "used_by": []
     },
     {
-      "assignments": [],
+      "assignments": [
+        {
+          "agent": "CCO",
+          "level": "optional"
+        }
+      ],
       "category_id": "product-design-ux",
       "classification": "slug:(?:^|-)product(?:-|$)|\\bproduct\\b;metadata:frontmatter",
       "classification_details": {
@@ -35662,7 +35783,7 @@
       "description": "爆火产品演示视频脚本生成器——基于实测爆款公式，为 SaaS/AI/效率/企业类产品生成可直接拍摄的演示或宣传视频脚本。Use when 需要产品宣传片、演示视频、种草视频、获客视频脚本。",
       "description_status": "source-text",
       "path": "skills/viral-product-demo/SKILL.md",
-      "portability_class": "catalog-only",
+      "portability_class": "portable-optional",
       "provenance": {
         "origin_kind": "unknown",
         "review_state": "unreviewed"
@@ -35670,7 +35791,9 @@
       "review_signals": [],
       "skill_id": "viral-product-demo",
       "support_level": "catalog",
-      "used_by": []
+      "used_by": [
+        "CCO"
+      ]
     },
     {
       "assignments": [],
@@ -35903,7 +36026,7 @@
         "runtime_evidence": "pending",
         "status": "unscored"
       },
-      "description": "为内容生产提供**网页截图和素材采集**能力。所有内容生成类 skill 在素材阶段应调用本 skill。",
+      "description": "为内容生产提供**网页截图和素材采集**能力。所有内容生成类 skill 在素材阶段应调用本 skill。 网页内容截图与素材采集。优先使用OpenClaw browser（保持登录态），备选Playwright（公开页面）。 用法: (1) 文章调研时采集GitHub/Reddit/X等平台截图 (2) 获取社交媒体讨论素材 (3)…",
       "description_status": "source-text",
       "path": "skills/web-content-capture/SKILL.md",
       "portability_class": "catalog-only",
@@ -36191,7 +36314,16 @@
       "used_by": []
     },
     {
-      "assignments": [],
+      "assignments": [
+        {
+          "agent": "CCO",
+          "level": "optional"
+        },
+        {
+          "agent": "CRO",
+          "level": "optional"
+        }
+      ],
       "category_id": "chinese-platform-workflows",
       "classification": "slug:wechat;metadata:frontmatter",
       "classification_details": {
@@ -36229,7 +36361,7 @@
       "description": "获取并深度分析微信公众号文章。输入 mp.weixin.qq.com 链接或公众号文章正文，输出可追溯的批判性阅读地图（议题/结论/论证链/证据核查/遗漏视角）。用于\"分析这篇公众号文章\"、\"拆解这篇爆文\"、\"这篇文章可信吗\"、\"帮我解读公众号文章\"等场景。获取被 robots.txt 拦截时走真实浏览器读取；分析内核复用…",
       "description_status": "source-text",
       "path": "skills/wechat-article-analysis/SKILL.md",
-      "portability_class": "catalog-only",
+      "portability_class": "portable-optional",
       "provenance": {
         "origin_kind": "unknown",
         "review_state": "unreviewed"
@@ -36237,7 +36369,10 @@
       "review_signals": [],
       "skill_id": "wechat-article-analysis",
       "support_level": "catalog",
-      "used_by": []
+      "used_by": [
+        "CCO",
+        "CRO"
+      ]
     },
     {
       "assignments": [],

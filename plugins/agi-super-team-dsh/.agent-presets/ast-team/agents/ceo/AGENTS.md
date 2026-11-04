@@ -211,6 +211,7 @@ DSH 不提供逐角色工具边界：真实约束来自 preset 的 persona 路�
 - [`kpi-dashboard-design`](../../skills/kpi-dashboard-design/) — 来源待核 · 尚未评分 · 运行证据：待验证
 - [`legal-risk-assessment`](../../skills/legal-risk-assessment/) — 来源待核 · 尚未评分 · 运行证据：待验证
 - [`thinking-elon-musk`](../../skills/thinking-elon-musk/) — 来源待核 · 尚未评分 · 运行证据：待验证
+- [`life-decision-guide`](../../skills/life-decision-guide/) — 来源待核 · 尚未评分 · 运行证据：待验证
 
 ## 🔌 Harness 专属能力
 

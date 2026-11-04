@@ -53,8 +53,8 @@
 - [`daniel-x-writer`](../daniel-x-writer/) — Use for concise Chinese X/Twitter posts in Daniel's first-person voice, mixing human tension, numerical evidence, explicit decision rules, and a sharp reflective ending.（作者：Daniel Li、AGI Super Team contributors）
 - [`editorial-content-system`](../editorial-content-system/) — 为组织设计或审计内容战略、编辑组合、内容 brief、主张来源与素材权利清单、生产质量门、发布交接和实验复盘。适用于搭建可持续内容生产系统、定义编辑标准、治理多渠道母版和修复内容流程失控；不用于只改一句文案、决定营销投放/渠道增长、登录账号或自动发布内容。（作者：Daniel Li、AGI Super Team contributors）
 - [`jimeng-storyboard`](../jimeng-storyboard/) — 将口播视频剧本拆解为即梦AI数字人平台的分镜头脚本。输出格式为每个镜头的角色说（台词）和动作描述（镜头语言/数字人动作），适配即梦 jimeng.jianying.com 数字人视频生成界面。触发场景：用户需要生成口播视频分镜、数字人视频剧本拆解、即梦分镜脚本、短视频口播脚本分镜、数字人台词加动作拆分。（作者：Daniel Li）
-- [`relay-image-gen`](../relay-image-gen/) — Multi-provider image generation with automatic priority fallback（作者：Daniel Li）
-- [`relay-video-gen`](../relay-video-gen/) — Multi-provider video generation with async polling and automatic model fallback（作者：Daniel Li）
+- [`relay-image-gen`](../relay-image-gen/) — Multi-provider image generation with automatic priority fallback. Priority: vectronode (gpt-image-2/gpt-image-2-all) → qingyun Gemini → OpenClaw image tool → relay providers.…（作者：Daniel Li）
+- [`relay-video-gen`](../relay-video-gen/) — Multi-provider video generation with async polling and automatic model fallback Generate short videos via relay with provider priority fallback. Google Gemini Veo 3.1 (primary,…（作者：Daniel Li）
 - [`video-merge-send`](../video-merge-send/) — 合并多个分段视频为一个完整视频，并发送到飞书。使用ffmpeg拼接视频片段，支持淡入淡出转场。触发场景：用户需要合并视频片段、拼接分镜视频、视频合并后发飞书、把多个短视频合成一个、分段视频合并发送。配合 jimeng-storyboard skill 使用，完成数字人视频全流程。（作者：Daniel Li）
 - [`wechat-article-writer`](../wechat-article-writer/) — 公众号文章自动化写作流程。支持资料搜索、文章撰写、爆款标题生成、排版优化。当用户提到写公众号、微信文章、自媒体写作、爆款文章、内容创作时使用此（作者：Daniel Li）
 
