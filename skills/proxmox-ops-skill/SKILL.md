@@ -1,6 +1,7 @@
 ---
-name: proxmox-ops
-description: Create a credential file at `~/.proxmox-credentials`
+name: proxmox-ops-skill
+description: |
+  Create a credential file at `~/.proxmox-credentials`
   Ops-focused Proxmox VE management via REST API — monitor, control, provision, and troubleshoot VMs and LXC containers with battle-tested operational patterns.
 
   Use when asked to:

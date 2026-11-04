@@ -32,7 +32,7 @@ done
 
 ### Engine Endpoint Switch Commands
 ```bash
-SKILL_DIR=/home/aa/.hermes/profiles/cqo/skills/5minbtc
+SKILL_DIR=$HOME/.hermes/profiles/cqo/skills/5minbtc
 
 # Switch to api.binance.us
 sed -i 's|BINANCE_KLINES = .*|BINANCE_KLINES = "https://api.binance.us/api/v3/klines"|' $SKILL_DIR/5minbtc-engine-v6.0.py
@@ -48,7 +48,7 @@ sed -i 's|BINANCE_DEPTH = .*|BINANCE_DEPTH = "https://data-api.binance.vision/ap
 - `5minbtc-log.py` — hardcoded URL in `settle_candle()` and `settle-all` (2 occurrences)
 
 ## Migration Context
-- Original OpenClaw cron ID: `14880142-c824-41cc-b41b-6079b072e322`
+- Original cron ID: `14880142-c824-41cc-b41b-6079b072e322`
 - Hermes cron ID: `d8058223a1e0`
 - Schedule: `2,7,...,57 20-22 * * *` (UTC) = CST 04:02-06:57
 - WORKSPACE hardcoded as `workspace-cqo` → changed to `SKILL_DIR = os.path.dirname(os.path.abspath(__file__))`

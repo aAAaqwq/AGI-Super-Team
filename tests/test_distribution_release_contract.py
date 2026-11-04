@@ -73,7 +73,11 @@ def _packed_tarball() -> dict:
     )
     if result.returncode != 0:
         raise AssertionError(f"npm pack failed:\n{result.stdout}{result.stderr}")
-    return json.loads(result.stdout)[0]
+    payload = json.loads(result.stdout)
+    # npm <= 11 returns a one-element array; npm 12+ returns an object keyed by name.
+    if isinstance(payload, list):
+        return payload[0]
+    return next(iter(payload.values()))
 
 
 def _packed_tarball_paths() -> set[str]:

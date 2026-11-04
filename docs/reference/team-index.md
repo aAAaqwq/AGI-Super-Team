@@ -11,11 +11,11 @@
 
 | | 数量 | 会被安装吗 | 读哪一节 |
 |---|---|---|---|
-| **团队精华**：已分配给某个角色的 Skill | 169 | 会：5 个目标声明 `canonical-assigned`（`claude-code`、`codex`、`dsh`、`hermes`、`openclaw`），装的就是这 169 个 | 第 2、3 节 |
-| **工具箱**：未分配给任何角色的 Skill | 684 | 不会：包里有、安装器不复制 | 第 7 节 · [`catalog/`](../../catalog/) |
-| 物理总量（`skills/` 下的可发现入口） | 853 | — | — |
+| **团队精华**：已分配给某个角色的 Skill | 186 | 会：5 个目标声明 `canonical-assigned`（`claude-code`、`codex`、`dsh`、`hermes`、`openclaw`），装的就是这 186 个 | 第 2、3 节 |
+| **工具箱**：未分配给任何角色的 Skill | 662 | 不会：包里有、安装器不复制 | 第 7 节 · [`catalog/`](../../catalog/) |
+| 物理总量（`skills/` 下的可发现入口） | 848 | — | — |
 
-**一句话**：`169` 个方法 + `14` 个角色 = 精华；另外 `684` 个不是废料，只是不在任何角色的职责范围内，按需取用即可。
+**一句话**：`186` 个方法 + `14` 个角色 = 精华；另外 `662` 个不是废料，只是不在任何角色的职责范围内，按需取用即可。
 
 **怎么读这一页（层层递进，每层结尾指向下一层）**
 
@@ -23,10 +23,10 @@
 |---|---|---|---|
 | A | 这个团队能干什么、我这个方向归谁 | 第 2 节 总览表 | 按领域锁定一两个候选角色 |
 | B | 该不该叫它、它配什么方法、它能派谁 | 第 3 节 角色卡 | 直接点名一个角色，或知道该派谁 |
-| C | 某个方法归谁管 | 第 4 节 方法反查（169） | 反查到方法及其归属角色 |
+| C | 某个方法归谁管 | 第 4 节 方法反查（186） | 反查到方法及其归属角色 |
 | D | 怎么开始动手 | 第 5 节 快速开始 | 选一个 RUNBOOK 跑起来 |
 | E | Agent 怎么执行和复核 | 第 6 节 操作规则 | 判级、派发、复核一次做对 |
-| F | 剩下 684 个怎么取 | 第 7 节 工具箱 | 知道去哪找、还缺哪条命令 |
+| F | 剩下 662 个怎么取 | 第 7 节 工具箱 | 知道去哪找、还缺哪条命令 |
 
 > 本页是**导航**，不是策略权威。路由分级（L0–L3）与各框架强制边界的完整定义在 [路由分级与强制层](../../docs/guides/routing-and-enforcement.md)；团队与 Skill 的连接原理在 [Team/C-suite/Subagent/Skill 连接原理](../../docs/guides/team-agent-skill-architecture.md)。
 
@@ -36,22 +36,22 @@
 
 | 角色 | 领域 | 什么时候叫它 | 叶子 | 方法 |
 |---|---|---|---|---|
-| [`ceo`](#ceo) | 公司级决策 | 需要拆解公司级或跨职能目标、在多个 C-suite 之间取舍、配置稀缺资源、选择最小充分团队、安排独立复核并综合成最终决策时调用。 | — | 18 |
+| [`ceo`](#ceo) | 公司级决策 | 需要拆解公司级或跨职能目标、在多个 C-suite 之间取舍、配置稀缺资源、选择最小充分团队、安排独立复核并综合成最终决策时调用。 | — | 19 |
 | [`cto`](#cto) | 技术战略 | 需要技术战略选择、架构边界划分、接口/API 设计评审、技术选型对比、平台成本评估、系统可靠性设计或故障复盘时调用。 | 22 | 20 |
-| [`pe`](#pe) | 工程交付 | 已批准的设计需要跨模块实现、集成、测试、代码评审、缺陷修复或可回退交付时调用。 | — | 22 |
+| [`pe`](#pe) | 工程交付 | 已批准的设计需要跨模块实现、集成、测试、代码评审、缺陷修复或可回退交付时调用。 | — | 24 |
 | [`cpo`](#cpo) | 产品 | 需要产品方向取舍、用户问题定义与需求澄清、体验与可访问性评审、优先级排序或可验证需求拆解时调用。 | 3 | 15 |
-| [`cqo`](#cqo) | 量化研究 | 需要量化假设设计、回测与复现、模型评估与独立复核、组合风险控制或实验预登记时调用。 | 4 | 15 |
+| [`cqo`](#cqo) | 量化研究 | 需要量化假设设计、回测与复现、模型评估与独立复核、组合风险控制或实验预登记时调用。 | 4 | 17 |
 | [`cmo`](#cmo) | 市场增长 | 需要市场定位与品牌策略、渠道增长实验、付费投放或 SEO 方案、获客测量与归因设计时调用。 | 7 | 18 |
 | [`cfo`](#cfo) | 财务 | 需要预算与滚动预测、单位经济与定价证据、资本配置取舍、财务控制或成本优化时调用。 | 8 | 15 |
 | [`cdo`](#cdo) | 数据 | 需要数据契约与口径定义、数据质量与血缘治理、指标体系或分析模型设计、数据安全架构评审时调用。 | 5 | 16 |
-| [`cco`](#cco) | 内容 | 需要内容策略与编辑简报、平台内容适配、选题与脚本结构设计、内容制作编排或来源与权利审查时调用。 | 19 | 22 |
+| [`cco`](#cco) | 内容 | 需要内容策略与编辑简报、平台内容适配、选题与脚本结构设计、内容制作编排或来源与权利审查时调用。 | 19 | 33 |
 | [`clo`](#clo) | 法务合规 | 需要合同与协议风险评审、隐私与跨境合规检查、许可与知识产权问题识别、监管政策适用判断时调用。 | 6 | 14 |
-| [`cro`](#cro) | 研究情报 | 需要研究问题设计、一手证据获取与核验、竞品或市场情报扫描、多源证据综合与不确定性说明时调用。 | 6 | 15 |
+| [`cro`](#cro) | 研究情报 | 需要研究问题设计、一手证据获取与核验、竞品或市场情报扫描、多源证据综合与不确定性说明时调用。 | 6 | 16 |
 | [`cso`](#cso) | 销售与客户 | 需要客户发现与资格审查、赢单策略、方案与投标叙事、销售管道分析或客户成功交接设计时调用。 | 8 | 16 |
 | [`coo`](#coo) | 运营 | 需要运营计划与执行节奏、责任与依赖映射、跨部门流程与 SOP 设计、产能规划或异常恢复安排时调用。 | 4 | 15 |
-| [`governor`](#governor) | 独立复核 | 需要独立复核重大结论、发布、安全、资金、法律或完成声明，并给出放行门决定或风险升级时调用。 | — | 14 |
+| [`governor`](#governor) | 独立复核 | 需要独立复核重大结论、发布、安全、资金、法律或完成声明，并给出放行门决定或风险升级时调用。 | — | 16 |
 
-共 14 个角色、92 个叶子、169 个方法。叶子只在第 3 节展开 —— 先从这 14 行里挑人，挑不出再往下看。
+共 14 个角色、92 个叶子、186 个方法。叶子只在第 3 节展开 —— 先从这 14 行里挑人，挑不出再往下看。
 
 ## 3 · 角色卡：每个人管什么、配什么方法、能派谁
 
@@ -71,13 +71,13 @@
 
 **标准交付物**：决策备忘录 · 公司级优先计划 · 经验证的高管交接包
 
-**规模**：8 必需 / 5 可选 / 5 Harness 专属；不派发子代理
+**规模**：8 必需 / 6 可选 / 5 Harness 专属；不派发子代理
 
 **直达**：[`agents/ceo/TOOLS.md`](../../agents/ceo/TOOLS.md)（同一份分配，附来源与评分证据）
 
 **必需方法（core，通用安装器会装）**：[`competitive-analysis`](../../skills/competitive-analysis/) · [`executive-decision-system`](../../skills/executive-decision-system/) · [`first-principles-thinking`](../../skills/first-principles-thinking/) · [`prioritization-funnel`](../../skills/prioritization-funnel/) · [`project-planner`](../../skills/project-planner/) · [`setting-okrs-goals`](../../skills/setting-okrs-goals/) · [`startup-metrics-framework`](../../skills/startup-metrics-framework/) · [`verification-before-completion`](../../skills/verification-before-completion/)
 
-**可选方法（standard 层加入）**：[`architecture-decision-records`](../../skills/architecture-decision-records/) · [`financial-analyst`](../../skills/financial-analyst/) · [`kpi-dashboard-design`](../../skills/kpi-dashboard-design/) · [`legal-risk-assessment`](../../skills/legal-risk-assessment/) · [`thinking-elon-musk`](../../skills/thinking-elon-musk/)
+**可选方法（standard 层加入）**：[`architecture-decision-records`](../../skills/architecture-decision-records/) · [`financial-analyst`](../../skills/financial-analyst/) · [`kpi-dashboard-design`](../../skills/kpi-dashboard-design/) · [`legal-risk-assessment`](../../skills/legal-risk-assessment/) · [`thinking-elon-musk`](../../skills/thinking-elon-musk/) · [`life-decision-guide`](../../skills/life-decision-guide/)
 
 **Harness 专属（依赖特定 harness，通用安装器不装）**：[`company-investment-research`](../../skills/company-investment-research/) · [`dispatching-parallel-agents`](../../skills/dispatching-parallel-agents/) · [`internal-comms`](../../skills/internal-comms/) · [`orchestrate-agi-super-team`](../../skills/orchestrate-agi-super-team/) · [`web-search`](../../skills/web-search/)
 
@@ -188,7 +188,7 @@
 
 **标准交付物**：可证伪研究假设 · 可复现回测 · 风险调整后评估
 
-**规模**：4 个叶子专家 · 5 必需 / 5 可选 / 5 Harness 专属
+**规模**：4 个叶子专家 · 5 必需 / 7 可选 / 5 Harness 专属
 
 **派发约束**：同时最多 2 个子代理；角色深度上限 2；叶子不得继续派发
 
@@ -196,7 +196,7 @@
 
 **必需方法（core，通用安装器会装）**：[`backtest-expert`](../../skills/backtest-expert/) · [`backtesting-frameworks`](../../skills/backtesting-frameworks/) · [`quant-analyst`](../../skills/quant-analyst/) · [`research-evidence-synthesis`](../../skills/research-evidence-synthesis/) · [`risk-metrics-calculation`](../../skills/risk-metrics-calculation/)
 
-**可选方法（standard 层加入）**：[`csv-pipeline`](../../skills/csv-pipeline/) · [`data-analyst`](../../skills/data-analyst/) · [`defi-risk-assessment`](../../skills/defi-risk-assessment/) · [`financial-planning-and-analysis`](../../skills/financial-planning-and-analysis/) · [`technical-analysis`](../../skills/technical-analysis/)
+**可选方法（standard 层加入）**：[`csv-pipeline`](../../skills/csv-pipeline/) · [`data-analyst`](../../skills/data-analyst/) · [`defi-risk-assessment`](../../skills/defi-risk-assessment/) · [`financial-planning-and-analysis`](../../skills/financial-planning-and-analysis/) · [`technical-analysis`](../../skills/technical-analysis/) · [`5minbtc`](../../skills/5minbtc/) · [`binance-square`](../../skills/binance-square/)
 
 **Harness 专属（依赖特定 harness，通用安装器不装）**：[`alpha101`](../../skills/alpha101/) · [`backtesting-trading-strategies`](../../skills/backtesting-trading-strategies/) · [`company-investment-research`](../../skills/company-investment-research/) · [`deep-research`](../../skills/deep-research/) · [`trade-prediction-markets`](../../skills/trade-prediction-markets/)
 
@@ -334,7 +334,7 @@
 
 **标准交付物**：编辑简报 · 渠道就绪内容 · 来源与权利交接包
 
-**规模**：19 个叶子专家 · 7 必需 / 4 可选 / 11 Harness 专属
+**规模**：19 个叶子专家 · 7 必需 / 15 可选 / 11 Harness 专属
 
 **派发约束**：同时最多 2 个子代理；角色深度上限 2；叶子不得继续派发
 
@@ -342,7 +342,7 @@
 
 **必需方法（core，通用安装器会装）**：[`copy-editing`](../../skills/copy-editing/) · [`content-research-writer`](../../skills/content-research-writer/) · [`content-typography`](../../skills/content-typography/) · [`copywriting`](../../skills/copywriting/) · [`data-storytelling`](../../skills/data-storytelling/) · [`editorial-content-system`](../../skills/editorial-content-system/) · [`jimeng-storyboard`](../../skills/jimeng-storyboard/)
 
-**可选方法（standard 层加入）**：[`content-rewriter`](../../skills/content-rewriter/) · [`doc-coauthoring`](../../skills/doc-coauthoring/) · [`openai-whisper`](../../skills/openai-whisper/) · [`video-marketing`](../../skills/video-marketing/)
+**可选方法（standard 层加入）**：[`content-rewriter`](../../skills/content-rewriter/) · [`doc-coauthoring`](../../skills/doc-coauthoring/) · [`openai-whisper`](../../skills/openai-whisper/) · [`video-marketing`](../../skills/video-marketing/) · [`daniel-auto-publish`](../../skills/daniel-auto-publish/) · [`daniel-new-media-ops`](../../skills/daniel-new-media-ops/) · [`daniel-self-media-top-mindset`](../../skills/daniel-self-media-top-mindset/) · [`daniel-wechat-writing`](../../skills/daniel-wechat-writing/) · [`daniel-writer`](../../skills/daniel-writer/) · [`daniel-xhs-writing`](../../skills/daniel-xhs-writing/) · [`real-browser-social-publisher`](../../skills/real-browser-social-publisher/) · [`vibe-knowledge-award`](../../skills/vibe-knowledge-award/) · [`video-benchmark-breakdown`](../../skills/video-benchmark-breakdown/) · [`viral-product-demo`](../../skills/viral-product-demo/) · [`wechat-article-analysis`](../../skills/wechat-article-analysis/)
 
 **Harness 专属（依赖特定 harness，通用安装器不装）**：[`ai-marketing-videos`](../../skills/ai-marketing-videos/) · [`article-to-infographic`](../../skills/article-to-infographic/) · [`content-cover-gen`](../../skills/content-cover-gen/) · [`content-illustration-strategy`](../../skills/content-illustration-strategy/) · [`content-ops-toolkit`](../../skills/content-ops-toolkit/) · [`douyin-smart-publish`](../../skills/douyin-smart-publish/) · [`nano-banana-pro`](../../skills/nano-banana-pro/) · [`seo-content-writer`](../../skills/seo-content-writer/) · [`social-content`](../../skills/social-content/) · [`video-transcriber`](../../skills/video-transcriber/) · [`xhs-publisher`](../../skills/xhs-publisher/)
 
@@ -421,7 +421,7 @@
 
 **标准交付物**：研究计划 · 证据地图 · 带引用的综合结论
 
-**规模**：6 个叶子专家 · 3 必需 / 6 可选 / 6 Harness 专属
+**规模**：6 个叶子专家 · 3 必需 / 7 可选 / 6 Harness 专属
 
 **派发约束**：同时最多 2 个子代理；角色深度上限 2；叶子不得继续派发
 
@@ -429,7 +429,7 @@
 
 **必需方法（core，通用安装器会装）**：[`first-principles-thinking`](../../skills/first-principles-thinking/) · [`research-evidence-synthesis`](../../skills/research-evidence-synthesis/) · [`search-specialist`](../../skills/search-specialist/)
 
-**可选方法（standard 层加入）**：[`competitive-analysis`](../../skills/competitive-analysis/) · [`competitive-intelligence`](../../skills/competitive-intelligence/) · [`market-sizing-analysis`](../../skills/market-sizing-analysis/) · [`pm-competitive-teardown`](../../skills/pm-competitive-teardown/) · [`research-engineer`](../../skills/research-engineer/) · [`search-first`](../../skills/search-first/)
+**可选方法（standard 层加入）**：[`competitive-analysis`](../../skills/competitive-analysis/) · [`competitive-intelligence`](../../skills/competitive-intelligence/) · [`market-sizing-analysis`](../../skills/market-sizing-analysis/) · [`pm-competitive-teardown`](../../skills/pm-competitive-teardown/) · [`research-engineer`](../../skills/research-engineer/) · [`search-first`](../../skills/search-first/) · [`wechat-article-analysis`](../../skills/wechat-article-analysis/)
 
 **Harness 专属（依赖特定 harness，通用安装器不装）**：[`arxiv-automation`](../../skills/arxiv-automation/) · [`company-investment-research`](../../skills/company-investment-research/) · [`deep-research`](../../skills/deep-research/) · [`search-layer`](../../skills/search-layer/) · [`tech-selection-research`](../../skills/tech-selection-research/) · [`web-search`](../../skills/web-search/)
 
@@ -534,13 +534,13 @@
 
 **标准交付物**：可运行实现 · 回归测试 · 可供评审的变更集
 
-**规模**：6 必需 / 10 可选 / 6 Harness 专属；不派发子代理
+**规模**：6 必需 / 12 可选 / 6 Harness 专属；不派发子代理
 
 **直达**：[`agents/pe/TOOLS.md`](../../agents/pe/TOOLS.md)（同一份分配，附来源与评分证据）
 
 **必需方法（core，通用安装器会装）**：[`e2e-testing`](../../skills/e2e-testing/) · [`receiving-code-review`](../../skills/receiving-code-review/) · [`requesting-code-review`](../../skills/requesting-code-review/) · [`tdd-workflow`](../../skills/tdd-workflow/) · [`verification-before-completion`](../../skills/verification-before-completion/) · [`vibe-code-auditor`](../../skills/vibe-code-auditor/)
 
-**可选方法（standard 层加入）**：[`bash-pro`](../../skills/bash-pro/) · [`cli-developer`](../../skills/cli-developer/) · [`docker-essentials`](../../skills/docker-essentials/) · [`finishing-a-development-branch`](../../skills/finishing-a-development-branch/) · [`github`](../../skills/github/) · [`react-expert`](../../skills/react-expert/) · [`redis-inspect`](../../skills/redis-inspect/) · [`shell-expert`](../../skills/shell-expert/) · [`sql-pro`](../../skills/sql-pro/) · [`sql-optimization`](../../skills/sql-optimization/)
+**可选方法（standard 层加入）**：[`bash-pro`](../../skills/bash-pro/) · [`cli-developer`](../../skills/cli-developer/) · [`docker-essentials`](../../skills/docker-essentials/) · [`finishing-a-development-branch`](../../skills/finishing-a-development-branch/) · [`github`](../../skills/github/) · [`react-expert`](../../skills/react-expert/) · [`redis-inspect`](../../skills/redis-inspect/) · [`shell-expert`](../../skills/shell-expert/) · [`sql-pro`](../../skills/sql-pro/) · [`sql-optimization`](../../skills/sql-optimization/) · [`agent-qa`](../../skills/agent-qa/) · [`coupling-analysis`](../../skills/coupling-analysis/)
 
 **Harness 专属（依赖特定 harness，通用安装器不装）**：[`claude-code-runner`](../../skills/claude-code-runner/) · [`code-review`](../../skills/code-review/) · [`codex-cc-guide`](../../skills/codex-cc-guide/) · [`gh-issues`](../../skills/gh-issues/) · [`pre-push-security-scan`](../../skills/pre-push-security-scan/) · [`systematic-debugging`](../../skills/systematic-debugging/)
 
@@ -558,25 +558,27 @@
 
 **标准交付物**：独立评审 · 放行门决定 · 风险升级记录
 
-**规模**：2 必需 / 10 可选 / 2 Harness 专属；不派发子代理
+**规模**：2 必需 / 12 可选 / 2 Harness 专属；不派发子代理
 
 **直达**：[`agents/governor/TOOLS.md`](../../agents/governor/TOOLS.md)（同一份分配，附来源与评分证据）
 
 **必需方法（core，通用安装器会装）**：[`independent-assurance-gate`](../../skills/independent-assurance-gate/) · [`verification-before-completion`](../../skills/verification-before-completion/)
 
-**可选方法（standard 层加入）**：[`accessibility-compliance-accessibility-audit`](../../skills/accessibility-compliance-accessibility-audit/) · [`architecture-decision-records`](../../skills/architecture-decision-records/) · [`contract-review`](../../skills/contract-review/) · [`design-secure-data-architecture`](../../skills/design-secure-data-architecture/) · [`eval-harness`](../../skills/eval-harness/) · [`gdpr-compliance`](../../skills/gdpr-compliance/) · [`legal-risk-assessment`](../../skills/legal-risk-assessment/) · [`risk-metrics-calculation`](../../skills/risk-metrics-calculation/) · [`security-compliance-compliance-check`](../../skills/security-compliance-compliance-check/) · [`vibe-code-auditor`](../../skills/vibe-code-auditor/)
+**可选方法（standard 层加入）**：[`accessibility-compliance-accessibility-audit`](../../skills/accessibility-compliance-accessibility-audit/) · [`architecture-decision-records`](../../skills/architecture-decision-records/) · [`contract-review`](../../skills/contract-review/) · [`design-secure-data-architecture`](../../skills/design-secure-data-architecture/) · [`eval-harness`](../../skills/eval-harness/) · [`gdpr-compliance`](../../skills/gdpr-compliance/) · [`legal-risk-assessment`](../../skills/legal-risk-assessment/) · [`risk-metrics-calculation`](../../skills/risk-metrics-calculation/) · [`security-compliance-compliance-check`](../../skills/security-compliance-compliance-check/) · [`vibe-code-auditor`](../../skills/vibe-code-auditor/) · [`truth-discipline`](../../skills/truth-discipline/) · [`agent-qa`](../../skills/agent-qa/)
 
 **Harness 专属（依赖特定 harness，通用安装器不装）**：[`code-review`](../../skills/code-review/) · [`pre-push-security-scan`](../../skills/pre-push-security-scan/)
 
 ## 4 · 方法反查：某个 Skill 归谁管
 
-安装的是 169 个「已分配」方法。要按方法名反查归属，看这张表：
+安装的是 186 个「已分配」方法。要按方法名反查归属，看这张表：
 「必需」= 该角色的核心方法（缺失即失职）；「可选 / Harness」= 该角色可以调用，但不是它的身份。
 
 | Skill | 必需（谁的核心方法） | 可选 / Harness |
 |---|---|---|
+| [`5minbtc`](../../skills/5minbtc/) | — | `cqo` |
 | [`accessibility-compliance-accessibility-audit`](../../skills/accessibility-compliance-accessibility-audit/) | `cpo` | `clo`、`governor` |
 | [`account-executive`](../../skills/account-executive/) | — | `cso` |
+| [`agent-qa`](../../skills/agent-qa/) | — | `pe`、`governor` |
 | [`ai-marketing-videos`](../../skills/ai-marketing-videos/) ⚡ | — | `cco` |
 | [`alpha101`](../../skills/alpha101/) ⚡ | — | `cqo` |
 | [`analytics-tracking`](../../skills/analytics-tracking/) | `cmo`、`cdo` | `cpo` |
@@ -593,6 +595,7 @@
 | [`backtesting-frameworks`](../../skills/backtesting-frameworks/) | `cqo` | — |
 | [`backtesting-trading-strategies`](../../skills/backtesting-trading-strategies/) ⚡ | — | `cqo` |
 | [`bash-pro`](../../skills/bash-pro/) | — | `pe` |
+| [`binance-square`](../../skills/binance-square/) | — | `cqo` |
 | [`bookkeeping-basics`](../../skills/bookkeeping-basics/) | — | `cfo` |
 | [`brand-identity`](../../skills/brand-identity/) | `cmo` | — |
 | [`business-analyst`](../../skills/business-analyst/) | — | `cfo`、`cdo` |
@@ -619,10 +622,17 @@
 | [`copywriting`](../../skills/copywriting/) | `cco` | `cmo` |
 | [`cost-aware-llm-pipeline`](../../skills/cost-aware-llm-pipeline/) | — | `cto`、`cfo` |
 | [`cost-optimization`](../../skills/cost-optimization/) | `cfo` | — |
+| [`coupling-analysis`](../../skills/coupling-analysis/) | — | `pe` |
 | [`crm-automation`](../../skills/crm-automation/) ⚡ | — | `cso` |
 | [`csv-pipeline`](../../skills/csv-pipeline/) | — | `cqo`、`cdo` |
 | [`customer-success`](../../skills/customer-success/) | `cso` | `cpo` |
 | [`customs-trade-compliance`](../../skills/customs-trade-compliance/) | — | `clo` |
+| [`daniel-auto-publish`](../../skills/daniel-auto-publish/) | — | `cco` |
+| [`daniel-new-media-ops`](../../skills/daniel-new-media-ops/) | — | `cco` |
+| [`daniel-self-media-top-mindset`](../../skills/daniel-self-media-top-mindset/) | — | `cco` |
+| [`daniel-wechat-writing`](../../skills/daniel-wechat-writing/) | — | `cco` |
+| [`daniel-writer`](../../skills/daniel-writer/) | — | `cco` |
+| [`daniel-xhs-writing`](../../skills/daniel-xhs-writing/) | — | `cco` |
 | [`dashboard-builder`](../../skills/dashboard-builder/) | — | `cto`、`cdo` |
 | [`data-analyst`](../../skills/data-analyst/) | — | `cqo`、`cdo` |
 | [`data-contract-quality-governance`](../../skills/data-contract-quality-governance/) | `cdo` | — |
@@ -667,6 +677,7 @@
 | [`legal-advisor`](../../skills/legal-advisor/) | — | `clo` |
 | [`legal-issue-spotting`](../../skills/legal-issue-spotting/) | `clo` | — |
 | [`legal-risk-assessment`](../../skills/legal-risk-assessment/) | `clo` | `ceo`、`governor` |
+| [`life-decision-guide`](../../skills/life-decision-guide/) | — | `ceo` |
 | [`linear-automation`](../../skills/linear-automation/) ⚡ | — | `coo` |
 | [`mailchimp-automation`](../../skills/mailchimp-automation/) ⚡ | — | `cmo` |
 | [`market-sizing-analysis`](../../skills/market-sizing-analysis/) | — | `cro` |
@@ -693,6 +704,7 @@
 | [`provider-key-manager`](../../skills/provider-key-manager/) ⚡ | — | `cto` |
 | [`quant-analyst`](../../skills/quant-analyst/) | `cqo` | — |
 | [`react-expert`](../../skills/react-expert/) | — | `pe` |
+| [`real-browser-social-publisher`](../../skills/real-browser-social-publisher/) | — | `cco` |
 | [`receiving-code-review`](../../skills/receiving-code-review/) | `pe` | — |
 | [`redis-inspect`](../../skills/redis-inspect/) | — | `pe` |
 | [`requesting-code-review`](../../skills/requesting-code-review/) | `pe` | — |
@@ -734,13 +746,18 @@
 | [`token-reporter`](../../skills/token-reporter/) ⚡ | — | `cto` |
 | [`trade-prediction-markets`](../../skills/trade-prediction-markets/) ⚡ | — | `cqo` |
 | [`traffic-acquisition`](../../skills/traffic-acquisition/) | `cmo` | — |
+| [`truth-discipline`](../../skills/truth-discipline/) | — | `governor` |
 | [`user-story`](../../skills/user-story/) | — | `cpo` |
 | [`ux-heuristics`](../../skills/ux-heuristics/) | `cpo` | — |
 | [`verification-before-completion`](../../skills/verification-before-completion/) | `ceo`、`pe`、`coo`、`governor` | — |
 | [`vibe-code-auditor`](../../skills/vibe-code-auditor/) | `pe` | `governor` |
+| [`vibe-knowledge-award`](../../skills/vibe-knowledge-award/) | — | `cco` |
+| [`video-benchmark-breakdown`](../../skills/video-benchmark-breakdown/) | — | `cco` |
 | [`video-marketing`](../../skills/video-marketing/) | — | `cco` |
 | [`video-transcriber`](../../skills/video-transcriber/) ⚡ | — | `cco` |
+| [`viral-product-demo`](../../skills/viral-product-demo/) | — | `cco` |
 | [`web-search`](../../skills/web-search/) ⚡ | — | `ceo`、`cro` |
+| [`wechat-article-analysis`](../../skills/wechat-article-analysis/) | — | `cco`、`cro` |
 | [`write-product-documentation`](../../skills/write-product-documentation/) | — | `cpo` |
 | [`xhs-publisher`](../../skills/xhs-publisher/) ⚡ | — | `cco` |
 | [`zoho-crm-automation`](../../skills/zoho-crm-automation/) ⚡ | — | `cso` |
@@ -774,9 +791,9 @@
 
 判级与强制边界的完整定义见 [路由分级与强制层](../../docs/guides/routing-and-enforcement.md)；各框架能强制什么、不能强制什么见 [框架兼容性](../../docs/guides/harness-compatibility.html)。
 
-## 7 · 工具箱：没装的那 684 个
+## 7 · 工具箱：没装的那 662 个
 
-`skills/` 下有 853 个物理入口，其中 169 个属于团队（第 3、4 节），剩下 684 个不属于任何角色，安装器不会复制。它们仍然可以：
+`skills/` 下有 848 个物理入口，其中 186 个属于团队（第 3、4 节），剩下 662 个不属于任何角色，安装器不会复制。它们仍然可以：
 
 - **检索**：看生成目录 [`catalog/README.md`](../../catalog/README.md) 或机器可读的 [`catalog/skill-index.json`](../../catalog/skill-index.json)。
 - **取用**：目录是完整的。npm 安装的包里有整棵 `skills/` 树（`node_modules/agi-super-team/skills/<id>/`，[ADR-0008](../../docs/adr/0008-ship-complete-skills-directory.md) 决定全量打包）；git 用户直接在 `skills/<id>/` 下拿。要取就取整个目录 —— 只拿 `SKILL.md` 会得到一个坏 Skill，因为它的正文会引用自己的 `references/` 与 `scripts/`。

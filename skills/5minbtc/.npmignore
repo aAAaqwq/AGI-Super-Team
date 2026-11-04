@@ -1,0 +1,6 @@
+logs/
+backtest/results/
+data/*.jsonl
+data/*.jsonl.*
+data/news-risk-level.json
+data/news-signals*

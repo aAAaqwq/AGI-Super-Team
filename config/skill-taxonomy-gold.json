@@ -5,7 +5,7 @@
     "mode": "independent-agent-manual-review",
     "humanApproved": false,
     "rubric": "../docs/skill-taxonomy-gold-set.md",
-    "labelSetSha256": "78e6b44843fc60d08d1a9cc3fb728fdfec2eccfc35b812064b53342559ba7da1"
+    "labelSetSha256": "4f8425f03504f20bc7f4830cdaa194f831352d39e1b94de91a96cc55a0cb201f"
   },
   "sampling": {
     "method": "predicted-category-balanced-difficulty-first-stable-hash",
@@ -373,7 +373,7 @@
       ],
       "review_status": "primary",
       "reviewed_at": "2026-07-21",
-      "source_sha256": "7b51fe23e4fd9459458ec21813b69ee4b93a5e4fcd2f829133258cd768761363"
+      "source_sha256": "8074ad5d6d85a1416f171d70c6dd0739e61f4db5d50ff8cf6e691629474315d0"
     },
     {
       "skill_id": "deployment-automation",
@@ -727,7 +727,7 @@
       ],
       "review_status": "primary",
       "reviewed_at": "2026-07-21",
-      "source_sha256": "d546d0edcd0fb0eafa3f81eb1f42a7fabb9994facda37e3a31009a8f9530eedf"
+      "source_sha256": "64b88509d7a943dc72a294f78c7a435d4ec2293a00053245e7e729122000f7ef"
     },
     {
       "skill_id": "china-contract-review",
@@ -1086,7 +1086,7 @@
       ],
       "review_status": "primary",
       "reviewed_at": "2026-07-21",
-      "source_sha256": "0de78f1a54dd692f28cbdc5d5ee48bd70bf4efbd719300edc1129100681f45af"
+      "source_sha256": "636f18f5233af1046a65e1ca7a7b76c8cba3fd34ed8da6e42e42824fc119d4b8"
     },
     {
       "skill_id": "domain-name-brainstormer",

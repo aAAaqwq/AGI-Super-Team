@@ -425,7 +425,7 @@ Step 9  自检清单
 1. 先确定主题的"视觉冲突"：这篇文章的核心反差是什么？
 2. 调用 gpt-image-2 生成：
    ```bash
-   python3 /Users/danielli/新媒体运营/skills/vectronode-image/scripts/vectronode_image.py generate \
+   python3 $HOME/新媒体运营/skills/vectronode-image/scripts/vectronode_image.py generate \
      --prompt "电影感公众号封面，深蓝黑色调，高对比度。[视觉冲突描述]。左侧留白叠加超大白色粗体中文标题：[主标题第一行]。第二行：[主标题第二行]。其中\"[关键词1]\"用[颜色]，\"[关键词2]\"用[颜色]。左上角小字：DanielAI编程实验室。文字清晰锐利无乱码，电影感，类似新智元爆款封面。" \
      --output /tmp/article/cover.png \
      --size 1536x1024 \
@@ -476,7 +476,7 @@ AI 写稿时常见错误：
 
 写稿时，每生成一张正文配图，必须立刻在 markdown 对应位置插入：
 ```markdown
-![图片说明](本地图片路径.jpg)
+图片占位：本地图片路径.jpg
 ```
 
 脚本 `wechat_mp_api_publish.py` 会自动：

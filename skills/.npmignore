@@ -1,0 +1,11 @@
+mediaclaw/
+**/logs/
+**/scan_*.json
+**/el_scan_*.json
+**/data/**/*.jsonl
+**/.pytest_cache/
+**/.ruff_cache/
+**/browser-profile/
+**/chrome-profiles/
+**/chrome-user-data/
+**/__pycache__/

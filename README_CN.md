@@ -98,7 +98,7 @@ AGI_VERSION="$(npm view agi-super-team version)"
 npx -y "agi-super-team@${AGI_VERSION}" --tool claude-code --install --connect
 ```
 
-npm 发行包保留可发现的 `SKILL.md` 入口，并完整携带 `config/team-manifest.json` 实际分配的所有 Skills。经过来源审查的第一方作品可在 [Daniel 的原创 Skills](./skills/original/) 分类中查看；如果需要整个 Skill 库的全部辅助素材，请克隆仓库。
+npm 发行包携带完整 Skill 库、可发现的 `SKILL.md` 入口和 `catalog/skill-index.json`。默认只把 `config/team-manifest.json` 分配给所选 Agent 的 Skills 复制到目标目录；需要单个 Skill 用 `--skill <name>`，需要整库用 `--all-skills`，`--list-skills` 可列出全部名称。经过来源审查的第一方作品可在 [Daniel 的原创 Skills](./skills/original/) 分类中查看。
 
 把 `claude-code` 换成 `--list-tools` 输出的目标 ID。只有在确实要同时写入全部全局和项目适配目标时，才使用 `--all-tools`。不带参数仍保留旧版 Codex 预览行为；新脚本应明确写出 `--tool` 或 `--all-tools`。
 

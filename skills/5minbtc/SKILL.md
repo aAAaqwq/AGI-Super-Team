@@ -60,7 +60,7 @@ python3 <SKILL>/scripts/5minbtc-monitor.py --dry-run
 ## 快速开始
 
 ```bash
-SKILL_DIR=/home/aa/.hermes/profiles/cqo/skills/5minbtc
+SKILL_DIR=$HOME/.hermes/profiles/cqo/skills/5minbtc
 
 # 1. 并行: 引擎 + 新闻 + settle (前一根)
 python3 $SKILL_DIR/5minbtc-log.py settle-all 2>&1
@@ -192,9 +192,9 @@ python3 $SKILL_DIR/5minbtc-log.py log \
 ```bash
 rsync -av --exclude='data/' --exclude='__pycache__/' \
   --exclude='*.jsonl' --exclude='*.jsonl.*' --exclude='*.gz' \
-  /home/aa/.hermes/profiles/cqo/skills/5minbtc/ \
-  /home/aa/clawd/repos/AGI-Super-Team/skills/5minbtc/
-cd /home/aa/clawd/repos/AGI-Super-Team
+  $HOME/.hermes/profiles/cqo/skills/5minbtc/ \
+  $HOME/clawd/repos/AGI-Super-Team/skills/5minbtc/
+cd $HOME/clawd/repos/AGI-Super-Team
 git add skills/5minbtc/ && git commit -m "sync(skills/5minbtc): <版本>" && git push origin main
 ```
 

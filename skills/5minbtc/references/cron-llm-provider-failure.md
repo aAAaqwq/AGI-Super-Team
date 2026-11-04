@@ -135,7 +135,7 @@ done
 # 验证修改
 python3 -c "
 import json
-jobs = json.load(open('/home/aa/.hermes/profiles/cqo/cron/jobs.json'))
+jobs = json.load(open('$HOME/.hermes/profiles/cqo/cron/jobs.json'))
 for j in jobs['jobs']:
     print(f\"{j['id']} {j['name']:30s} provider={j.get('model', {}).get('provider', 'N/A')} model={j.get('model', {}).get('model', 'N/A')}\")
 "
@@ -157,7 +157,7 @@ hermes cron run --job-id d8058223a1e0
 python3 -c "
 import json, time
 time.sleep(50)
-jobs = json.load(open('/home/aa/.hermes/profiles/cqo/cron/jobs.json'))
+jobs = json.load(open('$HOME/.hermes/profiles/cqo/cron/jobs.json'))
 for j in jobs['jobs']:
     if j['id'] == 'd8058223a1e0':
         print(f'last_status={j[\"last_status\"]}')
@@ -193,7 +193,7 @@ for j in jobs['jobs']:
 
 ### 5.2 排查 key 解析 bug
 
-`MINIMAX_CP_API_KEY` 和 `YIYONG_API_KEY` 在 `.env` 里都非空（len=125 / 51），但 `agent.auxiliary_client` 报 `has no resolvable api_key`。**根因**：`config.yaml` 里 `providers.minimax-cp.api_key_env` 可能拼写错误或未定义。检查路径：`/home/aa/.hermes/profiles/cqo/config.yaml` → `providers:` 节。
+`MINIMAX_CP_API_KEY` 和 `YIYONG_API_KEY` 在 `.env` 里都非空（len=125 / 51），但 `agent.auxiliary_client` 报 `has no resolvable api_key`。**根因**：`config.yaml` 里 `providers.minimax-cp.api_key_env` 可能拼写错误或未定义。检查路径：`$HOME/.hermes/profiles/cqo/config.yaml` → `providers:` 节。
 
 ### 5.3 充值 DeepSeek 账户
 
@@ -272,10 +272,10 @@ hermes logs errors -n 30
 hermes logs --component cron -n 50
 
 # 看所有 cron job 状态
-python3 -c "import json; [print(j['id'], j['name'], j.get('last_status','?'), j.get('last_error','')[:100]) for j in json.load(open('/home/aa/.hermes/profiles/cqo/cron/jobs.json'))['jobs']]"
+python3 -c "import json; [print(j['id'], j['name'], j.get('last_status','?'), j.get('last_error','')[:100]) for j in json.load(open('$HOME/.hermes/profiles/cqo/cron/jobs.json'))['jobs']]"
 
 # 看 .env 里某个 key 是否非空
-grep -c "ZAI_API_KEY=..*" /home/aa/.hermes/profiles/cqo/.env
+grep -c "ZAI_API_KEY=..*" $HOME/.hermes/profiles/cqo/.env
 
 # 验证 DeepSeek token 本身是否有效
 python3 -c "import urllib.request,json,os; req=urllib.request.Request('https://api.deepseek.com/v1/models',headers={'Authorization':f'Bearer {os.environ[\"DEEPSEEK_API_KEY\"]}'}); print(json.loads(urllib.request.urlopen(req,timeout=15).read()))"
@@ -283,7 +283,7 @@ python3 -c "import urllib.request,json,os; req=urllib.request.Request('https://a
 # 验证 zai/glm-5.2 可用
 python3 -c "
 import urllib.request, json
-key = open('/home/aa/.hermes/profiles/cqo/.env').read().split('ZAI_API_KEY=')[1].split(chr(10))[0]
+key = open('$HOME/.hermes/profiles/cqo/.env').read().split('ZAI_API_KEY=')[1].split(chr(10))[0]
 req = urllib.request.Request('https://open.bigmodel.cn/api/coding/paas/v4/models', headers={'Authorization': f'Bearer {key}'})
 print([m['id'] for m in json.loads(urllib.request.urlopen(req, timeout=15).read())['data']])
 "

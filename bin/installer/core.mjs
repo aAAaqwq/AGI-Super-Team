@@ -130,13 +130,31 @@ function selectedAssignedSkills(catalog, agents) {
   };
 }
 
-function planSkills(plan, catalog, tool, root, assignedSkills) {
-  if (!tool.skillPaths.length) return;
+function skillSources(catalog, tool, assignedSkills, skillSelection) {
   const canonical = tool.skillSource === "canonical-assigned";
-  const skillNames = canonical ? assignedSkills.all : catalog.curatedSkills;
-  const skillsRoot = canonical ? catalog.canonicalSkillsRoot : catalog.curatedSkillsRoot;
+  if (skillSelection?.names?.length) {
+    return skillSelection.names.map((name) => {
+      if (catalog.physicalSkills.includes(name)) return { name, root: catalog.canonicalSkillsRoot };
+      if (catalog.curatedSkills.includes(name)) return { name, root: catalog.curatedSkillsRoot };
+      throw new Error(`unknown Skill: ${name}`);
+    });
+  }
+  if (skillSelection?.all) {
+    const sources = catalog.physicalSkills.map((name) => ({ name, root: catalog.canonicalSkillsRoot }));
+    if (!canonical) {
+      sources.push(...catalog.curatedSkills.map((name) => ({ name, root: catalog.curatedSkillsRoot })));
+    }
+    return sources;
+  }
+  const defaultRoot = canonical ? catalog.canonicalSkillsRoot : catalog.curatedSkillsRoot;
+  const defaultNames = canonical ? assignedSkills.all : catalog.curatedSkills;
+  return defaultNames.map((name) => ({ name, root: defaultRoot }));
+}
+
+function planSkills(plan, catalog, tool, root, assignedSkills, skillSelection) {
+  if (!tool.skillPaths.length) return;
   for (const configured of tool.skillPaths) {
-    for (const skill of skillNames) {
+    for (const { name: skill, root: skillsRoot } of skillSources(catalog, tool, assignedSkills, skillSelection)) {
       const sourceRoot = join(skillsRoot, skill);
       const targetRoot = destination(root, configured, skill);
       if (existsSync(targetRoot) && lstatSync(targetRoot).isSymbolicLink()) {
@@ -164,6 +182,33 @@ function planSkills(plan, catalog, tool, root, assignedSkills) {
       }
     }
   }
+}
+
+const SKILL_LINK = /\]\(\.\.\/\.\.\/skills\/([a-z0-9]+(?:-[a-z0-9]+)*)\/\)/g;
+
+// agents/*/TOOLS.md 的链接是相对仓库根写的；复制到 harness 目录后必须按
+// Agent 文件与目标 Skill 根的实际相对位置重算，否则装完即断链。
+function rebaseSkillLinks(item, tool) {
+  if (!tool?.skillPaths?.length) return item;
+  if (item.label.startsWith("skill:")) return item;
+  const text = item.content.toString("utf8");
+  if (!text.includes("](../../skills/")) return item;
+  const agentDir = dirname(item.destination);
+  const skillDir = join(item.root, tool.skillPaths[0]);
+  const rewritten = text.replace(SKILL_LINK, (match, name) => {
+    const rel = relative(agentDir, join(skillDir, name)).split(nativePath.sep).join("/");
+    return `](${rel}/)`;
+  }).replace(/\[([^\]]+)\]\(\.\.\/\.\.\/(?:config|docs|catalog)\/[^)]*\)/g, "$1");
+  if (rewritten === text) return item;
+  const content = Buffer.from(rewritten);
+  const status = item.baseline === null
+    ? "add"
+    : Buffer.compare(item.baseline, content) === 0
+      && (item.baselineMode === null || item.baselineMode === undefined
+        || modesEquivalent(item.baselineMode, item.mode, item.platform))
+      ? "unchanged"
+      : "update";
+  return { ...item, content, status };
 }
 
 function renderAgents(plan, packageRoot, catalog, tool, root, agents, codexPayloadAll, groups = {}) {
@@ -259,7 +304,7 @@ function renderSpecialists(plan, packageRoot, tool, root, specialists) {
   if (mode !== "combined-rules") throw new Error(`unsupported specialist mode for ${tool.id}: ${mode}`);
 }
 
-export function buildPlan({ packageRoot, catalog, tools, home, projectDir, includeAgents, includeSkills, agentIds, subagentManagers = new Set(), includeCcoSpecialists = false, codexPayloadAll = false, platform = process.platform }) {
+export function buildPlan({ packageRoot, catalog, tools, home, projectDir, includeAgents, includeSkills, agentIds, subagentManagers = new Set(), includeCcoSpecialists = false, codexPayloadAll = false, skillSelection = null, platform = process.platform }) {
   const plan = [];
   const selected = agentIds ? catalog.agents.filter((agent) => agentIds.has(agent.id)) : catalog.agents;
   const managers = new Set(subagentManagers);
@@ -338,7 +383,7 @@ export function buildPlan({ packageRoot, catalog, tools, home, projectDir, inclu
         `${JSON.stringify(connection, null, 2)}\n`,
         `adapter:${tool.id}/connection`,
       );
-      if (includeSkills) planSkills(plan, catalog, tool, root, assignedSkills);
+      if (includeSkills) planSkills(plan, catalog, tool, root, assignedSkills, skillSelection);
       continue;
     }
     if (tool.agentMode === "combined-rules") {
@@ -356,9 +401,10 @@ export function buildPlan({ packageRoot, catalog, tools, home, projectDir, inclu
     }
     if (includeAgents) renderAgents(plan, packageRoot, catalog, tool, root, selected, codexPayloadAll && tool.id === "codex", groups);
     if (includeAgents && !(codexPayloadAll && tool.id === "codex")) renderSpecialists(plan, packageRoot, tool, root, specialists);
-    if (includeSkills) planSkills(plan, catalog, tool, root, assignedSkills);
+    if (includeSkills) planSkills(plan, catalog, tool, root, assignedSkills, skillSelection);
   }
-  return plan;
+  const toolsById = new Map(tools.map((tool) => [tool.id, { ...tool, platform }]));
+  return plan.map((item) => rebaseSkillLinks(item, toolsById.get(item.tool)));
 }
 
 function atomicWrite(path, content, mode = 0o600) {

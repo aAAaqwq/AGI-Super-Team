@@ -1,16 +1,10 @@
 ---
 name: ads
-description: Comprehensive ad account analysis across all major platforms (Google, Meta
-  Comprehensive paid advertising audit and optimization for any business type.
-  Performs full multi-platform audits (Google Ads, Meta Ads, LinkedIn Ads, TikTok
-  Ads, Microsoft Ads), single-platform deep analysis, conversion tracking health
-  checks, creative quality assessment, budget allocation optimization, bidding
-  strategy evaluation, and compliance verification. Industry detection for SaaS,
-  e-commerce, local service, B2B enterprise, info products, mobile app, real
-  estate, healthcare, finance, and agency. Triggers on: "ads", "PPC", "paid
-  advertising", "Google Ads", "Meta Ads", "Facebook Ads", "LinkedIn Ads",
-  "TikTok Ads", "Microsoft Ads", "Bing Ads", "ad audit", "campaign audit",
-  "ROAS", "conversion tracking", "creative fatigue", "bid strategy".
+description: |
+  Comprehensive ad account analysis and paid advertising audit across all major platforms (Google, Meta, LinkedIn, TikTok, Microsoft).
+  Performs full multi-platform audits, single-platform deep analysis, conversion tracking health checks, creative quality assessment, budget allocation optimization, bidding strategy evaluation, and compliance verification.
+  Industry detection for SaaS, e-commerce, local service, B2B enterprise, info products, mobile app, real estate, healthcare, finance, and agency.
+  Triggers on: "ads", "PPC", "paid advertising", "Google Ads", "Meta Ads", "Facebook Ads", "LinkedIn Ads", "TikTok Ads", "Microsoft Ads", "Bing Ads", "ad audit", "campaign audit", "ROAS", "conversion tracking", "creative fatigue", "bid strategy".
 argument-hint: "audit | google | meta | youtube | linkedin | tiktok | microsoft | creative | landing | budget | plan <type> | competitor"
 allowed-tools:
   - Read

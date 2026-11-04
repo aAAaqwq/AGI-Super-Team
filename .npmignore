@@ -3,6 +3,14 @@
 **/*.py[cod]
 **/.venv/
 **/node_modules/
+**/.pytest_cache/
+**/.ruff_cache/
+**/logs/
+**/scan_*.json
+**/data/**/*.jsonl
+**/browser-profile/
+**/chrome-profiles/
+**/chrome-user-data/
 .git/
 .planning/
 tests/

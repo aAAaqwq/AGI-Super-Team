@@ -2,7 +2,7 @@
 
 ## 快速统计
 ```bash
-SKILL_DIR=/home/aa/.hermes/profiles/cqo/skills/5minbtc
+SKILL_DIR=$HOME/.hermes/profiles/cqo/skills/5minbtc
 python3 $SKILL_DIR/5minbtc-log.py stats
 ```
 

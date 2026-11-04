@@ -147,6 +147,7 @@ export function loadCatalog(packageRoot) {
           && existsSync(join(root, "SKILL.md"));
       }),
   );
+  const physicalSkillList = [...physicalSkills].sort();
   const byAgent = {};
   for (const agent of manifest.agents) {
     const selected = new Set();
@@ -172,6 +173,7 @@ export function loadCatalog(packageRoot) {
     curatedSkills,
     curatedSkillsRoot,
     canonicalSkillsRoot,
+    physicalSkills: physicalSkillList,
     assignedSkills,
   };
 }

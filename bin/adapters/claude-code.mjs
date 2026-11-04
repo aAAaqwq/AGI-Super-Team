@@ -27,7 +27,7 @@ function assignedSkillLines(assignedSkills, agentId) {
   return unique.length ? ["skills:", ...unique.map((name) => `  - ${name}`)] : [];
 }
 
-function canonicalAgentArtifact(packageRoot, tool, agent, groups, assignedSkills) {
+function canonicalAgentArtifact(packageRoot, tool, agent, groups, assignedSkills, includeSkills = true) {
   const name = runtimeAgentName(agent.id);
   const canDelegate = agent.id === "ceo" || MANAGER_IDS.has(agent.id);
   const frontmatter = [
@@ -35,7 +35,7 @@ function canonicalAgentArtifact(packageRoot, tool, agent, groups, assignedSkills
     `name: ${name}`,
     `description: ${yamlString(canonicalAgentDescription(agent))}`,
     "model: inherit",
-    ...assignedSkillLines(assignedSkills, agent.id),
+    ...(includeSkills ? assignedSkillLines(assignedSkills, agent.id) : []),
     ...(canDelegate ? [] : ["disallowedTools: Agent"]),
     "---",
   ].join("\n");
@@ -156,7 +156,7 @@ export function renderAdapterArtifacts({
   const artifacts = [];
   if (includeAgents) {
     artifacts.push(
-      ...agents.map((agent) => canonicalAgentArtifact(packageRoot, tool, agent, groups, assignedSkills)),
+      ...agents.map((agent) => canonicalAgentArtifact(packageRoot, tool, agent, groups, assignedSkills, includeSkills)),
       ...specialists.map((specialist) => specialistAgentArtifact(packageRoot, tool, specialist)),
     );
   }

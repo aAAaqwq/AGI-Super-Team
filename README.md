@@ -100,7 +100,7 @@ AGI_VERSION="$(npm view agi-super-team version)"
 npx -y "agi-super-team@${AGI_VERSION}" --tool claude-code --install --connect
 ```
 
-The npm distribution keeps its `SKILL.md` entrypoints discoverable and includes the complete files for every Skill assigned by `config/team-manifest.json`. Browse the provenance-backed [Daniel's Original Skills](./skills/original/) collection for reviewed first-party work. Clone the repository when you need every auxiliary asset from the wider Skill library.
+The npm distribution carries the full Skill library and keeps its `SKILL.md` entrypoints discoverable, together with `catalog/skill-index.json`. By default it installs only the Skills assigned to the selected Agents by `config/team-manifest.json`; use `--skill <name>` for individual Skills, `--all-skills` for the whole library, and `--list-skills` to list every name. Browse the provenance-backed [Daniel's Original Skills](./skills/original/) collection for reviewed first-party work.
 
 Replace `claude-code` with an ID from `--list-tools`. Use `--all-tools` only when you intentionally want every global and project adapter. A no-argument run remains the legacy Codex preview; new automation should always name `--tool` or `--all-tools`.
 

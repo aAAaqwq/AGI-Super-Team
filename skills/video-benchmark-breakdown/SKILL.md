@@ -13,7 +13,7 @@ description: "对标视频拆解流水线：把竞品/爆款视频（B站/YouTub
 
 | 步骤 | 能力 | 位置 |
 |---|---|---|
-| ① 提取 | 下载/解析在线或本地视频，拿到音频、字幕、画面元信息 | [`../doubao-video-extract/SKILL.md`](../doubao-video-extract/SKILL.md) |
+| ① 提取 | 下载/解析在线或本地视频，拿到音频、字幕、画面元信息 | `doubao-video-extract`（外部技能，未随本仓库分发） |
 | ② 转写 | 有字幕取字幕，无字幕下音频 + whisper 转写逐字稿 | [`../video-transcriber/SKILL.md`](../video-transcriber/SKILL.md)（仓库顶层已有技能） |
 | ③ 拆解 | 剧情结构化、高光/精彩段拆条、场景语义分段、画面文字识别 | [`./byted-mediakit-video/SKILL.md`](./byted-mediakit-video/SKILL.md) |
 

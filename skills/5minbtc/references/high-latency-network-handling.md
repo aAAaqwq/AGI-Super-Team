@@ -37,7 +37,7 @@ done
 When curl with extended timeout works but Python `urlopen(timeout=10)` fails:
 
 ```bash
-SKILL_DIR=/home/aa/.hermes/profiles/cqo/skills/5minbtc
+SKILL_DIR=$HOME/.hermes/profiles/cqo/skills/5minbtc
 cd "$SKILL_DIR"
 
 # Backup

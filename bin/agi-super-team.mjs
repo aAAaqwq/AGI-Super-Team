@@ -64,7 +64,10 @@ Content and actions:
   --with-subagents <id>  Install one executive group from the hierarchy (repeatable)
   --all-subagents        Install all 92 executive specialist leaves
   --with-cco-specialists Compatibility alias for --with-subagents cco
-  --no-skills            Do not install the six curated Skills
+  --no-skills            Do not install any Skills
+  --list-skills          List every installable Skill
+  --skill <name>         Install one Skill by name (repeatable)
+  --all-skills           Install the full canonical Skill library
   --doctor               Verify the selected installation (read-only)
   --install              Apply changes (default: preview)
   --connect              Connect installed Adapter state and write a pending receipt
@@ -85,12 +88,12 @@ function requireValue(argv, index, option) {
 
 function parseArgs(argv) {
   const usesMultiTargetInterface = argv.some((argument) =>
-    ["--tool", "--all-tools", "--list-tools", "--home", "--project-dir", "--no-agents", "--no-skills", "--with-subagents", "--all-subagents", "--with-cco-specialists", "--doctor", "--connect"].includes(argument),
+    ["--tool", "--all-tools", "--list-tools", "--list-skills", "--home", "--project-dir", "--no-agents", "--no-skills", "--skill", "--all-skills", "--with-subagents", "--all-subagents", "--with-cco-specialists", "--doctor", "--connect"].includes(argument),
   );
   const options = {
-    install: false, connect: false, doctor: false, listTools: false, listTeams: false, verbose: false,
+    install: false, connect: false, doctor: false, listTools: false, listSkills: false, listTeams: false, verbose: false,
     tools: [], allTools: false, home: homedir(), homeExplicit: false, projectDir: process.cwd(),
-    includeAgents: true, includeSkills: true, teams: [], allTeams: true,
+    includeAgents: true, includeSkills: true, skills: [], allSkills: false, teams: [], allTeams: true,
     allAgents: false, globalCeo: true, codexHome: process.env.CODEX_HOME || null,
     plugin: false, legacy: false, includeCcoSpecialists: false, subagentManagers: [], allSubagents: false,
   };
@@ -102,8 +105,10 @@ function parseArgs(argv) {
     else if (argument === "--verbose") options.verbose = true;
     else if (argument === "--all-tools") options.allTools = true;
     else if (argument === "--list-tools") options.listTools = true;
+    else if (argument === "--list-skills") options.listSkills = true;
     else if (argument === "--no-agents") options.includeAgents = false;
     else if (argument === "--no-skills") options.includeSkills = false;
+    else if (argument === "--all-skills") options.allSkills = true;
     else if (argument === "--with-cco-specialists") options.includeCcoSpecialists = true;
     else if (argument === "--all-subagents") options.allSubagents = true;
     else if (argument === "--all-teams") { options.allTeams = true; options.legacy = true; }
@@ -113,18 +118,21 @@ function parseArgs(argv) {
     else if (argument === "--skip-plugin") options.plugin = false;
     else if (argument === "--list") { options.listTeams = true; options.legacy = true; }
     else if (argument === "--help" || argument === "-h") { usage(); process.exit(0); }
-    else if (["--tool", "--home", "--project-dir", "--team", "--codex-home", "--with-subagents"].includes(argument)) {
+    else if (["--tool", "--home", "--project-dir", "--team", "--codex-home", "--with-subagents", "--skill"].includes(argument)) {
       const value = requireValue(argv, index, argument);
       if (argument === "--tool") options.tools.push(value);
       else if (argument === "--home") { options.home = value; options.homeExplicit = true; }
       else if (argument === "--project-dir") options.projectDir = value;
       else if (argument === "--team") { options.teams.push(value); options.allTeams = false; options.legacy = true; }
       else if (argument === "--with-subagents") options.subagentManagers.push(value);
+      else if (argument === "--skill") options.skills.push(value);
       else { options.codexHome = value; options.legacy = true; }
       index += 1;
     } else throw new Error(`unknown option: ${argument}`);
   }
   if (!options.includeAgents && !options.includeSkills) throw new Error("--no-agents and --no-skills select no content");
+  if (options.allSkills && options.skills.length) throw new Error("choose --all-skills or --skill, not both");
+  if (!options.includeSkills && (options.allSkills || options.skills.length)) throw new Error("--all-skills/--skill conflict with --no-skills");
   if (!options.includeAgents && (options.includeCcoSpecialists || options.allSubagents || options.subagentManagers.length)) throw new Error("subagent options require Agents");
   if (options.allSubagents && (options.includeCcoSpecialists || options.subagentManagers.length)) throw new Error("choose --all-subagents or individual subagent groups, not both");
   if (options.install && options.doctor) throw new Error("choose either --install or --doctor");
@@ -216,6 +224,20 @@ function listTools(catalog) {
 function listTeams(catalog) {
   console.log("AGI Super Team outcome Teams");
   for (const team of catalog.kits) console.log(`  ${team.id.padEnd(20)} ${team.name} — ${team.agents.join(", ")}`);
+}
+
+function listSkills(catalog) {
+  console.log(`AGI Super Team Skills (${catalog.physicalSkills.length} canonical + ${catalog.curatedSkills.length} curated)`);
+  for (const name of catalog.physicalSkills) console.log(`  ${name}`);
+  console.log("\nCurated (Codex plugin):");
+  for (const name of catalog.curatedSkills) console.log(`  ${name}`);
+}
+
+function selectedSkillSelection(options) {
+  if (!options.includeSkills) return null;
+  if (options.allSkills) return { all: true };
+  if (options.skills.length) return { names: options.skills };
+  return null;
 }
 
 function selectedAgentIds(catalog, options) {
@@ -320,10 +342,13 @@ function mergedSelection(catalog, options, tools, agentIds, subagentManagers) {
   const specialists = options.includeAgents
     ? [...subagentManagers].flatMap((manager) => catalog.specialistGroups[manager].specialists)
     : [];
+  const skillNames = options.allSkills
+    ? [...catalog.physicalSkills, ...catalog.curatedSkills]
+    : options.skills.length ? options.skills : catalog.skills;
   return {
     agents: agents.map((agent) => agent.id),
     specialists: specialists.map((specialist) => specialist.id),
-    skills: options.includeSkills ? catalog.skills.map((skill) => `skill:${skill}`) : [],
+    skills: options.includeSkills ? skillNames.map((skill) => `skill:${skill}`) : [],
   };
 }
 
@@ -366,6 +391,8 @@ function nextInstallCommand(options, tools, supportsConnect) {
   }
   if (!options.includeAgents) parts.push("--no-agents");
   if (!options.includeSkills) parts.push("--no-skills");
+  if (options.allSkills) parts.push("--all-skills");
+  else for (const skill of options.skills) parts.push("--skill", skill);
   if (options.allSubagents) parts.push("--all-subagents");
   else for (const manager of options.subagentManagers) parts.push("--with-subagents", manager);
   if (options.plugin) parts.push("--plugin");
@@ -453,6 +480,7 @@ function main() {
     const options = parseArgs(process.argv.slice(2));
     const catalog = loadCatalog(PACKAGE_ROOT);
     if (options.listTools) { listTools(catalog); return; }
+    if (options.listSkills) { listSkills(catalog); return; }
     if (options.listTeams) { listTeams(catalog); return; }
     let tools = selectTools(catalog, options.tools, options.allTools);
     if (options.connect) {
@@ -494,6 +522,7 @@ function main() {
         subagentManagers,
         includeCcoSpecialists: options.includeCcoSpecialists,
         codexPayloadAll: options.allAgents,
+        skillSelection: selectedSkillSelection(options),
       };
       const artifacts = buildPlan({
         ...common,

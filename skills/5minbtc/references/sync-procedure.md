@@ -4,8 +4,8 @@
 
 | 角色 | hermes 机 (Linux) | Mac (daniel 本机) |
 |------|------------------|------------------|
-| 运行副本 (源) | `/home/aa/.hermes/profiles/cqo/skills/5minbtc/` | `~/.claude/skills/5minbtc/` |
-| 共享仓库 | `/home/aa/clawd/repos/AGI-Super-Team/` | `~/AGI-Super-Team/` |
+| 运行副本 (源) | `$HOME/.hermes/profiles/cqo/skills/5minbtc/` | `~/.claude/skills/5minbtc/` |
+| 共享仓库 | `$HOME/clawd/repos/AGI-Super-Team/` | `~/AGI-Super-Team/` |
 
 ⚠️ 仓库分支是 **`main`**（不是 master）。下面命令按 hermes 机写，Mac 上把两个路径换成上表右侧即可。
 
@@ -18,15 +18,15 @@ rsync -avc \
   --exclude='data/' --exclude='/archive/' --exclude='reviews/' --exclude='__pycache__/' \
   --exclude='logs/*.jsonl' --exclude='logs/*.jsonl.*' \
   --exclude='backtest/results/' \
-  /home/aa/.hermes/profiles/cqo/skills/5minbtc/ \
-  /home/aa/clawd/repos/AGI-Super-Team/skills/5minbtc/
+  $HOME/.hermes/profiles/cqo/skills/5minbtc/ \
+  $HOME/clawd/repos/AGI-Super-Team/skills/5minbtc/
 
 # 2. 校验：必须只有「刻意排除的东西」有差异
 diff -rq ~/.claude/skills/5minbtc/ ~/AGI-Super-Team/skills/5minbtc/ \
   | grep -v 'logs/5minbtc-log.jsonl'     # 只应剩下 live 日志这一条
 
 # 3. 提交推送
-cd /home/aa/clawd/repos/AGI-Super-Team
+cd $HOME/clawd/repos/AGI-Super-Team
 git add -A skills/5minbtc/
 git commit -m "sync(skills/5minbtc): <变更简述>"
 git pull --rebase origin main    # 另一台机器可能已推过

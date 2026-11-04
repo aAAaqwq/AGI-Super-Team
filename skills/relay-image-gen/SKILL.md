@@ -1,7 +1,7 @@
 ---
 name: relay-image-gen
-description: Multi-provider image generation with automatic priority fallback
-  Multi-provider image generation with priority fallback.
+description: |
+  Multi-provider image generation with automatic priority fallback.
   Priority: vectronode (gpt-image-2/gpt-image-2-all) → qingyun Gemini → OpenClaw image tool → relay providers.
   Supports 1K/2K/4K, multiple aspect ratios, auto fallback.
   Extensible: add custom relay/API providers to PROVIDER_CONFIG.

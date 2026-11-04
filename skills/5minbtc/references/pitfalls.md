@@ -52,7 +52,7 @@
 所谓"双向故障切换"指的是**这两个方向的 sed 命令都备好了**，需要人来跑。
 → 2026-09-11 的 6 小时静默断档就是后果，见 #20）：
 ```bash
-SKILL_DIR=/home/aa/.hermes/profiles/cqo/skills/5minbtc
+SKILL_DIR=$HOME/.hermes/profiles/cqo/skills/5minbtc
 
 # 方向A: 切换到 api.binance.us (当 data-api 不可用时)
 sed -i 's|BINANCE_KLINES = .*|BINANCE_KLINES = "https://api.binance.us/api/v3/klines"|' $SKILL_DIR/5minbtc-engine-v6.0.py
@@ -208,7 +208,7 @@ hermes logs --component cron -n 50
 # 验证替代 provider 可用（必须先验证！）
 python3 -c "
 import urllib.request, json
-key = open('/home/aa/.hermes/profiles/cqo/.env').read().split('ZAI_API_KEY=')[1].split(chr(10))[0]
+key = open('$HOME/.hermes/profiles/cqo/.env').read().split('ZAI_API_KEY=')[1].split(chr(10))[0]
 req = urllib.request.Request(
     'https://open.bigmodel.cn/api/coding/paas/v4/models',
     headers={'Authorization': f'Bearer {key}'}
@@ -228,7 +228,7 @@ hermes cron run --job-id d8058223a1e0
 # 读 last_status
 python3 -c "
 import json
-jobs = json.load(open('/home/aa/.hermes/profiles/cqo/cron/jobs.json'))
+jobs = json.load(open('$HOME/.hermes/profiles/cqo/cron/jobs.json'))
 for j in jobs['jobs']:
     if j['id'] == 'd8058223a1e0':
         print(f'last_status={j[\"last_status\"]} last_run_at={j[\"last_run_at\"]}')
@@ -356,7 +356,7 @@ for j in jobs['jobs']:
 
 **操作步骤**:
 ```bash
-SKILL_DIR=/home/aa/.hermes/profiles/cqo/skills/5minbtc
+SKILL_DIR=$HOME/.hermes/profiles/cqo/skills/5minbtc
 cd "$SKILL_DIR"
 
 # 备份

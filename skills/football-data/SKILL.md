@@ -1,6 +1,7 @@
 ---
 name: football-data
-description: Before first use, check if the CLI is available
+description: |
+  Before first use, check if the CLI is available
   Football (soccer) data across 13 leagues — standings, schedules, match stats, xG, transfers, player profiles. Zero config, no API keys. Covers Premier League, La Liga, Bundesliga, Serie A, Ligue 1, MLS, Champions League, World Cup, Championship, Eredivisie, Primeira Liga, Serie A Brazil, European Championship.
 
   Use when: user asks about football/soccer standings, fixtures, match stats, xG, lineups, player values, transfers, injury news, league tables, daily fixtures, or player profiles.

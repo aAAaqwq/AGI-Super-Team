@@ -107,7 +107,7 @@ launchctl bootout gui/$(id -u)/com.daniel.5minbtc-daily-report
 ```bash
 # 任务 B（shell 直跑，不走 LLM）
 cc-connect cron add --cron "15 23 * * *" \
-  --exec "/usr/bin/python3 /Users/daniel/.claude/skills/5minbtc/scripts/5minbtc_day_stats.py --push" \
+  --exec "/usr/bin/python3 $HOMEaniel/.claude/skills/5minbtc/scripts/5minbtc_day_stats.py --push" \
   --desc "5minbtc 每日战绩"
 
 # 任务 A（LLM 工作流型）
@@ -151,7 +151,7 @@ cc-connect cron del <job-id>
     <key>ProgramArguments</key>
     <array>
         <string>/usr/bin/python3</string>
-        <string>/Users/daniel/.claude/skills/5minbtc/scripts/5minbtc_day_stats.py</string>
+        <string>$HOMEaniel/.claude/skills/5minbtc/scripts/5minbtc_day_stats.py</string>
         <string>--push</string>
     </array>
 
@@ -170,9 +170,9 @@ cc-connect cron del <job-id>
     <string>Background</string>
 
     <key>StandardOutPath</key>
-    <string>/Users/daniel/bb-auto/logs/launchd-daily-report.out.log</string>
+    <string>$HOMEaniel/bb-auto/logs/launchd-daily-report.out.log</string>
     <key>StandardErrorPath</key>
-    <string>/Users/daniel/bb-auto/logs/launchd-daily-report.err.log</string>
+    <string>$HOMEaniel/bb-auto/logs/launchd-daily-report.err.log</string>
 </dict>
 </plist>
 ```
@@ -188,7 +188,7 @@ launchd **不做命令替换**，所以要用 shell 包一层（注意 macOS 的
     <array>
         <string>/bin/bash</string>
         <string>-c</string>
-        <string>/usr/bin/python3 /Users/daniel/.claude/skills/5minbtc/scripts/5minbtc_day_stats.py --date $(date -v-1d +%F) --push</string>
+        <string>/usr/bin/python3 $HOMEaniel/.claude/skills/5minbtc/scripts/5minbtc_day_stats.py --date $(date -v-1d +%F) --push</string>
     </array>
     <key>StartCalendarInterval</key>
     <dict><key>Hour</key><integer>0</integer><key>Minute</key><integer>5</integer></dict>

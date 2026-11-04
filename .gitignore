@@ -122,3 +122,7 @@ skills/*/data/
 skills/xhs-skill/data/
 skills/*/login_page.png
 skills/*/xhs_login_qr*.png
+
+# xhs-skill 的运行时辅助模块（被上面的通用 lib/ 规则误伤，需入库才能复现发布包）
+!skills/xhs-skill/lib/
+!skills/xhs-skill/lib/**

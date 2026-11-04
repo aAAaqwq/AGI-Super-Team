@@ -1,6 +1,6 @@
 {
   "name": "agi-super-team",
-  "version": "1.7.1",
+  "version": "1.8.0",
   "description": "Evidence-backed AI team packs with preview-first installation and repository contracts",
   "license": "MIT",
   "repository": {
@@ -34,6 +34,8 @@
     "config/*-specialists.json",
     "config/specialist-routing.schema.json",
     "config/team-manifest.json",
+    "config/skill-index.schema.json",
+    "config/README.md",
     "plugins/README.md",
     "plugins/agi-super-team-codex/.codex-plugin/plugin.json",
     "plugins/agi-super-team-codex/payload/",
@@ -47,6 +49,8 @@
     "plugins/agi-super-team-hermes/**",
     "plugins/agi-super-team-dsh/**",
     "plugins/agi-super-team-openclaw/**",
+    "catalog/skill-index.json",
+    "catalog/README.md",
     "skills/",
     "LICENSE",
     "README.md",
@@ -69,6 +73,7 @@
     "access": "public"
   },
   "scripts": {
+    "prepack": "bash scripts/normalize_package_modes.sh",
     "prepublishOnly": "npm test && npm run validate:strict && git diff --check",
     "build:all": "bash scripts/build_all.sh",
     "test": "npm run test:repository && npm run test:installer && npm run check:subagent-sources && npm run check:agent-indexes && npm run check:team-index && npm run check:codex-team && npm run check:harness-packages && npm run check:skills && npm run check:skill-quality && npm run check:taxonomy-evaluation && npm run check:architecture",

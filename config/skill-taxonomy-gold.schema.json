@@ -16,7 +16,7 @@
         "mode": {"const": "independent-agent-manual-review"},
         "humanApproved": {"const": false},
         "rubric": {"const": "../docs/skill-taxonomy-gold-set.md"},
-        "labelSetSha256": {"const": "78e6b44843fc60d08d1a9cc3fb728fdfec2eccfc35b812064b53342559ba7da1"}
+        "labelSetSha256": {"const": "4f8425f03504f20bc7f4830cdaa194f831352d39e1b94de91a96cc55a0cb201f"}
       }
     },
     "sampling": {

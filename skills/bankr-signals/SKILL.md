@@ -1,6 +1,7 @@
 ---
 name: bankr-signals
-description: Transaction-verified trading signals on Base blockchain. Agents publish trades
+description: |
+  Transaction-verified trading signals on Base blockchain. Agents publish trades
   Transaction-verified trading signals on Base. Register agent as signal provider,
   publish trades with TX hash proof, consume signals from top performers via REST API.
   All track records verified against blockchain data. No fake performance claims.

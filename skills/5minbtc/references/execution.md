@@ -20,7 +20,7 @@
 
 ### 引擎命令 (绝对路径)
 ```bash
-SKILL_DIR=/home/aa/.hermes/profiles/cqo/skills/5minbtc && \
+SKILL_DIR=$HOME/.hermes/profiles/cqo/skills/5minbtc && \
   python3 $SKILL_DIR/5minbtc-log.py settle-all 2>&1; \
   echo "---ENGINE---"; \
   python3 $SKILL_DIR/5minbtc-engine-v6.0.py 2>&1; \
@@ -33,7 +33,7 @@ SKILL_DIR=/home/aa/.hermes/profiles/cqo/skills/5minbtc && \
 
 ### Step 3: 记录日志
 ```bash
-SKILL_DIR=/home/aa/.hermes/profiles/cqo/skills/5minbtc && \
+SKILL_DIR=$HOME/.hermes/profiles/cqo/skills/5minbtc && \
   python3 $SKILL_DIR/5minbtc-log.py log \
     "<engine.candle.iso>" \
     <final_pred_close> \

@@ -36,7 +36,9 @@ class ReadmeContractTests(unittest.TestCase):
             for tier in ("required", "optional", "harnessSpecific")
             for skill in agent["skills"][tier]
         }
-        self.assertEqual(len(assigned_skills), 169)
+        self.assertGreater(len(assigned_skills), 0)
+        for skill in assigned_skills:
+            self.assertTrue((ROOT / "skills" / skill / "SKILL.md").is_file(), skill)
         self.assertIn("its `SKILL.md` entrypoints", self.english)
         self.assertIn("可发现的 `SKILL.md` 入口", self.chinese)
         self.assertIn("sus puntos de entrada `SKILL.md`", self.spanish)

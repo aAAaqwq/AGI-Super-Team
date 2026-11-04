@@ -1,12 +1,7 @@
-***
-
+---
 name: daniel-xhs-writing
-
-description: "小红书图文笔记的选题、标题、封面、正文、标签、互动与公众号长文→小红书图文重写方法论。整合爆款六要素、六类爆款结构、Daniel 小红书卡片合同、emoji / 标签合同与硬门；涉及 Daniel 个人 IP 时先走 daniel-self-media-top-mindset 五维检查与 daniel-content-writing-style 状态机。不用于保证爆火、伪造亲历、自动发布或刷量。"
-
-
-
-***
+description: "小红书图文写作：选题、标题、封面、正文、标签与公众号长文改写。需要把素材或长文做成可发布的小红书图文时使用；不用于保证爆火、伪造亲历、自动发布或刷量。"
+---
 
 # Daniel 小红书图文写作
 

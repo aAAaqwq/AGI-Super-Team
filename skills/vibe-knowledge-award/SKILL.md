@@ -1,3 +1,8 @@
+---
+name: vibe-knowledge-award
+description: "抖音「Vibe 知识大赏」知识科普短视频创作：用 AI 写代码 + Remotion/HyperFrames 生成动画短片，覆盖选题、脚本、分镜、渲染与发布门。不用于实拍口播、产品带货、剧情短剧或纯混剪。"
+---
+
 # Vibe 知识大赏 · 视频创作 Skill
 
 > 抖音 #vibe知识大赏 活动专属创作能力：用 AI 写代码生成氛围感知识科普视频，一段提示词做出 10w+ 播放的知识短片。
