@@ -11,11 +11,11 @@
 
 | | 数量 | 会被安装吗 | 读哪一节 |
 |---|---|---|---|
-| **团队精华**：已分配给某个角色的 Skill | 186 | 会：5 个目标声明 `canonical-assigned`（`claude-code`、`codex`、`dsh`、`hermes`、`openclaw`），装的就是这 186 个 | 第 2、3 节 |
-| **工具箱**：未分配给任何角色的 Skill | 662 | 不会：包里有、安装器不复制 | 第 7 节 · [`catalog/`](../../catalog/) |
-| 物理总量（`skills/` 下的可发现入口） | 848 | — | — |
+| **团队精华**：已分配给某个角色的 Skill | 192 | 会：5 个目标声明 `canonical-assigned`（`claude-code`、`codex`、`dsh`、`hermes`、`openclaw`），装的就是这 192 个 | 第 2、3 节 |
+| **工具箱**：未分配给任何角色的 Skill | 661 | 不会：包里有、安装器不复制 | 第 7 节 · [`catalog/`](../../catalog/) |
+| 物理总量（`skills/` 下的可发现入口） | 853 | — | — |
 
-**一句话**：`186` 个方法 + `14` 个角色 = 精华；另外 `662` 个不是废料，只是不在任何角色的职责范围内，按需取用即可。
+**一句话**：`192` 个方法 + `14` 个角色 = 精华；另外 `661` 个不是废料，只是不在任何角色的职责范围内，按需取用即可。
 
 **怎么读这一页（层层递进，每层结尾指向下一层）**
 
@@ -23,10 +23,10 @@
 |---|---|---|---|
 | A | 这个团队能干什么、我这个方向归谁 | 第 2 节 总览表 | 按领域锁定一两个候选角色 |
 | B | 该不该叫它、它配什么方法、它能派谁 | 第 3 节 角色卡 | 直接点名一个角色，或知道该派谁 |
-| C | 某个方法归谁管 | 第 4 节 方法反查（186） | 反查到方法及其归属角色 |
+| C | 某个方法归谁管 | 第 4 节 方法反查（192） | 反查到方法及其归属角色 |
 | D | 怎么开始动手 | 第 5 节 快速开始 | 选一个 RUNBOOK 跑起来 |
 | E | Agent 怎么执行和复核 | 第 6 节 操作规则 | 判级、派发、复核一次做对 |
-| F | 剩下 662 个怎么取 | 第 7 节 工具箱 | 知道去哪找、还缺哪条命令 |
+| F | 剩下 661 个怎么取 | 第 7 节 工具箱 | 知道去哪找、还缺哪条命令 |
 
 > 本页是**导航**，不是策略权威。路由分级（L0–L3）与各框架强制边界的完整定义在 [路由分级与强制层](../../docs/guides/routing-and-enforcement.md)；团队与 Skill 的连接原理在 [Team/C-suite/Subagent/Skill 连接原理](../../docs/guides/team-agent-skill-architecture.md)。
 
@@ -40,7 +40,7 @@
 | [`cto`](#cto) | 技术战略 | 需要技术战略选择、架构边界划分、接口/API 设计评审、技术选型对比、平台成本评估、系统可靠性设计或故障复盘时调用。 | 22 | 20 |
 | [`pe`](#pe) | 工程交付 | 已批准的设计需要跨模块实现、集成、测试、代码评审、缺陷修复或可回退交付时调用。 | — | 24 |
 | [`cpo`](#cpo) | 产品 | 需要产品方向取舍、用户问题定义与需求澄清、体验与可访问性评审、优先级排序或可验证需求拆解时调用。 | 3 | 15 |
-| [`cqo`](#cqo) | 量化研究 | 需要量化假设设计、回测与复现、模型评估与独立复核、组合风险控制或实验预登记时调用。 | 4 | 17 |
+| [`cqo`](#cqo) | 量化研究 | 需要量化假设设计、回测与复现、模型评估与独立复核、组合风险控制或实验预登记时调用。 | 4 | 23 |
 | [`cmo`](#cmo) | 市场增长 | 需要市场定位与品牌策略、渠道增长实验、付费投放或 SEO 方案、获客测量与归因设计时调用。 | 7 | 18 |
 | [`cfo`](#cfo) | 财务 | 需要预算与滚动预测、单位经济与定价证据、资本配置取舍、财务控制或成本优化时调用。 | 8 | 15 |
 | [`cdo`](#cdo) | 数据 | 需要数据契约与口径定义、数据质量与血缘治理、指标体系或分析模型设计、数据安全架构评审时调用。 | 5 | 16 |
@@ -51,7 +51,7 @@
 | [`coo`](#coo) | 运营 | 需要运营计划与执行节奏、责任与依赖映射、跨部门流程与 SOP 设计、产能规划或异常恢复安排时调用。 | 4 | 15 |
 | [`governor`](#governor) | 独立复核 | 需要独立复核重大结论、发布、安全、资金、法律或完成声明，并给出放行门决定或风险升级时调用。 | — | 16 |
 
-共 14 个角色、92 个叶子、186 个方法。叶子只在第 3 节展开 —— 先从这 14 行里挑人，挑不出再往下看。
+共 14 个角色、92 个叶子、192 个方法。叶子只在第 3 节展开 —— 先从这 14 行里挑人，挑不出再往下看。
 
 ## 3 · 角色卡：每个人管什么、配什么方法、能派谁
 
@@ -188,7 +188,7 @@
 
 **标准交付物**：可证伪研究假设 · 可复现回测 · 风险调整后评估
 
-**规模**：4 个叶子专家 · 5 必需 / 7 可选 / 5 Harness 专属
+**规模**：4 个叶子专家 · 5 必需 / 13 可选 / 5 Harness 专属
 
 **派发约束**：同时最多 2 个子代理；角色深度上限 2；叶子不得继续派发
 
@@ -196,7 +196,7 @@
 
 **必需方法（core，通用安装器会装）**：[`backtest-expert`](../../skills/backtest-expert/) · [`backtesting-frameworks`](../../skills/backtesting-frameworks/) · [`quant-analyst`](../../skills/quant-analyst/) · [`research-evidence-synthesis`](../../skills/research-evidence-synthesis/) · [`risk-metrics-calculation`](../../skills/risk-metrics-calculation/)
 
-**可选方法（standard 层加入）**：[`csv-pipeline`](../../skills/csv-pipeline/) · [`data-analyst`](../../skills/data-analyst/) · [`defi-risk-assessment`](../../skills/defi-risk-assessment/) · [`financial-planning-and-analysis`](../../skills/financial-planning-and-analysis/) · [`technical-analysis`](../../skills/technical-analysis/) · [`5minbtc`](../../skills/5minbtc/) · [`binance-square`](../../skills/binance-square/)
+**可选方法（standard 层加入）**：[`csv-pipeline`](../../skills/csv-pipeline/) · [`data-analyst`](../../skills/data-analyst/) · [`defi-risk-assessment`](../../skills/defi-risk-assessment/) · [`financial-planning-and-analysis`](../../skills/financial-planning-and-analysis/) · [`technical-analysis`](../../skills/technical-analysis/) · [`5minbtc`](../../skills/5minbtc/) · [`binance-square`](../../skills/binance-square/) · [`a-share-analysis`](../../skills/a-share-analysis/) · [`ashare-auction-analysis`](../../skills/ashare-auction-analysis/) · [`ashare-volume-resonance-analysis`](../../skills/ashare-volume-resonance-analysis/) · [`chip-peak-and-screening-methods`](../../skills/chip-peak-and-screening-methods/) · [`main-force-prelaunch-pattern`](../../skills/main-force-prelaunch-pattern/) · [`youzi-stock-quality-screen`](../../skills/youzi-stock-quality-screen/)
 
 **Harness 专属（依赖特定 harness，通用安装器不装）**：[`alpha101`](../../skills/alpha101/) · [`backtesting-trading-strategies`](../../skills/backtesting-trading-strategies/) · [`company-investment-research`](../../skills/company-investment-research/) · [`deep-research`](../../skills/deep-research/) · [`trade-prediction-markets`](../../skills/trade-prediction-markets/)
 
@@ -570,12 +570,13 @@
 
 ## 4 · 方法反查：某个 Skill 归谁管
 
-安装的是 186 个「已分配」方法。要按方法名反查归属，看这张表：
+安装的是 192 个「已分配」方法。要按方法名反查归属，看这张表：
 「必需」= 该角色的核心方法（缺失即失职）；「可选 / Harness」= 该角色可以调用，但不是它的身份。
 
 | Skill | 必需（谁的核心方法） | 可选 / Harness |
 |---|---|---|
 | [`5minbtc`](../../skills/5minbtc/) | — | `cqo` |
+| [`a-share-analysis`](../../skills/a-share-analysis/) | — | `cqo` |
 | [`accessibility-compliance-accessibility-audit`](../../skills/accessibility-compliance-accessibility-audit/) | `cpo` | `clo`、`governor` |
 | [`account-executive`](../../skills/account-executive/) | — | `cso` |
 | [`agent-qa`](../../skills/agent-qa/) | — | `pe`、`governor` |
@@ -591,6 +592,8 @@
 | [`article-to-infographic`](../../skills/article-to-infographic/) ⚡ | — | `cco` |
 | [`arxiv-automation`](../../skills/arxiv-automation/) ⚡ | — | `cro` |
 | [`asana-automation`](../../skills/asana-automation/) ⚡ | — | `coo` |
+| [`ashare-auction-analysis`](../../skills/ashare-auction-analysis/) | — | `cqo` |
+| [`ashare-volume-resonance-analysis`](../../skills/ashare-volume-resonance-analysis/) | — | `cqo` |
 | [`backtest-expert`](../../skills/backtest-expert/) | `cqo` | — |
 | [`backtesting-frameworks`](../../skills/backtesting-frameworks/) | `cqo` | — |
 | [`backtesting-trading-strategies`](../../skills/backtesting-trading-strategies/) ⚡ | — | `cqo` |
@@ -601,6 +604,7 @@
 | [`business-analyst`](../../skills/business-analyst/) | — | `cfo`、`cdo` |
 | [`campaign-analytics`](../../skills/campaign-analytics/) | — | `cmo` |
 | [`china-contract-review`](../../skills/china-contract-review/) | — | `clo` |
+| [`chip-peak-and-screening-methods`](../../skills/chip-peak-and-screening-methods/) | — | `cqo` |
 | [`claude-code-runner`](../../skills/claude-code-runner/) ⚡ | — | `pe` |
 | [`cli-developer`](../../skills/cli-developer/) | — | `pe` |
 | [`close-automation`](../../skills/close-automation/) ⚡ | — | `cso` |
@@ -680,6 +684,7 @@
 | [`life-decision-guide`](../../skills/life-decision-guide/) | — | `ceo` |
 | [`linear-automation`](../../skills/linear-automation/) ⚡ | — | `coo` |
 | [`mailchimp-automation`](../../skills/mailchimp-automation/) ⚡ | — | `cmo` |
+| [`main-force-prelaunch-pattern`](../../skills/main-force-prelaunch-pattern/) | — | `cqo` |
 | [`market-sizing-analysis`](../../skills/market-sizing-analysis/) | — | `cro` |
 | [`marketing-psychology`](../../skills/marketing-psychology/) | — | `cmo` |
 | [`model-business-processes`](../../skills/model-business-processes/) | `coo` | — |
@@ -760,6 +765,7 @@
 | [`wechat-article-analysis`](../../skills/wechat-article-analysis/) | — | `cco`、`cro` |
 | [`write-product-documentation`](../../skills/write-product-documentation/) | — | `cpo` |
 | [`xhs-publisher`](../../skills/xhs-publisher/) ⚡ | — | `cco` |
+| [`youzi-stock-quality-screen`](../../skills/youzi-stock-quality-screen/) | — | `cqo` |
 | [`zoho-crm-automation`](../../skills/zoho-crm-automation/) ⚡ | — | `cso` |
 
 ⚡ = 只出现在 Harness 专属层：需要对应 harness 或外部连接器，通用安装器不会复制。
@@ -791,9 +797,9 @@
 
 判级与强制边界的完整定义见 [路由分级与强制层](../../docs/guides/routing-and-enforcement.md)；各框架能强制什么、不能强制什么见 [框架兼容性](../../docs/guides/harness-compatibility.html)。
 
-## 7 · 工具箱：没装的那 662 个
+## 7 · 工具箱：没装的那 661 个
 
-`skills/` 下有 848 个物理入口，其中 186 个属于团队（第 3、4 节），剩下 662 个不属于任何角色，安装器不会复制。它们仍然可以：
+`skills/` 下有 853 个物理入口，其中 192 个属于团队（第 3、4 节），剩下 661 个不属于任何角色，安装器不会复制。它们仍然可以：
 
 - **检索**：看生成目录 [`catalog/README.md`](../../catalog/README.md) 或机器可读的 [`catalog/skill-index.json`](../../catalog/skill-index.json)。
 - **取用**：目录是完整的。npm 安装的包里有整棵 `skills/` 树（`node_modules/agi-super-team/skills/<id>/`，[ADR-0008](../../docs/adr/0008-ship-complete-skills-directory.md) 决定全量打包）；git 用户直接在 `skills/<id>/` 下拿。要取就取整个目录 —— 只拿 `SKILL.md` 会得到一个坏 Skill，因为它的正文会引用自己的 `references/` 与 `scripts/`。

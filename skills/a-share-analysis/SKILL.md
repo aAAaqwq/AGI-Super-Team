@@ -1,3 +1,8 @@
+---
+name: a-share-analysis
+description: "A 股量化投资分析：分析个股、精选标的、盘前情报、主线复盘与日报生成。需要评估 A 股个股或当日市场主线时使用；不构成投资建议，不用于自动下单。"
+---
+
 # A股量化投资分析 Skill
 
 > **定位**: Agent可直接加载的A股投资分析技能
@@ -38,7 +43,7 @@
 ## 项目路径
 
 ```
-~/.openclaw/workspace/projects/a-share/
+$HOME/projects/a-share/
 ├── SKILL.md                     # 本文件
 ├── config.json                  # 全局配置
 ├── config/
@@ -138,9 +143,9 @@ Step 3: 输出情报汇总表格
 ### 一键执行
 
 ```bash
-cd ~/.openclaw/workspace/projects/a-share && bash daily_run.sh
+cd $HOME/projects/a-share && bash daily_run.sh
 # 或
-cd ~/.openclaw/workspace/projects/a-share && ./venv/bin/python3 reporter.py
+cd $HOME/projects/a-share && ./venv/bin/python3 reporter.py
 
 ---
 
@@ -330,7 +335,7 @@ else:               style = "空头市场"
 ```bash
 #!/bin/bash
 # daily_run.sh
-cd ~/.openclaw/workspace/projects/a-share
+cd $HOME/projects/a-share
 
 echo "=== 🐉 天枢A股分析 $(date '+%Y-%m-%d') ==="
 

@@ -208,7 +208,13 @@
           "financial-planning-and-analysis",
           "technical-analysis",
           "5minbtc",
-          "binance-square"
+          "binance-square",
+          "a-share-analysis",
+          "ashare-auction-analysis",
+          "ashare-volume-resonance-analysis",
+          "chip-peak-and-screening-methods",
+          "main-force-prelaunch-pattern",
+          "youzi-stock-quality-screen"
         ],
         "harnessSpecific": [
           "alpha101",

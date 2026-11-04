@@ -35,7 +35,7 @@
 - [`security-compliance-compliance-check`](../../skills/security-compliance-compliance-check/) — 来源待核 · 尚未评分 · 运行证据：待验证
 - [`vibe-code-auditor`](../../skills/vibe-code-auditor/) — 来源待核 · 尚未评分 · 运行证据：待验证
 - [`truth-discipline`](../../skills/truth-discipline/) — 来源待核 · 尚未评分 · 运行证据：待验证
-- [`agent-qa`](../../skills/agent-qa/) — 来源待核 · 尚未评分 · 运行证据：待验证
+- [`agent-qa`](../../skills/agent-qa/) — 项目原创 · 尚未评分 · 运行证据：待验证
 
 ## 🔌 Harness 专属能力
 

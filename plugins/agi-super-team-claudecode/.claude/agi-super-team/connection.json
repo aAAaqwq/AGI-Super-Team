@@ -101,6 +101,7 @@
   "assignedSkills": {
     "all": [
       "5minbtc",
+      "a-share-analysis",
       "accessibility-compliance-accessibility-audit",
       "account-executive",
       "agent-qa",
@@ -116,6 +117,8 @@
       "article-to-infographic",
       "arxiv-automation",
       "asana-automation",
+      "ashare-auction-analysis",
+      "ashare-volume-resonance-analysis",
       "backtest-expert",
       "backtesting-frameworks",
       "backtesting-trading-strategies",
@@ -126,6 +129,7 @@
       "business-analyst",
       "campaign-analytics",
       "china-contract-review",
+      "chip-peak-and-screening-methods",
       "claude-code-runner",
       "cli-developer",
       "close-automation",
@@ -205,6 +209,7 @@
       "life-decision-guide",
       "linear-automation",
       "mailchimp-automation",
+      "main-force-prelaunch-pattern",
       "market-sizing-analysis",
       "marketing-psychology",
       "model-business-processes",
@@ -285,6 +290,7 @@
       "wechat-article-analysis",
       "write-product-documentation",
       "xhs-publisher",
+      "youzi-stock-quality-screen",
       "zoho-crm-automation"
     ],
     "byAgent": {
@@ -376,22 +382,28 @@
       ],
       "cqo": [
         "5minbtc",
+        "a-share-analysis",
         "alpha101",
+        "ashare-auction-analysis",
+        "ashare-volume-resonance-analysis",
         "backtest-expert",
         "backtesting-frameworks",
         "backtesting-trading-strategies",
         "binance-square",
+        "chip-peak-and-screening-methods",
         "company-investment-research",
         "csv-pipeline",
         "data-analyst",
         "deep-research",
         "defi-risk-assessment",
         "financial-planning-and-analysis",
+        "main-force-prelaunch-pattern",
         "quant-analyst",
         "research-evidence-synthesis",
         "risk-metrics-calculation",
         "technical-analysis",
-        "trade-prediction-markets"
+        "trade-prediction-markets",
+        "youzi-stock-quality-screen"
       ],
       "cmo": [
         "analytics-tracking",

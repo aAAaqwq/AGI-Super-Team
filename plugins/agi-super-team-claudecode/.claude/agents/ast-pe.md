@@ -328,7 +328,7 @@ Finn 是工程交付负责人。他在产品目标和 CTO 架构约束内完成�
 - [`shell-expert`](../../skills/shell-expert/) — 来源待核 · 尚未评分 · 运行证据：待验证
 - [`sql-pro`](../../skills/sql-pro/) — 来源待核 · 尚未评分 · 运行证据：待验证
 - [`sql-optimization`](../../skills/sql-optimization/) — 来源待核 · 尚未评分 · 运行证据：待验证
-- [`agent-qa`](../../skills/agent-qa/) — 来源待核 · 尚未评分 · 运行证据：待验证
+- [`agent-qa`](../../skills/agent-qa/) — 项目原创 · 尚未评分 · 运行证据：待验证
 - [`coupling-analysis`](../../skills/coupling-analysis/) — 来源待核 · 尚未评分 · 运行证据：待验证
 
 ## 🔌 Harness 专属能力

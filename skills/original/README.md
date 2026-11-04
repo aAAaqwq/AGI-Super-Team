@@ -66,7 +66,7 @@
 
 - [`5minbtc`](../5minbtc/) — BTC 5分钟K线实时方向预测 + 币安预测市场错价套利(paper)。v6.0 真OFI驱动: 方向由当前K线原生 in-candle OFI 净流一票决定(ofi_n=2*(tb/v)-1, REST klines[9] 聚合, 零WS依赖; WS ofi.json 做新鲜度反转保护与交叉校准), 概率=P(close>open|ofi)…（作者：Daniel Li、AGI Super Team contributors）
 - [`a-fund-monitor`](../a-fund-monitor/) — A股基金净值监控：盘中实时估值 + 盘后实际净值，定时推送到 Telegram。（作者：Daniel Li）
-- [`a-share-analysis`](../a-share-analysis/) — 此Skill实现了三层分析体系： 1. 情报采集层 — 7路并发多源新闻采集，自动匹配板块和个股 2. 盘面阅读层 — 美股映射 + 大盘多空判断 + 实时主线(>9%题材分析) 3. 个股精选层 — 产业逻辑 + 形态8分类 + 盘口分析 + 题材排名 + 综合评分 4. 原始新闻浏览 (news.py) — 分类展示影响股票的新闻，源信息不做任何修改（作者：Daniel Li）
+- [`a-share-analysis`](../a-share-analysis/) — A 股量化投资分析：分析个股、精选标的、盘前情报、主线复盘与日报生成。需要评估 A 股个股或当日市场主线时使用；不构成投资建议，不用于自动下单。（作者：Daniel Li）
 - [`ai-trader-arena`](../ai-trader-arena/) — AI trading arena, 模型竞技, 多模型交易, trading competition, historical replay, MCP trading, ai4trade（作者：Daniel Li）
 - [`ashare-auction-analysis`](../ashare-auction-analysis/) — Use when 分析A股集合竞价（9:15-9:25）、开盘跳空、盘口五档，判断当日走势与操作。（作者：Daniel Li）
 - [`ashare-volume-resonance-analysis`](../ashare-volume-resonance-analysis/) — Use when 判断个股/板块量能是否真共振（时间/结构/节奏/量价四轴+共振度打分）。（作者：Daniel Li）
@@ -90,7 +90,7 @@
 - [`daily-gzh-content`](../daily-gzh-content/) — 公众号每日内容生产：选题→创作→素材生成→质量检查→保存→发布草稿（作者：Daniel Li、AGI Super Team contributors）
 - [`daily-xhs-content`](../daily-xhs-content/) — 你是 CCO，Daniel Li 的内容 Agent。（作者：Daniel Li、AGI Super Team contributors）
 - [`daniel-wechat-writing`](../daniel-wechat-writing/) — 微信公众号 AI 论文解读类爆款文章的写作 skill。对标新智元/机器之心/量子位， 从论文 arXiv 链接或主题出发，端到端产出可直接复制到公众号后台的成稿。 触发词："解读这篇论文"、"论文推文"、"AI论文公众号"、"arXiv 写公众号"、 "把论文改成公众号"、"paper explainer"。 适用：arXiv…（作者：Daniel Li）
-- [`daniel-xhs-writing`](../daniel-xhs-writing/) — name: daniel-xhs-writing（作者：Daniel Li）
+- [`daniel-xhs-writing`](../daniel-xhs-writing/) — 小红书图文写作：选题、标题、封面、正文、标签与公众号长文改写。需要把素材或长文做成可发布的小红书图文时使用；不用于保证爆火、伪造亲历、自动发布或刷量。（作者：Daniel Li）
 - [`douyin-creator`](../douyin-creator/) — douyin-creator（作者：Daniel Li）
 - [`douyin-publisher`](../douyin-publisher/) — 抖音图文/视频发布（OpenClaw Browser 自动化）：登录检测→内容校验→上传页导航→填标题/正文→上传封面+素材→暂存离开。（作者：Daniel Li）
 - [`douyin-smart-publish`](../douyin-smart-publish/) — 抖音创作者平台智能发布（视频/图文）：内容适配→上传→填描述/#话题→封面→存草稿→截图回传确认。默认只存草稿；只有在 Daniel 明确确认后才允许点击发布。覆盖标题(≤55字)、描述(建议≤200字)、#话题标签(3-5个)、封面设置、定时发布、可见性、合拍/下载开关。Playwright 自动化。触发：'发抖音'、'抖音发布'、'douyin…（作者：Daniel Li）

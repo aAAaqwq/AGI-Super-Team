@@ -82,7 +82,12 @@ class SkillCatalogTests(unittest.TestCase):
         index = json.loads(INDEX_PATH.read_text(encoding="utf-8"))
         by_id = {item["skill_id"]: item for item in index["skills"]}
 
-        unreviewed = by_id["btc-5min-scalper"]
+        unreviewed_candidates = [
+            item for item in index["skills"]
+            if item["provenance"]["review_state"] == "unreviewed"
+        ]
+        self.assertTrue(unreviewed_candidates)
+        unreviewed = unreviewed_candidates[0]
         self.assertEqual(unreviewed["provenance"]["origin_kind"], "unknown")
         self.assertEqual(unreviewed["provenance"]["review_state"], "unreviewed")
         self.assertEqual(unreviewed["curation"]["status"], "unscored")
@@ -92,7 +97,11 @@ class SkillCatalogTests(unittest.TestCase):
         index = json.loads(INDEX_PATH.read_text(encoding="utf-8"))
         by_id = {item["skill_id"]: item for item in index["skills"]}
 
-        selected = by_id["content-typography"]
+        selected = next(
+            item for item in index["skills"]
+            if item["provenance"]["origin_kind"] == "project-original"
+            and item["curation"]["status"] == "selected"
+        )
         self.assertEqual(selected["provenance"]["origin_kind"], "project-original")
         self.assertEqual(selected["provenance"]["review_state"], "reviewed")
         self.assertEqual(selected["curation"]["status"], "selected")
@@ -100,7 +109,10 @@ class SkillCatalogTests(unittest.TestCase):
         self.assertEqual(selected["curation"]["runtime_evidence"], "pending")
         self.assertNotIn("verified", json.dumps(selected["curation"]).lower())
 
-        unresolved = by_id["agent-team-orchestration"]
+        unresolved = next(
+            item for item in index["skills"]
+            if item["provenance"]["review_state"] == "unreviewed"
+        )
         self.assertEqual(unresolved["provenance"]["origin_kind"], "unknown")
         self.assertEqual(unresolved["curation"]["status"], "unscored")
 

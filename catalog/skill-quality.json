@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "scope": "deterministic-structural-evidence-not-semantic-verification",
   "summary": {
-    "inventoryCount": 848,
-    "structureInvalid": 157,
+    "inventoryCount": 853,
+    "structureInvalid": 156,
     "disclosureWarnings": 592,
     "executionReviewRequired": 177,
     "issueCounts": {
@@ -11,7 +11,7 @@
       "description-over-180": 321,
       "invalid-frontmatter-yaml": 16,
       "link-outside-repository": 5,
-      "missing-frontmatter": 37,
+      "missing-frontmatter": 36,
       "name-folder-mismatch": 71,
       "over-500-lines": 56,
       "personal-absolute-path": 52,
@@ -47,16 +47,6 @@
         "description-missing-trigger",
         "scripts-without-test-evidence",
         "unmentioned-scripts"
-      ]
-    },
-    {
-      "skill_id": "a-share-analysis",
-      "path": "skills/a-share-analysis/SKILL.md",
-      "structure_status": "invalid",
-      "disclosure_status": "pass",
-      "execution_status": "not-applicable",
-      "issues": [
-        "missing-frontmatter"
       ]
     },
     {

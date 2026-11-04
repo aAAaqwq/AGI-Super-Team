@@ -34,6 +34,12 @@
 - [`technical-analysis`](../../skills/technical-analysis/) — 来源待核 · 尚未评分 · 运行证据：待验证
 - [`5minbtc`](../../skills/5minbtc/) — 项目原创 · 尚未评分 · 运行证据：待验证
 - [`binance-square`](../../skills/binance-square/) — 项目原创 · 尚未评分 · 运行证据：待验证
+- [`a-share-analysis`](../../skills/a-share-analysis/) — 项目原创 · 尚未评分 · 运行证据：待验证
+- [`ashare-auction-analysis`](../../skills/ashare-auction-analysis/) — 项目原创 · 尚未评分 · 运行证据：待验证
+- [`ashare-volume-resonance-analysis`](../../skills/ashare-volume-resonance-analysis/) — 项目原创 · 尚未评分 · 运行证据：待验证
+- [`chip-peak-and-screening-methods`](../../skills/chip-peak-and-screening-methods/) — 项目原创 · 尚未评分 · 运行证据：待验证
+- [`main-force-prelaunch-pattern`](../../skills/main-force-prelaunch-pattern/) — 项目原创 · 尚未评分 · 运行证据：待验证
+- [`youzi-stock-quality-screen`](../../skills/youzi-stock-quality-screen/) — 项目原创 · 尚未评分 · 运行证据：待验证
 
 ## 🔌 Harness 专属能力
 

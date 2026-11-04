@@ -159,7 +159,7 @@
           "spdx": "MIT"
         },
         "origin_kind": "project-original",
-        "review_state": "reviewed"
+        "review_state": "stale"
       },
       "review_signals": [],
       "skill_id": "5minbtc",
@@ -226,9 +226,14 @@
       "used_by": []
     },
     {
-      "assignments": [],
+      "assignments": [
+        {
+          "agent": "CQO",
+          "level": "optional"
+        }
+      ],
       "category_id": "finance-trading-markets",
-      "classification": "slug:(?:^|-)(?:a-share|stock|equity)(?:-|$).{0,24}(?:analysis|screening)|A股|个股|选股;metadata:fallback",
+      "classification": "slug:(?:^|-)(?:a-share|stock|equity)(?:-|$).{0,24}(?:analysis|screening)|A股|个股|选股;metadata:frontmatter",
       "classification_details": {
         "matched_signals": [
           "(?:^|-)(?:a-share|stock|equity)(?:-|$).{0,24}(?:analysis|screening)|A股|个股|选股"
@@ -251,10 +256,10 @@
         "runtime_evidence": "pending",
         "status": "unscored"
       },
-      "description": "此Skill实现了三层分析体系： 1. 情报采集层 — 7路并发多源新闻采集，自动匹配板块和个股 2. 盘面阅读层 — 美股映射 + 大盘多空判断 + 实时主线(>9%题材分析) 3. 个股精选层 — 产业逻辑 + 形态8分类 + 盘口分析 + 题材排名 + 综合评分 4. 原始新闻浏览 (news.py) — 分类展示影响股票的新闻，源信息不做任何修改",
+      "description": "A 股量化投资分析：分析个股、精选标的、盘前情报、主线复盘与日报生成。需要评估 A 股个股或当日市场主线时使用；不构成投资建议，不用于自动下单。",
       "description_status": "source-text",
       "path": "skills/a-share-analysis/SKILL.md",
-      "portability_class": "catalog-only",
+      "portability_class": "portable-optional",
       "provenance": {
         "authors": [
           "Daniel Li"
@@ -271,12 +276,14 @@
           "spdx": "MIT"
         },
         "origin_kind": "project-original",
-        "review_state": "reviewed"
+        "review_state": "stale"
       },
       "review_signals": [],
       "skill_id": "a-share-analysis",
       "support_level": "catalog",
-      "used_by": []
+      "used_by": [
+        "CQO"
+      ]
     },
     {
       "assignments": [],
@@ -2917,7 +2924,12 @@
       ]
     },
     {
-      "assignments": [],
+      "assignments": [
+        {
+          "agent": "CQO",
+          "level": "optional"
+        }
+      ],
       "category_id": "finance-trading-markets",
       "classification": "description:(?:^|-)(?:a-share|stock|equity)(?:-|$).{0,24}(?:analysis|screening)|A股|个股|选股;metadata:frontmatter",
       "classification_details": {
@@ -2945,7 +2957,7 @@
       "description": "Use when 分析A股集合竞价（9:15-9:25）、开盘跳空、盘口五档，判断当日走势与操作。",
       "description_status": "source-text",
       "path": "skills/ashare-auction-analysis/SKILL.md",
-      "portability_class": "catalog-only",
+      "portability_class": "portable-optional",
       "provenance": {
         "authors": [
           "Daniel Li"
@@ -2967,10 +2979,17 @@
       "review_signals": [],
       "skill_id": "ashare-auction-analysis",
       "support_level": "catalog",
-      "used_by": []
+      "used_by": [
+        "CQO"
+      ]
     },
     {
-      "assignments": [],
+      "assignments": [
+        {
+          "agent": "CQO",
+          "level": "optional"
+        }
+      ],
       "category_id": "finance-trading-markets",
       "classification": "description:(?:^|-)(?:a-share|stock|equity)(?:-|$).{0,24}(?:analysis|screening)|A股|个股|选股;metadata:frontmatter",
       "classification_details": {
@@ -2998,7 +3017,7 @@
       "description": "Use when 判断个股/板块量能是否真共振（时间/结构/节奏/量价四轴+共振度打分）。",
       "description_status": "source-text",
       "path": "skills/ashare-volume-resonance-analysis/SKILL.md",
-      "portability_class": "catalog-only",
+      "portability_class": "portable-optional",
       "provenance": {
         "authors": [
           "Daniel Li"
@@ -3021,7 +3040,9 @@
       "review_signals": [],
       "skill_id": "ashare-volume-resonance-analysis",
       "support_level": "catalog",
-      "used_by": []
+      "used_by": [
+        "CQO"
+      ]
     },
     {
       "assignments": [],
@@ -4288,7 +4309,7 @@
           "spdx": "MIT"
         },
         "origin_kind": "project-original",
-        "review_state": "reviewed"
+        "review_state": "stale"
       },
       "review_signals": [],
       "skill_id": "binance-square",
@@ -5524,7 +5545,12 @@
       ]
     },
     {
-      "assignments": [],
+      "assignments": [
+        {
+          "agent": "CQO",
+          "level": "optional"
+        }
+      ],
       "category_id": "finance-trading-markets",
       "classification": "description:(?:^|-)(?:a-share|stock|equity)(?:-|$).{0,24}(?:analysis|screening)|A股|个股|选股;metadata:frontmatter",
       "classification_details": {
@@ -5552,7 +5578,7 @@
       "description": "筹码峰分析 + 三套选股法（三步漏斗/真龙识别/一夜持股）+ 回测校准数据。Use when 看筹码分布、判断支撑压力、按条件筛股。",
       "description_status": "source-text",
       "path": "skills/chip-peak-and-screening-methods/SKILL.md",
-      "portability_class": "catalog-only",
+      "portability_class": "portable-optional",
       "provenance": {
         "authors": [
           "Daniel Li"
@@ -5577,7 +5603,9 @@
       "review_signals": [],
       "skill_id": "chip-peak-and-screening-methods",
       "support_level": "catalog",
-      "used_by": []
+      "used_by": [
+        "CQO"
+      ]
     },
     {
       "assignments": [],
@@ -10249,7 +10277,7 @@
           "spdx": "MIT"
         },
         "origin_kind": "project-original",
-        "review_state": "reviewed"
+        "review_state": "stale"
       },
       "review_signals": [],
       "skill_id": "daniel-new-media-ops",
@@ -10381,7 +10409,7 @@
           "spdx": "MIT"
         },
         "origin_kind": "project-original",
-        "review_state": "reviewed"
+        "review_state": "stale"
       },
       "review_signals": [],
       "skill_id": "daniel-wechat-writing",
@@ -10448,7 +10476,7 @@
           "spdx": "MIT"
         },
         "origin_kind": "project-original",
-        "review_state": "reviewed"
+        "review_state": "stale"
       },
       "review_signals": [],
       "skill_id": "daniel-writer",
@@ -10576,7 +10604,7 @@
           "spdx": "MIT"
         },
         "origin_kind": "project-original",
-        "review_state": "reviewed"
+        "review_state": "stale"
       },
       "review_signals": [],
       "skill_id": "daniel-xhs-writing",
@@ -19298,7 +19326,12 @@
       ]
     },
     {
-      "assignments": [],
+      "assignments": [
+        {
+          "agent": "CQO",
+          "level": "optional"
+        }
+      ],
       "category_id": "finance-trading-markets",
       "classification": "description:(?:^|-)(?:a-share|stock|equity)(?:-|$).{0,24}(?:analysis|screening)|A股|个股|选股;metadata:frontmatter",
       "classification_details": {
@@ -19326,7 +19359,7 @@
       "description": "A股主力拉升前\"五步曲\"识别与伏击。Use when 找起涨前的票、判断地量是否见底、需要观察期+确认启动机制。",
       "description_status": "source-text",
       "path": "skills/main-force-prelaunch-pattern/SKILL.md",
-      "portability_class": "catalog-only",
+      "portability_class": "portable-optional",
       "provenance": {
         "authors": [
           "Daniel Li"
@@ -19350,7 +19383,9 @@
       "review_signals": [],
       "skill_id": "main-force-prelaunch-pattern",
       "support_level": "catalog",
-      "used_by": []
+      "used_by": [
+        "CQO"
+      ]
     },
     {
       "assignments": [],
@@ -37689,7 +37724,7 @@
           "spdx": "MIT"
         },
         "origin_kind": "project-original",
-        "review_state": "reviewed"
+        "review_state": "stale"
       },
       "review_signals": [],
       "skill_id": "xhs-skill",
@@ -38131,7 +38166,12 @@
       "used_by": []
     },
     {
-      "assignments": [],
+      "assignments": [
+        {
+          "agent": "CQO",
+          "level": "optional"
+        }
+      ],
       "category_id": "finance-trading-markets",
       "classification": "slug:stock;metadata:frontmatter",
       "classification_details": {
@@ -38159,7 +38199,7 @@
       "description": "Use when 按游资标准筛优质股、判断持仓质量、定位主力阶段（五标准+量价四象限+四维共振）。",
       "description_status": "source-text",
       "path": "skills/youzi-stock-quality-screen/SKILL.md",
-      "portability_class": "catalog-only",
+      "portability_class": "portable-optional",
       "provenance": {
         "authors": [
           "Daniel Li"
@@ -38181,7 +38221,9 @@
       "review_signals": [],
       "skill_id": "youzi-stock-quality-screen",
       "support_level": "catalog",
-      "used_by": []
+      "used_by": [
+        "CQO"
+      ]
     },
     {
       "assignments": [],

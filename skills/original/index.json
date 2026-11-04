@@ -102,7 +102,7 @@
     {
       "skill_id": "a-share-analysis",
       "path": "skills/a-share-analysis/SKILL.md",
-      "description": "此Skill实现了三层分析体系： 1. 情报采集层 — 7路并发多源新闻采集，自动匹配板块和个股 2. 盘面阅读层 — 美股映射 + 大盘多空判断 + 实时主线(>9%题材分析) 3. 个股精选层 — 产业逻辑 + 形态8分类 + 盘口分析 + 题材排名 + 综合评分 4. 原始新闻浏览 (news.py) — 分类展示影响股票的新闻，源信息不做任何修改",
+      "description": "A 股量化投资分析：分析个股、精选标的、盘前情报、主线复盘与日报生成。需要评估 A 股个股或当日市场主线时使用；不构成投资建议，不用于自动下单。",
       "authors": [
         "Daniel Li"
       ],
@@ -357,7 +357,7 @@
     {
       "skill_id": "daniel-xhs-writing",
       "path": "skills/daniel-xhs-writing/SKILL.md",
-      "description": "name: daniel-xhs-writing",
+      "description": "小红书图文写作：选题、标题、封面、正文、标签与公众号长文改写。需要把素材或长文做成可发布的小红书图文时使用；不用于保证爆火、伪造亲历、自动发布或刷量。",
       "authors": [
         "Daniel Li"
       ],
