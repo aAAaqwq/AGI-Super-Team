@@ -673,3 +673,9 @@ tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
 [data-theme="light"] .homepage .hero { background-image: radial-gradient(ellipse at 82% 20%, rgba(58, 146, 176, 0.1), transparent 52%); }
 [data-theme="light"] .homepage .hero h1 span { color: #176578; }
 [data-theme="light"] .homepage .final-cta .kicker { color: #a3bdcb; }
+
+/* Language switch and swarm section */
+.lang-switch { display: inline-flex; align-items: center; min-height: 44px; padding-inline: 10px; border: 1px solid transparent; border-radius: var(--radius-small); color: var(--text-muted); font-size: 0.9rem; font-weight: 600; text-decoration: none; }
+.lang-switch:hover { color: var(--text); border-color: var(--line-strong); }
+.swarm-section code { padding: 2px 6px; border: 1px solid var(--line-strong); border-radius: 4px; background: var(--surface); color: var(--cyan); font-family: "JetBrains Mono", monospace; font-size: 0.82rem; white-space: nowrap; }
+[data-theme="light"] .swarm-section code { color: #176578; }

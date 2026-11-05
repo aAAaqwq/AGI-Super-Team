@@ -89,7 +89,7 @@ class SiteContractTests(unittest.TestCase):
         self.assertGreaterEqual(len(self.tag_attributes("nav")), 1)
         anchors = self.tag_attributes("a")
         self.assertTrue(any(item.get("href") == "#main-content" for item in anchors))
-        self.assertTrue(any(item.get("href", "").endswith("README_CN.md") for item in anchors))
+        self.assertTrue(any(item.get("href") == "zh/" for item in anchors))
         statuses = [item for item in self.tag_attributes("span") if item.get("role") == "status"]
         self.assertGreaterEqual(len(statuses), 2)
         table_headers = self.tag_attributes("th")
@@ -99,7 +99,9 @@ class SiteContractTests(unittest.TestCase):
     def test_homepage_uses_same_origin_data_and_no_stale_claims(self) -> None:
         script = (DOCS / "assets/site.js").read_text(encoding="utf-8")
         site_source = self.html + script
-        self.assertIn("data/repo-stats.json", site_source)
+        self.assertIn('new URL("repo-stats.json", dataBase)', script)
+        self.assertIn('new URL("verification-receipt.json", dataBase)', script)
+        self.assertIn('new URL("../data/",', script)
         self.assertNotIn("data/star-history.json", site_source)
         self.assertIn(
             "https://github.com/aAAaqwq/AGI-Super-Team/stargazers",

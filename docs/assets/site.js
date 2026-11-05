@@ -15,6 +15,9 @@
   const themeCacheKey = "agi-super-team:theme:v1";
   const fifteenMinutes = 15 * 60 * 1000;
   const oneDay = 24 * 60 * 60 * 1000;
+  const isZh = root.lang.startsWith("zh");
+  const ui = (en, zh) => (isZh ? zh : en);
+  const dataBase = new URL("../data/", document.currentScript?.src || new URL("assets/site.js", location.href));
 
   function readStorage(key) {
     try {
@@ -36,7 +39,7 @@
     root.dataset.theme = theme;
     if (themeButton) {
       const nextTheme = theme === "dark" ? "light" : "dark";
-      themeButton.setAttribute("aria-label", `Switch to ${nextTheme} theme`);
+      themeButton.setAttribute("aria-label", ui(`Switch to ${nextTheme} theme`, nextTheme === "dark" ? "切换到深色主题" : "切换到浅色主题"));
     }
   }
 
@@ -57,7 +60,7 @@
     menuButton.setAttribute("aria-expanded", String(open));
     primaryNav.dataset.open = String(open);
     const label = menuButton.querySelector(".sr-only");
-    if (label) label.textContent = open ? "Close navigation" : "Open navigation";
+    if (label) label.textContent = open ? ui("Close navigation", "关闭导航") : ui("Open navigation", "打开导航");
   }
 
   menuButton?.addEventListener("click", () => {
@@ -89,12 +92,12 @@
       command.textContent = `git clone --depth 1 --branch main https://github.com/aAAaqwq/AGI-Super-Team.git
 cd AGI-Super-Team
 
-# Inspect the checkout, then preview. No files installed.
+${ui("# Inspect the checkout, then preview. No files installed.", "# 先检查仓库副本，再预览。不会写入任何文件。")}
 node bin/agi-super-team.mjs --tool ${framework}`;
     }
-    if (label) label.textContent = `${frameworkNames[framework].toUpperCase()} / PREVIEW`;
+    if (label) label.textContent = `${frameworkNames[framework].toUpperCase()} / ${ui("PREVIEW", "预览")}`;
     const status = document.querySelector("[data-copy-status]");
-    if (status) status.textContent = `${frameworkNames[framework]} preview commands ready.`;
+    if (status) status.textContent = ui(`${frameworkNames[framework]} preview commands ready.`, `${frameworkNames[framework]} 预览命令已就绪。`);
   }
   frameworkChoice?.addEventListener("change", updateFrameworkPreview);
   if (frameworkChoice) updateFrameworkPreview();
@@ -109,10 +112,10 @@ node bin/agi-super-team.mjs --tool ${framework}`;
         await navigator.clipboard.writeText(value);
         const label = button.querySelector("span");
         const status = document.querySelector("[data-copy-status]");
-        if (label) label.textContent = "Copied";
-        if (status) status.textContent = "Installation commands copied.";
+        if (label) label.textContent = ui("Copied", "已复制");
+        if (status) status.textContent = ui("Installation commands copied.", "安装命令已复制。");
         window.setTimeout(() => {
-          if (label) label.textContent = "Copy";
+          if (label) label.textContent = ui("Copy", "复制");
         }, 1800);
       } catch (_error) {
         const range = document.createRange();
@@ -121,7 +124,7 @@ node bin/agi-super-team.mjs --tool ${framework}`;
         selection?.removeAllRanges();
         selection?.addRange(range);
         const status = document.querySelector("[data-copy-status]");
-        if (status) status.textContent = "Copy unavailable. Installation commands selected.";
+        if (status) status.textContent = ui("Copy unavailable. Installation commands selected.", "无法使用剪贴板，已选中安装命令。");
       }
     });
   });
@@ -152,7 +155,7 @@ node bin/agi-super-team.mjs --tool ${framework}`;
       const age = Date.now() - Date.parse(stats.fetchedAt);
       const label = source === "live" && age <= fifteenMinutes ? "Live" : "Cached";
       const stale = age > oneDay ? ". Older than 24 hours" : "";
-      statsState.textContent = `${label} GitHub data${stale}.`;
+      statsState.textContent = isZh ? `GitHub 数据：${label === "Live" ? "实时" : "缓存"}${stale ? "。数据超过 24 小时。" : "。"}` : `${label} GitHub data${stale}.`;
     }
     return true;
   }
@@ -189,7 +192,7 @@ node bin/agi-super-team.mjs --tool ${framework}`;
     }
 
     try {
-      const built = await fetchJson("data/repo-stats.json");
+      const built = await fetchJson(new URL("repo-stats.json", dataBase));
       if (isRepositoryStats(built)) {
         const isNewer =
           !newestStats || Date.parse(built.fetchedAt) > Date.parse(newestStats.fetchedAt);
@@ -227,17 +230,17 @@ node bin/agi-super-team.mjs --tool ${framework}`;
       }
     } catch (_error) {
       if (!rendered && statsState) {
-        statsState.textContent = "GitHub data is temporarily unavailable.";
+        statsState.textContent = ui("GitHub data is temporarily unavailable.", "GitHub 数据暂时不可用。");
       }
     }
   }
 
   async function loadVerificationReceipt() {
     try {
-      const receipt = await fetchJson("data/verification-receipt.json");
+      const receipt = await fetchJson(new URL("verification-receipt.json", dataBase));
       if (!window.AGISuperTeamReceipt?.isVerifiedReceipt(receipt)) return;
       if (verificationStatus) {
-        verificationStatus.textContent = "Verified";
+        verificationStatus.textContent = ui("Verified", "已验证");
         verificationStatus.classList.remove("status-pending");
         verificationStatus.classList.add("status-verified");
       }
