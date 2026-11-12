@@ -51,7 +51,7 @@
       "title": "Marketing, SEO & Growth"
     },
     {
-      "count": 94,
+      "count": 95,
       "description": "Create, edit, repurpose, and publish writing, images, audio, and video.",
       "emoji": "✍️",
       "id": "content-media-publishing",
@@ -100,7 +100,7 @@
       "title": "Specialized Domains & Utilities"
     }
   ],
-  "inventoryCount": 853,
+  "inventoryCount": 854,
   "inventorySemantics": "tracked physical top-level directories with SKILL.md",
   "schemaVersion": 2,
   "skills": [
@@ -34501,6 +34501,45 @@
       },
       "review_signals": [],
       "skill_id": "twitter-automation",
+      "support_level": "catalog",
+      "used_by": []
+    },
+    {
+      "assignments": [],
+      "category_id": "content-media-publishing",
+      "classification": "slug:video;metadata:frontmatter",
+      "classification_details": {
+        "matched_signals": [
+          "video"
+        ],
+        "method": "slug",
+        "resolution_status": "rule-match",
+        "review_state": "unreviewed",
+        "runner_ups": [],
+        "winner": {
+          "category_id": "content-media-publishing",
+          "match_count": 1,
+          "matched_signals": [
+            "video"
+          ],
+          "priority": 100,
+          "tie_detected": false
+        }
+      },
+      "curation": {
+        "runtime_evidence": "pending",
+        "status": "unscored"
+      },
+      "description": "Generate one text-to-video clip through UberLLM. Use when a video needs a choice of models on one key, a free price check, paid-request confirmation, and a local MP4.",
+      "description_status": "source-text",
+      "path": "skills/uberllm-video-gen/SKILL.md",
+      "portability_class": "catalog-only",
+      "provenance": {
+        "origin_kind": "unknown",
+        "review_state": "unreviewed"
+      },
+      "review_signals": [],
+      "skill_id": "uberllm-video-gen",
       "support_level": "catalog",
       "used_by": []
     },
