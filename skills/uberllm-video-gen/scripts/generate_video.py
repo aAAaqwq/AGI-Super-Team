@@ -227,7 +227,9 @@ def main(argv: list[str] | None = None) -> int:
             raise UberLLMVideoError("poll interval and timeout must be positive")
         payload = build_payload(args)
 
-        if args.quote and not args.yes:
+        # --quote always wins: combining it with --yes must never turn a price
+        # check into a billable submission.
+        if args.quote:
             quote = quote_job(_api_key(), payload)
             print(json.dumps(quote, ensure_ascii=False, indent=2))
             return 0 if quote.get("valid", True) else 1

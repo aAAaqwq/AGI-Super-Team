@@ -135,6 +135,21 @@ class UberLLMVideoGenTests(unittest.TestCase):
             uberllm_video_gen.download_video("https://cdn.example.com/v.mp4", target, "secret")
             self.assertIsNone(urlopen.call_args.args[0].get_header("Authorization"))
 
+    @mock.patch.object(uberllm_video_gen, "submit_job")
+    @mock.patch.object(uberllm_video_gen, "quote_job")
+    def test_quote_wins_over_yes_and_never_submits(self, quote_job, submit_job):
+        quote_job.return_value = {"object": "quote", "valid": True, "cost_usd": 0.1}
+        with mock.patch.dict(
+            uberllm_video_gen.os.environ, {"UBERLLM_API_KEY": "secret"}
+        ):
+            exit_code = uberllm_video_gen.main(
+                ["A lighthouse at sunrise", "--output", "out.mp4", "--quote", "--yes"]
+            )
+
+        self.assertEqual(exit_code, 0)
+        quote_job.assert_called_once()
+        submit_job.assert_not_called()
+
     def test_preview_does_not_read_credentials_or_use_network(self):
         with mock.patch.dict(uberllm_video_gen.os.environ, {}, clear=True), mock.patch.object(
             uberllm_video_gen.urllib.request, "urlopen"

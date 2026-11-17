@@ -32,6 +32,9 @@ request plan and exits without network access unless `--quote` or `--yes` is pre
 options as if the request were real and answers with the listed price (`cost_usd`) and
 the most the job can be billed (`max_cost_usd`). Nothing is made and nothing is charged.
 
+`--quote` takes precedence over `--yes`: if both are present the helper only quotes and
+never submits.
+
 The generation `POST` is sent exactly once, with an `Idempotency-Key`, and is never
 retried. Only job-status and download `GET` requests use bounded retries for transient
 failures. `--max-cost` caps what the job may be billed. If the submission result is
