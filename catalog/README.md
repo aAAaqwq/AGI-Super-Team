@@ -41,7 +41,7 @@ Choose a reviewed origin boundary before browsing by outcome. Provenance and cur
 | [Project original](#project-original-skills) | Digest-backed first-party work with reviewed authorship. | 65 |
 | [Adapted](#adapted-skills) | Modified from a named source with the adaptation recorded. | 0 |
 | [Collected](#collected-skills) | Preserved from a named source with provenance recorded. | 0 |
-| [Unknown origin](#unknown-origin-skills) | Source review is incomplete; inspect before use. | 788 |
+| [Unknown origin](#unknown-origin-skills) | Source review is incomplete; inspect before use. | 789 |
 
 <a id="project-original-skills"></a>
 ### Project original
@@ -135,11 +135,11 @@ No entries currently meet this provenance contract.
 
 Source review is incomplete; inspect before use.
 
-788 entries are awaiting source review. Use the [machine-readable index](./skill-index.json) or browse by outcome below; they are not promoted as curated recommendations.
+789 entries are awaiting source review. Use the [machine-readable index](./skill-index.json) or browse by outcome below; they are not promoted as curated recommendations.
 
 ## 🗂️ Browse by outcome
 
-This revision contains 853 canonical catalog entries. The number is generated here rather than used as a product claim.
+This revision contains 854 canonical catalog entries. The number is generated here rather than used as a product claim.
 
 | Category | Use it for | Entries |
 |---|---|---:|
@@ -150,7 +150,7 @@ This revision contains 853 canonical catalog entries. The number is generated he
 | [🛡️ Security, Privacy & Legal](#security-privacy-legal) | Review security, privacy, compliance, permissions, contracts, and legal risk. | 34 |
 | [🎨 Product, Design & UX](#product-design-ux) | Shape product requirements, interfaces, design systems, and user experience. | 23 |
 | [📈 Marketing, SEO & Growth](#marketing-seo-growth) | Acquire audiences through positioning, campaigns, search, ads, and social growth. | 51 |
-| [✍️ Content, Media & Publishing](#content-media-publishing) | Create, edit, repurpose, and publish writing, images, audio, and video. | 94 |
+| [✍️ Content, Media & Publishing](#content-media-publishing) | Create, edit, repurpose, and publish writing, images, audio, and video. | 95 |
 | [🤝 Sales, CRM & Customer Success](#sales-crm-customer-success) | Find, win, onboard, support, and retain customers with accountable workflows. | 40 |
 | [💹 Finance, Trading & Markets](#finance-trading-markets) | Analyze markets, backtest strategies, track portfolios, and review financial risk. | 75 |
 | [🧭 Business Operations & Strategy](#business-operations-strategy) | Plan work, make decisions, manage teams, and improve operating systems. | 75 |
@@ -682,6 +682,7 @@ Create, edit, repurpose, and publish writing, images, audio, and video.
 | [`suno-skills`](../skills/suno-skills/) | AI音乐生成工具Suno的浏览器自动化Skill。通过Playwright控制Suno网站(https://suno.com)进行：生成歌曲(含自定义歌词)、管理创作、下载音频。触发场景："用suno生成歌曲"、"Suno创作"、"AI音乐生成"、"生成一首...风格的歌"、"上传歌词到Suno" | Unknown · unreviewed | Unscored | Catalog only |
 | [`the-antislop`](../skills/the-antislop/) | Detect and fix AI-generated writing patterns (slop). Comprehensive detection with 45+ patterns, tiered severity scoring, and editor mode. | Unknown · unreviewed | Unscored | Catalog only |
 | [`theme-factory`](../skills/theme-factory/) | Toolkit for styling artifacts with a theme. These artifacts can be slides, docs, reportings, HTML landing pages, etc. There are 10 pre-set themes with colors/fonts that you can… | Unknown · unreviewed | Unscored | Catalog only |
+| [`uberllm-video-gen`](../skills/uberllm-video-gen/) | Generate one text-to-video clip through UberLLM. Use when a video needs a choice of models on one key, a free price check, paid-request confirmation, and a local MP4. | Unknown · unreviewed | Unscored | Catalog only |
 | [`vectornode-image-gen`](../skills/vectornode-image-gen/) | GPT image generation/editing via VectorNode relay; auto-routes token vs per-request billing based on prompt length. | Unknown · unreviewed | Unscored | Catalog only |
 | [`vectronode-image`](../skills/vectronode-image/) | VectorNode 中转站 GPT Image 图片生成与编辑（按提示词长度自动路由 gpt-image-2 Token 计费 / gpt-image-2-all 按次计费）。Use when: 画图、生图、生成图片、gpt生图、VectorNode、gpt-image、image generate、image edit、编辑图片。Requires… | Unknown · unreviewed | Unscored | Catalog only |
 | [`video-benchmark-breakdown`](../skills/video-benchmark-breakdown/) | 对标视频拆解流水线：把竞品/爆款视频（B站/YouTube/抖音/快手/X 等）下载或提取→转写逐字稿→结构化拆解剧情、高光与脚本。适用「拆解这条爆款视频」「对标账号视频分析」「把竞品视频转成逐字稿」；不用于下载受版权保护内容用于再分发或规避平台限制。 | Unknown · unreviewed | Unscored | Portable optional assignment · structure checked · CCO |
