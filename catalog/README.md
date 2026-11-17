@@ -41,7 +41,7 @@ Choose a reviewed origin boundary before browsing by outcome. Provenance and cur
 | [Project original](#project-original-skills) | Digest-backed first-party work with reviewed authorship. | 65 |
 | [Adapted](#adapted-skills) | Modified from a named source with the adaptation recorded. | 0 |
 | [Collected](#collected-skills) | Preserved from a named source with provenance recorded. | 0 |
-| [Unknown origin](#unknown-origin-skills) | Source review is incomplete; inspect before use. | 789 |
+| [Unknown origin](#unknown-origin-skills) | Source review is incomplete; inspect before use. | 803 |
 
 <a id="project-original-skills"></a>
 ### Project original
@@ -61,7 +61,7 @@ Digest-backed first-party work with reviewed authorship.
 | [`bb-scalper`](../skills/bb-scalper/) | 💹 Finance, Trading & Markets | Project original · reviewed | Unscored | Pending |
 | [`binance-square`](../skills/binance-square/) | 💹 Finance, Trading & Markets | Project original · stale review | Unscored | Pending |
 | [`btc-5min-scalper`](../skills/btc-5min-scalper/) | 💹 Finance, Trading & Markets | Project original · reviewed | Unscored | Pending |
-| [`chip-peak-and-screening-methods`](../skills/chip-peak-and-screening-methods/) | 💹 Finance, Trading & Markets | Project original · reviewed | Unscored | Pending |
+| [`chip-peak-and-screening-methods`](../skills/chip-peak-and-screening-methods/) | 💹 Finance, Trading & Markets | Project original · stale review | Unscored | Pending |
 | [`content-cover-gen`](../skills/content-cover-gen/) | ✍️ Content, Media & Publishing | Project original · reviewed | Unscored | Pending |
 | [`content-illustration-strategy`](../skills/content-illustration-strategy/) | ✍️ Content, Media & Publishing | Project original · reviewed | Unscored | Pending |
 | [`content-typography`](../skills/content-typography/) | ✍️ Content, Media & Publishing | Project original · reviewed | 80/100 · Selected | Pending |
@@ -135,28 +135,28 @@ No entries currently meet this provenance contract.
 
 Source review is incomplete; inspect before use.
 
-789 entries are awaiting source review. Use the [machine-readable index](./skill-index.json) or browse by outcome below; they are not promoted as curated recommendations.
+803 entries are awaiting source review. Use the [machine-readable index](./skill-index.json) or browse by outcome below; they are not promoted as curated recommendations.
 
 ## 🗂️ Browse by outcome
 
-This revision contains 854 canonical catalog entries. The number is generated here rather than used as a product claim.
+This revision contains 868 canonical catalog entries. The number is generated here rather than used as a product claim.
 
 | Category | Use it for | Entries |
 |---|---|---:|
 | [🤖 AI Agents & Orchestration](#ai-agents-orchestration) | Coordinate agents, context, memory, models, prompts, and tool protocols. | 81 |
 | [💻 Software Engineering](#software-engineering) | Build, test, review, debug, and maintain applications and developer tooling. | 86 |
 | [☁️ Cloud, DevOps & Reliability](#cloud-devops-reliability) | Deploy, observe, troubleshoot, and operate cloud and local infrastructure. | 35 |
-| [📊 Data, Analytics & Research](#data-analytics-research) | Collect evidence, search sources, analyze data, and communicate findings. | 81 |
+| [📊 Data, Analytics & Research](#data-analytics-research) | Collect evidence, search sources, analyze data, and communicate findings. | 82 |
 | [🛡️ Security, Privacy & Legal](#security-privacy-legal) | Review security, privacy, compliance, permissions, contracts, and legal risk. | 34 |
 | [🎨 Product, Design & UX](#product-design-ux) | Shape product requirements, interfaces, design systems, and user experience. | 23 |
 | [📈 Marketing, SEO & Growth](#marketing-seo-growth) | Acquire audiences through positioning, campaigns, search, ads, and social growth. | 51 |
 | [✍️ Content, Media & Publishing](#content-media-publishing) | Create, edit, repurpose, and publish writing, images, audio, and video. | 95 |
 | [🤝 Sales, CRM & Customer Success](#sales-crm-customer-success) | Find, win, onboard, support, and retain customers with accountable workflows. | 40 |
-| [💹 Finance, Trading & Markets](#finance-trading-markets) | Analyze markets, backtest strategies, track portfolios, and review financial risk. | 75 |
+| [💹 Finance, Trading & Markets](#finance-trading-markets) | Analyze markets, backtest strategies, track portfolios, and review financial risk. | 81 |
 | [🧭 Business Operations & Strategy](#business-operations-strategy) | Plan work, make decisions, manage teams, and improve operating systems. | 75 |
 | [⚙️ Apps & Workflow Automation](#apps-workflow-automation) | Connect everyday apps, browsers, messaging systems, and repeatable workflows. | 90 |
 | [🇨🇳 Chinese Platform Workflows](#chinese-platform-workflows) | Create, analyze, and publish for major Chinese-language platforms and channels. | 43 |
-| [🧰 Specialized Domains & Utilities](#general-utilities) | Domain-specific helpers and cross-functional tools that need a dedicated review path. | 45 |
+| [🧰 Specialized Domains & Utilities](#general-utilities) | Domain-specific helpers and cross-functional tools that need a dedicated review path. | 52 |
 
 <a id="ai-agents-orchestration"></a>
 ## 🤖 AI Agents & Orchestration
@@ -396,6 +396,7 @@ Collect evidence, search sources, analyze data, and communicate findings.
 | [`apify-ultimate-scraper`](../skills/apify-ultimate-scraper/) | Universal AI-powered web scraper for any platform. Scrape data from Instagram, Facebook, TikTok, YouTube, LinkedIn, X/Twitter, Google Maps, Google Search, Google Trends, Reddit,… | Unknown · unreviewed | Unscored | Catalog only |
 | [`arbitrage-opportunity-finder`](../skills/arbitrage-opportunity-finder/) | This skill detects and analyzes arbitrage opportunities across cryptocurrency exchanges and DeFi protocols. It aggregates prices from multiple sources | Unknown · unreviewed | Unscored | Catalog only |
 | [`arxiv-automation`](../skills/arxiv-automation/) | Search and monitor arXiv papers. Query by topic, author, or category. Track new papers, download PDFs, and summarize abstracts for research workflows. | Unknown · unreviewed | Unscored | Harness-specific assignment · generic installer skips · CRO |
+| [`ashare-stock-research`](../skills/ashare-stock-research/) | Use when 分析A股个股/板块题材/大盘量能/换手率/预测走势。免费接口拉数→技术指标→结构化报告。 | Unknown · unreviewed | Unscored | Catalog only |
 | [`auto-drive`](../skills/auto-drive/) | --- name: auto-drive description: Upload and download files to Autonomys Network permanent decentralized storage via Auto-Drive. Save memories as a linked-list chain for… | Unknown · unreviewed | Unscored | Catalog only |
 | [`bio-orchestrator`](../skills/bio-orchestrator/) | Meta-agent that routes bioinformatics requests to specialised sub-skills. Handles file type detection, analysis planning, report generation, and reproducibility export. | Unknown · unreviewed | Unscored | Catalog only |
 | [`business-analyst`](../skills/business-analyst/) | Build KPI frameworks, predictive models, real-time dashboards, and strategic recommendations using modern BI tools and AI-powered analytics. Use when the user needs business… | Unknown · unreviewed | Unscored | Portable optional assignment · structure checked · CDO, CFO |
@@ -770,6 +771,8 @@ Analyze markets, backtest strategies, track portfolios, and review financial ris
 | [`ai-trader-arena`](../skills/ai-trader-arena/) | AI trading arena, 模型竞技, 多模型交易, trading competition, historical replay, MCP trading, ai4trade | Project original · reviewed | Unscored | Catalog only |
 | [`alpha101`](../skills/alpha101/) | WorldQuant 101 Formulaic Alphas — 因子计算、IC测试、回测一体化工具包。 基于Kakushadze (2015) 论文，提供101个价量/波动率/相关性因子的Python/Pandas实现。 Use when: "alpha101", "101因子", "formulaic alphas", "因子回测",… | Unknown · unreviewed | Unscored | Harness-specific assignment · generic installer skips · CQO |
 | [`ashare-auction-analysis`](../skills/ashare-auction-analysis/) | Use when 分析A股集合竞价（9:15-9:25）、开盘跳空、盘口五档，判断当日走势与操作。 | Project original · reviewed | Unscored | Portable optional assignment · structure checked · CQO |
+| [`ashare-entry-timing`](../skills/ashare-entry-timing/) | Use when 判断A股买点时机：强势票要不要等回踩、超短线1-3天怎么进场、三筛无果时怎么答。 | Unknown · unreviewed | Unscored | Catalog only |
+| [`ashare-sector-hotspot-analysis`](../skills/ashare-sector-hotspot-analysis/) | Use when 判断A股热点板块方向、连板妖股与板块延续性。 | Unknown · unreviewed | Unscored | Catalog only |
 | [`ashare-volume-resonance-analysis`](../skills/ashare-volume-resonance-analysis/) | Use when 判断个股/板块量能是否真共振（时间/结构/节奏/量价四轴+共振度打分）。 | Project original · reviewed | Unscored | Portable optional assignment · structure checked · CQO |
 | [`backtest-expert`](../skills/backtest-expert/) | Expert guidance for systematic backtesting of trading strategies. Use when developing, testing, stress-testing, or validating quantitative trading strategies. Covers "beating… | Unknown · unreviewed | Unscored | Portable required assignment · structure checked · CQO |
 | [`backtesting-frameworks`](../skills/backtesting-frameworks/) | Build trading-strategy backtests that account for look-ahead bias, survivorship bias, and costs. Use when validating strategies or designing backtest infrastructure. | Unknown · unreviewed | Unscored | Portable required assignment · structure checked · CQO |
@@ -782,7 +785,7 @@ Analyze markets, backtest strategies, track portfolios, and review financial ris
 | [`binance-trending`](../skills/binance-trending/) | Description needs review; inspect source. | Unknown · unreviewed | Unscored | Catalog only |
 | [`bookkeeping-basics`](../skills/bookkeeping-basics/) | Set up and maintain basic bookkeeping for a solopreneur business. Use when tracking income and expenses, preparing for taxes, managing invoices and receipts, understanding cash… | Unknown · unreviewed | Unscored | Portable optional assignment · structure checked · CFO |
 | [`btc-5min-scalper`](../skills/btc-5min-scalper/) | BTC 5-minute Up/Down paper trading on Polymarket. Scans Binance 1m candles for momentum/mean-reversion/volume signals, makes virtual trades on Polymarket 5-min markets, tracks… | Project original · reviewed | Unscored | Catalog only |
-| [`chip-peak-and-screening-methods`](../skills/chip-peak-and-screening-methods/) | 筹码峰分析 + 三套选股法（三步漏斗/真龙识别/一夜持股）+ 回测校准数据。Use when 看筹码分布、判断支撑压力、按条件筛股。 | Project original · reviewed | Unscored | Portable optional assignment · structure checked · CQO |
+| [`chip-peak-and-screening-methods`](../skills/chip-peak-and-screening-methods/) | 筹码峰分析 + 三套选股法（三步漏斗/真龙识别/一夜持股）+ 回测校准数据。Use when 看筹码分布、判断支撑压力、按条件筛股。 | Project original · stale review | Unscored | Portable optional assignment · structure checked · CQO |
 | [`clanker`](../skills/clanker/) | Plan and review ERC20 deployment with the Clanker SDK. Use for token configuration, vesting, airdrops, rewards, metadata, and transaction preparation on supported EVM chains. | Unknown · unreviewed | Unscored | Catalog only · review: external-write, financial-action |
 | [`company-analyzer`](../skills/company-analyzer/) | Description needs review; inspect source. | Unknown · unreviewed | Unscored | Catalog only |
 | [`crypto-bd-agent`](../skills/crypto-bd-agent/) | This skill teaches AI agents systematic crypto business development: discover Autonomous crypto business development patterns — multi-chain token discovery, 100-point scoring… | Unknown · unreviewed | Unscored | Catalog only |
@@ -809,6 +812,7 @@ Analyze markets, backtest strategies, track portfolios, and review financial ris
 | [`invoice-organizer`](../skills/invoice-organizer/) | Use when "organizing invoices", "sorting receipts", "tax preparation", "expense tracking", or asking about "invoice renaming", "financial documents", "bookkeeping automation" | Unknown · unreviewed | Unscored | Portable optional assignment · structure checked · CFO |
 | [`jiuyangongshe-stock-industry-logic`](../skills/jiuyangongshe-stock-industry-logic/) | 爬取韭研公社个股产业逻辑与异动解析。输入个股名（如白银有色），自动获取该股异动解析、题材标签、相关文章与产业逻辑内容。 | Unknown · unreviewed | Unscored | Catalog only |
 | [`llm-stock-analyzer`](../skills/llm-stock-analyzer/) | stock analysis, 个股分析, A股分析, 港股分析, 美股分析, daily analysis, 决策仪表盘 | Unknown · unreviewed | Unscored | Catalog only |
+| [`longqin-alpha-terminal-ops`](../skills/longqin-alpha-terminal-ops/) | Use when 登录龙擎 longqin.hanxai.cn 拉作战池/市场快照/候选，结合选股框架出结论。 | Unknown · unreviewed | Unscored | Catalog only |
 | [`main-force-prelaunch-pattern`](../skills/main-force-prelaunch-pattern/) | A股主力拉升前"五步曲"识别与伏击。Use when 找起涨前的票、判断地量是否见底、需要观察期+确认启动机制。 | Project original · reviewed | Unscored | Portable optional assignment · structure checked · CQO |
 | [`market-movers-scanner`](../skills/market-movers-scanner/) | Description needs review; inspect source. | Unknown · unreviewed | Unscored | Catalog only |
 | [`market-price-tracker`](../skills/market-price-tracker/) | Foundation skill providing real-time and historical cryptocurrency price data. This skill is the data layer for the crypto plugin ecosystem - 10+ othe | Unknown · unreviewed | Unscored | Catalog only |
@@ -822,10 +826,12 @@ Analyze markets, backtest strategies, track portfolios, and review financial ris
 | [`polymarket-copy-tracker`](../skills/polymarket-copy-tracker/) | Analyze top Polymarket traders for copy trading. Use when asked to find best traders to copy, analyze trader performance/history, evaluate wallet PnL, discover high-ROI wallets,… | Unknown · unreviewed | Unscored | Catalog only |
 | [`polymarket-profit`](../skills/polymarket-profit/) | 围绕 Polymarket 预测市场执行小资金量化交易与收益跟踪策略。 | Unknown · unreviewed | Unscored | Catalog only |
 | [`portfolio-manager`](../skills/portfolio-manager/) | Comprehensive portfolio analysis using Alpaca MCP Server integration to fetch holdings and positions, then analyze asset allocation, risk metrics, individual stock positions,… | Unknown · unreviewed | Unscored | Catalog only |
+| [`position-alert-watchdog`](../skills/position-alert-watchdog/) | Use when 增删/调整A股持仓盯盘告警、改盯盘频率或降噪。cron no_agent + 动态阈值 + 每日去重。 | Unknown · unreviewed | Unscored | Catalog only |
 | [`position-monitor`](../skills/position-monitor/) | 你是Quant。每小时检查持仓，执行止盈止损/Claim结算。 | Unknown · unreviewed | Unscored | Catalog only |
 | [`product-discovery-portfolio-governance`](../skills/product-discovery-portfolio-governance/) | 将模糊产品想法、客户请求或路线图争议转化为有证据的用户机会、产品组合取舍和阶段门决策。用于产品发现、机会评估、组合优先级、MVP 范围、路线图审查、发布前准备或继续/调整/停止决策；不要用于直接决定技术架构、营销投放、销售承诺、价格、法律结论，也不要把无研究证据的功能清单包装成产品战略。 | Project original · reviewed | 82/100 · Selected | Portable required assignment · structure checked · CPO |
 | [`quant-analyst`](../skills/quant-analyst/) | Build financial models, backtest trading strategies, and analyze market data. Implements risk metrics, portfolio optimization, and statistical arbitrage. Use PROACTIVELY for… | Unknown · unreviewed | Unscored | Portable required assignment · structure checked · CQO |
 | [`relayer-trade`](../skills/relayer-trade/) | Polymarket链上交易skill。通过Relayer v2 API绕过CLOB geo-block，执行buy(split)/sell(merge+transfer)/redeem/claim。零CLOB依赖，纯链上gasless。Triggers: 'relayer buy', 'relayer sell', 'relayer claim',… | Unknown · unreviewed | Unscored | Catalog only · review: credentials, external-write, financial-action |
+| [`screening-rule-backtest`](../skills/screening-rule-backtest/) | Use when 要验证某个选股/交易规则是否真的有效（回测三项必做检验 + 可跑脚本）。 | Unknown · unreviewed | Unscored | Catalog only |
 | [`senior-pm`](../skills/senior-pm/) | Senior Project Manager for enterprise software, SaaS, and digital transformation projects. Specializes in portfolio management, quantitative risk analysis, resource optimization,… | Unknown · unreviewed | Unscored | Catalog only |
 | [`sp-scale-game`](../skills/sp-scale-game/) | Test at extremes (1000x bigger/smaller, instant/year-long) to expose fundamental truths hidden at normal scales | Unknown · unreviewed | Unscored | Catalog only |
 | [`sperax-defi-guide`](../skills/sperax-defi-guide/) | Comprehensive guide to DeFi yield farming strategies — lending, liquidity provision, auto-compounding, stablecoin yield, and risk management. Use when helping users find yield,… | Unknown · unreviewed | Unscored | Catalog only |
@@ -835,6 +841,7 @@ Analyze markets, backtest strategies, track portfolios, and review financial ris
 | [`technical-analysis`](../skills/technical-analysis/) | Master of price action, chart patterns, and technical indicators - combining classical Wyckoff/Dow theory with modern quantitative validation for edge identificationUse when… | Unknown · unreviewed | Unscored | Portable optional assignment · structure checked · CQO |
 | [`thinking-simon`](../skills/thinking-simon/) | 蒸馏 Jim Simons（文艺复兴科技）思维模式的实用框架：量化思维、大量小交易、数学即优势 | Unknown · unreviewed | Unscored | Catalog only |
 | [`trade-prediction-markets`](../skills/trade-prediction-markets/) | Build and test Polymarket prediction market trading strategies for YES/NO token trading. Provides 6 tools: get_all_prediction_events (browse markets, $0.001),… | Unknown · unreviewed | Unscored | Harness-specific assignment · generic installer skips · CQO |
+| [`trading-daily-review`](../skills/trading-daily-review/) | Use when 用户分享当日A股买卖操作、要求写复盘或记录交易时：提取操作→核验产业逻辑→生成复盘文档并发送。 | Unknown · unreviewed | Unscored | Catalog only |
 | [`trading-strategy-backtester`](../skills/trading-strategy-backtester/) | Validate trading strategies against historical data before risking real capital. This skill provides a complete backtesting framework with 8 built-in | Unknown · unreviewed | Unscored | Catalog only |
 | [`whale-alert-monitor`](../skills/whale-alert-monitor/) | Track large cryptocurrency transactions and whale wallet movements across multiple blockchains. Monitor exchange inflows/outflows, manage watchlists, | Unknown · unreviewed | Unscored | Catalog only |
 | [`youzi-stock-quality-screen`](../skills/youzi-stock-quality-screen/) | Use when 按游资标准筛优质股、判断持仓质量、定位主力阶段（五标准+量价四象限+四维共振）。 | Project original · reviewed | Unscored | Portable optional assignment · structure checked · CQO |
@@ -1078,6 +1085,11 @@ Domain-specific helpers and cross-functional tools that need a dedicated review 
 
 | Skill | What it helps with | Origin | Curation evidence | Support / review signals |
 |---|---|---|---|---|
+| [`ashare-intraday-signal-verification`](../skills/ashare-intraday-signal-verification/) | Use when 用盘中数据验证日线信号再决定动手（内外盘识假托单/真假突破/做T适用性）。 | Unknown · unreviewed | Unscored | Catalog only |
+| [`ashare-limitup-openboard-diagnosis`](../skills/ashare-limitup-openboard-diagnosis/) | Use when 涨停开板，判断是分歧洗盘还是出货、能不能买。 | Unknown · unreviewed | Unscored | Catalog only |
+| [`ashare-limitup-precapture`](../skills/ashare-limitup-precapture/) | Use when 想在涨停启动前/首板时抓到能连板的票（主力意图+基因+板块+大盘+卡位五维）。 | Unknown · unreviewed | Unscored | Catalog only |
+| [`ashare-limitup-streak-analysis`](../skills/ashare-limitup-streak-analysis/) | Use when 判断连板股能否续板、板块内谁是龙一、连板概率。 | Unknown · unreviewed | Unscored | Catalog only |
+| [`ashare-position-exit-tactics`](../skills/ashare-position-exit-tactics/) | Use when 已持仓要决定减/清/做T/等反包（分批+死线+做T算账）。 | Unknown · unreviewed | Unscored | Catalog only |
 | [`bat-cat`](../skills/bat-cat/) | A cat clone with syntax highlighting, line numbers, and Git integration - a modern replacement for cat. | Unknown · unreviewed | Unscored | Catalog only |
 | [`bazi-fortune`](../skills/bazi-fortune/) | 八字四柱命理分析工具，属于 fortune-telling-skills 运势测算套件。基于子平真诠体系， 通过出生年月日时推算四柱八字、十神关系、五行旺衰、大运流年，揭示命局格局和人生走向。 排盘为确定性计算 + LLM 综合解读，无外部 API 依赖。 触发词：八字、四柱、命理、生辰八字、bazi、八字排盘、五行、命局分析。… | Unknown · unreviewed | Unscored | Catalog only |
 | [`channel-truth-run`](../skills/channel-truth-run/) | Automatic channel and contact synchronization | Unknown · unreviewed | Unscored | Catalog only |
@@ -1097,6 +1109,7 @@ Domain-specific helpers and cross-functional tools that need a dedicated review 
 | [`kanxiang`](../skills/kanxiang/) | 看相分析技能。通过用户上传的人体部位图片，识别图片类型（面相/手相/体相/骨相），调用相应的相术规则知识库，结合图片内容进行专业分析。支持面相（五官、三庭、十二宫）、手相（掌线、指形、掌丘）、骨相（头骨、体骨、九骨）、体相（体型、体态、气质）的综合分析。基于《麻衣神相》《柳庄相法》《神相全编》《水镜神相》《冰鉴》等经典相书整理。 | Unknown · unreviewed | Unscored | Catalog only |
 | [`liuyao`](../skills/liuyao/) | 六爻铜钱卦占卜技能。核心理念："解一卦就是传一道，说一言就是传一智"。支持真实/虚拟起卦，集成儒道哲学。 | Unknown · unreviewed | Unscored | Catalog only |
 | [`liuyao-yijing`](../skills/liuyao-yijing/) | 六爻易经占卜器，基于京房纳甲体系，模拟铜钱起卦，完成纳甲装卦（天干地支、世应、六亲、六神）， 通过用神旺衰和生克制化断卦。当用户提及「六爻」「易经占卜」「铜钱起卦」「纳甲」「帮我起一卦」 「六爻预测」时触发。装卦为确定性计算 + LLM 综合断卦，无外部 API 依赖。 不适用于：梅花易数、奇门遁甲、星座运势、塔罗占卜、八字命理等其他领域 → 建议使用… | Unknown · unreviewed | Unscored | Catalog only |
+| [`main-force-behavior-verification`](../skills/main-force-behavior-verification/) | 验证「主力是否还在」并筛出有妖性的标的。Use when 判断主力有没有跑、有没有涨停基因、能否持续、是启动还是派发。 | Unknown · unreviewed | Unscored | Catalog only |
 | [`mcstatus`](../skills/mcstatus/) | 生成 Agent 与 Cron 的模型配置状态报告，展示主模型、fallback 链和任务分配情况。 | Unknown · unreviewed | Unscored | Catalog only |
 | [`multimodal-gen`](../skills/multimodal-gen/) | 多模态内容生成（图片、视频）。当用户需要生成图片、生成图像、生成视频、AI绘画、AI作图、画一张图、做个视频、文生图、文生视频时使用此技能。自动调用 multimodal-agent 进行生成。 | Unknown · unreviewed | Unscored | Catalog only |
 | [`nutrigx_advisor`](../skills/nutrigx_advisor/) | Nutrigenomics advisor — personalized nutrition guidance based on genetic profiles | Unknown · unreviewed | Unscored | Catalog only |
@@ -1107,6 +1120,7 @@ Domain-specific helpers and cross-functional tools that need a dedicated review 
 | [`raffle-winner-picker`](../skills/raffle-winner-picker/) | Picks random winners from lists, spreadsheets, or Google Sheets for giveaways, raffles, and contests. Ensures fair, unbiased selection with transparency. | Unknown · unreviewed | Unscored | Catalog only |
 | [`ralph`](../skills/ralph/) | Use when the user explicitly asks to use Ralph mode for persistent plan-execute-check-retry loops that keep going until the target outcome is achieved. | Unknown · unreviewed | Unscored | Catalog only |
 | [`remote-ollama-gpu-scheduler`](../skills/remote-ollama-gpu-scheduler/) | 调度远程 Ollama GPU 资源执行批量 embedding 或推理任务，提升多机环境下的算力利用率。 | Unknown · unreviewed | Unscored | Catalog only |
+| [`repro-and-root-cause`](../skills/repro-and-root-cause/) | 复现问题并验证根源，追求一次性解决：先问清真实场景，用最小探针在真机/真实数据上复现，第一性原理逐层定位，奥卡姆剃刀只改产生问题的那一处，改后同一探针复测。用户报 bug、说「复现」「根因」「为什么」「grill me」或要求排查线上问题时适用。 | Unknown · unreviewed | Unscored | Catalog only |
 | [`ship-tauri-python-sidecar`](../skills/ship-tauri-python-sidecar/) | Build and release Tauri apps with a Python sidecar. Use for WebView shells, PyInstaller bundles, version sync, installers, CI releases, lifecycle bugs, signing, or updates. | Unknown · unreviewed | Unscored | Catalog only |
 | [`shrimp-coach`](../skills/shrimp-coach/) | 训练垂直领域 agent 的教练型 skill，用于按宪章、手册和复盘机制持续提升 agent 能力。 | Unknown · unreviewed | Unscored | Catalog only |
 | [`silicon-performance-reviewer`](../skills/silicon-performance-reviewer/) | Quarterly Silicon Agent performance evaluation with ByteDance-style calibration, forced distribution ranking, dual-track (technical/management) assessment, and automated score… | Unknown · unreviewed | Unscored | Catalog only |

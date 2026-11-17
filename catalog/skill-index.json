@@ -23,7 +23,7 @@
       "title": "Cloud, DevOps & Reliability"
     },
     {
-      "count": 81,
+      "count": 82,
       "description": "Collect evidence, search sources, analyze data, and communicate findings.",
       "emoji": "📊",
       "id": "data-analytics-research",
@@ -65,7 +65,7 @@
       "title": "Sales, CRM & Customer Success"
     },
     {
-      "count": 75,
+      "count": 81,
       "description": "Analyze markets, backtest strategies, track portfolios, and review financial risk.",
       "emoji": "💹",
       "id": "finance-trading-markets",
@@ -93,14 +93,14 @@
       "title": "Chinese Platform Workflows"
     },
     {
-      "count": 45,
+      "count": 52,
       "description": "Domain-specific helpers and cross-functional tools that need a dedicated review path.",
       "emoji": "🧰",
       "id": "general-utilities",
       "title": "Specialized Domains & Utilities"
     }
   ],
-  "inventoryCount": 854,
+  "inventoryCount": 868,
   "inventorySemantics": "tracked physical top-level directories with SKILL.md",
   "schemaVersion": 2,
   "skills": [
@@ -2984,6 +2984,310 @@
       ]
     },
     {
+      "assignments": [],
+      "category_id": "finance-trading-markets",
+      "classification": "description:(?:^|-)(?:a-share|stock|equity)(?:-|$).{0,24}(?:analysis|screening)|A股|个股|选股;metadata:frontmatter",
+      "classification_details": {
+        "matched_signals": [
+          "(?:^|-)(?:a-share|stock|equity)(?:-|$).{0,24}(?:analysis|screening)|A股|个股|选股"
+        ],
+        "method": "description",
+        "resolution_status": "rule-match",
+        "review_state": "unreviewed",
+        "runner_ups": [],
+        "winner": {
+          "category_id": "finance-trading-markets",
+          "match_count": 1,
+          "matched_signals": [
+            "(?:^|-)(?:a-share|stock|equity)(?:-|$).{0,24}(?:analysis|screening)|A股|个股|选股"
+          ],
+          "priority": 120,
+          "tie_detected": false
+        }
+      },
+      "curation": {
+        "runtime_evidence": "pending",
+        "status": "unscored"
+      },
+      "description": "Use when 判断A股买点时机：强势票要不要等回踩、超短线1-3天怎么进场、三筛无果时怎么答。",
+      "description_status": "source-text",
+      "path": "skills/ashare-entry-timing/SKILL.md",
+      "portability_class": "catalog-only",
+      "provenance": {
+        "origin_kind": "unknown",
+        "review_state": "unreviewed"
+      },
+      "review_signals": [],
+      "skill_id": "ashare-entry-timing",
+      "support_level": "catalog",
+      "used_by": []
+    },
+    {
+      "assignments": [],
+      "category_id": "general-utilities",
+      "classification": "fallback;metadata:frontmatter",
+      "classification_details": {
+        "matched_signals": [],
+        "method": "fallback",
+        "resolution_status": "fallback",
+        "review_state": "unreviewed",
+        "runner_ups": [],
+        "winner": {
+          "category_id": "general-utilities",
+          "match_count": 0,
+          "matched_signals": [],
+          "priority": 0,
+          "tie_detected": false
+        }
+      },
+      "curation": {
+        "runtime_evidence": "pending",
+        "status": "unscored"
+      },
+      "description": "Use when 用盘中数据验证日线信号再决定动手（内外盘识假托单/真假突破/做T适用性）。",
+      "description_status": "source-text",
+      "path": "skills/ashare-intraday-signal-verification/SKILL.md",
+      "portability_class": "catalog-only",
+      "provenance": {
+        "origin_kind": "unknown",
+        "review_state": "unreviewed"
+      },
+      "review_signals": [],
+      "skill_id": "ashare-intraday-signal-verification",
+      "support_level": "catalog",
+      "used_by": []
+    },
+    {
+      "assignments": [],
+      "category_id": "general-utilities",
+      "classification": "fallback;metadata:frontmatter",
+      "classification_details": {
+        "matched_signals": [],
+        "method": "fallback",
+        "resolution_status": "fallback",
+        "review_state": "unreviewed",
+        "runner_ups": [],
+        "winner": {
+          "category_id": "general-utilities",
+          "match_count": 0,
+          "matched_signals": [],
+          "priority": 0,
+          "tie_detected": false
+        }
+      },
+      "curation": {
+        "runtime_evidence": "pending",
+        "status": "unscored"
+      },
+      "description": "Use when 涨停开板，判断是分歧洗盘还是出货、能不能买。",
+      "description_status": "source-text",
+      "path": "skills/ashare-limitup-openboard-diagnosis/SKILL.md",
+      "portability_class": "catalog-only",
+      "provenance": {
+        "origin_kind": "unknown",
+        "review_state": "unreviewed"
+      },
+      "review_signals": [],
+      "skill_id": "ashare-limitup-openboard-diagnosis",
+      "support_level": "catalog",
+      "used_by": []
+    },
+    {
+      "assignments": [],
+      "category_id": "general-utilities",
+      "classification": "fallback;metadata:frontmatter",
+      "classification_details": {
+        "matched_signals": [],
+        "method": "fallback",
+        "resolution_status": "fallback",
+        "review_state": "unreviewed",
+        "runner_ups": [],
+        "winner": {
+          "category_id": "general-utilities",
+          "match_count": 0,
+          "matched_signals": [],
+          "priority": 0,
+          "tie_detected": false
+        }
+      },
+      "curation": {
+        "runtime_evidence": "pending",
+        "status": "unscored"
+      },
+      "description": "Use when 想在涨停启动前/首板时抓到能连板的票（主力意图+基因+板块+大盘+卡位五维）。",
+      "description_status": "source-text",
+      "path": "skills/ashare-limitup-precapture/SKILL.md",
+      "portability_class": "catalog-only",
+      "provenance": {
+        "origin_kind": "unknown",
+        "review_state": "unreviewed"
+      },
+      "review_signals": [],
+      "skill_id": "ashare-limitup-precapture",
+      "support_level": "catalog",
+      "used_by": []
+    },
+    {
+      "assignments": [],
+      "category_id": "general-utilities",
+      "classification": "fallback;metadata:frontmatter",
+      "classification_details": {
+        "matched_signals": [],
+        "method": "fallback",
+        "resolution_status": "fallback",
+        "review_state": "unreviewed",
+        "runner_ups": [],
+        "winner": {
+          "category_id": "general-utilities",
+          "match_count": 0,
+          "matched_signals": [],
+          "priority": 0,
+          "tie_detected": false
+        }
+      },
+      "curation": {
+        "runtime_evidence": "pending",
+        "status": "unscored"
+      },
+      "description": "Use when 判断连板股能否续板、板块内谁是龙一、连板概率。",
+      "description_status": "source-text",
+      "path": "skills/ashare-limitup-streak-analysis/SKILL.md",
+      "portability_class": "catalog-only",
+      "provenance": {
+        "origin_kind": "unknown",
+        "review_state": "unreviewed"
+      },
+      "review_signals": [],
+      "skill_id": "ashare-limitup-streak-analysis",
+      "support_level": "catalog",
+      "used_by": []
+    },
+    {
+      "assignments": [],
+      "category_id": "general-utilities",
+      "classification": "fallback;metadata:frontmatter",
+      "classification_details": {
+        "matched_signals": [],
+        "method": "fallback",
+        "resolution_status": "fallback",
+        "review_state": "unreviewed",
+        "runner_ups": [],
+        "winner": {
+          "category_id": "general-utilities",
+          "match_count": 0,
+          "matched_signals": [],
+          "priority": 0,
+          "tie_detected": false
+        }
+      },
+      "curation": {
+        "runtime_evidence": "pending",
+        "status": "unscored"
+      },
+      "description": "Use when 已持仓要决定减/清/做T/等反包（分批+死线+做T算账）。",
+      "description_status": "source-text",
+      "path": "skills/ashare-position-exit-tactics/SKILL.md",
+      "portability_class": "catalog-only",
+      "provenance": {
+        "origin_kind": "unknown",
+        "review_state": "unreviewed"
+      },
+      "review_signals": [],
+      "skill_id": "ashare-position-exit-tactics",
+      "support_level": "catalog",
+      "used_by": []
+    },
+    {
+      "assignments": [],
+      "category_id": "finance-trading-markets",
+      "classification": "description:(?:^|-)(?:a-share|stock|equity)(?:-|$).{0,24}(?:analysis|screening)|A股|个股|选股;metadata:frontmatter",
+      "classification_details": {
+        "matched_signals": [
+          "(?:^|-)(?:a-share|stock|equity)(?:-|$).{0,24}(?:analysis|screening)|A股|个股|选股"
+        ],
+        "method": "description",
+        "resolution_status": "rule-match",
+        "review_state": "unreviewed",
+        "runner_ups": [],
+        "winner": {
+          "category_id": "finance-trading-markets",
+          "match_count": 1,
+          "matched_signals": [
+            "(?:^|-)(?:a-share|stock|equity)(?:-|$).{0,24}(?:analysis|screening)|A股|个股|选股"
+          ],
+          "priority": 120,
+          "tie_detected": false
+        }
+      },
+      "curation": {
+        "runtime_evidence": "pending",
+        "status": "unscored"
+      },
+      "description": "Use when 判断A股热点板块方向、连板妖股与板块延续性。",
+      "description_status": "source-text",
+      "path": "skills/ashare-sector-hotspot-analysis/SKILL.md",
+      "portability_class": "catalog-only",
+      "provenance": {
+        "origin_kind": "unknown",
+        "review_state": "unreviewed"
+      },
+      "review_signals": [],
+      "skill_id": "ashare-sector-hotspot-analysis",
+      "support_level": "catalog",
+      "used_by": []
+    },
+    {
+      "assignments": [],
+      "category_id": "data-analytics-research",
+      "classification": "slug:research,search;metadata:frontmatter",
+      "classification_details": {
+        "matched_signals": [
+          "research",
+          "search"
+        ],
+        "method": "slug",
+        "resolution_status": "rule-match",
+        "review_state": "unreviewed",
+        "runner_ups": [
+          {
+            "category_id": "finance-trading-markets",
+            "match_count": 1,
+            "matched_signals": [
+              "stock"
+            ],
+            "priority": 120,
+            "tied_for_first": false
+          }
+        ],
+        "winner": {
+          "category_id": "data-analytics-research",
+          "match_count": 2,
+          "matched_signals": [
+            "research",
+            "search"
+          ],
+          "priority": 95,
+          "tie_detected": false
+        }
+      },
+      "curation": {
+        "runtime_evidence": "pending",
+        "status": "unscored"
+      },
+      "description": "Use when 分析A股个股/板块题材/大盘量能/换手率/预测走势。免费接口拉数→技术指标→结构化报告。",
+      "description_status": "source-text",
+      "path": "skills/ashare-stock-research/SKILL.md",
+      "portability_class": "catalog-only",
+      "provenance": {
+        "origin_kind": "unknown",
+        "review_state": "unreviewed"
+      },
+      "review_signals": [],
+      "skill_id": "ashare-stock-research",
+      "support_level": "catalog",
+      "used_by": []
+    },
+    {
       "assignments": [
         {
           "agent": "CQO",
@@ -5598,7 +5902,7 @@
           "spdx": "MIT"
         },
         "origin_kind": "project-original",
-        "review_state": "reviewed"
+        "review_state": "stale"
       },
       "review_signals": [],
       "skill_id": "chip-peak-and-screening-methods",
@@ -19240,6 +19544,45 @@
     },
     {
       "assignments": [],
+      "category_id": "finance-trading-markets",
+      "classification": "description:(?:^|-)(?:a-share|stock|equity)(?:-|$).{0,24}(?:analysis|screening)|A股|个股|选股;metadata:frontmatter",
+      "classification_details": {
+        "matched_signals": [
+          "(?:^|-)(?:a-share|stock|equity)(?:-|$).{0,24}(?:analysis|screening)|A股|个股|选股"
+        ],
+        "method": "description",
+        "resolution_status": "rule-match",
+        "review_state": "unreviewed",
+        "runner_ups": [],
+        "winner": {
+          "category_id": "finance-trading-markets",
+          "match_count": 1,
+          "matched_signals": [
+            "(?:^|-)(?:a-share|stock|equity)(?:-|$).{0,24}(?:analysis|screening)|A股|个股|选股"
+          ],
+          "priority": 120,
+          "tie_detected": false
+        }
+      },
+      "curation": {
+        "runtime_evidence": "pending",
+        "status": "unscored"
+      },
+      "description": "Use when 登录龙擎 longqin.hanxai.cn 拉作战池/市场快照/候选，结合选股框架出结论。",
+      "description_status": "source-text",
+      "path": "skills/longqin-alpha-terminal-ops/SKILL.md",
+      "portability_class": "catalog-only",
+      "provenance": {
+        "origin_kind": "unknown",
+        "review_state": "unreviewed"
+      },
+      "review_signals": [],
+      "skill_id": "longqin-alpha-terminal-ops",
+      "support_level": "catalog",
+      "used_by": []
+    },
+    {
+      "assignments": [],
       "category_id": "content-media-publishing",
       "classification": "slug:video,lyrics;metadata:frontmatter",
       "classification_details": {
@@ -19324,6 +19667,41 @@
       "used_by": [
         "CMO"
       ]
+    },
+    {
+      "assignments": [],
+      "category_id": "general-utilities",
+      "classification": "fallback;metadata:frontmatter",
+      "classification_details": {
+        "matched_signals": [],
+        "method": "fallback",
+        "resolution_status": "fallback",
+        "review_state": "unreviewed",
+        "runner_ups": [],
+        "winner": {
+          "category_id": "general-utilities",
+          "match_count": 0,
+          "matched_signals": [],
+          "priority": 0,
+          "tie_detected": false
+        }
+      },
+      "curation": {
+        "runtime_evidence": "pending",
+        "status": "unscored"
+      },
+      "description": "验证「主力是否还在」并筛出有妖性的标的。Use when 判断主力有没有跑、有没有涨停基因、能否持续、是启动还是派发。",
+      "description_status": "source-text",
+      "path": "skills/main-force-behavior-verification/SKILL.md",
+      "portability_class": "catalog-only",
+      "provenance": {
+        "origin_kind": "unknown",
+        "review_state": "unreviewed"
+      },
+      "review_signals": [],
+      "skill_id": "main-force-behavior-verification",
+      "support_level": "catalog",
+      "used_by": []
     },
     {
       "assignments": [
@@ -23349,6 +23727,45 @@
     {
       "assignments": [],
       "category_id": "finance-trading-markets",
+      "classification": "description:(?:^|-)(?:a-share|stock|equity)(?:-|$).{0,24}(?:analysis|screening)|A股|个股|选股;metadata:frontmatter",
+      "classification_details": {
+        "matched_signals": [
+          "(?:^|-)(?:a-share|stock|equity)(?:-|$).{0,24}(?:analysis|screening)|A股|个股|选股"
+        ],
+        "method": "description",
+        "resolution_status": "rule-match",
+        "review_state": "unreviewed",
+        "runner_ups": [],
+        "winner": {
+          "category_id": "finance-trading-markets",
+          "match_count": 1,
+          "matched_signals": [
+            "(?:^|-)(?:a-share|stock|equity)(?:-|$).{0,24}(?:analysis|screening)|A股|个股|选股"
+          ],
+          "priority": 120,
+          "tie_detected": false
+        }
+      },
+      "curation": {
+        "runtime_evidence": "pending",
+        "status": "unscored"
+      },
+      "description": "Use when 增删/调整A股持仓盯盘告警、改盯盘频率或降噪。cron no_agent + 动态阈值 + 每日去重。",
+      "description_status": "source-text",
+      "path": "skills/position-alert-watchdog/SKILL.md",
+      "portability_class": "catalog-only",
+      "provenance": {
+        "origin_kind": "unknown",
+        "review_state": "unreviewed"
+      },
+      "review_signals": [],
+      "skill_id": "position-alert-watchdog",
+      "support_level": "catalog",
+      "used_by": []
+    },
+    {
+      "assignments": [],
+      "category_id": "finance-trading-markets",
       "classification": "description:quant;metadata:fallback",
       "classification_details": {
         "matched_signals": [
@@ -25853,6 +26270,41 @@
     },
     {
       "assignments": [],
+      "category_id": "general-utilities",
+      "classification": "fallback;metadata:frontmatter",
+      "classification_details": {
+        "matched_signals": [],
+        "method": "fallback",
+        "resolution_status": "fallback",
+        "review_state": "unreviewed",
+        "runner_ups": [],
+        "winner": {
+          "category_id": "general-utilities",
+          "match_count": 0,
+          "matched_signals": [],
+          "priority": 0,
+          "tie_detected": false
+        }
+      },
+      "curation": {
+        "runtime_evidence": "pending",
+        "status": "unscored"
+      },
+      "description": "复现问题并验证根源，追求一次性解决：先问清真实场景，用最小探针在真机/真实数据上复现，第一性原理逐层定位，奥卡姆剃刀只改产生问题的那一处，改后同一探针复测。用户报 bug、说「复现」「根因」「为什么」「grill me」或要求排查线上问题时适用。",
+      "description_status": "source-text",
+      "path": "skills/repro-and-root-cause/SKILL.md",
+      "portability_class": "catalog-only",
+      "provenance": {
+        "origin_kind": "unknown",
+        "review_state": "unreviewed"
+      },
+      "review_signals": [],
+      "skill_id": "repro-and-root-cause",
+      "support_level": "catalog",
+      "used_by": []
+    },
+    {
+      "assignments": [],
       "category_id": "data-analytics-research",
       "classification": "outcome:\\b(?:vcf|clinvar|gnomad|bioinformatics)\\b;metadata:frontmatter",
       "classification_details": {
@@ -26626,6 +27078,45 @@
       "used_by": [
         "CSO"
       ]
+    },
+    {
+      "assignments": [],
+      "category_id": "finance-trading-markets",
+      "classification": "slug:backtest;metadata:frontmatter",
+      "classification_details": {
+        "matched_signals": [
+          "backtest"
+        ],
+        "method": "slug",
+        "resolution_status": "rule-match",
+        "review_state": "unreviewed",
+        "runner_ups": [],
+        "winner": {
+          "category_id": "finance-trading-markets",
+          "match_count": 1,
+          "matched_signals": [
+            "backtest"
+          ],
+          "priority": 120,
+          "tie_detected": false
+        }
+      },
+      "curation": {
+        "runtime_evidence": "pending",
+        "status": "unscored"
+      },
+      "description": "Use when 要验证某个选股/交易规则是否真的有效（回测三项必做检验 + 可跑脚本）。",
+      "description_status": "source-text",
+      "path": "skills/screening-rule-backtest/SKILL.md",
+      "portability_class": "catalog-only",
+      "provenance": {
+        "origin_kind": "unknown",
+        "review_state": "unreviewed"
+      },
+      "review_signals": [],
+      "skill_id": "screening-rule-backtest",
+      "support_level": "catalog",
+      "used_by": []
     },
     {
       "assignments": [],
@@ -34206,6 +34697,55 @@
       "used_by": [
         "CQO"
       ]
+    },
+    {
+      "assignments": [],
+      "category_id": "finance-trading-markets",
+      "classification": "slug:trading;metadata:frontmatter",
+      "classification_details": {
+        "matched_signals": [
+          "trading"
+        ],
+        "method": "slug",
+        "resolution_status": "priority-tie",
+        "review_state": "unreviewed",
+        "runner_ups": [
+          {
+            "category_id": "business-operations-strategy",
+            "match_count": 1,
+            "matched_signals": [
+              "daily-(?:brief|planning|standup|operations|review)"
+            ],
+            "priority": 65,
+            "tied_for_first": true
+          }
+        ],
+        "winner": {
+          "category_id": "finance-trading-markets",
+          "match_count": 1,
+          "matched_signals": [
+            "trading"
+          ],
+          "priority": 120,
+          "tie_detected": true
+        }
+      },
+      "curation": {
+        "runtime_evidence": "pending",
+        "status": "unscored"
+      },
+      "description": "Use when 用户分享当日A股买卖操作、要求写复盘或记录交易时：提取操作→核验产业逻辑→生成复盘文档并发送。",
+      "description_status": "source-text",
+      "path": "skills/trading-daily-review/SKILL.md",
+      "portability_class": "catalog-only",
+      "provenance": {
+        "origin_kind": "unknown",
+        "review_state": "unreviewed"
+      },
+      "review_signals": [],
+      "skill_id": "trading-daily-review",
+      "support_level": "catalog",
+      "used_by": []
     },
     {
       "assignments": [],
