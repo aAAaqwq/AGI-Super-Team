@@ -1,5 +1,9 @@
 healthcare-monitor/.venv/
 
+# Generated Skills Atlas output (rebuilt by .github/workflows/pages.yml)
+docs/skills-atlas/
+skills-atlas/dist/
+
 # Python
 __pycache__/
 *.py[cod]

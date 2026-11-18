@@ -234,7 +234,8 @@
         "README.es-ES.md",
         "docs",
         "cookbook",
-        "assets"
+        "assets",
+        "skills-atlas"
       ],
       "ownershipPrefixes": [
         "README.md",
@@ -243,6 +244,7 @@
         "docs",
         "cookbook",
         "assets",
+        "skills-atlas",
         "SKILL-AGENT-MATRIX.md",
         "STARTUP.md"
       ],
@@ -1004,6 +1006,12 @@
       "role": "authored-authority",
       "module": "skill-library",
       "authority": true
+    },
+    {
+      "path": "skills-atlas",
+      "role": "implementation",
+      "module": "public-navigation",
+      "authority": false
     },
     {
       "path": "starter-kits",

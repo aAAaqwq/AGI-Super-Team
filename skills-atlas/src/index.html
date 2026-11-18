@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="auto">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>{{TITLE}} · {{SUBTITLE}}</title>
+  <meta name="description" content="{{DESCRIPTION}}">
+  <meta name="author" content="{{AUTHOR}}">
+  <meta name="theme-color" content="#f6f4ef" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#08080a" media="(prefers-color-scheme: dark)">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{TITLE}} · {{SUBTITLE}}">
+  <meta property="og:description" content="{{DESCRIPTION}}">
+  <meta property="og:url" content="{{PAGES_URL}}">
+  <meta property="og:site_name" content="{{TITLE}}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{TITLE}} · {{SUBTITLE}}">
+  <meta name="twitter:description" content="{{DESCRIPTION}}">
+  <link rel="canonical" href="{{PAGES_URL}}">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="assets/domain-tokens.css">
+  <link rel="stylesheet" href="assets/styles.css">
+  <script src="assets/theme.js"></script>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; font-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+
+  <svg class="svg-sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></symbol>
+    <symbol id="i-external" viewBox="0 0 24 24"><path d="M14 5h5v5"/><path d="M19 5 10.5 13.5"/><path d="M19 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5 7 7 0 1 0 20.5 14.2Z"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V4"/><path d="m7 9 5-5 5 5"/><path d="M5 16v3a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-3"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v12"/><path d="m7 11 5 5 5-5"/><path d="M5 20h14"/></symbol>
+    <symbol id="i-github" viewBox="0 0 24 24"><path d="M9 19c-4 1.5-4-2-6-2"/><path d="M15 21v-3.6a3.1 3.1 0 0 0-.9-2.4c3-.3 6.1-1.5 6.1-6.7a5.2 5.2 0 0 0-1.4-3.6 4.8 4.8 0 0 0-.1-3.6s-1.1-.3-3.6 1.4a12.4 12.4 0 0 0-6.2 0C6.4 1.1 5.3 1.4 5.3 1.4a4.8 4.8 0 0 0-.1 3.6 5.2 5.2 0 0 0-1.4 3.6c0 5.2 3.1 6.4 6.1 6.7a3.1 3.1 0 0 0-.9 2.4V21"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4.5 4.5L19 7"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16"/><path d="M9 7V4h6v3"/><path d="M6 7l1 13h10l1-13"/><path d="M10 11v5M14 11v5"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8Z"/><path d="M19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8Z"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1.5"/><rect x="14" y="4" width="6" height="6" rx="1.5"/><rect x="4" y="14" width="6" height="6" rx="1.5"/><rect x="14" y="14" width="6" height="6" rx="1.5"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.5.5l2-2a5 5 0 0 0-7-7l-1.2 1.2"/><path d="M14 11a5 5 0 0 0-7.5-.5l-2 2a5 5 0 0 0 7 7l1.2-1.2"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6Z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></symbol>
+    <symbol id="i-command" viewBox="0 0 24 24"><path d="M9 6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3Z"/></symbol>
+  </svg>
+
+  <div class="ambient" aria-hidden="true">
+    <span class="ambient__orb ambient__orb--a"></span>
+    <span class="ambient__orb ambient__orb--b"></span>
+    <span class="ambient__orb ambient__orb--c"></span>
+    <span class="ambient__noise"></span>
+  </div>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="{{TITLE}} 首页">
+      <span class="brand__mark" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+      </span>
+      <span class="brand__name">{{TITLE}}</span>
+      <span class="brand__sub">{{SUBTITLE}}</span>
+    </a>
+    <nav class="site-nav" aria-label="站点导航">
+      <a href="#categories">领域</a>
+      <a href="#featured">精选</a>
+      <a href="#catalog">全部技能</a>
+      <a href="#for-agents">For agents</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn" type="button" id="search-jump" aria-label="聚焦搜索" title="搜索 (⌘K)">
+        <svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg>
+      </button>
+      <button class="icon-btn" type="button" id="theme-toggle" aria-label="切换深色模式" title="切换主题">
+        <svg class="icon icon--light" aria-hidden="true"><use href="#i-moon"></use></svg>
+        <svg class="icon icon--dark" aria-hidden="true"><use href="#i-sun"></use></svg>
+      </button>
+      <button class="primary-btn primary-btn--sm" type="button" data-upload-open>
+        <svg class="icon" aria-hidden="true"><use href="#i-upload"></use></svg>
+        <span>上传技能</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero__grid shell">
+        <div class="hero__copy">
+          <p class="eyebrow"><span class="pulse" aria-hidden="true"></span>{{TOTAL}} skills · {{CATEGORIES}} categories · {{ORIGINALS}} originals</p>
+          <h1 id="hero-title" class="hero__title">
+            <span class="hero__number">{{TOTAL}}</span> 个技能，<br>
+            收进一张星图。
+          </h1>
+          <p class="hero__sub">{{TAGLINE}}</p>
+          <form class="hero-search" id="hero-search-form" role="search" autocomplete="off">
+            <svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg>
+            <input id="hero-search" type="search" name="q" placeholder="搜索技能、角色、领域或路径…" aria-label="搜索技能" autocomplete="off" spellcheck="false">
+            <kbd aria-hidden="true">⌘K</kbd>
+          </form>
+          <div class="hero__actions">
+            <a class="primary-btn primary-btn--lg" href="#catalog">浏览全部技能 <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+            <button class="glass-btn" type="button" data-upload-open>上传 SKILL.md</button>
+            <a class="glass-btn" href="llms.txt" target="_blank" rel="noopener">给 AI 的入口 <svg class="icon" aria-hidden="true"><use href="#i-external"></use></svg></a>
+          </div>
+          <dl class="hero__stats">
+            <div><dt>Skills</dt><dd>{{TOTAL}}</dd></div>
+            <div><dt>Categories</dt><dd>{{CATEGORIES}}</dd></div>
+            <div><dt>Originals</dt><dd>{{ORIGINALS}}</dd></div>
+            <div><dt>Corpus</dt><dd>{{CORPUS_MB}} MB</dd></div>
+          </dl>
+        </div>
+        <div class="hero__visual" id="hero-visual" data-domain="ai-agents-orchestration" aria-hidden="true">
+          <canvas id="constellation"></canvas>
+          <span class="hero__orb"></span>
+          <span class="orbit orbit--1"></span>
+          <span class="orbit orbit--2"></span>
+          <span class="orbit orbit--3"></span>
+          <span class="float-chip float-chip--1" data-domain="product-design-ux">Design</span>
+          <span class="float-chip float-chip--2" data-domain="finance-trading-markets">Finance</span>
+          <span class="float-chip float-chip--3" data-domain="chinese-platform-workflows">中文平台</span>
+          <span class="float-chip float-chip--4" data-domain="ai-agents-orchestration">Agents</span>
+          <span class="hero__visual-label"><b>{{TOTAL}}</b> skills · one map</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section categories" id="categories" aria-labelledby="categories-title">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Taxonomy</p>
+            <h2 id="categories-title">{{CATEGORIES}} 个领域，清晰索引</h2>
+          </div>
+          <p>每个技能只归入一个主领域。点击任一领域，直接下钻到对应技能。</p>
+        </div>
+        <div class="category-grid" id="category-grid">
+          <div class="skeleton skeleton--card"></div>
+          <div class="skeleton skeleton--card"></div>
+          <div class="skeleton skeleton--card"></div>
+          <div class="skeleton skeleton--card"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section featured" id="featured" aria-labelledby="featured-title">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Curated</p>
+            <h2 id="featured-title">精选技能</h2>
+          </div>
+          <p>从编排、设计、交易、自动化到中文平台，先看这几张牌。</p>
+        </div>
+        <div class="featured-grid" id="featured-grid">
+          <div class="skeleton skeleton--featured"></div>
+          <div class="skeleton skeleton--featured"></div>
+          <div class="skeleton skeleton--featured"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section catalog" id="catalog" aria-labelledby="catalog-title">
+      <div class="shell">
+        <div class="catalog-head">
+          <div>
+            <p class="kicker">Catalog</p>
+            <h2 id="catalog-title">全部技能</h2>
+            <p class="catalog-count" id="catalog-count" aria-live="polite">正在加载技能索引…</p>
+          </div>
+          <div class="catalog-tools">
+            <label class="search-field" for="catalog-search">
+              <svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg>
+              <input id="catalog-search" type="search" placeholder="搜索 853 个技能…" autocomplete="off" spellcheck="false">
+            </label>
+            <label class="select-field">
+              <span class="sr-only">排序</span>
+              <select id="sort-select">
+                <option value="curated">推荐排序</option>
+                <option value="name-asc">名称 A → Z</option>
+                <option value="name-desc">名称 Z → A</option>
+              </select>
+              <svg class="icon" aria-hidden="true"><use href="#i-chevron"></use></svg>
+            </label>
+          </div>
+        </div>
+        <div class="filter-bar" id="filter-row" role="group" aria-label="按领域筛选">
+          <div class="skeleton skeleton--chip"></div>
+          <div class="skeleton skeleton--chip"></div>
+          <div class="skeleton skeleton--chip"></div>
+        </div>
+        <div class="active-filters" id="active-filters" hidden></div>
+        <div class="skill-grid" id="skill-grid" aria-busy="true"></div>
+        <div class="load-more-wrap">
+          <button class="glass-btn" type="button" id="load-more" hidden>加载更多</button>
+        </div>
+        <div class="empty-state" id="empty-state" hidden>
+          <span class="empty-state__mark" aria-hidden="true"><svg class="icon"><use href="#i-search"></use></svg></span>
+          <h3>没有找到匹配的技能</h3>
+          <p>换一个关键词，或者清除筛选后再试。</p>
+          <button class="primary-btn" type="button" id="clear-filters">清除筛选</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section local" id="local-section" aria-labelledby="local-title" hidden>
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Local workspace</p>
+            <h2 id="local-title">本地技能</h2>
+          </div>
+          <p>你拖进来的 SKILL.md 只保存在这个浏览器里，不会上传到服务器。</p>
+        </div>
+        <div class="skill-grid" id="local-grid"></div>
+        <div class="local-actions">
+          <button class="glass-btn" type="button" id="export-local">导出 JSON</button>
+          <button class="ghost-btn" type="button" id="clear-local">清空本地</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section for-agents" id="for-agents" aria-labelledby="agents-title">
+      <div class="shell">
+        <div class="agent-card">
+          <div class="agent-card__copy">
+            <p class="kicker">For agents</p>
+            <h2 id="agents-title">让 AI 直接读这张星图。</h2>
+            <p>站点同时提供纯文本索引、完整语料和逐技能 JSON。无需解析页面，直接抓取即可。</p>
+            <div class="agent-links">
+              <a href="llms.txt" target="_blank" rel="noopener"><span>llms.txt</span><small>可读索引</small></a>
+              <a href="llms-full.txt" target="_blank" rel="noopener"><span>llms-full.txt</span><small>完整语料</small></a>
+              <a href="data/index.json" target="_blank" rel="noopener"><span>data/index.json</span><small>结构化索引</small></a>
+              <a href="data/originals.json" target="_blank" rel="noopener"><span>data/originals.json</span><small>原创技能</small></a>
+            </div>
+          </div>
+          <pre class="agent-code" tabindex="0" aria-label="AI 检索示例"><code><span class="c-dim"># 一次抓取全部技能元数据</span>
+curl -s {{PAGES_URL}}data/index.json
+
+<span class="c-dim"># 读取单个技能的完整内容</span>
+curl -s {{PAGES_URL}}data/skills/ui-ux-pro-max.json</code></pre>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <div class="footer-brand">
+        <span class="brand__mark" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></span>
+        <div><b>{{TITLE}}</b><p>{{SUBTITLE}} · {{TOTAL}} skills · generated {{GENERATED_DATE}}</p></div>
+      </div>
+      <nav aria-label="页脚导航">
+        <a href="{{REPO_URL}}" target="_blank" rel="noopener">GitHub</a>
+        <a href="llms.txt" target="_blank" rel="noopener">llms.txt</a>
+        <a href="data/index.json" target="_blank" rel="noopener">JSON</a>
+        <a href="#top">回到顶部</a>
+      </nav>
+    </div>
+  </footer>
+
+  <div class="overlay" id="detail-overlay" hidden>
+    <div class="overlay__scrim" data-close-detail></div>
+    <section class="sheet sheet--detail" role="dialog" aria-modal="true" aria-labelledby="detail-title" tabindex="-1">
+      <header class="sheet__header">
+        <div class="sheet__heading">
+          <p class="sheet__eyebrow" id="detail-category">Skill</p>
+          <h2 id="detail-title">正在加载…</h2>
+        </div>
+        <div class="sheet__header-actions">
+          <button class="icon-btn" type="button" id="detail-copy-link" aria-label="复制链接" title="复制链接">
+            <svg class="icon" aria-hidden="true"><use href="#i-link"></use></svg>
+          </button>
+          <button class="icon-btn" type="button" id="detail-close-top" data-close-detail aria-label="关闭详情">
+            <svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg>
+          </button>
+        </div>
+      </header>
+      <div class="sheet__body" id="detail-body">
+        <div class="detail-loading">
+          <div class="skeleton skeleton--line"></div>
+          <div class="skeleton skeleton--line"></div>
+          <div class="skeleton skeleton--line skeleton--short"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="overlay overlay--center" id="upload-overlay" hidden>
+    <div class="overlay__scrim" data-close-upload></div>
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="upload-title" tabindex="-1">
+      <header class="modal__header">
+        <div>
+          <p class="kicker">Local only</p>
+          <h2 id="upload-title">上传 SKILL.md</h2>
+        </div>
+        <button class="icon-btn" type="button" data-close-upload aria-label="关闭上传">
+          <svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg>
+        </button>
+      </header>
+      <div class="upload-tabs" role="tablist" aria-label="上传方式">
+        <button class="upload-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="upload-panel-file" id="upload-tab-file" data-tab="file">拖入文件</button>
+        <button class="upload-tab" type="button" role="tab" aria-selected="false" aria-controls="upload-panel-paste" id="upload-tab-paste" data-tab="paste">粘贴 Markdown</button>
+      </div>
+      <div class="upload-panel" id="upload-panel-file" role="tabpanel" aria-labelledby="upload-tab-file">
+        <label class="dropzone" id="dropzone" for="file-input">
+          <span class="dropzone__icon"><svg class="icon" aria-hidden="true"><use href="#i-upload"></use></svg></span>
+          <b>把 SKILL.md 拖到这里</b>
+          <span>或点击选择文件，支持一次选择多个 .md 文件</span>
+          <input id="file-input" type="file" accept=".md,.markdown,.txt,text/markdown,text/plain" multiple hidden>
+        </label>
+      </div>
+      <div class="upload-panel" id="upload-panel-paste" role="tabpanel" aria-labelledby="upload-tab-paste" hidden>
+        <label class="field">
+          <span>技能名称</span>
+          <input id="paste-name" type="text" placeholder="例如 my-new-skill">
+        </label>
+        <label class="field">
+          <span>SKILL.md 内容</span>
+          <textarea id="paste-content" rows="7" placeholder="粘贴带 YAML frontmatter 的 Skill 内容…"></textarea>
+        </label>
+        <button class="glass-btn" type="button" id="paste-add">解析并加入预览</button>
+      </div>
+      <div class="upload-preview" id="upload-preview" hidden>
+        <div class="upload-preview__head"><b>待加入</b><span id="upload-preview-count"></span></div>
+        <div class="upload-preview__list" id="upload-preview-list"></div>
+      </div>
+      <p class="upload-note">文件只在浏览器内解析，不会上传到任何服务器。永久收录请把 SKILL.md 放进 <code>skills/</code> 并提交 PR。</p>
+      <div class="modal__actions">
+        <button class="ghost-btn" type="button" id="upload-clear">清空</button>
+        <button class="primary-btn" type="button" id="upload-save" disabled>加入本地星图</button>
+      </div>
+    </section>
+  </div>
+
+  <div class="toast-region" id="toast-region" aria-live="polite" aria-atomic="true"></div>
+
+  <noscript>
+    <div class="noscript">技能星图需要 JavaScript 才能交互。你可以直接读取 <a href="llms.txt">llms.txt</a> 或 <a href="data/index.json">data/index.json</a>。</div>
+  </noscript>
+
+  <script src="assets/marked.min.js"></script>
+  <script src="assets/purify.min.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
