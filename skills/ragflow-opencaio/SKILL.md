@@ -12,7 +12,7 @@ description: RAGFlow OpenCAIO 知识库文档上传与管理。当需要将文�
 | 配置项 | 值 |
 |--------|-----|
 | 服务器地址 | `http://8.134.103.73:12700` |
-| API Key | `ragflow-mlZjyQxsDT27bhT6tbONrn0f6dyA-g6hR1jcRqh1lNo` |
+| API Key | `${RAGFLOW_API_KEY}` |
 | 知识库 ID | `2ccc31fe4f8511f181580bef240bdf9e` |
 | 知识库名称 | OpenCAIO |
 | 嵌入模型 | text-embedding-v2@Tongyi-Qianwen |
@@ -230,7 +230,8 @@ curl -X POST \
 ```bash
 #!/bin/bash
 SERVER="http://8.134.103.73:12700"
-KEY="ragflow-mlZjyQxsDT27bhT6tbONrn0f6dyA-g6hR1jcRqh1lNo"
+# RAGFLOW_API_KEY 从环境变量读取；不要把真实 key 写进文档
+KEY="${RAGFLOW_API_KEY:?set RAGFLOW_API_KEY}"
 DS="2ccc31fe4f8511f181580bef240bdf9e"
 DIR="${1:-.}"
 
