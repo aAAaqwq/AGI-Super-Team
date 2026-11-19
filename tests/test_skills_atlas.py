@@ -55,6 +55,15 @@ class SkillsAtlasBuildTests(unittest.TestCase):
                 "{{TOTAL}}",
                 (out / "index.html").read_text(encoding="utf-8"),
             )
+            guide = (out / "for-agents.html").read_text(encoding="utf-8")
+            self.assertIn("agent-prompt", guide)
+            self.assertIn("data/index.json", guide)
+            self.assertNotIn("{{TOTAL}}", guide)
+            self.assertTrue((out / "assets/guide.js").is_file())
+            self.assertIn(
+                "for-agents.html",
+                (out / "sitemap.xml").read_text(encoding="utf-8"),
+            )
             tokens = (out / "assets/domain-tokens.css").read_text(encoding="utf-8")
             self.assertEqual(tokens.count("[data-domain="), len(catalog["categories"]))
 

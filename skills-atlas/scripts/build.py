@@ -667,7 +667,7 @@ def build_site(config: dict, catalog: dict, skills: list[dict], src: Path,
 
     assets_dir = out / "assets"
     assets_dir.mkdir(parents=True, exist_ok=True)
-    for name in ("app.js", "styles.css", "theme.js"):
+    for name in ("app.js", "styles.css", "theme.js", "guide.js"):
         shutil.copy2(src / name, assets_dir / name)
     for item in (src / "assets").iterdir():
         if item.is_file():
@@ -706,6 +706,11 @@ def build_site(config: dict, catalog: dict, skills: list[dict], src: Path,
         template = template.replace(token, value)
     (out / "index.html").write_text(template, encoding="utf-8")
 
+    guide_template = (src / "for-agents.html").read_text(encoding="utf-8")
+    for token, value in replacements.items():
+        guide_template = guide_template.replace(token, value)
+    (out / "for-agents.html").write_text(guide_template, encoding="utf-8")
+
     write_json(out / "data" / "index.json", index)
     for skill in skills:
         payload = {
@@ -735,6 +740,17 @@ def build_site(config: dict, catalog: dict, skills: list[dict], src: Path,
         f"> Site: {site['pages_url']}",
         f"> Source: {site['repo_url']}",
         "",
+        "## How to use (for agents)",
+        "",
+        "1. Fetch data/index.json for the metadata index.",
+        "2. Shortlist 3-5 skills by id; do not invent ids.",
+        "3. Fetch data/skills/<id>.json and read its content field.",
+        "4. Use llms-full.txt only when the whole corpus is needed.",
+        "",
+        "Prompt:",
+        f"Read {site['pages_url']}data/index.json, shortlist 3-5 skills for my task,",
+        "then read data/skills/<id>.json for those ids. Use only ids that exist.",
+        "",
         "## Categories",
         "",
     ]
@@ -758,6 +774,7 @@ def build_site(config: dict, catalog: dict, skills: list[dict], src: Path,
     lines += [
         "## Machine-readable",
         "",
+        f"- [AI guide]({site['pages_url']}for-agents.html)",
         f"- [Full index]({site['pages_url']}data/index.json)",
         f"- [Full corpus]({site['pages_url']}llms-full.txt)",
         f"- [Originals]({site['pages_url']}data/originals.json)",
@@ -796,12 +813,15 @@ def build_site(config: dict, catalog: dict, skills: list[dict], src: Path,
     sitemap = [
         '<?xml version="1.0" encoding="UTF-8"?>',
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-        "  <url>",
-        f"    <loc>{html.escape(site['pages_url'])}</loc>",
-        f"    <lastmod>{date}</lastmod>",
-        "  </url>",
-        "</urlset>",
     ]
+    for page in (site["pages_url"], f"{site['pages_url']}for-agents.html"):
+        sitemap += [
+            "  <url>",
+            f"    <loc>{html.escape(page)}</loc>",
+            f"    <lastmod>{date}</lastmod>",
+            "  </url>",
+        ]
+    sitemap.append("</urlset>")
     (out / "sitemap.xml").write_text("\n".join(sitemap) + "\n", encoding="utf-8")
     (out / "robots.txt").write_text(
         "User-agent: *\nAllow: /\n\n"

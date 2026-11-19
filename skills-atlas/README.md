@@ -13,9 +13,9 @@
 - **清晰分类**：14 个主分类、分类计数、原创标记（65 个 project-original 技能）。
 - **快速检索**：⌘K / `/` 聚焦搜索；按领域、原创、名称排序筛选；结果分页渲染，避免一次性塞入 853 张卡片。
 - **详情阅读**：Markdown 渲染、代码块复制、元数据、复制给 AI、下载 `.md`、跳转 GitHub 原文。
-- **本地上传**：拖入或粘贴 `SKILL.md`，只在浏览器本地保存，可导出 JSON；不会上传到服务器。
-- **AI 友好**：同时产出 `llms.txt`、`llms-full.txt`、`data/index.json`、`data/skills/<id>.json` 和 `data/originals.json`。
-- **主题与动效**：浅色 / 深色、系统偏好、View Transition、星空 canvas、卡片聚光、滚动揭示；尊重 `prefers-reduced-motion`。
+- **贡献与本地预览**：默认引导把 `SKILL.md` 通过 PR 合并到仓库；本地预览只在浏览器里保存，可导出 JSON，不会上传或发布。
+- **AI 友好**：同时产出 `for-agents.html` 指南、`llms.txt`、`llms-full.txt`、`data/index.json`、`data/skills/<id>.json` 和 `data/originals.json`。
+- **主题与动效**：浅色 / 深色、系统偏好、View Transition、3D 星座 canvas、多色核心、卡片聚光、滚动揭示；尊重 `prefers-reduced-motion`。
 
 ## 本地构建
 
@@ -34,11 +34,31 @@ python3 skills-atlas/scripts/build.py --out /tmp/skills-atlas-preview
 ## 本地预览
 
 ```bash
-python3 -m http.server 8787 -d docs
-# 打开 http://localhost:8787/skills-atlas/
+python3 skills-atlas/serve.py
+# 打开 http://127.0.0.1:8787/skills-atlas/
 ```
 
-不要直接双击 `index.html`：页面通过 `fetch` 读取 `data/index.json`，`file://` 会被 CORS 拦截。
+`serve.py` 会为 `.txt` / `.json` 返回 `charset=utf-8`，避免 `llms.txt` 在浏览器里被当成 windows-1252 显示。不要直接双击 `index.html`：页面通过 `fetch` 读取 `data/index.json`，`file://` 会被 CORS 拦截。
+
+## 贡献技能
+
+公开站点不接受直接上传。正确的同步路径是：
+
+1. 在 `skills/<skill-id>/SKILL.md` 写入技能，id 使用小写 kebab-case。
+2. 填写 `name` / `description` / `tags` frontmatter，description 写明触发场景与边界。
+3. 运行 `npm run build:all` 和 `npm test`。
+4. 提交 PR；合并后 Pages 会重建 `docs/skills-atlas/`，星图自动同步。
+
+站点的「贡献技能」弹窗默认打开 PR 指引，并提供「在 GitHub 新建 SKILL.md」「复制 PR 模板」按钮；「本地预览」只是提交前的自查工具。
+
+## AI 使用指南
+
+`for-agents.html` 是面向 Agent 的说明页，包含索引端点、推荐检索流程、字段说明和一段可直接复制的指令。机器可读入口：
+
+- `llms.txt`：分类 + 技能列表 + 使用说明
+- `data/index.json`：853 个技能的筛选元数据
+- `data/skills/<id>.json`：单技能完整正文
+- `llms-full.txt`：完整语料（约 6.6 MB）
 
 ## 部署
 
@@ -77,11 +97,14 @@ python3 -m http.server 8787 -d docs
 skills-atlas/
 ├── atlas.config.json      # 站点与分类配置（单一事实源）
 ├── scripts/build.py       # 构建器（仅 Python 标准库）
+├── serve.py               # 本地预览（UTF-8 MIME）
 └── src/
     ├── index.html         # 页面骨架
+    ├── for-agents.html    # AI 使用指南
     ├── styles.css         # Celestial Apple 设计系统
-    ├── app.js             # 检索、详情、上传、主题、动效
+    ├── app.js             # 检索、详情、贡献 PR / 本地预览、主题、3D 星座
     ├── theme.js           # 首屏主题引导（避免 FOUC）
+    ├── guide.js           # 指南页复制按钮
     ├── assets/favicon.svg
     └── vendor/            # marked (MIT) + DOMPurify (Apache-2.0 / MPL-2.0)
 ```

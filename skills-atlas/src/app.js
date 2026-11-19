@@ -6,6 +6,15 @@
   const PAGE_SIZE = 48;
   const STORAGE_THEME = "agi-skills-atlas:theme";
   const STORAGE_LOCAL = "agi-skills-atlas:local:v1";
+  const PR_TEMPLATE = `## Skill submission
+
+- Skill ID:
+- Path: skills/<id>/SKILL.md
+- What it does:
+- Trigger phrases:
+- Validation: npm run build:all && npm test
+- Risk / limitations:
+`;
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const finePointer = window.matchMedia("(pointer: fine)");
 
@@ -534,7 +543,7 @@
 
     el.detailOverlay.hidden = false;
     document.body.classList.add("is-locked");
-    el.detailCategory.textContent = local ? "本地草稿" : (skill.category_label || "Skill");
+    el.detailCategory.textContent = local ? "本地预览" : (skill.category_label || "Skill");
     el.detailTitle.textContent = skillTitle(skill);
     el.detailBody.innerHTML = `
       <div class="detail-loading">
@@ -594,7 +603,7 @@
       actions.push(`<a class="glass-btn" href="${escapeHtml(skill.repo_url)}" target="_blank" rel="noopener">${icons.github}GitHub 原文</a>`);
     }
     if (skill.local) {
-      actions.push(`<button class="ghost-btn" type="button" id="detail-delete-local">${icons.trash}删除本地技能</button>`);
+      actions.push(`<button class="ghost-btn" type="button" id="detail-delete-local">${icons.trash}删除本地预览</button>`);
     }
 
     el.detailBody.innerHTML = `
@@ -769,7 +778,7 @@
       saveLocal();
       renderLocal();
       closeDetail();
-      toast("已删除本地技能");
+      toast("已删除本地预览");
     });
   }
 
@@ -820,10 +829,23 @@
     }
   }
 
+  function activateUploadTab(tabName) {
+    $$(".upload-tab").forEach((tab) => {
+      const active = tab.dataset.tab === tabName;
+      tab.classList.toggle("is-active", active);
+      tab.setAttribute("aria-selected", String(active));
+    });
+    const pr = $("#upload-panel-pr");
+    const local = $("#upload-panel-local");
+    if (pr) pr.hidden = tabName !== "pr";
+    if (local) local.hidden = tabName !== "local";
+  }
+
   function openUpload(trigger) {
     state.uploadTrigger = trigger || document.activeElement;
     el.uploadOverlay.hidden = false;
     document.body.classList.add("is-locked");
+    activateUploadTab("pr");
     renderPending();
     el.uploadModal.querySelector("[data-close-upload]")?.focus();
     state.uploadFocusCleanup?.();
@@ -921,7 +943,7 @@
         .split(/\n{2,}/)
         .map((block) => block.replace(/^#.*$/gm, "").trim())
         .find((block) => block && !block.startsWith(">") && !block.startsWith("|"));
-      description = paragraph ? paragraph.replace(/[*_`#>]/g, "").slice(0, 240) : "本地技能";
+      description = paragraph ? paragraph.replace(/[*_`#>]/g, "").slice(0, 240) : "本地预览";
     }
     const tags = Array.isArray(data.tags) ? data.tags : [];
     const category = guessCategory(`${name} ${description} ${body.slice(0, 1200)}`);
@@ -934,7 +956,7 @@
       content: body,
       tags: tags.slice(0, 6),
       category,
-      category_label: "本地草稿",
+      category_label: "本地预览",
       category_label_en: "Local draft",
       category_index: 0,
       path: filename || "local draft",
@@ -1006,13 +1028,13 @@
     renderPending();
     renderLocal();
     closeUpload();
-    toast(`已加入 ${state.local.length} 个本地技能`);
+    toast(`已加入 ${state.local.length} 个本地预览`);
   }
 
   function exportLocal() {
     const blob = new Blob([JSON.stringify(state.local, null, 2)], { type: "application/json" });
     downloadBlob(blob, "agi-skills-atlas-local.json");
-    toast("已导出本地技能 JSON");
+    toast("已导出本地预览 JSON");
   }
 
   /* ------------------------------------------------------------------ */
@@ -1170,10 +1192,16 @@
       const rect = el.heroVisual.getBoundingClientRect();
       const x = (event.clientX - rect.left) / rect.width - 0.5;
       const y = (event.clientY - rect.top) / rect.height - 0.5;
-      el.heroVisual.style.transform = `translate3d(${x * 10}px, ${y * 10}px, 0)`;
+      el.heroVisual.style.transform = `translate3d(${x * 8}px, ${y * 8}px, 0)`;
+      el.heroVisual.style.setProperty("--px", `${event.clientX - rect.left}px`);
+      el.heroVisual.style.setProperty("--py", `${event.clientY - rect.top}px`);
+      constellation?.point(x, y);
     });
     el.heroVisual.addEventListener("pointerleave", () => {
       el.heroVisual.style.transform = "";
+      el.heroVisual.style.setProperty("--px", "50%");
+      el.heroVisual.style.setProperty("--py", "40%");
+      constellation?.point(0, 0);
     });
   }
 
@@ -1183,10 +1211,12 @@
 
   let constellation = null;
 
-  function readConstellationColor() {
-    if (!el.heroVisual) return "#6D28D9";
-    const value = getComputedStyle(el.heroVisual).getPropertyValue("--domain").trim();
-    return value || "#6D28D9";
+  function readHeroPalette() {
+    if (!el.heroVisual) return ["#0f766e", "#1d4ed8", "#b45309", "#be185d"];
+    const style = getComputedStyle(el.heroVisual);
+    return ["--hero-a", "--hero-b", "--hero-c", "--hero-d"].map(
+      (name) => style.getPropertyValue(name).trim() || "#1d4ed8",
+    );
   }
 
   function setupConstellation() {
@@ -1195,11 +1225,52 @@
     if (!context) return;
     let width = 0;
     let height = 0;
+    let dpr = 1;
     let nodes = [];
     let frame = 0;
     let visible = true;
-    let color = readConstellationColor();
-    let dpr = 1;
+    let palette = readHeroPalette();
+    let autoY = 0.35;
+    let pointerTargetX = 0;
+    let pointerTargetY = 0;
+    let pointerX = 0;
+    let pointerY = 0;
+
+    const buildNodes = () => {
+      const count = Math.max(150, Math.min(260, Math.floor((width * height) / 3000)));
+      const diskCount = Math.floor(count * 0.78);
+      const haloCount = count - diskCount;
+      nodes = [];
+      for (let index = 0; index < diskCount; index += 1) {
+        const r = Math.sqrt(Math.random()) * 0.96;
+        const arm = (index % 3) * ((Math.PI * 2) / 3);
+        const angle = arm + r * 5.8 + (Math.random() - 0.5) * 0.2;
+        const inner = r < 0.38;
+        nodes.push({
+          x: Math.cos(angle) * r,
+          y: (Math.random() - 0.5) * (0.14 + r * 0.16),
+          z: Math.sin(angle) * r,
+          size: 0.9 + Math.random() * 1.6 + (inner ? 0.5 : 0),
+          color: inner
+            ? (index % 5 === 0 ? palette[2] : palette[0])
+            : (index % 13 === 0 ? palette[3] : index % 7 === 0 ? palette[2] : palette[1]),
+          bright: index % 23 === 0,
+        });
+      }
+      for (let index = 0; index < haloCount; index += 1) {
+        const y = 1 - (index / Math.max(1, haloCount - 1)) * 2;
+        const radius = Math.sqrt(Math.max(0, 1 - y * y)) * (0.95 + Math.random() * 0.12);
+        const theta = index * 2.399963229728653;
+        nodes.push({
+          x: Math.cos(theta) * radius,
+          y: y * (0.9 + Math.random() * 0.1),
+          z: Math.sin(theta) * radius,
+          size: 0.5 + Math.random() * 0.9,
+          color: palette[1],
+          bright: index % 31 === 0,
+        });
+      }
+    };
 
     const resize = () => {
       const rect = el.heroVisual.getBoundingClientRect();
@@ -1211,43 +1282,65 @@
       el.canvas.style.width = `${width}px`;
       el.canvas.style.height = `${height}px`;
       context.setTransform(dpr, 0, 0, dpr, 0, 0);
-      const count = Math.max(34, Math.min(110, Math.floor((width * height) / 6200)));
-      nodes = Array.from({ length: count }, () => ({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.16,
-        vy: (Math.random() - 0.5) * 0.16,
-        r: Math.random() * 1.4 + 0.7,
-      }));
+      buildNodes();
       draw();
     };
 
     const draw = () => {
+      if (!width || !height) return;
       context.clearRect(0, 0, width, height);
-      context.strokeStyle = color;
-      context.fillStyle = color;
-      for (let i = 0; i < nodes.length; i += 1) {
-        const a = nodes[i];
-        for (let j = i + 1; j < nodes.length; j += 1) {
-          const b = nodes[j];
-          const dx = a.x - b.x;
-          const dy = a.y - b.y;
-          const distance = Math.hypot(dx, dy);
-          if (distance < 108) {
-            context.globalAlpha = (1 - distance / 108) * 0.16;
-            context.beginPath();
-            context.moveTo(a.x, a.y);
-            context.lineTo(b.x, b.y);
-            context.stroke();
-          }
+      const cx = width * 0.5;
+      const cy = height * 0.46;
+      const radius = Math.min(width, height) * 0.41;
+      const fov = 2.6;
+      const renderX = -0.18 + pointerY * 0.32;
+      const renderY = autoY + pointerX * 0.5;
+      const cosY = Math.cos(renderY);
+      const sinY = Math.sin(renderY);
+      const cosX = Math.cos(renderX);
+      const sinX = Math.sin(renderX);
+      const projected = nodes.map((node) => {
+        let x = node.x * cosY + node.z * sinY;
+        let z = -node.x * sinY + node.z * cosY;
+        let y = node.y * cosX + z * sinX;
+        z = -node.y * sinX + z * cosX;
+        const scale = fov / (fov + z * 0.9);
+        return { x: cx + x * radius * scale, y: cy + y * radius * scale, z, scale, node };
+      });
+
+      for (let i = 0; i < projected.length; i += 1) {
+        const a = projected[i];
+        for (let j = i + 1; j < projected.length; j += 1) {
+          const b = projected[j];
+          const d3 = Math.hypot(
+            a.node.x - b.node.x,
+            a.node.y - b.node.y,
+            a.node.z - b.node.z,
+          );
+          if (d3 > 0.26) continue;
+          const distance = Math.hypot(a.x - b.x, a.y - b.y);
+          if (distance > 78) continue;
+          context.strokeStyle = palette[0];
+          context.globalAlpha = (1 - d3 / 0.26) * 0.22 * ((a.scale + b.scale) / 2);
+          context.lineWidth = 0.8;
+          context.beginPath();
+          context.moveTo(a.x, a.y);
+          context.lineTo(b.x, b.y);
+          context.stroke();
         }
       }
-      context.globalAlpha = 0.5;
-      nodes.forEach((node) => {
+
+      projected.sort((a, b) => a.z - b.z);
+      projected.forEach(({ x, y, z, scale, node }) => {
+        context.globalAlpha = 0.42 + (1 - (z + 1) / 2) * 0.58;
+        context.fillStyle = node.color;
+        context.shadowBlur = node.bright ? 18 : 0;
+        context.shadowColor = node.bright ? node.color : "transparent";
         context.beginPath();
-        context.arc(node.x, node.y, node.r, 0, Math.PI * 2);
+        context.arc(x, y, Math.max(0.55, node.size * scale), 0, Math.PI * 2);
         context.fill();
       });
+      context.shadowBlur = 0;
       context.globalAlpha = 1;
     };
 
@@ -1256,12 +1349,9 @@
         frame = 0;
         return;
       }
-      nodes.forEach((node) => {
-        node.x += node.vx;
-        node.y += node.vy;
-        if (node.x < 0 || node.x > width) node.vx *= -1;
-        if (node.y < 0 || node.y > height) node.vy *= -1;
-      });
+      autoY += 0.0016;
+      pointerX += (pointerTargetX - pointerX) * 0.06;
+      pointerY += (pointerTargetY - pointerY) * 0.06;
       draw();
       frame = requestAnimationFrame(tick);
     };
@@ -1295,11 +1385,15 @@
     }).observe(el.heroVisual);
     constellation = {
       refreshColor() {
-        color = readConstellationColor();
+        palette = readHeroPalette();
+        buildNodes();
         if (preferReduced()) draw();
       },
+      point(x, y) {
+        pointerTargetX = x * 0.45;
+        pointerTargetY = y * 0.32;
+      },
     };
-    if (constellation) constellation.refreshColor();
   }
 
   /* ------------------------------------------------------------------ */
@@ -1400,14 +1494,26 @@
     el.dropzone?.addEventListener("drop", (event) => handleFiles(event.dataTransfer.files));
 
     $$(".upload-tab").forEach((tab) => {
-      tab.addEventListener("click", () => {
-        $$(".upload-tab").forEach((item) => {
-          const active = item === tab;
-          item.classList.toggle("is-active", active);
-          item.setAttribute("aria-selected", String(active));
-        });
-        $("#upload-panel-file").hidden = tab.dataset.tab !== "file";
-        $("#upload-panel-paste").hidden = tab.dataset.tab !== "paste";
+      tab.addEventListener("click", () => activateUploadTab(tab.dataset.tab));
+    });
+    $$("[data-copy-target]").forEach((button) => {
+      button.addEventListener("click", async () => {
+        const target = $(button.dataset.copyTarget);
+        if (!target) return;
+        await copyText(target.textContent || "");
+        const original = button.textContent;
+        button.textContent = "已复制";
+        setTimeout(() => { button.textContent = original; }, 1600);
+        toast("已复制，可直接发给 Agent");
+      });
+    });
+    $$("[data-copy-pr-template]").forEach((button) => {
+      button.addEventListener("click", async () => {
+        await copyText(PR_TEMPLATE);
+        const original = button.textContent;
+        button.textContent = "已复制";
+        setTimeout(() => { button.textContent = original; }, 1600);
+        toast("已复制 PR 模板");
       });
     });
     $("#paste-add")?.addEventListener("click", () => {
@@ -1439,7 +1545,7 @@
       renderLocal();
       state.clearLocalArmed = false;
       $("#clear-local").textContent = "清空本地";
-      toast("已清空本地技能");
+      toast("已清空本地预览");
     });
 
     el.themeToggle?.addEventListener("click", toggleTheme);
