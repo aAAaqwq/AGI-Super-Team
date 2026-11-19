@@ -1,0 +1,112 @@
+{
+  "site": {
+    "title": "AGI Skills Atlas",
+    "subtitle": "AGI 技能星图",
+    "tagline": "把 AGI Super Team 的全部技能，收进一张可检索、可分享的星图。",
+    "description": "AGI Super Team 的完整技能索引：853 个技能、14 个领域，面向人和 Agent 的可检索星图。",
+    "author": "AGI Super Team",
+    "repo": "aAAaqwq/AGI-Super-Team",
+    "repo_url": "https://github.com/aAAaqwq/AGI-Super-Team",
+    "pages_url": "https://aaaaqwq.github.io/AGI-Super-Team/skills-atlas/",
+    "issue_url": "https://github.com/aAAaqwq/AGI-Super-Team/issues/new"
+  },
+  "catalog": "catalog/skill-index.json",
+  "original_index": "skills/original/index.json",
+  "skills_root": "skills",
+  "exclude_skills": [],
+  "private_skills": [],
+  "private_reason": "",
+  "featured": [
+    "ui-ux-pro-max",
+    "orchestrate-agi-super-team",
+    "btc-5min-scalper",
+    "agent-browser",
+    "xhs-smart-publisher"
+  ],
+  "categories": {
+    "ai-agents-orchestration": {
+      "label_zh": "AI 智能体与编排",
+      "description_zh": "编排智能体、上下文、记忆、模型与工具协议。",
+      "color_light": "#6D28D9",
+      "color_dark": "#C4B5FD"
+    },
+    "software-engineering": {
+      "label_zh": "软件工程",
+      "description_zh": "构建、测试、审查、调试与维护应用和开发工具。",
+      "color_light": "#1D4ED8",
+      "color_dark": "#93C5FD"
+    },
+    "cloud-devops-reliability": {
+      "label_zh": "云、DevOps 与可靠性",
+      "description_zh": "部署、观测、排障与运维云和本地基础设施。",
+      "color_light": "#0E7490",
+      "color_dark": "#7DD3FC"
+    },
+    "data-analytics-research": {
+      "label_zh": "数据、分析与研究",
+      "description_zh": "采集证据、检索来源、分析数据并表达发现。",
+      "color_light": "#0F766E",
+      "color_dark": "#6EE7D2"
+    },
+    "security-privacy-legal": {
+      "label_zh": "安全、隐私与法务",
+      "description_zh": "审查安全、隐私、合规、权限、合同与法律风险。",
+      "color_light": "#B91C1C",
+      "color_dark": "#FCA5A5"
+    },
+    "product-design-ux": {
+      "label_zh": "产品、设计与 UX",
+      "description_zh": "塑造产品需求、界面、设计系统与用户体验。",
+      "color_light": "#BE185D",
+      "color_dark": "#F9A8C2"
+    },
+    "marketing-seo-growth": {
+      "label_zh": "营销、SEO 与增长",
+      "description_zh": "通过定位、活动、搜索、广告与社交实现增长。",
+      "color_light": "#B45309",
+      "color_dark": "#F0B36A"
+    },
+    "content-media-publishing": {
+      "label_zh": "内容、媒体与发布",
+      "description_zh": "创作、编辑、再利用与发布文字、图像、音频和视频。",
+      "color_light": "#A21CAF",
+      "color_dark": "#F0ABFC"
+    },
+    "sales-crm-customer-success": {
+      "label_zh": "销售、CRM 与客户成功",
+      "description_zh": "发现、赢取、入驻、支持并留住客户。",
+      "color_light": "#15803D",
+      "color_dark": "#86EFAC"
+    },
+    "finance-trading-markets": {
+      "label_zh": "金融、交易与市场",
+      "description_zh": "分析市场、回测策略、跟踪组合与复盘金融风险。",
+      "color_light": "#A16207",
+      "color_dark": "#FDE68A"
+    },
+    "business-operations-strategy": {
+      "label_zh": "商业运营与战略",
+      "description_zh": "规划工作、做决策、管理团队并改进运营系统。",
+      "color_light": "#4338CA",
+      "color_dark": "#A5B4FC"
+    },
+    "apps-workflow-automation": {
+      "label_zh": "应用与工作流自动化",
+      "description_zh": "连接日常应用、浏览器、消息系统与可重复工作流。",
+      "color_light": "#0369A1",
+      "color_dark": "#7DD3FC"
+    },
+    "chinese-platform-workflows": {
+      "label_zh": "中文平台工作流",
+      "description_zh": "面向中文平台与渠道的创作、分析与发布。",
+      "color_light": "#BE123C",
+      "color_dark": "#FDA4AF"
+    },
+    "general-utilities": {
+      "label_zh": "专业领域与工具",
+      "description_zh": "需要独立审查路径的领域专用工具与跨职能助手。",
+      "color_light": "#475569",
+      "color_dark": "#CBD5E1"
+    }
+  }
+}

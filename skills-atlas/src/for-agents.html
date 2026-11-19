@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="auto">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>AI 使用指南 · {{TITLE}}</title>
+  <meta name="description" content="如何让 AI Agent 正确读取 AGI Skills Atlas 的索引、单技能 JSON 和完整语料。">
+  <meta name="theme-color" content="#f6f4ef" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#08080a" media="(prefers-color-scheme: dark)">
+  <link rel="canonical" href="{{PAGES_URL}}for-agents.html">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/domain-tokens.css">
+  <link rel="stylesheet" href="assets/styles.css">
+  <script src="assets/theme.js"></script>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; font-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'">
+</head>
+<body class="guide-page">
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="{{TITLE}} 首页">
+      <span class="brand__mark" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></span>
+      <span class="brand__name">{{TITLE}}</span>
+      <span class="brand__sub">{{SUBTITLE}}</span>
+    </a>
+    <nav class="site-nav" aria-label="指南导航">
+      <a href="./">返回星图</a>
+      <a href="#endpoints">端点</a>
+      <a href="#flow">流程</a>
+      <a href="#prompt">Prompt</a>
+      <a href="{{REPO_URL}}" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+    <div class="header-actions">
+      <a class="primary-btn primary-btn--sm" href="./">返回星图</a>
+    </div>
+  </header>
+
+  <main class="guide-main" id="main">
+    <p class="eyebrow"><span class="pulse" aria-hidden="true"></span>For agents · UTF-8 · {{TOTAL}} skills</p>
+    <h1>让 Agent 正确读取<br>这张星图。</h1>
+    <p class="guide-lede">这是一个静态技能索引：{{TOTAL}} 个技能、{{CATEGORIES}} 个分类、{{ORIGINALS}} 个原创技能。所有文件都是 UTF-8；优先读 JSON，不要解析页面。</p>
+
+    <div class="guide-meta">
+      <div><b>{{TOTAL}}</b><span>skills</span></div>
+      <div><b>{{CATEGORIES}}</b><span>categories</span></div>
+      <div><b>{{ORIGINALS}}</b><span>originals</span></div>
+      <div><b>{{CORPUS_MB}} MB</b><span>corpus</span></div>
+    </div>
+
+    <section id="endpoints" class="guide-section">
+      <p class="kicker">Endpoints</p>
+      <h2>1. 先读索引，再读正文</h2>
+      <p>索引只包含筛选所需的信息；正文按需加载，避免一次读取全部 6 MB 语料。</p>
+      <div class="endpoint-list">
+        <a class="endpoint" href="data/index.json" target="_blank" rel="noopener">
+          <b>data/index.json</b><span>全部技能元数据</span><small>id · category · description · tags · path · json_url · original</small>
+        </a>
+        <a class="endpoint" href="data/skills/ui-ux-pro-max.json" target="_blank" rel="noopener">
+          <b>data/skills/&lt;id&gt;.json</b><span>单个技能的完整内容</span><small>元数据 + Markdown <code>content</code></small>
+        </a>
+        <a class="endpoint" href="llms.txt" target="_blank" rel="noopener">
+          <b>llms.txt</b><span>纯文本索引</span><small>分类、技能列表与使用说明</small>
+        </a>
+        <a class="endpoint" href="llms-full.txt" target="_blank" rel="noopener">
+          <b>llms-full.txt</b><span>完整语料</span><small>仅在确实需要全部技能时读取</small>
+        </a>
+        <a class="endpoint" href="data/originals.json" target="_blank" rel="noopener">
+          <b>data/originals.json</b><span>原创技能列表</span><small>project-original 的 {{ORIGINALS}} 个技能 id</small>
+        </a>
+        <a class="endpoint" href="sitemap.xml" target="_blank" rel="noopener">
+          <b>sitemap.xml</b><span>站点入口</span><small>索引与指南页</small>
+        </a>
+      </div>
+    </section>
+
+    <section id="flow" class="guide-section">
+      <p class="kicker">Workflow</p>
+      <h2>2. 推荐检索流程</h2>
+      <ol class="guide-steps">
+        <li><b>读索引</b><span>GET <code>data/index.json</code>，拿到 {{TOTAL}} 个技能的 id、分类、描述和标签。</span></li>
+        <li><b>先筛选</b><span>按任务选择 3-5 个最相关的 id；不要一次读完全部正文。</span></li>
+        <li><b>读正文</b><span>GET <code>data/skills/&lt;id&gt;.json</code>，使用 <code>content</code> 字段作为技能说明。</span></li>
+        <li><b>再执行</b><span>先说明选择理由和执行步骤；需要全量语料时才读 <code>llms-full.txt</code>。</span></li>
+      </ol>
+    </section>
+
+    <section id="prompt" class="guide-section">
+      <p class="kicker">Copy this</p>
+      <h2>3. 可直接发给 Agent 的指令</h2>
+      <div class="guide-prompt">
+        <div class="guide-prompt__head"><b>Agent prompt</b><button class="glass-btn glass-btn--xs" type="button" data-copy="#agent-prompt">复制</button></div>
+        <pre id="agent-prompt" tabindex="0">你是我的技能检索助手。请完成以下任务：
+
+1. 读取 AGI Skills Atlas 索引：{{PAGES_URL}}data/index.json
+2. 根据我的任务，从索引中筛选 3-5 个最相关的技能；只使用索引里真实存在的 id。
+3. 读取这些技能的完整内容：{{PAGES_URL}}data/skills/&lt;id&gt;.json，使用其中的 content 字段。
+4. 先用一句话说明你选了什么、为什么；再给出执行步骤。
+5. 不要编造不存在的技能或能力；如果索引里没有合适的，直接说没有。
+
+我的任务：&lt;在这里写你的任务&gt;</pre>
+      </div>
+      <p class="guide-hint">把这段指令和索引地址一起发给 Claude、Codex、OpenClaw、Hermes 或其他能联网的 Agent。它会先筛选，再按需读取正文。</p>
+    </section>
+
+    <section id="schema" class="guide-section">
+      <p class="kicker">Schema</p>
+      <h2>4. 字段说明</h2>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="索引字段说明">
+        <table class="guide-table">
+          <thead><tr><th>字段</th><th>位置</th><th>说明</th></tr></thead>
+          <tbody>
+            <tr><td><code>id</code></td><td>index / skill</td><td>技能唯一标识，也是 JSON 文件名</td></tr>
+            <tr><td><code>category</code></td><td>index / skill</td><td>14 个主分类之一的 id</td></tr>
+            <tr><td><code>category_label</code></td><td>index / skill</td><td>分类中文名</td></tr>
+            <tr><td><code>description</code></td><td>index / skill</td><td>用于筛选的摘要；正文在 <code>content</code></td></tr>
+            <tr><td><code>tags</code></td><td>index / skill</td><td>角色、领域或关键词</td></tr>
+            <tr><td><code>path</code></td><td>index / skill</td><td>仓库内路径，如 <code>skills/ui-ux-pro-max/SKILL.md</code></td></tr>
+            <tr><td><code>json_url</code></td><td>index</td><td>该技能的 JSON 地址</td></tr>
+            <tr><td><code>original</code></td><td>index / skill</td><td>是否 project-original</td></tr>
+            <tr><td><code>content</code></td><td>skill</td><td>SKILL.md 正文（Markdown）</td></tr>
+            <tr><td><code>content_available</code></td><td>skill</td><td>正文是否公开；为 false 时只保留索引</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="notes" class="guide-section">
+      <p class="kicker">Notes</p>
+      <h2>5. 注意事项</h2>
+      <ul class="guide-notes">
+        <li>所有文件都是 UTF-8。若用本地静态服务器预览，使用 <code>python3 skills-atlas/serve.py</code>，它会返回正确的 charset。</li>
+        <li>索引中的 <code>description</code> 是摘要；执行前以 <code>content</code> 为准。</li>
+        <li>技能正文可能包含命令、脚本或平台操作步骤；先读懂再执行，不要盲目运行。</li>
+        <li>这个站点是只读镜像。新增或修正技能请走 PR；合并后 Pages 自动重建。</li>
+        <li>需要全量检索时再读 <code>llms-full.txt</code>；日常任务优先用 <code>data/index.json</code> + 单技能 JSON。</li>
+      </ul>
+      <div class="guide-cta">
+        <a class="primary-btn" href="./">打开技能星图</a>
+        <a class="glass-btn" href="{{REPO_URL}}/blob/main/CONTRIBUTING.md#skills" target="_blank" rel="noopener">如何贡献技能</a>
+        <a class="ghost-btn" href="{{REPO_URL}}" target="_blank" rel="noopener">GitHub 仓库</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <div class="footer-brand">
+        <span class="brand__mark" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></span>
+        <div><b>{{TITLE}}</b><p>{{SUBTITLE}} · generated {{GENERATED_DATE}}</p></div>
+      </div>
+      <nav aria-label="页脚导航">
+        <a href="./">星图</a>
+        <a href="llms.txt">llms.txt</a>
+        <a href="data/index.json">JSON</a>
+        <a href="{{REPO_URL}}" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="assets/guide.js"></script>
+</body>
+</html>

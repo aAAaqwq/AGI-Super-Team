@@ -53,6 +53,21 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.STAR_HISTORY_TOKEN || github.token }}
         run: python3 scripts/build_site_data.py
 
+      - name: Build Skills Atlas
+        run: python3 skills-atlas/scripts/build.py --out docs/skills-atlas
+
+      - name: Check Skills Atlas output
+        run: |
+          test -f docs/skills-atlas/index.html
+          test -f docs/skills-atlas/data/index.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          index = json.loads(Path('docs/skills-atlas/data/index.json').read_text(encoding='utf-8'))
+          assert index['stats']['total'] > 0, 'Skills Atlas produced an empty index'
+          print(f"Skills Atlas: {index['stats']['total']} skills, {index['stats']['categories']} categories")
+          PY
+
       - name: Mark artifact as static
         run: touch docs/.nojekyll
 
