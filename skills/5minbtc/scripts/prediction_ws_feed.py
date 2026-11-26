@@ -21,13 +21,25 @@ import subprocess
 import sys
 import time
 import urllib.parse
+from datetime import datetime, timezone, timedelta
+
+CST = timezone(timedelta(hours=8))
 from pathlib import Path
 
 ENV_FILE = Path.home() / "bb-auto" / "prediction.env"
 CACHE = Path.home() / "bb-auto" / "prediction-ws.json"
 BASE = "wss://api.binance.com/sapi/wss"
 TOPIC = "web3_prediction_orderbook_data"   # 聚合所有市场
-REST_REFRESH_SEC = 30                       # 每 30 秒刷新 UP/DOWN 权威价
+REST_REFRESH_SEC = 30                       # 常规: 每 30 秒刷新 UP/DOWN 权威价
+REST_REFRESH_FAST_SEC = 10                  # 尾盘/换线后: 加密到 10 秒
+# 为什么需要两档: 消费端 (realtime/watch) 的新鲜度防线在进度 ≥80% 时收紧到 15s,
+# 而 30s 的刷新间隔在尾盘会让合法缓存老到 15-30s → 被拒 → 显示"市场价不可用"。
+# 换线后同理: 新市场要等下一次刷新, 期间缓存还指向上一根已结束的市场 (被第 4 道防线拒)。
+# 2026-11-26 实测: 尾盘/换线窗口取价可用率仅 1/10, 其余时段 9/10。
+def _refresh_interval():
+    now = datetime.now(CST)
+    prog = ((now.minute % 5) * 60 + now.second) / 300 * 100
+    return REST_REFRESH_FAST_SEC if (prog >= 70 or prog <= 15) else REST_REFRESH_SEC
 # 原为 300s（每根 K 线一次）。但 realtime/watch 现在有 60s 新鲜度防线
 # (MAX_QUOTE_AGE_SEC)：WS 稳定不重连时，300s 的刷新间隔会让合法数据被判为陈旧。
 # 这是一个 5 分钟结算的市场，30s ≈ 每根 K 线 10 个报价点，才是合理粒度。
@@ -159,7 +171,8 @@ class Feed:
                             pass
 
                         # 周期性 REST 刷新 UP/DOWN 权威价 (不依赖 WS 消息)
-                        if time.time() - last_rest >= REST_REFRESH_SEC:
+                        # 间隔随进度动态调整: 尾盘/换线后 10s, 其余 30s
+                        if time.time() - last_rest >= _refresh_interval():
                             cur = rest_current()
                             if cur:
                                 self.cache["current"] = cur
