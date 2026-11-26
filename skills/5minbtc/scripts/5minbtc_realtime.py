@@ -171,7 +171,10 @@ def record_paper(d, up=None, down=None):
     bet = {
         "candle": c["iso"], "side": side, "ask": round(ask, 4),
         "amount": 1.0, "fee": 0.01, "status": "open", "mode": "paper",
-        "p_est": (p["confidence"] / 100) if side == "UP" else (1 - p["confidence"] / 100), "auto": True,
+        # confidence 自 v6.0 修复后已是「所选方向」的概率 (engine 输出 max(p,1-p)),
+        # 不能再按 side 取反 —— 否则 DOWN 单会存成反方向的概率 (22:30 那笔 DOWN 存了 0.35,
+        # 真实应为 0.65), 让台账的 p_est 无法用于校准复盘。
+        "p_est": p["confidence"] / 100, "auto": True,
         "ts": datetime.now(CST).isoformat(),
         "reason": f"真OFI信号自动记录 ofi_n={ofi_snapshot(d).get('ofi_n')}",
         # 入场完整快照 (回测用) + 真 OFI 快照 (D2 分桶复盘用)

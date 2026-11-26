@@ -1044,6 +1044,9 @@ def direction_rule_v5(candles, closes, atr_val, vol_ratio,
     if bias == "neutral":
         confidence = min(confidence, 50)  # 中性不装强
     ofi_meta.update(ofi_p_meta)
+    # P(close>open) 必须单独保留: realtime 用 `1 - probability` 推 DOWN 腿概率,
+    # 若把它当成"所选方向概率"输出, bear 侧的 edge 会被算成 min(p,1-p) 而不是 max(p,1-p)。
+    ofi_meta["ofi_p"] = round(ofi_p, 4)
 
     # v5.7.1 P0-1: ATR spike时confidence减半 -- 黑天鹅防护
     is_spike, spike_ratio, spike_count = atr_spike_detect(candles, atr_val)
@@ -1262,7 +1265,10 @@ def run():
         "black_swan_warning": "⚠ News black swan active, direction unreliable" if news_black_swan else None,
         "prediction": {
             "bias": bias, "strength": strength,
-            "confidence": confidence, "probability": round(confidence / 100, 3),
+            "confidence": confidence,
+            # probability 恒为 P(close>open) —— realtime 的 DOWN 腿靠 1-p 推导。
+            # confidence 才是"所选方向的概率"(max(p,1-p)), 仅用于展示。
+            "probability": round(ofi_meta.get("ofi_p", confidence / 100), 3),
             "score": score,
             "pred_close": pred_close, "pred_high": pred_high, "pred_low": pred_low
         }
