@@ -1036,7 +1036,11 @@ def direction_rule_v5(candles, closes, atr_val, vol_ratio,
     ofi_p, ofi_p_meta = ofi_probability(
         candles, mtf if isinstance(mtf, dict) else None, body, atr_val,
         candle_progress, remaining_sec)
-    confidence = max(35, int(round(ofi_p * 100)))
+    # confidence 必须是「所选方向」的概率, 而不是 P(close>open)。
+    # 原写法 confidence = ofi_p*100: bear 侧 ofi_p 是"翻红概率"(如 0.20),
+    # 被 max(35,..) 抬成 35, 于是低置信桶里全是高准确率的 bear 单 ——
+    # 实测 30-39 桶命中 66.6%、70-79 桶只有 66.4%, 置信度与准确率倒挂。
+    confidence = int(round(max(ofi_p, 1.0 - ofi_p) * 100))
     if bias == "neutral":
         confidence = min(confidence, 50)  # 中性不装强
     ofi_meta.update(ofi_p_meta)

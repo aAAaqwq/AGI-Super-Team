@@ -136,7 +136,10 @@ def _signed_request(method, path, params=None):
         raise RuntimeError("缺少 BINANCE_API_KEY / BINANCE_API_SECRET 环境变量")
     params = dict(params or {})
     params.setdefault("timestamp", int(time.time() * 1000))
-    params.setdefault("recvWindow", 5000)
+    # recvWindow=5000 太紧: 实测节点单次请求中位 3.6s、峰值 15s,
+    # 任何超过 5 秒的请求都会被币安以 -1021 "Timestamp outside recvWindow" 拒绝。
+    # 2026-11-26 因此出现 API 2/5 成功率。放宽到 30s (与 prediction_ws_feed 一致)。
+    params.setdefault("recvWindow", 30000)
     # 排序保证签名与发送串一致 (服务器接受任意顺序, 只要匹配)
     qs = urllib.parse.urlencode(sorted(params.items()))
     sig = hmac.new(API_SECRET.encode(), qs.encode(), hashlib.sha256).hexdigest()
